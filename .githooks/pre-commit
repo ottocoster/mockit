@@ -1,0 +1,8 @@
+#!/bin/sh
+echo "executing pre-commit"
+# count number of commits
+
+NUMBER=$(sed -n 's/^COMMIT = \([0-9]*\)$/echo $((\1 + 1))/ep' src/version.py)
+sed -i "s/^COMMIT.*$/COMMIT = $NUMBER/g" src/version.py
+
+git add 'src\version.py'

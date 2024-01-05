@@ -1,0 +1,92 @@
+Devicename#    show lldp info remote-device detail
+
+
+ LLDP Remote Device Information Detail
+
+  Local Port   : 1/17
+  ChassisType  : mac-address
+  ChassisId    : 14cb19-bd5257
+  PortType     : mac-address
+  PortId       : 14 cb 19 bd 52 57
+  SysName      :
+  System Descr :
+  PortDescr    :
+  Pvid         :
+
+  System Capabilities Supported  :
+  System Capabilities Enabled    :
+
+  Remote Management Address
+
+  MED Information Detail
+    EndpointClass          :Class1
+
+------------------------------------------------------------------------------
+  Local Port   : 1/18
+  ChassisType  : local
+  ChassisId    : DESKTOP-TC1K4A8
+  PortType     : mac-address
+  PortId       : 48 9e bd a1 74 c5
+  SysName      :
+  System Descr :
+  PortDescr    :
+  Pvid         :
+
+  System Capabilities Supported  :
+  System Capabilities Enabled    :
+
+  Remote Management Address
+
+  MED Information Detail
+    EndpointClass          :Class1
+
+------------------------------------------------------------------------------
+  Local Port   : 1/20
+  ChassisType  : mac-address
+  ChassisId    : d4f527-eb4e0e
+  PortType     : mac-address
+  PortId       : d4 f5 27 eb 4e 0e
+  SysName      :
+  System Descr :
+  PortDescr    :
+  Pvid         :
+
+  System Capabilities Supported  :
+  System Capabilities Enabled    :
+
+  Remote Management Address
+
+  MED Information Detail
+    EndpointClass          :Class1
+
+------------------------------------------------------------------------------
+  Local Port   : 1/20
+  ChassisType  : local
+  ChassisId    : sh3-servicec01
+  PortType     : local
+  PortId       : port-001
+  SysName      : SH3-SERVICEC01
+  System Descr : SIEMENS AG SIMATIC IPC477E,6ES7650-0VG68-1YX1,P6962246 + HMI
+  PortDescr    :
+  Pvid         :
+
+  System Capabilities Supported  : station-only
+  System Capabilities Enabled    : station-only
+
+  Remote Management Address
+     Type    : ipv4
+     Address : 10.81.34.2
+
+------------------------------------------------------------------------------
+  Local Port   : 1/23
+  ChassisType  : mac-address
+  ChassisId    : 1062e5-1a36ac
+  PortType     : mac-address
+  PortId       : 10 62 e5 1a 36 ac
+  SysName      :
+  System Descr :
+  PortDescr    :
+
+
+
+

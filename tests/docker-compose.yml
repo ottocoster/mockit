@@ -1,0 +1,154 @@
+version: "3"
+name: devices
+services:  
+  test_container:
+    build: .
+    container_name: devices-test_container
+    networks:
+      - devices-network
+
+  arista_eos:
+    build: ../
+    container_name: devices-arista_eos
+    environment:  
+      DEVICE_TYPE: arista_eos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  aruba_os:
+    build: ../
+    container_name: devices-aruba_os
+    environment:  
+      DEVICE_TYPE: aruba_os
+      SSH_PASSWORD: test
+    ports:
+      - "24:22"
+    networks:
+      - devices-network
+
+  cisco_asa:
+    build: ../
+    container_name: devices-cisco_asa
+    environment:  
+      DEVICE_TYPE: cisco_asa
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  cisco_ios:
+    build: ../
+    container_name: devices-cisco_ios
+    environment:  
+      DEVICE_TYPE: cisco_ios
+      SSH_PASSWORD: test
+    ports:
+      - "23:22"
+    networks:
+      - devices-network
+      
+  cisco_nxos:
+    build: ../
+    container_name: devices-cisco_nxos
+    environment:  
+      DEVICE_TYPE: cisco_nxos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  cisco_wlc:
+    build: ../
+    container_name: devices-cisco_wlc
+    environment:  
+      DEVICE_TYPE: cisco_wlc
+      SSH_PASSWORD: test
+    ports:
+      - "22:22"
+    networks:
+      - devices-network
+      
+  cisco_xr:
+    build: ../
+    container_name: devices-cisco_xr
+    environment:  
+      DEVICE_TYPE: cisco_xr
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  fortinet:
+    build: ../
+    container_name: devices-fortinet
+    environment:  
+      DEVICE_TYPE: fortinet
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  hp_comware:
+    build: ../
+    container_name: devices-hp_comware
+    environment:  
+      DEVICE_TYPE: hp_comware
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  huawei:
+    build: ../
+    container_name: devices-huawei
+    environment:  
+      DEVICE_TYPE: huawei
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  juniper_junos:
+    build: ../
+    container_name: devices-juniper_junos
+    environment:  
+      DEVICE_TYPE: juniper_junos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  mikrotik_routeros_v6:
+    build: ../
+    container_name: devices-mikrotik_routeros_v6
+    environment:  
+      DEVICE_TYPE: mikrotik_routeros
+      DEVICE_VERSION: v6
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  mikrotik_routeros_v7:
+    build: ../
+    container_name: devices-mikrotik_routeros_v7
+    environment:  
+      DEVICE_TYPE: mikrotik_routeros
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  ubiquiti_edgerouter:
+    build: ../
+    container_name: devices-ubiquiti_edgerouter
+    environment:  
+      DEVICE_TYPE: ubiquiti_edgerouter
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  ubiquiti_edgeswitch:
+    build: ../
+    container_name: devices-ubiquiti_edgeswitch
+    environment:  
+      DEVICE_TYPE: ubiquiti_edgeswitch
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+networks:
+  devices-network:
+    driver: bridge

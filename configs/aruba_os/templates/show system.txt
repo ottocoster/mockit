@@ -1,0 +1,36 @@
+Devicename#show system
+
+
+ Status and Counters - General System Information
+
+  System Name        : Devicename
+  System Contact     : Local Network Administrator
+  System Location    : Sitename
+  MAC Age Time (sec) : 300
+  Time Zone          : 0
+  Daylight Time Rule : Western-Europe
+
+  Software revision  : KB.16.10.0019
+  Base MAC Addr      : 089734-abcdef
+
+ Member :1
+
+  ROM Version        : KB.16.01.0009
+  Up Time            : 104 days
+  CPU Util (%)       : 32
+  MAC Addr           : 089734- abcde0
+  Serial Number      : SG86LRM343
+  Memory   - Total   : 685,088,768
+             Free    : 482,100,048
+
+
+
+ Member :2
+
+  ROM Version        : KB.16.01.0009
+  Up Time            : 104 days
+  CPU Util (%)       : 0
+  MAC Addr           : 20677c-cdef12
+  Serial Number      : SG85OEJ2J9
+  Memory   - Total   : 685,088,768
+             Free    : 508,835,912

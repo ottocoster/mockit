@@ -1,0 +1,19 @@
+{
+    "SNMPv2-MIB": [
+        {
+            "name": "sysName",
+            "type": "string",
+            "value": "cisco_ios.some.net"
+        },
+        {
+            "name": "sysDescr",
+            "type": "string",
+            "value": "Cisco IOS Software, IOSv Software (VIOS-ADVENTERPRISEK9-M), Version 15.6(2)T, RELEASE SOFTWARE (fc2) \nTechnical Support: http://www.cisco.com/techsupport \nCopyright (c) 1986-2016 by Cisco Systems, Inc. \nCompiled Tue 22-Mar-16 16:19 by prod_rel_team"
+        },
+        {
+            "name": "sysObjectID",
+            "type": "id",
+            "oid": "1.3.6.1.4.1.9.1.1041"
+        }
+    ]
+}

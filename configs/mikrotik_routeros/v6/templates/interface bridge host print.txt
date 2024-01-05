@@ -1,0 +1,33 @@
+[admin@MikroTik_PatchBox_Office] > interface bridge host print
+Flags: X - disabled, I - invalid, D - dynamic, L - local, E - external
+ #       MAC-ADDRESS        VID ON-INTERFACE                                                                    BRIDGE                                                                    AGE
+ 0   D E 00:0C:29:35:8E:8D      ether1                                                                          bridge
+ 1   D E 00:0C:29:F1:D9:B3      ether1                                                                          bridge
+ 2   D E 00:11:32:62:7E:9D      ether1                                                                          bridge
+ 3   D E 00:12:33:12:56:DE      ether1                                                                          bridge
+ 4   D E 14:C1:4E:1E:6D:10      ether1                                                                          bridge
+ 5   D E 14:C1:4E:3B:66:87      ether1                                                                          bridge
+ 6   D E 1C:53:F9:B5:09:B6      ether1                                                                          bridge
+ 7   D E 20:4C:03:E3:17:38      ether2                                                                          bridge
+ 8   D E 2C:C8:1B:63:4A:24      ether1                                                                          bridge
+ 9   D E 2C:C8:1B:63:4A:28      ether1                                                                          bridge
+10   D E 34:9F:7B:37:CC:F1      ether1                                                                          bridge
+11   D E 36:AF:6B:12:D8:95      ether1                                                                          bridge
+12   D E 38:BE:AB:58:1A:24      ether1                                                                          bridge
+13   D E 50:14:79:3B:35:D0      ether1                                                                          bridge
+14   D E 54:60:09:E0:D8:AE      ether1                                                                          bridge
+15   D E 7C:2F:80:8A:88:79      ether1                                                                          bridge
+16   D E 88:DC:97:01:2D:14      ether1                                                                          bridge
+17   D E 88:DC:97:01:2F:9F      ether1                                                                          bridge
+18   D E A4:77:33:6E:3A:00      ether1                                                                          bridge
+19   D E B0:3C:DC:73:8E:DF      ether1                                                                          bridge
+20   D E B0:B2:DC:03:8D:15      ether1                                                                          bridge
+21   DL  D4:CA:6D:AF:5B:E3      ether1                                                                          bridge
+22   DL  D4:CA:6D:AF:5B:E4      bridge                                                                          bridge
+23   D E E0:37:BF:AA:B9:2F      ether1                                                                          bridge
+24   D E E0:63:DA:67:92:D6      ether1                                                                          bridge
+25   D E E4:F4:C6:1A:53:F4      ether1                                                                          bridge
+26   D E EC:E5:12:1E:24:B8      ether1                                                                          bridge
+27   D E FC:EC:DA:FC:86:58      ether1                                                                          bridge
+28   D E FC:EC:DA:FC:86:B3      ether1                                                                          bridge
+29   D E FC:EC:DA:FC:88:98      ether1                                                                          bridge

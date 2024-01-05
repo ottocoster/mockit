@@ -1,0 +1,19 @@
+test@test1> show route
+
+inet.0: 6 destinations, 6 routes (6 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0.0.0.0/0          *[Static/5] 309w1d 02:22:53
+                    > to 10.232.216.33 via vlan.12
+10.232.216.2/31   *[Direct/0] 30w3d 13:32:12
+                    > via vlan.13
+10.232.216.3/32   *[Local/0] 311w1d 00:48:10
+                      Local via vlan.13
+10.232.216.32/27  *[Direct/0] 311w1d 00:48:10
+                    > via vlan.12
+10.232.216.39/32  *[Local/0] 311w1d 00:48:10
+                      Local via vlan.12
+224.0.0.22/32      *[IGMP/0] 312w0d 13:12:48
+                      MultiRecv
+
+{master:0}
