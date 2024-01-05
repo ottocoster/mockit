@@ -4,7 +4,7 @@
 
 ## Work in progress
 
-There are still a lot of basic commands to add and more functionality
+There are still a lot of basic commands to add and more functionality. Currently for ssh cisco_wlc and huawei device are not responding as expected.
 
 ## Getting started
 
@@ -66,5 +66,10 @@ To connect to the device remotely through ssh we open the 22 port and for snmp t
 
 ## githook
 - `git config core.hooksPath .githooks` to automatically increment the version number
+
+## Contribution
+
+If you want to share your command templates with the rest of us, it would be appreciated.
+Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
 
 

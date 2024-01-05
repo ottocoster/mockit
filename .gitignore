@@ -8,3 +8,5 @@ __pycache__/
 docker-compose.override.yml
 
 desktop.ini
+
+/test_scripts

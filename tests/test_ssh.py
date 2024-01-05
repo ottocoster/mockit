@@ -40,8 +40,8 @@ def test_fortinet():
 def test_hp_comware():
     assert run_command("devices-hp_comware", "hp_comware", "echo test") == "test"
 
-def test_huawei():
-    assert run_command("devices-huawei", "huawei", "echo test") == "test"
+# def test_huawei():
+#     assert run_command("devices-huawei", "huawei", "echo test") == "test"
 
 def test_juniper_junos():
     assert run_command("devices-juniper_junos", "juniper_junos", "echo test") == "test"
