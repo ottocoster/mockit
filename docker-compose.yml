@@ -8,9 +8,9 @@ services:
       DEVICE_TYPE: cisco_ios
       SSH_USERNAME: test
       SSH_PASSWORD: test
-    ports: 
-      - "22:22"
-      - "161:161/udp"
+    # ports: 
+    #   - "22:22"
+    #   - "161:161/udp"
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
 

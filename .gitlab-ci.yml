@@ -36,10 +36,11 @@ unit_test:
   services:
     - docker:dind
   script:
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose.yml up -d
+    - cd $CI_PROJECT_DIR/tests
+    - docker compose pull
+    - docker compose up -d
     - sleep 60
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose.yml run --rm test_container pytest --color=yes -v --durations 0  
+    - docker compose run --rm test_container pytest --color=yes -v --durations 0  
   after_script:
     - mkdir $CI_PROJECT_DIR/logs 
     - |
