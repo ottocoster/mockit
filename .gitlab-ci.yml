@@ -29,18 +29,16 @@ build:
     name: slurpit-device-imitator
     expire_in: 1 month
 
-
 unit_test:
   image: docker:latest
   stage: test
   services:
     - docker:dind
   script:
-    - cd $CI_PROJECT_DIR/tests
-    - docker compose pull
-    - docker compose up -d
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose.yml pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose.yml up -d --build
     - sleep 60
-    - docker compose run --rm test_container pytest --color=yes -v --durations 0  
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose.yml run --rm test_container pytest --color=yes -v --durations 0  
   after_script:
     - mkdir $CI_PROJECT_DIR/logs 
     - |
