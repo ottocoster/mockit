@@ -4,7 +4,7 @@
 
 ## Work in progress
 
-There are still a lot of basic commands to add and more functionality. Currently for ssh cisco_wlc and huawei device are not responding as expected.
+There are still a lot of basic commands, more functionality and more devices to add
 
 ## Getting started
 

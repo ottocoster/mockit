@@ -28,8 +28,8 @@ def test_cisco_ios():
 def test_cisco_nxos():
     assert run_command("devices-cisco_nxos", "cisco_nxos", "echo test") == "test"
 
-# def test_cisco_wlc():
-#     assert run_command("devices-cisco_wlc", "cisco_wlc", "echo test") == "test"
+def test_cisco_wlc():
+    assert run_command("devices-cisco_wlc", "cisco_wlc", "echo test") == "test"
 
 def test_cisco_xr():
     assert run_command("devices-cisco_xr", "cisco_xr", "echo test") == "test"
@@ -40,8 +40,8 @@ def test_fortinet():
 def test_hp_comware():
     assert run_command("devices-hp_comware", "hp_comware", "echo test") == "test"
 
-# def test_huawei():
-#     assert run_command("devices-huawei", "huawei", "echo test") == "test"
+def test_huawei():
+    assert run_command("devices-huawei", "huawei", "echo test") == "test"
 
 def test_juniper_junos():
     assert run_command("devices-juniper_junos", "juniper_junos", "echo test") == "test"

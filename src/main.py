@@ -11,15 +11,18 @@ def main():
     device_version = get_device_version(device_type, os.environ.get("DEVICE_VERSION", ""))
     prompt = get_prompt(device_type)
     options_ssh = {
-        "debug"         : str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true",
-        "device_type"   : device_type,
-        "device_version": device_version,
+        "debug"                 : str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true",
+        "device_type"           : device_type,
+        "device_version"        : device_version,
 
-        "ssh_key"       : os.environ.get("SSH_KEY", "/ssh_key/rsa.key"),
-        "username"      : os.environ.get("SSH_USERNAME", "root"),
-        "password"      : os.environ.get("SSH_PASSWORD", ""),
-        "prompt"        : prompt,
-        "prompt_command": get_command_prompt(device_type, prompt),
+        "ssh_key"               : os.environ.get("SSH_KEY", "/ssh_key/rsa.key"),
+        "username"              : os.environ.get("SSH_USERNAME", "root"),
+        "password"              : os.environ.get("SSH_PASSWORD", ""),
+        "prompt"                : prompt,
+        "response_format"       : get_response_format(device_type),
+        "command_prompt_format" : get_command_format(device_type),
+        "default_prompt_format" : get_prompt_format(device_type),
+        "echo_format"           : get_echo_format(device_type),
     }
     options_snmp = {
         "debug"             : str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true",
@@ -73,18 +76,58 @@ def get_prompt(device_type):
 
     return '#'
 
-def get_command_prompt(device_type, default_prompt):
-    prompt = os.environ.get("SSH_PROMPT_COMMAND", "")
-    if prompt:
-        return prompt
+def get_response_format(device_type):
+    format = os.environ.get("SSH_RESPONSE_FORMAT", "")
+    if format:
+        return format
+
+    if device_type == 'cisco_wlc':
+        return "<new_line><response><new_line>"
+
+    if device_type == 'huawei':
+        return "<new_line><response><new_line>"
+
+    return "<response><new_line>"
+
+def get_command_format(device_type):
+    format = os.environ.get("SSH_COMMAND_PROMPT_FORMAT", "")
+    if format:
+        return format
 
     if device_type == 'hp_comware':
-        return ''
+        return "<device_type>"
 
     if device_type == 'aruba_os':
-        return ''
+        return "<device_type>"
 
-    return default_prompt
+    if device_type == 'cisco_wlc':
+        return "<device_type>"
+
+    if device_type == 'huawei':
+        return "<device_type>"
+
+    return "<device_type><prompt>"
+
+def get_prompt_format(device_type):
+    format = os.environ.get("SSH_DEFAULT_PROMPT_FORMAT", "")
+    if format:
+        return format
+
+    return "<device_type><prompt>"
+
+# Setting a value here disables asyncssh line_editor
+def get_echo_format(device_type):
+    format = os.environ.get("SSH_ECHO_FORMAT", "")
+    if format:
+        return format
+
+    if device_type == 'cisco_wlc':
+        return "<response>"
+
+    if device_type == 'huawei':
+        return "<response>"
+
+    return ""
 
 if __name__ == "__main__":
     LOGGER = logging.getLogger()

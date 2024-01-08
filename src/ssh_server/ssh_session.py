@@ -34,7 +34,7 @@ class SSHSession:
 
     async def read(self):
         self.new_line()
-        self.send_initial_prompt()
+        self.send_prompt()
         while True:
             user_input = await self.process.stdin.readline()
             if user_input == "":
@@ -46,8 +46,11 @@ class SSHSession:
 
     async def _handle_command(self, command):
         if not command:
-            self.send_initial_prompt()
+            self.send_prompt()
             return True
+
+        if len(self.options["echo_format"]) > 0:
+            self.process.stdout.write(self.format_text(self.options['echo_format'], response=command))
 
         if await self.module.handle_command(command, self):
             return True
@@ -64,7 +67,7 @@ class SSHSession:
             return True
 
         self.logger.error(f"Command not found `{self.options['device_type']}`: `{command}`")
-        self.send_prompt()
+        self.send_command_prompt()
         return True
 
     def _load_commands(self, config_dir):
@@ -95,13 +98,15 @@ class SSHSession:
     def new_line(self):
         self.process.stdout.write(self.options["new_line"])
 
-    def respond(self, response):
-        self.logger.debug(response)
-        self.process.stdout.write(response + self.options["new_line"])
-        self.send_prompt()
+    def respond(self, response = ""):
+        self.process.stdout.write(self.format_text(self.options['response_format'], response=response))
+        self.send_command_prompt()
 
-    def send_initial_prompt(self):
-        self.process.stdout.write(self.options["device_type"] + self.options["prompt"])
+    def format_text(self, format: str, response = ""):
+        return format.replace('<response>', response).replace('<new_line>', self.options['new_line']).replace('<device_type>', self.options['device_type']).replace('<prompt>', self.options['prompt'])
 
     def send_prompt(self):
-        self.process.stdout.write(self.options["device_type"] + self.options["prompt_command"])
+        self.process.stdout.write(self.format_text(self.options['default_prompt_format']))
+
+    def send_command_prompt(self):
+        self.process.stdout.write(self.format_text(self.options['command_prompt_format']))

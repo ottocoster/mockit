@@ -62,8 +62,6 @@ services:
     environment:  
       DEVICE_TYPE: cisco_wlc
       SSH_PASSWORD: test
-    ports:
-      - "22:22"
     networks:
       - devices-network
       
@@ -100,6 +98,8 @@ services:
     environment:  
       DEVICE_TYPE: huawei
       SSH_PASSWORD: test
+    # ports:
+    #   - "22:22"
     networks:
       - devices-network
       
