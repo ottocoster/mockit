@@ -95,6 +95,9 @@ class SSHSession:
         with open(filename, "r") as fhand:
             return fhand.read()
     
+    def set_prompt(self, prompt):
+        self.options['temp_prompt'] = prompt
+    
     def new_line(self):
         self.process.stdout.write(self.options["new_line"])
 
@@ -103,7 +106,10 @@ class SSHSession:
         self.send_command_prompt()
 
     def format_text(self, format: str, response = ""):
-        return format.replace('<response>', response).replace('<new_line>', self.options['new_line']).replace('<device_type>', self.options['device_type']).replace('<prompt>', self.options['prompt'])
+        prompt = self.options['prompt']
+        if 'temp_prompt' in self.options:
+            prompt = self.options['temp_prompt']
+        return format.replace('<response>', response).replace('<new_line>', self.options['new_line']).replace('<device_type>', self.options['device_type']).replace('<prompt>', prompt)
 
     def send_prompt(self):
         self.process.stdout.write(self.format_text(self.options['default_prompt_format']))

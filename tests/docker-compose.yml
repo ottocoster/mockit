@@ -7,11 +7,101 @@ services:
     networks:
       - devices-network
 
+  a10:
+    build: ../
+    container_name: devices-a10
+    environment:  
+      DEVICE_TYPE: a10
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  accedian:
+    build: ../
+    container_name: devices-accedian
+    environment:  
+      DEVICE_TYPE: accedian
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  adtran_os:
+    build: ../
+    container_name: devices-adtran_os
+    environment:  
+      DEVICE_TYPE: adtran_os
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  adva_fsp150f2:
+    build: ../
+    container_name: devices-adva_fsp150f2
+    environment:  
+      DEVICE_TYPE: adva_fsp150f2
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  adva_fsp150f3:
+    build: ../
+    container_name: devices-adva_fsp150f3
+    environment:  
+      DEVICE_TYPE: adva_fsp150f3
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  alcatel_aos:
+    build: ../
+    container_name: devices-alcatel_aos
+    environment:  
+      DEVICE_TYPE: alcatel_aos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  alcatel_sros:
+    build: ../
+    container_name: devices-alcatel_sros
+    environment:  
+      DEVICE_TYPE: alcatel_sros
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  allied_telesis_awplus:
+    build: ../
+    container_name: devices-allied_telesis_awplus
+    environment:  
+      DEVICE_TYPE: allied_telesis_awplus
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  apresia_aeos:
+    build: ../
+    container_name: devices-apresia_aeos
+    environment:  
+      DEVICE_TYPE: apresia_aeos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
   arista_eos:
     build: ../
     container_name: devices-arista_eos
     environment:  
       DEVICE_TYPE: arista_eos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  arris_cer:
+    build: ../
+    container_name: devices-arris_cer
+    environment:  
+      DEVICE_TYPE: arris_cer
       SSH_PASSWORD: test
     networks:
       - devices-network
@@ -27,11 +117,200 @@ services:
     networks:
       - devices-network
 
+  aruba_osswitch:
+    build: ../
+    container_name: devices-aruba_osswitch
+    environment:  
+      DEVICE_TYPE: aruba_osswitch
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  aruba_procurve:
+    build: ../
+    container_name: devices-aruba_procurve
+    environment:  
+      DEVICE_TYPE: aruba_procurve
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  audiocode_66:
+    build: ../
+    container_name: devices-audiocode_66
+    environment:  
+      DEVICE_TYPE: audiocode_66
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  audiocode_72:
+    build: ../
+    container_name: devices-audiocode_72
+    environment:  
+      DEVICE_TYPE: audiocode_72
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  audiocode_shell:
+    build: ../
+    container_name: devices-audiocode_shell
+    environment:  
+      DEVICE_TYPE: audiocode_shell
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  avaya_ers:
+    build: ../
+    container_name: devices-avaya_ers
+    environment:  
+      DEVICE_TYPE: avaya_ers
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  avaya_vsp:
+    build: ../
+    container_name: devices-avaya_vsp
+    environment:  
+      DEVICE_TYPE: avaya_vsp
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  broadcom_icos:
+    build: ../
+    container_name: devices-broadcom_icos
+    environment:  
+      DEVICE_TYPE: broadcom_icos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  brocade_fastiron:
+    build: ../
+    container_name: devices-brocade_fastiron
+    environment:  
+      DEVICE_TYPE: brocade_fastiron
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  brocade_fos:
+    build: ../
+    container_name: devices-brocade_fos
+    environment:  
+      DEVICE_TYPE: brocade_fos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  brocade_netiron:
+    build: ../
+    container_name: devices-brocade_netiron
+    environment:  
+      DEVICE_TYPE: brocade_netiron
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  brocade_nos:
+    build: ../
+    container_name: devices-brocade_nos
+    environment:  
+      DEVICE_TYPE: brocade_nos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  brocade_vdx:
+    build: ../
+    container_name: devices-brocade_vdx
+    environment:  
+      DEVICE_TYPE: brocade_vdx
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  brocade_vyos:
+    build: ../
+    container_name: devices-brocade_vyos
+    environment:  
+      DEVICE_TYPE: brocade_vyos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  calix_b6:
+    build: ../
+    container_name: devices-calix_b6
+    environment:  
+      DEVICE_TYPE: calix_b6
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  casa_cmts:
+    build: ../
+    container_name: devices-casa_cmts
+    environment:  
+      DEVICE_TYPE: casa_cmts
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  cdot_cros:
+    build: ../
+    container_name: devices-cdot_cros
+    environment:  
+      DEVICE_TYPE: cdot_cros
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  centec_os:
+    build: ../
+    container_name: devices-centec_os
+    environment:  
+      DEVICE_TYPE: centec_os
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  checkpoint_gaia:
+    build: ../
+    container_name: devices-checkpoint_gaia
+    environment:  
+      DEVICE_TYPE: checkpoint_gaia
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  ciena_saos:
+    build: ../
+    container_name: devices-ciena_saos
+    environment:  
+      DEVICE_TYPE: ciena_saos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
   cisco_asa:
     build: ../
     container_name: devices-cisco_asa
     environment:  
       DEVICE_TYPE: cisco_asa
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  cisco_ftd:
+    build: ../
+    container_name: devices-cisco_ftd
+    environment:  
+      DEVICE_TYPE: cisco_ftd
       SSH_PASSWORD: test
     networks:
       - devices-network

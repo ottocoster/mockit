@@ -64,6 +64,27 @@ def get_prompt(device_type):
     if prompt:
         return prompt
 
+    if device_type == 'a10':
+        return '>#'
+
+    if device_type == 'adva_fsp150f2':
+        return '-->'
+
+    if device_type == 'adva_fsp150f3':
+        return '-->'
+
+    if device_type == 'apresia_aeos':
+        return '>#'
+
+    if device_type == 'aruba_osswitch':
+        return '>#'
+
+    if device_type == 'procurve':
+        return '>#'
+
+    if device_type == 'audiocode_shell':
+        return '/>'
+
     if device_type == 'hp_comware':
         return '>'
 
