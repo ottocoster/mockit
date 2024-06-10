@@ -335,11 +335,56 @@ services:
     networks:
       - devices-network
       
+  cisco_s200:
+    build: ../
+    container_name: devices-cisco_s200
+    environment:  
+      DEVICE_TYPE: cisco_s200
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  cisco_s300:
+    build: ../
+    container_name: devices-cisco_s300
+    environment:  
+      DEVICE_TYPE: cisco_s300
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  cisco_tp:
+    build: ../
+    container_name: devices-cisco_tp
+    environment:  
+      DEVICE_TYPE: cisco_tp
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  cisco_viptela:
+    build: ../
+    container_name: devices-viptela
+    environment:  
+      DEVICE_TYPE: viptela
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
   cisco_wlc:
     build: ../
     container_name: devices-cisco_wlc
     environment:  
       DEVICE_TYPE: cisco_wlc
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  cisco_xe:
+    build: ../
+    container_name: devices-cisco_xe
+    environment:  
+      DEVICE_TYPE: cisco_xe
       SSH_PASSWORD: test
     networks:
       - devices-network
@@ -353,81 +398,24 @@ services:
     networks:
       - devices-network
       
-  fortinet:
+  cloudgenix_ion:
     build: ../
-    container_name: devices-fortinet
+    container_name: devices-cloudgenix_ion
     environment:  
-      DEVICE_TYPE: fortinet
+      DEVICE_TYPE: cloudgenix_ion
       SSH_PASSWORD: test
     networks:
       - devices-network
       
-  hp_comware:
+  coriant:
     build: ../
-    container_name: devices-hp_comware
+    container_name: devices-coriant
     environment:  
-      DEVICE_TYPE: hp_comware
+      DEVICE_TYPE: coriant
       SSH_PASSWORD: test
     networks:
       - devices-network
       
-  huawei:
-    build: ../
-    container_name: devices-huawei
-    environment:  
-      DEVICE_TYPE: huawei
-      SSH_PASSWORD: test
-    # ports:
-    #   - "22:22"
-    networks:
-      - devices-network
-      
-  juniper_junos:
-    build: ../
-    container_name: devices-juniper_junos
-    environment:  
-      DEVICE_TYPE: juniper_junos
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
-  mikrotik_routeros_v6:
-    build: ../
-    container_name: devices-mikrotik_routeros_v6
-    environment:  
-      DEVICE_TYPE: mikrotik_routeros
-      DEVICE_VERSION: v6
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
-  mikrotik_routeros_v7:
-    build: ../
-    container_name: devices-mikrotik_routeros_v7
-    environment:  
-      DEVICE_TYPE: mikrotik_routeros
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-      
-  ubiquiti_edgerouter:
-    build: ../
-    container_name: devices-ubiquiti_edgerouter
-    environment:  
-      DEVICE_TYPE: ubiquiti_edgerouter
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-      
-  ubiquiti_edgeswitch:
-    build: ../
-    container_name: devices-ubiquiti_edgeswitch
-    environment:  
-      DEVICE_TYPE: ubiquiti_edgeswitch
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
 networks:
   devices-network:
     driver: bridge

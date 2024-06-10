@@ -26,6 +26,7 @@ async def start_server(options):
         port=22,
         server_host_keys=options["ssh_key"],
         process_factory=create_session,
+        line_echo=False,
         line_editor=len(options["echo_format"]) == 0
     )
 

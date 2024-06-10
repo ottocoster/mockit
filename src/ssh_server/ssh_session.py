@@ -51,6 +51,8 @@ class SSHSession:
 
         if len(self.options["echo_format"]) > 0:
             self.process.stdout.write(self.format_text(self.options['echo_format'], response=command))
+        
+        self.logger.info(f"Received `{command}`")
 
         if await self.module.handle_command(command, self):
             return True

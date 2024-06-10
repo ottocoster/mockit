@@ -35,10 +35,15 @@ unit_test:
   services:
     - docker:dind
   script:
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose.yml up -d --build
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml up -d --build
     - sleep 60
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose.yml run --rm test_container pytest --color=yes -v --durations 0  
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml run --rm test_container pytest --color=yes -v --durations 0 -m test_set1
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml stop
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml up -d --build
+    - sleep 60
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml run --rm test_container pytest --color=yes -v --durations 0 -m test_set2
   after_script:
     - mkdir $CI_PROJECT_DIR/logs 
     - |

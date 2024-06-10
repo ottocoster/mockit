@@ -1,0 +1,366 @@
+version: "3"
+name: devices
+services:  
+  test_container:
+    build: .
+    container_name: devices-test_container
+    networks:
+      - devices-network
+      
+  dell_dnos9:
+    build: ../
+    container_name: devices-dell_dnos9
+    environment:  
+      DEVICE_TYPE: dell_dnos9
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  dell_force10:
+    build: ../
+    container_name: devices-dell_force10
+    environment:  
+      DEVICE_TYPE: dell_force10
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  dell_isilon:
+    build: ../
+    container_name: devices-dell_isilon
+    environment:  
+      DEVICE_TYPE: dell_isilon
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  dell_os6:
+    build: ../
+    container_name: devices-dell_os6
+    environment:  
+      DEVICE_TYPE: dell_os6
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  dell_os9:
+    build: ../
+    container_name: devices-dell_os9
+    environment:  
+      DEVICE_TYPE: dell_os9
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  dell_os10:
+    build: ../
+    container_name: devices-dell_os10
+    environment:  
+      DEVICE_TYPE: dell_os10
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  dell_powerconnect:
+    build: ../
+    container_name: devices-dell_powerconnect
+    environment:  
+      DEVICE_TYPE: dell_powerconnect
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  dell_sonic:
+    build: ../
+    container_name: devices-dell_sonic
+    environment:  
+      DEVICE_TYPE: dell_sonic
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  digi_transport:
+    build: ../
+    container_name: devices-digi_transport
+    environment:  
+      DEVICE_TYPE: digi_transport
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  dlink_ds:
+    build: ../
+    container_name: devices-dlink_ds
+    environment:  
+      DEVICE_TYPE: dlink_ds
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  eltex:
+    build: ../
+    container_name: devices-eltex
+    environment:  
+      DEVICE_TYPE: eltex
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  eltex_esr:
+    build: ../
+    container_name: devices-eltex_esr
+    environment:  
+      DEVICE_TYPE: eltex_esr
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  endace:
+    build: ../
+    container_name: devices-endace
+    environment:  
+      DEVICE_TYPE: endace
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  enterasys:
+    build: ../
+    container_name: devices-enterasys
+    environment:  
+      DEVICE_TYPE: enterasys
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  ericsson_ipos:
+    build: ../
+    container_name: devices-ericsson_ipos
+    environment:  
+      DEVICE_TYPE: ericsson_ipos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  ericsson_mltn63:
+    build: ../
+    container_name: devices-ericsson_mltn63
+    environment:  
+      DEVICE_TYPE: ericsson_mltn63
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  ericsson_mltn66:
+    build: ../
+    container_name: devices-ericsson_mltn66
+    environment:  
+      DEVICE_TYPE: ericsson_mltn66
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme:
+    build: ../
+    container_name: devices-extreme
+    environment:  
+      DEVICE_TYPE: extreme
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme_ers:
+    build: ../
+    container_name: devices-extreme_ers
+    environment:  
+      DEVICE_TYPE: extreme_ers
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme_exos:
+    build: ../
+    container_name: devices-extreme_exos
+    environment:  
+      DEVICE_TYPE: extreme_exos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme_netiron:
+    build: ../
+    container_name: devices-extreme_netiron
+    environment:  
+      DEVICE_TYPE: extreme_netiron
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme_nos:
+    build: ../
+    container_name: devices-extreme_nos
+    environment:  
+      DEVICE_TYPE: extreme_nos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme_slx:
+    build: ../
+    container_name: devices-extreme_slx
+    environment:  
+      DEVICE_TYPE: extreme_slx
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme_tierra:
+    build: ../
+    container_name: devices-extreme_tierra
+    environment:  
+      DEVICE_TYPE: extreme_tierra
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme_vdx:
+    build: ../
+    container_name: devices-extreme_vdx
+    environment:  
+      DEVICE_TYPE: extreme_vdx
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme_vsp:
+    build: ../
+    container_name: devices-extreme_vsp
+    environment:  
+      DEVICE_TYPE: extreme_vsp
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  extreme_wing:
+    build: ../
+    container_name: devices-extreme_wing
+    environment:  
+      DEVICE_TYPE: extreme_wing
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  f5_linux:
+    build: ../
+    container_name: devices-f5_linux
+    environment:  
+      DEVICE_TYPE: f5_linux
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  f5_ltm:
+    build: ../
+    container_name: devices-f5_ltm
+    environment:  
+      DEVICE_TYPE: f5_ltm
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  fiberstore_fsos:
+    build: ../
+    container_name: devices-fiberstore_fsos
+    environment:  
+      DEVICE_TYPE: fiberstore_fsos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  flexvnf:
+    build: ../
+    container_name: devices-flexvnf
+    environment:  
+      DEVICE_TYPE: flexvnf
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  fortinet:
+    build: ../
+    container_name: devices-fortinet
+    environment:  
+      DEVICE_TYPE: fortinet
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  hp_comware:
+    build: ../
+    container_name: devices-hp_comware
+    environment:  
+      DEVICE_TYPE: hp_comware
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  huawei:
+    build: ../
+    container_name: devices-huawei
+    environment:  
+      DEVICE_TYPE: huawei
+      SSH_PASSWORD: test
+    # ports:
+    #   - "22:22"
+    networks:
+      - devices-network
+      
+  juniper_junos:
+    build: ../
+    container_name: devices-juniper_junos
+    environment:  
+      DEVICE_TYPE: juniper_junos
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  mikrotik_routeros_v6:
+    build: ../
+    container_name: devices-mikrotik_routeros_v6
+    environment:  
+      DEVICE_TYPE: mikrotik_routeros
+      DEVICE_VERSION: v6
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  mikrotik_routeros_v7:
+    build: ../
+    container_name: devices-mikrotik_routeros_v7
+    environment:  
+      DEVICE_TYPE: mikrotik_routeros
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  ubiquiti_edgerouter:
+    build: ../
+    container_name: devices-ubiquiti_edgerouter
+    environment:  
+      DEVICE_TYPE: ubiquiti_edgerouter
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+      
+  ubiquiti_edgeswitch:
+    build: ../
+    container_name: devices-ubiquiti_edgeswitch
+    environment:  
+      DEVICE_TYPE: ubiquiti_edgeswitch
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+networks:
+  devices-network:
+    driver: bridge
