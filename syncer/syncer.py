@@ -1,10 +1,6 @@
 import os, os.path
-import errno
-import hashlib
 import re
 from git import Repo
-import io
-from datetime import datetime
 
 # Function to normalize CLI command names by removing trailing numbers and underscores
 def convert_cli_command(cli_command):
@@ -34,30 +30,37 @@ def safe_open_w(path):
 def scrape_templates_from_repo(repo_path, config_dir):
     # Walk through the /tests directory to find .raw files
     tests_path = os.path.join(repo_path, 'tests')
-    ntc_templates_path = os.path.join(repo_path, 'ntc_templates/templates')
-    
-    raw_files_dict = {}
-    
+
     for root, dirs, files in os.walk(tests_path):
 
+        # Only get the cli content files
         filterd_files = [file for file in files if file.endswith('.raw')]
         sorted_files = sorted(filterd_files)
         if not sorted_files:
             continue
+        
         file = sorted_files[0]
+
+        # File found
         print("file:", file)
-        print("root:", root)
+        print("folder:", root)
+
         cli_path = os.path.relpath(root, tests_path)
         path_list = cli_path.split(os.sep)
         if len(path_list) != 2:
             continue
+
+        # Vendor folder
         vendor = path_list[0]
+
+        # CLI file
         cli_command = path_list[1]
         formatted_cli_command = cli_command.replace("_", " ")
         raw_file_path = os.path.join(root, file)
         with open(raw_file_path, 'r') as raw_file:
             cli_content = raw_file.read()
 
+        # Save file in the config folder configs/<vendor>/templates/<cli_command>.text
         save_path = os.path.join(config_dir, vendor, "templates", formatted_cli_command + ".txt")
         with safe_open_w(save_path) as save_file:
             save_file.write(cli_content)
