@@ -82,7 +82,7 @@ def main():
     # Clone or pull the repository
     clone_or_pull_repo(repo_url, repo_path)
     
-    # Create or update the database
+    # Store the files
     scrape_templates_from_repo(repo_path, config_dir)
 
 if __name__ == '__main__':
