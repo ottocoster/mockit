@@ -26,25 +26,19 @@ def safe_open_w(path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     return open(path, 'w')
 
+
+# Function to extract the numeric part from the filename
+def extract_number(filename, template_name):
+    sub_filename = filename.replace(template_name, "")
+    match = re.search(r'_(\d+)', sub_filename)
+    return int(match.group(1)) if match else -1
+
 # Function to scrape data from repo
 def scrape_templates_from_repo(repo_path, config_dir):
     # Walk through the /tests directory to find .raw files
     tests_path = os.path.join(repo_path, 'tests')
 
     for root, dirs, files in os.walk(tests_path):
-
-        # Only get the cli content files
-        filterd_files = [file for file in files if file.endswith('.raw')]
-        sorted_files = sorted(filterd_files)
-        if not sorted_files:
-            continue
-        
-        file = sorted_files[0]
-
-        # File found
-        print("file:", file)
-        print("folder:", root)
-
         cli_path = os.path.relpath(root, tests_path)
         path_list = cli_path.split(os.sep)
         if len(path_list) != 2:
@@ -56,6 +50,23 @@ def scrape_templates_from_repo(repo_path, config_dir):
         # CLI file
         cli_command = path_list[1]
         formatted_cli_command = cli_command.replace("_", " ")
+
+        # Only get the cli content files
+        filtered_files = [file for file in files if file.endswith('.raw')]
+        
+        # Sort the files based on the extracted numeric part
+        sorted_files = sorted(filtered_files, key=lambda x: extract_number(x, cli_command), reverse=True)
+        if cli_command == "show_ip_bgp":
+            print("sorted:", sorted_files)
+        if not sorted_files:
+            continue
+        
+        file = sorted_files[0]
+
+        # File found
+        # print("file:", file)
+        # print("folder:", root)
+        
         raw_file_path = os.path.join(root, file)
         with open(raw_file_path, 'r') as raw_file:
             cli_content = raw_file.read()

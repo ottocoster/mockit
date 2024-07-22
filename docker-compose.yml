@@ -8,61 +8,61 @@ services:
       DEVICE_TYPE: cisco_ios
       SSH_USERNAME: test
       SSH_PASSWORD: test
-    # ports: 
-    #   - "22:22"
-    #   - "161:161/udp"
+    ports: 
+      - "2222:22"
+      - "161:161/udp"
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
 
-  mikrotik_routeros_v6:
-    image: registry.gitlab.com/slurpit.io/device_imitator:latest
-    container_name: mikrotik_routeros_v6
-    environment:
-      DEVICE_TYPE: mikrotik_routeros
-      DEVICE_VERSION: v6
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
+  # mikrotik_routeros_v6:
+  #   image: registry.gitlab.com/slurpit.io/device_imitator:latest
+  #   container_name: mikrotik_routeros_v6
+  #   environment:
+  #     DEVICE_TYPE: mikrotik_routeros
+  #     DEVICE_VERSION: v6
+  #     SSH_USERNAME: test
+  #     SSH_PASSWORD: test
 
-  mikrotik_routeros_v7:
-    image: registry.gitlab.com/slurpit.io/device_imitator:latest
-    container_name: mikrotik_routeros_v7
-    environment:
-      DEVICE_TYPE: mikrotik_routeros
-      DEVICE_VERSION: v7
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
+  # mikrotik_routeros_v7:
+  #   image: registry.gitlab.com/slurpit.io/device_imitator:latest
+  #   container_name: mikrotik_routeros_v7
+  #   environment:
+  #     DEVICE_TYPE: mikrotik_routeros
+  #     DEVICE_VERSION: v7
+  #     SSH_USERNAME: test
+  #     SSH_PASSWORD: test
 
-  arista_eos:
-    image: registry.gitlab.com/slurpit.io/device_imitator:latest
-    container_name: arista_eos
-    environment:
-      DEVICE_TYPE: arista_eos
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
+  # arista_eos:
+  #   image: registry.gitlab.com/slurpit.io/device_imitator:latest
+  #   container_name: arista_eos
+  #   environment:
+  #     DEVICE_TYPE: arista_eos
+  #     SSH_USERNAME: test
+  #     SSH_PASSWORD: test
       
-  cisco_nxos:
-    image: registry.gitlab.com/slurpit.io/device_imitator:latest
-    container_name: cisco_nxos
-    environment:
-      DEVICE_TYPE: cisco_nxos
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
+  # cisco_nxos:
+  #   image: registry.gitlab.com/slurpit.io/device_imitator:latest
+  #   container_name: cisco_nxos
+  #   environment:
+  #     DEVICE_TYPE: cisco_nxos
+  #     SSH_USERNAME: test
+  #     SSH_PASSWORD: test
 
-  hp_comware:
-    image: registry.gitlab.com/slurpit.io/device_imitator:latest
-    container_name: hp_comware
-    environment:
-      DEVICE_TYPE: hp_comware
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
+  # hp_comware:
+  #   image: registry.gitlab.com/slurpit.io/device_imitator:latest
+  #   container_name: hp_comware
+  #   environment:
+  #     DEVICE_TYPE: hp_comware
+  #     SSH_USERNAME: test
+  #     SSH_PASSWORD: test
 
-  juniper_junos:
-    image: registry.gitlab.com/slurpit.io/device_imitator:latest
-    container_name: juniper_junos
-    environment:
-      DEVICE_TYPE: juniper_junos
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
+  # juniper_junos:
+  #   image: registry.gitlab.com/slurpit.io/device_imitator:latest
+  #   container_name: juniper_junos
+  #   environment:
+  #     DEVICE_TYPE: juniper_junos
+  #     SSH_USERNAME: test
+  #     SSH_PASSWORD: test
 
 networks:
   devices-network:
