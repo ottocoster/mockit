@@ -60,6 +60,15 @@ class SSHSession:
         if command in self.commands:
             self.respond(await self._execute_command(self.commands[command]))
             return True
+        else:
+            # Find commands that start with the given command string
+            matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
+            self.logger.error(f"matching_commands `{matching_commands}`")
+
+            if matching_commands:
+                closest_match = matching_commands[0]  # Pick the first match
+                self.respond(await self._execute_command(self.commands[closest_match]))
+                return True
 
         if command == "exit" or command == "quit" or command == "logout":
             return False

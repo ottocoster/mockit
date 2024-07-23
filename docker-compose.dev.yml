@@ -1,18 +1,20 @@
 version: "3"
 name: devices
 services:
-  a10:
+  cisco_ios:
     build: .
-    container_name: devices-a10
+    container_name: cisco_ios
     environment:  
-      DEVICE_TYPE: a10
+      DEVICE_TYPE: cisco_ios
       SSH_USERNAME: test
       SSH_PASSWORD: test
     networks:
       - devices-network
     ports: 
-      - "22:22"
+      - "2222:22"
       - "161:161/udp"
+    volumes:
+      - ./configs/cisco_ios:/configs/cisco_ios
 
 networks:
   devices-network:
