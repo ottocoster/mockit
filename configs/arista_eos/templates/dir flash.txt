@@ -1,15 +1,15 @@
-switch# dir flash:
 Directory of flash:/
 
-       -rwx   293409892           Oct 23 08:55  EOS-4.11.0.swi
-       -rwx   221274543            Sep 6 13:37  EOS-4.7.5.swi
-       -rwx   271453650            Sep 4 19:13  EOS_4.10.1-SSO.swi
-       -rwx      135168           Dec 31  1979  FSCK0000.REC
-       -rwx          26           Oct 23 13:51  boot-config
-       -rwx        8570           Sep 10 12:22  cfg_sso_mst
-       -rwx        5642           Sep 20 10:35  config.reset
-       drwx        4096           Oct 23 13:59  debug
-       -rwx          12           Oct 23 13:56  kernel-params
-       drwx        4096           Oct 23 14:59  persist
-       drwx        4096            Sep 6 14:50  schedule
-       -rwx        5970           Oct 23 13:53  startup-config
+       -rwx   591941836            Aug 2  2017  EOS-4.18.3.1F.swi
+       -rwx   609823300           Feb 14 02:03  EOS-4.19.5M.swi
+       -rwx          29           Aug 23  2017  boot-config
+       drwx        4096           Aug 23  2017  debug
+       -rwx           0           Apr 15  2017  enable3px
+       -rwx          19           Apr 15  2017  enable3px.key
+       -rwx          31           Apr 15  2017  kickstart-config
+       drwx        4096            Apr 3 10:29  persist
+       drwx        4096           Apr 15  2017  schedule
+       -rwx       20530           Jan 18 22:46  startup-config
+       -rwx          13           Aug 23  2017  zerotouch-config
+
+3519041536 bytes total (1725112320 bytes free)

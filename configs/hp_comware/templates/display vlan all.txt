@@ -1,38 +1,23 @@
  VLAN ID: 1
- VLAN type: Static
- Route interface: Not configured
+ VLAN Type: static
+ Route Interface: not configured
  Description: VLAN 0001
  Name: VLAN 0001
- Tagged ports:   None
- Untagged ports: 
-    Bridge-Aggregation1           Bridge-Aggregation2           
-    Bridge-Aggregation3           Bridge-Aggregation4           
-    Ten-GigabitEthernet1/0/1      
-    Ten-GigabitEthernet1/0/2      
+ Tagged   Ports: none
+ Untagged Ports:
+    Bridge-Aggregation1
+    GigabitEthernet1/0/25    GigabitEthernet1/0/26    GigabitEthernet1/0/27
+    GigabitEthernet1/0/28
 
- VLAN ID: 100
- VLAN type: Static
- Route interface: Configured
- IPv4 address: 10.9.0.1
- IPv4 subnet mask: 255.255.255.0
- Description: User VLAN
- Name: VLAN_100
- Tagged ports:   
-    Bridge-Aggregation5           Bridge-Aggregation6           
-    Ten-GigabitEthernet1/0/1      
-    Ten-GigabitEthernet1/0/3      
- Untagged ports: None
-
- VLAN ID: 101
- VLAN type: Static
- Route interface: Configured
- IPv4 address: 10.9.1.1
- IPv4 subnet mask: 255.255.255.0
- Description: VLAN 101
- Name: VLAN_101
- Tagged ports:   
-    Bridge-Aggregation7           Bridge-Aggregation8           
-    Ten-GigabitEthernet2/0/35     
-    Ten-GigabitEthernet2/0/37     
- Untagged ports:
-    Ten-GigabitEthernet1/0/46     
+ VLAN ID: 1002
+ VLAN Type: static
+ Route Interface: not configured
+ Description: VLAN 1002
+ Name: VLAN 1002
+ Tagged   Ports:
+    Bridge-Aggregation1
+    Ten-GigabitEthernet1/0/29
+    Ten-GigabitEthernet1/0/30
+ Untagged Ports:
+    GigabitEthernet1/0/1     GigabitEthernet1/0/2     GigabitEthernet1/0/3
+    GigabitEthernet1/0/4     GigabitEthernet1/0/5     GigabitEthernet1/0/6

@@ -56,16 +56,14 @@ def scrape_templates_from_repo(repo_path, config_dir):
         
         # Sort the files based on the extracted numeric part
         sorted_files = sorted(filtered_files, key=lambda x: extract_number(x, cli_command), reverse=True)
-        if cli_command == "show_ip_bgp":
-            print("sorted:", sorted_files)
         if not sorted_files:
             continue
         
         file = sorted_files[0]
 
         # File found
-        # print("file:", file)
-        # print("folder:", root)
+        print("file:", file)
+        print("folder:", root)
         
         raw_file_path = os.path.join(root, file)
         with open(raw_file_path, 'r') as raw_file:
@@ -88,7 +86,7 @@ def clone_or_pull_repo(repo_url, repo_path):
 def main():
     repo_url = 'https://github.com/networktocode/ntc-templates'
     repo_path = './ntc-templates'
-    config_dir = './configs'
+    config_dir = '../configs'
     
     # Clone or pull the repository
     clone_or_pull_repo(repo_url, repo_path)
