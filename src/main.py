@@ -3,11 +3,11 @@ import time
 import logging
 import asyncio
 import asyncssh
-from ssh_server import asyncssh_server
 from snmp_server import asyncsnmp_server
+from src.start_server import start_server
 
 def main():
-    device_type = os.environ.get("DEVICE_TYPE", "cisco_ios")
+    device_type = os.environ.get("DEVICE_TYPE", "a10")
     device_version = get_device_version(device_type, os.environ.get("DEVICE_VERSION", ""))
     prompt = get_prompt(device_type)
     options_ssh = {
@@ -42,9 +42,11 @@ def main():
     
     loop = asyncio.get_event_loop()
     if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
-        loop.create_task(asyncssh_server.start_server(options_ssh))
-    if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
-        loop.create_task(asyncsnmp_server.start_server(options_snmp))
+        # loop.create_task(start_server(options_ssh))
+        loop.run_until_complete(start_server(options_ssh))
+        loop.run_forever()
+    # if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
+    #     loop.create_task(asyncsnmp_server.start_server(options_snmp))
         
     if len(asyncio.all_tasks(loop)) == 0:
         raise Exception("No tasks were started")

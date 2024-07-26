@@ -1,19 +1,20 @@
 name: devices
 services:
-  cisco_ios:
+  accedian:
     build: .
-    container_name: cisco_ios
+    container_name: devices-accedian
     environment:  
-      DEVICE_TYPE: cisco_ios
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
+      - PYTHONPATH=/usr/src/app
+      - DEVICE_TYPE=accedian
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
     networks:
       - devices-network
-    ports: 
-      - "2222:22"
-      - "161:161/udp"
     volumes:
-      - ./configs/cisco_ios:/configs/cisco_ios
+      - .:/usr/src/app
+    ports: 
+      - "22:22"
+      - "161:161/udp"
 
 networks:
   devices-network:

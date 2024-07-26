@@ -13,6 +13,6 @@ def run_command(host, device_type, command, username="test", password="test"):
     with ConnectHandler(**parameters) as net_connect:      
         return net_connect.send_command_timing(command)
 
-test = run_command("192.168.80.1", "a10", "echo test")
+test = run_command("192.168.50.128", "accedian", "show test")
 
 print(test)

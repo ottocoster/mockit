@@ -33,8 +33,6 @@ class SSHSession:
                 self.new_line()
 
     async def read(self):
-        self.new_line()
-        self.send_prompt()
         while True:
             user_input = await self.process.stdin.readline()
             if user_input == "":
@@ -113,7 +111,10 @@ class SSHSession:
         self.process.stdout.write(self.options["new_line"])
 
     def respond(self, response = ""):
-        self.process.stdout.write(self.format_text(self.options['response_format'], response=response))
+        response_text = self.format_text(self.options['response_format'], response=response)
+        self.logger.info(f">>>>>>> Response text: `{response_text}`")
+        response_text = """Hello world\n"""
+        self.process.stdout.write(response_text)
         self.send_command_prompt()
 
     def format_text(self, format: str, response = ""):

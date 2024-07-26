@@ -23,3 +23,12 @@ Copy or change the docker-compose.dev.yml and replace the following values with 
 Then run /dev/start_dev.sh to spin up your new vendor and use the file ssh_test.py to test and build the connectivity.
 
 ## Test connectivity
+
+
+## Check Current Port Usage:
+
+`sudo lsof -i -P -n | grep LISTEN | grep :22`
+
+### Stop Conflicting Service:
+`sudo systemctl stop ssh`
+
