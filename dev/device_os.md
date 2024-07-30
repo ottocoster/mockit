@@ -1,12 +1,12 @@
-a10
-accedian
-adtran_os
-alcatel_aos
-alcatel_sros
-allied_telesis_awplus
+# a10
+# accedian
+# adtran_os
+# alcatel_aos
+# alcatel_sros
+# allied_telesis_awplus
 apresia_aeos
 arista_eos
-aruba_os
+# aruba_os
 aruba_osswitch
 aruba_procurve
 audiocode_66

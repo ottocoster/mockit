@@ -113,7 +113,6 @@ class SSHSession:
     def respond(self, response = ""):
         response_text = self.format_text(self.options['response_format'], response=response)
         self.logger.info(f">>>>>>> Response text: `{response_text}`")
-        response_text = """Hello world\n"""
         self.process.stdout.write(response_text)
         self.send_command_prompt()
 

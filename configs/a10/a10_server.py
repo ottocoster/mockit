@@ -8,11 +8,8 @@ from asyncssh.process import SSHServerProcess
 class a10_server(SSH_Server):
     pass
 
-
 class a10_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'a10'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pattern=">#")
-
-    
+        self.set_prompt_terminator(pattern="#")
