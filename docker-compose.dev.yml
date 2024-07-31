@@ -1,11 +1,11 @@
 name: devices
 services:
-  apresia_aeos:
+  accedian:
     build: .
-    container_name: devices-apresia_aeos
+    container_name: devices-accedian
     environment:  
       - PYTHONPATH=/usr/src/app
-      - DEVICE_TYPE=apresia_aeos
+      - DEVICE_TYPE=accedian
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
     networks:

@@ -1,6 +1,6 @@
 # from ssh_server.ssh_server import SSH_Server
 # from ssh_server.ssh_handler import SSH_Handler
-# configs/a10/a10_server.py
+# configs/adtran_os/adtran_os_server.py
 from src.ssh_server.ssh_server import SSH_Server
 from src.ssh_server.ssh_handler import SSH_Handler
 from asyncssh.process import SSHServerProcess

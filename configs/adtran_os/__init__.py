@@ -1,1 +1,1 @@
-# configs/accedian/__init__.py
+# configs/adtran_os/__init__.py
