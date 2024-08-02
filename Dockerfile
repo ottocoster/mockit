@@ -32,14 +32,15 @@ ENV SNMP_V3_AUTH_KEY "somekey1"
 ENV SNMP_V3_PRIV_TYPE "none"
 ENV SNMP_V3_PRIV_KEY ""
 
+ENV PYTHONPATH="/"
+
 COPY configs/. configs/.
 COPY ssh_key/. ssh_key/.
 COPY requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
-
 RUN apt-get update
 RUN apt-get install snmp -y
 
-COPY src/. /
+COPY src/. /src
 
-CMD ["python", "main.py"]
+CMD ["python", "src/main.py"]

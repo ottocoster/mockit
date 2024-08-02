@@ -6,6 +6,7 @@ services:
     container_name: devices-test_container
     networks:
       - devices-network
+    entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
       
   dell_dnos9:
     build: ../

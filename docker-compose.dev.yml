@@ -1,17 +1,17 @@
 name: devices
 services:
-  accedian:
+  a10:
     build: .
-    container_name: devices-accedian
-    environment:  
-      - PYTHONPATH=/usr/src/app
-      - DEVICE_TYPE=accedian
+    container_name: devices-a10
+    environment:
+      # - PYTHONPATH=/app
+      - DEVICE_TYPE=a10
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
     networks:
       - devices-network
-    volumes:
-      - .:/usr/src/app
+    # volumes:
+    #   - .:/app
     ports: 
       - "22:22"
       - "161:161/udp"

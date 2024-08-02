@@ -6,7 +6,8 @@ services:
     container_name: devices-test_container
     networks:
       - devices-network
-
+    entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
+    
   a10:
     build: ../
     container_name: devices-a10

@@ -11,8 +11,8 @@ def run_command(host, device_type, command, username="root", password="test"):
         "fast_cli": False
     }
 
-    with ConnectHandler(**parameters) as net_connect:      
-        return net_connect.send_command_timing(command)
+    with ConnectHandler(**parameters) as net_connect:
+        return net_connect.send_command(command)
 
 @pytest.mark.test_set2
 def test_dell_dnos9():

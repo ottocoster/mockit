@@ -1,5 +1,5 @@
 from netmiko import ConnectHandler
-
+import pytest
 def run_command(host, device_type, command, username="test", password="test"):
     parameters = { 
         "device_type": device_type,
@@ -10,9 +10,9 @@ def run_command(host, device_type, command, username="test", password="test"):
         "fast_cli": False
     }
 
-    with ConnectHandler(**parameters) as net_connect:      
+    with ConnectHandler(**parameters) as net_connect:
         return net_connect.send_command(command)
 
-test = run_command("192.168.80.1", "accedian", "show test")
-
-print(test)
+@pytest.mark.test_set1
+def test_a10():
+    assert run_command("192.168.112.128", "a10", "echo test") == "test"

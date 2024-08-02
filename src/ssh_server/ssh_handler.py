@@ -19,9 +19,10 @@ class SSH_Handler:
         self.logger = logging.getLogger(self.__class__.__name__)
         self.device_type = options['device_type']
         self.new_line = options['new_line']
+        self.enable = True
         self.break_commands = ['exit', 'quit', 'logout', '\q']
         self._load_commands(f"configs/{self.device_type}/templates")
-        self.set_prompt_terminator(pattern="#")
+        self.set_prompt_terminator(pattern=">#")
 
     async def open(self):
         """
@@ -46,9 +47,6 @@ class SSH_Handler:
 
             self.process.stdout.write(command)
             command = command.strip()
-
-            # if(command == "disable"):
-            #     self.process.stdout.write(self.new_line)
 
             if command in self.break_commands:
                 break
@@ -100,24 +98,35 @@ class SSH_Handler:
             self.respond(command[5:])
             return True
 
+        # Handle enable and disable command    
+        if command == "enable" or command == "disable":
+            self.enable = command == "enable"
+            self.set_prompt_terminator(self.pattern)
+
+        self.respond()
         self.logger.error(f"Command not found `{self.device_type}`: `{command}`")
         return True
 
+    
     def _load_commands(self, template_dir):
         """
         Loads command templates from the specified directory.
 
         :param template_dir: Directory containing command templates.
-        :return: True if commands are loaded successfully.
+        :return: True if commands are loaded successfully, False otherwise.
         """
+        commands = {}
         if not os.path.exists(template_dir):
             self.logger.warn(f"Unable to find directory: `{template_dir}`")
-        commands = {}
+            self.commands = {}
+            return False
+        
         for filename in os.listdir(template_dir):
             file_path = os.path.join(template_dir, filename)
             name, extension = os.path.splitext(filename)   
             if os.path.isfile(file_path) and extension == '.txt':
                 commands[name] = file_path
+        
         self.logger.debug(f"loaded commands: `{commands}`")
         self.commands = commands
         return True
@@ -139,13 +148,17 @@ class SSH_Handler:
 
         return content
 
-    def set_prompt_terminator(self, pattern):
+    def set_prompt_terminator(self, pattern = ">#"):
         """
         Sets the prompt terminator pattern for the SSH prompt.
 
         :param pattern: The pattern string to append to the device type.
         """
-        self.prompt_terminator = self.device_type + pattern + " "
+        termintator = "#"
+        if not self.enable or len(pattern) < 2:
+            termintator = pattern[0]
+        self.pattern = pattern
+        self.prompt_terminator = self.device_type + termintator + " "
 
     @staticmethod
     def _read_file(filename):
@@ -164,4 +177,6 @@ class SSH_Handler:
 
         :param response: The response string to send.
         """
+        self.logger.debug(f"Response {response}")
+
         self.process.stdout.write(response + self.new_line)
