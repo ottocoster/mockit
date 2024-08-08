@@ -12,4 +12,4 @@ class oneaccess_oneos_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'oneaccess_oneos'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pattern=">#")
+        self.set_prompt_terminator(pattern=r">|#")

@@ -9,6 +9,6 @@ class cisco_asa_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'cisco_asa'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pattern=">#")
+        self.set_prompt_terminator(pattern=r">|#")
 
     

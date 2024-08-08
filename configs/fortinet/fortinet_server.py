@@ -12,4 +12,14 @@ class fortinet_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'fortinet'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pattern="#$")
+        self.set_prompt_terminator(pattern=r"#|$")
+
+
+    def handle_custom_command(self, command):
+        if command == "get system status | grep Version":
+            return "Version: FortiOS v8.0.1"
+        if command == "get system console":
+            return "output : standard"
+        return ""
+    
+        

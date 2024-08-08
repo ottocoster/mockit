@@ -1,7 +1,7 @@
 from netmiko import ConnectHandler
-import pytest
+
 def run_command(host, device_type, command, username="test", password="test"):
-    parameters = { 
+    parameters = {
         "device_type": device_type,
         "host": host,
         "username": username,
@@ -13,6 +13,6 @@ def run_command(host, device_type, command, username="test", password="test"):
     with ConnectHandler(**parameters) as net_connect:
         return net_connect.send_command(command)
 
-@pytest.mark.test_set1
-def test_a10():
-    assert run_command("192.168.112.128", "a10", "echo test") == "test"
+test = run_command("192.168.233.128", "cisco_tp", "echo test")
+
+print(test)

@@ -12,4 +12,4 @@ class keymile_nos_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'keymile_nos'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pattern=">#")
+        self.set_prompt_terminator(pattern=r">")

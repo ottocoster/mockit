@@ -1,18 +1,18 @@
 name: devices
 services:
-  a10:
+  cisco_tp:
     build: .
-    container_name: devices-a10
+    container_name: devices-cisco_tp
     environment:
-      # - PYTHONPATH=/app
-      - DEVICE_TYPE=a10
+      - DEVICE_TYPE=cisco_tp
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
+      # - DEVICE_DELAY=1
+      # - LOGIN_DELAY=3
+      # - LOGIN_RETRY=2
     networks:
       - devices-network
-    # volumes:
-    #   - .:/app
-    ports: 
+    ports:
       - "22:22"
       - "161:161/udp"
 

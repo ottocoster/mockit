@@ -5,11 +5,11 @@
 # alcatel_sros
 # allied_telesis_awplus
 # apresia_aeos 
-arista_eos 
+# arista_eos 
 # aruba_os
 # aruba_osswitch
 # aruba_procurve
-audiocode_66
+# audiocode_66
 audiocode_72
 audiocode_shell
 # avaya_ers
@@ -32,12 +32,12 @@ calix_b6
 # cisco_nxos
 # cisco_s300
 cisco_tp
-cisco_viptela
+# cisco_viptela
 # cisco_wlc
 # cisco_xe
 # cisco_xr
 # cloudgenix_ion
-coriant
+# coriant
 # dell_dnos9
 # dell_force10
 # dell_isilon
@@ -63,29 +63,29 @@ dell_powerconnect
 # extreme_vsp
 # extreme_wing
 # f5_linux
-f5_ltm
-f5_tmsh
-flexvnf
-fortinet
+# f5_ltm
+# f5_tmsh
+# flexvnf
+# fortinet
 # generic
 # generic_termserver
-hp_comware
-hp_procurve
-huawei
-huawei_olt
-huawei_smartax
-huawei_vrpv8
+# hp_comware
+# hp_procurve
+# huawei
+# huawei_olt
+# huawei_smartax
+# huawei_vrpv8
 # ipinfusion_ocnos
-juniper_junos
-juniper_screenos
-keymile
-keymile_nos
+# juniper_junos
+# juniper_screenos
+keymile   * '' command and new line error
+# keymile_nos
 # linux
 # mellanox
 # mellanox_mlnxos
-mikrotik_routeros
-mikrotik_switchos
-mrv_lx
+# mikrotik_routeros
+# mikrotik_switchos
+# mrv_lx
 # mrv_optiswitch
 # netapp_cdot
 # netgear_prosafe
@@ -94,7 +94,7 @@ mrv_lx
 # nokia_sros
 # oneaccess_oneos
 # ovs_linux
-paloalto_panos
+paloalto_panos * '' command and new line error
 # pluribus
 # quanta_mesh
 # rad_etx
@@ -102,12 +102,12 @@ paloalto_panos
 # ruckus_fastiron
 # ruijie_os
 # sixwind_os
-sophos_sfos
-supermicro_smis
-tplink_jetstream
+# sophos_sfos
+# supermicro_smis
+tplink_jetstream * '' command and new line error
 # ubiquiti_edgerouter
 # ubiquiti_edgeswitch
-ubiquiti_unifiswitch
+# ubiquiti_unifiswitch
 # vyatta_vyos
 # vyos
 # watchguard_fireware

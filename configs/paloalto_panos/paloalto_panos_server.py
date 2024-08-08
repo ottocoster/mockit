@@ -12,4 +12,21 @@ class paloalto_panos_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'paloalto_panos'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pattern=">#")
+        self.set_prompt_terminator(pattern=r">|#")
+
+    def handle_custom_command(self, command):
+        if command == "show admins":
+            return "Client"
+        
+        if command == "set cli scripting-mode on":
+            return "Done"
+
+
+        if command == "set cli terminal width 500":
+            return "Done"
+
+        if command == "set cli pager off":
+            return "Done"
+        
+        return ""
+        

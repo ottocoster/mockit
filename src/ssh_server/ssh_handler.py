@@ -5,6 +5,7 @@ from asyncssh.process import SSHServerProcess
 from concurrent.futures import ThreadPoolExecutor
 import asyncio
 import importlib
+import re
 
 class SSH_Handler:
 
@@ -20,9 +21,12 @@ class SSH_Handler:
         self.device_type = options['device_type']
         self.new_line = options['new_line']
         self.enable = True
-        self.break_commands = ['exit', 'quit', 'logout', '\q']
+        self.config_mode = False
+        self.config_pattern = "..#"
+        self.delay = options['delay']
+        self.break_commands = ['quit', 'logout', '\q']
         self._load_commands(f"configs/{self.device_type}/templates")
-        self.set_prompt_terminator(pattern=">#")
+        self.set_prompt_terminator(pattern=r">|#")
 
     async def open(self):
         """
@@ -30,31 +34,20 @@ class SSH_Handler:
         Exits when the SSH channel is closed.
         """
         while self.process.channel._send_state == "open":
-            try:
-                while self.process.channel._send_state == "open":
-                    res = await self.read()
-            except asyncssh.BreakReceived:
-                self.process.exit(0)
-
-    async def read(self):
-        """
-        Reads commands from the SSH channel and processes them.
-        Exits when a break command is received.
-        """
-        while True:
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
 
             self.process.stdout.write(command)
             command = command.strip()
+            self.logger.info(f"command received `{command}`")
 
-            if command in self.break_commands:
-                break
             if command:
-                await self._handle_command(command)
+                result = await self._handle_command(command)
+                if not result:
+                    break
 
         self.process.exit(0)
-      
+
     def handle_custom_command(self, command):
         """
         Handle custom commands not found in the template directory.
@@ -73,6 +66,7 @@ class SSH_Handler:
         """
         self.logger.info(f"Received `{command}`")
 
+        await asyncio.sleep(self.delay)
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
         if custom_command_output:
@@ -93,15 +87,21 @@ class SSH_Handler:
                 self.respond(await self._get_command_output(self.commands[closest_match]))
                 return True
 
+
         # Handle echo command
         if command.startswith('echo '):
             self.respond(command[5:])
             return True
 
+
+        if command in self.break_commands:
+            return False
+
         # Handle enable and disable command    
         if command == "enable" or command == "disable":
             self.enable = command == "enable"
             self.set_prompt_terminator(self.pattern)
+
 
         self.respond()
         self.logger.error(f"Command not found `{self.device_type}`: `{command}`")
@@ -148,17 +148,31 @@ class SSH_Handler:
 
         return content
 
-    def set_prompt_terminator(self, pattern = ">#"):
+    def extract_patterns(self, pattern):
+        # Split the pattern by the alternation operator '|'
+        parts = pattern.split('|')
+        
+        # Remove escape characters
+        cleaned_parts = [part.replace('\\', '') for part in parts]
+        
+        return cleaned_parts
+        
+    def set_prompt_terminator(self, pattern = r">#"):
         """
         Sets the prompt terminator pattern for the SSH prompt.
 
         :param pattern: The pattern string to append to the device type.
         """
-        termintator = "#"
-        if not self.enable or len(pattern) < 2:
-            termintator = pattern[0]
         self.pattern = pattern
-        self.prompt_terminator = self.device_type + termintator + " "
+        pattern_list = self.extract_patterns(pattern)
+
+        termintator = pattern_list[0]
+        if self.enable:
+            termintator = pattern_list[-1]
+        if self.config_mode:
+            self.prompt_terminator = self.device_type + self.config_pattern + termintator + " "
+        else:
+            self.prompt_terminator = self.device_type + termintator + " "
 
     @staticmethod
     def _read_file(filename):
@@ -178,5 +192,4 @@ class SSH_Handler:
         :param response: The response string to send.
         """
         self.logger.debug(f"Response {response}")
-
         self.process.stdout.write(response + self.new_line)

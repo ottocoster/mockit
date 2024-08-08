@@ -14,10 +14,12 @@ def main():
         "debug"                 : str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true",
         "device_type"           : device_type,
         "device_version"        : device_version,
-
         "ssh_key"               : os.environ.get("SSH_KEY", "/ssh_key/rsa.key"),
         "username"              : os.environ.get("SSH_USERNAME", "root"),
         "password"              : os.environ.get("SSH_PASSWORD", ""),
+        "delay"                 : int(os.environ.get("DEVICE_DELAY", 0)),
+        "login_delay"           : int(os.environ.get("LOGIN_DELAY", 0)),
+        "login_retry"           : int(os.environ.get("LOGIN_RETRY", 0)),
         "prompt"                : prompt,
         "response_format"       : get_response_format(device_type),
         "command_prompt_format" : get_command_format(device_type),
