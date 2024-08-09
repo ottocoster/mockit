@@ -21,7 +21,7 @@ audiocode_shell
 # brocade_nos
 # brocade_vdx
 # brocade_vyos
-calix_b6
+calix_b6 * Bad authentication type; allowed types: ['keyboard-interactive', 'password']
 # cdot_cros
 # centec_os
 # checkpoint_gaia
@@ -44,7 +44,7 @@ cisco_tp
 # dell_os10
 # dell_os6
 # dell_os9
-dell_powerconnect
+dell_powerconnect * Bad authentication type; allowed types: ['keyboard-interactive', 'password']
 # dell_sonic
 # dlink_ds
 # eltex
@@ -78,7 +78,7 @@ dell_powerconnect
 # ipinfusion_ocnos
 # juniper_junos
 # juniper_screenos
-keymile   * '' command and new line error
+# keymile   * '' command and new line error
 # keymile_nos
 # linux
 # mellanox
@@ -94,7 +94,7 @@ keymile   * '' command and new line error
 # nokia_sros
 # oneaccess_oneos
 # ovs_linux
-paloalto_panos * '' command and new line error
+# paloalto_panos * '' command and new line error
 # pluribus
 # quanta_mesh
 # rad_etx
@@ -104,7 +104,7 @@ paloalto_panos * '' command and new line error
 # sixwind_os
 # sophos_sfos
 # supermicro_smis
-tplink_jetstream * '' command and new line error
+# tplink_jetstream * '' command and new line error
 # ubiquiti_edgerouter
 # ubiquiti_edgeswitch
 # ubiquiti_unifiswitch

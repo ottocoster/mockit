@@ -13,3 +13,7 @@ class cisco_tp_handler(SSH_Handler):
         options['device_type'] = 'cisco_tp'
         super().__init__(process, options=options)
         self.set_prompt_terminator(pattern=r">|#")
+
+    def handle_custom_command(self, command):
+        self.process.stdout.write("OK")
+        return ""

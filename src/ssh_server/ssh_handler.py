@@ -37,8 +37,9 @@ class SSH_Handler:
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
 
-            self.process.stdout.write(command)
             command = command.strip()
+            if command:
+                self.process.stdout.write(self.prompt_terminator + command + self.new_line)
             self.logger.info(f"command received `{command}`")
 
             if command:

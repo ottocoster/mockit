@@ -14,7 +14,7 @@ class audiocode_72_handler(SSH_Handler):
         options['device_type'] = 'audiocode_72'
         super().__init__(process, options=options)
         self.config_pattern = "(config-system)"
-        self.set_prompt_terminator(pattern=r"/>")
+        self.set_prompt_terminator(pattern=r">|#")
         
     def handle_custom_command(self, command):
         if command == "config system":

@@ -16,17 +16,6 @@ class paloalto_panos_handler(SSH_Handler):
 
     def handle_custom_command(self, command):
         if command == "show admins":
-            return "Client"
-        
-        if command == "set cli scripting-mode on":
-            return "Done"
-
-
-        if command == "set cli terminal width 500":
-            return "Done"
-
-        if command == "set cli pager off":
-            return "Done"
-        
+            return "Client\n\n"
         return ""
         
