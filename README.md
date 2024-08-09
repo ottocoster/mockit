@@ -46,9 +46,12 @@ services:
     image: registry.gitlab.com/slurpit.io/device_imitator:latest
     container_name: cisco_ios
     environment:
-      DEVICE_TYPE: cisco_ios
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
+      - DEVICE_TYPE=cisco_ios
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
+      - DEVICE_DELAY=1
+      - LOGIN_DELAY=3
+      - LOGIN_RETRY=2
     ports: 
       - "22:22"
       - "161:161/udp"
@@ -61,6 +64,11 @@ services:
 To be able to add your own commands or scripts easily we make a columns of the configs/<device> folder.
 
 To connect to the device remotely through ssh we open the 22 port and for snmp the 161/udp port.
+
+New Options
+- DEVICE_DELAY: Adds a delay (in seconds) before responding to a command.
+- LOGIN_DELAY: Adds a delay (in seconds) before the server accepts an SSH connection.
+- LOGIN_RETRY: Defines the number of retries allowed for login attempts.
 
 # Development info
 
