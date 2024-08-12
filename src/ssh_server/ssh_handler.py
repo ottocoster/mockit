@@ -36,13 +36,10 @@ class SSH_Handler:
         while self.process.channel._send_state == "open":
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
-
             command = command.strip()
             if command:
-                self.process.stdout.write(self.get_formatted_command(command))
-            self.logger.info(f"command received `{command}`")
-
-            if command:
+                #     self.process.stdout.write(self.get_formatted_command(command))
+                self.logger.info(f"command received `{command}`")
                 result = await self._handle_command(command)
                 if not result:
                     break
