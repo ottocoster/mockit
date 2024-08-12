@@ -39,7 +39,7 @@ class SSH_Handler:
 
             command = command.strip()
             if command:
-                self.process.stdout.write(self.prompt_terminator + command + self.new_line)
+                self.process.stdout.write(self.get_formatted_command(command))
             self.logger.info(f"command received `{command}`")
 
             if command:
@@ -48,6 +48,9 @@ class SSH_Handler:
                     break
 
         self.process.exit(0)
+
+    def get_formatted_command(self, command):
+        return command + self.new_line
 
     def handle_custom_command(self, command):
         """
@@ -88,12 +91,10 @@ class SSH_Handler:
                 self.respond(await self._get_command_output(self.commands[closest_match]))
                 return True
 
-
         # Handle echo command
         if command.startswith('echo '):
             self.respond(command[5:])
             return True
-
 
         if command in self.break_commands:
             return False
@@ -103,12 +104,10 @@ class SSH_Handler:
             self.enable = command == "enable"
             self.set_prompt_terminator(self.pattern)
 
-
         self.respond()
         self.logger.error(f"Command not found `{self.device_type}`: `{command}`")
         return True
 
-    
     def _load_commands(self, template_dir):
         """
         Loads command templates from the specified directory.

@@ -18,4 +18,6 @@ class paloalto_panos_handler(SSH_Handler):
         if command == "show admins":
             return "Client\n\n"
         return ""
-        
+    
+    def get_formatted_command(self, command):
+        return self.prompt_terminator + command + self.new_line

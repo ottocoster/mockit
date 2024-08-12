@@ -15,5 +15,4 @@ class cisco_tp_handler(SSH_Handler):
         self.set_prompt_terminator(pattern=r">|#")
 
     def handle_custom_command(self, command):
-        self.process.stdout.write("OK")
         return ""

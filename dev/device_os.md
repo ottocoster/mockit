@@ -10,7 +10,7 @@
 # aruba_osswitch
 # aruba_procurve
 # audiocode_66
-audiocode_72
+# audiocode_72
 audiocode_shell
 # avaya_ers
 # avaya_vsp
