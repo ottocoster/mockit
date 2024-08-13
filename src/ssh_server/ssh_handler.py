@@ -7,6 +7,7 @@ import asyncio
 import importlib
 import re
 
+
 class SSH_Handler:
 
     def __init__(self, process: SSHServerProcess, options):
@@ -27,9 +28,34 @@ class SSH_Handler:
         self.config_pattern = "..#"
         self.delay = options['delay']
         self.break_commands = ['quit', 'logout', '\q']
+        self.handle_script_function = None
         self._load_commands(f"configs/{self.device_type}/templates")
+        self._load_script_function(f"configs/{self.device_type}/scripts", "handle_command")
         self.set_prompt_terminator(pri_terminator="#", alt_terminator=">")
 
+    def _load_script_function(self, script_path, function_name):
+        # Convert the file system path to a module path by replacing slashes with dots
+        module_path = script_path.replace('/', '.')
+        
+        # Import the module
+        try:
+            package = importlib.import_module(module_path)
+        except ModuleNotFoundError as e:
+            # If the module is not found, the directory might not be in sys.path
+            # Get the directory part of the script_path and add it to sys.path
+            script_dir = os.path.dirname(os.path.abspath(script_path))
+            if script_dir not in sys.path:
+                sys.path.append(script_dir)
+            # Retry importing after modifying sys.path
+            package = importlib.import_module(module_path)
+        
+        # Access the function from the module
+        function = getattr(package, function_name)
+        
+        # Assign the function to an attribute
+        self.handle_script_function = function
+        return function
+        
     async def open(self):
         """
         Continuously reads from the process while the channel is open.
@@ -38,14 +64,13 @@ class SSH_Handler:
         while self.process.channel._send_state == "open":
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
+            self.logger.info(f"command received `{repr(command)}`")
 
             command = command.strip()
             self.process.stdout.write(self.get_formatted_command(command))
                 
-            self.logger.info(f"command received `{command}`")
 
             if command:
-                self.logger.info(f"command received `{command}`")
                 result = await self._handle_command(command)
                 if not result:
                     break
@@ -53,7 +78,7 @@ class SSH_Handler:
         self.process.exit(0)
 
     def get_formatted_command(self, command):
-        return command + self.new_line
+        return command + '\n'
 
     def handle_custom_command(self, command):
         """
@@ -74,6 +99,15 @@ class SSH_Handler:
         self.logger.info(f"Received `{command}`")
 
         await asyncio.sleep(self.delay)
+
+        # Handle script functions
+        custom_script_output = self.handle_script_function(command)
+        if custom_script_output:
+            self.logger.error(f"custom_script_output `{custom_script_output}")
+
+            self.respond(custom_script_output)
+            return True
+
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
         if custom_command_output:

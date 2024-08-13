@@ -40,19 +40,15 @@ def main():
         "snmpv3_privkey": os.environ.get("SNMP_V3_PRIV_KEY", ""),
     }
     
-    # Initialize asyncio event loop
-    loop = asyncio.get_event_loop()
     
-    # Start SSH server if enabled
+    loop = asyncio.get_event_loop()
     if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
-        loop.run_until_complete(start_server(options_ssh))
-        loop.run_forever()
+        loop.create_task(start_server(options_ssh))
+    if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
+        loop.create_task(asyncsnmp_server.start_server(options_snmp))
         
-    # Check if any tasks are running, if not raise an exception
     if len(asyncio.all_tasks(loop)) == 0:
         raise Exception("No tasks were started")
-    
-    # Keep the event loop running
     loop.run_forever()
 
 def get_device_version(device_type, version):
