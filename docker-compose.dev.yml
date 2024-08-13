@@ -1,10 +1,10 @@
 name: devices
 services:
-  cisco_tp:
+  audiocode_shell:
     build: .
-    container_name: devices-cisco_tp
+    container_name: devices-audiocode_shell
     environment:
-      - DEVICE_TYPE=cisco_tp
+      - DEVICE_TYPE=audiocode_shell
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       # - DEVICE_DELAY=1

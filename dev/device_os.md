@@ -21,7 +21,7 @@ audiocode_shell
 # brocade_nos
 # brocade_vdx
 # brocade_vyos
-calix_b6 * Bad authentication type; allowed types: ['keyboard-interactive', 'password']
+# calix_b6 * Bad authentication type; allowed types: ['keyboard-interactive', 'password']
 # cdot_cros
 # centec_os
 # checkpoint_gaia
@@ -44,7 +44,7 @@ cisco_tp
 # dell_os10
 # dell_os6
 # dell_os9
-dell_powerconnect * Bad authentication type; allowed types: ['keyboard-interactive', 'password']
+# dell_powerconnect * Bad authentication type; allowed types: ['keyboard-interactive', 'password']
 # dell_sonic
 # dlink_ds
 # eltex
