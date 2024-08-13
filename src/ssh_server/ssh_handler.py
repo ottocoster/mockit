@@ -196,6 +196,20 @@ class SSH_Handler:
         cleaned_parts = [part.replace('\\', '') for part in parts]
         
         return cleaned_parts
+    
+    def strip_first_last_blank_lines(text):
+        lines = text.splitlines()
+
+        # Strip the first blank line if it exists
+        if lines and lines[0].strip() == "":
+            lines = lines[1:]
+
+        # Strip the last blank line if it exists
+        if lines and lines[-1].strip() == "":
+            lines = lines[:-1]
+
+        # Join the lines back into a single string
+        return "\n".join(lines)
         
     def set_prompt_terminator(self, pri_terminator = "#", alt_terminator = ">"):
         """
@@ -225,7 +239,19 @@ class SSH_Handler:
         :return: Content of the file as a string.
         """
         with open(filename, "r") as fhand:
-            return fhand.read()
+            text = fhand.read()
+            lines = text.splitlines()
+
+            # Strip the first blank line if it exists
+            if lines and lines[0].strip() == "":
+                lines = lines[1:]
+
+            # Strip the last blank line if it exists
+            if lines and lines[-1].strip() == "":
+                lines = lines[:-1]
+
+            # Join the lines back into a single string
+            return "\n".join(lines)
 
     def respond(self, response = ""):
         """

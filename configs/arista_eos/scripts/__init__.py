@@ -1,10 +1,8 @@
 
-async def handle_command(command: str, session) -> bool:
+def handle_command(command: str):
     if command.startswith('terminal width '):
-        session.respond("Width set to " + command[15])
-        return True
+        return ("Width set to " + command[15])
 
     if command.startswith('terminal length 0'):
-        session.respond("Pagination disabled")
-        return True
-    return False
+        return ("Pagination disabled")
+    return ""
