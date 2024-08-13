@@ -12,13 +12,13 @@ class f5_ltm_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'f5_ltm'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pattern=r"#")
+        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = "#")
     
     def handle_custom_command(self, command):
         if command == "tmsh":
-            self.set_prompt_terminator(pattern=r" tmos.*#")
+            self.set_prompt_terminator(pri_terminator = " tmos.*#", alt_terminator = " tmos.*#")
             return "Tmsh mode enabled."
         if command == "quit":
-            self.set_prompt_terminator(pattern=r"#")
+            self.set_prompt_terminator(pri_terminator = "#", alt_terminator = "#")
             return "Quited tmsh mode."
         return ""

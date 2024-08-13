@@ -12,7 +12,7 @@ class juniper_junos_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'juniper_junos'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pattern=r">|#")
+        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
     def handle_custom_command(self, command):
         if command.startswith("set cli screen-width"):

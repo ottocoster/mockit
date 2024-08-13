@@ -20,13 +20,15 @@ class SSH_Handler:
         self.logger = logging.getLogger(self.__class__.__name__)
         self.device_type = options['device_type']
         self.new_line = options['new_line']
+        self.pri_terminator = "#"
+        self.alt_terminator = ">"
         self.enable = True
         self.config_mode = False
         self.config_pattern = "..#"
         self.delay = options['delay']
         self.break_commands = ['quit', 'logout', '\q']
         self._load_commands(f"configs/{self.device_type}/templates")
-        self.set_prompt_terminator(pattern=r">|#")
+        self.set_prompt_terminator(pri_terminator="#", alt_terminator=">")
 
     async def open(self):
         """
@@ -105,8 +107,7 @@ class SSH_Handler:
         # Handle enable and disable command    
         if command == "enable" or command == "disable":
             self.enable = command == "enable"
-            self.set_prompt_terminator(self.pattern)
-
+            self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
 
         self.respond()
         self.logger.error(f"Command not found `{self.device_type}`: `{command}`")
@@ -162,18 +163,20 @@ class SSH_Handler:
         
         return cleaned_parts
         
-    def set_prompt_terminator(self, pattern = r">#"):
+    def set_prompt_terminator(self, pri_terminator = "#", alt_terminator = ">"):
         """
         Sets the prompt terminator pattern for the SSH prompt.
 
         :param pattern: The pattern string to append to the device type.
         """
-        self.pattern = pattern
-        pattern_list = self.extract_patterns(pattern)
+        self.pri_terminator = pri_terminator
+        self.alt_terminator = alt_terminator
 
-        termintator = pattern_list[0]
         if self.enable:
-            termintator = pattern_list[-1]
+            termintator = pri_terminator
+        else:
+            termintator = alt_terminator
+
         if self.config_mode:
             self.prompt_terminator = self.device_type + self.config_pattern + termintator + " "
         else:

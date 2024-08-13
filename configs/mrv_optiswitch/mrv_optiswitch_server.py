@@ -12,4 +12,4 @@ class mrv_optiswitch_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'mrv_optiswitch'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pattern=r">|#")
+        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
