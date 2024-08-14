@@ -16,7 +16,7 @@ class f5_ltm_handler(SSH_Handler):
     
     def handle_custom_command(self, command):
         if command == "tmsh":
-            self.set_prompt_terminator(pri_terminator = " tmos.*#", alt_terminator = " tmos.*#")
+            self.set_prompt_terminator(pri_terminator = " tmos #", alt_terminator = " tmos #")
             return "Tmsh mode enabled."
         if command == "quit":
             self.set_prompt_terminator(pri_terminator = "#", alt_terminator = "#")

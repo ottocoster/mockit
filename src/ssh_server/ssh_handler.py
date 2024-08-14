@@ -27,7 +27,7 @@ class SSH_Handler:
         self.config_mode = False
         self.config_pattern = "..#"
         self.delay = options['delay']
-        self.break_commands = ['quit', 'logout', '\q']
+        self.break_commands = ['exit', 'quit', 'logout', '\q']
         self.handle_script_function = None
         self._load_commands(f"configs/{self.device_type}/templates")
         self._load_script_function(f"configs/{self.device_type}/scripts", "handle_command")

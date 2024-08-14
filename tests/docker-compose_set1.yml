@@ -35,24 +35,6 @@ services:
     networks:
       - devices-network
 
-  adva_fsp150f2:
-    build: ../
-    container_name: devices-adva_fsp150f2
-    environment:  
-      DEVICE_TYPE: adva_fsp150f2
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
-  adva_fsp150f3:
-    build: ../
-    container_name: devices-adva_fsp150f3
-    environment:  
-      DEVICE_TYPE: adva_fsp150f3
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
   alcatel_aos:
     build: ../
     container_name: devices-alcatel_aos
@@ -365,9 +347,9 @@ services:
       
   cisco_viptela:
     build: ../
-    container_name: devices-viptela
+    container_name: devices-cisco_viptela
     environment:  
-      DEVICE_TYPE: viptela
+      DEVICE_TYPE: cisco_viptela
       SSH_PASSWORD: test
     networks:
       - devices-network

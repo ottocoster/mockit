@@ -15,13 +15,8 @@ def run_command(host, device_type, command, username="root", password="test"):
         return net_connect.send_command(command)
 
 @pytest.mark.test_set
-def test_generic():
-    assert run_command("devices-generic", "generic", "echo test") == "test"
-
-
-@pytest.mark.test_set
-def test_generic_termserver():
-    assert run_command("devices-generic_termserver", "generic_termserver", "echo test") == "test"
+def test_hp_comware():
+    assert run_command("devices-hp_comware", "hp_comware", "echo test") == "test"
 
 @pytest.mark.test_set
 def test_hp_procurve():

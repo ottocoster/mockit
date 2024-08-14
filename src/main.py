@@ -7,9 +7,12 @@ from snmp_server import asyncsnmp_server
 from src.start_server import start_server
 
 def main():
-    # Fetch device type from environment variable or default to "a10"
-    device_type = os.environ.get("DEVICE_TYPE", "a10")
+    # Fetch device type from environment variable
+    device_type = os.environ.get("DEVICE_TYPE")
     
+    if not device_type:
+        print("Device type is incorrect!")
+        return
     # Fetch device version or determine based on device type
     device_version = get_device_version(device_type, os.environ.get("DEVICE_VERSION", ""))
     
@@ -45,7 +48,7 @@ def main():
     if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_server(options_ssh))
     if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
-        loop.create_task(asyncsnmp_server.start_server(options_snmp))
+        loop.create_task(asstartswithyncsnmp_server.start_server(options_snmp))
         
     if len(asyncio.all_tasks(loop)) == 0:
         raise Exception("No tasks were started")
