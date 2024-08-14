@@ -31,7 +31,7 @@ def main():
         "device_type": device_type,
         "device_version": device_version,
         "snmpv2_enabled": str(os.environ.get("SNMP_V2_ENABLED", "true")).lower() == "true",
-        "snmpv2_name": os.environ.get("SNMP_V2_NAME", ""),
+        "snmpv2_name": os.environ.get("SNMP_V2_COMMUNITY", ""),
         "snmpv3_enabled": str(os.environ.get("SNMP_V3_ENABLED", "false")).lower() == "true",
         "snmpv3_username": os.environ.get("SNMP_V3_USERNAME", "usr-none-none"),
         "snmpv3_authtype": os.environ.get("SNMP_V3_AUTH_TYPE", "none"),
