@@ -48,7 +48,7 @@ def main():
     if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_server(options_ssh))
     if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
-        loop.create_task(asstartswithyncsnmp_server.start_server(options_snmp))
+        loop.create_task(asyncsnmp_server.start_server(options_snmp))
         
     if len(asyncio.all_tasks(loop)) == 0:
         raise Exception("No tasks were started")
