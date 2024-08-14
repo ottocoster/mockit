@@ -24,15 +24,22 @@ You can add a static command response in `/config/<device>/templates`. The name 
 
 ### Add a dynamic command
 
-You can create a dynamic command response in `/config/<device>/scripts`. Whenever a command is called, it first goes thought the `def handle_command` in __init__.py. 
-For a basic example see `/config/juniper_junos/scripts/__init__.py`.
+You can create a dynamic command response in `/config/<device>/scripts`. Whenever a command is called, it first goes thought the `def handle_command` in __init__.py. This way you can use python logic to build your return response.
+For example:
+
+```python
+def handle_command(command: str):
+    if command.startswith('show hello'):
+         return ("Hello world")
+    return ""
+```
 
 ## SNMP Server
 
 ### Info
 
 SNMP currently only works for arista_eos, cisco_ios, cisco_nxos, juniper_junos, mikrotik. 
-We are currently gathering information about what kind of responses different devices give.
+We don't have all the devices to provide a snmp.json, but if you do have 1 of the missing vendors please submit a pull request.
 
 ## Docker compose
 
@@ -49,9 +56,9 @@ services:
       - DEVICE_TYPE=cisco_ios
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
-      - DEVICE_DELAY=1
+      - DEVICE_DELAY=5
       - LOGIN_DELAY=3
-      - LOGIN_RETRY=2
+      - LOGIN_RETRY=3
     ports: 
       - "22:22"
       - "161:161/udp"
@@ -62,13 +69,30 @@ services:
 ### Info
 
 To be able to add your own commands or scripts easily we make a columns of the configs/<device> folder.
+It's optional to map a volume, by default we will go for /config/<device>/
 
 To connect to the device remotely through ssh we open the 22 port and for snmp the 161/udp port.
 
-New Options
+Environment Options
+- DEVICE_TYPE: Supported device type you want to imitate.
+
+Environment SSH Options
+- SSH_USERNAME: SSH username.
+- SSH_PASSWORD: SSH password.
+- DEVICE_VERSION: Incase your device has different subfolders because of versioning. Look at Mikrotik_routeros as an example.
 - DEVICE_DELAY: Adds a delay (in seconds) before responding to a command.
 - LOGIN_DELAY: Adds a delay (in seconds) before the server accepts an SSH connection.
 - LOGIN_RETRY: Defines the number of retries allowed for login attempts.
+
+Environment SNMP Options
+- SNMP_V2_ENABLED: Enable SNMP V2 (default enabled)
+- SNMP_V2_COMMUNITY: SNMP community string (default public)
+- SNMP_V3_ENABLED: Enable SNMP V2 (default disabled)
+- SNMP_V3_USERNAME: SNMPv3 Username
+- SNMP_V3_AUTH_TYPE: SNMPv3 Authentication Type
+- SNMP_V3_AUTH_KEY: SNMPv3 Authentication Key
+- SNMP_V3_PRIV_TYPE: SNMPv3 Privilege Type
+- SNMP_V3_PRIV_KEY: SNMPv3 Privilege Key
 
 # Development info
 
