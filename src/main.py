@@ -14,7 +14,7 @@ def main():
         print("Device type is incorrect!")
         return
     # Fetch device version or determine based on device type
-    device_version = get_device_version(device_type, os.environ.get("DEVICE_VERSION", ""))
+    device_version = os.environ.get("DEVICE_VERSION", "")
     
     # SSH configuration options from environment variables
     options_ssh = {
@@ -26,6 +26,7 @@ def main():
         "delay": int(os.environ.get("DEVICE_DELAY", 0)),
         "login_delay": int(os.environ.get("LOGIN_DELAY", 0)),
         "login_retry": int(os.environ.get("LOGIN_RETRY", 0)),
+        "device_version": device_version
     }
     
     # SNMP configuration options from environment variables
@@ -48,22 +49,11 @@ def main():
     if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_server(options_ssh))
     if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
-        loop.create_task(asstartswithyncsnmp_server.start_server(options_snmp))
+        loop.create_task(asyncsnmp_server.start_server(options_snmp))
         
     if len(asyncio.all_tasks(loop)) == 0:
         raise Exception("No tasks were started")
     loop.run_forever()
-
-def get_device_version(device_type, version):
-    # Return provided version if available
-    if version:
-        return version
-
-    # Default version for specific device types
-    if device_type == "mikrotik_routeros":
-        return "v7"
-
-    return version
 
 if __name__ == "__main__":
     # Setup logging

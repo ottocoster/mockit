@@ -13,3 +13,10 @@ class mikrotik_routeros_handler(SSH_Handler):
         options['device_type'] = 'mikrotik_routeros'
         super().__init__(process, options=options)
         self.set_prompt_terminator(pri_terminator = "\\] >", alt_terminator = "\\] >")
+        if not self.device_version:
+            self.device_version = "v7"
+        config_dir  = f"configs/{self.device_type}/{self.device_version}"
+
+        self._load_commands(f"{config_dir}/templates")
+        self._load_script_function(f"{config_dir}/scripts", "handle_command")
+

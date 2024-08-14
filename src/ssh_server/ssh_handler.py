@@ -20,6 +20,7 @@ class SSH_Handler:
         self.process = process
         self.logger = logging.getLogger(self.__class__.__name__)
         self.device_type = options['device_type']
+        self.device_version = options["device_version"]
         self.new_line = options['new_line']
         self.pri_terminator = "#"
         self.alt_terminator = ">"
@@ -29,8 +30,13 @@ class SSH_Handler:
         self.delay = options['delay']
         self.break_commands = ['exit', 'quit', 'logout', '\q']
         self.handle_script_function = None
-        self._load_commands(f"configs/{self.device_type}/templates")
-        self._load_script_function(f"configs/{self.device_type}/scripts", "handle_command")
+        config_dir  = f"configs/{self.device_type}"
+        if self.device_version:
+            config_dir +=f"/{self.device_version}"
+
+        self._load_commands(f"{config_dir}/templates")
+        self._load_script_function(f"{config_dir}/scripts", "handle_command")
+
         self.set_prompt_terminator(pri_terminator="#", alt_terminator=">")
 
     def _load_script_function(self, script_path, function_name):
