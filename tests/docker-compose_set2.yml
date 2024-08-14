@@ -267,7 +267,16 @@ services:
       SSH_PASSWORD: test
     networks:
       - devices-network
-      
+    
+  f5_tmsh:
+    build: ../
+    container_name: devices-f5_tmsh
+    environment:  
+      DEVICE_TYPE: f5_tmsh
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
   fiberstore_fsos:
     build: ../
     container_name: devices-fiberstore_fsos

@@ -138,6 +138,7 @@ services:
     container_name: devices-mikrotik_routeros
     environment:  
       DEVICE_TYPE: mikrotik_routeros
+      DEVICE_VERSION: v6
       SSH_PASSWORD: test
     networks:
       - devices-network
