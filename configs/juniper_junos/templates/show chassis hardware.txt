@@ -1,21 +1,23 @@
-teste@test> show chassis hardware
 Hardware inventory:
 Item             Version  Part number  Serial number     Description
-Chassis                                CC029             JNP204 [MX204]
-Routing Engine 0          BUILTIN      BUILTIN           RE-S-1600x8
-CB 0             REV 34   750-069579   CAMY8962          JNP204 [MX204]
-FPC 0                     BUILTIN      BUILTIN           MPC
-  PIC 0                   BUILTIN      BUILTIN           4XQSFP28 PIC
-    Xcvr 0                NON-JNPR     XET163000081      QSFP-100GBASE-LR4
-    Xcvr 2                NON-JNPR     FA34185200175     QSFP28-100G-AOC-1M
-  PIC 1                   BUILTIN      BUILTIN           8XSFPP PIC
-    Xcvr 0       REV 01   740-009029   ZZ150429006       SFP+-10G-LR
-    Xcvr 1       REV 01   740-009029   ZZ150429003       SFP+-10G-LR
-    Xcvr 2       REV 01   740-021309   VE180702728       SFP+-10G-LR
-    Xcvr 6       REV 01   740-011614   VE212726455       SFP-LX10
-    Xcvr 7       REV 01   740-011614   VE212726457       SFP-LX10
-PEM 0            REV 04   740-070749   1F189201840       JPSU-650W-AC-AO
-PEM 1            REV 04   740-070749   1F189201801       JPSU-650W-AC-AO
+Chassis                                JN1111111         MX480
+Midplane         REV 40   750-047862   A111111           Enhanced MX480 Midplane
+FPM Board        REV 04   760-059208   1111111           Front Panel Display
+PEM 0            Rev 01   740-063046   Q111111111        PS 1.4-2.52kW; 90-264V AC in
+PEM 1            Rev 01   740-063046   QC11111111        PS 1.4-2.52kW; 90-264V AC in
+PEM 2            Rev 01   740-063046   QC11111111        PS 1.4-2.52kW; 90-264V AC in
+PEM 3            Rev 01   740-063046   QC11111111        PS 1.4-2.52kW; 90-264V AC in
+Routing Engine 0 REV 03   740-051822   911111111         RE-S-1800x4
+Routing Engine 1 REV 03   740-051822   901111111         RE-S-1800x4
+CB 0             REV 07   750-062572   C1111111          Enhanced MX SCB 2
+CB 1             REV 08   750-055976   C1111111          Enhanced MX SCB 2
+FPC 0            REV 24   750-054902   C1111111          MPC3E NG PQ & Flex Q
+  CPU            REV 13   711-045719   C1111111          RMPC PMB
+  MIC 0          REV 35   750-028392   C111111           3D 20x 1GE(LAN) SFP
+    PIC 0                 BUILTIN      BUILTIN           10x 1GE(LAN) SFP
+      Xcvr 0     REV 02   740-013111   1111111           SFP-T
+PEM 0            REV 04   740-000000   XXXXX000003       AC AFO 650W PSU
+PEM 1            REV 04   740-000000   XXXXX000004       AC AFO 650W PSU
 Fan Tray 0                                               Fan Tray, Front to Back Airflow - AFO
 Fan Tray 1                                               Fan Tray, Front to Back Airflow - AFO
 Fan Tray 2                                               Fan Tray, Front to Back Airflow - AFO

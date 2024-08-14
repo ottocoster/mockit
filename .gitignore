@@ -10,3 +10,5 @@ docker-compose.override.yml
 desktop.ini
 
 /test_scripts
+syncer/configs
+syncer/ntc-templates

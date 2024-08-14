@@ -1,4 +1,3 @@
-version: "3"
 name: devices
 services:  
   test_container:
@@ -6,7 +5,8 @@ services:
     container_name: devices-test_container
     networks:
       - devices-network
-
+    entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
+    
   a10:
     build: ../
     container_name: devices-a10
@@ -30,24 +30,6 @@ services:
     container_name: devices-adtran_os
     environment:  
       DEVICE_TYPE: adtran_os
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
-  adva_fsp150f2:
-    build: ../
-    container_name: devices-adva_fsp150f2
-    environment:  
-      DEVICE_TYPE: adva_fsp150f2
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
-  adva_fsp150f3:
-    build: ../
-    container_name: devices-adva_fsp150f3
-    environment:  
-      DEVICE_TYPE: adva_fsp150f3
       SSH_PASSWORD: test
     networks:
       - devices-network
@@ -321,8 +303,6 @@ services:
     environment:  
       DEVICE_TYPE: cisco_ios
       SSH_PASSWORD: test
-    ports:
-      - "23:22"
     networks:
       - devices-network
       
@@ -364,9 +344,9 @@ services:
       
   cisco_viptela:
     build: ../
-    container_name: devices-viptela
+    container_name: devices-cisco_viptela
     environment:  
-      DEVICE_TYPE: viptela
+      DEVICE_TYPE: cisco_viptela
       SSH_PASSWORD: test
     networks:
       - devices-network

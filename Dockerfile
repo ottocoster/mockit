@@ -10,15 +10,9 @@ ENV SSH_KEY "/ssh_key/rsa.key"
 ENV SSH_USERNAME "root"
 ENV SSH_PASSWORD "Welcome01!"
 
-ENV SSH_PROMPT ""
-ENV SSH_RESPONSE_FORMAT ""
-ENV SSH_COMMAND_PROMPT_FORMAT ""
-ENV SSH_DEFAULT_PROMPT_FORMAT ""
-ENV SSH_ECHO_FORMAT ""
-
 ENV SNMP_SERVER_ENABLED true
 ENV SNMP_V2_ENABLED true
-ENV SNMP_V2_NAME "public"
+ENV SNMP_V2_COMMUNITY "public"
 
 ENV SNMP_V3_ENABLED false
 ENV SNMP_V3_USERNAME "usr-sha-none"
@@ -32,14 +26,15 @@ ENV SNMP_V3_AUTH_KEY "somekey1"
 ENV SNMP_V3_PRIV_TYPE "none"
 ENV SNMP_V3_PRIV_KEY ""
 
+ENV PYTHONPATH="/"
+
 COPY configs/. configs/.
 COPY ssh_key/. ssh_key/.
 COPY requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
-
 RUN apt-get update
 RUN apt-get install snmp -y
 
-COPY src/. /
+COPY src/. /src
 
-CMD ["python", "main.py"]
+CMD ["python", "src/main.py"]

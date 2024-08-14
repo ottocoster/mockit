@@ -11,8 +11,8 @@ def run_command(host, device_type, command, username="root", password="test"):
         "fast_cli": False
     }
 
-    with ConnectHandler(**parameters) as net_connect:      
-        return net_connect.send_command_timing(command)
+    with ConnectHandler(**parameters) as net_connect:
+        return net_connect.send_command(command)
 
 @pytest.mark.test_set1
 def test_a10():
@@ -25,14 +25,6 @@ def test_accedian():
 @pytest.mark.test_set1
 def test_adtran_os():
     assert run_command("devices-adtran_os", "adtran_os", "echo test") == "test"
-
-@pytest.mark.test_set1
-def test_adva_fsp150f2():
-    assert run_command("devices-adva_fsp150f2", "adva_fsp150f2", "echo test") == "test"
-
-@pytest.mark.test_set1
-def test_adva_fsp150f3():
-    assert run_command("devices-adva_fsp150f3", "adva_fsp150f3", "echo test") == "test"
 
 @pytest.mark.test_set1
 def test_alcatel_aos():

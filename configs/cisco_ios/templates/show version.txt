@@ -1,28 +1,15 @@
-Cisco IOS XE Software, Version 16.09.03
-Cisco IOS Software [Fuji], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 16.9.3, RELEASE SOFTWARE (fc2)
+Cisco IOS Software, vios_l2 Software (vios_l2-ADVENTERPRISEK9-M), Version 15.2(4.0.55)E, TEST ENGINEERING ESTG_WEEKLY BUILD, synced to  END_OF_FLO_ISP
 Technical Support: http://www.cisco.com/techsupport
-Copyright (c) 1986-2019 by Cisco Systems, Inc.
-Compiled Wed 20-Mar-19 07:56 by mcpre
+Copyright (c) 1986-2015 by Cisco Systems, Inc.
+Compiled Tue 28-Jul-15 18:52 by sasyamal
 
 
-Cisco IOS-XE software, Copyright (c) 2005-2019 by cisco Systems, Inc.
-All rights reserved.  Certain components of Cisco IOS-XE software are
-licensed under the GNU General Public License ("GPL") Version 2.0.  The
-software code licensed under GPL Version 2.0 is free software that comes
-with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
-GPL code under the terms of GPL Version 2.0.  For more details, see the
-documentation or "License Notice" file accompanying the IOS-XE software,
-or the applicable URL provided on the flyer accompanying the IOS-XE
-software.
+ROM: Bootstrap program is IOSv
 
-
-ROM: IOS-XE ROMMON
-
-csr1000v-1 uptime is 1 week, 20 hours, 37 minutes
-Uptime for this control processor is 1 week, 20 hours, 38 minutes
+Switch5 uptime is 3 weeks, 6 days, 32 minutes
 System returned to ROM by reload
-System image file is "bootflash:packages.conf"
-Last reload reason: reload
+System image file is "flash0:/vios_l2-adventerprisek9-m"
+Last reload reason: Unknown reason
 
 
 
@@ -41,19 +28,14 @@ http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
 If you require further assistance please contact us by sending email to
 export@cisco.com.
 
-License Level: ax
-License Type: Default. No valid license found.
-Next reload license Level: ax
+Cisco IOSv () processor (revision 1.0) with 935161K/111616K bytes of memory.
+Processor board ID 9RYX5605M6M
+8 Gigabit Ethernet interfaces
+DRAM configuration is 72 bits wide with parity disabled.
+256K bytes of non-volatile configuration memory.
+2097152K bytes of ATA System CompactFlash 0 (Read/Write)
+0K bytes of ATA CompactFlash 1 (Read/Write)
+0K bytes of ATA CompactFlash 2 (Read/Write)
+0K bytes of ATA CompactFlash 3 (Read/Write)
 
-
-Smart Licensing Status: Smart Licensing is DISABLED
-
-cisco CSR1000V (VXE) processor (revision VXE) with 2392579K/3075K bytes of memory.
-Processor board ID 926V75BDNRJ
-3 Gigabit Ethernet interfaces
-32768K bytes of non-volatile configuration memory.
-8113280K bytes of physical memory.
-7774207K bytes of virtual hard disk at bootflash:.
-0K bytes of WebUI ODM Files at webui:.
-
-Configuration register is 0x2102
+Configuration register is 0x0
