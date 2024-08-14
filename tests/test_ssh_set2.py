@@ -146,10 +146,10 @@ def test_flexvnf():
 def test_fortinet():
     assert run_command("devices-fortinet", "fortinet", "echo test") == "test"
 
-@pytest.mark.test_set
+@pytest.mark.test_set2
 def test_generic():
     assert run_command("devices-generic", "generic", "echo test") == "test"
 
-@pytest.mark.test_set
+@pytest.mark.test_set2
 def test_generic_termserver():
     assert run_command("devices-generic_termserver", "generic_termserver", "echo test") == "test"
