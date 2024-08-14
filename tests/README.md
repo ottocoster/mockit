@@ -2,7 +2,7 @@
 # Test all devices
 
 ```sh
-docker compose -f docker-compose_set1.yml up -d
+docker compose -f docker-compose_set1.yml up -d --build
 ```
 
 ```sh

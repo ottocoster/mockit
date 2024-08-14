@@ -303,8 +303,6 @@ services:
     environment:  
       DEVICE_TYPE: cisco_ios
       SSH_PASSWORD: test
-    ports:
-      - "23:22"
     networks:
       - devices-network
       
