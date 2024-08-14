@@ -1,4 +1,3 @@
-
 def handle_command(command: str):
     # if command.startswith('set cli screen-width '):
     #     return ("Screen width set to " + command[21])

@@ -1,10 +1,10 @@
 name: devices
 services:
-  cisco_ios:
+  mikrotik_routeros:
     build: .
-    container_name: devices-cisco_ios
     environment:
-      - DEVICE_TYPE=cisco_ios
+      - DEVICE_TYPE=mikrotik_routeros
+      - DEVICE_VERSION=v6
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       # - DEVICE_DELAY=1

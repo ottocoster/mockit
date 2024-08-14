@@ -38,7 +38,7 @@ def handle_command(command: str):
 
 ### Info
 
-SNMP currently only works for arista_eos, cisco_ios, cisco_nxos, juniper_junos, mikrotik. 
+SNMP currently only works for a couple vendors. 
 We don't have all the devices to provide a snmp.json, but if you do have 1 of the missing vendors please submit a pull request.
 
 ## Docker compose
@@ -68,9 +68,7 @@ services:
 
 ### Info
 
-To be able to add your own commands or scripts easily we make a columns of the configs/<device> folder.
 It's optional to map a volume, by default we will go for /config/<device>/
-
 To connect to the device remotely through ssh we open the 22 port and for snmp the 161/udp port.
 
 Environment Options

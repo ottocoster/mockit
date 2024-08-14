@@ -1,1 +1,0 @@
-# configs/adtran_os/__init__.py
