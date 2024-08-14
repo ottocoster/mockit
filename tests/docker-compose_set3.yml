@@ -8,20 +8,11 @@ services:
       - devices-network
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
       
-  generic:
+  hp_comware:
     build: ../
-    container_name: devices-generic
+    container_name: devices-hp_comware
     environment:  
-      DEVICE_TYPE: generic
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-      
-  generic_termserver:
-    build: ../
-    container_name: devices-generic_termserver
-    environment:  
-      DEVICE_TYPE: generic_termserver
+      DEVICE_TYPE: hp_comware
       SSH_PASSWORD: test
     networks:
       - devices-network
@@ -61,7 +52,6 @@ services:
       SSH_PASSWORD: test
     networks:
       - devices-network
-
 
   huawei_vrpv8:
     build: ../

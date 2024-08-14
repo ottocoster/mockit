@@ -12,4 +12,4 @@ class ubiquiti_unifiswitch_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'ubiquiti_unifiswitch'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "\\(UBNT\\) >#", alt_terminator = "\\(UBNT\\) >")
+        self.set_prompt_terminator(pri_terminator = "(UBNT) >#", alt_terminator = "(UBNT) >")

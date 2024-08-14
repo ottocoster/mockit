@@ -1,10 +1,10 @@
 name: devices
 services:
-  cisco_ios:
+  ubiquiti_unifiswitch:
     build: .
-    container_name: devices-cisco_ios
+    container_name: devices-ubiquiti_unifiswitch
     environment:
-      - DEVICE_TYPE=cisco_ios
+      - DEVICE_TYPE=ubiquiti_unifiswitch
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       # - DEVICE_DELAY=1

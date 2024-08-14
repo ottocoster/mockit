@@ -1,4 +1,5 @@
 from netmiko import ConnectHandler
+import pytest
 
 def run_command(host, device_type, command, username="test", password="test"):
     parameters = {
@@ -13,6 +14,6 @@ def run_command(host, device_type, command, username="test", password="test"):
     with ConnectHandler(**parameters) as net_connect:
         return net_connect.send_command(command)
 
-test = run_command("192.168.233.128", "cisco_ios", "show test")
+test = run_command("192.168.233.128", "ubiquiti_unifiswitch", "echo test")
 
 print(test)

@@ -53,8 +53,9 @@ async def start_server(options):
     # Modify connection parameters using netmiko
     with ConnectHandler(**parameters) as net_connect:
         net_connect._modify_connection_params()
-        options["username"] = net_connect.username
-        options["password"] = net_connect.password
+        if not options["device_type"].startswith("ericsson_mltn"):
+            options["username"] = net_connect.username
+            options["password"] = net_connect.password
         options["new_line"] = net_connect.RETURN
 
     logger.debug(f"Using SSH options: {options}")

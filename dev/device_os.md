@@ -30,6 +30,7 @@ audiocode_shell
 # cisco_ftd
 # cisco_ios
 # cisco_nxos
+cisco_s200
 # cisco_s300
 cisco_tp
 # cisco_viptela
@@ -52,6 +53,8 @@ cisco_tp
 # endace
 # enterasys
 # ericsson_ipos
+ericsson_mltn63
+ericsson_mltn66
 # extreme
 # extreme_ers
 # extreme_exos

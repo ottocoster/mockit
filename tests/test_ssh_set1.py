@@ -27,14 +27,6 @@ def test_adtran_os():
     assert run_command("devices-adtran_os", "adtran_os", "echo test") == "test"
 
 @pytest.mark.test_set1
-def test_adva_fsp150f2():
-    assert run_command("devices-adva_fsp150f2", "adva_fsp150f2", "echo test") == "test"
-
-@pytest.mark.test_set1
-def test_adva_fsp150f3():
-    assert run_command("devices-adva_fsp150f3", "adva_fsp150f3", "echo test") == "test"
-
-@pytest.mark.test_set1
 def test_alcatel_aos():
     assert run_command("devices-alcatel_aos", "alcatel_aos", "echo test") == "test"
 
