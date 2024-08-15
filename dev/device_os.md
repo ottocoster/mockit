@@ -30,7 +30,7 @@ audiocode_shell
 # cisco_ftd
 # cisco_ios
 # cisco_nxos
-cisco_s200
+# cisco_s200
 # cisco_s300
 cisco_tp
 # cisco_viptela

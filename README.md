@@ -1,20 +1,21 @@
 # Device Imitator
 
-`device_imitator` is a simple ssh server to respond to predefined commands. It was created to be used in integratation tests.
-
-## Work in progress
-
-There are still a lot of basic commands, more functionality and more devices to add
+`device_imitator` is a mockup service which acts as a physical Network Device. Currently it only supports SSH & SNMP.
+Difference with this project compared to other projects is that we reversed engineered the Netmiko library, so that every device will respond in such a way that you can talk to it with Netmiko like it's a real physical network device. For this reason we can currently imitate 115 different network vendors.
 
 ## Getting started
 
-The previously retrieved command output needs to be stored in a directory, one per device. The file needs to be named as the exact command.
+1. Store you config files, script logic or SNMP output for the vendor you want to imitate in the /config/<device> folder.
+   By default we already provided a library of examples which you can use out of the box.
+2. Change the compose file to which Device OS you would like to imitate
+3. Run: docker compose up -d --build
+4. Login with SSH via the terminal, or run your network automatisch script against it.
 
 ## Device version
 
-For mikrotik we currently support multiple version. With `DEVICE_VERSION` you can switch between the two. We will probably add more version for devices in the future.
+It's possible to store different configurations for a OS per version. For example, For mikrotik we currently support multiple versions. With `DEVICE_VERSION` you can switch between the two. You can see how it's setup in /config/mikrotik_routeros/.
 
-You can add your own folder to the config/<device> folder for your own version and use the folders name as the `DEVICE_VERSION`
+You can do the same for your own folder to the config/<device> folder just use the folder name as the `DEVICE_VERSION`.
 
 ## SSH Server
 
@@ -38,15 +39,13 @@ def handle_command(command: str):
 
 ### Info
 
-SNMP currently only works for a couple vendors. 
-We don't have all the devices to provide a snmp.json, but if you do have 1 of the missing vendors please submit a pull request.
+SNMP examples are currently only provided for a couple vendors since we don't have all the devices to provide a snmp.json, but if you do have 1 of the missing vendors please submit a pull request.
 
 ## Docker compose
 
 ### Example
 
 ```yml
-version: "3"
 name: devices
 services:
   cisco_ios:
@@ -72,7 +71,7 @@ It's optional to map a volume, by default we will go for /config/<device>/
 To connect to the device remotely through ssh we open the 22 port and for snmp the 161/udp port.
 
 Environment Options
-- DEVICE_TYPE: Supported device type you want to imitate.
+- DEVICE_TYPE: Supported device types you want to imitate.
 
 Environment SSH Options
 - SSH_USERNAME: SSH username.
