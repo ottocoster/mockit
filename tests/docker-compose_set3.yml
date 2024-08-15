@@ -1,6 +1,6 @@
 name: devices
 services:  
-  test_container:
+  devices-test_container:
     build: .
     container_name: devices-test_container
     networks:
