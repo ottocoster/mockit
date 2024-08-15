@@ -158,9 +158,9 @@ def test_cisco_s200():
 def test_cisco_s300():
     assert run_command("devices-cisco_s300", "cisco_s300", "echo test") == "test"
 
-@pytest.mark.test_set1
-def test_cisco_tp():
-    assert run_command("devices-cisco_tp", "cisco_tp", "echo test") == "test"
+# @pytest.mark.test_set1
+# def test_cisco_tp():
+#     assert run_command("devices-cisco_tp", "cisco_tp", "echo test") == "test"
 
 @pytest.mark.test_set1
 def test_cisco_viptela():

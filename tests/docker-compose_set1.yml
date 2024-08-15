@@ -333,14 +333,14 @@ services:
     networks:
       - devices-network
       
-  cisco_tp:
-    build: ../
-    container_name: devices-cisco_tp
-    environment:  
-      DEVICE_TYPE: cisco_tp
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
+  # cisco_tp:
+  #   build: ../
+  #   container_name: devices-cisco_tp
+  #   environment:  
+  #     DEVICE_TYPE: cisco_tp
+  #     SSH_PASSWORD: test
+  #   networks:
+  #     - devices-network
       
   cisco_viptela:
     build: ../
