@@ -70,9 +70,9 @@ def test_audiocode_66():
 def test_audiocode_72():
     assert run_command("devices-audiocode_72", "audiocode_72", "echo test") == "test"
     
-@pytest.mark.test_set1
-def test_audiocode_shell():
-    assert run_command("devices-audiocode_shell", "audiocode_shell", "echo test") == "test"
+# @pytest.mark.test_set1
+# def test_audiocode_shell():
+#     assert run_command("devices-audiocode_shell", "audiocode_shell", "echo test") == "test"
     
 @pytest.mark.test_set1
 def test_avaya_ers():

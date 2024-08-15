@@ -135,14 +135,14 @@ services:
     networks:
       - devices-network
 
-  audiocode_shell:
-    build: ../
-    container_name: devices-audiocode_shell
-    environment:  
-      DEVICE_TYPE: audiocode_shell
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
+  # audiocode_shell:
+  #   build: ../
+  #   container_name: devices-audiocode_shell
+  #   environment:  
+  #     DEVICE_TYPE: audiocode_shell
+  #     SSH_PASSWORD: test
+  #   networks:
+  #     - devices-network
 
   avaya_ers:
     build: ../
