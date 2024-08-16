@@ -53,7 +53,7 @@ snmpwalk -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 localhost .1.3.6
 name: devices
 services:
   cisco_ios:
-    image: registry.gitlab.com/slurpit.io/device_imitator:latest
+    image: registry.gitlab.com/slurpit.io/mockit:latest
     container_name: cisco_ios
     environment:
       - DEVICE_TYPE=cisco_ios

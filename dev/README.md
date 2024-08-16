@@ -1,6 +1,6 @@
-# Device Imitator
+# Mock'it - The Device Imitator
 
-`device_imitator` is a simple ssh server to respond to predefined commands. It was created to be used in integratation tests.
+`mockit` is a simple ssh server to respond to predefined commands. It was created to be used in integratation tests.
 
 # Development info
 
