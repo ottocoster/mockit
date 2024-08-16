@@ -1,16 +1,18 @@
-version: "3"
 name: devices
 services:
-  a10:
+  mikrotik_routeros:
     build: .
-    container_name: devices-a10
-    environment:  
-      DEVICE_TYPE: a10
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
+    environment:
+      - DEVICE_TYPE=mikrotik_routeros
+      - DEVICE_VERSION=v6
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
+      # - DEVICE_DELAY=1
+      # - LOGIN_DELAY=3
+      # - LOGIN_RETRY=2
     networks:
       - devices-network
-    ports: 
+    ports:
       - "22:22"
       - "161:161/udp"
 

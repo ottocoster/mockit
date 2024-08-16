@@ -11,8 +11,8 @@ def run_command(host, device_type, command, username="root", password="test"):
         "fast_cli": False
     }
 
-    with ConnectHandler(**parameters) as net_connect:      
-        return net_connect.send_command_timing(command)
+    with ConnectHandler(**parameters) as net_connect:
+        return net_connect.send_command(command)
 
 @pytest.mark.test_set2
 def test_dell_dnos9():
@@ -147,29 +147,9 @@ def test_fortinet():
     assert run_command("devices-fortinet", "fortinet", "echo test") == "test"
 
 @pytest.mark.test_set2
-def test_hp_comware():
-    assert run_command("devices-hp_comware", "hp_comware", "echo test") == "test"
+def test_generic():
+    assert run_command("devices-generic", "generic", "echo test") == "test"
 
 @pytest.mark.test_set2
-def test_huawei():
-    assert run_command("devices-huawei", "huawei", "echo test") == "test"
-
-@pytest.mark.test_set2
-def test_juniper_junos():
-    assert run_command("devices-juniper_junos", "juniper_junos", "echo test") == "test"
-
-@pytest.mark.test_set2
-def test_mikrotik_routeros_v6():
-    assert run_command("devices-mikrotik_routeros_v6", "mikrotik_routeros", "echo test") == "test"
-
-@pytest.mark.test_set2
-def test_mikrotik_routeros_v7():
-    assert run_command("devices-mikrotik_routeros_v7", "mikrotik_routeros", "echo test") == "test"
-
-@pytest.mark.test_set2
-def test_ubiquiti_edgerouter():
-    assert run_command("devices-ubiquiti_edgerouter", "ubiquiti_edgerouter", "echo test") == "test"
-
-@pytest.mark.test_set2
-def test_ubiquiti_edgeswitch():
-    assert run_command("devices-ubiquiti_edgeswitch", "ubiquiti_edgeswitch", "echo test") == "test"
+def test_generic_termserver():
+    assert run_command("devices-generic_termserver", "generic_termserver", "echo test") == "test"

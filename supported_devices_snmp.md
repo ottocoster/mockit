@@ -1,0 +1,8 @@
+arista_eos
+cisco_ios
+cisco_nxos
+hp_comware
+juniper_junos
+mikrotik_routeros/v6
+mikrotik_routeros/v7
+ubiquiti_edgerouter

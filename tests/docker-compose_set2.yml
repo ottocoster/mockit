@@ -1,4 +1,3 @@
-version: "3"
 name: devices
 services:  
   test_container:
@@ -6,6 +5,7 @@ services:
     container_name: devices-test_container
     networks:
       - devices-network
+    entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
       
   dell_dnos9:
     build: ../
@@ -267,7 +267,16 @@ services:
       SSH_PASSWORD: test
     networks:
       - devices-network
-      
+    
+  f5_tmsh:
+    build: ../
+    container_name: devices-f5_tmsh
+    environment:  
+      DEVICE_TYPE: f5_tmsh
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
   fiberstore_fsos:
     build: ../
     container_name: devices-fiberstore_fsos
@@ -295,72 +304,24 @@ services:
     networks:
       - devices-network
       
-  hp_comware:
+  generic:
     build: ../
-    container_name: devices-hp_comware
+    container_name: devices-generic
     environment:  
-      DEVICE_TYPE: hp_comware
+      DEVICE_TYPE: generic
       SSH_PASSWORD: test
     networks:
       - devices-network
       
-  huawei:
+  generic_termserver:
     build: ../
-    container_name: devices-huawei
+    container_name: devices-generic_termserver
     environment:  
-      DEVICE_TYPE: huawei
-      SSH_PASSWORD: test
-    # ports:
-    #   - "22:22"
-    networks:
-      - devices-network
-      
-  juniper_junos:
-    build: ../
-    container_name: devices-juniper_junos
-    environment:  
-      DEVICE_TYPE: juniper_junos
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
-  mikrotik_routeros_v6:
-    build: ../
-    container_name: devices-mikrotik_routeros_v6
-    environment:  
-      DEVICE_TYPE: mikrotik_routeros
-      DEVICE_VERSION: v6
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
-  mikrotik_routeros_v7:
-    build: ../
-    container_name: devices-mikrotik_routeros_v7
-    environment:  
-      DEVICE_TYPE: mikrotik_routeros
+      DEVICE_TYPE: generic_termserver
       SSH_PASSWORD: test
     networks:
       - devices-network
       
-  ubiquiti_edgerouter:
-    build: ../
-    container_name: devices-ubiquiti_edgerouter
-    environment:  
-      DEVICE_TYPE: ubiquiti_edgerouter
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-      
-  ubiquiti_edgeswitch:
-    build: ../
-    container_name: devices-ubiquiti_edgeswitch
-    environment:  
-      DEVICE_TYPE: ubiquiti_edgeswitch
-      SSH_PASSWORD: test
-    networks:
-      - devices-network
-
 networks:
   devices-network:
     driver: bridge
