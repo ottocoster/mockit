@@ -71,8 +71,12 @@ def test_mellanox_mlnxos():
     assert run_command("devices-mellanox_mlnxos", "mellanox_mlnxos", "echo test") == "test"
 
 @pytest.mark.test_set3
-def test_mikrotik_routeros():
-    assert run_command("devices-mikrotik_routeros", "mikrotik_routeros", "echo test") == "test"
+def test_mikrotik_routeros_v6():
+    assert run_command("devices-mikrotik_routeros_v6", "mikrotik_routeros", "echo test") == "test"
+
+@pytest.mark.test_set3
+def test_mikrotik_routeros_v7():
+    assert run_command("devices-mikrotik_routeros_v7", "mikrotik_routeros", "echo test") == "test"
 
 @pytest.mark.test_set3
 def test_mikrotik_switchos():

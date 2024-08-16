@@ -7,7 +7,7 @@ import importlib
 server_class = None
 handler_class = None
 
-def load_device_classes(device_type):
+def load_device_classes(device_type, device_version):
     """
     Dynamically load device-specific server and handler classes.
 
@@ -19,7 +19,11 @@ def load_device_classes(device_type):
     """
     try:
         # Dynamically import the module based on the device type
-        module = importlib.import_module(f'configs.{device_type}.{device_type}_server')
+        if device_version:
+            module = importlib.import_module(f'configs.{device_type}.{device_version}.{device_type}_{device_version}_server')
+        else:
+            module = importlib.import_module(f'configs.{device_type}.{device_type}_server')
+
         # Get the server and handler classes from the module
         server_class = getattr(module, f'{device_type}_server')
         handler_class = getattr(module, f'{device_type}_handler')
@@ -39,7 +43,7 @@ async def start_server(options):
     logger = logging.getLogger()
     
     # Load device-specific server and handler classes
-    server_class, handler_class = load_device_classes(options["device_type"])
+    server_class, handler_class = load_device_classes(options["device_type"], options["device_version"])
 
     # Set up parameters for ConnectHandler
     parameters = {

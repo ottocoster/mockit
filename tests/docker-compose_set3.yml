@@ -133,12 +133,22 @@ services:
     networks:
       - devices-network
 
-  mikrotik_routeros:
+  mikrotik_routeros_v6:
     build: ../
-    container_name: devices-mikrotik_routeros
+    container_name: devices-mikrotik_routeros_v6
     environment:  
       DEVICE_TYPE: mikrotik_routeros
       DEVICE_VERSION: v6
+      SSH_PASSWORD: test
+    networks:
+      - devices-network
+
+  mikrotik_routeros_v7:
+    build: ../
+    container_name: devices-mikrotik_routeros_v7
+    environment:  
+      DEVICE_TYPE: mikrotik_routeros
+      DEVICE_VERSION: v7
       SSH_PASSWORD: test
     networks:
       - devices-network

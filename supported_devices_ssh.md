@@ -82,7 +82,8 @@ keymile_nos
 linux
 mellanox
 mellanox_mlnxos
-mikrotik_routeros
+mikrotik_routeros/v6
+mikrotik_routeros/v7
 mikrotik_switchos
 mrv_lx
 mrv_optiswitch
