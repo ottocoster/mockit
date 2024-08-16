@@ -1,6 +1,6 @@
-# Device Imitator
+# Mock'it - The Device Imitator
 
-`device_imitator` is a mockup service which acts as a physical Network Device. Currently it only supports SSH & SNMP.
+`Mock'it` is a mockup service which acts as a Network Device. Currently it only supports SSH & SNMP.
 Difference with this project compared to other projects is that we reversed engineered the Netmiko library, so that every device will respond in such a way that you can talk to it with Netmiko like it's a real physical network device. For this reason we can currently imitate 115 different network vendors.
 
 ## Getting started
@@ -39,7 +39,11 @@ def handle_command(command: str):
 
 ### Info
 
-SNMP examples are currently only provided for a couple vendors since we don't have all the devices to provide a snmp.json, but if you do have 1 of the missing vendors please submit a pull request.
+SNMP examples are currently only provided for a couple vendors since we don't have all the devices to provide a snmp.json, but if you do have 1 of the missing vendors please submit a pull request. To share this information with the project you can use the following example command:
+
+```bash
+snmpwalk -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 localhost .1.3.6
+```
 
 ## Docker compose
 
@@ -102,3 +106,9 @@ If you want to share your command templates with the rest of us, it would be app
 Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
 
 
+# Roadmap
+
+- AI integration to reply on missing commands
+- Simple ORM to store networking information if you want to build for example a vlan.dat
+- NetConf support
+- RestAPI support to imitate controller based devices.
