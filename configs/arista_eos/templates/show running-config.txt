@@ -1,0 +1,31 @@
+! Command: show running-config
+! device: eos1 (vEOS, EOS-4.21.1.1F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+transceiver qsfp default-mode 4x10G
+!
+hostname eos1
+!
+spanning-tree mode mstp
+!
+aaa authentication enable default none
+aaa authorization exec default local
+!
+no aaa root
+!
+username netpicker privilege 15 secret sha512 $6$RiQXCnW.j42556O4$5kthVVk5QLgT6If0hDEOnj1mEmKIgDsqoaCpfj5hhJwhKhdOwKZK1r.4l5X.twbCqx9oBeXsKLXCOKtXw51n9.
+!
+interface Ethernet1
+   no switchport
+   ip address 192.168.60.203/24
+!
+interface Ethernet2
+!
+interface Ethernet3
+!
+interface Management1
+!
+no ip routing
+!
+end
