@@ -1,10 +1,10 @@
 name: devices
 services:
-  mikrotik_routeros:
+  arista_eos:
     build: .
     environment:
-      - DEVICE_TYPE=mikrotik_routeros
-      - DEVICE_VERSION=v6
+      - DEVICE_TYPE=arista_eos
+      # - DEVICE_VERSION=v6
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       # - DEVICE_DELAY=1
