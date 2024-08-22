@@ -1,0 +1,49 @@
+version 17.2R1.13;
+system {
+    host-name juniper_junos;
+    root-authentication {
+        encrypted-password "$6$IToOG8/r$ksJeo7xS3WGNXN7xpLmhTu3AwXB8Sg2d9sVnGCPxa2Lsvlxkf0EAGTMyK5nH6ZjHKadDZF51eJ6xLt3o1kSrb0"; ## SECRET-DATA
+    }
+    login {
+        user netpicker {
+            uid 2000;
+            class super-user;
+            authentication {
+                encrypted-password "$6$8n5L8Xn3$8wEtJ8eLctrQMH7qGHbVvDWn8osnCya.UB5OMcppDm/HHZVB7rscVZb59vD1IvsPQqSTLUz.GnuZdapwTCljQ."; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh;
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag all;
+            }
+        }
+    }
+}
+interfaces {
+    fxp0 {
+        unit 0 {
+            family inet {
+                address 192.168.60.202/24;
+            }
+        }
+    }
+}
