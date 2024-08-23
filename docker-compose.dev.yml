@@ -1,12 +1,14 @@
 name: devices
 services:
-  arista_eos:
+  a10:
     build: .
     environment:
-      - DEVICE_TYPE=arista_eos
+      - DEVICE_TYPE=a10
       # - DEVICE_VERSION=v6
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
+      - NETCONF_USERNAME=test
+      - NETCONF_PASSWORD=test
       # - DEVICE_DELAY=1
       # - LOGIN_DELAY=3
       # - LOGIN_RETRY=2
@@ -15,6 +17,7 @@ services:
     ports:
       - "22:22"
       - "161:161/udp"
+      - "830:830"
 
 networks:
   devices-network:

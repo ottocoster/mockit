@@ -26,6 +26,10 @@ ENV SNMP_V3_AUTH_KEY "somekey1"
 ENV SNMP_V3_PRIV_TYPE "none"
 ENV SNMP_V3_PRIV_KEY ""
 
+ENV NETCONF_SERVER_ENABLED true
+ENV NETCONF_USERNAME "test"
+ENV NETCONF_PASSWORD "test"
+
 ENV PYTHONPATH="/"
 
 COPY configs/. configs/.
@@ -36,5 +40,6 @@ RUN apt-get update
 RUN apt-get install snmp -y
 
 COPY src/. /src
+COPY dev/. /test
 
 CMD ["python", "src/main.py"]
