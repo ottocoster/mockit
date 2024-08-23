@@ -217,15 +217,19 @@ class NetconfServer:
         self.running = True
         self._bind_socket()
         logger.info("Netconf server started..")
-        while True:
-            if self._thread:
-                self._thread.join()
-                
-            self._client_socket, _ = self._server_socket.accept()
-            self._thread = threading.Thread(target=self._run)
-            self._thread.start()
-
+        accept_thread = threading.Thread(target=self._accept_connections)
+        accept_thread.start()
         time.sleep(1)  # Give the server a moment to start
+
+    def _accept_connections(self):
+        while self.running:
+            try:
+                self._client_socket, _ = self._server_socket.accept()
+                logger.info("Connection accepted.")
+                self._thread = threading.Thread(target=self._run)
+                self._thread.start()
+            except OSError as e:
+                logger.error("Error accepting connection: %s", e)
 
     def stop(self) -> None:
         """Stop the NETCONF server."""
@@ -247,21 +251,22 @@ class NetconfServer:
         for _ in range(5):  # Retry up to 5 times
             try:
                 self._server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                self._server_socket.setsockopt(
-                    socket.SOL_SOCKET, socket.SO_REUSEADDR, 1
-                )
+                self._server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
                 self._server_socket.bind((self.settings.host, self.settings.port))
                 self._server_socket.listen(1)
+                logger.info(f"Server bound to {self.settings.host}:{self.settings.port}")
                 return
             except OSError as e:
                 if e.errno == 48:  # Address already in use
-                    logger.warning("port %d in use, retrying...", self.port)
+                    logger.warning("Port %d in use, retrying...", self.settings.port)
+                    self.settings.port += 1  # Increment port number to avoid conflict
                     time.sleep(1)
                 else:
                     raise e
         raise OSError(
-            f"could not bind to port {self.port}",
+            f"Could not bind to port {self.settings.port} after 5 attempts.",
         )
+
 
     def _run(self) -> None:
         """Run the server to accept connections and process requests."""

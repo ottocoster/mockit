@@ -130,7 +130,9 @@ class SSH_Handler:
             self.logger.error(f"matching_commands `{matching_commands}`")
 
             if matching_commands:
-                closest_match = matching_commands[0]  # Pick the first match
+                # Sort the matching commands alphabetically
+                sorted_matching_commands = sorted(matching_commands)
+                closest_match = sorted_matching_commands[0]  # Pick the first match
                 self.respond(await self._get_command_output(self.commands[closest_match]))
                 return True
 
