@@ -1,10 +1,10 @@
 from netconf import NetconfServer
 import logging
-import asyncio
 
 async def start_netconf(options):
     logger = logging.getLogger()
-        
+    logger.debug(f"starting netconf {options}")
+
     # Create and start the NetconfServer instance
     nc_server = NetconfServer()
 

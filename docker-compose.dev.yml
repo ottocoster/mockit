@@ -6,8 +6,8 @@ services:
       - DEVICE_TYPE=arista_eos
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
-      - NETCONF_USERNAME=test
-      - NETCONF_PASSWORD=test
+      # - NETCONF_USERNAME=test
+      # - NETCONF_PASSWORD=test
       # - DEVICE_VERSION=v6
       # - DEVICE_DELAY=1
       # - LOGIN_DELAY=3

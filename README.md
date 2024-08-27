@@ -1,31 +1,29 @@
 # Mock'it - The Device Imitator
 
-`Mock'it` is a mockup service which acts as a Network Device. Currently it only supports SSH & SNMP.
-Difference with this project compared to other projects is that we reversed engineered the Netmiko library, so that every device will respond in such a way that you can talk to it with Netmiko like it's a real physical network device. For this reason we can currently imitate 115 different network vendors.
+`Mock'it` is a mockup service that acts as a network device. Currently, it only supports SSH and SNMP. The difference between this project and others is that we reverse-engineered the Netmiko library, allowing every device to respond in a way that makes it compatible with Netmiko, as if it were a real physical network device. As a result, we can currently imitate 115 different network vendors.
 
 ## Getting started
 
-1. Store you config files, script logic or SNMP output for the vendor you want to imitate in the /config/<device> folder.
-   By default we already provided a library of examples which you can use out of the box.
-2. Change the compose file to which Device OS you would like to imitate
+1. Store your config files, script logic, or SNMP output for the vendor you want to imitate in the /config/<device> folder. By default, we have provided a library of examples that you can use out of the box.
+2. Modify the compose file to specify the Device OS you would like to imitate.
 3. Run: docker compose up -d --build
-4. Login with SSH via the terminal, or run your network automatisch script against it.
+4. Log in via SSH through the terminal, or run your network automation script against it.
 
 ## Device version
 
-It's possible to store different configurations for a OS per version. For example, For mikrotik we currently support multiple versions. With `DEVICE_VERSION` you can switch between the two. You can see how it's setup in /config/mikrotik_routeros/.
+It's possible to store different configurations for an OS per version. For example, for Mikrotik, we currently support multiple versions. You can switch between them using DEVICE_VERSION. You can see how it's set up in /config/mikrotik_routeros/.
 
-You can do the same for your own folder to the config/<device> folder just use the folder name as the `DEVICE_VERSION`.
+You can do the same for your own configurations by adding a folder to the /config/<device> directory and using the folder name as the DEVICE_VERSION.
 
 ## SSH Server
 
 ### Add a static command
 
-You can add a static command response in `/config/<device>/templates`. The name of the file has to equal the command being executed
+You can add a static command response in `/config/<device>/templates`. The name of the file has to equal the command being executed.
 
 ### Add a dynamic command
 
-You can create a dynamic command response in `/config/<device>/scripts`. Whenever a command is called, it first goes thought the `def handle_command` in __init__.py. This way you can use python logic to build your return response.
+You can create a dynamic command response in /config/<device>/scripts. Whenever a command is executed, it first goes through the def handle_command function in __init__.py. This allows you to use Python logic to generate your response.
 For example:
 
 ```python
@@ -39,7 +37,7 @@ def handle_command(command: str):
 
 ### Info
 
-SNMP examples are currently only provided for a couple vendors since we don't have all the devices to provide a snmp.json, but if you do have 1 of the missing vendors please submit a pull request. To share this information with the project you can use the following example command:
+SNMP examples are currently only provided for a few vendors, as we don't have access to all devices to create an snmp.json. If you have a device from one of the missing vendors, please consider submitting a pull request. To share this information with the project, you can use the following example command:
 
 ```bash
 snmpwalk -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 localhost .1.3.6
@@ -71,8 +69,7 @@ services:
 
 ### Info
 
-It's optional to map a volume, by default we will go for /config/<device>/
-To connect to the device remotely through ssh we open the 22 port and for snmp the 161/udp port.
+It's possible to map a volume to include your own scripts and templates. By default, the container will use /config/<device>/. To connect to the device remotely via SSH, port 22 is opened, and for SNMP, port 161/UDP is used.
 
 Environment Options
 - DEVICE_TYPE: Supported device types you want to imitate.
@@ -104,7 +101,6 @@ Environment SNMP Options
 
 If you want to share your command templates with the rest of us, it would be appreciated.
 Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
-
 
 # Roadmap
 

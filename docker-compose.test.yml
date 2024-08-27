@@ -1,0 +1,19 @@
+name: devices
+services:
+  arista_eos:
+    image: registry.gitlab.com/slurpit.io/mockit:dev
+    container_name: arista_eos
+    environment:
+      DEVICE_TYPE: arista_eos
+      SSH_USERNAME: test
+      SSH_PASSWORD: test
+#      DEVICE_DELAY: 25
+#      LOGIN_DELAY: 60
+#      LOGIN_RETRY: 2
+    ports: 
+       - "22:22"
+       - "161:161/udp"
+
+networks:
+  devices-network:
+    driver: bridge

@@ -8,7 +8,6 @@ from pysnmp.entity import engine, config
 from pysnmp.entity.rfc3413 import cmdrsp, context
 from pysnmp.carrier.asyncio.dgram import udp
 from pysnmp.debug import setLogger, Debug
-import asyncio
 import logging
 import os
 import json
