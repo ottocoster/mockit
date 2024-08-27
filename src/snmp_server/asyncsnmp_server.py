@@ -64,8 +64,16 @@ async def start_server(options):
 
     snmpContext = context.SnmpContext(snmpEngine)
     mibBuilder = snmpContext.getMibInstrum().getMibBuilder()
-    
-    # Load SNMP MIBs from JSON file
+
+    # # Default MIB values
+    # default_mibs = {
+    #     "SNMPv2-MIB": [
+    #         {"name": "sysDescr", "type": "string", "value": "Default System Description"},
+    #         {"name": "sysObjectID", "type": "id", "oid": "1.3.6.1.4.1.8072.3.2.10"}
+    #     ]
+    # }
+
+   # Load SNMP MIBs from JSON file or use default values
     file = os.path.join(f"/configs/{options['device_type']}", "snmp.json")
     if options['device_version']:
         file = os.path.join(f"/configs/{options['device_type']}/{options['device_version']}", "snmp.json")
@@ -74,11 +82,14 @@ async def start_server(options):
             with open(file, "r") as f:
                 for key, value in json.loads(f.read()).items():
                     set_mibs(mibBuilder, key, value)
-        else:
-            logger.warning(f"Unable to find {file}")
+        # else:
+        #     logger.warning(f"Unable to find {file}, using default MIB values")
+        #     for key, value in default_mibs.items():
+        #         set_mibs(mibBuilder, key, value)
     except Exception as e:
         logger.error("Something went wrong loading SNMP info")
         logger.exception(e)
+
 
     # Register SNMP command responders
     cmdrsp.GetCommandResponder(snmpEngine, snmpContext)

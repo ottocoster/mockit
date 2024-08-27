@@ -32,7 +32,7 @@ def load_device_classes(device_type, device_version):
 
     return server_class, handler_class
 
-async def start_server(options):
+async def start_ssh(options):
     """
     Start the SSH server with the provided options.
 
@@ -41,7 +41,8 @@ async def start_server(options):
     """
     global server_class, handler_class
     logger = logging.getLogger()
-    
+    logger.debug(f"starting ssh {options}")
+
     # Load device-specific server and handler classes
     server_class, handler_class = load_device_classes(options["device_type"], options["device_version"])
 
