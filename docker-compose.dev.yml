@@ -1,12 +1,14 @@
 name: devices
 services:
-  mikrotik_routeros:
+  arista_eos:
     build: .
     environment:
-      - DEVICE_TYPE=mikrotik_routeros
-      - DEVICE_VERSION=v6
+      - DEVICE_TYPE=arista_eos
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
+      # - NETCONF_USERNAME=test
+      # - NETCONF_PASSWORD=test
+      # - DEVICE_VERSION=v6
       # - DEVICE_DELAY=1
       # - LOGIN_DELAY=3
       # - LOGIN_RETRY=2
@@ -15,6 +17,7 @@ services:
     ports:
       - "22:22"
       - "161:161/udp"
+      - "830:830"
 
 networks:
   devices-network:

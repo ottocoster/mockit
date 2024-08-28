@@ -1,10 +1,9 @@
 import os
-import time
 import logging
 import asyncio
-import asyncssh
 from snmp_server import asyncsnmp_server
-from src.start_server import start_server
+from src.start_ssh import start_ssh
+from src.start_netconf import start_netconf
 
 def main():
     # Fetch device type from environment variable
@@ -43,13 +42,22 @@ def main():
         "snmpv3_privtype": os.environ.get("SNMP_V3_PRIV_TYPE", "none"),
         "snmpv3_privkey": os.environ.get("SNMP_V3_PRIV_KEY", ""),
     }
+
+    options_netconf = {
+        "device_type": device_type,
+        "username": os.environ.get("NETCONF_USERNAME", "test"),
+        "password": os.environ.get("NETCONF_PASSWORD", "test"),
+        "authorized_key": os.environ.get("NETCONF_KEY", ""),
+    }
     
     
     loop = asyncio.get_event_loop()
     if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
-        loop.create_task(start_server(options_ssh))
+        loop.create_task(start_ssh(options_ssh))
     if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(asyncsnmp_server.start_server(options_snmp))
+    if str(os.environ.get("NETCONF_SERVER_ENABLED", "true")).lower() == "true":
+        loop.create_task(start_netconf(options_netconf))
         
     if len(asyncio.all_tasks(loop)) == 0:
         raise Exception("No tasks were started")

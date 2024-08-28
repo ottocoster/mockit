@@ -1,12 +1,9 @@
 import logging
 import os
-import asyncssh
 from asyncssh.process import SSHServerProcess
 from concurrent.futures import ThreadPoolExecutor
 import asyncio
 import importlib
-import re
-
 
 class SSH_Handler:
 
@@ -96,6 +93,25 @@ class SSH_Handler:
         """
         return ""
 
+    def replace_command(self, command: str) -> str:
+        # Define a dictionary to map shorthand to full commands
+        command_map = {
+            'sh': 'show',
+            'disp': 'display'
+        }
+        
+        # Split the command into parts
+        command_parts = command.split(" ")
+        
+        # Check if the first part is a shorthand and replace it
+        if command_parts[0] in command_map:
+            command_parts[0] = command_map[command_parts[0]]
+        
+        # Join the command back together
+        replaced_command = ' '.join(command_parts)
+        
+        return replaced_command
+        
     async def _handle_command(self, command):
         """
         Processes the given command and sends the appropriate response.
@@ -114,6 +130,10 @@ class SSH_Handler:
             self.respond(custom_script_output)
             return True
 
+        command = self.replace_command(command)
+        self.logger.info(f"replaced command: `{command}`")
+
+
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
         if custom_command_output:
@@ -130,7 +150,9 @@ class SSH_Handler:
             self.logger.error(f"matching_commands `{matching_commands}`")
 
             if matching_commands:
-                closest_match = matching_commands[0]  # Pick the first match
+                # Sort the matching commands alphabetically
+                sorted_matching_commands = sorted(matching_commands)
+                closest_match = sorted_matching_commands[0]  # Pick the first match
                 self.respond(await self._get_command_output(self.commands[closest_match]))
                 return True
 

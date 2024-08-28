@@ -1,0 +1,20 @@
+name: devices
+services:
+  a10:
+    build: ../
+    container_name: devices-a10
+    environment:
+      - DEVICE_TYPE=a10
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
+      - LOGIN_DELAY=3
+      - DEVICE_DELAY=2
+    networks:
+      - devices-network
+    ports:
+      - "22:22"
+      - "161:161/udp"
+
+networks:
+  devices-network:
+    driver: bridge
