@@ -27,6 +27,8 @@ def main():
         "delay": int(os.environ.get("DEVICE_DELAY", 0)),
         "login_delay": int(os.environ.get("LOGIN_DELAY", 0)),
         "login_retry": int(os.environ.get("LOGIN_RETRY", 0)),
+        "openai_support": str(os.environ.get("OPENAI_SUPPORT", "false")).lower() == "true",
+        "openai_apikey": os.environ.get("OPENAI_APIKEY", ""),
         "device_version": device_version
     }
     

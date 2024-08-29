@@ -6,6 +6,8 @@ from concurrent.futures import ThreadPoolExecutor
 import asyncio
 import importlib
 import re
+from openai import OpenAI
+logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
 
 
 class SSH_Handler:
@@ -22,6 +24,8 @@ class SSH_Handler:
         self.device_type = options['device_type']
         self.device_version = options["device_version"]
         self.new_line = options['new_line']
+        self.openai_support = options['openai_support']
+        self.openai_apikey = options['openai_apikey']
         self.pri_terminator = "#"
         self.alt_terminator = ">"
         self.enable = True
@@ -72,6 +76,11 @@ class SSH_Handler:
             command = await self.process.stdin.readline()
             self.logger.info(f"command received `{repr(command)}`")
 
+            # Check for Ctrl+C (SIGINT)
+            if command == b'\x03':  # Ctrl+C is sent as b'\x03'
+                await self.handle_ctrl_c()
+                continue
+
             command = command.strip()
             self.process.stdout.write(self.get_formatted_command(command))
                 
@@ -82,6 +91,13 @@ class SSH_Handler:
                     break
 
         self.process.exit(0)
+
+    async def handle_ctrl_c(self):
+        """
+        Handle the Ctrl+C (SIGINT) event by resetting the prompt.
+        """
+        self.logger.info("Ctrl+C received, resetting prompt")
+        self.respond(b'\x03')  # Move to a new line
 
     def get_formatted_command(self, command):
         return command + '\n'
@@ -95,6 +111,43 @@ class SSH_Handler:
         :return: Custom command output as a string.
         """
         return ""
+
+        
+    def get_ai_output(self, command):
+        self.logger.info("get_ai_output called")
+
+        prompt = f"""
+        ### Device type
+        {self.device_type}
+        ###
+
+        ### command
+        `{command}`
+        ###
+
+        Let's assume the device type and input command are above.
+        Please give me the output of this command of the device type without any explanation.
+        You have to reply with only one command output.
+        """
+        model = "gpt-4o"
+
+        openai_api_key = self.openai_apikey
+
+        openai_client = OpenAI(
+            api_key=openai_api_key,
+        )
+
+        chat_completion = openai_client.chat.completions.create(
+            messages=[
+                    {"role": "system", "content": "You are a AI vendor assistant that return outputs of speical devices."},
+                    {"role": "user", "content": prompt}
+            ],
+            model=model,
+        )
+        message_content = chat_completion.choices[0].message.content
+        self.logger.info(f"get_ai_output output {message_content}")
+        
+        return message_content
 
     def replace_command(self, command: str) -> str:
         # Define a dictionary to map shorthand to full commands
@@ -115,6 +168,34 @@ class SSH_Handler:
         
         return replaced_command
         
+    def handle_help_commands(self, command):
+        if command  == "?":
+            keys = sorted(self.commands.keys())
+            self.respond("\n".join(keys))
+            return True
+
+        if command[-1] == '?':
+            scr_command = command[:-1]
+            matching_commands = self.get_matching_commands(scr_command)
+            if matching_commands:
+                self.respond("\n".join(matching_commands))
+            
+            return True
+        
+        return False
+
+    
+    def get_matching_commands(self, command):
+        # Find commands that start with the given command string
+        matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
+        self.logger.error(f"matching_commands `{matching_commands}`")
+
+        if matching_commands:
+            # Sort the matching commands alphabetically
+            sorted_matching_commands = sorted(matching_commands)
+            return sorted_matching_commands
+        return None
+
     async def _handle_command(self, command):
         """
         Processes the given command and sends the appropriate response.
@@ -124,6 +205,15 @@ class SSH_Handler:
         self.logger.info(f"Received `{command}`")
 
         await asyncio.sleep(self.delay)
+
+        if command[-1] == '?':
+            self.handle_help_commands(command)
+            return True
+
+        
+        # if self.openai_support:
+        #     self.respond(self.get_ai_output(command))
+        #     return True
 
         # Handle script functions
         custom_script_output = self.handle_script_function(command)
@@ -136,7 +226,6 @@ class SSH_Handler:
         command = self.replace_command(command)
         self.logger.info(f"replaced command: `{command}`")
 
-
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
         if custom_command_output:
@@ -148,14 +237,10 @@ class SSH_Handler:
             self.respond(await self._get_command_output(self.commands[command]))
             return True
         else:
-            # Find commands that start with the given command string
-            matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
-            self.logger.error(f"matching_commands `{matching_commands}`")
-
+            # Sort the matching commands alphabetically
+            matching_commands = self.get_matching_commands(command)
             if matching_commands:
-                # Sort the matching commands alphabetically
-                sorted_matching_commands = sorted(matching_commands)
-                closest_match = sorted_matching_commands[0]  # Pick the first match
+                closest_match = matching_commands[0]  # Pick the first match
                 self.respond(await self._get_command_output(self.commands[closest_match]))
                 return True
 
