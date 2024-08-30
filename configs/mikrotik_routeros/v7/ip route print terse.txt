@@ -1,5 +1,0 @@
-[admin@MikroTik] > ip route print terse
-0  As dst-address=0.0.0.0/0 routing-table=main pref-src= gateway=192.168.2.254 immediate-gw=192.168.2.254%ether1 distance=1 scope=30 target-scope=10 suppress-hw-offload=no
-  DAc dst-address=192.168.2.0/24 routing-table=main gateway=ether1 immediate-gw=ether1 distance=0 scope=10 suppress-hw-offload=no local-address=192.168.2.39%ether1
-  DAc dst-address=192.168.3.0/24 routing-table=main gateway=bridge immediate-gw=bridge distance=0 scope=10 suppress-hw-offload=no local-address=192.168.3.1%bridge
-

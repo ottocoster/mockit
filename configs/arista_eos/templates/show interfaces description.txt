@@ -1,21 +1,12 @@
-Interface                      Status         Protocol           Description
-Et1                            admin down     down               ThiS iS a TeSt DeScriPtiON
-Et2                            up             up                 ThiS iS a TeSt DeScriPtiON
-Et3                            up             up                 ThiS iS a TeSt DeScriPtiON
-Et4                            up             up                 ThiS iS a TeSt DeScriPtiON
-Et5                            admin down     down               ThiS iS a TeSt DeScriPtiON
-Et6                            admin down     down               ThiS iS a TeSt DeScriPtiON
-Et7                            admin down     down               ThiS iS a TeSt DeScriPtiON
-Et8                            admin down     down               ThiS iS a TeSt DeScriPtiON
-Et9                            up             up                 ThiS iS a TeSt DeScriPtiON
-Et9.999                        down           lowerlayerdown
-Et10                           up             up                 ThiS iS a TeSt DeScriPtiON
-Et11                           up             up                 ThiS iS a TeSt DeScriPtiON
-Et12                           up             up                 ThiS iS a TeSt DeScriPtiON
-Et13                           down           notpresent         This IS a TesT DeScrIption
-Et14                           down           notpresent
-Ma1                            down           down               Management
-Po1                            up             up                 MLAG peer link
-Po101                          up             up                 ServerRAD
-Tu8                            down           unknown
-Vl4094                         up             up                 MLAG local int
+switch> show interfaces ethernet 1-10 description
+Interface                      Status         Protocol Description
+Et1                            up             up       ctar_01
+Et2                            up             up       ctar_02
+Et3                            up             up       ctar_03
+Et4                            up             up       fobd_01
+Et5                            up             up       fobd_02
+Et6                            up             up       yzrq_01
+Et7                            up             up       yzrq_02
+Et8                            down           down     yzrq_03
+Et9                            up             up       yzrq_04
+Et10                           up             up       yzrq_05

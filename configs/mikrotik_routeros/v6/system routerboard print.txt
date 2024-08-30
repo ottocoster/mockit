@@ -1,8 +1,0 @@
-[admin@MikroTik_PatchBox_Office] > system routerboard print
-       routerboard: yes
-             model: 2011UiAS-2HnD
-     serial-number: 444A02C2FFD1
-     firmware-type: ar9344
-  factory-firmware: 3.10
-  current-firmware: 6.41
-  upgrade-firmware: 6.49.10

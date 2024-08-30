@@ -1,23 +1,20 @@
-Device ID: switchxxxxx
-Entry address(es): 
-  IP address: 1.1.1.1
-Platform: cisco WS-C3560X-24P,  Capabilities: Switch IGMP 
-Interface: GigabitEthernet0/3,  Port ID (outgoing port): GigabitEthernet0/8
-Holdtime : 154 sec
+campus01-bdr01#show cdp neighbors detail
+-------------------------
+Device ID: campus01-core01.netyce.lab
+Entry address(es):
+  IP address: 172.21.0.2
+Platform: Linux Unix,  Capabilities: Router Switch IGMP
+Interface: Ethernet0/1,  Port ID (outgoing port): Ethernet1/3
+Holdtime : 120 sec
 
 Version :
-Cisco IOS Software, C3560E Software (C3560E-UNIVERSALK9-M), Version 12.2(55)SE10, RELEASE SOFTWARE (fc2)
-Technical Support: http://www.cisco.com/techsupport
-Copyright (c) 1986-2015 by Cisco Systems, Inc.
-Compiled Wed 11-Feb-15 11:28 by prod_rel_team
+Cisco IOS Software, Solaris Software (I86BI_LINUXL2-ADVENTERPRISEK9-M), Experimental Version 15.1(20140814:053243) [mmen 112]
+Copyright (c) 1986-2014 by Cisco Systems, Inc.
+Compiled Thu 14-Aug-14 08:28 by mmen
 
 advertisement version: 2
-Protocol Hello:  OUI=0x00000C, Protocol ID=0x0112; payload len=27, value=00000000FFFFFFFF010221FF00000000000000C88BC41880FF0000
 VTP Management Domain: ''
 Native VLAN: 1
-Duplex: full
-Power Available TLV:
-
-    Power request id: 0, Power management id: 1, Power available: 0, Power management level: -1
-Management address(es): 
-  IP address: 1.1.1.1
+Duplex: half
+Management address(es):
+  IP address: 172.21.0.2

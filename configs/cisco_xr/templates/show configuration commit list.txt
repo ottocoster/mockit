@@ -1,13 +1,104 @@
-SNo. Label/ID    User      Line                Client      Time Stamp
-~~~~ ~~~~~~~~    ~~~~      ~~~~                ~~~~~~      ~~~~~~~~~~
-1    1000000093  fred      vty0:node0_RSP0_CP  CLI         Tue Jun  7 14:42:19 2016
-2    1000000092  john      vty0:node0_RSP0_CP  CLI         Tue Jun  7 14:40:05 2016
-3    1000000091  john      vty0:node0_RSP0_CP  CLI         Tue Jun  7 14:33:52 2016
-4    1000000090  john      vty0:node0_RSP0_CP  CLI         Tue Jun  7 14:33:05 2016
-5    1000000089  fred      vty0:node0_RSP0_CP  CLI         Tue Jun  7 14:31:39 2016
-6    1000000088  patrick   vty1:node0_RSP0_CP  Rollback    Tue Jun  7 14:29:12 2016
-7    1000000087  john      vty1:node0_RSP0_CP  CLI         Fri Jun  3 14:33:27 2016
-8    1000000086  admin     vty0:node0_RSP0_CP  CLI         Wed May 25 13:43:18 2016
-9    1000000085  admin     vty0:node0_RSP0_CP  CLI         Fri May 20 10:06:01 2016
-10   1000000084  admin     vty0:node0_RSP0_CP  CLI         Wed May 11 13:32:10 2016
-11   1000000083  patrick   vty0:node0_RSP0_CP  CLI         Tue May 10 14:18:59 2016
+
+Thu Oct 26 03:34:23.133 UTC
+SNo. Label/ID              User      Line                Client      Time Stamp
+~~~~ ~~~~~~~~              ~~~~      ~~~~                ~~~~~~      ~~~~~~~~~~
+1    1000000140            admin     vty0:node0_RP0_CPU  CLI         Thu Oct 26 02:52:15 2023
+2    1000000139            admin     vty0:node0_RP0_CPU  CLI         Thu Oct 26 02:38:39 2023
+3    1000000138            admin     vty0:node0_RP0_CPU  CLI         Thu Oct 26 02:34:10 2023
+4    1000000137            admin     vty0:node0_RP0_CPU  CLI         Thu Oct 26 02:25:05 2023
+5    1000000136            admin     vty3:node0_RP0_CPU  CLI         Thu Oct 26 01:58:38 2023
+6    1000000135            admin     vty3:node0_RP0_CPU  CLI         Thu Oct 26 01:55:59 2023
+7    1000000134            admin     vty2:node0_RP0_CPU  CLI         Thu Oct 26 01:53:51 2023
+8    1000000133            admin     vty1:node0_RP0_CPU  CLI         Thu Oct 26 01:53:06 2023
+9    1000000132            admin     vty2:node0_RP0_CPU  CLI         Thu Oct 26 01:51:38 2023
+10   1000000131            admin     vty0:node0_RP0_CPU  CLI         Thu Oct 26 01:48:45 2023
+11   1000000130            admin     vty0:node0_RP0_CPU  CLI         Thu Oct 26 00:52:15 2023
+12   1000000129            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 22:52:15 2023
+13   1000000128            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 21:37:32 2023
+14   1000000127            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 20:52:16 2023
+15   1000000126            admin     /dev/pts/6          XML TTY Ag  Wed Oct 25 19:42:44 2023
+16   1000000125            admin     /dev/pts/6          XML TTY Ag  Wed Oct 25 19:37:49 2023
+17   1000000124            admin     /dev/pts/6          XML TTY Ag  Wed Oct 25 19:34:15 2023
+18   1000000123            admin     /dev/pts/6          XML TTY Ag  Wed Oct 25 19:32:17 2023
+19   1000000122            admin     /dev/pts/6          XML TTY Ag  Wed Oct 25 19:29:07 2023
+20   1000000121            admin     /dev/pts/6          XML TTY Ag  Wed Oct 25 19:06:09 2023
+21   1000000120            admin     /dev/pts/6          XML TTY Ag  Wed Oct 25 19:04:31 2023
+22   1000000119            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 18:52:16 2023
+23   1000000118            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 18:34:35 2023
+24   1000000117            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 17:31:40 2023
+25   1000000116            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 16:52:17 2023
+26   1000000115            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 14:52:16 2023
+27   1000000114            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 13:58:24 2023
+28   1000000113            admin     netconf             YANG Frame  Wed Oct 25 13:54:28 2023
+29   1000000112            admin     netconf             YANG Frame  Wed Oct 25 13:54:17 2023
+30   1000000111            admin     netconf             YANG Frame  Wed Oct 25 13:54:07 2023
+31   1000000110            admin     netconf             YANG Frame  Wed Oct 25 13:52:55 2023
+32   1000000109            admin     netconf             YANG Frame  Wed Oct 25 13:52:46 2023
+33   1000000108            admin     netconf             YANG Frame  Wed Oct 25 13:52:36 2023
+34   1000000107            admin     vty2:node0_RP0_CPU  CLI         Wed Oct 25 13:38:23 2023
+35   1000000106            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 13:08:04 2023
+36   1000000105            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 13:04:26 2023
+37   1000000104            admin     vty1:node0_RP0_CPU  CLI         Wed Oct 25 12:52:17 2023
+38   1000000103            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 12:38:20 2023
+39   1000000102            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 12:29:48 2023
+40   1000000101            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 12:29:00 2023
+41   1000000100            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 12:23:08 2023
+42   1000000099            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 12:22:29 2023
+43   1000000098            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 12:03:15 2023
+44   1000000097            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 12:00:16 2023
+45   1000000096            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 11:41:19 2023
+46   1000000095            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 10:52:17 2023
+47   1000000094            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 08:52:21 2023
+48   1000000093            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 06:52:35 2023
+49   1000000092            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 04:52:23 2023
+50   1000000091            admin     /dev/pts/7          XML TTY Ag  Wed Oct 25 03:13:12 2023
+51   1000000090            admin     /dev/pts/7          XML TTY Ag  Wed Oct 25 03:12:07 2023
+52   1000000089            admin     vty1:node0_RP0_CPU  CLI         Wed Oct 25 02:52:20 2023
+53   1000000088            admin     vty0:node0_RP0_CPU  CLI         Wed Oct 25 00:52:19 2023
+54   1000000087            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 22:52:19 2023
+55   1000000086            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 20:52:21 2023
+56   1000000085            admin     vty1:node0_RP0_CPU  CLI         Tue Oct 24 18:52:20 2023
+57   1000000084            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 16:52:20 2023
+58   1000000083            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 14:52:20 2023
+59   1000000082            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 12:52:20 2023
+60   1000000081            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 10:52:21 2023
+61   1000000080            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 08:52:21 2023
+62   1000000079            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 06:52:21 2023
+63   1000000078            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 04:52:21 2023
+64   1000000077            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 02:52:54 2023
+65   1000000076            admin     vty0:node0_RP0_CPU  CLI         Tue Oct 24 00:52:22 2023
+66   1000000075            admin     vty1:node0_RP0_CPU  CLI         Mon Oct 23 22:52:39 2023
+67   1000000074            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 20:52:23 2023
+68   1000000073            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 20:32:49 2023
+69   1000000072            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 18:52:24 2023
+70   1000000071            admin     vty1:node0_RP0_CPU  CLI         Mon Oct 23 16:52:24 2023
+71   1000000070            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 15:47:02 2023
+72   1000000069            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 15:46:41 2023
+73   1000000068            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 15:46:24 2023
+74   1000000067            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 14:52:24 2023
+75   1000000066            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 13:03:16 2023
+76   1000000065            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 10:52:24 2023
+77   1000000064            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 08:52:24 2023
+78   1000000063            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 08:39:24 2023
+79   1000000062            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 06:52:25 2023
+80   1000000061            admin     vty1:node0_RP0_CPU  CLI         Mon Oct 23 04:52:25 2023
+81   PRUEBA_PUT1           admin     vty1:node0_RP0_CPU  CLI         Mon Oct 23 04:21:53 2023
+82   1000000059            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 02:52:26 2023
+83   1000000058            admin     vty0:node0_RP0_CPU  CLI         Mon Oct 23 00:52:26 2023
+84   1000000057            admin     vty0:node0_RP0_CPU  CLI         Sun Oct 22 22:52:26 2023
+85   1000000056            admin     vty0:node0_RP0_CPU  CLI         Sun Oct 22 20:52:26 2023
+86   1000000055            admin     vty0:node0_RP0_CPU  CLI         Sun Oct 22 18:52:27 2023
+87   1000000054            admin     vty2:node0_RP0_CPU  CLI         Sun Oct 22 16:52:27 2023
+88   1000000053            admin     /dev/pts/8          XML TTY Ag  Sun Oct 22 16:20:28 2023
+89   1000000052            admin     /dev/pts/7          XML TTY Ag  Sun Oct 22 16:14:38 2023
+90   1000000051            admin     /dev/pts/6          XML TTY Ag  Sun Oct 22 16:09:25 2023
+91   1000000050            admin     vty1:node0_RP0_CPU  CLI         Sun Oct 22 15:06:23 2023
+92   1000000049            admin     vty1:node0_RP0_CPU  CLI         Sun Oct 22 15:04:57 2023
+93   1000000048            admin     vty1:node0_RP0_CPU  CLI         Sun Oct 22 14:54:20 2023
+94   1000000047            admin     vty0:node0_RP0_CPU  CLI         Sun Oct 22 14:52:27 2023
+95   1000000046            admin     vty1:node0_RP0_CPU  CLI         Sun Oct 22 13:59:50 2023
+96   1000000045            admin     vty1:node0_RP0_CPU  CLI         Sun Oct 22 13:56:58 2023
+97   1000000044            admin     vty1:node0_RP0_CPU  CLI         Sun Oct 22 13:54:35 2023
+98   1000000043            admin     vty1:node0_RP0_CPU  CLI         Sun Oct 22 13:49:43 2023
+99   1000000042            admin     vty1:node0_RP0_CPU  CLI         Sun Oct 22 13:48:32 2023
+100  1000000041            admin     vty1:node0_RP0_CPU  CLI         Sun Oct 22 13:47:22 2023

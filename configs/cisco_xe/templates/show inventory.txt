@@ -9,4 +9,3 @@ PID: NM-1FE-TX=        , VID: 1.0, SN: 7720321
 
 NAME: "One port Fastethernet TX", DESCR: "One port Fastethernet TX"
 PID: NM-1FE-TX=        , VID: 1.0, SN: 7720321
-

@@ -1,3 +1,0 @@
-RP/0/RP0/CPU0:router# show clock
-  
-16:18:28.927 PST Tue Feb 10 2009
