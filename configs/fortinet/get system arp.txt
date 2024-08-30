@@ -1,0 +1,4 @@
+FortiGate-VM64-KVM # get system arp
+Address           Age(min)   Hardware Addr      Interface
+192.168.1.13      2          70:71:bc:76:bf:60 port1
+192.168.1.254     2          5c:f9:fd:78:24:30 port1

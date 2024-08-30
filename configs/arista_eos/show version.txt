@@ -1,0 +1,13 @@
+Arista vEOS
+Hardware version:
+Serial number:
+System MAC address:  5000.00d5.e2ad
+
+Software image version: 4.21.1.1F
+Architecture:           i386
+Internal build version: 4.21.1.1F-10146868.42111F
+Internal build ID:      ed3973a9-79db-4acc-b9ac-19b9622d23e2
+
+Uptime:                 0 weeks, 0 days, 0 hours and 37 minutes
+Total memory:           2016548 kB
+Free memory:            1391672 kB

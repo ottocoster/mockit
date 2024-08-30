@@ -1,0 +1,15 @@
+[admin@MikroTik] > ip neighbor print
+Columns: INTERFACE, ADDRESS, MAC-ADDRESS, IDENTITY
+#  INTERFACE  ADDRESS       MAC-ADDRESS        IDENTITY
+0  ether5     192.168.3.6   88:DC:97:01:2F:9F  ENS500-HUIS
+   bridge
+1  ether6                   00:0C:29:F1:D9:B3
+   bridge
+2  ether6     192.168.3.90  FC:EC:DA:FC:86:58  Keuken
+   bridge
+3  ether6     192.168.3.91  FC:EC:DA:FC:88:98  Boven
+   bridge
+4  ether6     192.168.3.92  FC:EC:DA:FC:86:B3  Kelder
+   bridge
+5  ether6     192.168.3.93  E0:63:DA:67:92:D6  Schuur
+   bridge

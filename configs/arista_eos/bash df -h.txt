@@ -1,0 +1,8 @@
+Filesystem      Size  Used Avail Use% Mounted on
+none            569M   67M  503M  12% /
+none            569M   67M  503M  12% /.overlay
+tmpfs           1.9G     0  1.9G   0% /var/run/netns
+tmpfs           380M  380M     0 100% /var/core
+tmpfs           380M  380M     0 100% /var/log
+tmpfs           948M   78M  871M   9% /var/shmem
+/dev/sda1       3.7G  2.7G  1.1G  72% /mnt/flash
