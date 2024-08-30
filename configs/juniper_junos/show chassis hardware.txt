@@ -1,0 +1,21 @@
+teste@test> show chassis hardware
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                CC029             JNP204 [MX204]
+Routing Engine 0          BUILTIN      BUILTIN           RE-S-1600x8
+CB 0             REV 34   750-069579   CAMY8962          JNP204 [MX204]
+FPC 0                     BUILTIN      BUILTIN           MPC
+  PIC 0                   BUILTIN      BUILTIN           4XQSFP28 PIC
+    Xcvr 0                NON-JNPR     XET163000081      QSFP-100GBASE-LR4
+    Xcvr 2                NON-JNPR     FA34185200175     QSFP28-100G-AOC-1M
+  PIC 1                   BUILTIN      BUILTIN           8XSFPP PIC
+    Xcvr 0       REV 01   740-009029   ZZ150429006       SFP+-10G-LR
+    Xcvr 1       REV 01   740-009029   ZZ150429003       SFP+-10G-LR
+    Xcvr 2       REV 01   740-021309   VE180702728       SFP+-10G-LR
+    Xcvr 6       REV 01   740-011614   VE212726455       SFP-LX10
+    Xcvr 7       REV 01   740-011614   VE212726457       SFP-LX10
+PEM 0            REV 04   740-070749   1F189201840       JPSU-650W-AC-AO
+PEM 1            REV 04   740-070749   1F189201801       JPSU-650W-AC-AO
+Fan Tray 0                                               Fan Tray, Front to Back Airflow - AFO
+Fan Tray 1                                               Fan Tray, Front to Back Airflow - AFO
+Fan Tray 2                                               Fan Tray, Front to Back Airflow - AFO

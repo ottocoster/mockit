@@ -1,0 +1,19 @@
+Devicename# sh arp
+
+ IP ARP table
+
+  IP Address       MAC Address       Type    Port
+  ---------------  ----------------- ------- ----
+  172.16.171.1      56ef90-8d9e82     dynamic 2/1
+  192.168.12.2      040973-a26c4a     dynamic Trk1
+  192.168.12.3      12cd56-8c28e0     dynamic Trk2
+  192.168.12.4      23ab67-7ae680     dynamic Trk3
+  192.168.12.16     12cd56-8c1af0     dynamic Trk3
+  192.168.12.17     23ab67-c6c315     dynamic 3/8
+  192.168.12.18     23ab67-c6f200     dynamic Trk3
+  192.168.12.19     23ab67-c66745     dynamic 4/8
+  192.168.12.21     56ef90-fb0ce5     dynamic 3/9
+  192.168.12.22     187a3b-bd6475     dynamic 3/9
+  192.168.12.24     23ab67-c6f4f5     dynamic 3/15
+  192.168.12.25     23ab67-c65500     dynamic Trk3
+  192.168.12.26     23ab67-c69345     dynamic 4/15

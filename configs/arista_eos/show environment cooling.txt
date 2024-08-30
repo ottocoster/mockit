@@ -1,0 +1,13 @@
+
+System cooling status is: Ok
+Ambient temperature: 23C
+Airflow: port-side intake
+Config Actual Speed Stable
+Fan Status Speed Speed Uptime Stability Uptime
+————– —— —— —— ——- ———– ——-
+1/1 Ok 30% 31% 1:06:59 Stable 1:06:41
+2/1 Ok 30% 31% 1:06:59 Stable 1:06:41
+3/1 Ok 30% 31% 1:06:59 Stable 1:06:41
+4/1 Ok 30% 30% 1:06:59 Stable 1:06:39
+PowerSupply1/1 Ok 30% 34% 1:06:37 FW Override N/A
+PowerSupply2/1 Ok 30% 33% 1:06:38 FW Override N/A

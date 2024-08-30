@@ -1,0 +1,47 @@
+Devicename# show mac-address
+
+ Status and Counters - Port Address Table
+
+  MAC Address       Port                            VLAN
+  ----------------- ------------------------------- ----
+  185a58-de87b1     1/1                             5
+  e023ff-3af7e0     2/2                             5
+  0004a5-1842d3     1/32                            10
+  0004a5-1842f4     1/36                            10
+  000c29-543410     2/13                            10
+  000c29-d5b6b0     2/21                            10
+  000ec6-5cb39b     Trk1                            10
+  00215e-1c4a7d     2/17                            10
+  004e35-c143d0     1/43                            10
+  004e35-c17522     1/41                            10
+  00a0b8-4a7ef1     2/15                            10
+  00e007-0ff6bc     2/12                            10
+  00e04c-680479     Trk1                            10
+  086ac5-2109bc     Trk1                            10
+  088e90-3f61b9     Trk1                            10
+  349f7b-5ac7dd     Trk1                            10
+  349f7b-d1165f     Trk1                            10
+  3887d5-9a6023     1/42                            10
+  4c1d96-1bf657     1/41                            10
+  4c1d96-1c58a4     Trk1                            10
+  505a65-c53584     Trk1                            10
+  5c5eef-eba32c     Trk1                            10
+  5c5eef-ff4903     Trk1                            10
+  7c573c-c4bc1a     Trk1                            10
+  7c573c-c4befa     1/42                            10
+  807c62-16506f     Trk1                            10
+  883a30-9e728a     Trk1                            10
+  883a30-9ed14e     Trk1                            10
+  94e6f7-b698e2     Trk1                            10
+  a02942-d2de71     Trk1                            10
+  b07d64-db2883     1/42                            10
+  b07d64-dcc26f     1/42                            10
+  c42360-9bf5d7     Trk1                            10
+  c81fea-e90d7d     2/11                            10
+  e0ccac-004769     1/39                            10
+  e0ccac-004770     1/38                            10
+  ea7834-aa508f     Trk1                            10
+
+
+
+

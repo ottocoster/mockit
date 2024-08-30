@@ -1,0 +1,13 @@
+FortiADC-VM # get router info routing-table all
+
+Codes: K - kernel route, C - connected, S - static, O - OSPF, P - PPPoE
+
+> - selected route, * - FIB route
+
+ 
+
+S>* 0.0.0.0/0 [10/0] via 172.30.147.254, port1
+
+C>* 169.254.0.0/16 is directly connected, haport0
+
+C>* 172.30.144.0/22 is directly connected, port1

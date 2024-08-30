@@ -1,0 +1,12 @@
+[admin@MikroTik_PatchBox_Office] > ip neighbor print
+ # INTERFACE ADDRESS                                                                                                                                           MAC-ADDRESS       IDENTITY   VERSION    BOARD
+ 0 ether1    192.168.3.1                                                                                                                                       2C:C8:1B:63:4A:28 MikroTik   7.11.2 ... RB4011iGS+
+   bridge
+ 1 ether1    192.168.3.90                                                                                                                                      FC:EC:DA:FC:86:58 Keuken
+   bridge
+ 2 ether1    192.168.3.91                                                                                                                                      FC:EC:DA:FC:88:98 Boven
+   bridge
+ 3 ether1    192.168.3.92                                                                                                                                      FC:EC:DA:FC:86:B3 Kelder
+   bridge
+ 4 ether1    192.168.3.93                                                                                                                                      E0:63:DA:67:92:D6 Schuur
+   bridge

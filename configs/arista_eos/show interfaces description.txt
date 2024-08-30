@@ -1,0 +1,12 @@
+switch> show interfaces ethernet 1-10 description
+Interface                      Status         Protocol Description
+Et1                            up             up       ctar_01
+Et2                            up             up       ctar_02
+Et3                            up             up       ctar_03
+Et4                            up             up       fobd_01
+Et5                            up             up       fobd_02
+Et6                            up             up       yzrq_01
+Et7                            up             up       yzrq_02
+Et8                            down           down     yzrq_03
+Et9                            up             up       yzrq_04
+Et10                           up             up       yzrq_05

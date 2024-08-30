@@ -1,0 +1,37 @@
+
+Thu Oct 26 03:35:39.486 UTC
+
+               Intf       Intf        LineP              Encap  MTU        BW
+               Name       State       State               Type (byte)    (Kbps)
+--------------------------------------------------------------------------------
+               Lo50          up          up           Loopback  1500          0
+              Lo100          up          up           Loopback  1500          0
+              Lo101          up          up           Loopback  1500          0
+              Lo200          up          up           Loopback  1500          0
+              Lo555          up          up           Loopback  1500          0
+             Lo1010          up          up           Loopback  1500          0
+             Lo2000          up          up           Loopback  1500          0
+             Lo2010          up          up           Loopback  1500          0
+             Lo2020          up          up           Loopback  1500          0
+             Lo2050          up          up           Loopback  1500          0
+             Lo2150          up          up           Loopback  1500          0
+             Lo3000          up          up           Loopback  1500          0
+             Lo3010          up          up           Loopback  1500          0
+             Lo3055          up          up           Loopback  1500          0
+             Lo3060          up          up           Loopback  1500          0
+             Lo3333          up          up           Loopback  1500          0
+             Lo4000          up          up           Loopback  1500          0
+            Lo10001          up          up           Loopback  1500          0
+            Lo10005          up          up           Loopback  1500          0
+            Lo10010          up          up           Loopback  1500          0
+            Lo10011          up          up           Loopback  1500          0
+            Lo10012          up          up           Loopback  1500          0
+                Nu0          up          up               Null  1500          0
+     Mg0/RP0/CPU0/0          up          up               ARPA  1514    1000000
+          Gi0/0/0/0        down        down               ARPA  1514    1000000
+          Gi0/0/0/1  admin-down  admin-down               ARPA  1514    1000000
+          Gi0/0/0/2  admin-down  admin-down               ARPA  1514    1000000
+          Gi0/0/0/3  admin-down  admin-down               ARPA  1514    1000000
+          Gi0/0/0/4  admin-down  admin-down               ARPA  1514    1000000
+          Gi0/0/0/5  admin-down  admin-down               ARPA  1514    1000000
+          Gi0/0/0/6  admin-down  admin-down               ARPA  1514    1000000
