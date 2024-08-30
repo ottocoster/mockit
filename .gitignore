@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+.env
 
 # docker-compose override file
 docker-compose.override.yml

@@ -1,19 +1,20 @@
 name: devices
 services:
-  arista_eos:
+  a10:
     build: .
     environment:
-      - DEVICE_TYPE=arista_eos
+      - DEVICE_TYPE=a10
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       - NETCONF_USERNAME=test
       - NETCONF_PASSWORD=test
       - OPENAI_SUPPORT=true
-      - OPENAI_APIKEY=
       # - DEVICE_VERSION=v6
       # - DEVICE_DELAY=1
       # - LOGIN_DELAY=3
       # - LOGIN_RETRY=2
+    env_file:
+      - .env
     networks:
       - devices-network
     ports:

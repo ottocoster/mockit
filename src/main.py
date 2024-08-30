@@ -45,6 +45,8 @@ def main():
         "snmpv3_authkey": os.environ.get("SNMP_V3_AUTH_KEY", ""),
         "snmpv3_privtype": os.environ.get("SNMP_V3_PRIV_TYPE", "none"),
         "snmpv3_privkey": os.environ.get("SNMP_V3_PRIV_KEY", ""),
+        "openai_support": str(os.environ.get("OPENAI_SUPPORT", "false")).lower() == "true",
+        "openai_apikey": os.environ.get("OPENAI_APIKEY", ""),
     }
 
     options_netconf = {

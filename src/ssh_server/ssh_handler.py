@@ -9,7 +9,6 @@ import re
 from openai import OpenAI
 logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
 
-
 class SSH_Handler:
 
     def __init__(self, process: SSHServerProcess, options):
@@ -24,8 +23,6 @@ class SSH_Handler:
         self.device_type = options['device_type']
         self.device_version = options["device_version"]
         self.new_line = options['new_line']
-        self.openai_support = options['openai_support']
-        self.openai_apikey = options['openai_apikey']
         self.pri_terminator = "#"
         self.alt_terminator = ">"
         self.enable = True
@@ -42,6 +39,14 @@ class SSH_Handler:
         self._load_script_function(f"{config_dir}/scripts", "handle_command")
 
         self.set_prompt_terminator(pri_terminator="#", alt_terminator=">")
+
+        self.openai_support = options['openai_support']
+        self.openai_apikey = options['openai_apikey']
+        if self.openai_support:
+            self.openai_client = OpenAI(
+                api_key=self.openai_apikey,
+            )
+
 
     def _load_script_function(self, script_path, function_name):
         # Convert the file system path to a module path by replacing slashes with dots
@@ -131,13 +136,7 @@ class SSH_Handler:
         """
         model = "gpt-4o"
 
-        openai_api_key = self.openai_apikey
-
-        openai_client = OpenAI(
-            api_key=openai_api_key,
-        )
-
-        chat_completion = openai_client.chat.completions.create(
+        chat_completion = self.openai_client.chat.completions.create(
             messages=[
                     {"role": "system", "content": "You are a AI vendor assistant that return outputs of speical devices."},
                     {"role": "user", "content": prompt}
@@ -145,6 +144,7 @@ class SSH_Handler:
             model=model,
         )
         message_content = chat_completion.choices[0].message.content
+        message_content = message_content.replace("```", "")
         self.logger.info(f"get_ai_output output {message_content}")
         
         return message_content
@@ -211,10 +211,6 @@ class SSH_Handler:
             return True
 
         
-        # if self.openai_support:
-        #     self.respond(self.get_ai_output(command))
-        #     return True
-
         # Handle script functions
         custom_script_output = self.handle_script_function(command)
         if custom_script_output:
@@ -250,7 +246,6 @@ class SSH_Handler:
             self.respond(command[5:])
             return True
 
-
         if command in self.break_commands:
             return False
 
@@ -258,6 +253,10 @@ class SSH_Handler:
         if command == "enable" or command == "disable":
             self.enable = command == "enable"
             self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+
+        if self.openai_support:
+            self.respond(self.get_ai_output(command))
+            return True
 
         self.respond()
         self.logger.error(f"Command not found `{self.device_type}`: `{command}`")
