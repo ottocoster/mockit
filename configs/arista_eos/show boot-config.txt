@@ -1,6 +1,0 @@
-switch(config)#show boot-config
-Software image: flash:/EOS.swi
-Console speed: 2400
-Aboot password (encrypted): $1$A8dZ3GLZ$knKrBpTyg5dhmtGdCdwNM.
-Memory test iterations: (not set)
-switch(config)#

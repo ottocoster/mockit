@@ -1,7 +1,0 @@
-[admin@MikroTik] > system clock print
-                  time: 14:59:42
-                  date: 2023-10-26
-  time-zone-autodetect: yes
-        time-zone-name: Europe/Amsterdam
-            gmt-offset: +02:00
-            dst-active: yes

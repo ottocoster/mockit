@@ -1,7 +1,0 @@
-[admin@MikroTik_PatchBox_Office] > system clock print
-                  time: 11:58:41
-                  date: nov/02/2023
-  time-zone-autodetect: yes
-        time-zone-name: Europe/Amsterdam
-            gmt-offset: +01:00
-            dst-active: no

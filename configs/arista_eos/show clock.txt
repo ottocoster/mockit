@@ -1,3 +1,0 @@
-switch(config)#show clock
-Mon Jan 14 16:32:46 2013
-timezone is America/Los_Angeles

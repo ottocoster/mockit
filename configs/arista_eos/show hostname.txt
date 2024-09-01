@@ -1,3 +1,0 @@
-switch>show hostname
-Hostname: switch_1
-FQDN: switch_1.aristanetworks.com

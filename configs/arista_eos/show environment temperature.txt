@@ -1,9 +1,0 @@
-System temperature status is: Ok
-                                               Alert      Critical
-Sensor  Description               Temperature  Threshold  Threshold
-------- ------------------------- ------------ ---------- ----------
-1       Front-panel temp sensor   22.000C       65C        75C
-2       Fan controller 1 sensor   23.000C       75C        85C
-3       Fan controller 2 sensor   28.000C       75C        85C
-4       Switch chip 1 sensor      40.000C       105C       115C
-5       VRM 1 temp sensor         48.000C       105C       110C
