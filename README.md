@@ -4,7 +4,7 @@
 
 ## Getting started
 
-1. Store your config files, script logic, or SNMP output for the vendor you want to imitate in the /config/<device> folder. By default, we have provided a library of examples that you can use out of the box.
+1. Store your config files, script logic, or SNMP output for the vendor you want to imitate in the `/config/<device_type>` folder. By default, we have provided a library of examples that you can use out of the box.
 2. Modify the compose file to specify the Device OS you would like to imitate.
 3. Run: docker compose up -d --build
 4. Log in via SSH through the terminal, or run your network automation script against it.
@@ -13,17 +13,17 @@
 
 It's possible to store different configurations for an OS per version. For example, for Mikrotik, we currently support multiple versions. You can switch between them using DEVICE_VERSION. You can see how it's set up in /config/mikrotik_routeros/.
 
-You can do the same for your own configurations by adding a folder to the /config/<device> directory and using the folder name as the DEVICE_VERSION.
+You can do the same for your own configurations by adding a folder to the `/config/<device_type>/<device_version>` directory and using the folder name as the DEVICE_VERSION.
 
 ## SSH Server
 
 ### Add a static command
 
-You can add a static command response in `/config/<device>/templates`. The name of the file has to equal the command being executed.
+You can add a static command response in `/config/<device_type>/templates`. The name of the file has to equal the command being executed.
 
 ### Add a dynamic command
 
-You can create a dynamic command response in /config/<device>/scripts. Whenever a command is executed, it first goes through the def handle_command function in __init__.py. This allows you to use Python logic to generate your response.
+You can create a dynamic command response in `/config/<device_type>/scripts`. Whenever a command is executed, it first goes through the def handle_command function in __init__.py. This allows you to use Python logic to generate your response.
 For example:
 
 ```python
@@ -69,15 +69,15 @@ services:
 
 ### Info
 
-It's possible to map a volume to include your own scripts and templates. By default, the container will use /config/<device>/. To connect to the device remotely via SSH, port 22 is opened, and for SNMP, port 161/UDP is used.
+It's possible to map a volume to include your own scripts and templates. By default, the container will use `/config/<device_type>/`. To connect to the device remotely via SSH, port 22 is opened, and for SNMP, port 161/UDP is used.
 
 Environment Options
 - DEVICE_TYPE: Supported device types you want to imitate.
+- DEVICE_VERSION: Incase your device has different subfolders because of versioning. Look at Mikrotik_routeros as an example.
 
 Environment SSH Options
 - SSH_USERNAME: SSH username.
 - SSH_PASSWORD: SSH password.
-- DEVICE_VERSION: Incase your device has different subfolders because of versioning. Look at Mikrotik_routeros as an example.
 - DEVICE_DELAY: Adds a delay (in seconds) before responding to a command.
 - LOGIN_DELAY: Adds a delay (in seconds) before the server accepts an SSH connection.
 - LOGIN_RETRY: Defines the number of retries allowed for login attempts.
