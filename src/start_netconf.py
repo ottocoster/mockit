@@ -1,12 +1,14 @@
-from netconf import NetconfServer
+from netconf.netconf import AsyncNetconfServer
 import logging
 import asyncio
+
+logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
 
 async def start_netconf(options):
     logger = logging.getLogger()
         
     # Create and start the NetconfServer instance
-    nc_server = NetconfServer()
+    nc_server = AsyncNetconfServer()
 
     # Set properties on the server
     nc_server.base_version = "1.1"
