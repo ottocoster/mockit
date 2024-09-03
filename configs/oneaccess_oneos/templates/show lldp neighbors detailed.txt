@@ -1,0 +1,22 @@
+TEST-HOSTNAME#one
+Neighbors of interface GigabitEthernet 0/8:
+ Chassis ID 94:43:4D:C5:AB:C0  - Port ID 12:
+  hold-time : 105
+  port-desc : SO-RRER-7211 Test - CID:1-
+  sys-name  : VTY-Ciena.5160-SW01515
+  sys-desc  : Ciena 5160 Service Aggregation Switch
+  sys-caps  : Bridge
+    enabled : Bridge
+  mgmt-addr : 10.110.45.25, fe80::9643:4dff:fec5:abc1
+  OUI-specific info:
+   MAC/PHY details:
+    auto-negotiation supported : yes
+    auto-negotiation status    : disabled
+    auto-negotiation adv caps  : _1000BaseX,_1000BaseXFD
+    operational MAU Type       : dot3MauType1000BaseLXFD
+   Max frame-size: 10000
+
+
+Neighbors of interface GigabitEthernet 0/9:
+
+TEST-HOSTNAME#

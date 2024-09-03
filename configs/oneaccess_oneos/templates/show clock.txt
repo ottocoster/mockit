@@ -1,0 +1,2 @@
+TEST-HOSTNAME#show clock
+Date : 26/08/24 15:51:46

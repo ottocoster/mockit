@@ -1,0 +1,9 @@
+TEST-HOSTNAME#show ip route
+Codes: C - connected, S - static, R - RIP, s - IPSec
+       O - OSPF, o - Others, B - eBGP, b - iBGP
+       I - OSPF intra area, IA - OSPF inter area, E1/E2 - OSPF external type 1/2
+       N1/N2 - OSPF NSSA external type 1/2, p - PPP
+
+S    default [1/0] via 10.9.74.101, GigabitEthernet 0/8.622
+C    10.9.74.100/30 is directly connected, GigabitEthernet 0/8.622
+TEST-HOSTNAME#
