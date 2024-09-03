@@ -1,0 +1,7 @@
+TEST-HOSTNAME#show vlans
+802.1Q Virtual LAN: , VLAN ID: 144, Default user priority: 0
+  IN:  7816139 packets, 723342567 bytes
+  OUT: 4319409 packets, 562221301 bytes
+802.1Q Virtual LAN: , VLAN ID: 4000, Default user priority: 0
+  IN:  171665871 packets, 127285744302 bytes
+  OUT: 189924489 packets, 86920405479 bytes

@@ -1,0 +1,8 @@
+TEST-HOSTNAME#show bridge-group mac-address-table
+Bridge-group 100:
+ VLAN learning mode: shared
+ MAC Address        Age        Interface                Type
+ 34:6b:5b:e1:05:3b  0s         GigabitEthernet 0/8.4000 dynamic
+ 4c:e9:e4:41:a1:9d  0s         GigabitEthernet 0/1      dynamic
+ 00:27:0d:b3:1d:bf  7s         GigabitEthernet 0/8.4000 dynamic
+ ac:89:d2:63:fb:5f  7s         GigabitEthernet 0/1      dynamic

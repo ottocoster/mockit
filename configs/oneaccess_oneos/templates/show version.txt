@@ -1,0 +1,4 @@
+TEST-HOSTNAME#show version
+Software version    : OneOS-pCPE-ARMv8_pi1-6.12.x7
+Software created on : 2023-11-24 13:11:25
+TEST-HOSTNAME#

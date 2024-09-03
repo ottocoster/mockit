@@ -1,0 +1,6 @@
+TEST-HOST-NAME#show arp
+
+Protocol Address  Hardware Address   Timeout      Interface              Type
+10.19.74.101       b4:8a:5f:9e:e3:4c  01:56:01     GigabitEthernet 0/8.622 ARPA
+
+TEST-HOST-NAME#
