@@ -1,4 +1,5 @@
 from pysnmp.hlapi import *
+from pysnmp.hlapi.asyncore import *
 
 def snmp_get(snmp_target, community='public', snmp_port=161, oid='1.3.6.1.2.1.1.1.0'):
     try:
