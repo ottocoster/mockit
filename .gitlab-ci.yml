@@ -1,6 +1,7 @@
 stages:
   - build
   - test
+  - push
 
 build:
   image: docker:latest
@@ -18,11 +19,7 @@ build:
       LATEST="latest-${CI_COMMIT_REF_NAME}"; fi
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE:${VERSION} .
-    - docker save -o "slurpit-device-imitator-${VERSION}.tar.gz"
-      $CI_REGISTRY_IMAGE:${VERSION}
-    - docker push $CI_REGISTRY_IMAGE:${VERSION}
-    - docker tag $CI_REGISTRY_IMAGE:${VERSION} $CI_REGISTRY_IMAGE:${LATEST}
-    - docker push $CI_REGISTRY_IMAGE:${LATEST}
+    - docker save -o "slurpit-device-imitator-${VERSION}.tar.gz" $CI_REGISTRY_IMAGE:${VERSION}
   artifacts:
     paths:
       - slurpit-device-imitator-*.tar.gz
@@ -67,5 +64,31 @@ unit_test:
       - $CI_PROJECT_DIR/logs/*
     name: test-results
     expire_in: 1 month
+  needs:
+    - build
+
+push:
+  image: docker:latest
+  stage: push
+  services:
+    - docker:dind
+  script:
+    - MAJOR=$(sed -n 's/^MAJOR *= *\(.*\)/\1/p' src/version.py)
+    - MINOR=$(sed -n 's/^MINOR *= *\(.*\)/\1/p' src/version.py)
+    - COMMIT=$(sed -n 's/^COMMIT *= *\(.*\)/\1/p' src/version.py)
+    - VERSION="${MAJOR}.${MINOR}.${COMMIT}"
+    - LATEST="latest"
+    - if [[ "$CI_COMMIT_REF_NAME" != "main" ]]; then
+      VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_NAME}";
+      LATEST="latest-${CI_COMMIT_REF_NAME}"; fi
+    - docker push $CI_REGISTRY_IMAGE:${VERSION}
+    - docker tag $CI_REGISTRY_IMAGE:${VERSION} $CI_REGISTRY_IMAGE:${LATEST}
+    - docker push $CI_REGISTRY_IMAGE:${LATEST}
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request" || $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - when: on_success
   needs:
     - build
