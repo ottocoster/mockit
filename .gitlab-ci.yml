@@ -1,5 +1,6 @@
 stages:
   - build
+  - test
   - push
   
 image: docker:latest
@@ -24,22 +25,54 @@ build:
   script:
     - docker build -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} .
     - docker save -o "${IMAGE_FILE}" $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
-    - ls -la
   artifacts:
     paths:
       - ${IMAGE_FILE}
     name: slurpit-mockit
     expire_in: 6 month
-  cache:
-    key:
-      files:
-        - ${IMAGE_FILE}
+
+unit_test:
+  stage: test
+  script:
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml up -d --build
+    - sleep 60
+    - docker exec devices-test_container pytest --color=yes -v --durations 0 -m test_set1 -rP
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml stop || true
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml up -d --build
+    - sleep 60
+    - docker exec devices-test_container pytest --color=yes -v --durations 0 -m test_set2 -rP
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml stop || true
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml up -d --build
+    - sleep 60
+    - docker exec devices-test_container pytest --color=yes -v --durations 0 -m test_set3 -rP
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml stop || true
+  after_script:
+    - mkdir $CI_PROJECT_DIR/logs 
+    - |
+      for container_id in $(docker compose ps -qa); do
+        container_name=$(docker inspect --format='{{.Config.Image}}' $container_id)
+        docker logs $container_name > $CI_PROJECT_DIR/logs/logs_${container_name}.txt 2>&1 || true
+      done
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml down -v || true
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml down -v || true
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml down -v || true
+    - docker system prune --volumes -f || true
+  artifacts:
+    when: always
+    paths:
+      - $CI_PROJECT_DIR/logs/*
+    name: test-results
+    expire_in: 1 month
+  needs:
+    - build
 
 push:
   stage: push
   script:
-    - ls -la
-    - docker load -i "${IMAGE_FILE}"
+    - docker build -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} .
     - docker push $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
     - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $CI_REGISTRY_IMAGE:${IMAGE_TAG}
     - docker push $CI_REGISTRY_IMAGE:${IMAGE_TAG}
@@ -50,4 +83,4 @@ push:
       when: never
     - when: on_success
   needs:
-    - build
+    - unit_test
