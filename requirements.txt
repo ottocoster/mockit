@@ -1,3 +1,5 @@
 asyncssh
 pysnmp-lextudio==5.0.34
 netmiko
+openai
+pytest-netconf

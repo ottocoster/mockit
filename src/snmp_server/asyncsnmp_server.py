@@ -8,6 +8,8 @@ from pysnmp.entity import engine, config
 from pysnmp.entity.rfc3413 import cmdrsp, context
 from pysnmp.carrier.asyncio.dgram import udp
 from pysnmp.debug import setLogger, Debug
+from openai import OpenAI
+
 import logging
 import os
 import json
@@ -64,14 +66,6 @@ async def start_server(options):
     snmpContext = context.SnmpContext(snmpEngine)
     mibBuilder = snmpContext.getMibInstrum().getMibBuilder()
 
-    # # Default MIB values
-    # default_mibs = {
-    #     "SNMPv2-MIB": [
-    #         {"name": "sysDescr", "type": "string", "value": "Default System Description"},
-    #         {"name": "sysObjectID", "type": "id", "oid": "1.3.6.1.4.1.8072.3.2.10"}
-    #     ]
-    # }
-
    # Load SNMP MIBs from JSON file or use default values
     file = os.path.join(f"/configs/{options['device_type']}", "snmp.json")
     if options['device_version']:
@@ -81,10 +75,12 @@ async def start_server(options):
             with open(file, "r") as f:
                 for key, value in json.loads(f.read()).items():
                     set_mibs(mibBuilder, key, value)
-        # else:
-        #     logger.warning(f"Unable to find {file}, using default MIB values")
-        #     for key, value in default_mibs.items():
-        #         set_mibs(mibBuilder, key, value)
+        else:
+            logger.warning(f"Unable to find {file}, using default MIB values")
+            if options['openai_support']:
+                snmp_dict = get_ai_snmp_json(options['device_type'], options['device_version'], options['openai_apikey'])
+                for key, value in snmp_dict.items():
+                    set_mibs(mibBuilder, key, value)
     except Exception as e:
         logger.error("Something went wrong loading SNMP info")
         logger.exception(e)
@@ -97,6 +93,65 @@ async def start_server(options):
     cmdrsp.BulkCommandResponder(snmpEngine, snmpContext)
 
     logger.info("Started SNMP server successfully")
+
+def get_ai_snmp_json(device_type, device_version, openai_apikey):
+    logger.info("get_ai_snmp_json called")
+
+    prompt = """
+    ### Example snmp json file
+    {
+        "SNMPv2-MIB": [
+            {
+                "name": "sysName",
+                "type": "string",
+                "value": "arista_eos.some.net"
+            },
+            {
+                "name": "sysDescr",
+                "type": "string",
+                "value": "Arista Networks EOS version 4.21.1.1F running on an Arista Networks vEOS"
+            },
+            {
+                "name": "sysObjectID",
+                "type": "id",
+                "oid": "1.3.6.1.4.1.30065.1.2759"
+            }
+        ]
+    }
+    ###
+    """ + f"""
+    ### Device type
+    {device_type}
+    ###
+
+
+    ### Device version
+    {device_version}
+    ###
+
+    Please generate a snmp json content based on above information without any explanation and markdown format.
+    """
+    model = "gpt-4o"
+
+    openai_api_key = openai_apikey
+
+    openai_client = OpenAI(
+        api_key=openai_api_key,
+    )
+
+    chat_completion = openai_client.chat.completions.create(
+        messages=[
+                {"role": "system", "content": "You are a AI SNMP assitant that generate a snmp.json content"},
+                {"role": "user", "content": prompt}
+        ],
+        model=model,
+    )
+    message_content = chat_completion.choices[0].message.content
+    message_content = message_content.replace("```", "")
+    logger.info(f"get_ai_output output {message_content}")
+    snmp_dict = json.loads(message_content)
+
+    return snmp_dict
 
 def set_mibs(mibBuilder, key, values):
     """

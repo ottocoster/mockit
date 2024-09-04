@@ -25,6 +25,8 @@ def main():
         "delay": int(os.environ.get("DEVICE_DELAY", 0)),
         "login_delay": int(os.environ.get("LOGIN_DELAY", 0)),
         "login_retry": int(os.environ.get("LOGIN_RETRY", 0)),
+        "openai_support": str(os.environ.get("OPENAI_SUPPORT", "false")).lower() == "true",
+        "openai_apikey": os.environ.get("OPENAI_APIKEY", ""),
         "device_version": device_version
     }
     
@@ -41,6 +43,8 @@ def main():
         "snmpv3_authkey": os.environ.get("SNMP_V3_AUTH_KEY", ""),
         "snmpv3_privtype": os.environ.get("SNMP_V3_PRIV_TYPE", "none"),
         "snmpv3_privkey": os.environ.get("SNMP_V3_PRIV_KEY", ""),
+        "openai_support": str(os.environ.get("OPENAI_SUPPORT", "false")).lower() == "true",
+        "openai_apikey": os.environ.get("OPENAI_APIKEY", ""),
     }
 
     options_netconf = {
@@ -52,10 +56,10 @@ def main():
     
     
     loop = asyncio.get_event_loop()
-    if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
-        loop.create_task(start_ssh(options_ssh))
-    if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
-        loop.create_task(asyncsnmp_server.start_server(options_snmp))
+    # if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
+    #     loop.create_task(start_ssh(options_ssh))
+    # if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
+    #     loop.create_task(asyncsnmp_server.start_server(options_snmp))
     if str(os.environ.get("NETCONF_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_netconf(options_netconf))
         

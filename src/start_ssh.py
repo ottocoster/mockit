@@ -3,6 +3,8 @@ import asyncssh
 from asyncssh.process import SSHServerProcess
 from netmiko import ConnectHandler
 import importlib
+logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
+
 
 server_class = None
 handler_class = None
