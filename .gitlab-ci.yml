@@ -24,6 +24,7 @@ build:
   script:
     - docker build -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} .
     - docker save -o "${IMAGE_FILE}" $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
+    - ls -la
   artifacts:
     paths:
       - ${IMAGE_FILE}
