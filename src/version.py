@@ -1,4 +1,4 @@
 MAJOR = 1
 MINOR = 0
-COMMIT = 7
+COMMIT = 8
 version = f'{MAJOR}.{MINOR}.{COMMIT}'
