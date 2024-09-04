@@ -30,6 +30,10 @@ build:
       - ${IMAGE_FILE}
     name: slurpit-mockit
     expire_in: 6 month
+  cache:
+    key:
+      files:
+        - ${IMAGE_FILE}
 
 push:
   stage: push
