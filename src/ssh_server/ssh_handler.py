@@ -203,7 +203,8 @@ class SSH_Handler:
         """
         self.logger.info(f"Received `{command}`")
 
-        await asyncio.sleep(self.delay)
+        if self.delay:
+            await asyncio.sleep(self.delay)
 
         if command[-1] == '?':
             self.handle_help_commands(command)

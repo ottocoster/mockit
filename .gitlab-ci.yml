@@ -17,17 +17,18 @@ before_script:
     export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_NAME}";
     export IMAGE_TAG="latest-${CI_COMMIT_REF_NAME}"; 
     fi
+  - export IMAGE_FILE="slurpit-mockit-${IMAGE_VERSION}.tar.gz"
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
 
 build:
   stage: build
   script:
     - docker build -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} .
-    - docker save -o "slurpit-device-imitator-${IMAGE_VERSION}.tar.gz" $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
+    - docker save -o "${IMAGE_FILE}" $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
   artifacts:
     paths:
-      - slurpit-device-imitator-*.tar.gz
-    name: slurpit-device-imitator
+      - ${IMAGE_FILE}
+    name: slurpit-mockit
     expire_in: 6 month
 
 unit_test:
@@ -71,7 +72,7 @@ unit_test:
 push:
   stage: push
   script:
-    - docker load -i slurpit-device-imitator-${IMAGE_VERSION}.tar.gz
+    - docker load -i "${IMAGE_FILE}"
     - docker push $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
     - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $CI_REGISTRY_IMAGE:${IMAGE_TAG}
     - docker push $CI_REGISTRY_IMAGE:${IMAGE_TAG}
