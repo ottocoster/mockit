@@ -2,35 +2,36 @@ stages:
   - build
   - test
   - push
+  
+image: docker:latest
+services:
+  - docker:dind
+
+before_script:
+  - MAJOR=$(sed -n 's/^MAJOR *= *\(.*\)/\1/p' src/version.py)
+  - MINOR=$(sed -n 's/^MINOR *= *\(.*\)/\1/p' src/version.py)
+  - COMMIT=$(sed -n 's/^COMMIT *= *\(.*\)/\1/p' src/version.py)
+  - export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}"
+  - export IMAGE_TAG="latest"
+  - if [[ "$CI_COMMIT_REF_NAME" != "main" ]]; then
+    export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_NAME}";
+    export IMAGE_TAG="latest-${CI_COMMIT_REF_NAME}"; 
+    fi
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
 
 build:
-  image: docker:latest
   stage: build
-  services:
-    - docker:dind
   script:
-    - MAJOR=$(sed -n 's/^MAJOR *= *\(.*\)/\1/p' src/version.py)
-    - MINOR=$(sed -n 's/^MINOR *= *\(.*\)/\1/p' src/version.py)
-    - COMMIT=$(sed -n 's/^COMMIT *= *\(.*\)/\1/p' src/version.py)
-    - VERSION="${MAJOR}.${MINOR}.${COMMIT}"
-    - LATEST="latest"
-    - if [[ "$CI_COMMIT_REF_NAME" != "main" ]]; then
-      VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_NAME}";
-      LATEST="latest-${CI_COMMIT_REF_NAME}"; fi
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build -t $CI_REGISTRY_IMAGE:${VERSION} .
-    - docker save -o "slurpit-device-imitator-${VERSION}.tar.gz" $CI_REGISTRY_IMAGE:${VERSION}
+    - docker build -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} .
+    - docker save -o "slurpit-device-imitator-${IMAGE_VERSION}.tar.gz" $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
   artifacts:
     paths:
       - slurpit-device-imitator-*.tar.gz
     name: slurpit-device-imitator
-    expire_in: 1 month
+    expire_in: 6 month
 
 unit_test:
-  image: docker:latest
   stage: test
-  services:
-    - docker:dind
   script:
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml pull
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml up -d --build
@@ -68,22 +69,12 @@ unit_test:
     - build
 
 push:
-  image: docker:latest
   stage: push
-  services:
-    - docker:dind
   script:
-    - MAJOR=$(sed -n 's/^MAJOR *= *\(.*\)/\1/p' src/version.py)
-    - MINOR=$(sed -n 's/^MINOR *= *\(.*\)/\1/p' src/version.py)
-    - COMMIT=$(sed -n 's/^COMMIT *= *\(.*\)/\1/p' src/version.py)
-    - VERSION="${MAJOR}.${MINOR}.${COMMIT}"
-    - LATEST="latest"
-    - if [[ "$CI_COMMIT_REF_NAME" != "main" ]]; then
-      VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_NAME}";
-      LATEST="latest-${CI_COMMIT_REF_NAME}"; fi
-    - docker push $CI_REGISTRY_IMAGE:${VERSION}
-    - docker tag $CI_REGISTRY_IMAGE:${VERSION} $CI_REGISTRY_IMAGE:${LATEST}
-    - docker push $CI_REGISTRY_IMAGE:${LATEST}
+    - docker load -i slurpit-device-imitator-${IMAGE_VERSION}.tar.gz
+    - docker push $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
+    - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $CI_REGISTRY_IMAGE:${IMAGE_TAG}
+    - docker push $CI_REGISTRY_IMAGE:${IMAGE_TAG}
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request" || $CI_PIPELINE_SOURCE == "merge_request_event"
       when: never
