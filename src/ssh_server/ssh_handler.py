@@ -143,9 +143,7 @@ class SSH_Handler:
             model=model,
         )
         message_content = chat_completion.choices[0].message.content
-        message_content = message_content.replace("```", "")
-        self.logger.info(f"get_ai_output output {message_content}")
-        
+        message_content = message_content.replace("```", "").strip()        
         return message_content
 
     def replace_command(self, command: str) -> str:
