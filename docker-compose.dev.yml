@@ -1,9 +1,9 @@
 name: devices
 services:
-  a10:
+  cisco_ios:
     build: .
     environment:
-      - DEVICE_TYPE=a10
+      - DEVICE_TYPE=cisco_ios
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       - NETCONF_USERNAME=test

@@ -70,3 +70,20 @@ def delete_record(device_type, key):
 # value = read_record('example_device', 'device_key_1')
 # update_record('example_device', 'device_key_1', 'new value')
 # delete_record('example_device', 'device_key_1')
+
+# if command == "create":
+#     create_record("a10", "version", "v7")
+#     return f"created version value"
+# if command == "read":
+#     value = read_record("a10", "version")
+#     logger.debug(f"read from db: {value}")
+#     if value:
+#         return value
+#     else:
+#         return "No record founded!"
+# if command == "update":
+#     data = update_record("a10", "version", "v8")
+#     return "Record updated"
+# if command == "delete":
+#     data = delete_record("a10", "version")
+#     return "Record deleted"

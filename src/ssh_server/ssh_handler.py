@@ -137,7 +137,7 @@ class SSH_Handler:
 
         chat_completion = self.openai_client.chat.completions.create(
             messages=[
-                    {"role": "system", "content": "You are a AI vendor assistant that return outputs of speical devices."},
+                    {"role": "system", "content": "You are a AI vendor assistant that returns output of network devices."},
                     {"role": "user", "content": prompt}
             ],
             model=model,

@@ -40,7 +40,7 @@ def handle_command(command: str):
 SNMP examples are currently only provided for a few vendors, as we don't have access to all devices to create an snmp.json. If you have a device from one of the missing vendors, please consider submitting a pull request. To share this information with the project, you can use the following example command:
 
 ```bash
-snmpwalk -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 localhost .1.3.6
+snmpwalk -v2 -c "public" localhost
 ```
 
 ## Docker compose
