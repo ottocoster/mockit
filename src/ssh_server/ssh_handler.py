@@ -1,4 +1,3 @@
-import logging
 import os
 from asyncssh.process import SSHServerProcess
 from concurrent.futures import ThreadPoolExecutor
@@ -6,6 +5,7 @@ import asyncio
 import importlib
 import re
 from openai import OpenAI
+import logging
 logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
 
 class SSH_Handler:

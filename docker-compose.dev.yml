@@ -8,7 +8,7 @@ services:
       - SSH_PASSWORD=test
       - NETCONF_USERNAME=test
       - NETCONF_PASSWORD=test
-      - OPENAI_SUPPORT=true
+      # - OPENAI_SUPPORT=true
       # - DEVICE_VERSION=v6
       # - DEVICE_DELAY=1
       # - LOGIN_DELAY=3
