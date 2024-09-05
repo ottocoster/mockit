@@ -40,7 +40,11 @@ def handle_command(command: str):
 SNMP examples are currently only provided for a few vendors, as we don't have access to all devices to create an snmp.json. If you have a device from one of the missing vendors, please consider submitting a pull request. To share this information with the project, you can use the following example command:
 
 ```bash
-snmpwalk -v2 -c "public" localhost
+# Linux (sudo apt install snmp)
+snmpwalk -v2c -c public localhost
+
+# Windows (http://www.snmpsoft.com)
+snmpwalk -v:"2" -c:"public" -r:"localhost"
 ```
 
 ## Docker compose

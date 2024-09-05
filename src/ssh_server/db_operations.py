@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 # Static database path
-DB_PATH = 'example.db'
+DB_PATH = 'device.db'
 
 def get_connection():
     """Establishes a connection to the SQLite database and creates the file if it doesn't exist."""
@@ -42,6 +42,17 @@ def read_record(device_type, key):
     conn.close()
     if row:
         return row[0]
+    return None
+
+def read_records(device_type, key):
+    """Retrieves a record by key from the specified device_type table."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute(f'SELECT value FROM {device_type} WHERE key = ?', (key,))
+    rows = cursor.fetchall()
+    conn.close()
+    if rows:
+        return [row[0] for row in rows]  # Return a list of values
     return None
 
 def update_record(device_type, key, new_value):
