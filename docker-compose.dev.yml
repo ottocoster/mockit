@@ -1,14 +1,14 @@
 name: devices
 services:
-  a10:
+  cisco_ios:
     build: .
     environment:
-      - DEVICE_TYPE=a10
+      - DEVICE_TYPE=cisco_ios
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       - NETCONF_USERNAME=test
       - NETCONF_PASSWORD=test
-      - OPENAI_SUPPORT=true
+      # - OPENAI_SUPPORT=true
       # - DEVICE_VERSION=v6
       # - DEVICE_DELAY=1
       # - LOGIN_DELAY=3

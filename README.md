@@ -40,7 +40,11 @@ def handle_command(command: str):
 SNMP examples are currently only provided for a few vendors, as we don't have access to all devices to create an snmp.json. If you have a device from one of the missing vendors, please consider submitting a pull request. To share this information with the project, you can use the following example command:
 
 ```bash
-snmpwalk -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 localhost .1.3.6
+# Linux (sudo apt install snmp)
+snmpwalk -v2c -c public localhost
+
+# Windows (http://www.snmpsoft.com)
+snmpwalk -v:"2" -c:"public" -r:"localhost"
 ```
 
 ## Docker compose
@@ -83,14 +87,18 @@ Environment SSH Options
 - LOGIN_RETRY: Defines the number of retries allowed for login attempts.
 
 Environment SNMP Options
-- SNMP_V2_ENABLED: Enable SNMP V2 (default enabled)
+- SNMP_V2_ENABLED: Enable SNMP V2 (default true)
 - SNMP_V2_COMMUNITY: SNMP community string (default public)
-- SNMP_V3_ENABLED: Enable SNMP V2 (default disabled)
+- SNMP_V3_ENABLED: Enable SNMP V2 (default false)
 - SNMP_V3_USERNAME: SNMPv3 Username
 - SNMP_V3_AUTH_TYPE: SNMPv3 Authentication Type
 - SNMP_V3_AUTH_KEY: SNMPv3 Authentication Key
 - SNMP_V3_PRIV_TYPE: SNMPv3 Privilege Type
 - SNMP_V3_PRIV_KEY: SNMPv3 Privilege Key
+
+OpenAI
+- OPENAI_SUPPORT: Have OpenAI to respond to unknown cli commands (default true)
+- OPENAI_APIKEY: Get your api key at https://platform.openai.com/ 
 
 # Development info
 
