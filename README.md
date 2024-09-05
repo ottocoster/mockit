@@ -87,14 +87,18 @@ Environment SSH Options
 - LOGIN_RETRY: Defines the number of retries allowed for login attempts.
 
 Environment SNMP Options
-- SNMP_V2_ENABLED: Enable SNMP V2 (default enabled)
+- SNMP_V2_ENABLED: Enable SNMP V2 (default true)
 - SNMP_V2_COMMUNITY: SNMP community string (default public)
-- SNMP_V3_ENABLED: Enable SNMP V2 (default disabled)
+- SNMP_V3_ENABLED: Enable SNMP V2 (default false)
 - SNMP_V3_USERNAME: SNMPv3 Username
 - SNMP_V3_AUTH_TYPE: SNMPv3 Authentication Type
 - SNMP_V3_AUTH_KEY: SNMPv3 Authentication Key
 - SNMP_V3_PRIV_TYPE: SNMPv3 Privilege Type
 - SNMP_V3_PRIV_KEY: SNMPv3 Privilege Key
+
+OpenAI
+- OPENAI_SUPPORT: Have OpenAI to respond to unknown cli commands (default true)
+- OPENAI_APIKEY: Get your api key at https://platform.openai.com/ 
 
 # Development info
 
