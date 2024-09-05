@@ -215,8 +215,9 @@ class SSH_Handler:
         custom_script_output = self.handle_script_function(command)
         if custom_script_output:
             self.logger.error(f"custom_script_output `{custom_script_output}")
-
-            self.respond(custom_script_output)
+            
+            if isinstance(custom_script_output, str):
+                self.respond(custom_script_output)
             return True
 
         command = self.replace_command(command)
