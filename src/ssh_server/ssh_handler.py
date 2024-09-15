@@ -271,7 +271,7 @@ class SSH_Handler:
         """
         commands = {}
         if not os.path.exists(template_dir):
-            self.logger.warn(f"Unable to find directory: `{template_dir}`")
+            self.logger.warning(f"Unable to find directory: `{template_dir}`")
             self.commands = {}
             return False
         
