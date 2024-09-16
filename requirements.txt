@@ -1,6 +1,6 @@
 asyncssh
-pyasn1==0.6.0
-pysnmp-lextudio==5.0.34
+pyasn1
+pysnmp
 netmiko
 openai
 pytest-netconf
