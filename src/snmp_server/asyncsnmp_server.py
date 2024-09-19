@@ -187,22 +187,22 @@ def get_auth(key, protocol):
     """
     protocol = protocol.lower()
     if protocol == "none":
-        return None, config.usmNoAuthProtocol
+        return None, config.USM_AUTH_NONE
     if protocol == "md5":
-        return key, config.usmHMACMD5AuthProtocol
+        return key, config.USM_AUTH_HMAC96_MD5
     if protocol == "sha":
-        return key, config.usmHMACSHAAuthProtocol
+        return key, config.USM_AUTH_HMAC96_SHA
     if protocol == "sha224":
-        return key, config.usmHMAC128SHA224AuthProtocol
+        return key, config.USM_AUTH_HMAC128_SHA224
     if protocol == "sha256":
-        return key, config.usmHMAC192SHA256AuthProtocol
+        return key, config.USM_AUTH_HMAC192_SHA256
     if protocol == "sha384":
-        return key, config.usmHMAC256SHA384AuthProtocol
+        return key, config.USM_AUTH_HMAC256_SHA384
     if protocol == "sha512":
-        return key, config.usmHMAC384SHA512AuthProtocol
+        return key, config.USM_AUTH_HMAC384_SHA512
 
     logger.warning(f"Unknown Auth type `{protocol}`, using none instead")
-    return None, config.usmNoAuthProtocol
+    return None, config.USM_AUTH_NONE
 
 def get_priv(key, protocol, authKey):
     """
@@ -218,24 +218,24 @@ def get_priv(key, protocol, authKey):
     """
     protocol = protocol.lower()
     if protocol == "none":
-        return None, config.usmNoPrivProtocol
+        return None, config.USM_AUTH_NONE
     if not authKey:
         logger.warning("Auth type was none, setting Priv type to none too")
-        return None, config.usmNoPrivProtocol
+        return None, config.USM_AUTH_NONE
     if protocol == "des":
-        return key, config.usmDESPrivProtocol
+        return key, config.USM_PRIV_CBC56_DES
     if protocol == "3des":
-        return key, config.usm3DESEDEPrivProtocol
+        return key, config.USM_PRIV_CBC168_3DES
     if protocol == "aes128":
-        return key, config.usmAesCfb128Protocol
+        return key, config.USM_PRIV_CFB128_AES
     if protocol == "aes192":
-        return key, config.usmAesCfb192Protocol
+        return key, config.USM_PRIV_CFB192_AES
     if protocol == "aes256":
-        return key, config.usmAesCfb256Protocol
+        return key, config.USM_PRIV_CFB256_AES
     if protocol == "aesblumenthal192":
-        return key, config.usmAesBlumenthalCfb192Protocol
+        return key, config.USM_PRIV_CFB192_AES_BLUMENTHAL
     if protocol == "aesblumenthal256":
-        return key, config.usmAesBlumenthalCfb256Protocol
+        return key, config.USM_PRIV_CFB256_AES_BLUMENTHAL
 
     logger.warning(f"Unknown Priv type `{protocol}`, using none instead")
     return None, config.usmNoPrivProtocol

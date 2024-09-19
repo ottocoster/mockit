@@ -57,8 +57,8 @@ def main():
         "authorized_key": os.environ.get("NETCONF_KEY", ""),
     }
     
-    
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_ssh(options_ssh))
     if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
