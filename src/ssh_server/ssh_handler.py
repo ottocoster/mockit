@@ -143,9 +143,7 @@ class SSH_Handler:
             model=model,
         )
         message_content = chat_completion.choices[0].message.content
-        message_content = message_content.replace("```", "")
-        self.logger.info(f"get_ai_output output {message_content}")
-        
+        message_content = message_content.replace("```", "").strip()        
         return message_content
 
     def replace_command(self, command: str) -> str:
@@ -187,7 +185,7 @@ class SSH_Handler:
     def get_matching_commands(self, command):
         # Find commands that start with the given command string
         matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
-        self.logger.error(f"matching_commands `{matching_commands}`")
+        self.logger.info(f"matching_commands `{matching_commands}`")
 
         if matching_commands:
             # Sort the matching commands alphabetically
@@ -214,9 +212,10 @@ class SSH_Handler:
         # Handle script functions
         custom_script_output = self.handle_script_function(command)
         if custom_script_output:
-            self.logger.error(f"custom_script_output `{custom_script_output}")
-
-            self.respond(custom_script_output)
+            self.logger.info(f"custom_script_output `{custom_script_output}")
+            
+            if isinstance(custom_script_output, str):
+                self.respond(custom_script_output)
             return True
 
         command = self.replace_command(command)
@@ -272,7 +271,7 @@ class SSH_Handler:
         """
         commands = {}
         if not os.path.exists(template_dir):
-            self.logger.warn(f"Unable to find directory: `{template_dir}`")
+            self.logger.warning(f"Unable to find directory: `{template_dir}`")
             self.commands = {}
             return False
         

@@ -14,10 +14,13 @@ def main():
         return
     # Fetch device version or determine based on device type
     device_version = os.environ.get("DEVICE_VERSION", "")
-    
+    debug_enabled = str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true"
+    if debug_enabled:
+        LOGGER = logging.getLogger()
+        logging.basicConfig(level=logging.DEBUG)
     # SSH configuration options from environment variables
     options_ssh = {
-        "debug": str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true",
+        "debug": debug_enabled,
         "device_type": device_type,
         "ssh_key": os.environ.get("SSH_KEY", "/ssh_key/rsa.key"),
         "username": os.environ.get("SSH_USERNAME", "root"),
@@ -32,7 +35,7 @@ def main():
     
     # SNMP configuration options from environment variables
     options_snmp = {
-        "debug": str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true",
+        "debug": debug_enabled,
         "device_type": device_type,
         "device_version": device_version,
         "snmpv2_enabled": str(os.environ.get("SNMP_V2_ENABLED", "true")).lower() == "true",
@@ -54,8 +57,8 @@ def main():
         "authorized_key": os.environ.get("NETCONF_KEY", ""),
     }
     
-    
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
     if str(os.environ.get("SSH_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_ssh(options_ssh))
     if str(os.environ.get("SNMP_SERVER_ENABLED", "true")).lower() == "true":
@@ -69,8 +72,6 @@ def main():
 
 if __name__ == "__main__":
     # Setup logging
-    LOGGER = logging.getLogger()
-    logging.basicConfig(level=logging.DEBUG)
     
     # Start main function
     main()

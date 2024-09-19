@@ -84,7 +84,7 @@ def delete_record(device_type, key):
 
 # if command == "create":
 #     create_record("a10", "version", "v7")
-#     return f"created version value"
+#     return True
 # if command == "read":
 #     value = read_record("a10", "version")
 #     logger.debug(f"read from db: {value}")
