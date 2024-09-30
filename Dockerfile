@@ -1,49 +1,48 @@
-FROM python:3.12-slim
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
-ENV DEBUG_ENABLED false
-ENV DEVICE_TYPE "cisco_ios"
+ENV DEBUG_ENABLED=false
+ENV DEVICE_TYPE="cisco_ios"
 #Only relevant for some devices, it will try to find the version number folder inside the device config folder
-ENV DEVICE_VERSION ""
+ENV DEVICE_VERSION=""
 
-ENV SSH_SERVER_ENABLED true
-ENV SSH_KEY "/ssh_key/rsa.key"
-ENV SSH_USERNAME "root"
-ENV SSH_PASSWORD "Welcome01!"
+ENV SSH_SERVER_ENABLED=true
+ENV SSH_KEY="/ssh_key/rsa.key"
+ENV SSH_USERNAME="root"
+ENV SSH_PASSWORD="Welcome01!"
 
-ENV SNMP_SERVER_ENABLED true
-ENV SNMP_V2_ENABLED true
-ENV SNMP_V2_COMMUNITY "public"
+ENV SNMP_SERVER_ENABLED=true
+ENV SNMP_V2_ENABLED=true
+ENV SNMP_V2_COMMUNITY="public"
 
-ENV SNMP_V3_ENABLED false
-ENV SNMP_V3_USERNAME "usr-sha-none"
+ENV SNMP_V3_ENABLED=false
+ENV SNMP_V3_USERNAME="usr-sha-none"
 
 #none, md5, sha, sha224, sha256, sha384, sha512
-ENV SNMP_V3_AUTH_TYPE "sha" 
+ENV SNMP_V3_AUTH_TYPE="sha"
 #needs to be atleast 8 characters
-ENV SNMP_V3_AUTH_KEY "somekey1"
+ENV SNMP_V3_AUTH_KEY="somekey1"
 
 #none, des, 3des, aes128, aes192, aes256, aesblumenthal192, aesblumenthal256
-ENV SNMP_V3_PRIV_TYPE "none"
-ENV SNMP_V3_PRIV_KEY ""
+ENV SNMP_V3_PRIV_TYPE="none"
+ENV SNMP_V3_PRIV_KEY=""
 
-ENV NETCONF_SERVER_ENABLED true
-ENV NETCONF_USERNAME "test"
-ENV NETCONF_PASSWORD "test"
+ENV NETCONF_SERVER_ENABLED=true
+ENV NETCONF_USERNAME="test"
+ENV NETCONF_PASSWORD="test"
 
-ENV OPENAI_SUPPORT false
-ENV OPENAI_APIKEY ""
+ENV OPENAI_SUPPORT=false
+ENV OPENAI_APIKEY=""
 
 ENV PYTHONPATH="/"
 
-RUN apt update && apt upgrade -y
-
 COPY configs/. configs/.
-COPY ssh_key/. ssh_key/.
-COPY requirements.txt requirements.txt
-RUN pip3 install --no-cache-dir -r requirements.txt
-RUN apt-get install snmp -y
-
-COPY src/. /src
 COPY dev/. /test
+COPY requirements.txt requirements.txt
+COPY src/. /src
+COPY ssh_key/. ssh_key/.
+
+RUN apt update -y && apt upgrade -y \
+    && apt-get install snmp -y \
+    && uv pip install --system --no-cache -r requirements.txt
 
 CMD ["python", "src/main.py"]
