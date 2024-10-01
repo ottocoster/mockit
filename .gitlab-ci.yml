@@ -1,8 +1,9 @@
+---
 stages:
   - build
   - test
   - push
-  
+
 image: docker:latest
 services:
   - docker:dind
@@ -14,20 +15,26 @@ before_script:
   - export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}"
   - export IMAGE_TAG="latest"
   - if [[ "$CI_COMMIT_REF_NAME" != "main" ]]; then
-    export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_NAME}";
-    export IMAGE_TAG="latest-${CI_COMMIT_REF_NAME}"; 
+      export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_NAME}";
+      export IMAGE_TAG="latest-${CI_COMMIT_REF_NAME}";
     fi
   - export IMAGE_FILE="slurpit-mockit-${IMAGE_VERSION}.tar.gz"
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
 
+# Build stage for multi-architecture images
 build:
   stage: build
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_CLI_EXPERIMENTAL: "enabled"
   script:
-    - docker build -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} .
-    - docker save -o "${IMAGE_FILE}" $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
+    - docker run --privileged --rm tonistiigi/binfmt --install all  # Enable QEMU for arm64
+    - docker buildx create --use                                # Create and use a buildx builder
+    #- docker buildx inspect --bootstrap                         # Inspect the builder and bootstrap it
+    - docker buildx build . --platform linux/amd64,linux/arm64 --tag "$CI_REGISTRY_IMAGE:${IMAGE_VERSION}" --output "type=tar,compression=gzip,dest=${IMAGE_FILE}" --output "type=registry,ref=$CI_REGISTRY_IMAGE:${IMAGE_VERSION}"
   artifacts:
     paths:
-      - ${IMAGE_FILE}
+      - "*.tar.gz"
     name: slurpit-mockit
     expire_in: 6 month
 
@@ -71,11 +78,12 @@ unit_test:
 
 push:
   stage: push
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_CLI_EXPERIMENTAL: "enabled"
   script:
-    - docker build -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} .
-    - docker push $CI_REGISTRY_IMAGE:${IMAGE_VERSION}
-    - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $CI_REGISTRY_IMAGE:${IMAGE_TAG}
-    - docker push $CI_REGISTRY_IMAGE:${IMAGE_TAG}
+    - docker buildx build --platform linux/amd64,linux/arm64 -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} --push .
+    - docker buildx build --platform linux/amd64,linux/arm64 -t $CI_REGISTRY_IMAGE:${IMAGE_TAG} --push .
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request" || $CI_PIPELINE_SOURCE == "merge_request_event"
       when: never
