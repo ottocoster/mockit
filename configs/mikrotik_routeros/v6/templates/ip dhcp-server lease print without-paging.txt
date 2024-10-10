@@ -1,0 +1,3 @@
+
+Flags: X - disabled, R - radius, D - dynamic, B - blocked 
+ #   ADDRESS                                                                                            MAC-ADDRESS       HOST-NAME                                                                                    SERVER                                                                                    RATE-LIMIT                                                                                    STATUS  LAST-SEEN                                                                                              

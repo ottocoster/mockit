@@ -1,0 +1,258 @@
+Flags: D - DYNAMIC; C - COMPLETE
+Columns: ADDRESS, MAC-ADDRESS, INTERFACE, STATUS
+  #    ADDRESS          MAC-ADDRESS        INTERFACE  STATUS   
+  0 DC 192.168.3.128    A0:D7:F3:1E:98:3C  bridge     stale    
+  1 D  192.168.3.17                        bridge     failed   
+  2 D  192.168.3.166    7A:4A:36:94:C3:C4  bridge     failed   
+  3 D  192.168.3.55                        bridge     failed   
+  4 D  192.168.3.68                        bridge     failed   
+  5 D  192.168.3.213                       bridge     failed   
+  6 DC 192.168.3.106    00:0C:C1:06:4B:EA  bridge     delay    
+  7 D  192.168.3.251                       bridge     failed   
+  8 D  192.168.3.8                         bridge     failed   
+  9 D  192.168.3.153    A4:83:E7:40:5D:11  bridge     failed   
+ 10 D  192.168.3.46                        bridge     failed   
+ 11 D  192.168.3.191    52:73:6A:6E:EC:37  bridge     failed   
+ 12 D  192.168.3.204                       bridge     failed   
+ 13 D  192.168.3.93                        bridge     failed   
+ 14 D  192.168.3.242                       bridge     failed   
+ 15 DC 192.168.3.3      88:DC:97:01:2D:16  bridge     reachable
+ 16 D  192.168.3.144    02:B3:72:AE:2B:A9  bridge     failed   
+ 17 D  192.168.3.33                        bridge     failed   
+ 18 D  192.168.3.182                       bridge     failed   
+ 19 D  192.168.3.199    0C:29:8F:0E:36:B1  bridge     failed   
+ 20 D  192.168.3.84                        bridge     failed   
+ 21 D  192.168.3.229                       bridge     failed   
+ 22 DC 192.168.3.122    A0:D7:F3:1E:98:3C  bridge     stale    
+ 23 D  192.168.3.139                       bridge     failed   
+ 24 D  192.168.3.24                        bridge     failed   
+ 25 DC 192.168.3.169    BC:DF:58:49:11:34  bridge     reachable
+ 26 D  192.168.3.62                        bridge     failed   
+ 27 D  192.168.3.79                        bridge     failed   
+ 28 D  192.168.3.220                       bridge     failed   
+ 29 DC 192.168.3.109    7C:2F:80:8A:88:79  bridge     stale    
+ 30 D  192.168.3.130    86:91:47:8F:33:07  bridge     failed   
+ 31 D  192.168.3.19                        bridge     failed   
+ 32 D  192.168.3.160    C6:D2:EA:26:33:BF  bridge     failed   
+ 33 D  192.168.3.49                        bridge     failed   
+ 34 D  192.168.3.70                        bridge     failed   
+ 35 D  192.168.3.215                       bridge     failed   
+ 36 DC 192.168.3.100    22:E7:05:A9:DD:F0  bridge     stale    
+ 37 D  192.168.3.245                       bridge     failed   
+ 38 D  192.168.3.10                        bridge     failed   
+ 39 D  192.168.3.155    0E:DD:DA:29:5B:3D  bridge     failed   
+ 40 D  192.168.3.40                        bridge     failed   
+ 41 D  192.168.3.185    E2:60:E8:21:73:AA  bridge     failed   
+ 42 D  192.168.3.206                       bridge     failed   
+ 43 D  192.168.3.95     38:BE:AB:58:1A:24  bridge     failed   
+ 44 D  192.168.3.236                       bridge     failed   
+ 45 DC 192.168.3.125    90:CA:FA:AB:F8:56  bridge     delay    
+ 46 D  192.168.3.146    0C:29:8F:0E:36:B1  bridge     failed   
+ 47 D  192.168.3.35                        bridge     failed   
+ 48 D  192.168.3.176    04:03:D6:53:CC:2B  bridge     failed   
+ 49 D  192.168.3.193    A4:3C:D7:09:90:03  bridge     failed   
+ 50 D  192.168.3.86                        bridge     failed   
+ 51 D  192.168.3.231                       bridge     failed   
+ 52 D  192.168.3.116    86:91:47:8F:33:07  bridge     failed   
+ 53 D  192.168.3.133    0A:A3:52:CB:09:04  bridge     failed   
+ 54 D  192.168.3.26                        bridge     failed   
+ 55 D  192.168.3.171    92:B1:F7:82:E5:95  bridge     failed   
+ 56 D  192.168.3.56                        bridge     failed   
+ 57 D  192.168.3.73                        bridge     failed   
+ 58 D  192.168.3.222                       bridge     failed   
+ 59 D  192.168.3.111    74:C1:4F:E8:AF:7A  bridge     failed   
+ 60 D  192.168.3.252                       bridge     failed   
+ 61 D  192.168.3.13                        bridge     failed   
+ 62 D  192.168.3.162    0E:DD:DA:29:5B:3D  bridge     failed   
+ 63 D  192.168.3.51                        bridge     failed   
+ 64 D  192.168.3.64                        bridge     failed   
+ 65 D  192.168.3.209                       bridge     failed   
+ 66 DC 192.168.3.102    EC:E5:12:1E:24:B8  bridge     reachable
+ 67 D  192.168.3.247                       bridge     failed   
+ 68 D  192.168.3.4                         bridge     failed   
+ 69 D  192.168.3.149    D2:B4:42:6E:EB:8B  bridge     failed   
+ 70 D  192.168.3.42                        bridge     failed   
+ 71 DC 192.168.3.187    34:9F:7B:37:CC:F1  bridge     stale    
+ 72 D  192.168.3.200    C6:D2:EA:26:33:BF  bridge     failed   
+ 73 D  192.168.3.89                        bridge     failed   
+ 74 D  192.168.3.238                       bridge     failed   
+ 75 DC 192.168.3.127    48:E7:DA:78:A5:36  bridge     reachable
+ 76 D  192.168.3.140                       bridge     failed   
+ 77 D  192.168.3.29                        bridge     failed   
+ 78 D  192.168.3.178    0C:29:8F:0E:36:B1  bridge     failed   
+ 79 D  192.168.3.195    86:91:47:8F:33:07  bridge     failed   
+ 80 D  192.168.3.80                        bridge     failed   
+ 81 D  192.168.3.225                       bridge     failed   
+ 82 D  192.168.3.118    24:4B:03:DA:03:41  bridge     failed   
+ 83 D  192.168.3.135    86:91:47:8F:33:07  bridge     failed   
+ 84 D  192.168.3.20                        bridge     failed   
+ 85 D  192.168.3.165    22:FB:F0:53:47:30  bridge     failed   
+ 86 D  192.168.3.58                        bridge     failed   
+ 87 D  192.168.3.75                        bridge     failed   
+ 88 D  192.168.3.216                       bridge     failed   
+ 89 DC 192.168.3.105    50:C7:BF:BD:81:35  bridge     stale    
+ 90 D  192.168.3.254                       bridge     failed   
+ 91 D  192.168.3.15                        bridge     failed   
+ 92 D  192.168.3.156    F2:95:EF:17:21:65  bridge     failed   
+ 93 D  192.168.3.45                        bridge     failed   
+ 94 D  192.168.3.66                        bridge     failed   
+ 95 D  192.168.3.211                       bridge     failed   
+ 96 DC 192.168.3.96     88:DC:97:01:2D:16  bridge     stale    
+ 97 D  192.168.3.241                       bridge     failed   
+ 98 DC 192.168.3.6      88:DC:97:01:2F:9F  bridge     reachable
+ 99 D  192.168.3.151    3A:84:4D:B9:4D:B1  bridge     failed   
+100 D  192.168.3.36                        bridge     failed   
+101 D  192.168.3.181    0C:29:8F:0E:36:B1  bridge     failed   
+102 D  192.168.3.202                       bridge     failed   
+103 DC 192.168.3.91     FC:EC:DA:FC:88:98  bridge     stale    
+104 D  192.168.3.232                       bridge     failed   
+105 D  192.168.3.121    0E:DD:DA:29:5B:3D  bridge     failed   
+106 D  192.168.3.142    0C:29:8F:0E:36:B1  bridge     failed   
+107 D  192.168.3.31                        bridge     failed   
+108 D  192.168.3.172    D8:EB:46:7A:66:B0  bridge     failed   
+109 D  192.168.3.61                        bridge     failed   
+110 D  192.168.3.82                        bridge     failed   
+111 D  192.168.3.227                       bridge     failed   
+112 D  192.168.3.112    AE:05:63:00:9F:BE  bridge     failed   
+113 D  192.168.3.129    D2:B4:42:6E:EB:8B  bridge     failed   
+114 D  192.168.3.22                        bridge     failed   
+115 D  192.168.3.167    EE:8D:73:87:26:0B  bridge     failed   
+116 D  192.168.3.52                        bridge     failed   
+117 D  192.168.3.69                        bridge     failed   
+118 D  192.168.3.218                       bridge     failed   
+119 D  192.168.3.107    A4:3C:D7:09:AA:BA  bridge     failed   
+120 D  192.168.3.248                       bridge     failed   
+121 DC 192.168.3.9      00:11:32:62:7E:9D  bridge     reachable
+122 D  192.168.3.158    58:B0:D4:50:EA:05  bridge     failed   
+123 D  192.168.3.47                        bridge     failed   
+124 D  192.168.3.188    46:59:C4:09:92:35  bridge     failed   
+125 D  192.168.3.205                       bridge     failed   
+126 DC 192.168.3.98     00:62:6E:ED:C9:C6  bridge     reachable
+127 D  192.168.3.243                       bridge     failed   
+128 D  192.168.3.145    0C:29:8F:0E:36:B1  bridge     failed   
+129 D  192.168.3.38                        bridge     failed   
+130 DC 192.168.3.183    D8:EB:46:7A:66:B0  bridge     reachable
+131 D  192.168.3.196    04:03:D6:53:CC:2B  bridge     failed   
+132 D  192.168.3.85                        bridge     failed   
+133 D  192.168.3.234                       bridge     failed   
+134 D  192.168.3.123    C6:D2:EA:26:33:BF  bridge     failed   
+135 D  192.168.3.136    C6:D2:EA:26:33:BF  bridge     failed   
+136 D  192.168.3.25                        bridge     failed   
+137 D  192.168.3.174    82:40:78:72:2B:29  bridge     failed   
+138 D  192.168.3.63                        bridge     failed   
+139 D  192.168.3.76                        bridge     failed   
+140 D  192.168.3.221                       bridge     failed   
+141 DC 192.168.3.114    A4:3C:D7:09:AA:BA  bridge     stale    
+142 D  192.168.3.131    C6:D2:EA:26:33:BF  bridge     failed   
+143 D  192.168.3.16                        bridge     failed   
+144 D  192.168.3.161    86:91:47:8F:33:07  bridge     failed   
+145 D  192.168.3.54                        bridge     failed   
+146 D  192.168.3.71                        bridge     failed   
+147 D  192.168.3.212                       bridge     failed   
+148 D  192.168.3.101    86:91:47:8F:33:07  bridge     failed   
+149 D  192.168.3.250                       bridge     failed   
+150 D  192.168.3.11                        bridge     failed   
+151 D  192.168.3.152    32:09:AC:E3:C0:2A  bridge     failed   
+152 D  192.168.3.41                        bridge     failed   
+153 D  192.168.3.190    7A:54:A6:16:C7:EA  bridge     failed   
+154 D  192.168.3.207                       bridge     failed   
+155 DC 192.168.3.92     FC:EC:DA:FC:86:B3  bridge     stale    
+156 D  192.168.3.237                       bridge     failed   
+157 D  192.168.3.2                         bridge     failed   
+158 D  192.168.3.147    0C:29:8F:0E:36:B1  bridge     failed   
+159 D  192.168.3.32                        bridge     failed   
+160 D  192.168.3.177    0C:29:8F:0E:36:B1  bridge     failed   
+161 D  192.168.3.198    04:03:D6:53:CC:2B  bridge     failed   
+162 D  192.168.3.87                        bridge     failed   
+163 D  192.168.3.228                       bridge     failed   
+164 D  192.168.3.117    32:F2:AC:1D:43:25  bridge     failed   
+165 DC 192.168.3.138    BC:DF:58:4A:80:8E  bridge     reachable
+166 D  192.168.3.27                        bridge     failed   
+167 D  192.168.3.168    8A:37:53:5F:E2:7E  bridge     failed   
+168 D  192.168.3.57                        bridge     failed   
+169 D  192.168.3.78                        bridge     failed   
+170 D  192.168.3.223                       bridge     failed   
+171 DC 192.168.3.108    E0:37:BF:AA:B9:2F  bridge     reachable
+172 D  192.168.3.253                       bridge     failed   
+173 D  192.168.3.18                        bridge     failed   
+174 D  192.168.3.163    3A:84:4D:B9:4D:B1  bridge     failed   
+175 D  192.168.3.48                        bridge     failed   
+176 D  192.168.3.65                        bridge     failed   
+177 D  192.168.3.214                       bridge     failed   
+178 D  192.168.3.103    CE:E1:79:58:41:74  bridge     failed   
+179 D  192.168.3.244                       bridge     failed   
+180 D  192.168.3.5                         bridge     failed   
+181 D  192.168.3.154    B0:60:88:25:50:1C  bridge     failed   
+182 D  192.168.3.43                        bridge     failed   
+183 DC 192.168.3.184    92:B1:F7:82:E5:95  bridge     stale    
+184 D  192.168.3.201                       bridge     failed   
+185 D  192.168.3.94                        bridge     failed   
+186 D  192.168.3.239                       bridge     failed   
+187 D  192.168.3.124    32:F2:AC:1D:43:25  bridge     failed   
+188 D  192.168.3.141    58:B0:D4:7F:30:70  bridge     failed   
+189 D  192.168.3.34                        bridge     failed   
+190 D  192.168.3.179    0C:29:8F:0E:36:B1  bridge     failed   
+191 D  192.168.3.192    C6:D2:EA:26:33:BF  bridge     failed   
+192 D  192.168.3.81                        bridge     failed   
+193 D  192.168.3.230                       bridge     failed   
+194 D  192.168.3.119    52:84:D7:9F:5C:D2  bridge     failed   
+195 D  192.168.3.132    58:B0:D4:50:EA:05  bridge     failed   
+196 D  192.168.3.21                        bridge     failed   
+197 D  192.168.3.170    92:9E:76:C3:0E:1D  bridge     failed   
+198 D  192.168.3.59                        bridge     failed   
+199 D  192.168.3.72                        bridge     failed   
+200 D  192.168.3.217                       bridge     failed   
+201 D  192.168.3.110    0E:DD:DA:29:5B:3D  bridge     failed   
+202 D  192.168.3.12                        bridge     failed   
+203 D  192.168.3.157    DC:85:DE:30:B7:69  bridge     failed   
+204 D  192.168.3.50                        bridge     failed   
+205 D  192.168.3.67                        bridge     failed   
+206 D  192.168.3.208                       bridge     failed   
+207 D  192.168.3.97     38:BE:AB:58:1A:24  bridge     failed   
+208 D  192.168.3.246                       bridge     failed   
+209 DC 192.168.3.7      88:DC:97:01:2D:16  bridge     reachable
+210 D  192.168.3.148    0C:29:8F:0E:36:B1  bridge     failed   
+211 D  192.168.3.37                        bridge     failed   
+212 D  192.168.3.186    E6:D3:4D:26:E6:AB  bridge     failed   
+213 D  192.168.3.203                       bridge     failed   
+214 D  192.168.3.88                        bridge     failed   
+215 D  192.168.3.233                       bridge     failed   
+216 D  192.168.3.126    04:03:D6:53:CC:2B  bridge     failed   
+217 D  192.168.3.143                       bridge     failed   
+218 D  192.168.3.28                        bridge     failed   
+219 D  192.168.3.173    AE:05:63:00:9F:BE  bridge     failed   
+220 D  192.168.3.194    A4:3C:D7:09:AA:BA  bridge     failed   
+221 D  192.168.3.83                        bridge     failed   
+222 D  192.168.3.224                       bridge     failed   
+223 D  192.168.3.113    A4:3C:D7:09:90:03  bridge     failed   
+224 D  192.168.3.134    B0:3C:DC:73:8E:DF  bridge     failed   
+225 D  192.168.3.23                        bridge     failed   
+226 D  192.168.3.164                       bridge     failed   
+227 D  192.168.3.53                        bridge     failed   
+228 D  192.168.3.74                        bridge     failed   
+229 D  192.168.3.219                       bridge     failed   
+230 D  192.168.3.104    D6:43:14:EB:AD:5E  bridge     failed   
+231 D  192.168.3.249                       bridge     failed   
+232 D  192.168.3.14                        bridge     failed   
+233 D  192.168.3.159    8A:75:E3:CA:DE:AF  bridge     failed   
+234 D  192.168.3.44                        bridge     failed   
+235 D  192.168.3.189    32:F2:AC:1D:43:25  bridge     failed   
+236 D  192.168.3.210                       bridge     failed   
+237 DC 192.168.20.1     E8:EA:6A:A2:1C:3C  ether1     reachable
+238 DC 192.168.3.99     00:62:6E:6F:F5:43  bridge     reachable
+239 D  192.168.3.240                       bridge     failed   
+240 DC 192.168.3.150    9C:B6:D0:BB:FD:8B  bridge     stale    
+241 D  192.168.3.39                        bridge     failed   
+242 D  192.168.3.180    0C:29:8F:0E:36:B1  bridge     failed   
+243 D  192.168.3.197    04:03:D6:53:CC:2B  bridge     failed   
+244 DC 192.168.3.90     FC:EC:DA:FC:86:58  bridge     stale    
+245 D  192.168.3.235                       bridge     failed   
+246 D  192.168.3.120    0C:29:8F:0E:36:B1  bridge     failed   
+247 D  192.168.3.137    C2:64:5F:68:40:2E  bridge     failed   
+248 D  192.168.3.30                        bridge     failed   
+249 D  192.168.3.175    80:A0:36:A7:A8:8E  bridge     failed   
+250 D  192.168.3.60                        bridge     failed   
+251 D  192.168.3.77                        bridge     failed   
+252 D  192.168.3.226                       bridge     failed   
+253 D  192.168.3.115    C6:D2:EA:26:33:BF  bridge     failed   
+254 DC 169.254.249.240  9C:B6:D0:BB:FD:8B  bridge     stale

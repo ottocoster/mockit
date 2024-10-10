@@ -1,0 +1,2 @@
+0 A S  dst-address=0.0.0.0/0 gateway=192.168.10.1 gateway-status=192.168.10.1 reachable via  bridge distance=1 scope=30 target-scope=10 
+ 1 ADC  dst-address=192.168.10.0/24 pref-src=192.168.10.2 gateway=bridge gateway-status=bridge reachable distance=0 scope=10

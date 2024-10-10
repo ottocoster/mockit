@@ -1,0 +1,18 @@
+Flags: D - DYNAMIC
+Columns: ADDRESS, MAC-ADDRESS, HOST-NAME, SERVER, STATUS, LAST-SEEN
+ #   ADDRESS        MAC-ADDRESS        HOST-NAME                SERVER   STATUS   LAST-SEEN      
+ 0 D 192.168.3.109  7C:2F:80:8A:88:79  N300A-IP                 defconf  bound    1m53s          
+ 1   192.168.3.97   00:12:33:15:31:92  LocalHost                defconf  waiting  105w6d22h56m45s
+ 2   192.168.3.95   38:BE:AB:58:1A:24  Camera                   defconf  waiting  5w1d16h16m31s  
+ 3 D 192.168.3.106  00:0C:C1:06:4B:EA  i-on40H                  defconf  bound    3m26s          
+ 4 D 192.168.3.105  50:C7:BF:BD:81:35  HS110                    defconf  bound    25s            
+ 5 D 192.168.3.108  E0:37:BF:AA:B9:2F  audiocast                defconf  bound    3m41s          
+ 6 D 192.168.3.102  EC:E5:12:1E:24:B8  tado                     defconf  bound    2m33s          
+ 7 D 192.168.3.187  34:9F:7B:37:CC:F1                           defconf  bound    3m36s          
+ 8 D 192.168.3.125  90:CA:FA:AB:F8:56  Grote-slaapkamer         defconf  bound    3m41s          
+ 9 D 192.168.3.169  BC:DF:58:49:11:34  Tv-in-huiskamer          defconf  bound    17s            
+10 D 192.168.3.138  BC:DF:58:4A:80:8E  Keuken-tv                defconf  bound    21s            
+11 D 192.168.3.183  D8:EB:46:7A:66:B0                           defconf  bound    3m5s           
+12 D 192.168.3.127  48:E7:DA:78:A5:36  Roomba-31F2841091723540  defconf  bound    1m30s          
+13 D 192.168.3.184  92:B1:F7:82:E5:95                           defconf  bound    1m37s          
+14 D 192.168.3.100  22:E7:05:A9:DD:F0                           defconf  bound    4m4s

@@ -1,0 +1,15 @@
+0 X comment=Global (IODW, proxy) - Best list=Rabo address=62.41.23.0/30 creation-time=2021-07-21 17:19:21 dynamic=no
+ 1 X comment=Global (IODW, proxy) - Boxtel list=Rabo address=213.19.193.12/30 creation-time=2021-07-21 17:19:32 dynamic=no
+ 2 X comment=Guest Hotspot - Best list=Rabo address=62.41.77.242/31 creation-time=2021-07-21 17:19:32 dynamic=no
+ 3 X comment=Guest Hotspot - Boxtel list=Rabo address=212.72.40.186/31 creation-time=2021-07-21 17:19:32 dynamic=no
+ 4 X comment=iConnect - Best list=Rabo address=62.41.73.80/30 creation-time=2021-07-21 17:19:32 dynamic=no
+ 5 X comment=iConnect - Boxtel list=Rabo address=213.19.196.8/30 creation-time=2021-07-21 17:19:32 dynamic=no
+ 6 X comment=IIDB - Best list=Rabo address=62.41.77.240/31 creation-time=2021-07-21 17:19:32 dynamic=no
+ 7 X comment=IIDB - Boxtel list=Rabo address=212.72.40.184/31 creation-time=2021-07-21 17:19:32 dynamic=no
+ 8 X comment=Uitwijk - BT > BX list=Rabo address=213.19.195.228/30 creation-time=2021-07-21 17:19:32 dynamic=no
+ 9 X comment=Uitwijk - BX > BT list=Rabo address=62.41.78.20/30 creation-time=2021-07-21 17:19:32 dynamic=no
+10   comment=pieter thuis list=prive address=163.158.240.68 creation-time=2021-07-21 17:19:32 dynamic=no
+11 X comment=UPC mobile list=Austria address=195.34.0.0/16 creation-time=2021-07-21 17:19:32 dynamic=no
+12 X comment=A1 mobile list=Austria address=62.140.0.0/16 creation-time=2021-07-21 17:19:32 dynamic=no
+13 X comment=a1 mobile2 list=Austria address=89.144.0.0/16 creation-time=2021-07-21 17:19:32 dynamic=no
+14 X comment=frequentis list=frequentis address=91.217.55.0/24 creation-time=2021-07-21 17:19:33 dynamic=no

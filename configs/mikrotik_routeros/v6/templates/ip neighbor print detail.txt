@@ -1,0 +1,3 @@
+0 interface=ether2,bridge address=192.168.10.5 address4=192.168.10.5 address6=fd48:90b:d1c:d69b:e263:daff:fe67:92d6 mac-address=E0:63:DA:67:92:D6 identity="Schuur" platform="" version="" unpack=none age=7s ipv6=yes interface-name="eth0" system-description="UAP-AC-LR, 6.6.77.15402" system-caps=bridge,wlan-ap,router,station-only system-caps-enabled=bridge,wlan-ap,router 
+
+ 1 interface=ether4,bridge mac-address=00:0C:29:F1:D9:B3 identity="" platform="" version="" unpack=none age=6m51s system-caps="" system-caps-enabled=""

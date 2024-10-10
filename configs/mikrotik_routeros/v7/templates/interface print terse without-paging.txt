@@ -1,0 +1,17 @@
+0 R  name=ether1 default-name=ether1 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:23 last-link-down-time=2024-08-21 18:50:41 last-link-up-time=2024-08-21 18:50:46 link-downs=14
+ 1  S name=ether2 default-name=ether2 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:24 link-downs=0
+ 2  S name=ether3 default-name=ether3 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:25 link-downs=0
+ 3 RS name=ether4 default-name=ether4 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:26 last-link-down-time=2024-09-12 01:25:45 last-link-up-time=2024-09-12 01:25:47 link-downs=23
+ 4 RS name=ether5 default-name=ether5 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:27 last-link-down-time=2024-09-24 09:52:57 last-link-up-time=2024-09-24 09:53:00 link-downs=1
+ 5 RS name=ether6 default-name=ether6 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:28 last-link-up-time=2024-06-21 15:02:03 link-downs=0
+ 6  S name=ether7 default-name=ether7 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:29 link-downs=0
+ 7  S name=ether8 default-name=ether8 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:2A link-downs=0
+ 8 RS name=ether9 default-name=ether9 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:2B last-link-down-time=2024-10-10 01:39:28 last-link-up-time=2024-10-10 01:39:28 link-downs=224
+ 9  S name=ether10 default-name=ether10 type=ether mtu=1500 actual-mtu=1500 l2mtu=1592 max-l2mtu=9578 mac-address=2C:C8:1B:63:4A:2C link-downs=0
+10  S name=sfp-sfpplus1 default-name=sfp-sfpplus1 type=ether mtu=1500 actual-mtu=1500 l2mtu=1600 max-l2mtu=9586 mac-address=2C:C8:1B:63:4A:2D link-downs=0
+11 R  name=Huis type=vlan mtu=1500 actual-mtu=1500 l2mtu=1588 mac-address=2C:C8:1B:63:4A:24 last-link-up-time=2024-06-21 15:01:50 link-downs=0
+12 R  name=Kantoor type=vlan mtu=1500 actual-mtu=1500 l2mtu=1584 mac-address=2C:C8:1B:63:4A:24 last-link-up-time=2024-06-21 15:01:50 link-downs=0
+13 R  name=Schuur type=vlan mtu=1500 actual-mtu=1500 l2mtu=1588 mac-address=2C:C8:1B:63:4A:24 last-link-up-time=2024-06-21 15:01:50 link-downs=0
+14 R  comment=defconf name=bridge type=bridge mtu=auto actual-mtu=1500 l2mtu=1592 mac-address=2C:C8:1B:63:4A:24 last-link-up-time=2024-06-21 15:01:50 link-downs=0
+15 R  name=lo type=loopback mtu=65536 actual-mtu=65536 mac-address=00:00:00:00:00:00 last-link-up-time=2024-06-21 15:01:50 link-downs=0
+16 R  name=loopback10 type=bridge mtu=auto actual-mtu=1500 l2mtu=65535 mac-address=62:81:D4:B8:96:BB last-link-up-time=2024-06-21 15:01:50 link-downs=0

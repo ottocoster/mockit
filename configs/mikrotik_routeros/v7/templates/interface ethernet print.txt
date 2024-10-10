@@ -1,0 +1,14 @@
+Flags: R - RUNNING; S - SLAVE
+Columns: NAME, MTU, MAC-ADDRESS, ARP, SWITCH
+ #    NAME           MTU  MAC-ADDRESS        ARP      SWITCH 
+ 0 R  ether1        1500  2C:C8:1B:63:4A:23  enabled  switch1
+ 1  S ether2        1500  2C:C8:1B:63:4A:24  enabled  switch1
+ 2  S ether3        1500  2C:C8:1B:63:4A:25  enabled  switch1
+ 3 RS ether4        1500  2C:C8:1B:63:4A:26  enabled  switch1
+ 4 RS ether5        1500  2C:C8:1B:63:4A:27  enabled  switch1
+ 5 RS ether6        1500  2C:C8:1B:63:4A:28  enabled  switch2
+ 6  S ether7        1500  2C:C8:1B:63:4A:29  enabled  switch2
+ 7  S ether8        1500  2C:C8:1B:63:4A:2A  enabled  switch2
+ 8 RS ether9        1500  2C:C8:1B:63:4A:2B  enabled  switch2
+ 9  S ether10       1500  2C:C8:1B:63:4A:2C  enabled  switch2
+10  S sfp-sfpplus1  1500  2C:C8:1B:63:4A:2D  enabled

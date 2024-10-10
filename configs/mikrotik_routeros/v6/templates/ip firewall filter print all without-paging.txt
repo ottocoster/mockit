@@ -1,0 +1,16 @@
+
+Flags: X - disabled, I - invalid, D - dynamic 
+ 0  D ;;; special dummy rule to show fasttrack counters
+      chain=forward action=passthrough 
+
+ 1 X  ;;; defconf: drop invalid
+      chain=input action=drop connection-state=invalid 
+
+ 2    ;;; defconf: accept ICMP
+      chain=input action=accept protocol=icmp 
+
+ 3    ;;; defconf: accept to local loopback (for CAPsMAN)
+      chain=input action=accept dst-address=127.0.0.1 
+
+ 4 X  ;;; defconf: drop all not coming from LAN
+      chain=input actio

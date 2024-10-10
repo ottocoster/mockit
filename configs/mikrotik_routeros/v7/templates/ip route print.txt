@@ -1,0 +1,6 @@
+Flags: D - DYNAMIC; A - ACTIVE; c - CONNECT, s - STATIC
+Columns: DST-ADDRESS, GATEWAY, DISTANCE
+#     DST-ADDRESS      GATEWAY       DISTANCE
+0  As 0.0.0.0/0        192.168.20.1         1
+  DAc 192.168.3.0/24   bridge               0
+  DAc 192.168.20.0/24  ether1               0

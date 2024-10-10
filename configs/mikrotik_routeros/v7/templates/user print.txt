@@ -1,0 +1,4 @@
+Columns: NAME, GROUP, LAST-LOGGED-IN
+# NAME   GROUP  LAST-LOGGED-IN     
+;;; system default user
+0 admin  full   2024-10-10 21:28:16

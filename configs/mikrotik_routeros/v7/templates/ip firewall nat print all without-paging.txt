@@ -1,0 +1,60 @@
+Flags: X - disabled, I - invalid; D - dynamic 
+ 0    ;;; defconf: masquerade
+      chain=srcnat action=masquerade out-interface=ether1 log=no log-prefix="" ipsec-policy=out,none 
+
+ 1 X  ;;; PLEX
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=32400 protocol=tcp dst-address=192.168.1.1 dst-port=46464 log=no log-prefix="plex#" 
+
+ 2 X  ;;; RDP dev#
+      chain=dstnat action=dst-nat to-addresses=192.168.3.15 to-ports=3389 protocol=tcp dst-address=192.168.1.1 dst-port=1723 log=no log-prefix="" 
+
+ 3 X  ;;; # SFTP
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=22 protocol=tcp dst-address=192.168.1.1 dst-port=8822 log=yes log-prefix="" 
+
+ 4 X  ;;; # FTP data
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=20 protocol=udp dst-address=192.168.1.1 dst-port=8820 log=yes log-prefix="" 
+
+ 5 X  ;;; # FTP connection
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=21 protocol=tcp dst-address=192.168.1.1 dst-port=8821 log=yes log-prefix="" 
+
+ 6 X  ;;; L2TP VPN#
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=1701 protocol=udp dst-address=192.168.1.1 dst-port=1701 log=yes log-prefix="L2TP VPN#" 
+
+ 7 X  ;;; L2TP VPN#
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=500 protocol=udp dst-address=192.168.1.1 dst-port=500 log=yes log-prefix="L2TP VPN#" 
+
+ 8 X  ;;; L2TP VPN#
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=4500 protocol=udp dst-address=192.168.1.1 dst-port=4500 log=yes log-prefix="L2TP VPN#" 
+
+ 9 X  ;;; !pptp
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=1723 protocol=tcp dst-address=192.168.1.1 dst-port=1723 log=no log-prefix="" 
+
+10 X  ;;; WEB
+      chain=dstnat action=dst-nat to-addresses=192.168.3.14 to-ports=443 protocol=tcp dst-address=192.168.1.1 dst-port=443 log=yes log-prefix="#WEB443" 
+
+11 X  chain=dstnat action=dst-nat to-addresses=192.168.3.26 to-ports=80 protocol=tcp dst-address=192.168.1.1 dst-port=80 log=yes log-prefix="#WEB80" 
+
+12 X  ;;; GIT ssh
+      chain=dstnat action=dst-nat to-addresses=192.168.3.14 to-ports=3333 protocol=tcp dst-address=192.168.1.1 dst-port=3333 log=no log-prefix="" 
+
+13 X  ;;; # OpenVPN
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=1194 protocol=tcp dst-address=192.168.1.1 dst-port=1194 log=no log-prefix="" 
+
+14 X  ;;; # Openvpn udp
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=1194 protocol=udp dst-address=192.168.1.1 dst-port=1194 log=no log-prefix="" 
+
+15 X  chain=dstnat action=dst-nat to-addresses=192.168.3.26 to-ports=19132 protocol=udp dst-address=192.168.1.1 dst-port=19132 log=yes log-prefix="" 
+
+16    ;;; # srv station (camera)
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=9000 protocol=tcp dst-address=192.168.1.1 dst-port=9000 log=no log-prefix="" 
+
+17    ;;; # srv station (camera) 2
+      chain=dstnat action=dst-nat to-addresses=192.168.3.9 to-ports=5000 protocol=tcp dst-address=192.168.1.1 dst-port=5000 log=no log-prefix="" 
+
+18 X  chain=dstnat action=dst-nat to-addresses=192.168.3.99 to-ports=88 protocol=udp dst-address=192.168.1.1 dst-port=88 log=no log-prefix="" 
+
+19 X  ;;; RDP dev#
+      chain=dstnat action=dst-nat to-addresses=192.168.3.15 to-ports=3389 protocol=tcp dst-address=192.168.1.1 dst-port=8080 log=no log-prefix="" 
+
+20 X  ;;; # OpenVPN for EVE
+      chain=dstnat action=dst-nat to-addresses=192.168.3.11 to-ports=1195 protocol=udp dst-address=192.168.1.1 dst-port=1195 log=no log-prefix=""

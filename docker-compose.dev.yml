@@ -1,6 +1,6 @@
 name: devices
 services:
-  cisco_ios:
+  mockit:
     build: .
     environment:
       - DEVICE_TYPE=cisco_ios

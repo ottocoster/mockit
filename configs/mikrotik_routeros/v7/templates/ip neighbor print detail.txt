@@ -1,0 +1,7 @@
+0 interface=ether5,bridge address=192.168.3.6 address4=192.168.3.6 mac-address=88:DC:97:01:2F:9F identity="ENS500-HUIS" platform="" version="" unpack=none age=16s interface-name="eth0" system-description="EnGenius ENS500-AC" system-caps=wlan-ap system-caps-enabled=wlan-ap discovered-by=lldp 
+
+ 1 interface=ether6,bridge address=192.168.3.90 address4=192.168.3.90 address6=fde0:27b7:6af7:77a1:feec:daff:fefc:8658 mac-address=FC:EC:DA:FC:86:58 identity="Keuken" platform="" version="" unpack=none age=29s ipv6=yes interface-name="eth0" system-description="UAP-AC-Pro-Gen2, 6.6.77.15402" system-caps=bridge,wlan-ap,router,station-only system-caps-enabled=bridge,wlan-ap,router discovered-by=lldp 
+
+ 2 interface=ether6,bridge address=192.168.3.91 address4=192.168.3.91 address6=fde0:27b7:6af7:77a1:feec:daff:fefc:8898 mac-address=FC:EC:DA:FC:88:98 identity="Boven" platform="" version="" unpack=none age=29s ipv6=yes interface-name="eth0" system-description="UAP-AC-Pro-Gen2, 6.6.77.15402" system-caps=bridge,wlan-ap,router,station-only system-caps-enabled=bridge,wlan-ap,router discovered-by=lldp 
+
+ 3 interface=ether6,bridge address=192.168.3.92 address4=192.168.3.92 address6=fde0:27b7:6af7:77a1:feec:daff:fefc:86b3 mac-address=FC:EC:DA:FC:86:B3 identity="Kelder" platform="" version="" unpack=none age=29s ipv6=yes interface-name="eth0" system-description="UAP-AC-Pro-Gen2, 6.6.77.15402" system-caps=bridge,wlan-ap,router,station-only system-caps-enabled=bridge,wlan-ap,router discovered-by=lldp

@@ -1,0 +1,8 @@
+# 2024-10-10 21:30:56 by RouterOS 7.15.1
+# software id = TGM8-HSWY
+#
+# model = RB4011iGS+
+# serial number = F0260ECBE4AB
+/ip address
+add address=192.168.3.1/24 comment=defconf disabled=no interface=bridge network=192.168.3.0
+add address=192.168.20.2/24 disabled=no interface=ether1 network=192.168.20.0

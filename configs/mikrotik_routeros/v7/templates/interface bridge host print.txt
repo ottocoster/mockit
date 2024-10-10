@@ -1,44 +1,31 @@
-[admin@MikroTik] > interface bridge host print
 Flags: D - DYNAMIC; L - LOCAL; E - EXTERNAL
 Columns: MAC-ADDRESS, ON-INTERFACE, BRIDGE
- #     MAC-ADDRESS        ON-INTERFACE  BRIDGE
- 0 D E 00:0C:29:08:B1:CD  ether6        bridge
- 1 D E 00:0C:29:35:8E:8D  ether6        bridge
- 2 D E 00:0C:29:F1:D9:B3  ether6        bridge
- 3 D E 00:11:32:62:7E:9D  ether6        bridge
- 4 D E 00:12:33:12:56:DE  ether5        bridge
- 5 D E 00:62:6E:6F:F5:43  ether6        bridge
- 6 D E 00:62:6E:ED:C9:C6  ether6        bridge
- 7 D E 14:C1:4E:1E:6D:10  ether6        bridge
- 8 D E 14:C1:4E:3B:66:87  ether6        bridge
- 9 D E 1C:53:F9:B5:09:B6  ether6        bridge
-10 D E 20:4C:03:E3:17:38  ether6        bridge
-11 DL  2C:C8:1B:63:4A:24  bridge        bridge
-12 DL  2C:C8:1B:63:4A:27  ether5        bridge
-13 DL  2C:C8:1B:63:4A:28  ether6        bridge
-14 DL  2C:C8:1B:63:4A:2B  ether9        bridge
-15 D E 34:9F:7B:37:CC:F1  ether6        bridge
-16 D E 36:AF:6B:12:D8:95  ether6        bridge
-17 D E 38:BE:AB:58:1A:24  ether6        bridge
-18 D E 48:E7:DA:78:A5:36  ether6        bridge
-19 D E 50:14:79:3B:35:D0  ether6        bridge
-20 D E 50:C7:BF:BD:81:35  ether6        bridge
-21 D E 54:60:09:E0:D8:AE  ether6        bridge
-22 D E 60:6B:FF:2A:A7:C4  ether6        bridge
-23 D E 7C:2F:80:8A:88:79  ether9        bridge
-24 D E 80:A0:36:A7:A8:8E  ether6        bridge
-25 D E 88:DC:97:01:2D:14  ether5        bridge
-26 D E 88:DC:97:01:2F:9F  ether5        bridge
-27 D E A4:77:33:6E:3A:00  ether6        bridge
-28 D E B0:3C:DC:73:8E:DF  ether6        bridge
-29 D E B0:B2:DC:03:8D:15  ether6        bridge
-30 D E D4:CA:6D:AF:5B:E4  ether6        bridge
-31 D E D6:43:14:EB:AD:5E  ether6        bridge
-32 D E E0:37:BF:AA:B9:2F  ether6        bridge
-33 D E E0:63:DA:67:92:D6  ether6        bridge
-34 D E E4:F4:C6:1A:53:F4  ether5        bridge
-35 D E EC:E5:12:1E:24:B8  ether6        bridge
-36 D E FC:EC:DA:FC:86:58  ether6        bridge
-37 D E FC:EC:DA:FC:86:B3  ether6        bridge
-38 D E FC:EC:DA:FC:88:98  ether6        bridge
-39 DL  42:B8:DF:CE:A5:0B  loopback10    loopback10
+ #     MAC-ADDRESS        ON-INTERFACE  BRIDGE    
+ 0 D E 00:0C:C1:06:4B:EA  ether4        bridge    
+ 1 D E 00:11:32:62:7E:9D  ether6        bridge    
+ 2 D E 00:62:6E:6F:F5:43  ether6        bridge    
+ 3 D E 00:62:6E:ED:C9:C6  ether6        bridge    
+ 4 D E 22:E7:05:A9:DD:F0  ether6        bridge    
+ 5 DL  2C:C8:1B:63:4A:24  bridge        bridge    
+ 6 DL  2C:C8:1B:63:4A:26  ether4        bridge    
+ 7 DL  2C:C8:1B:63:4A:27  ether5        bridge    
+ 8 DL  2C:C8:1B:63:4A:28  ether6        bridge    
+ 9 DL  2C:C8:1B:63:4A:2B  ether9        bridge    
+10 D E 34:9F:7B:37:CC:F1  ether6        bridge    
+11 D E 48:E7:DA:78:A5:36  ether6        bridge    
+12 D E 50:C7:BF:BD:81:35  ether6        bridge    
+13 D E 7C:2F:80:8A:88:79  ether9        bridge    
+14 D E 88:DC:97:01:2D:16  ether5        bridge    
+15 D E 88:DC:97:01:2F:9F  ether5        bridge    
+16 D E 90:CA:FA:AB:F8:56  ether6        bridge    
+17 D E 92:B1:F7:82:E5:95  ether6        bridge    
+18 D E BC:DF:58:49:11:34  ether6        bridge    
+19 D E BC:DF:58:4A:80:8E  ether6        bridge    
+20 D E D2:B4:42:6E:EB:8B  ether6        bridge    
+21 D E D8:EB:46:7A:66:B0  ether6        bridge    
+22 D E E0:37:BF:AA:B9:2F  ether6        bridge    
+23 D E EC:E5:12:1E:24:B8  ether6        bridge    
+24 D E FC:EC:DA:FC:86:58  ether6        bridge    
+25 D E FC:EC:DA:FC:86:B3  ether6        bridge    
+26 D E FC:EC:DA:FC:88:98  ether6        bridge    
+27 DL  62:81:D4:B8:96:BB  loopback10    loopback10

@@ -1,0 +1,11 @@
+
+ 0  RS name=ether1 default-name=ether1 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=4074 mac-address=D4:CA:6D:AF:5B:E3 last-link-down-time=sep/14/2024 10:41:39 last-link-up-time=sep/14/2024 10:41:44 link-downs=20 
+ 1  RS name=ether2 default-name=ether2 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=4074 mac-address=D4:CA:6D:AF:5B:E4 last-link-down-time=sep/04/2024 03:04:05 last-link-up-time=sep/04/2024 03:04:36 link-downs=4 
+ 2  RS name=ether3 default-name=ether3 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=4074 mac-address=D4:CA:6D:AF:5B:E5 last-link-down-time=aug/21/2024 10:14:37 last-link-up-time=aug/21/2024 10:14:40 link-downs=1 
+ 3  RS name=ether4 default-name=ether4 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=4074 mac-address=D4:CA:6D:AF:5B:E6 last-link-down-time=may/18/2024 07:01:11 last-link-up-time=may/18/2024 07:01:13 link-downs=1 
+ 4   S name=ether5 default-name=ether5 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=4074 mac-address=D4:CA:6D:AF:5B:E7 link-downs=0 
+ 5  RS name=ether6 default-name=ether6 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=2028 mac-address=D4:CA:6D:AF:5B:E8 last-link-up-time=may/18/2024 07:01:09 link-downs=0 
+ 6  RS name=ether7 default-name=ether7 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=2028 mac-address=D4:CA:6D:AF:5B:E9 last-link-down-time=oct/02/2024 13:30:44 last-link-up-time=oct/02/2024 13:34:21 link-downs=7 
+ 7   S name=ether8 default-name=ether8 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=2028 mac-address=D4:CA:6D:AF:5B:EA last-link-down-time=aug/21/2024 14:13:29 last-link-up-time=aug/21/2024 14:03:43 link-downs=13 
+ 8   S name=ether9 default-name=ether9 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=2028 mac-address=D4:CA:6D:AF:5B:EB link-downs=0 
+ 9   S name=ether10 default-name=ether10 type=ether mtu=1500 actual-mtu=1500 l2mtu=1598 max-l2mtu=2028 mac-address=D4:CA:6D:AF:5B:EC link-downs=0 

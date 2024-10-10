@@ -1,0 +1,6 @@
+Flags: D - dynamic; X - disabled, I - inactive, A - active; c - connect, s - static, r - rip, b - bgp, o - ospf, i - is-is, d - dhcp, v - vpn, m - modem, y - bgp-mpls-vpn; H - hw-offloaded; + - ecmp 
+ 0  As   dst-address=0.0.0.0/0 routing-table=main gateway=192.168.20.1 immediate-gw=192.168.20.1%ether1 distance=1 scope=30 target-scope=10 suppress-hw-offload=no 
+
+   DAc   dst-address=192.168.3.0/24 routing-table=main gateway=bridge immediate-gw=bridge distance=0 scope=10 suppress-hw-offload=no local-address=192.168.3.1%bridge 
+
+   DAc   dst-address=192.168.20.0/24 routing-table=main gateway=ether1 immediate-gw=ether1 distance=0 scope=10 suppress-hw-offload=no local-address=192.168.20.2%ether1

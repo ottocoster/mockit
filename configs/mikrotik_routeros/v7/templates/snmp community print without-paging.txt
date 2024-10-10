@@ -1,0 +1,4 @@
+Flags: * - DEFAULT
+Columns: NAME, ADDRESSES, SECURITY, READ-ACCESS, WRITE-ACCESS
+#   NAME    ADDRESSES  SECURITY    READ-ACCESS  WRITE-ACCESS
+0 * public  0.0.0.0/0  authorized  yes          no
