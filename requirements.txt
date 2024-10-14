@@ -4,6 +4,3 @@ pysnmp
 netmiko
 openai
 pytest-netconf
-pydantic
-fastapi
-uvicorn
