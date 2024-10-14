@@ -7,7 +7,7 @@ $ snmpwalk -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 localhost .1.3
 from pysnmp.entity import engine, config
 from pysnmp.entity.rfc3413 import cmdrsp, context
 from pysnmp.carrier.asyncio.dgram import udp
-from pysnmp.debug import setLogger, Debug
+from pysnmp.debug import set_logger, Debug
 from openai import OpenAI
 
 import logging
@@ -27,7 +27,7 @@ async def start_server(options):
         raise Exception("SNMPv2 and SNMPv3 can't both be disabled")
 
     if options["debug"]:
-        setLogger(Debug('all'))
+        set_logger(Debug('all'))
 
     logger.info("Starting SNMP server")
     logger.debug(f"Using SNMP options: {options}")
