@@ -9,6 +9,10 @@
 3. Run: docker compose up -d --build
 4. Log in via SSH through the terminal, or run your network automation script against it.
 
+## YouTube playlist with sample videos
+
+https://www.youtube.com/playlist?list=PLxv8A8sCq4EBPfeJGk_Ufb5l9NT50qil2
+
 ## Device version
 
 It's possible to store different configurations for an OS per version. For example, for Mikrotik, we currently support multiple versions. You can switch between them using DEVICE_VERSION. You can see how it's set up in /config/mikrotik_routeros/.
@@ -100,6 +104,53 @@ OpenAI
 - OPENAI_SUPPORT: Have OpenAI to respond to unknown cli commands (default true)
 - OPENAI_APIKEY: Get your api key at https://platform.openai.com/ 
 
+## Device Configuration
+
+We created a module where you can use a simple database manager to Create, Read, Update and Delete data.
+This way you can create your own configuration logic, see the following YouTube video for more details
+https://www.youtube.com/watch?v=fMtLNYJ3708&list=PLxv8A8sCq4EBPfeJGk_Ufb5l9NT50qil2
+
+### Database Options:
+- create_table
+- create_record
+- read_record
+- update_record
+- delete_record
+
+### Example
+
+configs\cisco_ios\scripts\__init__.py
+```python
+from src.ssh_server.db_operations import create_table, create_record, read_record, update_record, delete_record
+import re
+create_table('cisco_ios')
+def handle_command(command: str):
+    if command.startswith("add vlan"):
+
+        # Get the vlan number
+        match = re.search(r'add vlan (\d+)', command)
+        if match:
+            vlan_number = match.group(1)
+
+            db_vlan = read_record("cisco_ios","vlan")
+            if db_vlan:
+                update_record("cisco_ios", "vlan", db_vlan + " " + vlan_number)
+            else:
+                create_record("cisco_ios", "vlan", vlan_number)
+            
+            # Return the device prompt
+            return True
+
+    if command == "show vlans":
+        vlans = read_record("cisco_ios", "vlan")
+        if vlans:
+            return vlans
+        else:
+            return True
+    return ""
+```
+
+
 # Development info
 
 ## githook
@@ -111,8 +162,5 @@ If you want to share your command templates with the rest of us, it would be app
 Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
 
 # Roadmap
-
-- AI integration to reply on missing commands
-- Simple ORM to store networking information if you want to build for example a vlan.dat
 - NetConf support
 - RestAPI support to imitate controller based devices.
