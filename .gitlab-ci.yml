@@ -42,17 +42,17 @@ unit_test:
   stage: test
   script:
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml up -d --build --remove-orphan
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml up -d --build
     - sleep 60
     - docker exec devices-test_container pytest --color=yes -v --durations 0 -m test_set1 -rP
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml stop || true
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml up -d --build --remove-orphan
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml up -d --build
     - sleep 60
     - docker exec devices-test_container pytest --color=yes -v --durations 0 -m test_set2 -rP
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml stop || true
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml up -d --build --remove-orphan
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml up -d --build
     - sleep 60
     - docker exec devices-test_container pytest --color=yes -v --durations 0 -m test_set3 -rP
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml stop || true
