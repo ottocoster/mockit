@@ -1,0 +1,50 @@
+Flags: X - disabled, I - invalid; D - dynamic 
+ 0  D ;;; special dummy rule to show fasttrack counters
+      chain=forward action=passthrough 
+
+ 1 X  ;;; Allow nokia modem
+      chain=forward action=accept dst-address=192.168.1.254 log=no log-prefix="" 
+
+ 2    ;;; # block cameras
+      chain=forward action=drop src-address=192.168.3.95 log=yes log-prefix="" 
+
+ 3    chain=forward action=drop src-address=192.168.3.96 log=yes log-prefix="" 
+
+ 4    chain=forward action=drop src-address=192.168.3.97 log=yes log-prefix="" 
+
+ 5    chain=forward action=drop src-address=192.168.3.98 log=no log-prefix="" 
+
+ 6    chain=forward action=drop src-address=192.168.3.99 log=no log-prefix="" 
+
+ 7    ;;; defconf: accept to local loopback (for CAPsMAN)
+      chain=input action=accept dst-address=127.0.0.1 
+
+ 8    ;;; defconf: accept established,related,untracked
+      chain=input action=accept connection-state=established,related,untracked 
+
+ 9    ;;; defconf: drop invalid
+      chain=input action=drop connection-state=invalid 
+
+10    ;;; defconf: accept ICMP
+      chain=input action=accept protocol=icmp 
+
+11 X  ;;; defconf: drop all not coming from LAN
+      chain=input action=drop in-interface-list=!LAN 
+
+12    ;;; defconf: accept in ipsec policy
+      chain=forward action=accept ipsec-policy=in,ipsec 
+
+13    ;;; defconf: accept out ipsec policy
+      chain=forward action=accept ipsec-policy=out,ipsec 
+
+14    ;;; defconf: fasttrack
+      chain=forward action=fasttrack-connection hw-offload=yes connection-state=established,related 
+
+15    ;;; defconf: accept established,related, untracked
+      chain=forward action=accept connection-state=established,related,untracked 
+
+16    ;;; defconf: drop invalid
+      chain=forward action=drop connection-state=invalid 
+
+17 X  ;;; defconf: drop all from WAN not DSTNATed
+      chain=forward action=drop connection-state=new connection-nat-state=!dstnat in-interface-list=WAN
