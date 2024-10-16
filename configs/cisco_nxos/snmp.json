@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "nexus.some.net"
+            "value": "cisco_nxos.some.net"
         },
         {
             "name": "sysDescr",

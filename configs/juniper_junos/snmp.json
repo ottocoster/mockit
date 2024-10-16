@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "juniper.some.net"
+            "value": "juniper_junos.some.net"
         },
         {
             "name": "sysDescr",
