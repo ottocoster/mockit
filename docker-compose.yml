@@ -1,15 +1,27 @@
 name: devices
 services:
-  cisco_ios:
-    image: registry.gitlab.com/slurpit.io/mockit:latest
-    container_name: cisco_ios
+  mockit:
+    build: .
     environment:
-      DEVICE_TYPE: cisco_ios
-      SSH_USERNAME: test
-      SSH_PASSWORD: test
-    ports: 
-       - "22:22"
-       - "161:161/udp"
+      - DEVICE_TYPE=cisco_ios_telnet
+      - TELNET_USERNAME=test
+      - TELNET_PASSWORD=test
+      # - NETCONF_USERNAME=test
+      # - NETCONF_PASSWORD=test
+      # - OPENAI_SUPPORT=true
+      # - DEVICE_VERSION=v6
+      # - DEVICE_DELAY=1
+      # - LOGIN_DELAY=3
+      # - LOGIN_RETRY=2
+    env_file:
+      - .env
+    networks:
+      - devices-network
+    ports:
+      - "22:22"
+      - "23:23"
+      - "161:161/udp"
+      - "830:830"
 
 networks:
   devices-network:

@@ -87,7 +87,6 @@ class SSH_Handler:
 
             command = command.strip()
             self.process.stdout.write(self.get_formatted_command(command))
-                
 
             if command:
                 result = await self._handle_command(command)
