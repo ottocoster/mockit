@@ -1,0 +1,19 @@
+{
+    "SNMPv2-MIB": [
+        {
+            "name": "sysName",
+            "type": "string",
+            "value": "nokia_srl.some.net"
+        },
+        {
+            "name": "sysDescr",
+            "type": "string",
+            "value": "SRLinux-v24.7.2-319-g64b71941f7 7220 IXR-D2L Copyright (c) 2000-2020 Nokia. Kernel 6.11.0-9-generic #9-Ubuntu SMP PREEMPT_DYNAMIC Mon Oct 14 13:19:59 UTC 2024"
+        },
+        {
+            "name": "sysObjectID",
+            "type": "id",
+            "oid": "1.3.6.1.4.1.6527.1.20.26"
+        }
+    ]
+}
