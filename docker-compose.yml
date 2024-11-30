@@ -3,9 +3,10 @@ services:
   mockit:
     build: .
     environment:
-      - DEVICE_TYPE=cisco_ios_telnet
+      - DEVICE_TYPE=ipinfusion_ocnos
       - TELNET_USERNAME=test
       - TELNET_PASSWORD=test
+      - TELNET_SERVER_ENABLED=true
       # - NETCONF_USERNAME=test
       # - NETCONF_PASSWORD=test
       # - OPENAI_SUPPORT=true

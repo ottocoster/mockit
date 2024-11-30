@@ -76,7 +76,7 @@ def main():
     if str(os.environ.get("NETCONF_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_netconf(options_netconf))
     
-    if str(os.environ.get("TELNET_SERVER_ENABLED", "true")).lower() == "true" and device_type == "cisco_ios_telnet":
+    if str(os.environ.get("TELNET_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_telnet(options_telnet))
 
     if len(asyncio.all_tasks(loop)) == 0:

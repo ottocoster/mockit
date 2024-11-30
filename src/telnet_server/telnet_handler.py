@@ -18,6 +18,7 @@ class Telnet_Handler:
         self.password = options.get('password', "test")
         self.new_line = options.get('new_line', '\n')
         self.delay = options.get('delay', 0.025)
+        self.login_delay = options.get('login_delay', 0.025)
         self.pri_terminator = "#"
         self.alt_terminator = ">"
         self.enable = True
@@ -68,9 +69,28 @@ class Telnet_Handler:
     def set_prompt_terminator(self, pri_terminator="#", alt_terminator=">"):
         self.pri_terminator = pri_terminator
         self.alt_terminator = alt_terminator
-        termintator = pri_terminator if self.enable else alt_terminator
-        self.prompt_terminator = f"{self.device_type}{self.config_pattern}{termintator} " if self.config_mode else f"{self.device_type}{termintator} "
 
+        if self.enable:
+            termintator = pri_terminator
+        else:
+            termintator = alt_terminator
+
+        if self.config_mode:
+            self.prompt_terminator = self.device_type + self.config_pattern + termintator + " "
+        else:
+            self.prompt_terminator = self.device_type + termintator + " "
+
+
+    def handle_custom_command(self, command):
+        """
+        Handle custom commands not found in the template directory.
+        Can be overridden in subclasses to provide specific command handling.
+
+        :param command: The command string.
+        :return: Custom command output as a string.
+        """
+        return ""
+    
     def replace_command(self, command):
         command_map = {'sh': 'show', 'disp': 'display'}
         command_parts = command.split(" ")
@@ -101,12 +121,18 @@ class Telnet_Handler:
         self.conn.sendall(response.encode() + self.new_line.encode())
 
     def handle_command(self, command):
-        if command in self.break_commands:
-            return False
-
         command = self.replace_command(command)
         self.logger.info(f"Processed command: `{command}`")
+        
+        # Handle custom command if applicable
+        custom_command_output = self.handle_custom_command(command)
 
+        if custom_command_output:
+            self.logger.info(f"custom_command_output: `{custom_command_output}`")
+
+            self.respond(custom_command_output)
+            return True
+        
         if command in self.commands:
             self.respond(self._get_command_output(self.commands[command]))
         else:
@@ -119,9 +145,15 @@ class Telnet_Handler:
             self.logger.info(f"echo command: `{command[5:]}`")
             self.respond(command[5:])
             return True
-
+        
         if command in self.break_commands:
+            self.logger.info(f"break_commands: `{command}`")
             return False
+        
+        # Handle enable and disable command    
+        if command == "enable" or command == "disable":
+            self.enable = command == "enable"
+            self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
         
         return True
 
@@ -139,6 +171,8 @@ class Telnet_Handler:
         return self.conn.recv(1024).decode().strip()
 
     def run(self):
+        time.sleep(self.login_delay)
+
         try:
             self.write("Username: ")
             username = self.read()
@@ -157,6 +191,8 @@ class Telnet_Handler:
 
             while True:
                 time.sleep(self.delay)
+                self.logger.debug(f"self.prompt_terminator: `{self.prompt_terminator}`")
+
                 self.write(self.prompt_terminator)
                 command = self.conn.recv(1024).decode().strip()
                 self.logger.debug(f"Command received: `{command}`")
@@ -166,6 +202,8 @@ class Telnet_Handler:
                     result = self.handle_command(command)
                     if not result:
                         break
+        except Exception as e:
+            self.logger.error(f"Error {e}")
         finally:
             self.conn.close()
             self.logger.info(f"Connection closed")

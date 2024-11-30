@@ -1,7 +1,8 @@
 import socket
 import threading
 import logging
-from src.telnet_server.telnet_handler import Telnet_Handler
+import importlib
+from src.telnet_server.telnet_handler import Telnet_Handler  # Default handler
 
 # Server Configuration
 HOST = '0.0.0.0'  # Listen on all available interfaces
@@ -10,16 +11,65 @@ PORT = 23  # Default Telnet port, but requires admin rights to run on Unix-based
 logger = logging.getLogger()
 logging.basicConfig(level=logging.DEBUG)
 
-# Start Telnet Server
-def start_telnet(options):
+def load_telnet_handler(device_type, device_version):
+    """
+    Dynamically load the Telnet handler class for a specific device.
 
+    Args:
+        device_type (str): Type of the device.
+        device_version (str): Version of the device (optional).
+
+    Returns:
+        class: Handler class for the specified device type.
+    """
+    try:
+       
+        # Dynamically import the module based on the device type
+        if device_version:
+            module = importlib.import_module(f'configs.{device_type}.{device_version}.{device_type}_{device_version}_server')
+        else:
+            module = importlib.import_module(f'configs.{device_type}.{device_type}_server')
+
+        # Get the server and handler classes from the module
+        handler_class = getattr(module, f'{device_type}_telnet_handler')
+        logger.debug(f"Loaded Telnet handler for {device_type} (version: {device_version})")
+        return handler_class
+    except (ModuleNotFoundError, AttributeError) as e:
+        logger.warning(f"Specific Telnet handler for {device_type} not found. Falling back to default handler.")
+        return Telnet_Handler
+
+def handle_client(conn, addr, options):
+    """
+    Handle an incoming client connection.
+
+    Args:
+        conn (socket.socket): Client connection.
+        addr (tuple): Client address.
+        options (dict): Server configuration options.
+    """
+    logger.info(f"Connection established with {addr}")
+    device_type = options.get("device_type", "default")
+    device_version = options.get("device_version")
+
+    # Dynamically load the appropriate handler class
+    handler_class = load_telnet_handler(device_type, device_version)
+
+    # Create an instance of the handler and run it
+    handler = handler_class(conn, options)
+    handler.run()
+
+def start_telnet(options):
+    """
+    Start the Telnet server.
+
+    Args:
+        options (dict): Configuration options for the server.
+    """
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((HOST, PORT))
     server.listen(5)
-    logger.debug(f"Telnet server running on {HOST}:{PORT}")
+    logger.info(f"Telnet server running on {HOST}:{PORT}")
 
     while True:
         conn, addr = server.accept()
-        print(f"Connection established with {addr}")
-        handler = Telnet_Handler(conn, options)
-        threading.Thread(target=handler.run, args=()).start()
+        threading.Thread(target=handle_client, args=(conn, addr, options)).start()
