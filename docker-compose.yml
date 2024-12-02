@@ -10,7 +10,13 @@ services:
     ports: 
        - "22:22"
        - "161:161/udp"
+    networks:
+      devices-network:
+        ipv4_address: 172.16.240.45 # change to what you prefer
 
 networks:
   devices-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.240.0/24

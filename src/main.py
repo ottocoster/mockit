@@ -17,7 +17,7 @@ def main():
     debug_enabled = str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true"
     if debug_enabled:
         LOGGER = logging.getLogger()
-        logging.basicConfig(level=logging.DEBUG)
+        logging.basicConfig(level=logging.INFO)
     # SSH configuration options from environment variables
     options_ssh = {
         "debug": debug_enabled,

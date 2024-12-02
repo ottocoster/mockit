@@ -1,7 +1,7 @@
 from netconf.netconf import AsyncNetconfServer
 import logging
 
-logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
+logging.basicConfig(level=logging.INFO)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
 
 async def start_netconf(options):
     logger = logging.getLogger()
