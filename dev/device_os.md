@@ -152,17 +152,17 @@ ericsson_mltn66
 # huawei_telnet
 # huawei_olt_telnet
 # ipinfusion_ocnos_telnet
-juniper_junos_telnet
-nokia_sros_telnet
-oneaccess_oneos_telnet
+# juniper_junos_telnet
+# nokia_sros_telnet
+# oneaccess_oneos_telnet
 paloalto_panos_telnet
-rad_etx_telnet
-raisecom_telnet
-ruckus_fastiron_telnet
-ruijie_os_telnet
-supermicro_smis_telnet
-teldat_cit_telnet
-tplink_jetstream_telnet
-yamaha_telnet
-zte_zxros_telnet
-maipu_telnet
+# rad_etx_telnet
+# raisecom_telnet
+# ruckus_fastiron_telnet
+# ruijie_os_telnet
+# supermicro_smis_telnet
+# teldat_cit_telnet
+# tplink_jetstream_telnet
+# yamaha_telnet
+# zte_zxros_telnet
+# maipu_telnet

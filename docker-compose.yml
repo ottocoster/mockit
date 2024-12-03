@@ -3,7 +3,7 @@ services:
   mockit:
     build: .
     environment:
-      - DEVICE_TYPE=ipinfusion_ocnos
+      - DEVICE_TYPE=paloalto_panos
       - TELNET_USERNAME=test
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
