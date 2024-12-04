@@ -3,27 +3,19 @@ services:
   mockit:
     build: .
     environment:
-      - DEVICE_TYPE=nokia_sros
-      - TELNET_USERNAME=test
-      - TELNET_PASSWORD=test
-      - TELNET_SERVER_ENABLED=true
-      # - NETCONF_USERNAME=test
-      # - NETCONF_PASSWORD=test
-      # - OPENAI_SUPPORT=true
-      # - DEVICE_VERSION=v6
-      # - DEVICE_DELAY=1
-      # - LOGIN_DELAY=3
-      # - LOGIN_RETRY=2
-    env_file:
-      - .env
+      DEVICE_TYPE: cisco_ios
+      SSH_USERNAME: test
+      SSH_PASSWORD: test
+    ports: 
+       - "22:22"
+       - "161:161/udp"
     networks:
-      - devices-network
-    ports:
-      - "22:22"
-      - "23:23"
-      - "161:161/udp"
-      - "830:830"
+      devices-network:
+        ipv4_address: 172.16.240.45 # change to what you prefer
 
 networks:
   devices-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.240.0/24
