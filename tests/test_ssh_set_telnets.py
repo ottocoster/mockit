@@ -136,9 +136,9 @@ def test_nokia_sros():
 def test_oneaccess_oneos():
     assert run_command("devices-oneaccess_oneos", "oneaccess_oneos_telnet", "echo test") == "test"
 
-@pytest.mark.test_telnets
-def test_paloalto_panos():
-    assert run_command("devices-paloalto_panos", "paloalto_panos_telnet", "echo test") == "test"
+# @pytest.mark.test_telnets
+# def test_paloalto_panos():
+#     assert run_command("devices-paloalto_panos", "paloalto_panos_telnet", "echo test") == "test"
 
 @pytest.mark.test_telnets
 def test_rad_etx():

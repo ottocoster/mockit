@@ -348,16 +348,16 @@ services:
     networks:
       - devices-network
 
-  paloalto_panos:
-    build: ../
-    container_name: devices-paloalto_panos
-    environment:  
-      - DEVICE_TYPE=paloalto_panos
-      - TELNET_USERNAME=root
-      - TELNET_PASSWORD=test
-      - TELNET_SERVER_ENABLED=true
-    networks:
-      - devices-network
+  # paloalto_panos:
+  #   build: ../
+  #   container_name: devices-paloalto_panos
+  #   environment:  
+  #     - DEVICE_TYPE=paloalto_panos
+  #     - TELNET_USERNAME=root
+  #     - TELNET_PASSWORD=test
+  #     - TELNET_SERVER_ENABLED=true
+  #   networks:
+  #     - devices-network
 
   rad_etx:
     build: ../

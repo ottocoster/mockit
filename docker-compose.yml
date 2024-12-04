@@ -3,7 +3,7 @@ services:
   mockit:
     build: .
     environment:
-      - DEVICE_TYPE=paloalto_panos
+      - DEVICE_TYPE=nokia_sros
       - TELNET_USERNAME=test
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true

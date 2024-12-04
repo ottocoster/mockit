@@ -12,9 +12,9 @@ def run_command(host, device_type, command, username="test", password="test"):
     with ConnectHandler(**parameters) as net_connect:
         return net_connect.send_command(command)
 
-test = run_command("192.168.56.129", "paloalto_panos_telnet", "echo test")
-print(test)
+# test = run_command("192.168.56.129", "nokia_sros_telnet", "echo test")
+# print(test)
 
 
-# def test_telnet():
-#     assert run_command("192.168.56.129", "audiocode_shell_telnet", "echo test") == "test"
+def test_telnet():
+    assert run_command("192.168.56.129", "nokia_sros_telnet", "echo test") == "test"
