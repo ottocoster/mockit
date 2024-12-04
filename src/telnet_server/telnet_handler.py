@@ -9,8 +9,9 @@ import sys
 import time
 # Telnet Handler class
 class Telnet_Handler:
-    def __init__(self, conn, options = {}):
-        self.conn = conn
+    def __init__(self, reader, writer, options={}):
+        self.reader = reader
+        self.writer = writer
         self.logger = logging.getLogger(self.__class__.__name__)
         self.device_type = options.get('device_type', 'cisco_ios_telnet')
         self.device_version = options.get('device_version', None)
@@ -120,89 +121,84 @@ class Telnet_Handler:
         self.logger.debug(f"Response: {response}")
         self.conn.sendall(response.encode() + self.new_line.encode())
 
-    def handle_command(self, command):
+    async def handle_command(self, command):
         command = self.replace_command(command)
         self.logger.info(f"Processed command: `{command}`")
-        
+
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
-
         if custom_command_output:
-            self.logger.info(f"custom_command_output: `{custom_command_output}`")
-
-            self.respond(custom_command_output)
+            await self.respond(custom_command_output)
             return True
-        
+
         if command in self.commands:
-            self.respond(self._get_command_output(self.commands[command]))
+            await self.respond(self._get_command_output(self.commands[command]))
         else:
             matching_commands = self.get_matching_commands(command)
             if matching_commands:
-                closest_match = matching_commands[0] if matching_commands else f"Unknown command: {command}"
-                self.respond(closest_match)
-        
-        if command.startswith("echo "):        
-            self.logger.info(f"echo command: `{command[5:]}`")
-            self.respond(command[5:])
+                closest_match = matching_commands[0]
+                await self.respond(closest_match)
+
+        if command.startswith("echo "):
+            await self.respond(command[5:])
             return True
-        
+
         if command in self.break_commands:
-            self.logger.info(f"break_commands: `{command}`")
             return False
-        
-        # Handle enable and disable command    
+
+        # Handle enable and disable command
         if command == "enable" or command == "disable":
             self.enable = command == "enable"
-            self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
-        
+            self.set_prompt_terminator()
+
         return True
 
     def _get_command_output(self, file):
         with open(file, "r") as f:
             return f.read().strip()
         
-    def respond(self, output):
-        self.write(output + self.new_line)
+    async def respond(self, output):
+        self.logger.debug(f"Response: {output}")
+        await self.write(output + self.new_line)
 
-    def write(self, output):
-        self.conn.sendall(output.encode())
+    async def write(self, output):
+        self.writer.write(output.encode())
+        await self.writer.drain()
 
-    def read(self):
-        return self.conn.recv(1024).decode().strip()
+    async def read(self):
+        data = await self.reader.read(1024)
+        return data.decode().strip()
 
-    def run(self):
-        time.sleep(self.login_delay)
+    async def run(self):
+        await asyncio.sleep(self.login_delay)
 
         try:
-            self.write("Username: ")
-            username = self.read()
-            self.write("Password: ")
-            password = self.read()
-            self.logger.debug(f"username: `{self.username}`")
-            self.logger.debug(f"password: `{self.password}`")
-            self.logger.debug(f"username received: `{username}`")
-            self.logger.debug(f"password received: `{password}`")
+            await self.write("Username: ")
+            username = await self.read()
+            await self.write("Password: ")
+            password = await self.read()
 
             if username == self.username and password == self.password:
-                self.write("Logged in successfully\n")
+                await self.write("Logged in successfully\n")
             else:
-                self.write("Invalid credentials!\n")
+                await self.write("Invalid credentials!\n")
                 return
 
             while True:
-                time.sleep(self.delay)
+                await asyncio.sleep(self.delay)
 
-                self.write(self.prompt_terminator)
-                command = self.conn.recv(1024).decode().strip()
+                await self.write(self.prompt_terminator)
+                command = await self.read()
                 self.logger.debug(f"Command received: `{command}`")
-                self.respond(command)
+                await self.respond(command)
 
                 if command:
-                    result = self.handle_command(command)
+                    result = await self.handle_command(command)
                     if not result:
                         break
         except Exception as e:
             self.logger.error(f"Error {e}")
         finally:
-            self.conn.close()
+            self.writer.close()
+            await self.writer.wait_closed()
             self.logger.info(f"Connection closed")

@@ -2,6 +2,7 @@ import socket
 import threading
 import logging
 import importlib
+import asyncio
 from src.telnet_server.telnet_handler import Telnet_Handler  # Default handler
 
 # Server Configuration
@@ -53,22 +54,27 @@ def handle_client(conn, addr, options, handler_class):
     handler = handler_class(conn, options)
     handler.run()
 
-def start_telnet(options):
+    
+async def start_telnet(options):
     """
-    Start the Telnet server.
-
-    Args:
-        options (dict): Configuration options for the server.
+    Start the Telnet server asynchronously.
     """
     device_type = options.get("device_type")
     device_version = options.get("device_version")
     handler_class = load_telnet_handler(device_type, device_version)
 
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind((HOST, PORT))
-    server.listen(5)
-    logger.info(f"Telnet server running on {HOST}:{PORT}")
+    async def accept_client(reader, writer):
+        """
+        Accept a client connection and pass the async reader/writer to the handler.
+        """
+        addr = writer.get_extra_info('peername')
+        logger.info(f"Connection established with {addr}")
+        handler = handler_class(reader, writer, options)
+        await handler.run()
 
-    while True:
-        conn, addr = server.accept()
-        threading.Thread(target=handle_client, args=(conn, addr, options, handler_class)).start()
+    server = await asyncio.start_server(accept_client, HOST, PORT)
+    addr = server.sockets[0].getsockname()
+    logger.info(f"Telnet server running on {addr}")
+
+    async with server:
+        await server.serve_forever()
