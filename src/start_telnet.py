@@ -38,7 +38,7 @@ def load_telnet_handler(device_type, device_version):
         logger.warning(f"Specific Telnet handler for {device_type} not found. Falling back to default handler.")
         return Telnet_Handler
 
-def handle_client(conn, addr, options):
+def handle_client(conn, addr, options, handler_class):
     """
     Handle an incoming client connection.
 
@@ -48,13 +48,8 @@ def handle_client(conn, addr, options):
         options (dict): Server configuration options.
     """
     logger.info(f"Connection established with {addr}")
-    device_type = options.get("device_type", "default")
-    device_version = options.get("device_version")
 
-    # Dynamically load the appropriate handler class
-    handler_class = load_telnet_handler(device_type, device_version)
-
-    # Create an instance of the handler and run it
+    # Create an instance of the handler
     handler = handler_class(conn, options)
     handler.run()
 
@@ -65,6 +60,10 @@ def start_telnet(options):
     Args:
         options (dict): Configuration options for the server.
     """
+    device_type = options.get("device_type")
+    device_version = options.get("device_version")
+    handler_class = load_telnet_handler(device_type, device_version)
+
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((HOST, PORT))
     server.listen(5)
@@ -72,4 +71,4 @@ def start_telnet(options):
 
     while True:
         conn, addr = server.accept()
-        threading.Thread(target=handle_client, args=(conn, addr, options)).start()
+        threading.Thread(target=handle_client, args=(conn, addr, options, handler_class)).start()
