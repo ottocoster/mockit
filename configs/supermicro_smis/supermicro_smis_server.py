@@ -31,9 +31,8 @@ class supermicro_smis_handler(SSH_Handler):
 
 
 class supermicro_smis_telnet_handler(Telnet_Handler):
-    def __init__(self, process: SSHServerProcess, options):
-        options['device_type'] = 'supermicro_smis'
-        super().__init__(process, options=options)
+    def __init__(self, reader, writer, options={}):
+        super().__init__(reader, writer, options=options)
         self.config_pattern = "(config-system)"
         self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
         

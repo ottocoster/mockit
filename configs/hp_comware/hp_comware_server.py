@@ -14,51 +14,51 @@ class hp_comware_handler(SSH_Handler):
         self.set_prompt_terminator(pri_terminator = "]", alt_terminator = ">")
 
 class hp_comware_telnet_handler(Telnet_Handler):
-    def __init__(self, process: SSHServerProcess, options):
-        options['device_type'] = 'hp_comware'
-        super().__init__(process, options=options)
+    def __init__(self, reader, writer, options={}):
+        super().__init__(reader, writer, options=options)
         self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
 
 
-    def run(self):
+    async def run(self):
         time.sleep(self.login_delay)
 
         terminator_configured = False
 
         try:
-            self.write("username: ")
-            username = self.read()
-            self.write("password: ")
-            password = self.read()
+            await self.write("username: ")
+            username = await self.read()
+            await self.write("password: ")
+            password = await self.read()
             self.logger.debug(f"username: `{self.username}`")
             self.logger.debug(f"password: `{self.password}`")
             self.logger.debug(f"username received: `{username}`")
             self.logger.debug(f"password received: `{password}`")
 
             if username == self.username and password == self.password:
-                self.write("Logged in successfully\n")
+                await self.write("Logged in successfully\n")
             else:
-                self.write("Invalid credentials!\n")
+                await self.write("Invalid credentials!\n")
                 return
 
             while True:
                 time.sleep(self.delay)
-                self.write(self.prompt_terminator)
+                await self.write(self.prompt_terminator)
 
                 if not terminator_configured:
                     self.set_prompt_terminator(pri_terminator = "]", alt_terminator = ">")
                     
-                command = self.conn.recv(1024).decode().strip()
+                command = await self.read()
                 self.logger.debug(f"Command received: `{command}`")
-                self.respond(command)
+                await self.respond(command)
 
                 if command:
-                    result = self.handle_command(command)
+                    result = await self.handle_command(command)
                     if not result:
                         break
         except Exception as e:
             self.logger.error(f"Error {e}")
         finally:
-            self.conn.close()
+            self.writer.close()
+            await self.writer.wait_closed()
             self.logger.info(f"Connection closed")

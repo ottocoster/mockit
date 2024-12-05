@@ -2,7 +2,7 @@ from src.ssh_server.ssh_server import SSH_Server
 from src.ssh_server.ssh_handler import SSH_Handler
 from src.telnet_server.telnet_handler import Telnet_Handler
 from asyncssh.process import SSHServerProcess
-import time
+import asyncio
 class generic_server(SSH_Server):
     pass
 
@@ -14,28 +14,28 @@ class generic_handler(SSH_Handler):
 
 
 class generic_telnet_handler(Telnet_Handler):
-    def __init__(self, process: SSHServerProcess, options):
-        options['device_type'] = 'generic'
-        super().__init__(process, options=options)
+    def __init__(self, reader, writer, options={}):
+        super().__init__(reader, writer, options=options)
         self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
-    def run(self):
+    async def run(self):
         try:
             while True:
-                time.sleep(self.delay)
+                await asyncio.sleep(self.delay)
 
-                self.write(self.prompt_terminator)
-                command = self.conn.recv(1024).decode().strip()
+                await self.write(self.prompt_terminator)
+                command = await self.read()
                 self.logger.debug(f"Command received: `{command}`")
-                self.respond(command)
+                await self.respond(command)
 
                 if command:
-                    result = self.handle_command(command)
+                    result = await self.handle_command(command)
                     if not result:
                         self.logger.info(f"Connection command, {command}")
                         break
         except Exception as e:
             self.logger.error(f"Error {e}")
         finally:
-            self.conn.close()
+            self.writer.close()
+            await self.writer.wait_closed()
             self.logger.info(f"Connection closed")

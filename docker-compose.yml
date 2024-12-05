@@ -6,6 +6,10 @@ services:
       DEVICE_TYPE: cisco_ios
       SSH_USERNAME: test
       SSH_PASSWORD: test
+      TELNET_USERNAME: test
+      TELNET_PASSWORD: test
+      TELNET_SERVER_ENABLED: true
+      DEBUG_ENABLED: true
     ports: 
        - "22:22"
        - "161:161/udp"

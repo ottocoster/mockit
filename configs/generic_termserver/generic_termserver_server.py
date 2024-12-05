@@ -14,9 +14,8 @@ class generic_termserver_handler(SSH_Handler):
 
 
 class generic_termserver_telnet_handler(Telnet_Handler):
-    def __init__(self, process: SSHServerProcess, options):
-        options['device_type'] = 'generic'
-        super().__init__(process, options=options)
+    def __init__(self, reader, writer, options={}):
+        super().__init__(reader, writer, options=options)
         self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
     def run(self):
