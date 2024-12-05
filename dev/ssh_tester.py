@@ -12,9 +12,5 @@ def run_command(host, device_type, command, username="test", password="test"):
     with ConnectHandler(**parameters) as net_connect:
         return net_connect.send_command(command)
 
-# test = run_command("192.168.56.129", "nokia_sros_telnet", "echo test")
-# print(test)
-
-
-def test_telnet():
-    assert run_command("192.168.56.129", "nokia_sros_telnet", "echo test") == "test"
+test = run_command("192.168.106.128", "cisco_ios", "echo test")
+print(test)

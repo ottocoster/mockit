@@ -9,8 +9,7 @@ from src.telnet_server.telnet_handler import Telnet_Handler  # Default handler
 HOST = '0.0.0.0'  # Listen on all available interfaces
 PORT = 23  # Default Telnet port, but requires admin rights to run on Unix-based OS
 
-logger = logging.getLogger()
-logging.basicConfig(level=logging.DEBUG)
+logger = LOGGER = logging.getLogger('app')
 
 def load_telnet_handler(device_type, device_version):
     """

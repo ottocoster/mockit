@@ -42,7 +42,6 @@ class rad_etx_telnet_handler(Telnet_Handler):
 
             while True:
                 time.sleep(self.delay)
-                self.logger.debug(f"self.prompt_terminator: `{self.prompt_terminator}`")
 
                 self.write(self.prompt_terminator)
                 command = self.conn.recv(1024).decode().strip()

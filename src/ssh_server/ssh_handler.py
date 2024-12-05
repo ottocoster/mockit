@@ -6,7 +6,6 @@ import importlib
 import re
 from openai import OpenAI
 import logging
-logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
 
 class SSH_Handler:
 
@@ -18,7 +17,7 @@ class SSH_Handler:
         :param options: Dictionary containing configuration options, such as device_type and new_line characters.
         """
         self.process = process
-        self.logger = logging.getLogger(self.__class__.__name__)
+        self.logger = LOGGER = logging.getLogger('app')
         self.device_type = options['device_type']
         self.device_version = options["device_version"]
         self.new_line = options['new_line']
@@ -78,7 +77,7 @@ class SSH_Handler:
         while self.process.channel._send_state == "open":
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
-            self.logger.info(f"command received `{repr(command)}`")
+            self.logger.debug(f"command received `{repr(command)}`")
 
             # Check for Ctrl+C (SIGINT)
             if command == b'\x03':  # Ctrl+C is sent as b'\x03'
@@ -99,7 +98,7 @@ class SSH_Handler:
         """
         Handle the Ctrl+C (SIGINT) event by resetting the prompt.
         """
-        self.logger.info("Ctrl+C received, resetting prompt")
+        self.logger.debug("Ctrl+C received, resetting prompt")
         self.respond(b'\x03')  # Move to a new line
 
     def get_formatted_command(self, command):
@@ -117,7 +116,7 @@ class SSH_Handler:
 
         
     def get_ai_output(self, command):
-        self.logger.info("get_ai_output called")
+        self.logger.debug("get_ai_output called")
 
         prompt = f"""
         ### Device type
@@ -184,7 +183,7 @@ class SSH_Handler:
     def get_matching_commands(self, command):
         # Find commands that start with the given command string
         matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
-        self.logger.info(f"matching_commands `{matching_commands}`")
+        self.logger.debug(f"matching_commands `{matching_commands}`")
 
         if matching_commands:
             # Sort the matching commands alphabetically
@@ -198,8 +197,6 @@ class SSH_Handler:
 
         :param command: The command string.
         """
-        self.logger.info(f"Received `{command}`")
-
         if self.delay:
             await asyncio.sleep(self.delay)
 
@@ -211,14 +208,14 @@ class SSH_Handler:
         # Handle script functions
         custom_script_output = self.handle_script_function(command)
         if custom_script_output:
-            self.logger.info(f"custom_script_output `{custom_script_output}")
+            self.logger.debug(f"custom_script_output `{custom_script_output}")
             
             if isinstance(custom_script_output, str):
                 self.respond(custom_script_output)
             return True
 
         command = self.replace_command(command)
-        self.logger.info(f"replaced command: `{command}`")
+        self.logger.debug(f"replaced command: `{command}`")
 
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
@@ -280,7 +277,6 @@ class SSH_Handler:
             if os.path.isfile(file_path) and extension == '.txt':
                 commands[name] = file_path
         
-        self.logger.debug(f"loaded commands: `{commands}`")
         self.commands = commands
         return True
     
@@ -291,13 +287,11 @@ class SSH_Handler:
         :param file: Path to the command template file.
         :return: Content of the command template file.
         """
-        self.logger.debug(f"{self.device_type}: {file}")
         executor = ThreadPoolExecutor(max_workers=1)
         loop = asyncio.get_event_loop()
         content = await loop.run_in_executor(
             executor, lambda: self._read_file(file)
         )
-        self.logger.debug(f"command content {content}")
 
         return content
 
@@ -372,5 +366,4 @@ class SSH_Handler:
 
         :param response: The response string to send.
         """
-        self.logger.debug(f"Response {response}")
         self.process.stdout.write(response + self.new_line)

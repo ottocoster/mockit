@@ -23,7 +23,6 @@ class generic_termserver_telnet_handler(Telnet_Handler):
         try:
             while True:
                 time.sleep(self.delay)
-                self.logger.debug(f"self.prompt_terminator: `{self.prompt_terminator}`")
 
                 self.write(self.prompt_terminator)
                 command = self.conn.recv(1024).decode().strip()
@@ -33,7 +32,7 @@ class generic_termserver_telnet_handler(Telnet_Handler):
                 if command:
                     result = self.handle_command(command)
                     if not result:
-                        self.logger.info(f"Connection command, {command}")
+                        self.logger.debug(f"Connection command, {command}")
                         break
         except Exception as e:
             self.logger.error(f"Error {e}")

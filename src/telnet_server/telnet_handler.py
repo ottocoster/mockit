@@ -63,7 +63,6 @@ class Telnet_Handler:
             if os.path.isfile(file_path) and extension == '.txt':
                 commands[name] = file_path
 
-        # self.logger.debug(f"loaded commands: `{commands}`")
         self.commands = commands
         return True
 
@@ -114,16 +113,13 @@ class Telnet_Handler:
 
     def get_matching_commands(self, command):
         matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
-        self.logger.info(f"matching_commands `{matching_commands}`")
         return sorted(matching_commands) if matching_commands else None
 
     def respond(self, response=""):
-        self.logger.debug(f"Response: {response}")
         self.conn.sendall(response.encode() + self.new_line.encode())
 
     async def handle_command(self, command):
         command = self.replace_command(command)
-        self.logger.info(f"Processed command: `{command}`")
 
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
@@ -158,7 +154,6 @@ class Telnet_Handler:
             return f.read().strip()
         
     async def respond(self, output):
-        self.logger.debug(f"Response: {output}")
         await self.write(output + self.new_line)
 
     async def write(self, output):

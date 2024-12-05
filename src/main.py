@@ -16,9 +16,16 @@ def main():
     # Fetch device version or determine based on device type
     device_version = os.environ.get("DEVICE_VERSION", "")
     debug_enabled = str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true"
+
+
+    # Create a custom logger
+    LOGGER = logging.getLogger('app')  # Or use the root logger: LOGGER = logging.getLogger('app')
     if debug_enabled:
-        LOGGER = logging.getLogger()
-        logging.basicConfig(level=logging.INFO)
+        LOGGER.setLevel(logging.DEBUG)  # Explicitly set this logger to DEBUG level
+    else:
+        LOGGER.setLevel(logging.INFO)
+    
+    LOGGER.debug("this is TEST!!!!!!")
     # SSH configuration options from environment variables
     options_ssh = {
         "debug": debug_enabled,
@@ -84,7 +91,5 @@ def main():
     loop.run_forever()
 
 if __name__ == "__main__":
-    # Setup logging
-    
     # Start main function
     main()

@@ -21,7 +21,7 @@ class tplink_jetstream_handler(SSH_Handler):
         while self.process.channel._send_state == "open":
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
-            self.logger.info(f"command received `{repr(command)}`")
+            self.logger.debug(f"command received `{repr(command)}`")
 
             command = command.strip()
                 
@@ -61,7 +61,6 @@ class tplink_jetstream_telnet_handler(Telnet_Handler):
 
             while True:
                 time.sleep(self.delay)
-                self.logger.debug(f"self.prompt_terminator: `{self.prompt_terminator}`")
 
                 self.write(self.prompt_terminator)
                 command = self.conn.recv(1024).decode().strip()

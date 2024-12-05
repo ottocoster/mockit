@@ -16,7 +16,6 @@ class audiocode_shell_handler(SSH_Handler):
         super().__init__(process, options=options)
         self.config_pattern = "(config-system)"
         self.set_prompt_terminator(pri_terminator = "/>", alt_terminator = "/>")
-        self.logger.debug(f"----> newline: {repr(self.new_line)}")
 
     def handle_custom_command(self, command):
         if command == "config system":
@@ -41,7 +40,6 @@ class audiocode_shell_telnet_handler(Telnet_Handler):
         super().__init__(process, options=options)
         self.config_pattern = "(config-system)"
         self.set_prompt_terminator(pri_terminator = "/>", alt_terminator = "/>")
-        self.logger.debug(f"----> newline: {repr(self.new_line)}")
 
     def handle_custom_command(self, command):
         if command == "config system":
