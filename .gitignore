@@ -13,3 +13,5 @@ desktop.ini
 /test_scripts
 syncer/configs
 syncer/ntc-templates
+
+netmiko-develop

@@ -19,7 +19,7 @@ class digi_transport_handler(SSH_Handler):
         while self.process.channel._send_state == "open":
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
-            self.logger.info(f"command received `{repr(command)}`")
+            self.logger.debug(f"command received `{repr(command)}`")
 
             command = command.strip()
 

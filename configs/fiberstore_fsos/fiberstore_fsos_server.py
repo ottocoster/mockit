@@ -43,7 +43,7 @@ class fiberstore_fsos_handler(SSH_Handler):
 
             command = command.strip()
 
-            self.logger.info(f"command {command}")
+            self.logger.debug(f"command {command}")
             if not self.logged_in:
                 if not command:
                     continue
@@ -52,8 +52,8 @@ class fiberstore_fsos_handler(SSH_Handler):
                     self.process.stdout.write("Password:")
                 else:
                     password = command
-                    self.logger.info(f"username: {username}, password: {password}")
-                    self.logger.info(f"self.username: {self.username}, self.password: {self.password}")
+                    self.logger.debug(f"username: {username}, password: {password}")
+                    self.logger.debug(f"self.username: {self.username}, self.password: {self.password}")
 
                     if username == self.username and password == self.password:
                         self.logged_in = True
@@ -66,7 +66,6 @@ class fiberstore_fsos_handler(SSH_Handler):
             else:
                 if command:
                     self.process.stdout.write(self.prompt_terminator + command + self.new_line)
-                self.logger.info(f"command received `{command}`")
 
                 if command:
                     result = await self._handle_command(command)

@@ -20,7 +20,7 @@ class keymile_handler(SSH_Handler):
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
             command = command.strip()
-            self.logger.info(f"command received `{repr(command)}`")
+            self.logger.debug(f"command received `{repr(command)}`")
                 
             if command:
                 self.process.stdout.write(self.get_formatted_command(command))
