@@ -92,11 +92,9 @@ class AsyncNetconfServer(NetconfServer):
                     processed = self._process_buffer(buffer, channel)
                     if not processed:
                         break
-            except UnexpectedRequestError as e:
-                logger.error("unexpected request error: %s", e)
             except Exception as e:
                 msg = "failed to handle request: %s"
                 logger.error(msg, e)
                 logger.exception(e)
-                raise RequestError(msg % e)
+                raise e
                 
