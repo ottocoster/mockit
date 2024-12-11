@@ -107,7 +107,7 @@ class AsyncNetconfServer(NetconfServer):
                 raise RequestError(msg % e)
 
     def get_template(self, tag: str) -> str:
-        path = Path('configs') / os.environ['DEVICE_TYPE'] / 'templates/netconf' / f"{tag}.xml"
+        path = Path('configs') / os.environ['DEVICE_TYPE'] / 'netconf' / f"{tag}.xml"
         if path.exists():
             with path.open() as f:
                 return f.read()
