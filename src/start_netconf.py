@@ -11,12 +11,12 @@ async def start_netconf(options):
     nc_server = AsyncNetconfServer()
 
     # Set properties on the server
-    # nc_server.base_version = "1.1"
-    # nc_server.host = "0.0.0.0"
-    # nc_server.port = 830
-    # nc_server.username = options['username']
-    # nc_server.password = options['password']
-    # nc_server.authorized_key = options['authorized_key']
+    nc_server.base_version = "1.1"
+    nc_server.host = "0.0.0.0"
+    nc_server.port = 830
+    nc_server.username = options['username']
+    nc_server.password = options['password']
+    nc_server.authorized_key = options['authorized_key']
 
     # Interact with the server as needed
     nc_server.expect_request(
