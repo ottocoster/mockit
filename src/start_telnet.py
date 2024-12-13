@@ -5,11 +5,8 @@ import importlib
 import asyncio
 from src.telnet_server.telnet_handler import Telnet_Handler  # Default handler
 
-# Server Configuration
-HOST = '0.0.0.0'  # Listen on all available interfaces
-PORT = 23  # Default Telnet port, but requires admin rights to run on Unix-based OS
+logger = logging.getLogger("app")
 
-logger = LOGGER = logging.getLogger('app')
 
 def load_telnet_handler(device_type, device_version):
     """
@@ -23,20 +20,29 @@ def load_telnet_handler(device_type, device_version):
         class: Handler class for the specified device type.
     """
     try:
-       
+
         # Dynamically import the module based on the device type
         if device_version:
-            module = importlib.import_module(f'configs.{device_type}.{device_version}.{device_type}_{device_version}_server')
+            module = importlib.import_module(
+                f"configs.{device_type}.{device_version}.{device_type}_{device_version}_server"
+            )
         else:
-            module = importlib.import_module(f'configs.{device_type}.{device_type}_server')
+            module = importlib.import_module(
+                f"configs.{device_type}.{device_type}_server"
+            )
 
         # Get the server and handler classes from the module
-        handler_class = getattr(module, f'{device_type}_telnet_handler')
-        logger.debug(f"Loaded Telnet handler for {device_type} (version: {device_version})")
+        handler_class = getattr(module, f"{device_type}_telnet_handler")
+        logger.debug(
+            f"Loaded Telnet handler for {device_type} (version: {device_version})"
+        )
         return handler_class
     except (ModuleNotFoundError, AttributeError) as e:
-        logger.warning(f"Specific Telnet handler for {device_type} not found. Falling back to default handler.")
+        logger.warning(
+            f"Specific Telnet handler for {device_type} not found. Falling back to default handler."
+        )
         return Telnet_Handler
+
 
 def handle_client(conn, addr, options, handler_class):
     """
@@ -53,7 +59,7 @@ def handle_client(conn, addr, options, handler_class):
     handler = handler_class(conn, options)
     handler.run()
 
-    
+
 async def start_telnet(options):
     """
     Start the Telnet server asynchronously.
@@ -66,12 +72,12 @@ async def start_telnet(options):
         """
         Accept a client connection and pass the async reader/writer to the handler.
         """
-        addr = writer.get_extra_info('peername')
+        addr = writer.get_extra_info("peername")
         logger.info(f"Connection established with {addr}")
         handler = handler_class(reader, writer, options)
         await handler.run()
 
-    server = await asyncio.start_server(accept_client, HOST, PORT)
+    server = await asyncio.start_server(accept_client, host=None, port=23)
     addr = server.sockets[0].getsockname()
     logger.info(f"Telnet server running on {addr}")
 

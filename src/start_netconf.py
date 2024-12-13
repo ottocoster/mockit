@@ -2,7 +2,7 @@ from netconf.netconf import AsyncNetconfServer
 import logging
 
 async def start_netconf(options):
-    logger = LOGGER = logging.getLogger('app')
+    logger = logging.getLogger('app')
     logger.debug(f"starting netconf {options}")
 
     # Create and start the NetconfServer instance

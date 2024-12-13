@@ -14,7 +14,7 @@ import logging
 import os
 import json
 
-logger = logging.getLogger("snmp")
+logger = logging.getLogger("app")
 
 async def start_server(options):
     """
