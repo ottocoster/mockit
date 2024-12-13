@@ -97,9 +97,9 @@ services:
       - SSH_PASSWORD=test
       - NETCONF_USERNAME=test
       - NETCONF_PASSWORD=test
-      - DEVICE_DELAY=5
-      - LOGIN_DELAY=3
-      - LOGIN_RETRY=3
+      - DEVICE_DELAY=5 # Simulate slow responses
+      - LOGIN_DELAY=3 # Simulate slow login
+      - LOGIN_RETRY=3 # Simulate automatic login failures
     ports: 
       - "22:22"
       - "161:161/udp"
