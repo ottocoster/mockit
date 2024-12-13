@@ -103,7 +103,7 @@ services:
     ports: 
       - "22:22"
       - "161:161/udp"
-      - "830:8830"
+      - "830:830"
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
 
