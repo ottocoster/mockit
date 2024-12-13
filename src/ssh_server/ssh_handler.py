@@ -77,7 +77,7 @@ class SSH_Handler:
         while self.process.channel._send_state == "open":
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
-            self.logger.debug(f"command received `{repr(command)}`")
+            self.logger.info(f"command received `{repr(command)}`")
 
             # Check for Ctrl+C (SIGINT)
             if command == b'\x03':  # Ctrl+C is sent as b'\x03'
@@ -116,7 +116,7 @@ class SSH_Handler:
 
         
     def get_ai_output(self, command):
-        self.logger.debug("get_ai_output called")
+        self.logger.info("get_ai_output called")
 
         prompt = f"""
         ### Device type
@@ -183,7 +183,7 @@ class SSH_Handler:
     def get_matching_commands(self, command):
         # Find commands that start with the given command string
         matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
-        self.logger.debug(f"matching_commands `{matching_commands}`")
+        self.logger.info(f"matching_commands `{matching_commands}`")
 
         if matching_commands:
             # Sort the matching commands alphabetically
@@ -208,14 +208,14 @@ class SSH_Handler:
         # Handle script functions
         custom_script_output = self.handle_script_function(command)
         if custom_script_output:
-            self.logger.debug(f"custom_script_output `{custom_script_output}")
+            self.logger.info(f"custom_script_output `{custom_script_output}")
             
             if isinstance(custom_script_output, str):
                 self.respond(custom_script_output)
             return True
 
         command = self.replace_command(command)
-        self.logger.debug(f"replaced command: `{command}`")
+        self.logger.info(f"replaced command: `{command}`")
 
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
