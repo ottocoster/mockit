@@ -1,3 +1,8 @@
+import os
+from pathlib import Path
+from typing import Optional
+import xml.etree.ElementTree as ET
+
 from pytest_netconf import NetconfServer
 from pytest_netconf.sshserver import SSHServer
 
@@ -99,4 +104,19 @@ class AsyncNetconfServer(NetconfServer):
                 logger.error(msg, e)
                 logger.exception(e)
                 raise RequestError(msg % e)
-                
+
+    def get_template(self, tag: str) -> str:
+        path = Path('configs') / os.environ['DEVICE_TYPE'] / 'netconf' / f"{tag}.xml"
+        if path.exists():
+            with path.open() as f:
+                return f.read()
+
+    def _get_response(self, request: str) -> Optional[str]:
+        try:
+            xmlrq = ET.fromstring(request).find('.')
+            nstag = list(xmlrq.iter())[1].tag
+            tag = nstag.split('}')[-1]
+            if response := self.get_template(tag):
+                return response
+        except Exception:
+            return super()._get_response(request)

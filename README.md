@@ -50,6 +50,36 @@ snmpwalk -v2c -c public localhost
 # Windows (http://www.snmpsoft.com)
 snmpwalk -v:"2" -c:"public" -r:"localhost"
 ```
+## NETCONF Support
+
+### Test the connectivity
+
+```bash
+# Connect to the netconf server
+ssh test@localhost -p 830 -s netconf
+
+# Using netconf-console 
+netconf-console2 --host localhost --port 830 -u test -p test
+```
+
+### Get the running configuration with ncclient
+
+```python
+from ncclient import manager
+
+# Connect to the device
+with manager.connect(
+    host='localhost',
+    port=830,
+    username='test',
+    password='test',
+    hostkey_verify=False
+) as m:
+    
+    # Get the running configuration
+    running_config = m.get_config('running')
+    print(running_config)
+```
 
 ## Docker compose
 
@@ -65,12 +95,15 @@ services:
       - DEVICE_TYPE=cisco_ios
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
+      - NETCONF_USERNAME=test
+      - NETCONF_PASSWORD=test
       - DEVICE_DELAY=5 # Simulate slow responses
       - LOGIN_DELAY=3 # Simulate slow login
       - LOGIN_RETRY=3 # Simulate automatic login failures
     ports: 
       - "22:22"
       - "161:161/udp"
+      - "830:830"
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
 
@@ -123,6 +156,8 @@ Environment Options
 Environment SSH Options
 - SSH_USERNAME: SSH username.
 - SSH_PASSWORD: SSH password.
+- NETCONF_USERNAME: NETCONF username.
+- NETCONF_PASSWORD: NETCONF password.
 - DEVICE_DELAY: Adds a delay (in seconds) before responding to a command.
 - LOGIN_DELAY: Adds a delay (in seconds) before the server accepts an SSH connection.
 - LOGIN_RETRY: Defines the number of retries allowed for login attempts.
@@ -199,6 +234,5 @@ If you want to share your command templates with the rest of us, it would be app
 Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
 
 # Roadmap
-- NetConf support
 - Telnet support
 - RestAPI support to imitate controller based devices.
