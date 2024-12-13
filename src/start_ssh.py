@@ -3,8 +3,6 @@ import asyncssh
 from asyncssh.process import SSHServerProcess
 from netmiko import ConnectHandler
 import importlib
-logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
-
 
 server_class = None
 handler_class = None
@@ -42,7 +40,7 @@ async def start_ssh(options):
         options (dict): Configuration options for the server.
     """
     global server_class, handler_class
-    logger = logging.getLogger()
+    logger = LOGGER = logging.getLogger('app')
     logger.debug(f"starting ssh {options}")
 
     # Load device-specific server and handler classes
@@ -70,7 +68,7 @@ async def start_ssh(options):
     # Create and start the async SSH server
     await asyncssh.create_server(
         server_factory=lambda: server_class(options, logger),
-        host="0.0.0.0",
+        host=["::", "0.0.0.0"],
         port=22,
         server_host_keys=options["ssh_key"],
         process_factory=create_session,

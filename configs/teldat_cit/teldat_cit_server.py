@@ -1,5 +1,6 @@
 from src.ssh_server.ssh_server import SSH_Server
 from src.ssh_server.ssh_handler import SSH_Handler
+from src.telnet_server.telnet_handler import Telnet_Handler
 from asyncssh.process import SSHServerProcess
 
 class teldat_cit_server(SSH_Server):
@@ -10,3 +11,8 @@ class teldat_cit_handler(SSH_Handler):
         options['device_type'] = 'teldat_cit'
         super().__init__(process, options=options)
         self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
+
+class teldat_cit_telnet_handler(Telnet_Handler):
+    def __init__(self, reader, writer, options={}):
+        super().__init__(reader, writer, options=options)
+        self.set_prompt_terminator(pri_terminator = "*", alt_terminator = "*")

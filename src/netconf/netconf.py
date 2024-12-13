@@ -11,7 +11,6 @@ import threading
 import time
 
 import logging
-logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
 
 logger = logging.getLogger(__name__)
 

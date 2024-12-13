@@ -83,7 +83,7 @@ with manager.connect(
 
 ## Docker compose
 
-### Example
+### Basic example
 
 ```yml
 name: devices
@@ -106,6 +106,43 @@ services:
       - "830:8830"
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
+
+networks:
+  devices-network:
+    driver: bridge
+```
+
+### Example with static IPv4 & IPv6
+```yml
+name: devices
+services:
+  cisco_ios:
+    image: registry.gitlab.com/slurpit.io/mockit:latest
+    container_name: cisco_ios
+    environment:
+      - DEVICE_TYPE=cisco_ios
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
+      - DEVICE_DELAY=5 # Simulate slow responses
+      - LOGIN_DELAY=3 # Simulate slow login
+      - LOGIN_RETRY=3 # Simulate automatic login failures
+    ports: 
+      - "22:22"
+      - "161:161/udp"
+    networks:
+      devices-network:
+        ipv4_address: 172.16.240.45 # change to what ipv4 you prefer
+        ipv6_address: fc00::abcd # change to what ipv6 you prefer
+    volumes:
+      - ./configs/cisco_ios:/configs/cisco_ios
+
+networks:
+  devices-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.240.0/24
+        - subnet: fc00::/64
 ```
 
 ### Info
@@ -197,4 +234,5 @@ If you want to share your command templates with the rest of us, it would be app
 Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
 
 # Roadmap
+- Telnet support
 - RestAPI support to imitate controller based devices.

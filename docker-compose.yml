@@ -1,16 +1,25 @@
 name: devices
 services:
-  cisco_ios:
-    image: registry.gitlab.com/slurpit.io/mockit:latest
-    container_name: cisco_ios
+  mockit:
+    build: .
     environment:
       DEVICE_TYPE: cisco_ios
       SSH_USERNAME: test
       SSH_PASSWORD: test
+      TELNET_USERNAME: test
+      TELNET_PASSWORD: test
+      TELNET_SERVER_ENABLED: true
+      DEBUG_ENABLED: true
     ports: 
        - "22:22"
        - "161:161/udp"
+    networks:
+      devices-network:
+        ipv4_address: 172.16.240.45 # change to what you prefer
 
 networks:
   devices-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.240.0/24

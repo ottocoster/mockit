@@ -1,6 +1,6 @@
 name: devices
 services:
-  mockit:
+  cisco_ios:
     build: .
     environment:
       - DEVICE_TYPE=cisco_ios
@@ -16,7 +16,9 @@ services:
     env_file:
       - .env
     networks:
-      - devices-network
+      devices-network:
+        ipv4_address: 172.16.240.45 # change to what ipv4 you prefer
+        ipv6_address: fc00::abcd # change to what ipv6 you prefer
     ports:
       - "22:22"
       - "161:161/udp"
@@ -25,3 +27,7 @@ services:
 networks:
   devices-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.240.0/24
+        - subnet: fc00::/64
