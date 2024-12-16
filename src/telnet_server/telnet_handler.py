@@ -12,7 +12,7 @@ class Telnet_Handler:
     def __init__(self, reader, writer, options={}):
         self.reader = reader
         self.writer = writer
-        self.logger = logging.getLogger(self.__class__.__name__)
+        self.logger = logging.getLogger('app')
         self.device_type = options.get('device_type', 'cisco_ios_telnet')
         self.device_version = options.get('device_version', None)
         self.username = options.get('username', "test")

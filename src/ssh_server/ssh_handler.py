@@ -17,7 +17,7 @@ class SSH_Handler:
         :param options: Dictionary containing configuration options, such as device_type and new_line characters.
         """
         self.process = process
-        self.logger = LOGGER = logging.getLogger('app')
+        self.logger = logging.getLogger('app')
         self.device_type = options['device_type']
         self.device_version = options["device_version"]
         self.new_line = options['new_line']

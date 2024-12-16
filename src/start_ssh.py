@@ -40,7 +40,7 @@ async def start_ssh(options):
         options (dict): Configuration options for the server.
     """
     global server_class, handler_class
-    logger = LOGGER = logging.getLogger('app')
+    logger = logging.getLogger('app')
     logger.debug(f"starting ssh {options}")
 
     # Load device-specific server and handler classes

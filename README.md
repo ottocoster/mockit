@@ -1,54 +1,80 @@
 # Mock'it - The Device Imitator
 
-`Mock'it` is a mockup service that acts as a network device. Currently, it only supports SSH and SNMP. The difference between this project and others is that we reverse-engineered the Netmiko library, allowing every device to respond in a way that makes it compatible with Netmiko, as if it were a real physical network device. As a result, we can currently imitate 115 different network vendors.
+Mock'it is an advanced mockup service designed to simulate network devices for use in automation and testing environments. It supports a variety of protocols such as SSH, SNMP, Netconf, and Telnet. Through reverse-engineering of the **Netmiko** library, Mock'it allows devices to respond in a manner consistent with real network devices, making it an invaluable tool for simulating network devices from over 115 vendors.
 
-## Getting started
+## Key Features:
+- **Device Compatibility**: Imitates 115+ network vendors with support for SSH, SNMP, Netconf, and Telnet.
+- **Customizable Command Responses**: Supports both static and dynamic responses, with Python-based logic for generating custom responses.
+- **Version Support**: Handle multiple device versions through version-specific configurations.
+- **Docker-Based Setup**: Easy deployment with Docker Compose for a flexible, containerized mock network environment.
+- **Integrations**: Optionally integrate with OpenAI for handling unknown CLI commands.
 
-1. Store your config files, script logic, or SNMP output for the vendor you want to imitate in the `/config/<device_type>` folder. By default, we have provided a library of examples that you can use out of the box.
-2. Modify the compose file to specify the Device OS you would like to imitate.
-3. Run: docker compose up -d --build
-4. Log in via SSH through the terminal, or run your network automation script against it.
+## Getting Started
 
-## YouTube playlist with sample videos
+### 1. Store Device Configurations
+Place your configuration files, script logic, or SNMP output for the vendor you wish to imitate in the `/config/<device_type>` folder. Mock'it comes with preconfigured examples to help you get started quickly.
 
-https://www.youtube.com/playlist?list=PLxv8A8sCq4EBPfeJGk_Ufb5l9NT50qil2
+### 2. Modify the Compose File
+Customize the `docker-compose.yml` file to specify the device OS and any other environment variables you need.
 
-## Device version
+### 3. Build and Run the Mock Device
+Run the following Docker Compose command to build and start the mock devices:
 
-It's possible to store different configurations for an OS per version. For example, for Mikrotik, we currently support multiple versions. You can switch between them using DEVICE_VERSION. You can see how it's set up in /config/mikrotik_routeros/.
+```bash
+docker compose up -d --build
+```
 
-You can do the same for your own configurations by adding a folder to the `/config/<device_type>/<device_version>` directory and using the folder name as the DEVICE_VERSION.
+### 4. Access the Device
+- Log in via **SSH** through the terminal.
+- Alternatively, you can access the device by using netmiko sdk.
 
-## SSH Server
+## Supported Protocols
 
-### Add a static command
-
-You can add a static command response in `/config/<device_type>/templates`. The name of the file has to equal the command being executed.
-
-### Add a dynamic command
-
-You can create a dynamic command response in `/config/<device_type>/scripts`. Whenever a command is executed, it first goes through the def handle_command function in __init__.py. This allows you to use Python logic to generate your response.
-For example:
+### SSH Server
+Mock'it supports SSH connections to simulate real device behavior. You can:
+- Add **static command responses** by placing templates in `/config/<device_type>/templates` (file names should match the command).
+- Create **dynamic command responses** with Python logic in `/config/<device_type>/scripts`. Example:
 
 ```python
 def handle_command(command: str):
     if command.startswith('show hello'):
-         return ("Hello world")
+        return "Hello world"
     return ""
 ```
 
-## SNMP Server
+### SNMP Server
+Mock'it supports SNMP simulations for a range of device vendors, with more being added over time. If you have a device from a vendor not yet supported, consider contributing a **pull request**.
 
-### Info
+- To capture SNMP data, you can use the following command:
+  
+  ```bash
+  # Linux (sudo apt install snmp)
+  snmpwalk -v2c -c public localhost
+  ```
 
-SNMP examples are currently only provided for a few vendors, as we don't have access to all devices to create an snmp.json. If you have a device from one of the missing vendors, please consider submitting a pull request. To share this information with the project, you can use the following example command:
+  Or, for Windows:
 
-```bash
-# Linux (sudo apt install snmp)
-snmpwalk -v2c -c public localhost
+  ```bash
+  # Windows (http://www.snmpsoft.com)
+  snmpwalk -v:"2" -c:"public" -r:"localhost"
+  ```
 
-# Windows (http://www.snmpsoft.com)
-snmpwalk -v:"2" -c:"public" -r:"localhost"
+### Netconf Server
+Custom Netconf servers can be created with tailored command responses by editing `src/start_netconf.py`. Here's an example for handling a basic Netconf request:
+
+```python
+nc_server.expect_request(
+    '<?xml version="1.0" encoding="UTF-8"?>'
+    '<nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="{message_id}">'
+    "<nc:get-config><nc:source><nc:running/></nc:source></nc:get-config>"
+    "</nc:rpc>"
+).respond_with("""
+    <?xml version="1.0" encoding="UTF-8"?>
+    <rpc-reply message-id="{message_id}"
+        xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <data>OK</data>
+    </rpc-reply>
+""")
 ```
 ## NETCONF Support
 
@@ -81,11 +107,21 @@ with manager.connect(
     print(running_config)
 ```
 
-## Docker compose
+### Telnet Server
+To enable Telnet server support, set the `TELNET_SERVER_ENABLED` environment variable to `true`. Mock'it supports a wide range of Telnet-enabled devices, including popular vendors like **Cisco**, **Juniper**, **Arista**, and more.
 
-### Basic example
+### Supported Telnet Devices
+- adtran_os_telnet
+- cisco_ios_telnet
+- juniper_junos_telnet
+- and many more.
 
-```yml
+## Docker Compose Configuration
+
+### Basic Example
+The following example demonstrates how to configure the Docker Compose file to simulate a **Cisco IOS** device:
+
+```yaml
 name: devices
 services:
   cisco_ios:
@@ -95,25 +131,32 @@ services:
       - DEVICE_TYPE=cisco_ios
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
-      - NETCONF_USERNAME=test
-      - NETCONF_PASSWORD=test
       - DEVICE_DELAY=5 # Simulate slow responses
       - LOGIN_DELAY=3 # Simulate slow login
       - LOGIN_RETRY=3 # Simulate automatic login failures
-    ports: 
-      - "22:22"
-      - "161:161/udp"
-      - "830:830"
+      - NETCONF_SERVER_ENABLED=true
+      - NETCONF_USERNAME=test
+      - NETCONF_PASSWORD=test
+      - TELNET_SERVER_ENABLED=true
+      - TELNET_USERNAME=test
+      - TELNET_PASSWORD=test
+      - DEBUG_ENABLED=true
+    ports:
+      - "22:22"  # SSH
+      - "161:161/udp"  # SNMP
+      - "23:23"  # Telnet
+      - "830:830"  # Netconf
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
-
 networks:
   devices-network:
     driver: bridge
 ```
 
-### Example with static IPv4 & IPv6
-```yml
+### Example with Static IPv4 & IPv6
+This example demonstrates how to specify static IP addresses for the mock device:
+
+```yaml
 name: devices
 services:
   cisco_ios:
@@ -123,19 +166,18 @@ services:
       - DEVICE_TYPE=cisco_ios
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
-      - DEVICE_DELAY=5 # Simulate slow responses
-      - LOGIN_DELAY=3 # Simulate slow login
-      - LOGIN_RETRY=3 # Simulate automatic login failures
-    ports: 
+      - DEVICE_DELAY=5  # Simulate slow responses
+      - LOGIN_DELAY=3
+      - LOGIN_RETRY=3
+    ports:
       - "22:22"
       - "161:161/udp"
     networks:
       devices-network:
-        ipv4_address: 172.16.240.45 # change to what ipv4 you prefer
-        ipv6_address: fc00::abcd # change to what ipv6 you prefer
+        ipv4_address: 172.16.240.45
+        ipv6_address: fc00::abcd
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
-
 networks:
   devices-network:
     driver: bridge
@@ -145,65 +187,58 @@ networks:
         - subnet: fc00::/64
 ```
 
-### Info
+## Environment Variables
 
-It's possible to map a volume to include your own scripts and templates. By default, the container will use `/config/<device_type>/`. To connect to the device remotely via SSH, port 22 is opened, and for SNMP, port 161/UDP is used.
+### Device Configuration
+- **DEVICE_TYPE**: Specifies the type of device to emulate.
+- **DEVICE_VERSION**: Use this to simulate different versions of the same device type.
 
-Environment Options
-- DEVICE_TYPE: Supported device types you want to imitate.
-- DEVICE_VERSION: Incase your device has different subfolders because of versioning. Look at Mikrotik_routeros as an example.
+### SSH Configuration
+- **SSH_USERNAME**: SSH username for authentication.
+- **SSH_PASSWORD**: SSH password for authentication.
+- **DEVICE_DELAY**: Introduces a delay before a device responds to a command.
+- **LOGIN_DELAY**: Delays the SSH login process.
+- **LOGIN_RETRY**: Defines the number of retries for failed login attempts.
 
-Environment SSH Options
-- SSH_USERNAME: SSH username.
-- SSH_PASSWORD: SSH password.
-- NETCONF_USERNAME: NETCONF username.
-- NETCONF_PASSWORD: NETCONF password.
-- DEVICE_DELAY: Adds a delay (in seconds) before responding to a command.
-- LOGIN_DELAY: Adds a delay (in seconds) before the server accepts an SSH connection.
-- LOGIN_RETRY: Defines the number of retries allowed for login attempts.
+### SNMP Configuration
+- **SNMP_V2_ENABLED**: Enable SNMP v2 (default is true).
+- **SNMP_V2_COMMUNITY**: SNMP v2 community string (default is "public").
+- **SNMP_V3_ENABLED**: Enable SNMP v3 (default is false).
+- **SNMP_V3_USERNAME**: Username for SNMP v3.
+- **SNMP_V3_AUTH_TYPE**: Authentication type for SNMP v3.
+- **SNMP_V3_AUTH_KEY**: Authentication key for SNMP v3.
+- **SNMP_V3_PRIV_TYPE**: Privacy type for SNMP v3.
+- **SNMP_V3_PRIV_KEY**: Privacy key for SNMP v3.
 
-Environment SNMP Options
-- SNMP_V2_ENABLED: Enable SNMP V2 (default true)
-- SNMP_V2_COMMUNITY: SNMP community string (default public)
-- SNMP_V3_ENABLED: Enable SNMP V2 (default false)
-- SNMP_V3_USERNAME: SNMPv3 Username
-- SNMP_V3_AUTH_TYPE: SNMPv3 Authentication Type
-- SNMP_V3_AUTH_KEY: SNMPv3 Authentication Key
-- SNMP_V3_PRIV_TYPE: SNMPv3 Privilege Type
-- SNMP_V3_PRIV_KEY: SNMPv3 Privilege Key
+### Netconf Configuration
+- **NETCONF_SERVER_ENABLED**: Enable Netconf server (default is false).
+- **NETCONF_USERNAME**: Username for Netconf authentication.
+- **NETCONF_PASSWORD**: Password for Netconf authentication.
 
-OpenAI
-- OPENAI_SUPPORT: Have OpenAI to respond to unknown cli commands (default true)
-- OPENAI_APIKEY: Get your api key at https://platform.openai.com/ 
+### Telnet Configuration
+- **TELNET_SERVER_ENABLED**: Enable Telnet server (default is false).
+- **TELNET_USERNAME**: Telnet username.
+- **TELNET_PASSWORD**: Telnet password.
 
-## Device Configuration
+### OpenAI Integration (Optional)
+- **OPENAI_SUPPORT**: Enable OpenAI support for handling unknown commands (default is true).
+- **OPENAI_APIKEY**: Set your OpenAI API key [here](https://platform.openai.com/).
 
-We created a module where you can use a simple database manager to Create, Read, Update and Delete data.
-This way you can create your own configuration logic, see the following YouTube video for more details
-https://www.youtube.com/watch?v=fMtLNYJ3708&list=PLxv8A8sCq4EBPfeJGk_Ufb5l9NT50qil2
+### Logging Configuration
+- **DEBUG_ENABLED**: Enable print debug logs (default is false)
 
-### Database Options:
-- create_table
-- create_record
-- read_record
-- update_record
-- delete_record
+## Device Configuration Management
 
-### Example
+Mock'it also includes a simple database management system for creating, reading, updating, and deleting device configurations. This makes it easier to manage and customize your device configurations.
 
-configs\cisco_ios\scripts\__init__.py
-```python
-from src.ssh_server.db_operations import create_table, create_record, read_record, update_record, delete_record
-import re
-create_table('cisco_ios')
-def handle_command(command: str):
-    if command.startswith("add vlan"):
+For more details on how to use the database manager and create your own configuration logic, please check the YouTube video here:  
+[Device Configuration Management Video](https://www.youtube.com/watch?v=fMtLNYJ3708&list=PLxv8A...)
 
-        # Get the vlan number
-        match = re.search(r'add vlan (\d+)', command)
-        if match:
-            vlan_number = match.group(1)
+## Conclusion
 
+<<<<<<< README.md
+Mock'it is a powerful tool that enables network professionals to test and automate network device interactions in a controlled environment. With extensive device support, customizable responses, and easy deployment, it’s a versatile solution for any network automation or simulation need.
+=======
             db_vlan = read_record("cisco_ios","vlan")
             if db_vlan:
                 update_record("cisco_ios", "vlan", db_vlan + " " + vlan_number)
@@ -236,3 +271,4 @@ Simply make a merge request. Make sure the executed command is not in the templa
 # Roadmap
 - Telnet support
 - RestAPI support to imitate controller based devices.
+>>>>>>> README.md
