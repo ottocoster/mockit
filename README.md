@@ -76,6 +76,36 @@ nc_server.expect_request(
     </rpc-reply>
 """)
 ```
+## NETCONF Support
+
+### Test the connectivity
+
+```bash
+# Connect to the netconf server
+ssh test@localhost -p 830 -s netconf
+
+# Using netconf-console 
+netconf-console2 --host localhost --port 830 -u test -p test
+```
+
+### Get the running configuration with ncclient
+
+```python
+from ncclient import manager
+
+# Connect to the device
+with manager.connect(
+    host='localhost',
+    port=830,
+    username='test',
+    password='test',
+    hostkey_verify=False
+) as m:
+    
+    # Get the running configuration
+    running_config = m.get_config('running')
+    print(running_config)
+```
 
 ### Telnet Server
 To enable Telnet server support, set the `TELNET_SERVER_ENABLED` environment variable to `true`. Mock'it supports a wide range of Telnet-enabled devices, including popular vendors like **Cisco**, **Juniper**, **Arista**, and more.
@@ -101,9 +131,9 @@ services:
       - DEVICE_TYPE=cisco_ios
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
-      - DEVICE_DELAY=2
-      - LOGIN_DELAY=3
-      - LOGIN_RETRY=3
+      - DEVICE_DELAY=5 # Simulate slow responses
+      - LOGIN_DELAY=3 # Simulate slow login
+      - LOGIN_RETRY=3 # Simulate automatic login failures
       - NETCONF_SERVER_ENABLED=true
       - NETCONF_USERNAME=test
       - NETCONF_PASSWORD=test
@@ -206,4 +236,39 @@ For more details on how to use the database manager and create your own configur
 
 ## Conclusion
 
+<<<<<<< README.md
 Mock'it is a powerful tool that enables network professionals to test and automate network device interactions in a controlled environment. With extensive device support, customizable responses, and easy deployment, it’s a versatile solution for any network automation or simulation need.
+=======
+            db_vlan = read_record("cisco_ios","vlan")
+            if db_vlan:
+                update_record("cisco_ios", "vlan", db_vlan + " " + vlan_number)
+            else:
+                create_record("cisco_ios", "vlan", vlan_number)
+            
+            # Return the device prompt
+            return True
+
+    if command == "show vlans":
+        vlans = read_record("cisco_ios", "vlan")
+        if vlans:
+            return vlans
+        else:
+            return True
+    return ""
+```
+
+
+# Development info
+
+## githook
+- `git config core.hooksPath .githooks` to automatically increment the version number
+
+## Contribution
+
+If you want to share your command templates with the rest of us, it would be appreciated.
+Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
+
+# Roadmap
+- Telnet support
+- RestAPI support to imitate controller based devices.
+>>>>>>> README.md
