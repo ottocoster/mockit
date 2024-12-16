@@ -56,11 +56,11 @@ unit_test:
     - sleep 60
     - docker exec devices-test_container pytest --color=yes -v --durations 0 -m test_set3 -rP
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml stop || true
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_telnets.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_telnets.yml up -d --build
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml up -d --build
     - sleep 60
     - docker exec devices-test_container pytest --color=yes -v --durations 0 -m test_telnets -rP
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_telnets.yml stop || true
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml stop || true
   after_script:
     - mkdir $CI_PROJECT_DIR/logs 
     - |
