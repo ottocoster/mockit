@@ -1,65 +1,60 @@
 # Mock'it - The Device Imitator
 
-Mock'it is an advanced mockup service designed to simulate network devices for use in automation and testing environments. It supports a variety of protocols such as SSH, SNMP, Netconf, and Telnet. Through reverse-engineering of the **Netmiko** library, Mock'it allows devices to respond in a manner consistent with real network devices, making it an invaluable tool for simulating network devices from over 115 vendors.
+`Mock'it` is a mockup service that acts as a network device. Currently, it only supports SSH and SNMP. The difference between this project and others is that we reverse-engineered the Netmiko library, allowing every device to respond in a way that makes it compatible with Netmiko, as if it were a real physical network device. As a result, we can currently imitate 115 different network vendors.
 
-## Key Features:
-- **Device Compatibility**: Imitates 115+ network vendors with support for SSH, SNMP, Netconf, and Telnet.
-- **Customizable Command Responses**: Supports both static and dynamic responses, with Python-based logic for generating custom responses.
-- **Version Support**: Handle multiple device versions through version-specific configurations.
-- **Docker-Based Setup**: Easy deployment with Docker Compose for a flexible, containerized mock network environment.
-- **Integrations**: Optionally integrate with OpenAI for handling unknown CLI commands.
+## Getting started
 
-## Getting Started
+1. Store your config files, script logic, or SNMP output for the vendor you want to imitate in the `/config/<device_type>` folder. By default, we have provided a library of examples that you can use out of the box.
+2. Modify the compose file to specify the Device OS you would like to imitate.
+3. Run: docker compose up -d --build
+4. Log in via SSH through the terminal, or run your network automation script against it.
 
-### 1. Store Device Configurations
-Place your configuration files, script logic, or SNMP output for the vendor you wish to imitate in the `/config/<device_type>` folder. Mock'it comes with preconfigured examples to help you get started quickly.
+## YouTube playlist with sample videos
 
-### 2. Modify the Compose File
-Customize the `docker-compose.yml` file to specify the device OS and any other environment variables you need.
+https://www.youtube.com/playlist?list=PLxv8A8sCq4EBPfeJGk_Ufb5l9NT50qil2
 
-### 3. Build and Run the Mock Device
-Run the following Docker Compose command to build and start the mock devices:
+## Device version
 
-```bash
-docker compose up -d --build
-```
+It's possible to store different configurations for an OS per version. For example, for Mikrotik, we currently support multiple versions. You can switch between them using DEVICE_VERSION. You can see how it's set up in /config/mikrotik_routeros/.
 
-### 4. Access the Device
-- Log in via **SSH** through the terminal.
-- Alternatively, you can access the device by using netmiko sdk.
+You can do the same for your own configurations by adding a folder to the `/config/<device_type>/<device_version>` directory and using the folder name as the DEVICE_VERSION.
 
-## Supported Protocols
+## SSH Server
 
-### SSH Server
-Mock'it supports SSH connections to simulate real device behavior. You can:
-- Add **static command responses** by placing templates in `/config/<device_type>/templates` (file names should match the command).
-- Create **dynamic command responses** with Python logic in `/config/<device_type>/scripts`. Example:
+### Add a static command
+
+You can add a static command response in `/config/<device_type>/templates`. The name of the file has to equal the command being executed.
+
+### Add a dynamic command
+
+You can create a dynamic command response in `/config/<device_type>/scripts`. Whenever a command is executed, it first goes through the def handle_command function in __init__.py. This allows you to use Python logic to generate your response.
+For example:
 
 ```python
 def handle_command(command: str):
     if command.startswith('show hello'):
-        return "Hello world"
+         return ("Hello world")
     return ""
 ```
 
-### SNMP Server
-Mock'it supports SNMP simulations for a range of device vendors, with more being added over time. If you have a device from a vendor not yet supported, consider contributing a **pull request**.
+## SNMP Server
 
-- To capture SNMP data, you can use the following command:
-  
-  ```bash
-  # Linux (sudo apt install snmp)
-  snmpwalk -v2c -c public localhost
-  ```
+### Info
 
-  Or, for Windows:
+SNMP examples are currently only provided for a few vendors, as we don't have access to all devices to create an snmp.json. If you have a device from one of the missing vendors, please consider submitting a pull request. To share this information with the project, you can use the following example command:
 
-  ```bash
-  # Windows (http://www.snmpsoft.com)
-  snmpwalk -v:"2" -c:"public" -r:"localhost"
-  ```
+```bash
+# Linux (sudo apt install snmp)
+snmpwalk -v2c -c public localhost
 
-### Netconf Server
+# Windows (http://www.snmpsoft.com)
+snmpwalk -v:"2" -c:"public" -r:"localhost"
+```
+
+## Netconf Server
+
+### Info
+
 Custom Netconf servers can be created with tailored command responses by editing `src/start_netconf.py`. Here's an example for handling a basic Netconf request:
 
 ```python
@@ -76,7 +71,6 @@ nc_server.expect_request(
     </rpc-reply>
 """)
 ```
-## NETCONF Support
 
 ### Test the connectivity
 
@@ -107,14 +101,17 @@ with manager.connect(
     print(running_config)
 ```
 
-### Telnet Server
+## Telnet Server
+
+### Info
+
 To enable Telnet server support, set the `TELNET_SERVER_ENABLED` environment variable to `true`. Mock'it supports a wide range of Telnet-enabled devices, including popular vendors like **Cisco**, **Juniper**, **Arista**, and more.
 
 ### Supported Telnet Devices
 - adtran_os_telnet
 - cisco_ios_telnet
 - juniper_junos_telnet
-- and many more.
+For the full list see supported_devices_telnet.md
 
 ## Docker Compose Configuration
 
@@ -152,7 +149,7 @@ networks:
 ```
 
 ### Example with Static IPv4 & IPv6
-This example demonstrates how to specify static IP addresses for the mock device:
+This example demonstrates how to specify static IP addresses for a mock device:
 
 ```yaml
 name: devices
@@ -226,18 +223,34 @@ networks:
 ### Logging Configuration
 - **DEBUG_ENABLED**: Enable print debug logs (default is false)
 
-## Device Configuration Management
+## Device Configuration
 
-Mock'it also includes a simple database management system for creating, reading, updating, and deleting device configurations. This makes it easier to manage and customize your device configurations.
+We created a module where you can use a simple database manager to Create, Read, Update and Delete data.
+This way you can create your own configuration logic, see the following YouTube video for more details
+https://www.youtube.com/watch?v=fMtLNYJ3708&list=PLxv8A8sCq4EBPfeJGk_Ufb5l9NT50qil2
 
-For more details on how to use the database manager and create your own configuration logic, please check the YouTube video here:  
-[Device Configuration Management Video](https://www.youtube.com/watch?v=fMtLNYJ3708&list=PLxv8A...)
+### Database Options:
+- create_table
+- create_record
+- read_record
+- update_record
+- delete_record
 
-## Conclusion
+### Example
 
-<<<<<<< README.md
-Mock'it is a powerful tool that enables network professionals to test and automate network device interactions in a controlled environment. With extensive device support, customizable responses, and easy deployment, it’s a versatile solution for any network automation or simulation need.
-=======
+configs\cisco_ios\scripts\__init__.py
+```python
+from src.ssh_server.db_operations import create_table, create_record, read_record, update_record, delete_record
+import re
+create_table('cisco_ios')
+def handle_command(command: str):
+    if command.startswith("add vlan"):
+
+        # Get the vlan number
+        match = re.search(r'add vlan (\d+)', command)
+        if match:
+            vlan_number = match.group(1)
+
             db_vlan = read_record("cisco_ios","vlan")
             if db_vlan:
                 update_record("cisco_ios", "vlan", db_vlan + " " + vlan_number)
@@ -268,6 +281,4 @@ If you want to share your command templates with the rest of us, it would be app
 Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
 
 # Roadmap
-- Telnet support
 - RestAPI support to imitate controller based devices.
->>>>>>> README.md
