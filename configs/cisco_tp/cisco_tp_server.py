@@ -25,10 +25,9 @@ class cisco_tp_handler(SSH_Handler):
             command = command.strip()
             self.process.stdout.write(self.get_formatted_command(command))
                 
-            self.logger.info(f"command received `{command}`")
+            self.logger.debug(f"command received `{command}`")
 
             if command:
-                self.logger.info(f"command received `{command}`")
                 result = await self._handle_command(command)
                 if not result:
                     break

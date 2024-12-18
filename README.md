@@ -51,11 +51,74 @@ snmpwalk -v2c -c public localhost
 snmpwalk -v:"2" -c:"public" -r:"localhost"
 ```
 
-## Docker compose
+## Netconf Server
 
-### Example
+### Info
 
-```yml
+Custom Netconf servers can be created with tailored command responses by editing `src/start_netconf.py`. Here's an example for handling a basic Netconf request:
+
+```python
+nc_server.expect_request(
+    '<?xml version="1.0" encoding="UTF-8"?>'
+    '<nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="{message_id}">'
+    "<nc:get-config><nc:source><nc:running/></nc:source></nc:get-config>"
+    "</nc:rpc>"
+).respond_with("""
+    <?xml version="1.0" encoding="UTF-8"?>
+    <rpc-reply message-id="{message_id}"
+        xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <data>OK</data>
+    </rpc-reply>
+""")
+```
+
+### Test the connectivity
+
+```bash
+# Connect to the netconf server
+ssh test@localhost -p 830 -s netconf
+
+# Using netconf-console 
+netconf-console2 --host localhost --port 830 -u test -p test
+```
+
+### Get the running configuration with ncclient
+
+```python
+from ncclient import manager
+
+# Connect to the device
+with manager.connect(
+    host='localhost',
+    port=830,
+    username='test',
+    password='test',
+    hostkey_verify=False
+) as m:
+    
+    # Get the running configuration
+    running_config = m.get_config('running')
+    print(running_config)
+```
+
+## Telnet Server
+
+### Info
+
+To enable Telnet server support, set the `TELNET_SERVER_ENABLED` environment variable to `true`. Mock'it supports a wide range of Telnet-enabled devices, including popular vendors like **Cisco**, **Juniper**, **Arista**, and more.
+
+### Supported Telnet Devices
+- adtran_os_telnet
+- cisco_ios_telnet
+- juniper_junos_telnet
+For the full list see supported_devices_telnet.md
+
+## Docker Compose Configuration
+
+### Basic Example
+The following example demonstrates how to configure the Docker Compose file to simulate a **Cisco IOS** device:
+
+```yaml
 name: devices
 services:
   cisco_ios:
@@ -65,44 +128,100 @@ services:
       - DEVICE_TYPE=cisco_ios
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
-      - DEVICE_DELAY=5
-      - LOGIN_DELAY=3
-      - LOGIN_RETRY=3
-    ports: 
-      - "22:22"
-      - "161:161/udp"
+      - DEVICE_DELAY=5 # Simulate slow responses
+      - LOGIN_DELAY=3 # Simulate slow login
+      - LOGIN_RETRY=3 # Simulate automatic login failures
+      - NETCONF_USERNAME=test
+      - NETCONF_PASSWORD=test
+      - TELNET_USERNAME=test
+      - TELNET_PASSWORD=test
+      - DEBUG_ENABLED=true
+    ports:
+      - "22:22"  # SSH
+      - "161:161/udp"  # SNMP
+      - "23:23"  # Telnet
+      - "830:830"  # Netconf
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
+networks:
+  devices-network:
+    driver: bridge
 ```
 
-### Info
+### Example with Static IPv4 & IPv6
+This example demonstrates how to specify static IP addresses for a mock device:
 
-It's possible to map a volume to include your own scripts and templates. By default, the container will use `/config/<device_type>/`. To connect to the device remotely via SSH, port 22 is opened, and for SNMP, port 161/UDP is used.
+```yaml
+name: devices
+services:
+  cisco_ios:
+    image: registry.gitlab.com/slurpit.io/mockit:latest
+    container_name: cisco_ios
+    environment:
+      - DEVICE_TYPE=cisco_ios
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
+      - DEVICE_DELAY=5  # Simulate slow responses
+      - LOGIN_DELAY=3
+      - LOGIN_RETRY=3
+    ports:
+      - "22:22"
+      - "161:161/udp"
+    networks:
+      devices-network:
+        ipv4_address: 172.16.240.45
+        ipv6_address: fc00::abcd
+    volumes:
+      - ./configs/cisco_ios:/configs/cisco_ios
+networks:
+  devices-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.240.0/24
+        - subnet: fc00::/64
+```
 
-Environment Options
-- DEVICE_TYPE: Supported device types you want to imitate.
-- DEVICE_VERSION: Incase your device has different subfolders because of versioning. Look at Mikrotik_routeros as an example.
+## Environment Variables
 
-Environment SSH Options
-- SSH_USERNAME: SSH username.
-- SSH_PASSWORD: SSH password.
-- DEVICE_DELAY: Adds a delay (in seconds) before responding to a command.
-- LOGIN_DELAY: Adds a delay (in seconds) before the server accepts an SSH connection.
-- LOGIN_RETRY: Defines the number of retries allowed for login attempts.
+### Device Configuration
+- **DEVICE_TYPE**: Specifies the type of device to emulate.
+- **DEVICE_VERSION**: Use this to simulate different versions of the same device type.
 
-Environment SNMP Options
-- SNMP_V2_ENABLED: Enable SNMP V2 (default true)
-- SNMP_V2_COMMUNITY: SNMP community string (default public)
-- SNMP_V3_ENABLED: Enable SNMP V2 (default false)
-- SNMP_V3_USERNAME: SNMPv3 Username
-- SNMP_V3_AUTH_TYPE: SNMPv3 Authentication Type
-- SNMP_V3_AUTH_KEY: SNMPv3 Authentication Key
-- SNMP_V3_PRIV_TYPE: SNMPv3 Privilege Type
-- SNMP_V3_PRIV_KEY: SNMPv3 Privilege Key
+### SSH Configuration
+- **SSH_SERVER_ENABLED**: Enable SSH server (default is true).
+- **SSH_USERNAME**: SSH username for authentication.
+- **SSH_PASSWORD**: SSH password for authentication.
+- **DEVICE_DELAY**: Introduces a delay before a device responds to a command.
+- **LOGIN_DELAY**: Delays the SSH login process.
+- **LOGIN_RETRY**: Defines the number of retries for failed login attempts.
 
-OpenAI
-- OPENAI_SUPPORT: Have OpenAI to respond to unknown cli commands (default true)
-- OPENAI_APIKEY: Get your api key at https://platform.openai.com/ 
+### SNMP Configuration
+- **SNMP_V2_ENABLED**: Enable SNMP v2 (default is true).
+- **SNMP_V2_COMMUNITY**: SNMP v2 community string (default is "public").
+- **SNMP_V3_ENABLED**: Enable SNMP v3 (default is false).
+- **SNMP_V3_USERNAME**: Username for SNMP v3.
+- **SNMP_V3_AUTH_TYPE**: Authentication type for SNMP v3.
+- **SNMP_V3_AUTH_KEY**: Authentication key for SNMP v3.
+- **SNMP_V3_PRIV_TYPE**: Privacy type for SNMP v3.
+- **SNMP_V3_PRIV_KEY**: Privacy key for SNMP v3.
+
+### Netconf Configuration
+- **NETCONF_SERVER_ENABLED**: Enable Netconf server (default is true).
+- **NETCONF_USERNAME**: Username for Netconf authentication.
+- **NETCONF_PASSWORD**: Password for Netconf authentication.
+
+### Telnet Configuration
+- **TELNET_SERVER_ENABLED**: Enable Telnet server (default is true).
+- **TELNET_USERNAME**: Telnet username.
+- **TELNET_PASSWORD**: Telnet password.
+
+### OpenAI Integration (Optional)
+- **OPENAI_SUPPORT**: Enable OpenAI support for handling unknown commands (default is true).
+- **OPENAI_APIKEY**: Set your OpenAI API key [here](https://platform.openai.com/).
+
+### Logging Configuration
+- **DEBUG_ENABLED**: Enable print debug logs (default is false)
 
 ## Device Configuration
 
@@ -162,5 +281,4 @@ If you want to share your command templates with the rest of us, it would be app
 Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
 
 # Roadmap
-- NetConf support
 - RestAPI support to imitate controller based devices.

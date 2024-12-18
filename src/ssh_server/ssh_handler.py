@@ -6,7 +6,6 @@ import importlib
 import re
 from openai import OpenAI
 import logging
-logging.basicConfig(level=logging.DEBUG)  # Set to DEBUG to capture all logs, including INFO, WARNING, ERROR, and DEBUG
 
 class SSH_Handler:
 
@@ -18,7 +17,7 @@ class SSH_Handler:
         :param options: Dictionary containing configuration options, such as device_type and new_line characters.
         """
         self.process = process
-        self.logger = logging.getLogger(self.__class__.__name__)
+        self.logger = logging.getLogger('app')
         self.device_type = options['device_type']
         self.device_version = options["device_version"]
         self.new_line = options['new_line']
@@ -87,7 +86,6 @@ class SSH_Handler:
 
             command = command.strip()
             self.process.stdout.write(self.get_formatted_command(command))
-                
 
             if command:
                 result = await self._handle_command(command)
@@ -100,7 +98,7 @@ class SSH_Handler:
         """
         Handle the Ctrl+C (SIGINT) event by resetting the prompt.
         """
-        self.logger.info("Ctrl+C received, resetting prompt")
+        self.logger.debug("Ctrl+C received, resetting prompt")
         self.respond(b'\x03')  # Move to a new line
 
     def get_formatted_command(self, command):
@@ -199,8 +197,6 @@ class SSH_Handler:
 
         :param command: The command string.
         """
-        self.logger.info(f"Received `{command}`")
-
         if self.delay:
             await asyncio.sleep(self.delay)
 
@@ -281,7 +277,6 @@ class SSH_Handler:
             if os.path.isfile(file_path) and extension == '.txt':
                 commands[name] = file_path
         
-        self.logger.debug(f"loaded commands: `{commands}`")
         self.commands = commands
         return True
     
@@ -292,13 +287,11 @@ class SSH_Handler:
         :param file: Path to the command template file.
         :return: Content of the command template file.
         """
-        self.logger.debug(f"{self.device_type}: {file}")
         executor = ThreadPoolExecutor(max_workers=1)
         loop = asyncio.get_event_loop()
         content = await loop.run_in_executor(
             executor, lambda: self._read_file(file)
         )
-        self.logger.debug(f"command content {content}")
 
         return content
 
@@ -373,5 +366,4 @@ class SSH_Handler:
 
         :param response: The response string to send.
         """
-        self.logger.debug(f"Response {response}")
         self.process.stdout.write(response + self.new_line)

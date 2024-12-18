@@ -14,7 +14,7 @@ import logging
 import os
 import json
 
-logger = logging.getLogger("snmp")
+logger = logging.getLogger("app")
 
 async def start_server(options):
     """
@@ -26,8 +26,8 @@ async def start_server(options):
     if not options["snmpv2_enabled"] and not options["snmpv3_enabled"]:
         raise Exception("SNMPv2 and SNMPv3 can't both be disabled")
 
-    if options["debug"]:
-        set_logger(Debug('all'))
+    # if options["debug"]:
+    #     set_logger(Debug('all'))
 
     logger.info("Starting SNMP server")
     logger.debug(f"Using SNMP options: {options}")

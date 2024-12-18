@@ -4,6 +4,7 @@ import asyncio
 from snmp_server import asyncsnmp_server
 from src.start_ssh import start_ssh
 from src.start_netconf import start_netconf
+from src.start_telnet import start_telnet
 
 def main():
     # Fetch device type from environment variable
@@ -15,9 +16,16 @@ def main():
     # Fetch device version or determine based on device type
     device_version = os.environ.get("DEVICE_VERSION", "")
     debug_enabled = str(os.environ.get("DEBUG_ENABLED", "false")).lower() == "true"
+
+
+    # Create a custom logger
+    LOGGER = logging.getLogger('app')  # Or use the root logger: LOGGER = logging.getLogger('app')
     if debug_enabled:
-        LOGGER = logging.getLogger()
-        logging.basicConfig(level=logging.DEBUG)
+        LOGGER.setLevel(logging.DEBUG)  # Explicitly set this logger to DEBUG level
+    else:
+        LOGGER.setLevel(logging.INFO)
+    
+    LOGGER.debug("this is TEST!!!!!!")
     # SSH configuration options from environment variables
     options_ssh = {
         "debug": debug_enabled,
@@ -56,6 +64,15 @@ def main():
         "password": os.environ.get("NETCONF_PASSWORD", "test"),
         "authorized_key": os.environ.get("NETCONF_KEY", ""),
     }
+
+
+    options_telnet = {
+        "device_type": device_type,
+        "username": os.environ.get("TELNET_USERNAME", "root"),
+        "password": os.environ.get("TELNET_PASSWORD", ""),
+        "delay": int(os.environ.get("DEVICE_DELAY", 0.025)),
+        "device_version": device_version
+    }
     
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
@@ -65,13 +82,13 @@ def main():
         loop.create_task(asyncsnmp_server.start_server(options_snmp))
     if str(os.environ.get("NETCONF_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_netconf(options_netconf))
-        
+    if str(os.environ.get("TELNET_SERVER_ENABLED", "true")).lower() == "true":
+        loop.create_task(start_telnet(options_telnet))
+
     if len(asyncio.all_tasks(loop)) == 0:
         raise Exception("No tasks were started")
     loop.run_forever()
 
 if __name__ == "__main__":
-    # Setup logging
-    
     # Start main function
     main()
