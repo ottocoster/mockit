@@ -134,10 +134,8 @@ services:
       - DEVICE_DELAY=5 # Simulate slow responses
       - LOGIN_DELAY=3 # Simulate slow login
       - LOGIN_RETRY=3 # Simulate automatic login failures
-      - NETCONF_SERVER_ENABLED=true
       - NETCONF_USERNAME=test
       - NETCONF_PASSWORD=test
-      - TELNET_SERVER_ENABLED=true
       - TELNET_USERNAME=test
       - TELNET_PASSWORD=test
       - DEBUG_ENABLED=true
@@ -194,6 +192,7 @@ networks:
 - **DEVICE_VERSION**: Use this to simulate different versions of the same device type.
 
 ### SSH Configuration
+- **SSH_SERVER_ENABLED**: Enable SSH server (default is true).
 - **SSH_USERNAME**: SSH username for authentication.
 - **SSH_PASSWORD**: SSH password for authentication.
 - **DEVICE_DELAY**: Introduces a delay before a device responds to a command.
@@ -211,12 +210,12 @@ networks:
 - **SNMP_V3_PRIV_KEY**: Privacy key for SNMP v3.
 
 ### Netconf Configuration
-- **NETCONF_SERVER_ENABLED**: Enable Netconf server (default is false).
+- **NETCONF_SERVER_ENABLED**: Enable Netconf server (default is true).
 - **NETCONF_USERNAME**: Username for Netconf authentication.
 - **NETCONF_PASSWORD**: Password for Netconf authentication.
 
 ### Telnet Configuration
-- **TELNET_SERVER_ENABLED**: Enable Telnet server (default is false).
+- **TELNET_SERVER_ENABLED**: Enable Telnet server (default is true).
 - **TELNET_USERNAME**: Telnet username.
 - **TELNET_PASSWORD**: Telnet password.
 

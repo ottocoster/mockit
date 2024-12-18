@@ -82,7 +82,6 @@ def main():
         loop.create_task(asyncsnmp_server.start_server(options_snmp))
     if str(os.environ.get("NETCONF_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_netconf(options_netconf))
-    
     if str(os.environ.get("TELNET_SERVER_ENABLED", "true")).lower() == "true":
         loop.create_task(start_telnet(options_telnet))
 
