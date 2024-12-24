@@ -55,21 +55,28 @@ snmpwalk -v:"2" -c:"public" -r:"localhost"
 
 ### Info
 
-Custom Netconf servers can be created with tailored command responses by editing `src/start_netconf.py`. Here's an example for handling a basic Netconf request:
+Netconf mock outputs can be created by editing the `configs/<platform>/netconf/get-config.xml` file. Here's an example:
 
-```python
-nc_server.expect_request(
-    '<?xml version="1.0" encoding="UTF-8"?>'
-    '<nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="{message_id}">'
-    "<nc:get-config><nc:source><nc:running/></nc:source></nc:get-config>"
-    "</nc:rpc>"
-).respond_with("""
-    <?xml version="1.0" encoding="UTF-8"?>
-    <rpc-reply message-id="{message_id}"
-        xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
-        <data>OK</data>
-    </rpc-reply>
-""")
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply message-id="{message_id}"
+    xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <data>
+        <bgp>
+            <bgp-router>
+                <router-id>1.1.1.1</router-id>
+                <bgp-neighbor>
+                    <neighbor-id>2.2.2.2</neighbor-id>
+                    <remote-as>65000</remote-as>
+                </bgp-neighbor>
+                <bgp-neighbor>
+                    <neighbor-id>3.3.3.3</neighbor-id>
+                    <remote-as>65001</remote-as>
+                </bgp-neighbor>
+            </bgp-router>
+        </bgp>
+    </data>
+</rpc-reply>
 ```
 
 ### Test the connectivity
@@ -175,6 +182,7 @@ services:
       - ./configs/cisco_ios:/configs/cisco_ios
 networks:
   devices-network:
+    enable_ipv6: true
     driver: bridge
     ipam:
       config:
