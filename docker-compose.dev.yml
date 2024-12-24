@@ -26,6 +26,7 @@ services:
 
 networks:
   devices-network:
+    enable_ipv6: true
     driver: bridge
     ipam:
       config:
