@@ -9,6 +9,7 @@ services:
       SSH_PASSWORD: test
     ports: 
        - "22:22"
+       - "23:23"
        - "161:161/udp"
 
 networks:

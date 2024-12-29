@@ -24,8 +24,7 @@ def main():
         LOGGER.setLevel(logging.DEBUG)  # Explicitly set this logger to DEBUG level
     else:
         LOGGER.setLevel(logging.INFO)
-    
-    LOGGER.debug("this is TEST!!!!!!")
+
     # SSH configuration options from environment variables
     options_ssh = {
         "debug": debug_enabled,

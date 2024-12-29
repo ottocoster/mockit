@@ -7,7 +7,6 @@ $ snmpwalk -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 localhost .1.3
 from pysnmp.entity import engine, config
 from pysnmp.entity.rfc3413 import cmdrsp, context
 from pysnmp.carrier.asyncio.dgram import udp
-from pysnmp.debug import set_logger, Debug
 from openai import OpenAI
 
 import logging

@@ -21,6 +21,7 @@ services:
         ipv6_address: fc00::abcd # change to what ipv6 you prefer
     ports:
       - "22:22"
+      - "23:23"
       - "161:161/udp"
       - "830:830"
 

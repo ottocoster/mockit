@@ -1,5 +1,3 @@
-import socket
-import threading
 import logging
 import importlib
 import asyncio
