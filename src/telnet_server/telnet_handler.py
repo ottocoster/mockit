@@ -1,8 +1,12 @@
+import socket
+import threading
 import logging
 import os
 import importlib
+from concurrent.futures import ThreadPoolExecutor
 import asyncio
 import sys
+import time
 # Telnet Handler class
 class Telnet_Handler:
     def __init__(self, reader, writer, options={}):
@@ -148,60 +152,17 @@ class Telnet_Handler:
     def _get_command_output(self, file):
         with open(file, "r") as f:
             return f.read().strip()
-
-    async def read(self):
-        """Read data from telnet stream, handling binary data properly."""
-        try:
-            # Read until we get a newline or carriage return
-            buffer = bytearray()
-            while True:
-                byte = await self.reader.read(1)
-                if not byte:  # Connection closed
-                    break
-                    
-                # Handle telnet commands (0xff)
-                if byte[0] == 0xff:
-                    # Skip next two bytes of telnet command
-                    await self.reader.read(2)
-                    continue
-                    
-                # Normal character
-                if byte[0] == ord('\n') or byte[0] == ord('\r'):
-                    # Skip the other half of \r\n if present
-                    next_byte = await self.reader.read(1)
-                    if next_byte and next_byte[0] in (ord('\n'), ord('\r')) and next_byte[0] != byte[0]:
-                        pass
-                    break
-                    
-                buffer.extend(byte)
-            
-            # Try UTF-8 first
-            try:
-                return buffer.decode('utf-8').strip()
-            except UnicodeDecodeError:
-                # Fall back to latin-1 if UTF-8 fails
-                return buffer.decode('latin-1').strip()
-                
-        except Exception as e:
-            self.logger.error(f"Error reading from stream: {str(e)}")
-            return ""
+        
+    async def respond(self, output):
+        await self.write(output + self.new_line)
 
     async def write(self, output):
-        """Write data to telnet stream with proper encoding."""
-        try:
-            if isinstance(output, str):
-                output = output.encode('utf-8')
-            self.writer.write(output)
-            await self.writer.drain()
-        except Exception as e:
-            self.logger.error(f"Error writing to stream: {str(e)}")
+        self.writer.write(output.encode())
+        await self.writer.drain()
 
-    async def respond(self, output):
-        """Send response with proper line ending."""
-        if output:
-            await self.write(output + self.new_line.encode() if isinstance(output, bytes) else output + self.new_line)
-
-    # [Previous methods remain unchanged]
+    async def read(self):
+        data = await self.reader.read(1024)
+        return data.decode().strip()
 
     async def run(self):
         await asyncio.sleep(self.login_delay)
@@ -211,10 +172,6 @@ class Telnet_Handler:
             username = await self.read()
             await self.write("Password: ")
             password = await self.read()
-
-            if not username or not password:
-                await self.write("Error: Empty credentials\n")
-                return
 
             if username == self.username and password == self.password:
                 await self.write("Logged in successfully\n")
@@ -227,22 +184,16 @@ class Telnet_Handler:
 
                 await self.write(self.prompt_terminator)
                 command = await self.read()
-                
+                self.logger.debug(f"Command received: `{command}`")
+                await self.respond(command)
+
                 if command:
-                    self.logger.debug(f"Command received: `{command}`")
-                    await self.respond(command)
-                    
                     result = await self.handle_command(command)
                     if not result:
                         break
-                else:
-                    # Handle empty input - might indicate client disconnection
-                    self.logger.debug("Empty command received")
-                    break
-
         except Exception as e:
-            self.logger.error(f"Error in telnet session: {str(e)}")
+            self.logger.error(f"Error {e}")
         finally:
             self.writer.close()
             await self.writer.wait_closed()
-            self.logger.info("Connection closed")
+            self.logger.info(f"Connection closed")
