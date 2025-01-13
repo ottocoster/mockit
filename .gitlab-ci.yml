@@ -1,4 +1,6 @@
----
+variables:
+  SLURPIT_IMAGE: slurpit/mockit
+
 stages:
   - build
   - test
@@ -34,7 +36,7 @@ build:
     - docker buildx build . --platform linux/amd64,linux/arm64 --tag "$CI_REGISTRY_IMAGE:${IMAGE_VERSION}" --output "type=tar,compression=gzip,dest=${IMAGE_FILE}" --output "type=registry,ref=$CI_REGISTRY_IMAGE:${IMAGE_VERSION}"
   artifacts:
     paths:
-      - "*.tar.gz"
+      - "slurpit-mockit-*.tar.gz"
     name: slurpit-mockit
     expire_in: 6 month
 
@@ -83,15 +85,19 @@ unit_test:
     - build
 
 push:
+  image: docker:stable
   stage: push
-  variables:
-    DOCKER_DRIVER: overlay2
-    DOCKER_CLI_EXPERIMENTAL: "enabled"
+  services:
+    - docker:dind
   script:
-    - docker run --privileged --rm tonistiigi/binfmt --install all
-    - docker buildx create --use
-    - docker buildx build --platform linux/amd64,linux/arm64 -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} --push .
-    - docker buildx build --platform linux/amd64,linux/arm64 -t $CI_REGISTRY_IMAGE:${IMAGE_TAG} --push .
+    - docker buildx build --platform linux/amd64,linux/arm64 -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} --output "type=registry,ref=$CI_REGISTRY_IMAGE:${IMAGE_VERSION}" --push .
+    - docker login -u ${DOCKER_USERNAME} -p "${DOCKER_TOKEN}"
+    - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $SLURPIT_IMAGE:${IMAGE_TAG}
+    - docker push $SLURPIT_IMAGE:${IMAGE_TAG}
+    - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $SLURPIT_IMAGE:${IMAGE_VERSION}
+    - docker push $SLURPIT_IMAGE:${IMAGE_VERSION}
+    - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $SLURPIT_IMAGE:${IMAGE_TAG}
+    - docker push $SLURPIT_IMAGE:${IMAGE_TAG}
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request" || $CI_PIPELINE_SOURCE == "merge_request_event"
       when: never
@@ -99,4 +105,5 @@ push:
       when: never
     - when: on_success
   needs:
+    - build
     - unit_test
