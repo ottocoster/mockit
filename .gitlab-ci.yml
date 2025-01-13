@@ -85,11 +85,13 @@ unit_test:
     - build
 
 push:
-  image: docker:stable
   stage: push
-  services:
-    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_CLI_EXPERIMENTAL: "enabled"
   script:
+    - docker run --privileged --rm tonistiigi/binfmt --install all
+    - docker buildx create --use
     - docker buildx build --platform linux/amd64,linux/arm64 -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} --output "type=registry,ref=$CI_REGISTRY_IMAGE:${IMAGE_VERSION}" --push .
     - docker login -u ${DOCKER_USERNAME} -p "${DOCKER_TOKEN}"
     - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $SLURPIT_IMAGE:${IMAGE_TAG}
