@@ -92,14 +92,8 @@ push:
   script:
     - docker run --privileged --rm tonistiigi/binfmt --install all
     - docker buildx create --use
-    - docker buildx build --platform linux/amd64,linux/arm64 -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} --output "type=registry,ref=$CI_REGISTRY_IMAGE:${IMAGE_VERSION}" --push .
     - docker login -u ${DOCKER_USERNAME} -p "${DOCKER_TOKEN}"
-    - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $SLURPIT_IMAGE:${IMAGE_TAG}
-    - docker push $SLURPIT_IMAGE:${IMAGE_TAG}
-    - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $SLURPIT_IMAGE:${IMAGE_VERSION}
-    - docker push $SLURPIT_IMAGE:${IMAGE_VERSION}
-    - docker tag $CI_REGISTRY_IMAGE:${IMAGE_VERSION} $SLURPIT_IMAGE:${IMAGE_TAG}
-    - docker push $SLURPIT_IMAGE:${IMAGE_TAG}
+    - docker buildx build --platform linux/amd64,linux/arm64 -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} -t $CI_REGISTRY_IMAGE:${IMAGE_TAG} -t $SLURPIT_IMAGE:${IMAGE_VERSION} -t $SLURPIT_IMAGE:${IMAGE_TAG} --push .
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request" || $CI_PIPELINE_SOURCE == "merge_request_event"
       when: never
