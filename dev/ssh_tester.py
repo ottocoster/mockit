@@ -1,5 +1,4 @@
 from netmiko import ConnectHandler
-import pytest
 
 def run_command(host, device_type, command, username="test", password="test"):
     parameters = {
@@ -12,5 +11,5 @@ def run_command(host, device_type, command, username="test", password="test"):
     with ConnectHandler(**parameters) as net_connect:
         return net_connect.send_command(command)
 
-test = run_command("192.168.106.129", "cisco_ios_telnet", "echo test")
+test = run_command("192.168.227.128", "cisco_ios_telnet", "show version")
 print(test)

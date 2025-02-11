@@ -71,7 +71,9 @@ def main():
         "username": os.environ.get("TELNET_USERNAME", "root"),
         "password": os.environ.get("TELNET_PASSWORD", ""),
         "delay": int(os.environ.get("DEVICE_DELAY", 0.025)),
-        "device_version": device_version
+        "device_version": device_version,
+        "openai_support": str(os.environ.get("OPENAI_SUPPORT", "false")).lower() == "true",
+        "openai_apikey": os.environ.get("OPENAI_APIKEY", ""),
     }
     
     loop = asyncio.new_event_loop()
