@@ -11,5 +11,5 @@ def run_command(host, device_type, command, username="test", password="test"):
     with ConnectHandler(**parameters) as net_connect:
         return net_connect.send_command(command)
 
-test = run_command("192.168.227.128", "cisco_ios_telnet", "show version")
+test = run_command("192.168.227.128", "vertiv_mph", "echo test")
 print(test)

@@ -9,4 +9,4 @@ class huawei_vrp_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'huawei_vrp'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
+        self.set_prompt_terminator(pri_terminator = "]", alt_terminator = ">")
