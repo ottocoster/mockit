@@ -33,6 +33,8 @@ def main():
         "ssh_key": os.environ.get("SSH_KEY", "/ssh_key/rsa.key"),
         "username": os.environ.get("SSH_USERNAME", "root"),
         "password": os.environ.get("SSH_PASSWORD", ""),
+        "authkey_enabled": os.environ.get("AUTHKEY_ENABLED", "false").lower() == "true",
+        "authkey_path": os.environ.get("AUTHKEY_PATH", ""),
         "delay": int(os.environ.get("DEVICE_DELAY", 0)),
         "login_delay": int(os.environ.get("LOGIN_DELAY", 0)),
         "login_retry": int(os.environ.get("LOGIN_RETRY", 0)),

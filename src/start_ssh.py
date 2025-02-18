@@ -64,17 +64,32 @@ async def start_ssh(options):
         options["new_line"] = net_connect.RETURN
 
     logger.debug(f"Using SSH options: {options}")
+    logger.debug(f"authkey_enabled: {options["authkey_enabled"]}")
 
-    # Create and start the async SSH server
-    await asyncssh.create_server(
-        server_factory=lambda: server_class(options, logger),
-        host=["::", "0.0.0.0"],
-        port=22,
-        server_host_keys=options["ssh_key"],
-        process_factory=create_session,
-        line_echo=False,
-        line_editor=True
-    )
+    if options["authkey_enabled"]:
+        # Create and start the async SSH server with authkey
+        await asyncssh.create_server(
+            server_factory=lambda: server_class(options, logger),
+            host=["::", "0.0.0.0"],
+            port=22,
+            server_host_keys=options["ssh_key"],
+            authorized_client_keys=options["authkey_path"],  # Using id.pub directly
+            process_factory=create_session,
+            line_echo=False,
+            line_editor=True
+        )
+    else:
+        # Create and start the async SSH server
+        await asyncssh.create_server(
+            server_factory=lambda: server_class(options, logger),
+            host=["::", "0.0.0.0"],
+            port=22,
+            server_host_keys=options["ssh_key"],
+            process_factory=create_session,
+            line_echo=False,
+            line_editor=True
+        )
+    
 
 async def create_session(process: SSHServerProcess):
     """

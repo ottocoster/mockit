@@ -3,7 +3,7 @@ services:
   mockit:
     build: .
     environment:
-      DEVICE_TYPE: vertiv_mph
+      DEVICE_TYPE: cisco_ios
       SSH_USERNAME: test
       SSH_PASSWORD: test
       DEBUG_ENABLED: true

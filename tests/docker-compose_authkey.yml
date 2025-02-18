@@ -1,0 +1,21 @@
+name: devices
+services:
+  a10:
+    build: ../
+    container_name: devices-a10
+    environment:
+      - DEVICE_TYPE=a10
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
+      - AUTHKEY_ENABLED=true
+      - AUTHKEY_PATH=/auth_keys/auth.pub
+      - DEBUG_ENABLED=true
+    networks:
+      - devices-network
+    ports:
+      - "22:22"
+      - "161:161/udp"
+
+networks:
+  devices-network:
+    driver: bridge
