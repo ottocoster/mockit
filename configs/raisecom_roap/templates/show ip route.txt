@@ -1,0 +1,12 @@
+Flag: R - RIP, C - directly connected, S - static, O - OSPF, I - IS-IS
+IP forwarding: enable
+Destination/Mask     Protocol     NextHop         Interface
+-----------------------------------------------------------
+0.0.0.0/0            S            10.61.38.225    ip0
+10.61.38.224/27      C            10.61.38.251    ip0
+10.61.38.225/32      C            10.61.38.225    ip0
+10.61.38.251/32      C            10.61.38.251    ip0
+192.168.0.0/24       C            192.168.0.1     outband0
+192.168.0.1/32       C            192.168.0.1     outband0
+Destination count: 6
+Route count: 6

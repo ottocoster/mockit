@@ -1,0 +1,12 @@
+Aging time: 300 seconds
+MAC-Move Restrain Status: disable
+MAC-Move Trap Status: disable
+Mac Address        Port                    Vlan    Flags
+------------------------------------------------------------
+00C0.8939.1234     nni1                    7       dynamic
+AC61.755F.4567     nni1                    7       dynamic
+AC61.755F.8976     nni1                    7       dynamic
+E435.C87B.4321     nni1                    7       dynamic
+185A.587B.9876     uni1                    121     dynamic
+AC61.755F.1111     nni1                    121     dynamic
+E435.C87B.2222     nni1                    121     dynamic

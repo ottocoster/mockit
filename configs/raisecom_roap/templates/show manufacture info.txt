@@ -1,0 +1,19 @@
+The product manufacture information:
+     Main board:
+     Vendor: RAISECOM
+     Product Name: RAX711-L-4GE-AC/S-02
+     Product Ver: A.01
+     Serial No.: 123002020401S212345678
+     MAC Address: A8:6D:5F:35:DB:13
+     MAC2 Address: A8:6D:5F:35:DB:14
+     CES Address: 00:00:00:00:00:00
+
+     Power card 1:
+     Product Name: RPA0362-SI-220S12
+     Product Ver: A.10
+     Serial No.: 501621000402S1234567
+
+     Power card 2:
+     Product Name: test
+     Product Ver:
+     Serial No.:

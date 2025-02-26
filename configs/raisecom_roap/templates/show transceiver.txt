@@ -1,0 +1,9 @@
+Globe config status:
+Digitaldiagnotic: Enable
+Trap            : Disable
+CRC             : Enable
+
+Port config status:
+Port                 Ddm            Trap           PasswordCheck  CRC
+------------------------------------------------------------------------
+nni1                 Enable         Enable         Enable         Enable
