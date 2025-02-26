@@ -97,7 +97,7 @@ push:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request" || $CI_PIPELINE_SOURCE == "merge_request_event"
       when: never
-    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "schedule" || $CI_COMMIT_REF_PROTECTED != "true"
       when: never
     - when: on_success
   needs:
