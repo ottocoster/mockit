@@ -1,0 +1,10 @@
+
+Status Connector  Port name                       State    Speed     MDI 
+------ ---------- ------------------------------- -------- --------- ----
+Up     SFP-1      PORT-1-TTCO                     Enabled  1G-FD     --- 
+Down   SFP-2      PORT-2                          Enabled  No-link   --- 
+Up     RJ45-3     PORT-3-DIA                      Enabled  1G-FD     MDI 
+Up     RJ45-4     PORT-4-UPS                      Enabled  100M-FD   MDI 
+Down   Management Management                      Enabled  No-link   --- 
+Down   ---        LAG-1                           Enabled  ---       --- 
+Down   ---        LAG-2                           Enabled  ---       --- 

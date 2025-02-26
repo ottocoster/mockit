@@ -1,0 +1,10 @@
+
+Connector  Port name                       State    Speed     MTU   MDI  MAC address         
+---------- ------------------------------- -------- --------- ----- ---- -----------------
+SFP-1      PORT-1-TTCO                     Enabled  Auto      2000  Auto 00:15:AD:4C:F2:D9   
+SFP-2      PORT-2                          Enabled  Auto      2000  Auto 00:15:AD:4C:F2:DA   
+RJ45-3     PORT-3-DIA                      Enabled  Auto      1500  Auto 00:15:AD:4C:F2:DB   
+RJ45-4     PORT-4-UPS                      Enabled  100M-FD   2000  Auto 00:15:AD:4C:F2:DC   
+Management Management                      Enabled  Auto      2000  Auto 00:15:AD:4C:F2:DD   
+---        LAG-1                           Enabled  ---       ---   ---  00:15:AD:4C:F2:D9   
+---        LAG-2                           Enabled  ---       ---   ---  00:15:AD:4C:F2:DB   

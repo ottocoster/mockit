@@ -1,0 +1,8 @@
+Product name       : AMN-1000-GT
+MAC base address   : 00:15:AD:4C:F2:D8
+Unit identifier    : 12345abcdef
+Firmware version   : AMT_7.7_17244
+Serial number      : G424-0873
+Assembly           : 500-038-04:19:22:00
+Hardware options   : Dry-contact Input
+Manufacture config : 0000

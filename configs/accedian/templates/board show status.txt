@@ -1,0 +1,33 @@
+
+Power supply
+
+   INPUT              STATUS
+   ------------------ ------
+   AC INPUT Feed A    ON                 
+
+
+Temperature sensor #1 (Celsius):
+
+   Current temperature: 43
+   First threshold    : 85
+   Second threshold   : 90
+
+Temperature sensor #2 (Celsius):
+
+   Current temperature: 36
+   First threshold    : 85
+   Second threshold   : 90
+
+Fan #1 status:
+
+   Status             : good
+   Speed              : 11776 rpm
+   Slow threshold     : 8000
+   Fail threshold     : 5000
+
+Fan #2 status:
+
+   Status             : good
+   Speed              : 10970 rpm
+   Slow threshold     : 8000
+   Fail threshold     : 5000

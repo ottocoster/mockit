@@ -1,0 +1,5 @@
+
+Present Connector  Part number      Serial number     Wavelength    Speed
+------- ---------- ---------------- ----------------- ------------- ---------
+Yes     SFP-1      HL-CW-SFP-1350   HL20251201111     1350 nm       1G
+no      SFP-2      ---              ---               ---           ---

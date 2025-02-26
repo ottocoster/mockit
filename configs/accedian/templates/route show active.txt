@@ -1,0 +1,9 @@
+
+Flags: U - Route is up               H - Destination is a host
+       G - Use a gateway             D - Dynamically installed
+
+Destination     Gateway         Netmask         Flags Interface
+--------------- --------------- --------------- ----- -----------------
+default         10.60.1.97      0.0.0.0         UG    MGMT             
+10.60.1.96      ---             255.255.255.224 U     MGMT             
+192.168.1.0     ---             255.255.255.0   U     Management       
