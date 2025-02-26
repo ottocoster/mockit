@@ -1,0 +1,42 @@
+
+NTP client    : Enabled
+NTP server    : Disabled
+TAI offset    : 34
+DSCP          : 0
+VLAN priority : 0
+Sync mode     : Normal
+Sync status   : Synchronized (with server (1))
+Time interval       : 30 seconds
+Number of Messages  : 5
+
+Enabled server list: 192.2.4.1 (1)
+
+Disabled server list:
+
+Current date
+   Year   : 2025
+   Month  : 2
+   Day    : 26
+
+Current time
+   Hour   : 4
+   Minutes: 14
+   Seconds: 47
+
+UTC offset    : -6H:00M
+
+DST state     : Disabled
+DST offset    : 00H:00M
+DST start
+   Month  :
+   Week   : 0
+   Day    : Sunday
+   Hour   : 0
+   Minute : 0
+DST end
+   Month  :
+   Week   : 0
+   Day    : Sunday
+   Hour   : 0
+   Minute : 0
+
