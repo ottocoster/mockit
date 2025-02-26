@@ -1,0 +1,15 @@
+Product Version: RAX711-L-4GE-AC/S-02 P20022222
+Software Version: 5.5.75_20210929
+RITP Version: 5.4
+Bootstrap Version: BOOTROM_1.0.14
+FPGA Version: fpga:2.4
+Hardware Version: A.00
+
+System MacAddress: A86D.5F32.DA03
+Serial number: 123002020401S123456678
+RAX711-L-4GE with
+128       M bytes  DRAM
+32        M bytes  Flash Memory
+3.660     M bytes  Free Flash Memory
+
+System uptime is 101 days, 2 hours, 50 minutes
