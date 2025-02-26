@@ -1,0 +1,11 @@
+
+ BGP local router ID : 172.20.21.5
+ Local AS number : 32098
+ Total number of peers : 2		  Peers in established state : 0
+
+  Peer            V          AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv
+
+  2604:D600:FF01::2
+                  4       32098        0        0     0 ****h12m        Idle       0
+  2604:D600:FF02::2
+                  4       32098        0        0     0 ****h12m        Idle       0
