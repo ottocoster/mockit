@@ -9,6 +9,8 @@ ENV SSH_SERVER_ENABLED=true
 ENV SSH_KEY="/ssh_key/rsa.key"
 ENV SSH_USERNAME="root"
 ENV SSH_PASSWORD="Welcome01!"
+ENV AUTHKEY_ENABLED=false
+ENV AUTHKEY_PATH="/auth_keys/auth.pub"
 
 ENV SNMP_SERVER_ENABLED=true
 ENV SNMP_V2_ENABLED=true
@@ -45,6 +47,7 @@ COPY dev/. /test
 COPY requirements.txt requirements.txt
 COPY src/. /src
 COPY ssh_key/. ssh_key/.
+COPY auth_keys/. auth_keys/.
 
 RUN apt update -y && apt upgrade -y \
     && apt-get install snmp -y \

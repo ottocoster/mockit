@@ -32,6 +32,8 @@ def main():
         "ssh_key": os.environ.get("SSH_KEY", "/ssh_key/rsa.key"),
         "username": os.environ.get("SSH_USERNAME", "root"),
         "password": os.environ.get("SSH_PASSWORD", ""),
+        "authkey_enabled": os.environ.get("AUTHKEY_ENABLED", "false").lower() == "true",
+        "authkey_path": os.environ.get("AUTHKEY_PATH", ""),
         "delay": int(os.environ.get("DEVICE_DELAY", 0)),
         "login_delay": int(os.environ.get("LOGIN_DELAY", 0)),
         "login_retry": int(os.environ.get("LOGIN_RETRY", 0)),
@@ -70,7 +72,9 @@ def main():
         "username": os.environ.get("TELNET_USERNAME", "root"),
         "password": os.environ.get("TELNET_PASSWORD", ""),
         "delay": int(os.environ.get("DEVICE_DELAY", 0.025)),
-        "device_version": device_version
+        "device_version": device_version,
+        "openai_support": str(os.environ.get("OPENAI_SUPPORT", "false")).lower() == "true",
+        "openai_apikey": os.environ.get("OPENAI_APIKEY", ""),
     }
     
     loop = asyncio.new_event_loop()

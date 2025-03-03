@@ -7,6 +7,8 @@ from concurrent.futures import ThreadPoolExecutor
 import asyncio
 import sys
 import time
+from openai import OpenAI
+
 # Telnet Handler class
 class Telnet_Handler:
     def __init__(self, reader, writer, options={}):
@@ -35,6 +37,14 @@ class Telnet_Handler:
         # self._load_script_function(f"{config_dir}/scripts", "handle_command")
 
         self.set_prompt_terminator(pri_terminator="#", alt_terminator=">")
+
+
+        self.openai_support = options.get('openai_support', False)
+        self.openai_apikey = options.get('openai_apikey', '')
+        if self.openai_support:
+            self.openai_client = OpenAI(
+                api_key=self.openai_apikey,
+            )
 
     def _load_script_function(self, script_path, function_name):
         module_path = script_path.replace('/', '.')
@@ -80,6 +90,37 @@ class Telnet_Handler:
         else:
             self.prompt_terminator = self.device_type + termintator + " "
 
+
+    def get_ai_output(self, command):
+        self.logger.info("get_ai_output called")
+
+        prompt = f"""
+        ### Device type
+        {self.device_type}
+        ###
+
+        ### command
+        `{command}`
+        ###
+
+        Let's assume the device type and input command are above.
+        Please give me the output of this command of the device type without any explanation.
+        You have to reply with only one command output.
+        """
+        model = "gpt-4o"
+
+        chat_completion = self.openai_client.chat.completions.create(
+            messages=[
+                    {"role": "system", "content": "You are a AI vendor assistant that returns output of network devices."},
+                    {"role": "user", "content": prompt}
+            ],
+            model=model,
+        )
+        message_content = chat_completion.choices[0].message.content
+        message_content = message_content.replace("```", "").strip()        
+
+        self.logger.info(f"ai_output: `{message_content}`")
+        return message_content
 
     def handle_custom_command(self, command):
         """
@@ -184,7 +225,7 @@ class Telnet_Handler:
 
                 await self.write(self.prompt_terminator)
                 command = await self.read()
-                self.logger.debug(f"Command received: `{command}`")
+                self.logger.info(f"command received `{repr(command)}`")
                 await self.respond(command)
 
                 if command:
