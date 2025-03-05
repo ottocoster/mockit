@@ -1,0 +1,34 @@
++----------------- SOFTWARE STATE INFORMATION -----------------+
+|         Parameter           |              Value             |
++-----------------------------+--------------------------------+
+| Software Operational State  | Normal                         |
+| Upgrade  Operational State  | Idle                           |
++-----------------------------+--------------------------------+
+
++----------------- ACTIVE RELEASE INFORMATION -----------------+
+|         Parameter           |              Value             |
++-----------------------------+--------------------------------+
+| Version                     | 1.5.1                          |
+| Build                       | 19                             |
+| Build	Tag                   | GA                             |
+| Build	Date                  | Fri Apr 24 19:28:14 2020       |
++-----------------------------+--------------------------------+
+
++-------- WAVESERVER CONTROL SUBSYSTEM SOFTWARE STATUS --------+
+|         Parameter           |              Value             |
++-----------------------------+--------------------------------+
+| Boot Zone                   | A                              |
+| Last Restart Time           | 2021-07-27 02:43:26            |
++-----------------------------+--------------------------------+
+| Boot Firmware Bank A        | BOOT_beta_830-r0.bin           |
+| Boot Firmware Bank B        | BOOT_beta_830-r0.bin           |
+| ONIE Bank A                 | ONIE_1050-r0.bin               |
+| ONIE Bank B                 | ONIE_1050-r0.bin               |
+| FPGA Version                | 120                            |
++-----------------------------+--------------------------------+
+
++------------------------+--------+--------------+---------+---------+
+| Licensed Feature       | In-Use | Availability | Type    | Status  |
++------------------------+--------+--------------+---------+---------+
+| Software Release 1.5.0 | Yes    | Held         | Served  | Valid   |
++------------------------+--------+--------------+---------+---------+

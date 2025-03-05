@@ -1,0 +1,14 @@
+
+ BGP local router ID : 192.168.2.6
+ Local AS number : 32098
+ Total number of peers : 3		  Peers in established state : 3
+
+  Peer            V          AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv
+
+  192.168.1.3     4       32111  8023085    52853     0 0879h25m Established     946
+  192.168.2.5     4       32111 ********   650921     0 ****h52m Established     946
+
+  Peer of IPv4-family for vpn instance :
+
+ VPN-Instance VRF_HEB_MTCL, Router ID 172.20.21.5:
+  169.254.255.10  4      4.3381  1139965  1033887     0 ****h37m Established     558

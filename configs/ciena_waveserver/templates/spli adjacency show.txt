@@ -1,0 +1,15 @@
+
++------------------------------- SPLI PORT ADJACENCIES --------------------------------------+
+| Port   |  Admin   | Oper  |                 Remote Information                             |
+|(*=dup) |  State   | State | Shelf ID| Slot | SubSlot| Port | SubPort| Shelf TID            |
++--------+----------+-------+---------+------+--------+------+--------+----------------------+
+| 5/1    | Enabled  | Up    | 1       | 84   | 0      | 55   | 0      | 6500-LAREDO          |
+| 5/2    | Enabled  | Up    | 1       | 83   | 0      | 55   | 0      | 6500-LAREDO          |
+| 7/1    | Enabled  | Up    | 1       | 85   | 0      | 49   | 0      | 6500-LAREDO          |
+| 7/2    | Enabled  | Up    | 1       | 85   | 0      | 83   | 0      | 6500-LAREDO          |
+| 1/1    | Enabled  | Up    | 1       | 85   | 0      | 59   | 0      | 6500-LAREDO          |
+| 1/2    | Enabled  | Up    | 1       | 84   | 0      | 59   | 0      | 6500-LAREDO          |
+| 3/1    | Enabled  | Up    | 1       | 83   | 0      | 21   | 0      | 6500-LAREDO          |
+| 3/2    | Enabled  | Down  | -       | -    | -      | -    | -      |                      |
++--------+----------+-------+---------+------+--------+------+--------+----------------------+
+
