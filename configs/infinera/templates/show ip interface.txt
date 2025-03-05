@@ -1,0 +1,544 @@
+Interface ge13/1/0
+  Hardware is Ethernet, address is 04:11:9c:c8:22:33
+  index 5006 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/1
+  Hardware is Ethernet, address is 04:11:9c:c8:22:34
+  index 5007 metric 1 mtu 9470 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 9500 ip mtu 9470 mpls mtu 9500
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/2
+  Hardware is Ethernet, address is 04:11:9c:c8:22:35
+  index 5008 metric 1 mtu 4440 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 4470 ip mtu 4440 mpls mtu 4470
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/3
+  Hardware is Ethernet, address is 04:11:9c:c8:22:36
+  index 5009 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/4
+  Hardware is Ethernet, address is 04:11:9c:c8:22:37
+  index 5010 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/5
+  Hardware is Ethernet, address is 04:11:9c:c8:22:38
+  index 5011 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/6
+  Hardware is Ethernet, address is 04:11:9c:c8:22:39
+  index 5012 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/7
+  Hardware is Ethernet, address is 04:11:9c:c8:22:3a
+  index 5013 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/8
+  Hardware is Ethernet, address is 04:11:9c:c8:22:3b
+  index 5014 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/9
+  Hardware is Ethernet, address is 04:11:9c:c8:22:3c
+  Description: c76011382
+  index 5015 metric 1 mtu 4440 <UP,BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 4470 ip mtu 4440 mpls mtu 4470
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/10
+  Hardware is Ethernet, address is 04:11:9c:c8:22:3d
+  index 5016 metric 1 mtu 9216 <UP,BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 9216 ip mtu 9216 mpls mtu 9216
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/11
+  Hardware is Ethernet, address is 04:11:9c:c8:22:3e
+  index 5017 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/12
+  Hardware is Ethernet, address is 04:11:9c:c8:22:3f
+  index 5018 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/13
+  Hardware is Ethernet, address is 04:11:9c:c8:22:40
+  index 5019 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/14
+  Hardware is Ethernet, address is 04:11:9c:c8:22:41
+  index 5020 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/15
+  Hardware is Ethernet, address is 04:11:9c:c8:22:42
+  index 5021 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/16
+  Hardware is Ethernet, address is 04:11:9c:c8:22:43
+  index 5022 metric 1 mtu 4440 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 4470 ip mtu 4440 mpls mtu 4470
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 100M
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/16#svlan#65
+  Hardware is Ethernet, address is 00:00:00:00:00:00
+  index 5030 metric 1 mtu 4440 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 4470 ip mtu 4440 mpls mtu 4470
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  Virtual Circuit configured is 'VERIZON_c7301126B_1003' type is ' Ethernet VLAN'
+    PWE3 loop: disabled
+    VCCV control channel capabilities: TTL expiry (Type 3)
+    Advertised VCCV control channels: None
+    Selected VCCV control channel: None
+    VCCV CV protocol capabilities: lsp-ping
+    Selected VCCV CV protocols: None
+  Administrative Group(s): None
+  Bandwidth 100M
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/17
+  Hardware is Ethernet, address is 04:11:9c:c8:22:44
+  index 5023 metric 1 mtu 9000 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 9500 ip mtu 9000 mpls mtu 9500
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/18
+  Hardware is Ethernet, address is 04:11:9c:c8:22:45
+  index 5024 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/18#svlan#1347
+  Hardware is Ethernet, address is 00:00:00:00:00:00
+  index 5035 metric 1 mtu 1530 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1530 mpls mtu 1530
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/19
+  Hardware is Ethernet, address is 04:11:9c:c8:22:46
+  index 5025 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/20
+  Hardware is Ethernet, address is 04:11:9c:c8:22:47
+  index 5026 metric 1 mtu 4440 <UP,BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 4470 ip mtu 4440 mpls mtu 4470
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 100M
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/20#svlan#2033
+  Hardware is Ethernet, address is 00:00:00:00:00:00
+  index 5031 metric 1 mtu 4440 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 4470 ip mtu 4440 mpls mtu 4470
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 100M
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/21
+  Hardware is Ethernet, address is 04:11:9c:c8:22:48
+  index 5027 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/22
+  Hardware is Ethernet, address is 04:11:9c:c8:22:49
+  index 5028 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface ge13/1/23
+  Hardware is Ethernet, address is 04:c0:9c:c8:04:4a
+  index 5029 metric 1 mtu 1500 <BROADCAST,SIMPLEX,MULTICAST>
+  Link mtu 1530 ip mtu 1500 mpls mtu 1530
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 1G
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface lo0
+  Hardware is Loopback
+  index 50 metric 1 mtu 65535 <UP,LOOPBACK,RUNNING,NOASIC,MULTICAST>
+  Link mtu 1500 ip mtu 1500 mpls mtu 1500
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  DSTE Bandwidth Constraint Mode is RSDL
+  inet 172.30.247.53/32
+  VRRP is not configured on this interface.
+    input packets 221, bytes 40525, dropped 0, multicast packets 0
+    input errors 0
+    output packets 221, bytes 40525, multicast packets 0
+    output errors 0
+    collisions 0
+Interface mfe14/0
+  Hardware is Ethernet, address is 04:11:9c:c8:22:4b
+  index 5003 metric 1 mtu 1500 <BROADCAST,SIMPLEX,NOASIC,MULTICAST>
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 100M
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface null0
+  Hardware is null
+  index 2098 metric 1 mtu 65535 <UP,LOOPBACK,RUNNING,NOASIC,MULTICAST>
+  Link mtu 1500 ip mtu 1500 mpls mtu 1500
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is disabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  DSTE Bandwidth Constraint Mode is RSDL
+  VRRP is not configured on this interface.
+Interface xe13/0/0
+  Hardware is Ethernet, address is 04:11:9c:22:04:31
+  Description: ESTE
+  index 5004 metric 1 mtu 9470 <UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST>
+  Link mtu 9500 ip mtu 9470 mpls mtu 9500
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is enabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 10G
+  Maximum reservable bandwidth 9.3G
+  DSTE Bandwidth Constraint Mode is RSDL
+  Bandwidth Constraint for Class Type ct0 is 9.3G
+  Bandwidth Constraint for Class Type ct1 is 6.2G
+  Bandwidth Constraint for Class Type ct2 is 3.1G
+  Available b/w for TE-CLASS 0 {ct0, 0} is 9.3G
+  Available b/w for TE-CLASS 1 {ct0, 7} is 9.3G
+  Available b/w for TE-CLASS 2 {ct1, 0} is 6.2G
+  Available b/w for TE-CLASS 3 {ct1, 7} is 6.2G
+  Available b/w for TE-CLASS 4 {ct2, 0} is 3.1G
+  Available b/w for TE-CLASS 5 {ct2, 7} is 3.1G
+  inet 172.30.155.114/30 broadcast 172.30.155.115
+  VRRP is not configured on this interface.
+Interface xe13/0/0.201
+  Hardware is Ethernet, address is 04:11:9c:c8:22:31
+  index 5032 metric 1 mtu 1500 <BROADCAST,RUNNING,SIMPLEX,MULTICAST>
+  Link mtu 9500 ip mtu 1500 mpls mtu 9500
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is enabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 10G
+  Maximum reservable bandwidth 9.3G
+  DSTE Bandwidth Constraint Mode is RSDL
+  Bandwidth Constraint for Class Type ct0 is 9.3G
+  Bandwidth Constraint for Class Type ct1 is 6.2G
+  Bandwidth Constraint for Class Type ct2 is 3.1G
+  Available b/w for TE-CLASS 0 {ct0, 0} is 9.3G
+  Available b/w for TE-CLASS 1 {ct0, 7} is 9.3G
+  Available b/w for TE-CLASS 2 {ct1, 0} is 6.2G
+  Available b/w for TE-CLASS 3 {ct1, 7} is 6.2G
+  Available b/w for TE-CLASS 4 {ct2, 0} is 3.1G
+  Available b/w for TE-CLASS 5 {ct2, 7} is 3.1G
+  VRRP is not configured on this interface.
+Interface xe13/0/1
+  Hardware is Ethernet, address is 04:11:9c:c8:22:32
+  index 5005 metric 1 mtu 9470 <UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST>
+  Link mtu 9500 ip mtu 9470 mpls mtu 9500
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is enabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 10G
+  Maximum reservable bandwidth 9.3G
+  DSTE Bandwidth Constraint Mode is RSDL
+  Bandwidth Constraint for Class Type ct0 is 9.3G
+  Bandwidth Constraint for Class Type ct1 is 6.2G
+  Bandwidth Constraint for Class Type ct2 is 3.1G
+  Available b/w for TE-CLASS 0 {ct0, 0} is 9.3G
+  Available b/w for TE-CLASS 1 {ct0, 7} is 9.3G
+  Available b/w for TE-CLASS 2 {ct1, 0} is 6.2G
+  Available b/w for TE-CLASS 3 {ct1, 7} is 6.2G
+  Available b/w for TE-CLASS 4 {ct2, 0} is 3.1G
+  Available b/w for TE-CLASS 5 {ct2, 7} is 3.1G
+  inet 172.30.155.213/30 broadcast 172.30.155.215
+  VRRP is not configured on this interface.
+Interface xe13/0/1.201
+  Hardware is Ethernet, address is 04:c0:11:c8:22:32
+  Description: Link_To_Proa
+  index 5033 metric 1 mtu 4440 <UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST>
+  Link mtu 9500 ip mtu 4440 mpls mtu 9500
+  Configured MTU values are not currently in use (ip mtu 1 mpls mtu 0)
+  VRF Binding: Not bound
+  Proxy arp is disabled
+  ICMP unreachables are sent
+  Directed broadcasts are not forwarded
+  Label switching is enabled
+  No Virtual Circuit configured
+  Administrative Group(s): None
+  Bandwidth 10G
+  Maximum reservable bandwidth 9.3G
+  DSTE Bandwidth Constraint Mode is RSDL
+  Bandwidth Constraint for Class Type ct0 is 9.3G
+  Bandwidth Constraint for Class Type ct1 is 6.2G
+  Bandwidth Constraint for Class Type ct2 is 3.1G
+  Available b/w for TE-CLASS 0 {ct0, 0} is 9.3G
+  Available b/w for TE-CLASS 1 {ct0, 7} is 9.3G
+  Available b/w for TE-CLASS 2 {ct1, 0} is 6.2G
+  Available b/w for TE-CLASS 3 {ct1, 7} is 6.2G
+  Available b/w for TE-CLASS 4 {ct2, 0} is 3.1G
+  Available b/w for TE-CLASS 5 {ct2, 7} is 3.1G
+  inet 172.30.8.249/30 broadcast 172.30.8.251
+  VRRP is not configured on this interface.

@@ -1,0 +1,2 @@
+VC ID   Name                          State        Type    Destination      Label in   Label out  Interfaces
+1811    test                          ADMIN DOWN   static  172.16.1.1       16         8622       ge15/1/16#svlan#1

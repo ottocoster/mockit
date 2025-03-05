@@ -1,0 +1,4 @@
+Peer IP Address     IF Name               My Role    State          KeepAlive    Restart State
+172.16.133.3        lo0                   Active     OPERATIONAL    118/120      negotiated
+172.16.155.22       xe13/0/0              Active     OPERATIONAL    29/30        negotiated
+172.16.166.11       xe13/0/1              Active     OPERATIONAL    25/30        negotiated
