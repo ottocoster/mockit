@@ -1,0 +1,239 @@
+
++--------------------------------------------------------------------------------------------------------------+
+|                                                LLDP Neighbors                                                |
++--------------------------------------------------------------------------------------------------------------+
+|  Local Addr: 10.1.6.7                                                                                    |
+|  Local Addr: fe80::a4ae:1111:fed1:6666                                                                       |
+| System Name: LAR-Ciena.Waveserver5-DWDM01804                                                                 |
+| System Desc: Ciena Waveserver-5                                                                              |
++-------------+------------------------------------------------------------------------------------------------+
+|Local        |                                              Remote                                            |
++-------------+--------------------------------+---------------------------------------------------------------+
+|Port         |Port                            |Info                                                           |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 5/11        | et-0/0/22                      | Chassis Id: e4:11:7c:11:04:11                                 |
+|             |                                | System Name: LAR-Juniper.ACX7100-32C-RT02648                  |
+|             |                                | System Desc: Juniper Networks, Inc. ACX7100-32C internet route|
+|             |                                |   Port Desc: MTY-Juniper.ACX7100-32C-RT02679_et-0/0/23        |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 5/13        | et-0/0/24                      | Chassis Id: e4:11:7c:11:04:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.ACX7100-32C-RT02648                  |
+|             |                                | System Desc: Juniper Networks, Inc. ACX7100-32C internet route|
+|             |                                |              r, JUNOS 23.4R2.14-EVO, Build date: 2024-        |
+|             |                                |              07-05 03:04:36 UTC Copyright (c) 1996-2024 Junipe|
+|             |                                |              r Networks, Inc.                                 |
+|             |                                |   Port Desc: MTY-Juniper.ACX7100-32C-RT02679_et-0/0/21        |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 5/14        | 531                            | Chassis Id: 40:11:9d:11:b6:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.PTX10002-60C-RT01385                 |
+|             |                                | System Desc: Juniper Networks, Inc. ptx10002-60c internet rout|
+|             |                                |              er, kernel JUNOS 18.4R2-S3, Build date: 2        |
+|             |                                |              019-12-26 20:30:11 UTC Copyright (c) 1996-2019 Ju|
+|             |                                |              niper Networks, Inc.                             |
+|             |                                |   Port Desc: TO_MTY                                           |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 5/3         | 524                            | Chassis Id: 40:11:9d:11:b6:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.PTX10002-60C-RT01385                 |
+|             |                                | System Desc: Juniper Networks, Inc. ptx10002-60c internet rout|
+|             |                                |              er, kernel JUNOS 18.4R2-S3, Build date: 2        |
+|             |                                |              019-12-26 20:30:11 UTC Copyright (c) 1996-2019 Ju|
+|             |                                |              niper Networks, Inc.                             |
+|             |                                |   Port Desc: TO_WAVESERVER5_SLOT1_PORT1.7_TO_DAL_BESTEL05     |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 5/4         | 523                            | Chassis Id: 40:11:9d:11:b6:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.PTX10002-60C-RT01385                 |
+|             |                                | System Desc: Juniper Networks, Inc. ptx10002-60c internet rout|
+|             |                                |              er, kernel JUNOS 18.4R2-S3, Build date: 2        |
+|             |                                |              019-12-26 20:30:11 UTC Copyright (c) 1996-2019 Ju|
+|             |                                |              niper Networks, Inc.                             |
+|             |                                |   Port Desc: TO_WAVESERVER5_SLOT1_PORT1.4_TO_DAL_BESTEL04     |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 5/5         | 522                            | Chassis Id: 40:11:9d:11:b6:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.PTX10002-60C-RT01385                 |
+|             |                                | System Desc: Juniper Networks, Inc. ptx10002-60c internet rout|
+|             |                                |              er, kernel JUNOS 18.4R2-S3, Build date: 2        |
+|             |                                |              019-12-26 20:30:11 UTC Copyright (c) 1996-2019 Ju|
+|             |                                |              niper Networks, Inc.                             |
+|             |                                |   Port Desc: TO_WAVESERVER5_SLOT1_PORT1.8_TO_DAL_BESTEL03     |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 5/6         | 521                            | Chassis Id: 40:11:9d:11:11:26                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.PTX10002-60C-RT01385                 |
+|             |                                | System Desc: Juniper Networks, Inc. ptx10002-60c internet rout|
+|             |                                |              er, kernel JUNOS 18.4R2-S3, Build date: 2        |
+|             |                                |              019-12-26 20:30:11 UTC Copyright (c) 1996-2019 Ju|
+|             |                                |              niper Networks, Inc.                             |
+|             |                                |   Port Desc: TO_WAVESERVER5_SLOT1_PORT1.6_TO_DAL_BESTEL02     |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 5/7         | 520                            | Chassis Id: 40:11:9d:11:b6:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.PTX10002-60C-RT01385                 |
+|             |                                | System Desc: Juniper Networks, Inc. ptx10002-60c internet rout|
+|             |                                |              er, kernel JUNOS 18.4R2-S3, Build date: 2        |
+|             |                                |              019-12-26 20:30:11 UTC Copyright (c) 1996-2019 Ju|
+|             |                                |              niper Networks, Inc.                             |
+|             |                                |   Port Desc: TO_WAVESERVER5_SLOT1_PORT1.7_TO_DAL_BESTEL01     |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/3         | Ethernet4/30/1                 | Chassis Id: e8:11:c5:11:e5:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.3                                      |
+|             |                                | System Name: DAL-Arista.7808R-RT02645                         |
+|             |                                | System Desc: Arista Networks EOS version 4.30.8.1M running on |
+|             |                                |              an Arista Networks DCS-7808-CH                   |
+|             |                                |   Port Desc: BKB:TO:MTY_RT01346_172.16.17.1_Et6/35/1          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/5         | Ethernet3/6/1                  | Chassis Id: e8:11:c5:11:e5:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.3                                      |
+|             |                                | System Name: DAL-Arista.7808R-RT02645                         |
+|             |                                | System Desc: Arista Networks EOS version 4.30.8.1M running on |
+|             |                                |              an Arista Networks DCS-7808-CH                   |
+|             |                                |   Port Desc: BKB:TO:MTY_RT01346_172.16.17.1_Et6/33/1          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/13        | Ethernet6/33/1                 | Chassis Id: 74:11:ef:11:d8:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.1                                       |
+|             |                                | System Name: MTY-Arista.DCS.7504N-RT01346.transtelco.net      |
+|             |                                | System Desc: Arista Networks EOS version 4.24.5M running on an|
+|             |                                |               Arista Networks DCS-7504N                       |
+|             |                                |   Port Desc: BKB:TO:DAL_RT02077_172.16.17.30_Et3/6/1          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/12        | Ethernet6/34/1                 | Chassis Id: 74:11:ef:11:d8:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.1                                       |
+|             |                                | System Name: MTY-Arista.DCS.7504N-RT01346.transtelco.net      |
+|             |                                | System Desc: Arista Networks EOS version 4.24.5M running on an|
+|             |                                |               Arista Networks DCS-7504N                       |
+|             |                                |   Port Desc: BKB:TO:DAL_RT02077_172.16.17.30_Et4/31/1         |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/11        | Ethernet6/35/1                 | Chassis Id: 74:11:ef:11:d8:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.1                                       |
+|             |                                | System Name: MTY-Arista.DCS.7504N-RT01346.transtelco.net      |
+|             |                                | System Desc: Arista Networks EOS version 4.24.5M running on an|
+|             |                                |               Arista Networks DCS-7504N                       |
+|             |                                |   Port Desc: BKB:TO:DAL_RT02077_172.16.17.30_Et4/30/1         |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/4         | Ethernet4/31/1                 | Chassis Id: e8:11:c5:11:e5:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.2                                      |
+|             |                                | System Name: DAL-Arista.7808R-RT02645                         |
+|             |                                | System Desc: Arista Networks EOS version 4.30.8.1M running on |
+|             |                                |              an Arista Networks DCS-7808-CH                   |
+|             |                                |   Port Desc: BKB:TO:MTY_RT01346_172.16.17.1_Et6/36/1          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/6         | Ethernet3/16/1                 | Chassis Id: e8:11:c5:11:e5:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.3                                      |
+|             |                                | System Name: DAL-Arista.7808R-RT02645                         |
+|             |                                | System Desc: Arista Networks EOS version 4.30.8.1M running on |
+|             |                                |              an Arista Networks DCS-7808-CH                   |
+|             |                                |   Port Desc: BKB:TO:MTY_RT01346_172.16.17.1_Et5/36/1          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/14        | Ethernet5/36/1                 | Chassis Id: 74:11:ef:11:d8:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.1                                       |
+|             |                                | System Name: MTY-Arista.DCS.7504N-RT01346.transtelco.net      |
+|             |                                | System Desc: Arista Networks EOS version 4.24.5M running on an|
+|             |                                |               Arista Networks DCS-7504N                       |
+|             |                                |   Port Desc: BKB:TO:DAL_RT02077_172.16.17.30_Et3/16/1         |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/7         | Ethernet3/32/1                 | Chassis Id: e8:11:c5:11:e5:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.3                                      |
+|             |                                | System Name: DAL-Arista.7808R-RT02645                         |
+|             |                                | System Desc: Arista Networks EOS version 4.30.8.1M running on |
+|             |                                |              an Arista Networks DCS-7808-CH                   |
+|             |                                |   Port Desc: BKB:TO:MTY_RT01346_172.16.17.1_Et5/35/1          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 7/15        | Ethernet5/35/1                 | Chassis Id: 74:11:ef:11:d8:11                                 |
+|             |                                |   Mgmt Addr: 172.16.1.1                                       |
+|             |                                | System Name: MTY-Arista.DCS.7504N-RT01346.transtelco.net      |
+|             |                                | System Desc: Arista Networks EOS version 4.24.5M running on an|
+|             |                                |               Arista Networks DCS-7504N                       |
+|             |                                |   Port Desc: BKB:TO:DAL_RT02077_172.16.17.30_Et3/32/1         |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 1/3         | et-0/0/19                      | Chassis Id: e4:11:7c:11:04:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.ACX7100-32C-RT02648                  |
+|             |                                | System Desc: Juniper Networks, Inc. ACX7100-32C internet route|
+|             |                                |              r, JUNOS 23.4R2.14-EVO, Build date: 2024-        |
+|             |                                |              07-05 03:04:36 UTC Copyright (c) 1996-2024 Junipe|
+|             |                                |              r Networks, Inc.                                 |
+|             |                                |   Port Desc: DAL-Juniper.ACX7509-RT02384_et-1/0/4_WS          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 1/4         | et-0/0/20                      | Chassis Id: e4:11:7c:11:04:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.ACX7100-32C-RT02648                  |
+|             |                                | System Desc: Juniper Networks, Inc. ACX7100-32C internet route|
+|             |                                |              r, JUNOS 23.4R2.14-EVO, Build date: 2024-        |
+|             |                                |              07-05 03:04:36 UTC Copyright (c) 1996-2024 Junipe|
+|             |                                |              r Networks, Inc.                                 |
+|             |                                |   Port Desc: DAL-Juniper.ACX7509-RT02384_et-1/0/5_WS          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 1/5         | et-0/0/21                      | Chassis Id: e4:11:7c:11:04:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.ACX7100-32C-RT02648                  |
+|             |                                | System Desc: Juniper Networks, Inc. ACX7100-32C internet route|
+|             |                                |              r, JUNOS 23.4R2.14-EVO, Build date: 2024-        |
+|             |                                |              07-05 03:04:36 UTC Copyright (c) 1996-2024 Junipe|
+|             |                                |              r Networks, Inc.                                 |
+|             |                                |   Port Desc: DAL-Juniper.ACX7509-RT02384_et-1/0/6_WS          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 1/13        | et-0/0/29                      | Chassis Id: e4:11:7c:11:04:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.ACX7100-32C-RT02648                  |
+|             |                                | System Desc: Juniper Networks, Inc. ACX7100-32C internet route|
+|             |                                |              r, JUNOS 23.4R2.14-EVO, Build date: 2024-        |
+|             |                                |              07-05 03:04:36 UTC Copyright (c) 1996-2024 Junipe|
+|             |                                |              r Networks, Inc.                                 |
+|             |                                |   Port Desc: DAL-Juniper.ACX7509-RT02384_et-5/0/6_FL          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 1/12        | et-0/0/28                      | Chassis Id: e4:11:7c:11:04:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.ACX7100-32C-RT02648                  |
+|             |                                | System Desc: Juniper Networks, Inc. ACX7100-32C internet route|
+|             |                                |              r, JUNOS 23.4R2.14-EVO, Build date: 2024-        |
+|             |                                |              07-05 03:04:36 UTC Copyright (c) 1996-2024 Junipe|
+|             |                                |              r Networks, Inc.                                 |
+|             |                                |   Port Desc: DAL-Juniper.ACX7509-RT02384_et-5/0/5_FL          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 1/11        | et-0/0/27                      | Chassis Id: e4:11:7c:11:04:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.ACX7100-32C-RT02648                  |
+|             |                                | System Desc: Juniper Networks, Inc. ACX7100-32C internet route|
+|             |                                |              r, JUNOS 23.4R2.14-EVO, Build date: 2024-        |
+|             |                                |              07-05 03:04:36 UTC Copyright (c) 1996-2024 Junipe|
+|             |                                |              r Networks, Inc.                                 |
+|             |                                |   Port Desc: DAL-Juniper.ACX7509-RT02384_et-5/0/4_FL          |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+
+| 5/12        | et-0/0/23                      | Chassis Id: e4:11:7c:11:04:11                                 |
+|             |                                |   Mgmt Addr:                                                  |
+|             |                                | System Name: LAR-Juniper.ACX7100-32C-RT02648                  |
+|             |                                | System Desc: Juniper Networks, Inc. ACX7100-32C internet route|
+|             |                                |              r, JUNOS 23.4R2.14-EVO, Build date: 2024-        |
+|             |                                |              07-05 03:04:36 UTC Copyright (c) 1996-2024 Junipe|
+|             |                                |              r Networks, Inc.                                 |
+|             |                                |   Port Desc: MTY-Juniper.ACX7100-32C-RT02679_et-0/0/22        |
+|             |                                |Time-To-Live: 120                                              |
++-------------+--------------------------------+---------------------------------------------------------------+

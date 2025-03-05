@@ -1,0 +1,25 @@
+
++--------------------------------------- CHASSIS INVENTORY TABLE -------------------------------------------------+
+|         |   Oper    |                                  |                  |                  |      |    Mfg    |
+|  Unit   |   State   | Model                            | Part Number      | Serial #         | Rev  |    Date   |
++---------+-----------+----------------------------------+------------------+------------------+------+-----------+
+| Chassis | Up        | Waveserver Ai Chassis            | 186-1010-900     | M555555F         | 001  | 07102020  |
+| WCS-1   | Up        | Waveserver Ai Control Subsystem  | 186-1030-900     | M6666664         | 002  | 07072020  |
+|         |           | Module                           |                  |                  |      |           |
+| AP-1    | Up        | Waveserver Ai Access Panel Type  | 186-1031-900     | M9111115         | 001  | 07082020  |
+|         |           | 1                                |                  |                  |      |           |
+| Fan-1   | Up        | Waveserver Ai Fan Module         | 186-1410-900     | M9000003         | 003  | 06302020  |
+| Fan-2   | Up        | Waveserver Ai Fan Module         | 186-1410-900     | M999999D         | 003  | 06302020  |
+| PSU-1   | Up        | Waveserver Ai DC Power Module    | 186-1511-900     | 99999991         | 006  |           |
+| PSU-2   | Up        | Waveserver Ai DC Power Module    | 186-1511-900     | M9999990         | 006  |           |
+| 1       | Up        | Waveserver Ai 2x400G 35/56GBd C- | 186-1607-900     | M9999300         | 001  | 12042020  |
+|         |           | Band 100G MOTR Module w/ OPS     |                  |                  |      |           |
+| 1/3     | Up        | 100GBASE-LR4, 4x25G, WDM, SMF, 1 | 160-9401-900     | FN999999995A4    | 006  | 11/01/20  |
+|         |           | 310NM, 10KM QSFP28               |                  |                  |      |           |
+| 1/4     | Up        | 100GBASE-LR4, 4x25G, WDM, SMF, 1 | 160-9401-900     | FNS8888888TQN    | 006  | 11/01/20  |
+|         |           | 310NM, 10KM QSFP28               |                  |                  |      |           |
+| 1/5     | Up        | 100GBASE-LR4, 4x25G, WDM, SMF, 1 | 160-9401-900     | FNSR7777777N8    | 006  | 11/20/20  |
+|         |           | 310NM, 10KM QSFP28               |                  |                  |      |           |
+| 2       |           | Waveserver Ai Filler Module      |                  |                  |      |           |
+| 3       |           | Waveserver Ai Filler Module      |                  |                  |      |           |
++---------+-----------+----------------------------------+------------------+------------------+------+-----------+

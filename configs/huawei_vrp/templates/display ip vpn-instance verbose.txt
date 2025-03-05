@@ -1,0 +1,48 @@
+ Total VPN-Instances configured      : 3
+ Total IPv4 VPN-Instances configured : 3
+ Total IPv6 VPN-Instances configured : 1
+
+ VPN-Instance Name and ID : VRF_FGH, 2
+  Interfaces : GigabitEthernet0/2/3
+ Address family ipv4
+  Create date : 2020-06-23 17:22:32-07:00
+  Up time : 1699 days, 09 hours, 45 minutes and 34 seconds
+  Route Distinguisher : 65000:1111
+  Export VPN Targets :  65000:1111
+  Import VPN Targets :  65000:1111
+  Label Policy : label per route
+  Log Interval : 5
+  The diffserv-mode Information is : uniform
+  The ttl-mode Information is : pipe
+
+ VPN-Instance Name and ID : VRF_ABC, 3
+ Address family ipv4
+  Create date : 2021-07-23 09:25:46-07:00
+  Up time : 1304 days, 17 hours, 42 minutes and 20 seconds
+  Route Distinguisher : 32098:704
+  Export VPN Targets :  32098:704
+  Import VPN Targets :  32098:704
+  Label Policy : label per route
+  Log Interval : 5
+  The diffserv-mode Information is : uniform
+  The ttl-mode Information is : pipe
+ Address family ipv6
+  Create date : 2021-07-23 09:25:46-07:00
+  Up time : 1304 days, 17 hours, 42 minutes and 20 seconds
+  Route Distinguisher : 32098:704
+  Export VPN Targets :  32098:704
+  Import VPN Targets :  32098:704
+  Label Policy : label per route
+  Log Interval : 5
+  The diffserv-mode Information is : uniform
+  The ttl-mode Information is : pipe
+
+ VPN-Instance Name and ID : VRF_DEF, 1
+  Interfaces : Ethernet0/0/0
+ Address family ipv4
+  Create date : 2018-05-31 23:17:46-07:00
+  Up time : 2453 days, 03 hours, 50 minutes and 20 seconds
+  Label Policy : label per route
+  Log Interval : 5
+  The diffserv-mode Information is : uniform
+  The ttl-mode Information is : pipe

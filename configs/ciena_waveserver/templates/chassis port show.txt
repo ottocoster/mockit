@@ -1,0 +1,11 @@
+
++--------------------------------- CHASSIS MANAGEMENT PORTS ---------------------------------+
+|              |  Connector   |              |                 |   Admin      |  Operational |
+|   Name       |     Type     |   Protocol   |   Mode          |   State      |     State    |
++--------------+--------------+--------------+-----------------+--------------+--------------+
+| ILAN-1       | RJ45         | Ethernet     | Management      | Disabled     | Down         |
+| ILAN-2       | RJ45         | Ethernet     | Management      | Disabled     | Down         |
+| DCN          | RJ45         | Ethernet     | Management      | Enabled      | Down         |
++--------------+--------------+--------------+-----------------+--------------+--------------+
+| Console      | RJ45         | Serial       | Management      | Enabled      | Up           |
++--------------+--------------+--------------+-----------------+--------------+--------------+
