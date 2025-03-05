@@ -1,0 +1,9 @@
+13: boot SW gmz2758-1.57.0 1.57.0
+13: mini-application SW lbz2765_1.0.304 1.0.304 Backup.
+13: /flash/appl-sw/slot13/lbz2765_7.0.499 7.0.499 Active OK 26893904.
+13: system up-time 12638 hours, 23 minutes, 3.932 seconds.
+
+14: boot SW gmz2758-1.57.0 1.57.0
+14: mini-application SW cbz2764_1.0.304 1.0.304 Backup.
+14: /flash/appl-sw/slot14/cbz2764_7.0.499 7.0.499 Active OK 35769584.
+14: system up-time 12638 hours, 23 minutes, 15.644 seconds.
