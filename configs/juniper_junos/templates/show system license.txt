@@ -1,0 +1,13 @@
+License usage:
+                                 Licenses     Licenses    Licenses    Expiry
+  Feature name                       used    installed      needed
+  scale-subscriber                      0           10           0    permanent
+  scale-l2tp                            0         1000           0    permanent
+  mobile-next-scaling                   0         1000           0    permanent
+  mobile-next-http-app-scaling          0         1000           0    permanent
+  mobile-next-policy-prepaid-scaling        0      1000          0    permanent
+  mobile-next-DPI-base                  0         1000           0    permanent
+
+Licenses installed: none
+
+{master}

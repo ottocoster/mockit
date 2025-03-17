@@ -1,0 +1,18 @@
+Interface eth-0-100
+  Interface current state: DOWN
+Interface vlan10
+  Interface current state: UP
+Interface vlan200
+  Interface current state: UP
+  Internet address(es):
+    192.168.100.10/27 broadcast 192.168.100.31
+  Joined group address(es):
+    224.0.0.1
+  The maximum transmit unit is 1500 bytes
+  ICMP error messages limited to one every 1000 milliseconds
+  ICMP redirects are always sent
+  ICMP unreachables are always sent
+  ICMP mask replies are always sent
+  ARP timeout 01:00:00,  ARP retry interval 1s
+  ARP Proxy is disabled, Local ARP Proxy is disabled
+  VRRP master of :  VRRP is not configured on this interface
