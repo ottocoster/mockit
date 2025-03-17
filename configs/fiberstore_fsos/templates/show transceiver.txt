@@ -1,0 +1,26 @@
+Port eth-1-10 transceiver info:
+Transceiver Type: 1000BASE-ZX
+ Transceiver Vendor Name : OEM
+ Transceiver PN          : HL-XX-SFP-1111
+ Transceiver S/N         : SN1234567890
+Transceiver Output Wavelength: 1500 nm
+Supported Link Type and Length:
+      Link Length for 9/125um single mode fiber: 80 km
+
+Port eth-1-11 transceiver info:
+Transceiver Type: 1000BASE-ZX
+ Transceiver Vendor Name : OEM
+ Transceiver PN          : HL-XX-SFP-2222
+ Transceiver S/N         : SN0987654321
+Transceiver Output Wavelength: 1550 nm
+Supported Link Type and Length:
+      Link Length for 9/125um single mode fiber: 80 km
+
+Port eth-1-12 transceiver info:
+Transceiver Type: 1000BASE-ZX
+ Transceiver Vendor Name : OEM
+ Transceiver PN          : HL-XX-SFP-3333
+ Transceiver S/N         : SN1122334455
+Transceiver Output Wavelength: 1600 nm
+Supported Link Type and Length:
+      Link Length for 9/125um single mode fiber: 80 km

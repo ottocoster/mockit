@@ -1,0 +1,179 @@
+Local Port eth-1-10 has 0 neighbor(s)
+
+Local Port eth-1-11 has 1 neighbor(s)
+
+Remote LLDP Information of port eth-1-11
+============================================================
+Neighbor Index : 1
+Chassis ID type: Mac address
+Chassis ID     : aa:bb:cc:dd:ee:11
+Port ID type   : Interface Name
+Port ID        : uplink1
+
+TTL : 120
+Expired time: 104
+
+System Name        : NODE-X500
+System Description : NODE-X500 Operating System Software, X500-L-4GE-AC/S-02 P300R003C60,7.2.10_20240101,Copyright (c) 2006-2024 ExampleCorp
+Port Description   : N/A
+
+System Capabilities:
+    Repeater             : Enabled
+    Bridge               : Enabled
+
+Management Address  : 192.168.1.101
+Interface Numbering : 2
+Interface Number    : 16
+
+MAC/PHY Configuration/Status:
+    AutoNego Support     :
+    AutoNego Capability  : Unknown
+    Operational MAU Type : Unknown - Unknown
+
+Power via MDI:
+    Port class  : PD
+    PSE MDI power support     : NO
+    PSE MDI power state       : Disabled
+    PSE pairs control ability : NO
+    PSE power pair            : Unknown
+    Power class : Unknown
+
+Maximum Frame Size: 0
+
+LLDP MED Information:
+
+Device type: Endpoint class 0
+Med capabilities:
+
+Network Policy:
+    Type        : Unknown
+    Status      : configured
+    DSCP        : 0
+
+Extended Power via MDI :
+    Type : PSE
+    Power Source   : Unknown
+    Power Priority : 0
+    Power Value    : 0.0 W
+
+Inventory Information:
+
+Location Identification :
+
+Local Port eth-1-12 has 2 neighbor(s)
+
+Remote LLDP Information of port eth-1-12
+============================================================
+Neighbor Index : 1
+Chassis ID type: Mac address
+Chassis ID     : bb:cc:dd:ee:ff:22
+Port ID type   : Interface alias
+Port ID        : WAN2
+
+TTL : 120
+Expired time: 117
+
+System Name        : BTS_Alpha
+System Description : Firewall-500X v8.0.1,build3501,250101 (GA.M)
+Port Description   : Fiber Uplink
+
+System Capabilities:
+    Bridge               :
+    Router               : Enabled
+
+Management Address  : 192.168.10.201
+Interface Numbering : 2
+Interface Number    : 3
+
+MAC/PHY Configuration/Status:
+    AutoNego Support     :
+    AutoNego Capability  : Unknown
+    Operational MAU Type : Unknown - Unknown
+
+Power via MDI:
+    Port class  : PD
+    PSE MDI power support     : NO
+    PSE MDI power state       : Disabled
+    PSE pairs control ability : NO
+    PSE power pair            : Unknown
+    Power class : Unknown
+
+Maximum Frame Size: 0
+
+LLDP MED Information:
+
+Device type: Endpoint class 0
+Med capabilities:
+
+Network Policy:
+    Type        : Unknown
+    Status      : configured
+    DSCP        : 0
+
+Extended Power via MDI :
+    Type : PSE
+    Power Source   : Unknown
+    Power Priority : 0
+    Power Value    : 0.0 W
+
+Inventory Information:
+
+Location Identification :
+
+Remote LLDP Information of port eth-1-12
+============================================================
+Neighbor Index : 2
+Chassis ID type: Mac address
+Chassis ID     : cc:dd:ee:ff:00:33
+Port ID type   : Interface Name
+Port ID        : uplink2
+
+TTL : 120
+Expired time: 119
+
+System Name        : NODE-X600
+System Description : NODE-X600 Operating System Software, X600-L-4GE-AC/S-02 P400R004C70,8.0.12_20250101,Copyright (c) 2006-2025 ExampleCorp
+Port Description   : Core Connection
+
+System Capabilities:
+    Repeater             : Enabled
+    Bridge               : Enabled
+
+Management Address  : 192.168.10.202
+Interface Numbering : 2
+Interface Number    : 16
+
+MAC/PHY Configuration/Status:
+    AutoNego Support     :
+    AutoNego Capability  : Unknown
+    Operational MAU Type : Unknown - Unknown
+
+Power via MDI:
+    Port class  : PD
+    PSE MDI power support     : NO
+    PSE MDI power state       : Disabled
+    PSE pairs control ability : NO
+    PSE power pair            : Unknown
+    Power class : Unknown
+
+Maximum Frame Size: 0
+
+LLDP MED Information:
+
+Device type: Endpoint class 0
+Med capabilities:
+
+Network Policy:
+    Type        : Unknown
+    Status      : configured
+    DSCP        : 0
+
+Extended Power via MDI :
+    Type : PSE
+    Power Source   : Unknown
+    Power Priority : 0
+    Power Value    : 0.0 W
+
+Inventory Information:
+
+Location Identification :
