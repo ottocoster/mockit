@@ -203,7 +203,7 @@ networks:
 - **DEVICE_DELAY**: Introduces a delay before a device responds to a command.
 - **LOGIN_DELAY**: Delays the SSH login process.
 - **LOGIN_RETRY**: Defines the number of retries for failed login attempts.
-- **SSH_AUTHKEY_ENABLED"**: Eanable auth key file authentication of ssh server.
+- **SSH_AUTHKEY_ENABLED**: Enable auth key file authentication of ssh server.
 - **SSH_AUTHKEY_PATH**: Public keypath of the ssh key
 
 ### SNMP Configuration
