@@ -158,11 +158,10 @@ def generate_routes(num_routes=200000):
 
 def generate_arp_entries(num_entries=1000):
     """Generate ARP table entries based on Cisco IOS format."""
-    arp_headers = []
     arp_entries = []
     
     # Add header
-    arp_headers = ["Protocol  Address          Age (min)  Hardware Addr   Type   Interface"]
+    arp_entries.append("Protocol  Address          Age (min)  Hardware Addr   Type   Interface")
     
     # Generate random ARP entries
     for _ in range(num_entries):
@@ -182,21 +181,19 @@ def generate_arp_entries(num_entries=1000):
         entry = f"Internet  {ip.ljust(15)}  {age.rjust(12)}   {mac}  ARPA   {interface}"
         arp_entries.append(entry)
     
-    return [arp_headers, arp_entries]
+    return arp_entries
 
 
 def generate_mac_entries(num_entries=1000):
     """Generate MAC address table entries."""
-    mac_headers = []
     mac_entries = []
     
     # Add header
-
-    mac_headers.append("          Mac Address Table")
-    mac_headers.append("-------------------------------------------")
-    mac_headers.append("")
-    mac_headers.append("Vlan    Mac Address       Type        Ports")
-    mac_headers.append("----    -----------       --------    -----")
+    mac_entries.append("          Mac Address Table")
+    mac_entries.append("-------------------------------------------")
+    mac_entries.append("")
+    mac_entries.append("Vlan    Mac Address       Type        Ports")
+    mac_entries.append("----    -----------       --------    -----")
     
     # Generate random MAC entries
     for _ in range(num_entries):
@@ -231,16 +228,15 @@ def generate_mac_entries(num_entries=1000):
     mac_entries.append("")
     mac_entries.append(f"Total Mac Addresses for this criterion: {num_entries}")
     
-    return [mac_headers, mac_entries]
+    return mac_entries
 
 
 def generate_interfaces(num_entries=50):
     """Generate interface status entries based on Cisco IOS format."""
-    interface_headers = []
     interface_entries = []
     
     # Add header
-    interface_headers.append("Interface              IP-Address      OK? Method Status                Protocol")
+    interface_entries.append("Interface              IP-Address      OK? Method Status                Protocol")
     
     # Status options
     statuses = ["up", "administratively down", "down"]
@@ -275,7 +271,7 @@ def generate_interfaces(num_entries=50):
             entry = f"{interface.ljust(22)} {ip.ljust(15)} {ok.ljust(3)} {method.ljust(6)} {status.ljust(20)} {protocol}"
             interface_entries.append(entry)
         
-        return [interface_headers, interface_entries]
+        return interface_entries
     
     # Original implementation for smaller numbers
     generated_interfaces = set()  # Use a set for faster lookups
@@ -322,8 +318,7 @@ def generate_interfaces(num_entries=50):
         interface_entries.append(entry)
     
     return interface_entries
-
-
+    
 def read_file_or_default(filepath, default_content=""):
     """Read file content or return default if file doesn't exist."""
     try:
@@ -447,126 +442,111 @@ def load_settings():
         return default_settings
 
 
-def process_routes(base_dir, num_routes, device_list):
+def process_routes(base_dir, num_routes):
     """Process and generate routing table entries."""
     routes = generate_routes(num_routes)
-    routes_per_device = len(routes) // len(device_list)  # Evenly divide routes
     
-    for device in device_list:
-        # Create device template directory
-        device_template_dir = os.path.join(base_dir, device, "template")
-        os.makedirs(device_template_dir, exist_ok=True)
-        
-        # Calculate route slice for this device
-        device_index = device_list.index(device)
-        start_idx = device_index * routes_per_device
-        end_idx = start_idx + routes_per_device if device != device_list[-1] else len(routes)
-        device_routes = routes[start_idx:end_idx]
-        
-        # Read existing file
-        template_file = os.path.join(device_template_dir, "show ip route.txt")
-        existing_content = read_file_or_default(
-            template_file, 
-            default_content="Gateway of last resort is not set\n\n"
-        )
-        
-        # Find the position to insert new routes (after the header)
-        header_end = existing_content.find("Gateway of last resort")
-        if header_end == -1:
-            print(f"Warning: Could not find appropriate position to insert routes for {device}, using entire file as header")
-            header = existing_content
+    # Read existing file
+    template_file = os.path.join(base_dir, "show ip route.txt")
+    existing_content = read_file_or_default(
+        template_file, 
+        default_content="Gateway of last resort is not set\n\n"
+    )
+    
+    # Find the position to insert new routes (after the header)
+    header_end = existing_content.find("Gateway of last resort")
+    if header_end == -1:
+        print("Warning: Could not find appropriate position to insert routes, using entire file as header")
+        header = existing_content
+    else:
+        # Get the header including the "Gateway of last resort" line and the next line
+        header_lines = existing_content[header_end:].split('\n', 2)
+        if len(header_lines) >= 2:
+            header = existing_content[:header_end] + header_lines[0] + '\n' + header_lines[1] + '\n\n'
         else:
-            # Get the header including the "Gateway of last resort" line and the next line
-            header_lines = existing_content[header_end:].split('\n', 2)
-            if len(header_lines) >= 2:
-                header = existing_content[:header_end] + header_lines[0] + '\n' + header_lines[1] + '\n\n'
-            else:
-                header = existing_content[:header_end] + header_lines[0] + '\n\n'
-        
-        # Create new content with header and device-specific routes
-        new_content = header + "\n".join(device_routes)
-        
-        # Write to file
-        write_file(template_file, new_content)
-        print(f"Successfully generated {len(device_routes)} routes for {device}")
+            header = existing_content[:header_end] + header_lines[0] + '\n\n'
     
+    # Create new content with header and new routes
+    new_content = header + "\n".join(routes)
+    
+    # Write to file
+    write_file(template_file, new_content)
+    
+    print(f"Successfully generated {len(routes)} routes")
     return "routes"
 
 
-def process_arp(base_dir, num_arp, device_list):
+def process_arp(base_dir, num_arp):
     """Process and generate ARP entries."""
-    arp_headers, arp_entries = generate_arp_entries(num_arp)
-    entries_per_device = len(arp_entries) // len(device_list)  # Evenly divide entries
+    arp_entries = generate_arp_entries(num_arp)
     
-    for device in device_list:
-        # Create device template directory
-        device_template_dir = os.path.join(base_dir, device, "template")
-        os.makedirs(device_template_dir, exist_ok=True)
-        
-        # Calculate entry slice for this device
-        device_index = device_list.index(device)
-        start_idx = device_index * entries_per_device
-        end_idx = start_idx + entries_per_device if device != device_list[-1] else len(arp_entries)
-        device_arp_entries = arp_entries[start_idx:end_idx]
-        
-        # Write to file
-        template_file = os.path.join(device_template_dir, "show arp.txt")
-        write_file(template_file, "\n".join(arp_headers + device_arp_entries))
-        
-        print(f"Successfully generated {len(device_arp_entries)-1} ARP entries for {device}")  # -1 for header
+    # Write to file
+    template_file = os.path.join(base_dir, "show arp.txt")
+    write_file(template_file, "\n".join(arp_entries))
     
+    print(f"Successfully generated {num_arp} ARP entries")
     return "arp"
 
 
-def process_mac(base_dir, num_mac, device_list):
+def process_mac(base_dir, num_mac):
     """Process and generate MAC address table entries."""
-    mac_headers, mac_entries = generate_mac_entries(num_mac)
-    entries_per_device = len(mac_entries) // len(device_list)  # Evenly divide entries
+    mac_entries = generate_mac_entries(num_mac)
     
-    for device in device_list:
-        # Create device template directory
-        device_template_dir = os.path.join(base_dir, device, "template")
-        os.makedirs(device_template_dir, exist_ok=True)
-        
-        # Calculate entry slice for this device
-        device_index = device_list.index(device)
-        start_idx = device_index * entries_per_device
-        end_idx = start_idx + entries_per_device if device != device_list[-1] else len(mac_entries)
-        device_mac_entries = mac_entries[start_idx:end_idx]
-        
-        # Write to file
-        template_file = os.path.join(device_template_dir, "show mac address-table.txt")
-        write_file(template_file, "\n".join(mac_headers + device_mac_entries))
-        
-        print(f"Successfully generated {len(device_mac_entries)-5} MAC entries for {device}")  # -5 for header/footer
+    # Write to file
+    template_file = os.path.join(base_dir, "show mac address-table.txt")
+    write_file(template_file, "\n".join(mac_entries))
     
+    print(f"Successfully generated {num_mac} MAC entries")
     return "mac"
 
 
-def process_interfaces(base_dir, num_interfaces, device_list):
+def process_interfaces(base_dir, num_interfaces):
     """Process and generate interface entries."""
-    interface_headers, interface_entries = generate_interfaces(num_interfaces)
-    entries_per_device = len(interface_entries) // len(device_list)  # Evenly divide entries
+    interface_entries = generate_interfaces(num_interfaces)
     
-    for device in device_list:
-        # Create device template directory
-        device_template_dir = os.path.join(base_dir, device, "template")
-        os.makedirs(device_template_dir, exist_ok=True)
-        
-        # Calculate entry slice for this device
-        device_index = device_list.index(device)
-        start_idx = device_index * entries_per_device
-        end_idx = start_idx + entries_per_device if device != device_list[-1] else len(interface_entries)
-        device_interface_entries = interface_entries[start_idx:end_idx]
-        
-        # Write to file
-        template_file = os.path.join(device_template_dir, "show ip interface brief.txt")
-        write_file(template_file, "\n".join(interface_headers + device_interface_entries))
-        
-        print(f"Successfully generated {len(device_interface_entries)-1} interface entries for {device}")  # -1 for header
+    # Write to file
+    template_file = os.path.join(base_dir, "show ip interface brief.txt")
+    write_file(template_file, "\n".join(interface_entries))
     
+    print(f"Successfully generated {len(interface_entries)-1} interface entries")  # -1 for header
     return "interfaces"
 
+def generate_docker_compose(device_list, platform, base_dir):
+    """Generate docker-compose.yml file for the devices."""
+    compose_content = [
+        "name: devices",
+        "services:"
+    ]
+    
+    # Generate service for each device
+    for i, device in enumerate(device_list, 1):
+        service = f"""  {device}:
+    image: registry.gitlab.com/slurpit.io/mockit:latest
+    container_name: {device}
+    environment:
+      - DEVICE_TYPE={platform}
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
+      - NETCONF_USERNAME=test
+      - NETCONF_PASSWORD=test
+      - TELNET_USERNAME=test
+      - TELNET_PASSWORD=test
+      - DEBUG_ENABLED=true
+    volumes:
+      - ./{device}/configs/{platform}:/configs/{platform}"""
+        compose_content.append(service)
+    
+    # Add network configuration at the end
+    compose_content.append("""networks:
+  devices-network:
+    driver: bridge
+    """)
+    
+    # Write to docker-compose.yml
+    with open(base_dir + '/docker-compose.yml', 'w') as f:
+        f.write('\n'.join(compose_content))
+    
+    print("Generated docker-compose.yml file")
 
 def main():
     """Main function to orchestrate data generation based on settings."""
@@ -577,39 +557,58 @@ def main():
     platform = settings.get("platform", "cisco_ios")
     data_types = settings.get("data_types", ["routes"])
     device_list = settings.get("seperate_devices", ["cisco_ios"])
-
-    print("separate_devices", device_list)
+    seperate_config_over_devices = settings.get("seperate_config_over_devices", False)
+    routes_count = settings.get("counts", {}).get("routes", 1000)
+    arp_count = settings.get("counts", {}).get("arp", 1000)
+    mac_count = settings.get("counts", {}).get("mac", 1000)
+    interfaces_count = settings.get("counts", {}).get("interfaces", 1000)
+    device_count = len(device_list)
     
-    # Base directory for templates
-    base_dir = f"../configs/"
-
+    print(f"Device count: {device_count}")
     
-    # Ensure directory exists
-    os.makedirs(base_dir, exist_ok=True)
-    
-    # Process each data type
-    processed_types = []
-    
-    # Define processor mapping
-    processors = {
-        "routes": lambda: process_routes(base_dir, settings.get("counts", {}).get("routes", 1000), device_list),
-        "arp": lambda: process_arp(base_dir, settings.get("counts", {}).get("arp", 1000), device_list),
-        "mac": lambda: process_mac(base_dir, settings.get("counts", {}).get("mac", 1000), device_list),
-        "interfaces": lambda: process_interfaces(base_dir, settings.get("counts", {}).get("interfaces", 1000), device_list)
-    }
-    
-    # Process each requested data type
-    for data_type in data_types:
-        if data_type in processors:
-            processed_types.append(processors[data_type]())
+    # Process for each device
+    for i, device in enumerate(device_list, 1):
+        # Create device-specific base directory
+        base_dir = f"./output/{device}/configs/{platform}"
+        
+        # Ensure directory exists
+        os.makedirs(base_dir, exist_ok=True)
+        
+        print(f"\nProcessing device {i}...")
+        
+        # Process each data type
+        processed_types = []
+        device_processors = {}
+        # Define processor mapping with adjusted counts for each device
+        if i == device_count:
+            # handle the last device
+            device_processors = {
+                "routes": lambda: process_routes(base_dir, routes_count - (routes_count // device_count) * (device_count - 1)),
+                "arp": lambda: process_arp(base_dir, arp_count - (arp_count // device_count) * (device_count - 1)),
+                "mac": lambda: process_mac(base_dir, mac_count - (mac_count // device_count) * (device_count - 1)),
+                "interfaces": lambda: process_interfaces(base_dir, interfaces_count - (interfaces_count // device_count) * (device_count - 1))
+            }
         else:
-            print(f"Unknown data type: {data_type}")
+            device_processors = {
+                "routes": lambda: process_routes(base_dir, routes_count // device_count),
+                "arp": lambda: process_arp(base_dir, arp_count // device_count),
+                "mac": lambda: process_mac(base_dir, mac_count // device_count),
+                "interfaces": lambda: process_interfaces(base_dir, interfaces_count // device_count)
+            }
+        
+        # Process each requested data type
+        for data_type in data_types:
+            if data_type in device_processors:
+                processed_types.append(device_processors[data_type]())
+            else:
+                print(f"Unknown data type: {data_type}")
+        
+        print(f"{device} Summary: Generated data for {', '.join(processed_types)}")
     
-    # Print summary
-    if not processed_types:
-        print("No data types were processed. Check your settings.conf file.")
-    else:
-        print(f"\nSummary: Generated data for {', '.join(processed_types)}")
+    print("\nAll devices processed successfully!")
+    
+    # Generate docker-compose.yml after processing all devices
+    generate_docker_compose(device_list, platform, "./output")
 
 
 if __name__ == "__main__":

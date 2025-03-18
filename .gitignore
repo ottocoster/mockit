@@ -15,3 +15,5 @@ syncer/configs
 syncer/ntc-templates
 
 netmiko-develop
+
+tools/output
