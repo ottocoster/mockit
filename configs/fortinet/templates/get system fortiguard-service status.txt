@@ -1,0 +1,13 @@
+NAME               VERSION LAST UPDATE          METHOD    EXPIRE
+AV Engine           6.142  2020-01-07 23:34:00  manual    2021-05-07 23:59:59
+Virus Definitions   92.9997  2025-01-03 01:20:00  manual    2021-05-07 23:59:59
+Extended set        1.000  2018-04-09 18:07:00  manual    2021-05-07 23:59:59
+Flow-based Virus Definitions  1.000  2018-04-09 18:07:00  manual    2021-05-07 23:59:59
+Attack Definitions  6.741  2015-12-01 02:30:00  manual    2021-05-07 23:59:59
+Attack Extended Definitions  0.000  2001-01-01 00:00:00  manual    2021-05-07 23:59:59
+IPS Malicious URL Database  5.047  2024-05-10 12:30:16  scheduled 2021-05-07 23:59:59
+Botnet Definitions  1.000  2012-05-28 22:51:00  manual    2021-05-07 23:59:59
+IPS/FlowAV Engine   5.047  2020-01-03 19:25:00  manual    2021-05-07 23:59:59
+IPS Config Script   1.009  2019-06-06 14:02:00  manual    2021-05-07 23:59:59
+Application Definitions  6.741  2015-12-01 02:30:00  manual    2021-08-18 23:59:59
+Industrial Attack Definitions  6.741  2015-12-01 02:30:00  manual    n/a
