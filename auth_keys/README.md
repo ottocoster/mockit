@@ -1,4 +1,3 @@
-```markdown:auth_keys/README.md
 # SSH Key Authentication
 
 ## Enable in docker-compose.yml
@@ -25,5 +24,4 @@ chmod 644 auth.pub  # Public key can be readable by all
 3. Connect using your private key:
 ```bash
 ssh -i path_to_private_key mockit_username@mockit_ip
-```
 ```
