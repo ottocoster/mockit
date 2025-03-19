@@ -1,0 +1,50 @@
+Interface MAC Address       VLAN Type     Life Time                                                                  
+--------- ----------------- ---- -------- -----------------                                                           
+CPU      AA-BB-CC-DD-EE-11    10 CPU      Delete on Reset                                                             
+CPU      AA-BB-CC-DD-EE-12    20 CPU      Delete on Reset                                                             
+Eth 2/ 1 FF-EE-DD-CC-BB-AA    20 Learn    Delete on Timeout                                                           
+Eth 2/ 9 AA-11-22-33-44-55    20 Learn    Delete on Timeout                                                           
+Eth 2/24 66-77-88-99-00-AA    10 Learn    Delete on Timeout                                                           
+Eth 2/24 BB-CC-DD-EE-FF-11    20 Learn    Delete on Timeout                                                           
+Eth 2/24 CC-DD-EE-FF-00-22    20 Learn    Delete on Timeout                                                           
+Eth 2/24 DD-EE-FF-00-11-33    20 Learn    Delete on Timeout                                                           
+Eth 2/24 EE-FF-00-11-22-44    20 Learn    Delete on Timeout                                                           
+Eth 2/24 FF-00-11-22-33-55    20 Learn    Delete on Timeout                                                           
+Eth 2/24 00-11-22-33-44-66    20 Learn    Delete on Timeout                                                           
+Eth 2/24 11-22-33-44-55-77    20 Learn    Delete on Timeout                                                           
+Eth 2/24 22-33-44-55-66-88    20 Learn    Delete on Timeout                                                           
+Eth 2/24 33-44-55-66-77-99    20 Learn    Delete on Timeout                                                           
+Eth 2/24 44-55-66-77-88-AA    20 Learn    Delete on Timeout                                                           
+Eth 2/24 55-66-77-88-99-BB    20 Learn    Delete on Timeout                                                           
+Eth 2/24 66-77-88-99-00-CC    20 Learn    Delete on Timeout                                                           
+Eth 2/24 77-88-99-00-11-DD    20 Learn    Delete on Timeout                                                           
+Eth 2/24 88-99-00-11-22-EE    20 Learn    Delete on Timeout                                                           
+Eth 2/24 99-00-11-22-33-FF    20 Learn    Delete on Timeout                                                           
+Eth 2/24 AA-BB-CC-DD-EE-11    20 Learn    Delete on Timeout                                                           
+Eth 2/24 BB-CC-DD-EE-FF-22    20 Learn    Delete on Timeout                                                           
+Eth 2/24 CC-DD-EE-FF-00-33    20 Learn    Delete on Timeout                                                           
+Eth 2/24 DD-EE-FF-00-11-44    20 Learn    Delete on Timeout                                                           
+Eth 2/24 EE-FF-00-11-22-55    20 Learn    Delete on Timeout                                                           
+Eth 2/24 FF-00-11-22-33-66    20 Learn    Delete on Timeout                                                           
+Eth 2/24 00-11-22-33-44-77    20 Learn    Delete on Timeout                                                           
+Eth 2/24 11-22-33-44-55-88    20 Learn    Delete on Timeout                                                           
+Eth 2/24 22-33-44-55-66-99    20 Learn    Delete on Timeout                                                           
+Eth 2/24 33-44-55-66-77-AA    20 Learn    Delete on Timeout                                                           
+Eth 2/24 44-55-66-77-88-BB    20 Learn    Delete on Timeout                                                           
+Eth 2/24 55-66-77-88-99-CC    20 Learn    Delete on Timeout                                                           
+Eth 2/24 66-77-88-99-00-DD    20 Learn    Delete on Timeout                                                           
+Eth 2/24 77-88-99-00-11-EE    20 Learn    Delete on Timeout                                                           
+Eth 2/24 88-99-00-11-22-FF    20 Learn    Delete on Timeout                                                           
+Eth 2/24 99-00-11-22-33-00    20 Learn    Delete on Timeout                                                           
+Eth 2/24 AA-BB-CC-DD-EE-22    20 Learn    Delete on Timeout                                                           
+Eth 2/24 BB-CC-DD-EE-FF-33    20 Learn    Delete on Timeout                                                           
+Eth 2/24 CC-DD-EE-FF-00-44    20 Learn    Delete on Timeout                                                           
+Eth 2/24 DD-EE-FF-00-11-55    20 Learn    Delete on Timeout                                                           
+Eth 2/24 EE-FF-00-11-22-66    20 Learn    Delete on Timeout                                                           
+Eth 2/24 FF-00-11-22-33-77    20 Learn    Delete on Timeout                                                           
+Eth 2/24 00-11-22-33-44-88    20 Learn    Delete on Timeout                                                           
+Eth 2/24 11-22-33-44-55-99    20 Learn    Delete on Timeout                                                           
+Eth 2/24 22-33-44-55-66-AA    20 Learn    Delete on Timeout                                                           
+Eth 2/24 33-44-55-66-77-BB    20 Learn    Delete on Timeout                                                           
+Eth 2/24 44-55-66-77-88-CC    20 Learn    Delete on Timeout                                                           
+Eth 2/24 55-66-77-88-99-DD    20 Learn    Delete on Timeout   

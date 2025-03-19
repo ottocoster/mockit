@@ -1,0 +1,8 @@
+Interface Name Status PVID Pri Speed/Duplex Type Trunk
+--------- ----------------- --------- ---- --- ------------- ------------ -----
+Eth 1/ 1 Down 1 0 Auto 1000BASE-T None
+Eth 1/ 2 Down 1 0 Auto 1000BASE-T None
+Eth 1/ 3 Down 1 0 Auto 1000BASE-T None
+Eth 1/ 4 Down 1 0 Auto 1000BASE-T None
+Eth 1/ 5 Down 1 0 Auto 1000BASE-T None
+Eth 1/ 6 Down 1 0 Auto 1000BASE-T None
