@@ -335,7 +335,7 @@ def load_settings():
         "platform": "cisco_ios",
         "data_types": ["routes", "arp", "mac", "interfaces"],
         "seperate_config_over_devices": False,
-        "seperate_devices": ["cisco_ios"],
+        "devices": ["cisco_ios"],
         "counts": {
             "routes": 1000,
             "arp": 1000,
@@ -382,7 +382,7 @@ def load_settings():
                             if key == "data_types":
                                 # Split comma-separated list
                                 settings[key] = [x.strip() for x in value.split(',')]
-                            elif key == "seperate_devices":
+                            elif key == "devices":
                                 # Parse the list from string, handling quotes and brackets
                                 value = value.strip('[]')
                                 settings[key] = [x.strip().strip('"\'') for x in value.split(',')]
@@ -415,7 +415,7 @@ def load_settings():
                 
                 # Write device separation settings
                 f.write(f"seperate_config_over_devices = {str(default_settings['seperate_config_over_devices']).lower()}\n")
-                f.write(f"seperate_devices = {default_settings['seperate_devices']}\n\n")
+                f.write(f"devices = {default_settings['devices']}\n\n")
                 
                 # Write counts
                 f.write(f"# Number of entries to generate for each data type\n")
@@ -545,7 +545,7 @@ def main():
         platform = "cisco_ios"
 
     data_types = settings.get("data_types", ["routes"])
-    device_list = settings.get("seperate_devices", ["cisco_ios"])
+    device_list = settings.get("devices", ["cisco_ios"])
     seperate_config_over_devices = settings.get("seperate_config_over_devices", False)
     routes_count = settings.get("counts", {}).get("routes", 1000)
     arp_count = settings.get("counts", {}).get("arp", 1000)
