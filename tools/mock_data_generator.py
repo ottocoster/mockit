@@ -444,32 +444,12 @@ def load_settings():
 def process_routes(base_dir, num_routes):
     """Process and generate routing table entries."""
     routes = generate_routes(num_routes)
-    
-    # Read existing file
-    template_file = os.path.join(base_dir, "show ip route.txt")
-    existing_content = read_file_or_default(
-        template_file, 
-        default_content="Gateway of last resort is not set\n\n"
-    )
-    
-    # Find the position to insert new routes (after the header)
-    header_end = existing_content.find("Gateway of last resort")
-    if header_end == -1:
-        print("Warning: Could not find appropriate position to insert routes, using entire file as header")
-        header = existing_content
-    else:
-        # Get the header including the "Gateway of last resort" line and the next line
-        header_lines = existing_content[header_end:].split('\n', 2)
-        if len(header_lines) >= 2:
-            header = existing_content[:header_end] + header_lines[0] + '\n' + header_lines[1] + '\n\n'
-        else:
-            header = existing_content[:header_end] + header_lines[0] + '\n\n'
-    
+    header="Gateway of last resort is not set\n\n"
     # Create new content with header and new routes
     new_content = header + "\n".join(routes)
     
     # Write to file
-    write_file(template_file, new_content)
+    write_file(base_dir + "/show ip route.txt", new_content)
     
     print(f"Successfully generated {len(routes)} routes")
     return "routes"
