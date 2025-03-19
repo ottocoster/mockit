@@ -1,0 +1,4 @@
+IP Address      MAC Address       Type      Interface                                                                 
+--------------- ----------------- --------- -----------                                                               
+192.168.1.100   AA-BB-CC-DD-EE-11 other     VLAN100                                                                    
+192.168.1.254   11-22-33-44-55-66 dynamic   VLAN100  

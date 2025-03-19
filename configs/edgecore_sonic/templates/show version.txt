@@ -1,0 +1,9 @@
+Unit 1                                                                                                                 
+Serial Number          : 232323123123                                                                                 
+Hardware Version       : R01                                                                                          
+Number of Ports        : 28                                                                                           
+Main Power Status      : Up                                                                                           
+Role                   : Master                                                                                       
+Loader Version         : 0.2.1.1                                                                                      
+Linux Kernel Version   : 2.6.19                                                                                       
+Operation Code Version : 1.2.2.31   
