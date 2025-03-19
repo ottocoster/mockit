@@ -394,7 +394,6 @@ def load_settings():
                                 # Split comma-separated list
                                 settings[key] = [x.strip() for x in value.split(',')]
                             elif key == "seperate_devices":
-                                print("found it!!!!!!")
                                 # Parse the list from string, handling quotes and brackets
                                 value = value.strip('[]')
                                 settings[key] = [x.strip().strip('"\'') for x in value.split(',')]
@@ -555,6 +554,10 @@ def main():
     
     # Get platform and data types
     platform = settings.get("platform", "cisco_ios")
+    # Currently we only support cisco_ios
+    if platform != "cisco_ios":
+        platform = "cisco_ios"
+
     data_types = settings.get("data_types", ["routes"])
     device_list = settings.get("seperate_devices", ["cisco_ios"])
     seperate_config_over_devices = settings.get("seperate_config_over_devices", False)
