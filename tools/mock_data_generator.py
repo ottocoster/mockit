@@ -6,8 +6,6 @@ ARP entries, MAC address tables, and interface information.
 """
 import random
 import os
-from pathlib import Path
-
 
 def generate_ip(private_only=False, avoid_private=False):
     """Generate a random IP address with options to control the range."""
@@ -318,15 +316,6 @@ def generate_interfaces(num_entries=50):
         interface_entries.append(entry)
     
     return interface_entries
-    
-def read_file_or_default(filepath, default_content=""):
-    """Read file content or return default if file doesn't exist."""
-    try:
-        with open(filepath, 'r') as f:
-            return f.read()
-    except FileNotFoundError:
-        print(f"Warning: Could not find {filepath}, using default content")
-        return default_content
 
 
 def write_file(filepath, content):
@@ -346,7 +335,7 @@ def load_settings():
         "platform": "cisco_ios",
         "data_types": ["routes", "arp", "mac", "interfaces"],
         "seperate_config_over_devices": False,
-        "seperate_devices": ["cisco_ios"],
+        "devices": ["cisco_ios"],
         "counts": {
             "routes": 1000,
             "arp": 1000,
@@ -393,8 +382,7 @@ def load_settings():
                             if key == "data_types":
                                 # Split comma-separated list
                                 settings[key] = [x.strip() for x in value.split(',')]
-                            elif key == "seperate_devices":
-                                print("found it!!!!!!")
+                            elif key == "devices":
                                 # Parse the list from string, handling quotes and brackets
                                 value = value.strip('[]')
                                 settings[key] = [x.strip().strip('"\'') for x in value.split(',')]
@@ -427,7 +415,7 @@ def load_settings():
                 
                 # Write device separation settings
                 f.write(f"seperate_config_over_devices = {str(default_settings['seperate_config_over_devices']).lower()}\n")
-                f.write(f"seperate_devices = {default_settings['seperate_devices']}\n\n")
+                f.write(f"devices = {default_settings['devices']}\n\n")
                 
                 # Write counts
                 f.write(f"# Number of entries to generate for each data type\n")
@@ -445,30 +433,12 @@ def load_settings():
 def process_routes(base_dir, num_routes):
     """Process and generate routing table entries."""
     routes = generate_routes(num_routes)
-    
-    # Read existing file
-    template_file = os.path.join(base_dir, "show ip route.txt")
-    existing_content = read_file_or_default(
-        template_file, 
-        default_content="Gateway of last resort is not set\n\n"
-    )
-    
-    # Find the position to insert new routes (after the header)
-    header_end = existing_content.find("Gateway of last resort")
-    if header_end == -1:
-        print("Warning: Could not find appropriate position to insert routes, using entire file as header")
-        header = existing_content
-    else:
-        # Get the header including the "Gateway of last resort" line and the next line
-        header_lines = existing_content[header_end:].split('\n', 2)
-        if len(header_lines) >= 2:
-            header = existing_content[:header_end] + header_lines[0] + '\n' + header_lines[1] + '\n\n'
-        else:
-            header = existing_content[:header_end] + header_lines[0] + '\n\n'
-    
+    header="Gateway of last resort is not set\n\n"
     # Create new content with header and new routes
     new_content = header + "\n".join(routes)
     
+    template_file = os.path.join(base_dir, "show ip route.txt")
+
     # Write to file
     write_file(template_file, new_content)
     
@@ -520,6 +490,7 @@ def generate_docker_compose(device_list, platform, base_dir):
     
     # Generate service for each device
     for i, device in enumerate(device_list, 1):
+        
         service = f"""  {device}:
     image: registry.gitlab.com/slurpit.io/mockit:latest
     container_name: {device}
@@ -548,15 +519,33 @@ def generate_docker_compose(device_list, platform, base_dir):
     
     print("Generated docker-compose.yml file")
 
+def clean_output_directory():
+    """Delete the existing output directory if it exists."""
+    output_dir = "./output"
+    if os.path.exists(output_dir):
+        import shutil
+        try:
+            shutil.rmtree(output_dir)
+            print(f"Deleted existing output directory: {output_dir}")
+        except Exception as e:
+            print(f"Error deleting output directory: {e}")
+
 def main():
     """Main function to orchestrate data generation based on settings."""
+    # Clean existing output directory
+    clean_output_directory()
+    
     # Load settings
     settings = load_settings()
     
     # Get platform and data types
     platform = settings.get("platform", "cisco_ios")
+    # Currently we only support cisco_ios
+    if platform != "cisco_ios":
+        platform = "cisco_ios"
+
     data_types = settings.get("data_types", ["routes"])
-    device_list = settings.get("seperate_devices", ["cisco_ios"])
+    device_list = settings.get("devices", ["cisco_ios"])
     seperate_config_over_devices = settings.get("seperate_config_over_devices", False)
     routes_count = settings.get("counts", {}).get("routes", 1000)
     arp_count = settings.get("counts", {}).get("arp", 1000)
@@ -565,48 +554,78 @@ def main():
     device_count = len(device_list)
     
     print(f"Device count: {device_count}")
-    
-    # Process for each device
-    for i, device in enumerate(device_list, 1):
-        # Create device-specific base directory
-        base_dir = f"./output/{device}/configs/{platform}"
-        
-        # Ensure directory exists
-        os.makedirs(base_dir, exist_ok=True)
-        
-        print(f"\nProcessing device {i}...")
-        
-        # Process each data type
-        processed_types = []
-        device_processors = {}
-        # Define processor mapping with adjusted counts for each device
-        if i == device_count:
-            # handle the last device
-            device_processors = {
-                "routes": lambda: process_routes(base_dir, routes_count - (routes_count // device_count) * (device_count - 1)),
-                "arp": lambda: process_arp(base_dir, arp_count - (arp_count // device_count) * (device_count - 1)),
-                "mac": lambda: process_mac(base_dir, mac_count - (mac_count // device_count) * (device_count - 1)),
-                "interfaces": lambda: process_interfaces(base_dir, interfaces_count - (interfaces_count // device_count) * (device_count - 1))
-            }
-        else:
-            device_processors = {
-                "routes": lambda: process_routes(base_dir, routes_count // device_count),
-                "arp": lambda: process_arp(base_dir, arp_count // device_count),
-                "mac": lambda: process_mac(base_dir, mac_count // device_count),
-                "interfaces": lambda: process_interfaces(base_dir, interfaces_count // device_count)
-            }
-        
-        # Process each requested data type
-        for data_type in data_types:
-            if data_type in device_processors:
-                processed_types.append(device_processors[data_type]())
+    if seperate_config_over_devices:
+        # Process for each device
+        for i, device in enumerate(device_list, 1):
+            # Create device-specific base directory
+            base_dir = f"./output/{device}/configs/{platform}"
+            
+            # Ensure directory exists
+            os.makedirs(base_dir, exist_ok=True)
+            
+            print(f"\nProcessing device {i}...")
+            
+            # Process each data type
+            processed_types = []
+            device_processors = {}
+            # Define processor mapping with adjusted counts for each device
+            if i == device_count:
+                # handle the last device
+                device_processors = {
+                    "routes": lambda: process_routes(base_dir, routes_count - (routes_count // device_count) * (device_count - 1)),
+                    "arp": lambda: process_arp(base_dir, arp_count - (arp_count // device_count) * (device_count - 1)),
+                    "mac": lambda: process_mac(base_dir, mac_count - (mac_count // device_count) * (device_count - 1)),
+                    "interfaces": lambda: process_interfaces(base_dir, interfaces_count - (interfaces_count // device_count) * (device_count - 1))
+                }
             else:
-                print(f"Unknown data type: {data_type}")
+                device_processors = {
+                    "routes": lambda: process_routes(base_dir, routes_count // device_count),
+                    "arp": lambda: process_arp(base_dir, arp_count // device_count),
+                    "mac": lambda: process_mac(base_dir, mac_count // device_count),
+                    "interfaces": lambda: process_interfaces(base_dir, interfaces_count // device_count)
+                }
+            
+            # Process each requested data type
+            for data_type in data_types:
+                if data_type in device_processors:
+                    processed_types.append(device_processors[data_type]())
+                else:
+                    print(f"Unknown data type: {data_type}")
+            
+            print(f"{device} Summary: Generated data for {', '.join(processed_types)}")
         
-        print(f"{device} Summary: Generated data for {', '.join(processed_types)}")
-    
-    print("\nAll devices processed successfully!")
-    
+        print("\nAll devices processed successfully!")
+    else:
+        for i, device in enumerate(device_list, 1):
+            # Create device-specific base directory
+            base_dir = f"./output/{device}/configs/{platform}"
+            
+            # Ensure directory exists
+            os.makedirs(base_dir, exist_ok=True)
+            
+            print(f"\nProcessing device {i}...")
+            
+            # Process each data type
+            processed_types = []
+            device_processors = {}
+            device_processors = {
+                "routes": lambda: process_routes(base_dir, routes_count),
+                "arp": lambda: process_arp(base_dir, arp_count),
+                "mac": lambda: process_mac(base_dir, mac_count),
+                "interfaces": lambda: process_interfaces(base_dir, interfaces_count)
+            }
+            
+            # Process each requested data type
+            for data_type in data_types:
+                if data_type in device_processors:
+                    processed_types.append(device_processors[data_type]())
+                else:
+                    print(f"Unknown data type: {data_type}")
+            
+            print(f"{device} Summary: Generated data for {', '.join(processed_types)}")
+        
+        print("\nAll devices processed successfully!")
+
     # Generate docker-compose.yml after processing all devices
     generate_docker_compose(device_list, platform, "./output")
 
