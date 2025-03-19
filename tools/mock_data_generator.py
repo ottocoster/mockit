@@ -6,8 +6,6 @@ ARP entries, MAC address tables, and interface information.
 """
 import random
 import os
-from pathlib import Path
-
 
 def generate_ip(private_only=False, avoid_private=False):
     """Generate a random IP address with options to control the range."""
@@ -318,15 +316,6 @@ def generate_interfaces(num_entries=50):
         interface_entries.append(entry)
     
     return interface_entries
-    
-def read_file_or_default(filepath, default_content=""):
-    """Read file content or return default if file doesn't exist."""
-    try:
-        with open(filepath, 'r') as f:
-            return f.read()
-    except FileNotFoundError:
-        print(f"Warning: Could not find {filepath}, using default content")
-        return default_content
 
 
 def write_file(filepath, content):
@@ -448,8 +437,10 @@ def process_routes(base_dir, num_routes):
     # Create new content with header and new routes
     new_content = header + "\n".join(routes)
     
+    template_file = os.path.join(base_dir, "show ip route.txt")
+
     # Write to file
-    write_file(base_dir + "/show ip route.txt", new_content)
+    write_file(template_file, new_content)
     
     print(f"Successfully generated {len(routes)} routes")
     return "routes"
