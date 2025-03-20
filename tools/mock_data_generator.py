@@ -504,7 +504,7 @@ def generate_docker_compose(device_list, platform, base_dir):
       - TELNET_PASSWORD=test
       - DEBUG_ENABLED=true
     volumes:
-      - ./{device}/configs/{platform}:/configs/{platform}"""
+      - ./{device}/configs/{platform}:/configs/{platform}/templates"""
         compose_content.append(service)
     
     # Add network configuration at the end
