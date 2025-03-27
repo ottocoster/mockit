@@ -1,0 +1,16 @@
+IS-IS interface database:
+Interface             L CirID Level 1 DR        Level 2 DR        L1/L2 Metric
+ae10.199              3   0x5 SITE-A.Router01.re0.00 SITE-A.Router01.re0.00 200100/200100
+ae10.201              3   0x6 SITE-A.Router01.re0.06 SITE-A.Router01.re0.06  19000/19000
+ae10.202              3   0x9 SITE-A.Router01.re0.09 SITE-A.Router01.re0.09     50/50
+ae2.140               3   0x8 SITE-A.Router01.re0.08 SITE-A.Router01.re0.08     45/45
+ae2.152               3   0x7 SITE-A.Router01.re0.07 SITE-A.Router01.re0.07     11/11
+ae2.200               3   0x2 Down              Down               100000/100000
+ae20.100              3   0xc SITE-A.Router01.re0.0c SITE-A.Router01.re0.0c      5/5
+ae3.1002              3   0x0a SITE-A.Router01.re0.0a SITE-A.Router01.re0.0a   1000/1000
+ae3.150               3   0x1 SITE-B.Router02.re0.03 SITE-B.Router02.re0.03     14/14
+ae3.80                3   0x1 SITE-A.Router01.re0.00 SITE-A.Router01.re0.00  10000/10000
+ae4.0                 3   0x3 SITE-A.Router01.re0.03 SITE-A.Router01.re0.03     20/20
+ae5.0                 3   0x0b SITE-A.Router01.re0.0b SITE-A.Router01.re0.0b     10/10
+ae8.350               3   0x4 SITE-A.Router01.re0.04 SITE-A.Router01.re0.04     21/21
+lo0.0                 3   0x1 Passive           Passive                 0/0

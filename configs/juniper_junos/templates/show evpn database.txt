@@ -1,0 +1,65 @@
+Instance: PUB_XYZ_1-10000001
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+2115            aa:bb:cc:11:22:33  af99.2115                      Mar 12 16:58:08  10.10.10.10
+2115            aa:bb:cc:11:22:34  af99.2115                      Mar 12 16:58:14  10.10.10.11
+2115            aa:bb:cc:11:22:35  af99.2115                      Mar 09 22:10:34
+2115            aa:bb:cc:11:22:36  192.0.2.1                      Mar 12 16:57:17  10.10.10.12
+2115            aa:bb:cc:11:22:37  af99.2115                      Mar 17 12:43:03
+
+Instance: evpn-PUB-ABC_1-10000002
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+408             bb:cc:dd:22:33:44  192.0.2.1                      Mar 12 16:58:56  198.51.100.1
+                                                                                   2001:db8:abcd:1::1001
+                                                                                   fe80::bbcc:dd00:2233:4400
+408             bb:cc:dd:22:33:45  af88.408                       Mar 17 12:46:58
+
+Instance: evpn-PUB-DSV_1-10000003
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+1604            cc:dd:ee:33:44:55  192.0.2.129                    Mar 17 13:10:38
+1604            cc:dd:ee:33:44:56  af99.1604                      Mar 17 12:45:35
+
+Instance: evpn-PUB-GNS_XYZCorp_1-10000004
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+409             dd:ee:ff:44:55:66  192.0.2.1                      Mar 12 17:30:21  203.0.113.10
+                                                                                   fe80::ddee:ff00:4455:6600
+409             dd:ee:ff:44:55:67  af88.409                       Mar 17 12:35:32  fe80::ddee:ff00:4455:6700
+
+Instance: evpn-PUB-DSV_1-10000005
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+2001            ee:ff:00:55:66:77  192.0.2.1                      Mar 17 11:53:28
+2001            ee:ff:00:55:66:78  af99.2001                      Mar 17 11:53:28
+
+Instance: evpn-PUB-DSV_1-10000006
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+2010            ff:00:11:66:77:88  192.0.2.1                      Mar 17 11:35:34
+2010            ff:00:11:66:77:89  af99.2010                      Mar 17 12:45:26
+
+Instance: evpn-PUB-COMPANYA_1-10000007
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+3101            aa:11:22:77:88:99  192.0.2.1                      Mar 12 16:57:20  10.0.0.1
+3101            aa:11:22:77:88:9a  af77.3101                      Mar 17 13:11:39
+
+Instance: evpn-PUB-BRANDA-10000008
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+2129            bb:22:33:88:99:aa  af99.2129                      Nov 28 19:35:50  198.18.0.1
+2129            bb:22:33:88:99:ab  192.0.2.1                      Jan 11 12:56:19  198.18.0.2
+
+Instance: evpn-PUB-BRANDA-10000009
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+2404            cc:33:44:99:aa:bb  198.51.100.99                  Mar 05 07:18:55  198.51.100.100
+
+Instance: evpn-PUB-XYLEM_1-10000010
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+3122            dd:44:55:aa:bb:cc  192.0.2.1                      Mar 12 16:57:16  203.0.113.20
+3122            dd:44:55:aa:bb:cd  af99.3122                      Mar 12 16:57:18  203.0.113.21
+
+Instance: evpn-PUB-XYLEM_1-10000011
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+600             ee:55:66:bb:cc:dd  af99.600                       Mar 12 16:57:18  203.0.113.22
+600             ee:55:66:bb:cc:de  192.0.2.1                      Mar 17 13:09:06  203.0.113.23
+
+Instance: evpn-PUB-XYLEM_1-10000012
+VLAN  DomainId  MAC address        Active source                  Timestamp        IP address
+413             ff:66:77:cc:dd:ee  192.0.2.1                      Mar 17 12:18:15  203.0.113.24
+                                                                                   2001:db8:abcd:2::2002
+                                                                                   fe80::ff66:77ff:fecc:ddee
