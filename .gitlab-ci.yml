@@ -70,10 +70,7 @@ unit_test:
         container_name=$(docker inspect --format='{{.Config.Image}}' $container_id)
         docker logs $container_name > $CI_PROJECT_DIR/logs/logs_${container_name}.txt 2>&1 || true
       done
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml down --remove-orphans -v || true
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml down --remove-orphans -v || true
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml down --remove-orphans -v || true
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml --remove-orphans down -v || true
+    - docker stop $(docker network inspect devices_devices-network --format '{{range .Containers}}{{println .Name}}{{end}}') || true
     - docker system prune -a --volumes -f || true
   artifacts:
     when: always
