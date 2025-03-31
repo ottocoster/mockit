@@ -399,3 +399,8 @@ services:
 networks:
   devices_network:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+          - subnet: "192.168.73.0/24"
+            gateway: "192.168.73.1"
