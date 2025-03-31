@@ -2,14 +2,14 @@ name: devices
 services:  
   test_container:
     build: .
-    container_name: devices-test_container
+    container_name: devices_test_container
     networks:
       - devices_network
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
       
   dell_dnos9:
     build: ../
-    container_name: devices-dell_dnos9
+    container_name: devices_dell_dnos9
     environment:  
       DEVICE_TYPE: dell_dnos9
       SSH_PASSWORD: test
@@ -18,7 +18,7 @@ services:
       
   dell_force10:
     build: ../
-    container_name: devices-dell_force10
+    container_name: devices_dell_force10
     environment:  
       DEVICE_TYPE: dell_force10
       SSH_PASSWORD: test
@@ -27,7 +27,7 @@ services:
       
   dell_isilon:
     build: ../
-    container_name: devices-dell_isilon
+    container_name: devices_dell_isilon
     environment:  
       DEVICE_TYPE: dell_isilon
       SSH_PASSWORD: test
@@ -36,7 +36,7 @@ services:
       
   dell_os6:
     build: ../
-    container_name: devices-dell_os6
+    container_name: devices_dell_os6
     environment:  
       DEVICE_TYPE: dell_os6
       SSH_PASSWORD: test
@@ -45,7 +45,7 @@ services:
       
   dell_os9:
     build: ../
-    container_name: devices-dell_os9
+    container_name: devices_dell_os9
     environment:  
       DEVICE_TYPE: dell_os9
       SSH_PASSWORD: test
@@ -54,7 +54,7 @@ services:
       
   dell_os10:
     build: ../
-    container_name: devices-dell_os10
+    container_name: devices_dell_os10
     environment:  
       DEVICE_TYPE: dell_os10
       SSH_PASSWORD: test
@@ -63,7 +63,7 @@ services:
       
   dell_powerconnect:
     build: ../
-    container_name: devices-dell_powerconnect
+    container_name: devices_dell_powerconnect
     environment:  
       DEVICE_TYPE: dell_powerconnect
       SSH_PASSWORD: test
@@ -72,7 +72,7 @@ services:
       
   dell_sonic:
     build: ../
-    container_name: devices-dell_sonic
+    container_name: devices_dell_sonic
     environment:  
       DEVICE_TYPE: dell_sonic
       SSH_PASSWORD: test
@@ -81,7 +81,7 @@ services:
       
   digi_transport:
     build: ../
-    container_name: devices-digi_transport
+    container_name: devices_digi_transport
     environment:  
       DEVICE_TYPE: digi_transport
       SSH_PASSWORD: test
@@ -90,7 +90,7 @@ services:
       
   dlink_ds:
     build: ../
-    container_name: devices-dlink_ds
+    container_name: devices_dlink_ds
     environment:  
       DEVICE_TYPE: dlink_ds
       SSH_PASSWORD: test
@@ -99,7 +99,7 @@ services:
       
   eltex:
     build: ../
-    container_name: devices-eltex
+    container_name: devices_eltex
     environment:  
       DEVICE_TYPE: eltex
       SSH_PASSWORD: test
@@ -108,7 +108,7 @@ services:
       
   eltex_esr:
     build: ../
-    container_name: devices-eltex_esr
+    container_name: devices_eltex_esr
     environment:  
       DEVICE_TYPE: eltex_esr
       SSH_PASSWORD: test
@@ -117,7 +117,7 @@ services:
       
   endace:
     build: ../
-    container_name: devices-endace
+    container_name: devices_endace
     environment:  
       DEVICE_TYPE: endace
       SSH_PASSWORD: test
@@ -126,7 +126,7 @@ services:
       
   enterasys:
     build: ../
-    container_name: devices-enterasys
+    container_name: devices_enterasys
     environment:  
       DEVICE_TYPE: enterasys
       SSH_PASSWORD: test
@@ -135,7 +135,7 @@ services:
       
   ericsson_ipos:
     build: ../
-    container_name: devices-ericsson_ipos
+    container_name: devices_ericsson_ipos
     environment:  
       DEVICE_TYPE: ericsson_ipos
       SSH_PASSWORD: test
@@ -144,7 +144,7 @@ services:
       
   ericsson_mltn63:
     build: ../
-    container_name: devices-ericsson_mltn63
+    container_name: devices_ericsson_mltn63
     environment:  
       DEVICE_TYPE: ericsson_mltn63
       SSH_PASSWORD: test
@@ -153,7 +153,7 @@ services:
       
   ericsson_mltn66:
     build: ../
-    container_name: devices-ericsson_mltn66
+    container_name: devices_ericsson_mltn66
     environment:  
       DEVICE_TYPE: ericsson_mltn66
       SSH_PASSWORD: test
@@ -162,7 +162,7 @@ services:
       
   extreme:
     build: ../
-    container_name: devices-extreme
+    container_name: devices_extreme
     environment:  
       DEVICE_TYPE: extreme
       SSH_PASSWORD: test
@@ -171,7 +171,7 @@ services:
       
   extreme_ers:
     build: ../
-    container_name: devices-extreme_ers
+    container_name: devices_extreme_ers
     environment:  
       DEVICE_TYPE: extreme_ers
       SSH_PASSWORD: test
@@ -180,7 +180,7 @@ services:
       
   extreme_exos:
     build: ../
-    container_name: devices-extreme_exos
+    container_name: devices_extreme_exos
     environment:  
       DEVICE_TYPE: extreme_exos
       SSH_PASSWORD: test
@@ -189,7 +189,7 @@ services:
       
   extreme_netiron:
     build: ../
-    container_name: devices-extreme_netiron
+    container_name: devices_extreme_netiron
     environment:  
       DEVICE_TYPE: extreme_netiron
       SSH_PASSWORD: test
@@ -198,7 +198,7 @@ services:
       
   extreme_nos:
     build: ../
-    container_name: devices-extreme_nos
+    container_name: devices_extreme_nos
     environment:  
       DEVICE_TYPE: extreme_nos
       SSH_PASSWORD: test
@@ -207,7 +207,7 @@ services:
       
   extreme_slx:
     build: ../
-    container_name: devices-extreme_slx
+    container_name: devices_extreme_slx
     environment:  
       DEVICE_TYPE: extreme_slx
       SSH_PASSWORD: test
@@ -216,7 +216,7 @@ services:
       
   extreme_tierra:
     build: ../
-    container_name: devices-extreme_tierra
+    container_name: devices_extreme_tierra
     environment:  
       DEVICE_TYPE: extreme_tierra
       SSH_PASSWORD: test
@@ -225,7 +225,7 @@ services:
       
   extreme_vdx:
     build: ../
-    container_name: devices-extreme_vdx
+    container_name: devices_extreme_vdx
     environment:  
       DEVICE_TYPE: extreme_vdx
       SSH_PASSWORD: test
@@ -234,7 +234,7 @@ services:
       
   extreme_vsp:
     build: ../
-    container_name: devices-extreme_vsp
+    container_name: devices_extreme_vsp
     environment:  
       DEVICE_TYPE: extreme_vsp
       SSH_PASSWORD: test
@@ -243,7 +243,7 @@ services:
       
   extreme_wing:
     build: ../
-    container_name: devices-extreme_wing
+    container_name: devices_extreme_wing
     environment:  
       DEVICE_TYPE: extreme_wing
       SSH_PASSWORD: test
@@ -252,7 +252,7 @@ services:
       
   f5_linux:
     build: ../
-    container_name: devices-f5_linux
+    container_name: devices_f5_linux
     environment:  
       DEVICE_TYPE: f5_linux
       SSH_PASSWORD: test
@@ -261,7 +261,7 @@ services:
       
   f5_ltm:
     build: ../
-    container_name: devices-f5_ltm
+    container_name: devices_f5_ltm
     environment:  
       DEVICE_TYPE: f5_ltm
       SSH_PASSWORD: test
@@ -270,7 +270,7 @@ services:
     
   f5_tmsh:
     build: ../
-    container_name: devices-f5_tmsh
+    container_name: devices_f5_tmsh
     environment:  
       DEVICE_TYPE: f5_tmsh
       SSH_PASSWORD: test
@@ -279,7 +279,7 @@ services:
 
   fiberstore_fsos:
     build: ../
-    container_name: devices-fiberstore_fsos
+    container_name: devices_fiberstore_fsos
     environment:  
       DEVICE_TYPE: fiberstore_fsos
       SSH_PASSWORD: test
@@ -288,7 +288,7 @@ services:
       
   flexvnf:
     build: ../
-    container_name: devices-flexvnf
+    container_name: devices_flexvnf
     environment:  
       DEVICE_TYPE: flexvnf
       SSH_PASSWORD: test
@@ -297,7 +297,7 @@ services:
       
   fortinet:
     build: ../
-    container_name: devices-fortinet
+    container_name: devices_fortinet
     environment:  
       DEVICE_TYPE: fortinet
       SSH_PASSWORD: test
@@ -306,7 +306,7 @@ services:
       
   generic:
     build: ../
-    container_name: devices-generic
+    container_name: devices_generic
     environment:  
       DEVICE_TYPE: generic
       SSH_PASSWORD: test
@@ -315,7 +315,7 @@ services:
       
   generic_termserver:
     build: ../
-    container_name: devices-generic_termserver
+    container_name: devices_generic_termserver
     environment:  
       DEVICE_TYPE: generic_termserver
       SSH_PASSWORD: test

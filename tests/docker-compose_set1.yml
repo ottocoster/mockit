@@ -2,14 +2,14 @@ name: devices
 services:  
   test_container:
     build: .
-    container_name: devices-test_container
+    container_name: devices_test_container
     networks:
       - devices_network
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
     
   a10:
     build: ../
-    container_name: devices-a10
+    container_name: devices_a10
     environment:  
       DEVICE_TYPE: a10
       SSH_PASSWORD: test
@@ -18,7 +18,7 @@ services:
 
   accedian:
     build: ../
-    container_name: devices-accedian
+    container_name: devices_accedian
     environment:  
       DEVICE_TYPE: accedian
       SSH_PASSWORD: test
@@ -27,7 +27,7 @@ services:
 
   adtran_os:
     build: ../
-    container_name: devices-adtran_os
+    container_name: devices_adtran_os
     environment:  
       DEVICE_TYPE: adtran_os
       SSH_PASSWORD: test
@@ -36,7 +36,7 @@ services:
 
   alcatel_aos:
     build: ../
-    container_name: devices-alcatel_aos
+    container_name: devices_alcatel_aos
     environment:  
       DEVICE_TYPE: alcatel_aos
       SSH_PASSWORD: test
@@ -45,7 +45,7 @@ services:
 
   alcatel_sros:
     build: ../
-    container_name: devices-alcatel_sros
+    container_name: devices_alcatel_sros
     environment:  
       DEVICE_TYPE: alcatel_sros
       SSH_PASSWORD: test
@@ -54,7 +54,7 @@ services:
 
   allied_telesis_awplus:
     build: ../
-    container_name: devices-allied_telesis_awplus
+    container_name: devices_allied_telesis_awplus
     environment:  
       DEVICE_TYPE: allied_telesis_awplus
       SSH_PASSWORD: test
@@ -63,7 +63,7 @@ services:
 
   apresia_aeos:
     build: ../
-    container_name: devices-apresia_aeos
+    container_name: devices_apresia_aeos
     environment:  
       DEVICE_TYPE: apresia_aeos
       SSH_PASSWORD: test
@@ -72,7 +72,7 @@ services:
 
   arista_eos:
     build: ../
-    container_name: devices-arista_eos
+    container_name: devices_arista_eos
     environment:  
       DEVICE_TYPE: arista_eos
       SSH_PASSWORD: test
@@ -81,7 +81,7 @@ services:
 
   arris_cer:
     build: ../
-    container_name: devices-arris_cer
+    container_name: devices_arris_cer
     environment:  
       DEVICE_TYPE: arris_cer
       SSH_PASSWORD: test
@@ -90,7 +90,7 @@ services:
 
   aruba_os:
     build: ../
-    container_name: devices-aruba_os
+    container_name: devices_aruba_os
     environment:  
       DEVICE_TYPE: aruba_os
       SSH_PASSWORD: test
@@ -101,7 +101,7 @@ services:
 
   aruba_osswitch:
     build: ../
-    container_name: devices-aruba_osswitch
+    container_name: devices_aruba_osswitch
     environment:  
       DEVICE_TYPE: aruba_osswitch
       SSH_PASSWORD: test
@@ -110,7 +110,7 @@ services:
 
   aruba_procurve:
     build: ../
-    container_name: devices-aruba_procurve
+    container_name: devices_aruba_procurve
     environment:  
       DEVICE_TYPE: aruba_procurve
       SSH_PASSWORD: test
@@ -119,7 +119,7 @@ services:
 
   audiocode_66:
     build: ../
-    container_name: devices-audiocode_66
+    container_name: devices_audiocode_66
     environment:  
       DEVICE_TYPE: audiocode_66
       SSH_PASSWORD: test
@@ -128,7 +128,7 @@ services:
 
   audiocode_72:
     build: ../
-    container_name: devices-audiocode_72
+    container_name: devices_audiocode_72
     environment:  
       DEVICE_TYPE: audiocode_72
       SSH_PASSWORD: test
@@ -137,7 +137,7 @@ services:
 
   # audiocode_shell:
   #   build: ../
-  #   container_name: devices-audiocode_shell
+  #   container_name: devices_audiocode_shell
   #   environment:  
   #     DEVICE_TYPE: audiocode_shell
   #     SSH_PASSWORD: test
@@ -146,7 +146,7 @@ services:
 
   avaya_ers:
     build: ../
-    container_name: devices-avaya_ers
+    container_name: devices_avaya_ers
     environment:  
       DEVICE_TYPE: avaya_ers
       SSH_PASSWORD: test
@@ -155,7 +155,7 @@ services:
 
   avaya_vsp:
     build: ../
-    container_name: devices-avaya_vsp
+    container_name: devices_avaya_vsp
     environment:  
       DEVICE_TYPE: avaya_vsp
       SSH_PASSWORD: test
@@ -164,7 +164,7 @@ services:
 
   broadcom_icos:
     build: ../
-    container_name: devices-broadcom_icos
+    container_name: devices_broadcom_icos
     environment:  
       DEVICE_TYPE: broadcom_icos
       SSH_PASSWORD: test
@@ -173,7 +173,7 @@ services:
 
   brocade_fastiron:
     build: ../
-    container_name: devices-brocade_fastiron
+    container_name: devices_brocade_fastiron
     environment:  
       DEVICE_TYPE: brocade_fastiron
       SSH_PASSWORD: test
@@ -182,7 +182,7 @@ services:
 
   brocade_fos:
     build: ../
-    container_name: devices-brocade_fos
+    container_name: devices_brocade_fos
     environment:  
       DEVICE_TYPE: brocade_fos
       SSH_PASSWORD: test
@@ -191,7 +191,7 @@ services:
 
   brocade_netiron:
     build: ../
-    container_name: devices-brocade_netiron
+    container_name: devices_brocade_netiron
     environment:  
       DEVICE_TYPE: brocade_netiron
       SSH_PASSWORD: test
@@ -200,7 +200,7 @@ services:
 
   brocade_nos:
     build: ../
-    container_name: devices-brocade_nos
+    container_name: devices_brocade_nos
     environment:  
       DEVICE_TYPE: brocade_nos
       SSH_PASSWORD: test
@@ -209,7 +209,7 @@ services:
 
   brocade_vdx:
     build: ../
-    container_name: devices-brocade_vdx
+    container_name: devices_brocade_vdx
     environment:  
       DEVICE_TYPE: brocade_vdx
       SSH_PASSWORD: test
@@ -218,7 +218,7 @@ services:
 
   brocade_vyos:
     build: ../
-    container_name: devices-brocade_vyos
+    container_name: devices_brocade_vyos
     environment:  
       DEVICE_TYPE: brocade_vyos
       SSH_PASSWORD: test
@@ -227,7 +227,7 @@ services:
 
   calix_b6:
     build: ../
-    container_name: devices-calix_b6
+    container_name: devices_calix_b6
     environment:  
       DEVICE_TYPE: calix_b6
       SSH_PASSWORD: test
@@ -236,7 +236,7 @@ services:
 
   casa_cmts:
     build: ../
-    container_name: devices-casa_cmts
+    container_name: devices_casa_cmts
     environment:  
       DEVICE_TYPE: casa_cmts
       SSH_PASSWORD: test
@@ -245,7 +245,7 @@ services:
 
   cdot_cros:
     build: ../
-    container_name: devices-cdot_cros
+    container_name: devices_cdot_cros
     environment:  
       DEVICE_TYPE: cdot_cros
       SSH_PASSWORD: test
@@ -254,7 +254,7 @@ services:
 
   centec_os:
     build: ../
-    container_name: devices-centec_os
+    container_name: devices_centec_os
     environment:  
       DEVICE_TYPE: centec_os
       SSH_PASSWORD: test
@@ -263,7 +263,7 @@ services:
 
   checkpoint_gaia:
     build: ../
-    container_name: devices-checkpoint_gaia
+    container_name: devices_checkpoint_gaia
     environment:  
       DEVICE_TYPE: checkpoint_gaia
       SSH_PASSWORD: test
@@ -272,7 +272,7 @@ services:
 
   ciena_saos:
     build: ../
-    container_name: devices-ciena_saos
+    container_name: devices_ciena_saos
     environment:  
       DEVICE_TYPE: ciena_saos
       SSH_PASSWORD: test
@@ -281,7 +281,7 @@ services:
 
   cisco_asa:
     build: ../
-    container_name: devices-cisco_asa
+    container_name: devices_cisco_asa
     environment:  
       DEVICE_TYPE: cisco_asa
       SSH_PASSWORD: test
@@ -290,7 +290,7 @@ services:
 
   cisco_ftd:
     build: ../
-    container_name: devices-cisco_ftd
+    container_name: devices_cisco_ftd
     environment:  
       DEVICE_TYPE: cisco_ftd
       SSH_PASSWORD: test
@@ -299,7 +299,7 @@ services:
 
   cisco_ios:
     build: ../
-    container_name: devices-cisco_ios
+    container_name: devices_cisco_ios
     environment:  
       DEVICE_TYPE: cisco_ios
       SSH_PASSWORD: test
@@ -308,7 +308,7 @@ services:
       
   cisco_nxos:
     build: ../
-    container_name: devices-cisco_nxos
+    container_name: devices_cisco_nxos
     environment:  
       DEVICE_TYPE: cisco_nxos
       SSH_PASSWORD: test
@@ -317,7 +317,7 @@ services:
       
   cisco_s200:
     build: ../
-    container_name: devices-cisco_s200
+    container_name: devices_cisco_s200
     environment:  
       DEVICE_TYPE: cisco_s200
       SSH_PASSWORD: test
@@ -326,7 +326,7 @@ services:
       
   cisco_s300:
     build: ../
-    container_name: devices-cisco_s300
+    container_name: devices_cisco_s300
     environment:  
       DEVICE_TYPE: cisco_s300
       SSH_PASSWORD: test
@@ -335,7 +335,7 @@ services:
       
   # cisco_tp:
   #   build: ../
-  #   container_name: devices-cisco_tp
+  #   container_name: devices_cisco_tp
   #   environment:  
   #     DEVICE_TYPE: cisco_tp
   #     SSH_PASSWORD: test
@@ -344,7 +344,7 @@ services:
       
   cisco_viptela:
     build: ../
-    container_name: devices-cisco_viptela
+    container_name: devices_cisco_viptela
     environment:  
       DEVICE_TYPE: cisco_viptela
       SSH_PASSWORD: test
@@ -353,7 +353,7 @@ services:
       
   cisco_wlc:
     build: ../
-    container_name: devices-cisco_wlc
+    container_name: devices_cisco_wlc
     environment:  
       DEVICE_TYPE: cisco_wlc
       SSH_PASSWORD: test
@@ -362,7 +362,7 @@ services:
       
   cisco_xe:
     build: ../
-    container_name: devices-cisco_xe
+    container_name: devices_cisco_xe
     environment:  
       DEVICE_TYPE: cisco_xe
       SSH_PASSWORD: test
@@ -371,7 +371,7 @@ services:
       
   cisco_xr:
     build: ../
-    container_name: devices-cisco_xr
+    container_name: devices_cisco_xr
     environment:  
       DEVICE_TYPE: cisco_xr
       SSH_PASSWORD: test
@@ -380,7 +380,7 @@ services:
       
   cloudgenix_ion:
     build: ../
-    container_name: devices-cloudgenix_ion
+    container_name: devices_cloudgenix_ion
     environment:  
       DEVICE_TYPE: cloudgenix_ion
       SSH_PASSWORD: test
@@ -389,7 +389,7 @@ services:
       
   coriant:
     build: ../
-    container_name: devices-coriant
+    container_name: devices_coriant
     environment:  
       DEVICE_TYPE: coriant
       SSH_PASSWORD: test

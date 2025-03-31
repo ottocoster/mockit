@@ -2,14 +2,14 @@ name: devices
 services:  
   test_container:
     build: .
-    container_name: devices-test_container
+    container_name: devices_test_container
     networks:
       - devices_network
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
 
   adtran_os:
     build: ../
-    container_name: devices-adtran_os
+    container_name: devices_adtran_os
     environment:  
       - DEVICE_TYPE=adtran_os
       - TELNET_USERNAME=root
@@ -20,7 +20,7 @@ services:
 
   apresia_aeos:
     build: ../
-    container_name: devices-apresia_aeos
+    container_name: devices_apresia_aeos
     environment:  
       - DEVICE_TYPE=apresia_aeos
       - TELNET_USERNAME=root
@@ -31,7 +31,7 @@ services:
 
   arista_eos:
     build: ../
-    container_name: devices-arista_eos
+    container_name: devices_arista_eos
     environment:  
       - DEVICE_TYPE=arista_eos
       - TELNET_USERNAME=root
@@ -42,7 +42,7 @@ services:
 
   aruba_procurve:
     build: ../
-    container_name: devices-aruba_procurve
+    container_name: devices_aruba_procurve
     environment:  
       - DEVICE_TYPE=aruba_procurve
       - TELNET_USERNAME=root
@@ -53,7 +53,7 @@ services:
 
   audiocode_72:
     build: ../
-    container_name: devices-audiocode_72
+    container_name: devices_audiocode_72
     environment:  
       - DEVICE_TYPE=audiocode_72
       - TELNET_USERNAME=root
@@ -64,7 +64,7 @@ services:
 
   audiocode_66:
     build: ../
-    container_name: devices-audiocode_66
+    container_name: devices_audiocode_66
     environment:  
       - DEVICE_TYPE=audiocode_66
       - TELNET_USERNAME=root
@@ -75,7 +75,7 @@ services:
 
   audiocode_shell:
     build: ../
-    container_name: devices-audiocode_shell
+    container_name: devices_audiocode_shell
     environment:  
       - DEVICE_TYPE=audiocode_shell
       - TELNET_USERNAME=root
@@ -86,7 +86,7 @@ services:
 
   brocade_fastiron:
     build: ../
-    container_name: devices-brocade_fastiron
+    container_name: devices_brocade_fastiron
     environment:  
       - DEVICE_TYPE=brocade_fastiron
       - TELNET_USERNAME=root
@@ -97,7 +97,7 @@ services:
 
   brocade_netiron:
     build: ../
-    container_name: devices-brocade_netiron
+    container_name: devices_brocade_netiron
     environment:  
       - DEVICE_TYPE=brocade_netiron
       - TELNET_USERNAME=root
@@ -108,7 +108,7 @@ services:
 
   calix_b6:
     build: ../
-    container_name: devices-calix_b6
+    container_name: devices_calix_b6
     environment:  
       - DEVICE_TYPE=calix_b6
       - TELNET_USERNAME=root
@@ -119,7 +119,7 @@ services:
 
   centec_os:
     build: ../
-    container_name: devices-centec_os
+    container_name: devices_centec_os
     environment:  
       - DEVICE_TYPE=centec_os
       - TELNET_USERNAME=root
@@ -130,7 +130,7 @@ services:
 
   ciena_saos:
     build: ../
-    container_name: devices-ciena_saos
+    container_name: devices_ciena_saos
     environment:  
       - DEVICE_TYPE=ciena_saos
       - TELNET_USERNAME=root
@@ -141,7 +141,7 @@ services:
 
   cisco_ios:
     build: ../
-    container_name: devices-cisco_ios
+    container_name: devices_cisco_ios
     environment:  
       - DEVICE_TYPE=cisco_ios
       - TELNET_USERNAME=root
@@ -152,7 +152,7 @@ services:
 
   cisco_xr:
     build: ../
-    container_name: devices-cisco_xr
+    container_name: devices_cisco_xr
     environment:  
       - DEVICE_TYPE=cisco_xr
       - TELNET_USERNAME=root
@@ -163,7 +163,7 @@ services:
 
   cisco_s200:
     build: ../
-    container_name: devices-cisco_s200
+    container_name: devices_cisco_s200
     environment:  
       - DEVICE_TYPE=cisco_s200
       - TELNET_USERNAME=root
@@ -174,7 +174,7 @@ services:
 
   cisco_s300:
     build: ../
-    container_name: devices-cisco_s300
+    container_name: devices_cisco_s300
     environment:  
       - DEVICE_TYPE=cisco_s300
       - TELNET_USERNAME=root
@@ -185,7 +185,7 @@ services:
 
   dell_dnos6:
     build: ../
-    container_name: devices-dell_dnos6
+    container_name: devices_dell_dnos6
     environment:  
       - DEVICE_TYPE=dell_dnos6
       - TELNET_USERNAME=root
@@ -196,7 +196,7 @@ services:
 
   dell_powerconnect:
     build: ../
-    container_name: devices-dell_powerconnect
+    container_name: devices_dell_powerconnect
     environment:  
       - DEVICE_TYPE=dell_powerconnect
       - TELNET_USERNAME=root
@@ -207,7 +207,7 @@ services:
 
   dlink_ds:
     build: ../
-    container_name: devices-dlink_ds
+    container_name: devices_dlink_ds
     environment:  
       - DEVICE_TYPE=dlink_ds
       - TELNET_USERNAME=root
@@ -218,7 +218,7 @@ services:
 
   extreme:
     build: ../
-    container_name: devices-extreme
+    container_name: devices_extreme
     environment:  
       - DEVICE_TYPE=extreme
       - TELNET_USERNAME=root
@@ -229,7 +229,7 @@ services:
 
   extreme_exos:
     build: ../
-    container_name: devices-extreme_exos
+    container_name: devices_extreme_exos
     environment:  
       - DEVICE_TYPE=extreme_exos
       - TELNET_USERNAME=root
@@ -240,7 +240,7 @@ services:
 
   extreme_netiron:
     build: ../
-    container_name: devices-extreme_netiron
+    container_name: devices_extreme_netiron
     environment:  
       - DEVICE_TYPE=extreme_netiron
       - TELNET_USERNAME=root
@@ -251,7 +251,7 @@ services:
 
   generic:
     build: ../
-    container_name: devices-generic
+    container_name: devices_generic
     environment:  
       - DEVICE_TYPE=generic
       - TELNET_USERNAME=root
@@ -262,7 +262,7 @@ services:
 
   hp_procurve:
     build: ../
-    container_name: devices-hp_procurve
+    container_name: devices_hp_procurve
     environment:  
       - DEVICE_TYPE=hp_procurve
       - TELNET_USERNAME=root
@@ -273,7 +273,7 @@ services:
 
   hp_comware:
     build: ../
-    container_name: devices-hp_comware
+    container_name: devices_hp_comware
     environment:  
       - DEVICE_TYPE=hp_comware
       - TELNET_USERNAME=root
@@ -284,7 +284,7 @@ services:
 
   huawei:
     build: ../
-    container_name: devices-huawei
+    container_name: devices_huawei
     environment:  
       - DEVICE_TYPE=huawei
       - TELNET_USERNAME=root
@@ -295,7 +295,7 @@ services:
 
   huawei_olt:
     build: ../
-    container_name: devices-huawei_olt
+    container_name: devices_huawei_olt
     environment:  
       - DEVICE_TYPE=huawei_olt
       - TELNET_USERNAME=root
@@ -306,7 +306,7 @@ services:
 
   ipinfusion_ocnos:
     build: ../
-    container_name: devices-ipinfusion_ocnos
+    container_name: devices_ipinfusion_ocnos
     environment:  
       - DEVICE_TYPE=ipinfusion_ocnos
       - TELNET_USERNAME=root
@@ -317,7 +317,7 @@ services:
 
   juniper_junos:
     build: ../
-    container_name: devices-juniper_junos
+    container_name: devices_juniper_junos
     environment:  
       - DEVICE_TYPE=juniper_junos
       - TELNET_USERNAME=root
@@ -328,7 +328,7 @@ services:
 
   nokia_sros:
     build: ../
-    container_name: devices-nokia_sros
+    container_name: devices_nokia_sros
     environment:  
       - DEVICE_TYPE=nokia_sros
       - TELNET_USERNAME=root
@@ -339,7 +339,7 @@ services:
 
   oneaccess_oneos:
     build: ../
-    container_name: devices-oneaccess_oneos
+    container_name: devices_oneaccess_oneos
     environment:  
       - DEVICE_TYPE=oneaccess_oneos
       - TELNET_USERNAME=root
@@ -350,7 +350,7 @@ services:
 
   # paloalto_panos:
   #   build: ../
-  #   container_name: devices-paloalto_panos
+  #   container_name: devices_paloalto_panos
   #   environment:  
   #     - DEVICE_TYPE=paloalto_panos
   #     - TELNET_USERNAME=root
@@ -361,7 +361,7 @@ services:
 
   rad_etx:
     build: ../
-    container_name: devices-rad_etx
+    container_name: devices_rad_etx
     environment:  
       - DEVICE_TYPE=rad_etx
       - TELNET_USERNAME=root
@@ -372,7 +372,7 @@ services:
 
   raisecom:
     build: ../
-    container_name: devices-raisecom
+    container_name: devices_raisecom
     environment:  
       - DEVICE_TYPE=raisecom
       - TELNET_USERNAME=root
@@ -383,7 +383,7 @@ services:
 
   ruckus_fastiron:
     build: ../
-    container_name: devices-ruckus_fastiron
+    container_name: devices_ruckus_fastiron
     environment:  
       - DEVICE_TYPE=ruckus_fastiron
       - TELNET_USERNAME=root
@@ -394,7 +394,7 @@ services:
 
   ruijie_os:
     build: ../
-    container_name: devices-ruijie_os
+    container_name: devices_ruijie_os
     environment:  
       - DEVICE_TYPE=ruijie_os
       - TELNET_USERNAME=root
@@ -405,7 +405,7 @@ services:
 
   supermicro_smis:
     build: ../
-    container_name: devices-supermicro_smis
+    container_name: devices_supermicro_smis
     environment:  
       - DEVICE_TYPE=supermicro_smis
       - TELNET_USERNAME=root
@@ -416,7 +416,7 @@ services:
 
   teldat_cit:
     build: ../
-    container_name: devices-teldat_cit
+    container_name: devices_teldat_cit
     environment:  
       - DEVICE_TYPE=teldat_cit
       - TELNET_USERNAME=root
@@ -427,7 +427,7 @@ services:
 
   tplink_jetstream:
     build: ../
-    container_name: devices-tplink_jetstream
+    container_name: devices_tplink_jetstream
     environment:  
       - DEVICE_TYPE=tplink_jetstream
       - TELNET_USERNAME=root
@@ -438,7 +438,7 @@ services:
 
   yamaha:
     build: ../
-    container_name: devices-yamaha
+    container_name: devices_yamaha
     environment:  
       - DEVICE_TYPE=yamaha
       - TELNET_USERNAME=root
@@ -449,7 +449,7 @@ services:
 
   zte_zxros:
     build: ../
-    container_name: devices-zte_zxros
+    container_name: devices_zte_zxros
     environment:  
       - DEVICE_TYPE=zte_zxros
       - TELNET_USERNAME=root
@@ -460,7 +460,7 @@ services:
 
   maipu:
     build: ../
-    container_name: devices-maipu
+    container_name: devices_maipu
     environment:  
       - DEVICE_TYPE=maipu
       - TELNET_USERNAME=root

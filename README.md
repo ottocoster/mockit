@@ -151,7 +151,7 @@ services:
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
 networks:
-  devices-network:
+  devices_network:
     driver: bridge
 ```
 
@@ -175,13 +175,13 @@ services:
       - "22:22"
       - "161:161/udp"
     networks:
-      devices-network:
+      devices_network:
         ipv4_address: 172.16.240.45
         ipv6_address: fc00::abcd
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
 networks:
-  devices-network:
+  devices_network:
     enable_ipv6: true
     driver: bridge
     ipam:

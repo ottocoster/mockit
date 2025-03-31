@@ -2,14 +2,14 @@ name: devices
 services:  
   test_container:
     build: .
-    container_name: devices-test_container
+    container_name: devices_test_container
     networks:
       - devices_network
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
       
   hp_comware:
     build: ../
-    container_name: devices-hp_comware
+    container_name: devices_hp_comware
     environment:  
       DEVICE_TYPE: hp_comware
       SSH_PASSWORD: test
@@ -18,7 +18,7 @@ services:
 
   hp_procurve:
     build: ../
-    container_name: devices-hp_procurve
+    container_name: devices_hp_procurve
     environment:  
       DEVICE_TYPE: hp_procurve
       SSH_PASSWORD: test
@@ -27,7 +27,7 @@ services:
 
   huawei:
     build: ../
-    container_name: devices-huawei
+    container_name: devices_huawei
     environment:  
       DEVICE_TYPE: huawei
       SSH_PASSWORD: test
@@ -36,7 +36,7 @@ services:
 
   huawei_olt:
     build: ../
-    container_name: devices-huawei_olt
+    container_name: devices_huawei_olt
     environment:  
       DEVICE_TYPE: huawei_olt
       SSH_PASSWORD: test
@@ -45,7 +45,7 @@ services:
 
   huawei_smartax:
     build: ../
-    container_name: devices-huawei_smartax
+    container_name: devices_huawei_smartax
     environment:  
       DEVICE_TYPE: huawei_smartax
       SSH_PASSWORD: test
@@ -54,7 +54,7 @@ services:
 
   huawei_vrpv8:
     build: ../
-    container_name: devices-huawei_vrpv8
+    container_name: devices_huawei_vrpv8
     environment:  
       DEVICE_TYPE: huawei_vrpv8
       SSH_PASSWORD: test
@@ -63,7 +63,7 @@ services:
 
   ipinfusion_ocnos:
     build: ../
-    container_name: devices-ipinfusion_ocnos
+    container_name: devices_ipinfusion_ocnos
     environment:  
       DEVICE_TYPE: ipinfusion_ocnos
       SSH_PASSWORD: test
@@ -72,7 +72,7 @@ services:
 
   juniper_junos:
     build: ../
-    container_name: devices-juniper_junos
+    container_name: devices_juniper_junos
     environment:  
       DEVICE_TYPE: juniper_junos
       SSH_PASSWORD: test
@@ -81,7 +81,7 @@ services:
 
   juniper_screenos:
     build: ../
-    container_name: devices-juniper_screenos
+    container_name: devices_juniper_screenos
     environment:  
       DEVICE_TYPE: juniper_screenos
       SSH_PASSWORD: test
@@ -90,7 +90,7 @@ services:
 
   keymile:
     build: ../
-    container_name: devices-keymile
+    container_name: devices_keymile
     environment:  
       DEVICE_TYPE: keymile
       SSH_PASSWORD: test
@@ -99,7 +99,7 @@ services:
 
   keymile_nos:
     build: ../
-    container_name: devices-keymile_nos
+    container_name: devices_keymile_nos
     environment:  
       DEVICE_TYPE: keymile_nos
       SSH_PASSWORD: test
@@ -108,7 +108,7 @@ services:
 
   linux:
     build: ../
-    container_name: devices-linux
+    container_name: devices_linux
     environment:  
       DEVICE_TYPE: linux
       SSH_PASSWORD: test
@@ -117,7 +117,7 @@ services:
 
   mellanox:
     build: ../
-    container_name: devices-mellanox
+    container_name: devices_mellanox
     environment:  
       DEVICE_TYPE: mellanox
       SSH_PASSWORD: test
@@ -126,7 +126,7 @@ services:
 
   mellanox_mlnxos:
     build: ../
-    container_name: devices-mellanox_mlnxos
+    container_name: devices_mellanox_mlnxos
     environment:  
       DEVICE_TYPE: mellanox_mlnxos
       SSH_PASSWORD: test
@@ -135,7 +135,7 @@ services:
 
   mikrotik_routeros_v6:
     build: ../
-    container_name: devices-mikrotik_routeros_v6
+    container_name: devices_mikrotik_routeros_v6
     environment:  
       DEVICE_TYPE: mikrotik_routeros
       DEVICE_VERSION: v6
@@ -145,7 +145,7 @@ services:
 
   mikrotik_routeros_v7:
     build: ../
-    container_name: devices-mikrotik_routeros_v7
+    container_name: devices_mikrotik_routeros_v7
     environment:  
       DEVICE_TYPE: mikrotik_routeros
       DEVICE_VERSION: v7
@@ -155,7 +155,7 @@ services:
 
   mikrotik_switchos:
     build: ../
-    container_name: devices-mikrotik_switchos
+    container_name: devices_mikrotik_switchos
     environment:  
       DEVICE_TYPE: mikrotik_switchos
       SSH_PASSWORD: test
@@ -164,7 +164,7 @@ services:
 
   mrv_lx:
     build: ../
-    container_name: devices-mrv_lx
+    container_name: devices_mrv_lx
     environment:  
       DEVICE_TYPE: mrv_lx
       SSH_PASSWORD: test
@@ -173,7 +173,7 @@ services:
 
   mrv_optiswitch:
     build: ../
-    container_name: devices-mrv_optiswitch
+    container_name: devices_mrv_optiswitch
     environment:  
       DEVICE_TYPE: mrv_optiswitch
       SSH_PASSWORD: test
@@ -182,7 +182,7 @@ services:
 
   netapp_cdot:
     build: ../
-    container_name: devices-netapp_cdot
+    container_name: devices_netapp_cdot
     environment:  
       DEVICE_TYPE: netapp_cdot
       SSH_PASSWORD: test
@@ -191,7 +191,7 @@ services:
 
   netgear_prosafe:
     build: ../
-    container_name: devices-netgear_prosafe
+    container_name: devices_netgear_prosafe
     environment:  
       DEVICE_TYPE: netgear_prosafe
       SSH_PASSWORD: test
@@ -200,7 +200,7 @@ services:
 
   netscaler:
     build: ../
-    container_name: devices-netscaler
+    container_name: devices_netscaler
     environment:  
       DEVICE_TYPE: netscaler
       SSH_PASSWORD: test
@@ -209,7 +209,7 @@ services:
 
   nokia_srl:
     build: ../
-    container_name: devices-nokia_srl
+    container_name: devices_nokia_srl
     environment:  
       DEVICE_TYPE: nokia_srl
       SSH_PASSWORD: test
@@ -218,7 +218,7 @@ services:
 
   nokia_sros:
     build: ../
-    container_name: devices-nokia_sros
+    container_name: devices_nokia_sros
     environment:  
       DEVICE_TYPE: nokia_sros
       SSH_PASSWORD: test
@@ -227,7 +227,7 @@ services:
 
   oneaccess_oneos:
     build: ../
-    container_name: devices-oneaccess_oneos
+    container_name: devices_oneaccess_oneos
     environment:  
       DEVICE_TYPE: oneaccess_oneos
       SSH_PASSWORD: test
@@ -236,7 +236,7 @@ services:
 
   ovs_linux:
     build: ../
-    container_name: devices-ovs_linux
+    container_name: devices_ovs_linux
     environment:  
       DEVICE_TYPE: ovs_linux
       SSH_PASSWORD: test
@@ -245,7 +245,7 @@ services:
 
   paloalto_panos:
     build: ../
-    container_name: devices-paloalto_panos
+    container_name: devices_paloalto_panos
     environment:  
       DEVICE_TYPE: paloalto_panos
       SSH_PASSWORD: test
@@ -254,7 +254,7 @@ services:
 
   quanta_mesh:
     build: ../
-    container_name: devices-quanta_mesh
+    container_name: devices_quanta_mesh
     environment:  
       DEVICE_TYPE: quanta_mesh
       SSH_PASSWORD: test
@@ -263,7 +263,7 @@ services:
 
   rad_etx:
     build: ../
-    container_name: devices-rad_etx
+    container_name: devices_rad_etx
     environment:  
       DEVICE_TYPE: rad_etx
       SSH_PASSWORD: test
@@ -272,7 +272,7 @@ services:
 
   raisecom_roap:
     build: ../
-    container_name: devices-raisecom_roap
+    container_name: devices_raisecom_roap
     environment:  
       DEVICE_TYPE: raisecom_roap
       SSH_PASSWORD: test
@@ -281,7 +281,7 @@ services:
 
   ruckus_fastiron:
     build: ../
-    container_name: devices-ruckus_fastiron
+    container_name: devices_ruckus_fastiron
     environment:  
       DEVICE_TYPE: ruckus_fastiron
       SSH_PASSWORD: test
@@ -290,7 +290,7 @@ services:
 
   ruijie_os:
     build: ../
-    container_name: devices-ruijie_os
+    container_name: devices_ruijie_os
     environment:  
       DEVICE_TYPE: ruijie_os
       SSH_PASSWORD: test
@@ -299,7 +299,7 @@ services:
 
   sixwind_os:
     build: ../
-    container_name: devices-sixwind_os
+    container_name: devices_sixwind_os
     environment:  
       DEVICE_TYPE: sixwind_os
       SSH_PASSWORD: test
@@ -308,7 +308,7 @@ services:
 
   sophos_sfos:
     build: ../
-    container_name: devices-sophos_sfos
+    container_name: devices_sophos_sfos
     environment:  
       DEVICE_TYPE: sophos_sfos
       SSH_PASSWORD: test
@@ -317,7 +317,7 @@ services:
 
   supermicro_smis:
     build: ../
-    container_name: devices-supermicro_smis
+    container_name: devices_supermicro_smis
     environment:  
       DEVICE_TYPE: supermicro_smis
       SSH_PASSWORD: test
@@ -326,7 +326,7 @@ services:
 
   tplink_jetstream:
     build: ../
-    container_name: devices-tplink_jetstream
+    container_name: devices_tplink_jetstream
     environment:  
       DEVICE_TYPE: tplink_jetstream
       SSH_PASSWORD: test
@@ -335,7 +335,7 @@ services:
 
   ubiquiti_edgerouter:
     build: ../
-    container_name: devices-ubiquiti_edgerouter
+    container_name: devices_ubiquiti_edgerouter
     environment:  
       DEVICE_TYPE: ubiquiti_edgerouter
       SSH_PASSWORD: test
@@ -344,7 +344,7 @@ services:
 
   ubiquiti_edgeswitch:
     build: ../
-    container_name: devices-ubiquiti_edgeswitch
+    container_name: devices_ubiquiti_edgeswitch
     environment:  
       DEVICE_TYPE: ubiquiti_edgeswitch
       SSH_PASSWORD: test
@@ -353,7 +353,7 @@ services:
 
   ubiquiti_unifiswitch:
     build: ../
-    container_name: devices-ubiquiti_unifiswitch
+    container_name: devices_ubiquiti_unifiswitch
     environment:  
       DEVICE_TYPE: ubiquiti_unifiswitch
       SSH_PASSWORD: test
@@ -362,7 +362,7 @@ services:
 
   vyatta_vyos:
     build: ../
-    container_name: devices-vyatta_vyos
+    container_name: devices_vyatta_vyos
     environment:  
       DEVICE_TYPE: vyatta_vyos
       SSH_PASSWORD: test
@@ -371,7 +371,7 @@ services:
 
   vyos:
     build: ../
-    container_name: devices-vyos
+    container_name: devices_vyos
     environment:  
       DEVICE_TYPE: vyos
       SSH_PASSWORD: test
@@ -380,7 +380,7 @@ services:
 
   watchguard_fireware:
     build: ../
-    container_name: devices-watchguard_fireware
+    container_name: devices_watchguard_fireware
     environment:  
       DEVICE_TYPE: watchguard_fireware
       SSH_PASSWORD: test
@@ -389,7 +389,7 @@ services:
 
   yamaha:
     build: ../
-    container_name: devices-yamaha
+    container_name: devices_yamaha
     environment:  
       DEVICE_TYPE: yamaha
       SSH_PASSWORD: test
@@ -398,7 +398,7 @@ services:
 
   zte_zxros:
     build: ../
-    container_name: devices-zte_zxros
+    container_name: devices_zte_zxros
     environment:  
       DEVICE_TYPE: zte_zxros
       SSH_PASSWORD: test
@@ -407,7 +407,7 @@ services:
 
   zyxel_os:
     build: ../
-    container_name: devices-zyxel_os
+    container_name: devices_zyxel_os
     environment:  
       DEVICE_TYPE: zyxel_os
       SSH_PASSWORD: test
