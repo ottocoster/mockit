@@ -9,11 +9,11 @@ services:
       - SSH_PASSWORD=test
       - LOGIN_RETRY=3
     networks:
-      - devices-network
+      - devices_network
     ports:
       - "22:22"
       - "161:161/udp"
 
 networks:
-  devices-network:
+  devices_network:
     driver: bridge

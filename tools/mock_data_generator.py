@@ -509,7 +509,7 @@ def generate_docker_compose(device_list, platform, base_dir):
     
     # Add network configuration at the end
     compose_content.append("""networks:
-  devices-network:
+  devices_network:
     driver: bridge
     """)
     

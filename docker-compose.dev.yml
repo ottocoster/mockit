@@ -3,7 +3,7 @@ services:
   cisco_ios:
     build: .
     environment:
-      - DEVICE_TYPE=cisco_ios
+      - DEVICE_TYPE=cisco_nxos
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       - NETCONF_USERNAME=test
@@ -13,10 +13,10 @@ services:
       # - DEVICE_DELAY=1
       # - LOGIN_DELAY=3
       # - LOGIN_RETRY=2
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     networks:
-      devices-network:
+      devices_network:
         ipv4_address: 172.16.240.45 # change to what ipv4 you prefer
         ipv6_address: fc00::abcd # change to what ipv6 you prefer
     ports:
@@ -26,7 +26,7 @@ services:
       - "830:830"
 
 networks:
-  devices-network:
+  devices_network:
     enable_ipv6: true
     driver: bridge
     ipam:

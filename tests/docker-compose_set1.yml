@@ -4,7 +4,7 @@ services:
     build: .
     container_name: devices-test_container
     networks:
-      - devices-network
+      - devices_network
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
     
   a10:
@@ -14,7 +14,7 @@ services:
       DEVICE_TYPE: a10
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   accedian:
     build: ../
@@ -23,7 +23,7 @@ services:
       DEVICE_TYPE: accedian
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   adtran_os:
     build: ../
@@ -32,7 +32,7 @@ services:
       DEVICE_TYPE: adtran_os
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   alcatel_aos:
     build: ../
@@ -41,7 +41,7 @@ services:
       DEVICE_TYPE: alcatel_aos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   alcatel_sros:
     build: ../
@@ -50,7 +50,7 @@ services:
       DEVICE_TYPE: alcatel_sros
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   allied_telesis_awplus:
     build: ../
@@ -59,7 +59,7 @@ services:
       DEVICE_TYPE: allied_telesis_awplus
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   apresia_aeos:
     build: ../
@@ -68,7 +68,7 @@ services:
       DEVICE_TYPE: apresia_aeos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   arista_eos:
     build: ../
@@ -77,7 +77,7 @@ services:
       DEVICE_TYPE: arista_eos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   arris_cer:
     build: ../
@@ -86,7 +86,7 @@ services:
       DEVICE_TYPE: arris_cer
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   aruba_os:
     build: ../
@@ -97,7 +97,7 @@ services:
     ports:
       - "24:22"
     networks:
-      - devices-network
+      - devices_network
 
   aruba_osswitch:
     build: ../
@@ -106,7 +106,7 @@ services:
       DEVICE_TYPE: aruba_osswitch
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   aruba_procurve:
     build: ../
@@ -115,7 +115,7 @@ services:
       DEVICE_TYPE: aruba_procurve
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   audiocode_66:
     build: ../
@@ -124,7 +124,7 @@ services:
       DEVICE_TYPE: audiocode_66
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   audiocode_72:
     build: ../
@@ -133,7 +133,7 @@ services:
       DEVICE_TYPE: audiocode_72
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   # audiocode_shell:
   #   build: ../
@@ -142,7 +142,7 @@ services:
   #     DEVICE_TYPE: audiocode_shell
   #     SSH_PASSWORD: test
   #   networks:
-  #     - devices-network
+  #     - devices_network
 
   avaya_ers:
     build: ../
@@ -151,7 +151,7 @@ services:
       DEVICE_TYPE: avaya_ers
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   avaya_vsp:
     build: ../
@@ -160,7 +160,7 @@ services:
       DEVICE_TYPE: avaya_vsp
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   broadcom_icos:
     build: ../
@@ -169,7 +169,7 @@ services:
       DEVICE_TYPE: broadcom_icos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   brocade_fastiron:
     build: ../
@@ -178,7 +178,7 @@ services:
       DEVICE_TYPE: brocade_fastiron
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   brocade_fos:
     build: ../
@@ -187,7 +187,7 @@ services:
       DEVICE_TYPE: brocade_fos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   brocade_netiron:
     build: ../
@@ -196,7 +196,7 @@ services:
       DEVICE_TYPE: brocade_netiron
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   brocade_nos:
     build: ../
@@ -205,7 +205,7 @@ services:
       DEVICE_TYPE: brocade_nos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   brocade_vdx:
     build: ../
@@ -214,7 +214,7 @@ services:
       DEVICE_TYPE: brocade_vdx
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   brocade_vyos:
     build: ../
@@ -223,7 +223,7 @@ services:
       DEVICE_TYPE: brocade_vyos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   calix_b6:
     build: ../
@@ -232,7 +232,7 @@ services:
       DEVICE_TYPE: calix_b6
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   casa_cmts:
     build: ../
@@ -241,7 +241,7 @@ services:
       DEVICE_TYPE: casa_cmts
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   cdot_cros:
     build: ../
@@ -250,7 +250,7 @@ services:
       DEVICE_TYPE: cdot_cros
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   centec_os:
     build: ../
@@ -259,7 +259,7 @@ services:
       DEVICE_TYPE: centec_os
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   checkpoint_gaia:
     build: ../
@@ -268,7 +268,7 @@ services:
       DEVICE_TYPE: checkpoint_gaia
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   ciena_saos:
     build: ../
@@ -277,7 +277,7 @@ services:
       DEVICE_TYPE: ciena_saos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   cisco_asa:
     build: ../
@@ -286,7 +286,7 @@ services:
       DEVICE_TYPE: cisco_asa
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   cisco_ftd:
     build: ../
@@ -295,7 +295,7 @@ services:
       DEVICE_TYPE: cisco_ftd
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   cisco_ios:
     build: ../
@@ -304,7 +304,7 @@ services:
       DEVICE_TYPE: cisco_ios
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
   cisco_nxos:
     build: ../
@@ -313,7 +313,7 @@ services:
       DEVICE_TYPE: cisco_nxos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
   cisco_s200:
     build: ../
@@ -322,7 +322,7 @@ services:
       DEVICE_TYPE: cisco_s200
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
   cisco_s300:
     build: ../
@@ -331,7 +331,7 @@ services:
       DEVICE_TYPE: cisco_s300
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
   # cisco_tp:
   #   build: ../
@@ -340,7 +340,7 @@ services:
   #     DEVICE_TYPE: cisco_tp
   #     SSH_PASSWORD: test
   #   networks:
-  #     - devices-network
+  #     - devices_network
       
   cisco_viptela:
     build: ../
@@ -349,7 +349,7 @@ services:
       DEVICE_TYPE: cisco_viptela
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
   cisco_wlc:
     build: ../
@@ -358,7 +358,7 @@ services:
       DEVICE_TYPE: cisco_wlc
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
   cisco_xe:
     build: ../
@@ -367,7 +367,7 @@ services:
       DEVICE_TYPE: cisco_xe
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
   cisco_xr:
     build: ../
@@ -376,7 +376,7 @@ services:
       DEVICE_TYPE: cisco_xr
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
   cloudgenix_ion:
     build: ../
@@ -385,7 +385,7 @@ services:
       DEVICE_TYPE: cloudgenix_ion
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
   coriant:
     build: ../
@@ -394,8 +394,8 @@ services:
       DEVICE_TYPE: coriant
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
 networks:
-  devices-network:
+  devices_network:
     driver: bridge

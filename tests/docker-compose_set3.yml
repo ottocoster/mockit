@@ -4,7 +4,7 @@ services:
     build: .
     container_name: devices-test_container
     networks:
-      - devices-network
+      - devices_network
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
       
   hp_comware:
@@ -14,7 +14,7 @@ services:
       DEVICE_TYPE: hp_comware
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   hp_procurve:
     build: ../
@@ -23,7 +23,7 @@ services:
       DEVICE_TYPE: hp_procurve
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   huawei:
     build: ../
@@ -32,7 +32,7 @@ services:
       DEVICE_TYPE: huawei
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   huawei_olt:
     build: ../
@@ -41,7 +41,7 @@ services:
       DEVICE_TYPE: huawei_olt
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   huawei_smartax:
     build: ../
@@ -50,7 +50,7 @@ services:
       DEVICE_TYPE: huawei_smartax
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   huawei_vrpv8:
     build: ../
@@ -59,7 +59,7 @@ services:
       DEVICE_TYPE: huawei_vrpv8
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   ipinfusion_ocnos:
     build: ../
@@ -68,7 +68,7 @@ services:
       DEVICE_TYPE: ipinfusion_ocnos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   juniper_junos:
     build: ../
@@ -77,7 +77,7 @@ services:
       DEVICE_TYPE: juniper_junos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   juniper_screenos:
     build: ../
@@ -86,7 +86,7 @@ services:
       DEVICE_TYPE: juniper_screenos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   keymile:
     build: ../
@@ -95,7 +95,7 @@ services:
       DEVICE_TYPE: keymile
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   keymile_nos:
     build: ../
@@ -104,7 +104,7 @@ services:
       DEVICE_TYPE: keymile_nos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   linux:
     build: ../
@@ -113,7 +113,7 @@ services:
       DEVICE_TYPE: linux
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   mellanox:
     build: ../
@@ -122,7 +122,7 @@ services:
       DEVICE_TYPE: mellanox
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   mellanox_mlnxos:
     build: ../
@@ -131,7 +131,7 @@ services:
       DEVICE_TYPE: mellanox_mlnxos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   mikrotik_routeros_v6:
     build: ../
@@ -141,7 +141,7 @@ services:
       DEVICE_VERSION: v6
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   mikrotik_routeros_v7:
     build: ../
@@ -151,7 +151,7 @@ services:
       DEVICE_VERSION: v7
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   mikrotik_switchos:
     build: ../
@@ -160,7 +160,7 @@ services:
       DEVICE_TYPE: mikrotik_switchos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   mrv_lx:
     build: ../
@@ -169,7 +169,7 @@ services:
       DEVICE_TYPE: mrv_lx
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   mrv_optiswitch:
     build: ../
@@ -178,7 +178,7 @@ services:
       DEVICE_TYPE: mrv_optiswitch
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   netapp_cdot:
     build: ../
@@ -187,7 +187,7 @@ services:
       DEVICE_TYPE: netapp_cdot
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   netgear_prosafe:
     build: ../
@@ -196,7 +196,7 @@ services:
       DEVICE_TYPE: netgear_prosafe
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   netscaler:
     build: ../
@@ -205,7 +205,7 @@ services:
       DEVICE_TYPE: netscaler
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   nokia_srl:
     build: ../
@@ -214,7 +214,7 @@ services:
       DEVICE_TYPE: nokia_srl
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   nokia_sros:
     build: ../
@@ -223,7 +223,7 @@ services:
       DEVICE_TYPE: nokia_sros
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   oneaccess_oneos:
     build: ../
@@ -232,7 +232,7 @@ services:
       DEVICE_TYPE: oneaccess_oneos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   ovs_linux:
     build: ../
@@ -241,7 +241,7 @@ services:
       DEVICE_TYPE: ovs_linux
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   paloalto_panos:
     build: ../
@@ -250,7 +250,7 @@ services:
       DEVICE_TYPE: paloalto_panos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   quanta_mesh:
     build: ../
@@ -259,7 +259,7 @@ services:
       DEVICE_TYPE: quanta_mesh
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   rad_etx:
     build: ../
@@ -268,7 +268,7 @@ services:
       DEVICE_TYPE: rad_etx
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   raisecom_roap:
     build: ../
@@ -277,7 +277,7 @@ services:
       DEVICE_TYPE: raisecom_roap
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   ruckus_fastiron:
     build: ../
@@ -286,7 +286,7 @@ services:
       DEVICE_TYPE: ruckus_fastiron
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   ruijie_os:
     build: ../
@@ -295,7 +295,7 @@ services:
       DEVICE_TYPE: ruijie_os
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   sixwind_os:
     build: ../
@@ -304,7 +304,7 @@ services:
       DEVICE_TYPE: sixwind_os
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   sophos_sfos:
     build: ../
@@ -313,7 +313,7 @@ services:
       DEVICE_TYPE: sophos_sfos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   supermicro_smis:
     build: ../
@@ -322,7 +322,7 @@ services:
       DEVICE_TYPE: supermicro_smis
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   tplink_jetstream:
     build: ../
@@ -331,7 +331,7 @@ services:
       DEVICE_TYPE: tplink_jetstream
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   ubiquiti_edgerouter:
     build: ../
@@ -340,7 +340,7 @@ services:
       DEVICE_TYPE: ubiquiti_edgerouter
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   ubiquiti_edgeswitch:
     build: ../
@@ -349,7 +349,7 @@ services:
       DEVICE_TYPE: ubiquiti_edgeswitch
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   ubiquiti_unifiswitch:
     build: ../
@@ -358,7 +358,7 @@ services:
       DEVICE_TYPE: ubiquiti_unifiswitch
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   vyatta_vyos:
     build: ../
@@ -367,7 +367,7 @@ services:
       DEVICE_TYPE: vyatta_vyos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   vyos:
     build: ../
@@ -376,7 +376,7 @@ services:
       DEVICE_TYPE: vyos
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   watchguard_fireware:
     build: ../
@@ -385,7 +385,7 @@ services:
       DEVICE_TYPE: watchguard_fireware
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   yamaha:
     build: ../
@@ -394,7 +394,7 @@ services:
       DEVICE_TYPE: yamaha
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   zte_zxros:
     build: ../
@@ -403,7 +403,7 @@ services:
       DEVICE_TYPE: zte_zxros
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
 
   zyxel_os:
     build: ../
@@ -412,8 +412,8 @@ services:
       DEVICE_TYPE: zyxel_os
       SSH_PASSWORD: test
     networks:
-      - devices-network
+      - devices_network
       
 networks:
-  devices-network:
+  devices_network:
     driver: bridge
