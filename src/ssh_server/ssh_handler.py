@@ -26,7 +26,7 @@ class SSH_Handler:
         self.config_mode = False
         self.config_pattern = "..#"
         self.delay = options['delay']
-        self.break_commands = ['exit', 'quit', 'logout', '\q']
+        self.break_commands = ['exit', 'quit', 'logout', '\\q']
         self.handle_script_function = None
         config_dir  = f"configs/{self.device_type}"
         if self.device_version:
@@ -43,7 +43,6 @@ class SSH_Handler:
             self.openai_client = OpenAI(
                 api_key=self.openai_apikey,
             )
-
 
     def _load_script_function(self, script_path, function_name):
         # Convert the file system path to a module path by replacing slashes with dots
@@ -73,6 +72,8 @@ class SSH_Handler:
         Continuously reads from the process while the channel is open.
         Exits when the SSH channel is closed.
         """
+        if "banner" in self.commands:
+            self.respond(await self._get_command_output(self.commands["banner"]))
         while self.process.channel._send_state == "open":
             self.process.stdout.write(self.prompt_terminator)
             command = await self.process.stdin.readline()
@@ -177,7 +178,6 @@ class SSH_Handler:
             return True
         
         return False
-
     
     def get_matching_commands(self, command):
         # Find commands that start with the given command string
