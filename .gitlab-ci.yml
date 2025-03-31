@@ -34,6 +34,9 @@ build:
     - docker buildx create --use                                # Create and use a buildx builder
     #- docker buildx inspect --bootstrap                         # Inspect the builder and bootstrap it
     - docker buildx build . --platform linux/amd64,linux/arm64 --tag "$CI_REGISTRY_IMAGE:${IMAGE_VERSION}" --output "type=tar,compression=gzip,dest=${IMAGE_FILE}" --output "type=registry,ref=$CI_REGISTRY_IMAGE:${IMAGE_VERSION}"
+  after_script:
+    - docker buildx rm
+    - docker system prune -af
   artifacts:
     paths:
       - "slurpit-mockit-*.tar.gz"
