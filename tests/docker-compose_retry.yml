@@ -9,11 +9,11 @@ services:
       - SSH_PASSWORD=test
       - LOGIN_RETRY=3
     networks:
-      - devices_network
+      - mockit_network
     ports:
       - "22:22"
       - "161:161/udp"
 
 networks:
-  devices_network:
+  mockit_network:
     driver: bridge

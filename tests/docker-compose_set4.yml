@@ -4,7 +4,7 @@ services:
     build: .
     container_name: devices_test_container
     networks:
-      - devices_network
+      - mockit_network
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
       
       
@@ -15,7 +15,7 @@ services:
       DEVICE_TYPE: adva_fsp150f2
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
   
   adva_fsp150f3:
     build: ../
@@ -24,7 +24,7 @@ services:
       DEVICE_TYPE: adva_fsp150f3
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
       
   alaxala_ax26s:
     build: ../
@@ -33,7 +33,7 @@ services:
       DEVICE_TYPE: alaxala_ax26s
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
     
   alaxala_ax36s:
     build: ../
@@ -42,7 +42,7 @@ services:
       DEVICE_TYPE: alaxala_ax36s
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
       
   arris_cer:
     build: ../
@@ -51,7 +51,7 @@ services:
       DEVICE_TYPE: arris_cer
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
   
   casa_cmts:
     build: ../
@@ -60,7 +60,7 @@ services:
       DEVICE_TYPE: casa_cmts
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
   
   cisco_apic:
     build: ../
@@ -69,7 +69,7 @@ services:
       DEVICE_TYPE: cisco_apic
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
 
   cisco_s200:
     build: ../
@@ -78,7 +78,7 @@ services:
       DEVICE_TYPE: cisco_s200
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
 
   digi_transport:
     build: ../
@@ -87,7 +87,7 @@ services:
       DEVICE_TYPE: digi_transport
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
 
   ericsson_mltn63:
     build: ../
@@ -96,7 +96,7 @@ services:
       DEVICE_TYPE: ericsson_mltn63
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
 
   ericsson_mltn66:
     build: ../
@@ -105,7 +105,7 @@ services:
       DEVICE_TYPE: ericsson_mltn66
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
 
   fiberstore_fsos:
     build: ../
@@ -114,7 +114,7 @@ services:
       DEVICE_TYPE: fiberstore_fsos
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
   
   garderos_grs:
     build: ../
@@ -123,7 +123,7 @@ services:
       DEVICE_TYPE: garderos_grs
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
 
   hillstone_stoneos:
     build: ../
@@ -132,7 +132,7 @@ services:
       DEVICE_TYPE: hillstone_stoneos
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
 
   huawei_vrp:
     build: ../
@@ -141,7 +141,7 @@ services:
       DEVICE_TYPE: huawei_vrp
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
   
   juniper:
     build: ../
@@ -150,7 +150,7 @@ services:
       DEVICE_TYPE: juniper
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
 
   ubiquiti_edge:
     build: ../
@@ -159,7 +159,7 @@ services:
       DEVICE_TYPE: ubiquiti_edge
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
   
   vertiv_mph:
     build: ../
@@ -168,8 +168,8 @@ services:
       DEVICE_TYPE: vertiv_mph
       SSH_PASSWORD: test
     networks:
-      - devices_network
+      - mockit_network
 
 networks:
-  devices_network:
+  mockit_network:
     driver: bridge

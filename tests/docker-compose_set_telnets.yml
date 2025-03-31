@@ -4,7 +4,7 @@ services:
     build: .
     container_name: devices_test_container
     networks:
-      - devices_network
+      - mockit_network
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
 
   adtran_os:
@@ -16,7 +16,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   apresia_aeos:
     build: ../
@@ -27,7 +27,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   arista_eos:
     build: ../
@@ -38,7 +38,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   aruba_procurve:
     build: ../
@@ -49,7 +49,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   audiocode_72:
     build: ../
@@ -60,7 +60,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   audiocode_66:
     build: ../
@@ -71,7 +71,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   audiocode_shell:
     build: ../
@@ -82,7 +82,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   brocade_fastiron:
     build: ../
@@ -93,7 +93,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   brocade_netiron:
     build: ../
@@ -104,7 +104,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   calix_b6:
     build: ../
@@ -115,7 +115,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   centec_os:
     build: ../
@@ -126,7 +126,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   ciena_saos:
     build: ../
@@ -137,7 +137,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   cisco_ios:
     build: ../
@@ -148,7 +148,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   cisco_xr:
     build: ../
@@ -159,7 +159,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   cisco_s200:
     build: ../
@@ -170,7 +170,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   cisco_s300:
     build: ../
@@ -181,7 +181,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   dell_dnos6:
     build: ../
@@ -192,7 +192,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   dell_powerconnect:
     build: ../
@@ -203,7 +203,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   dlink_ds:
     build: ../
@@ -214,7 +214,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   extreme:
     build: ../
@@ -225,7 +225,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   extreme_exos:
     build: ../
@@ -236,7 +236,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   extreme_netiron:
     build: ../
@@ -247,7 +247,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   generic:
     build: ../
@@ -258,7 +258,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   hp_procurve:
     build: ../
@@ -269,7 +269,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   hp_comware:
     build: ../
@@ -280,7 +280,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   huawei:
     build: ../
@@ -291,7 +291,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   huawei_olt:
     build: ../
@@ -302,7 +302,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   ipinfusion_ocnos:
     build: ../
@@ -313,7 +313,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   juniper_junos:
     build: ../
@@ -324,7 +324,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   nokia_sros:
     build: ../
@@ -335,7 +335,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   oneaccess_oneos:
     build: ../
@@ -346,7 +346,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   # paloalto_panos:
   #   build: ../
@@ -357,7 +357,7 @@ services:
   #     - TELNET_PASSWORD=test
   #     - TELNET_SERVER_ENABLED=true
   #   networks:
-  #     - devices_network
+  #     - mockit_network
 
   rad_etx:
     build: ../
@@ -368,7 +368,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   raisecom:
     build: ../
@@ -379,7 +379,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   ruckus_fastiron:
     build: ../
@@ -390,7 +390,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   ruijie_os:
     build: ../
@@ -401,7 +401,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   supermicro_smis:
     build: ../
@@ -412,7 +412,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   teldat_cit:
     build: ../
@@ -423,7 +423,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   tplink_jetstream:
     build: ../
@@ -434,7 +434,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   yamaha:
     build: ../
@@ -445,7 +445,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   zte_zxros:
     build: ../
@@ -456,7 +456,7 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
   maipu:
     build: ../
@@ -467,8 +467,8 @@ services:
       - TELNET_PASSWORD=test
       - TELNET_SERVER_ENABLED=true
     networks:
-      - devices_network
+      - mockit_network
 
 networks:
-  devices_network:
+  mockit_network:
     driver: bridge
