@@ -3,11 +3,13 @@ services:
   cisco_ios:
     build: .
     environment:
-      - DEVICE_TYPE=cisco_nxos
+      - DEVICE_TYPE=cisco_ios
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       - NETCONF_USERNAME=test
       - NETCONF_PASSWORD=test
+      - AUTHKEY_ENABLED=true
+      - DEBUG_ENABLED=true
       # - OPENAI_SUPPORT=true
       # - DEVICE_VERSION=v6
       # - DEVICE_DELAY=1
@@ -15,6 +17,8 @@ services:
       # - LOGIN_RETRY=2
     # env_file:
     #   - .env
+    volumes:
+      - ./auth_keys/:/auth_keys/
     networks:
       devices_network:
         ipv4_address: 172.16.240.45 # change to what ipv4 you prefer
