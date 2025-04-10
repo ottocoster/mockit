@@ -3,9 +3,11 @@ services:
   test_container:
     build: .
     container_name: devices_test_container
+    tty: true
+    stdin_open: true
     networks:
       - mockit_network
-    entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
+    command: /bin/sh -c "python --version && tail -f /dev/null"
       
       
   adva_fsp150f2:
@@ -173,3 +175,4 @@ services:
 networks:
   mockit_network:
     driver: bridge
+    name: mockit_network

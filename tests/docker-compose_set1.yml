@@ -3,9 +3,11 @@ services:
   test_container:
     build: .
     container_name: devices_test_container
+    tty: true    
+    stdin_open: true
     networks:
       - mockit_network
-    entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
+    command: /bin/sh -c "python --version && tail -f /dev/null"
     
   a10:
     build: ../
@@ -13,6 +15,7 @@ services:
     environment:  
       DEVICE_TYPE: a10
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -22,6 +25,7 @@ services:
     environment:  
       DEVICE_TYPE: accedian
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -31,6 +35,7 @@ services:
     environment:  
       DEVICE_TYPE: adtran_os
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -40,6 +45,7 @@ services:
     environment:  
       DEVICE_TYPE: alcatel_aos
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -49,6 +55,7 @@ services:
     environment:  
       DEVICE_TYPE: alcatel_sros
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -58,6 +65,7 @@ services:
     environment:  
       DEVICE_TYPE: allied_telesis_awplus
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -67,6 +75,7 @@ services:
     environment:  
       DEVICE_TYPE: apresia_aeos
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -76,6 +85,7 @@ services:
     environment:  
       DEVICE_TYPE: arista_eos
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -85,6 +95,7 @@ services:
     environment:  
       DEVICE_TYPE: arris_cer
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -94,8 +105,7 @@ services:
     environment:  
       DEVICE_TYPE: aruba_os
       SSH_PASSWORD: test
-    ports:
-      - "24:22"
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -105,6 +115,7 @@ services:
     environment:  
       DEVICE_TYPE: aruba_osswitch
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -114,6 +125,7 @@ services:
     environment:  
       DEVICE_TYPE: aruba_procurve
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -123,6 +135,7 @@ services:
     environment:  
       DEVICE_TYPE: audiocode_66
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -132,6 +145,7 @@ services:
     environment:  
       DEVICE_TYPE: audiocode_72
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -150,6 +164,7 @@ services:
     environment:  
       DEVICE_TYPE: avaya_ers
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -159,6 +174,7 @@ services:
     environment:  
       DEVICE_TYPE: avaya_vsp
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -168,6 +184,7 @@ services:
     environment:  
       DEVICE_TYPE: broadcom_icos
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -177,6 +194,7 @@ services:
     environment:  
       DEVICE_TYPE: brocade_fastiron
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -186,6 +204,7 @@ services:
     environment:  
       DEVICE_TYPE: brocade_fos
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -195,6 +214,7 @@ services:
     environment:  
       DEVICE_TYPE: brocade_netiron
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -204,6 +224,7 @@ services:
     environment:  
       DEVICE_TYPE: brocade_nos
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -213,6 +234,7 @@ services:
     environment:  
       DEVICE_TYPE: brocade_vdx
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -222,6 +244,7 @@ services:
     environment:  
       DEVICE_TYPE: brocade_vyos
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -231,6 +254,7 @@ services:
     environment:  
       DEVICE_TYPE: calix_b6
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -240,6 +264,7 @@ services:
     environment:  
       DEVICE_TYPE: casa_cmts
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -249,6 +274,7 @@ services:
     environment:  
       DEVICE_TYPE: cdot_cros
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -258,6 +284,7 @@ services:
     environment:  
       DEVICE_TYPE: centec_os
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -267,6 +294,7 @@ services:
     environment:  
       DEVICE_TYPE: checkpoint_gaia
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -276,6 +304,7 @@ services:
     environment:  
       DEVICE_TYPE: ciena_saos
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -285,6 +314,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_asa
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -294,6 +324,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_ftd
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
 
@@ -303,6 +334,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_ios
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
@@ -312,6 +344,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_nxos
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
@@ -321,6 +354,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_s200
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
@@ -330,6 +364,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_s300
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
@@ -348,6 +383,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_viptela
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
@@ -357,6 +393,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_wlc
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
@@ -366,6 +403,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_xe
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
@@ -375,6 +413,7 @@ services:
     environment:  
       DEVICE_TYPE: cisco_xr
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
@@ -384,6 +423,7 @@ services:
     environment:  
       DEVICE_TYPE: cloudgenix_ion
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
@@ -393,14 +433,11 @@ services:
     environment:  
       DEVICE_TYPE: coriant
       SSH_PASSWORD: test
+      DEBUG_ENABLED: true
     networks:
       - mockit_network
       
 networks:
   mockit_network:
     driver: bridge
-    ipam:
-      driver: default
-      config:
-          - subnet: "192.168.73.0/24"
-            gateway: "192.168.73.1"
+    name: mockit_network

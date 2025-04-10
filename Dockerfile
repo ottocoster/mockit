@@ -53,4 +53,6 @@ RUN apt update -y && apt upgrade -y \
     && apt-get install snmp -y \
     && uv pip install --system --no-cache -r requirements.txt
 
+EXPOSE 22 23 161
+
 CMD ["python", "src/main.py"]

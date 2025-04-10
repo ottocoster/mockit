@@ -19,3 +19,4 @@ services:
 networks:
   mockit_network:
     driver: bridge
+    name: mockit_network

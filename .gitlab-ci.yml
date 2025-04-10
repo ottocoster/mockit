@@ -6,25 +6,26 @@ stages:
   - test
   - push
 
-image: docker:latest
-services:
-  - docker:dind
-
 before_script:
   - MAJOR=$(sed -n 's/^MAJOR *= *\(.*\)/\1/p' src/version.py)
   - MINOR=$(sed -n 's/^MINOR *= *\(.*\)/\1/p' src/version.py)
   - COMMIT=$(sed -n 's/^COMMIT *= *\(.*\)/\1/p' src/version.py)
   - export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}"
   - export IMAGE_TAG="latest"
+  - export LATEST=""
   - if [[ "$CI_COMMIT_REF_NAME" != "main" ]]; then
       export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_NAME}";
       export IMAGE_TAG="latest-${CI_COMMIT_REF_NAME}";
+      export LATEST="-${CI_COMMIT_REF_NAME}";
     fi
   - export IMAGE_FILE="slurpit-mockit-${IMAGE_VERSION}.tar.gz"
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
 
 # Build stage for multi-architecture images
 build:
+  image: docker:latest
+  services:
+    - docker:dind
   stage: build
   variables:
     DOCKER_DRIVER: overlay2
@@ -44,37 +45,48 @@ build:
     expire_in: 6 month
 
 unit_test:
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
   stage: test
   script:
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml up -d --build
-    - sleep 120
-    - docker exec devices_test_container pytest --color=yes -v --durations 0 -m test_set1 -rP
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml build --pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml up -d
+    - sleep 240
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml exec test_container pytest --color=yes -v --durations 0 -m test_set1 -rP
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml stop || true
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml up -d --build
-    - sleep 120
-    - docker exec devices_test_container pytest --color=yes -v --durations 0 -m test_set2 -rP
+
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml build --pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml up -d
+    - sleep 240
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml exec test_container pytest --color=yes -v --durations 0 -m test_set2 -rP
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml stop || true
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml up -d --build
-    - sleep 120
-    - docker exec devices_test_container pytest --color=yes -v --durations 0 -m test_set3 -rP
+
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml build --pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml up -d
+    - sleep 240
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml exec test_container pytest --color=yes -v --durations 0 -m test_set3 -rP
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml stop || true
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml up -d --build
-    - sleep 120
-    - docker exec devices_test_container pytest --color=yes -v --durations 0 -m test_telnets -rP
+
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml build --pull
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml up -d
+    - sleep 240
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml exec test_container pytest --color=yes -v --durations 0 -m test_telnets -rP
     - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml stop || true
   after_script:
+    - docker compose ps
     - mkdir $CI_PROJECT_DIR/logs 
     - |
       for container_id in $(docker compose ps -qa); do
         container_name=$(docker inspect --format='{{.Name}}' $container_id)
-        log_name=$(docker inspect --format='{{.Config.Image}}' $container_id)
-        docker logs $container_name > $CI_PROJECT_DIR/logs/logs_${log_name}.txt 2>&1 || true
+        echo "logging and removing $container_name"
+        docker logs ${container_name:1} > $CI_PROJECT_DIR/logs/logs_${container_name:1}.txt 2>&1 || true
+        docker rm -fv $container_id || true
       done
-    - docker stop $(docker network inspect devices_mockit_network --format '{{range .Containers}}{{println .Name}}{{end}}') || true
+    - docker rm -fv $(docker network inspect mockit_network --format '{{range $id, $container := .Containers}}{{println $id}}{{end}}') || true
+    - docker network rm -f mockit_network || true
     - docker system prune -a --volumes -f || true
   artifacts:
     when: always
@@ -86,6 +98,9 @@ unit_test:
     - build
 
 push:
+  image: docker:latest
+  services:
+    - docker:dind
   stage: push
   variables:
     DOCKER_DRIVER: overlay2
