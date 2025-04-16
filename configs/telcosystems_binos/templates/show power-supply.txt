@@ -1,0 +1,8 @@
+Power supply A : OK
+Power supply B : OK
+Power supply mix : OK
+    |----+-----------------|
+    |PS A|                 |
+    +----+      Front      |
+    |PS B|                 |
+    |----+-----------------|

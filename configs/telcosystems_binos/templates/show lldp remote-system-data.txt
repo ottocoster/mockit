@@ -1,0 +1,265 @@
+LLDP Remote System Data received on port 1/3/1
+======================================================================
+Remote Data TTL                 : 120
+Remote Data Age                 : 27
+Chassis Id Subtype              : MAC address
+Chassis Id                      : aa:bb:cc:dd:ee:01
+Port ID subtype                 : InterfaceName
+Port ID                         : mockEth1/0/1
+System Name                     : MOCK_CORE_DEVICE_ALPHA
+System Description              : MockOS v1.0, Layer 3 Switch Software (MOCK-SWITCH), Version 1.2.3
+                                     Technical Support: http://www.mockvendor.com/support
+                                                                                        Copyright (c) 2025 MockVendor Inc.
+              Compiled Tue 01-Apr-25 10:00 by mockdev
+Port Description                : LINK TO MOCK ROUTER A
+System capabilities supported   : Bridge
+                                  Router
+
+System capabilities enabled     : Bridge
+                                  Router
+
+Port Vlan Id                    : 60
+Auto-negotiation suppor/status  : Supported, Enabled
+Advertised capabilities         : 10baseT
+                                  10baseTFD
+                                  100baseTX
+                                  100baseTXFD
+                                  1000baseTFD
+
+Operational MAU type            : 1000BaseTFD
+Port power class                : PD
+PSE MDI power support           : Not supported
+PSE MDI power state             : Disabled
+PSE pairs control ability       : Pair selection can not be controlled
+PSE power pair                  : 0
+Power class                     : 0
+Link Aggregation status         : Not capable of being aggregated, not currently in aggregation
+Aggregated port ID              : 0
+Maximum supported frame size    : 0
+
+System Management addresses
+----------------------------------------------------------------------
+Address                         : (IPv4) 192.168.100.2
+Interface Numbering Subtype     : System Port Number
+Interface ID                    : 1
+
+
+
+LLDP Remote System Data received on port 1/3/1
+======================================================================
+Remote Data TTL                 : 30
+Remote Data Age                 : 5
+Chassis Id Subtype              : MAC address
+Chassis Id                      : aa:bb:cc:dd:ee:02
+Port ID subtype                 : MacAddress
+Port ID                         : aa:bb:cc:dd:ee:02
+System Name                     : MOCKNODE_REMOTE_RED
+System Description              : -
+Port Description                : mock_eth0/4
+System capabilities supported   : Bridge
+
+System capabilities enabled     : Bridge
+
+System Management addresses
+----------------------------------------------------------------------
+Address                         : (IPv4) 172.16.0.10
+Interface Numbering Subtype     : Unknown
+Interface ID                    : 0
+OID                             : Invalid OID
+
+
+
+LLDP Remote System Data received on port 1/3/2
+======================================================================
+Remote Data TTL                 : 120
+Remote Data Age                 : 1
+Chassis Id Subtype              : MAC address
+Chassis Id                      : aa:bb:cc:dd:ee:03
+Port ID subtype                 : InterfaceName
+Port ID                         : mockGig0/0/1
+System Name                     : MOCKNET_ROUTER_100MB
+System Description              : MockTech X1230E, Mock Routing OS Version 7.8.9 (Build MOCK1234)
+Port Description                : <<++ LINK TO NODE REDMOCK ++>>
+System capabilities supported   : Bridge
+
+System capabilities enabled     : Bridge
+
+Auto-negotiation suppor/status  : Supported, Disabled
+Advertised capabilities         : Other
+                                  10baseTFD
+                                  FdxSPause
+                                  FdxBPause
+                                  1000baseX
+                                  1000baseXFD
+                                  1000baseT
+
+Operational MAU type            : 1000BaseXFD
+Port power class                : PD
+PSE MDI power support           : Not supported
+PSE MDI power state             : Disabled
+PSE pairs control ability       : Pair selection can not be controlled
+PSE power pair                  : 0
+Power class                     : 0
+Link Aggregation status         : Capable of being aggregated, not currently in aggregation
+Aggregated port ID              : 0
+Maximum supported frame size    : 1628
+
+System Management addresses
+----------------------------------------------------------------------
+Address                         : (802) aa:bb:cc:dd:ee:03
+Interface Numbering Subtype     : ifIndex
+Interface ID                    : 0
+OID                             : Invalid OID
+
+System Protocols
+----------------------------------------------------------------------
+Protocol Index                  : 0
+Protocol                        : 0x383830393131
+
+Unknown Organizationally-Specific TLVs received
+----------------------------------------------------------------------
+Unknown TLV OUI                 : 0x0012bb
+Unknown TLV Subtype             : 1
+Unknown TLV Index               : 0
+Unknown TLV Data                : 00 3b 04
+
+Unknown TLV OUI                 : 0x0012bb
+Unknown TLV Subtype             : 4
+Unknown TLV Index               : 0
+Unknown TLV Data                : 80 00 02
+
+Unknown TLV OUI                 : 0x0012bb
+Unknown TLV Subtype             : 5
+Unknown TLV Index               : 0
+Unknown TLV Data                : 4d 4f 43 4b 2d 44 45 56 31 32 33 34 20 56 45
+                                  52 2e
+
+Unknown TLV OUI                 : 0x0012bb
+Unknown TLV Subtype             : 6
+Unknown TLV Index               : 0
+Unknown TLV Data                : 31 30 30
+
+Unknown TLV OUI                 : 0x0012bb
+Unknown TLV Subtype             : 7
+Unknown TLV Index               : 0
+Unknown TLV Data                : 56 37 2e 38 2e 39
+
+Unknown TLV OUI                 : 0x0012bb
+Unknown TLV Subtype             : 8
+Unknown TLV Index               : 0
+Unknown TLV Data                : 00
+
+Unknown TLV OUI                 : 0x0012bb
+Unknown TLV Subtype             : 9
+Unknown TLV Index               : 0
+Unknown TLV Data                : 4d 4f 43 4b 20 54 45 43 48 20 4c 54 44
+
+Unknown TLV OUI                 : 0x0012bb
+Unknown TLV Subtype             : 10
+Unknown TLV Index               : 0
+Unknown TLV Data                : 00
+
+Unknown TLV OUI                 : 0x0012bb
+Unknown TLV Subtype             : 11
+Unknown TLV Index               : 0
+Unknown TLV Data                : 00
+
+
+
+LLDP Remote System Data received on port 1/3/3
+======================================================================
+Remote Data TTL                 : 120
+Remote Data Age                 : 17
+Chassis Id Subtype              : MAC address
+Chassis Id                      : aa:bb:cc:dd:ee:04
+Port ID subtype                 : InterfaceName
+Port ID                         : 26
+System Name                     : MOCK_NODE_XY_5144
+System Description              : MOCK5144
+Port Description                : Port 26
+System capabilities supported   : Bridge
+
+System capabilities enabled     : Bridge
+
+Auto-negotiation suppor/status  : Supported, Disabled
+Advertised capabilities         :
+Operational MAU type            : 10GigBaseR
+Port power class                : PD
+PSE MDI power support           : Not supported
+PSE MDI power state             : Disabled
+PSE pairs control ability       : Pair selection can not be controlled
+PSE power pair                  : 0
+Power class                     : 0
+Link Aggregation status         : Capable of being aggregated, not currently in aggregation
+Aggregated port ID              : 0
+Maximum supported frame size    : 9216
+
+System Management addresses
+----------------------------------------------------------------------
+Address                         : (IPv4) 10.200.30.40
+Interface Numbering Subtype     : ifIndex
+Interface ID                    : 33554432
+OID                             : 1.3.6.1.2.1.2.2.1.1.2
+
+
+
+LLDP Remote System Data received on port 1/3/3
+======================================================================
+Remote Data TTL                 : 120
+Remote Data Age                 : 29
+Chassis Id Subtype              : MAC address
+Chassis Id                      : aa:bb:cc:dd:ee:05
+Port ID subtype                 : MacAddress
+Port ID                         : aa:bb:cc:dd:ee:06
+System capabilities supported   :
+System capabilities enabled     :
+
+
+
+LLDP Remote System Data received on port 1/3/4
+======================================================================
+Remote Data TTL                 : 120
+Remote Data Age                 : 21
+Chassis Id Subtype              : MAC address
+Chassis Id                      : aa:bb:cc:dd:ee:07
+Port ID subtype                 : MacAddress
+Port ID                         : aa:bb:cc:dd:ee:08
+System capabilities supported   :
+System capabilities enabled     :
+
+
+
+LLDP Remote System Data received on port 1/3/4
+======================================================================
+Remote Data TTL                 : 120
+Remote Data Age                 : 20
+Chassis Id Subtype              : MAC address
+Chassis Id                      : aa:bb:cc:dd:ee:04
+Port ID subtype                 : InterfaceName
+Port ID                         : 23
+System Name                     : MOCK_NODE_XY_5144
+System Description              : MOCK5144
+Port Description                : Port 23
+System capabilities supported   : Bridge
+
+System capabilities enabled     : Bridge
+
+Auto-negotiation suppor/status  : Supported, Disabled
+Advertised capabilities         :
+Operational MAU type            : 10GigBaseR
+Port power class                : PD
+PSE MDI power support           : Not supported
+PSE MDI power state             : Disabled
+PSE pairs control ability       : Pair selection can not be controlled
+PSE power pair                  : 0
+Power class                     : 0
+Link Aggregation status         : Capable of being aggregated, not currently in aggregation
+Aggregated port ID              : 0
+Maximum supported frame size    : 9216
+
+System Management addresses
+----------------------------------------------------------------------
+Address                         : (IPv4) 10.200.30.40
+Interface Numbering Subtype     : ifIndex
+Interface ID                    : 33554432
+OID                             : 1.3.6.1.2.1.2.2.1.1.2

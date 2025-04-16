@@ -1,0 +1,16 @@
+BATM Advanced Communications
+
+Switch model              : T5C-XG 256M
+Product Category : AccessEthernet(TM)
+
+Switch running SW version : 10.1.R5.3 created Dec 15 2014 - 13:32:51
+
+Switch Default SW file    : BiNOS-T5CXG-10.1.R5.3.Z
+Switch Default SW version : 10.1.R5.3
+
+BiNOSView file            : java.img - NOT FOUND
+BiNOSView version         : -
+
+Loader version            : 8.0.1 created Mar 31 2008 - 12:21:50
+
+Up time        : 153 days, 14 hours, 3 min, 4 sec.
