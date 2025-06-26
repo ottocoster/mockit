@@ -1,0 +1,309 @@
+PUB_NODE_ALPHA_1-10000001 {
+    protocols {
+        vpls {
+            encapsulation-type ethernet-vlan;
+            interface-mac-limit {
+                100;
+            }
+            no-tunnel-services;
+            vpls-id 10001;
+            mtu 9216;
+            neighbor 192.0.2.10;
+        }
+    }
+    instance-type vpls;
+    interface ae10.1001;
+}
+PUB_NODE_BETA_1-10000002 {
+    protocols {
+        evpn {
+            interface ae11.2002;
+        }
+    }
+    description "PUBLIC NODE BETA - PTP 1Gbps - 1-10000002";
+    instance-type evpn;
+    vlan-id 2002;
+    interface ae11.2002;
+    route-distinguisher 100:10000002;
+    vrf-import PUB_NODE_BETA_IN;
+    vrf-export PUB_NODE_BETA_OUT;
+}
+PUB_CORE_GAMMA_1-10000003 {
+    protocols {
+        vpls {
+            encapsulation-type ethernet-vlan;
+            interface-mac-limit {
+                100;
+            }
+            no-tunnel-services;
+            vpls-id 10003;
+            mtu 9216;
+            neighbor 192.0.2.1;
+            neighbor 192.0.2.2;
+            neighbor 192.0.2.3;
+            neighbor 192.0.2.4;
+            neighbor 192.0.2.5;
+        }
+    }
+    instance-type vpls;
+    interface ae12.1003;
+}
+PUB_TRANSIT_DELTA {
+    protocols {
+        vpls {
+            encapsulation-type ethernet-vlan;
+            interface-mac-limit {
+                100;
+            }
+            no-tunnel-services;
+            vpls-id 10004;
+            mtu 9216;
+            neighbor 192.0.2.6;
+            neighbor 192.0.2.7;
+            neighbor 192.0.2.8;
+            neighbor 192.0.2.9;
+        }
+    }
+    instance-type vpls;
+    interface ae13.1004;
+}
+PUB_EDGE_ECHO {
+    protocols {
+        vpls {
+            encapsulation-type ethernet-vlan;
+            interface-mac-limit {
+                100;
+            }
+            no-tunnel-services;
+            vpls-id 10005;
+            mtu 9216;
+            neighbor 192.0.2.11;
+        }
+    }
+    instance-type vpls;
+    vlan-id 910;
+    interface ae14.910;
+}
+MESH-PUBLIC-PRIM {
+    protocols {
+        evpn {
+            interface ae15.4000;
+        }
+    }
+    description PUBLIC_MESH_PRIM;
+    instance-type evpn;
+    vlan-id 4000;
+    interface ae15.4000;
+    route-distinguisher 100:10000006;
+    vrf-import PUBLIC_MESH_PRIM_IN;
+    vrf-export PUBLIC_MESH_PRIM_OUT;
+}
+MESH-PUBLIC-SEC {
+    protocols {
+        evpn {
+            interface ae15.4001;
+        }
+    }
+    description PUBLIC_MESH_SEC;
+    instance-type evpn;
+    vlan-id 4001;
+    interface ae15.4001;
+    route-distinguisher 100:10000007;
+    vrf-import PUBLIC_MESH_SEC_IN;
+    vrf-export PUBLIC_MESH_SEC_OUT;
+}
+PUB_REGION_FOXTROT {
+    protocols {
+        vpls {
+            encapsulation-type ethernet-vlan;
+            interface-mac-limit {
+                100;
+            }
+            no-tunnel-services;
+            vpls-id 10008;
+            mtu 9216;
+            neighbor 192.0.2.12;
+        }
+    }
+    instance-type vpls;
+    interface ae16.1407;
+}
+PUB_TRANSIT_GULF {
+    protocols {
+        vpls {
+            encapsulation-type ethernet-vlan;
+            interface-mac-limit {
+                100;
+            }
+            no-tunnel-services;
+            vpls-id 10009;
+            mtu 9216;
+            neighbor 192.0.2.13;
+        }
+    }
+    instance-type vpls;
+    interface ae16.650;
+}
+VRF_PUBLIC_MGMT {
+    routing-options {
+        static {
+            route 198.18.1.8/32 next-hop 198.51.100.1;
+            route 198.51.100.0/24 next-hop 198.51.100.2;
+            route 198.51.101.0/24 next-hop 198.51.100.2;
+            route 198.51.100.0/21 {
+                discard;
+                preference 255;
+            }
+            route 198.18.1.9/32 next-hop 198.51.100.3;
+        }
+    }
+    protocols {
+        bgp {
+            group GROUP_ALPHA_MGMT1 {
+                neighbor 198.18.1.134 {
+                    description "ALPHA PUBLIC MGMT1";
+                    import PF_VRF_PUBLIC_MGMT_IN;
+                    export RP_CLIENT_OUT;
+                    peer-as 64500;
+                }
+            }
+            group GROUP_ALPHA_MGMT2 {
+                neighbor 198.18.1.138 {
+                    description "ALPHA PUBLIC MGMT2";
+                    import PF_VRF_PUBLIC_MGMT_IN;
+                    export RP_CLIENT_OUT;
+                    peer-as 64500;
+                }
+            }
+            group AS64501_PUBLIC_PRIM {
+                neighbor 198.18.1.226 {
+                    description "BETA PUBLIC MGMT PRIM";
+                    import PF_AS64501_PUBLIC_MGMT_IN;
+                    export RP_CLIENT_OUT;
+                    peer-as 64501;
+                    bfd-liveness-detection {
+                        minimum-interval 300;
+                        multiplier 3;
+                    }
+                }
+            }
+            group AS64501_PUBLIC_SEC {
+                neighbor 198.18.1.230 {
+                    description "BETA PUBLIC MGMT SEC";
+                    import PF_AS64501_PUBLIC_MGMT_IN;
+                    export RP_CLIENT_OUT;
+                    peer-as 64501;
+                    bfd-liveness-detection {
+                        minimum-interval 300;
+                        multiplier 3;
+                    }
+                }
+            }
+            group GROUP_DELTA_MGMT {
+                neighbor 198.18.1.149 {
+                    description DELTA_PUBLIC_MGMT;
+                    import PF_AS65000_DELTA_PUBLIC_MGMT;
+                    export RP_CLIENT_OUT;
+                    peer-as 65000;
+                    bfd-liveness-detection {
+                        minimum-interval 300;
+                    }
+                }
+            }
+            group GROUP_ECHO_MGMT_A {
+                neighbor 198.18.2.233 {
+                    description ECHO_PUBLIC_MGMT_A;
+                    import PF_AS65001_ECHO_PUBLIC_A;
+                    export RP_CLIENT_OUT;
+                    peer-as 65001;
+                    bfd-liveness-detection {
+                        minimum-interval 300;
+                    }
+                }
+            }
+            group GROUP_ECHO_MGMT_B {
+                neighbor 198.18.1.235 {
+                    description ECHO_PUBLIC_MGMT_B;
+                    import PF_AS65002_ECHO_PUBLIC_B;
+                    export RP_CLIENT_OUT;
+                    peer-as 65002;
+                    bfd-liveness-detection {
+                        minimum-interval 300;
+                    }
+                }
+            }
+            group iBGP_MGMT_PUBLIC_RING {
+                type internal;
+                family inet {
+                    unicast {
+                        prefix-limit {
+                            maximum 1000;
+                            teardown {
+                                90;
+                                idle-timeout 15;
+                            }
+                        }
+                    }
+                }
+                neighbor 198.51.100.10 {
+                    description MGMT-RING-PUBLIC-1;
+                    import CC-IMPORT-RING_PUBLIC;
+                    export CC-EXPORT-RING_PUBLIC;
+                }
+                neighbor 198.51.100.11 {
+                    description MGMT-RING-PUBLIC-2;
+                    import CC-IMPORT-RING_PUBLIC;
+                    export CC-EXPORT-RING_PUBLIC;
+                }
+            }
+        }
+    }
+    description VRF_PUBLIC_MGMT;
+    instance-type vrf;
+    interface ae20.1;
+    interface ae20.2;
+    interface ae20.3;
+    interface ae20.4;
+    interface ae20.5;
+    interface ae20.6;
+    interface ae20.7;
+    interface ae20.8;
+    interface ae20.9;
+    interface ae20.10;
+    interface ae20.11;
+    interface ae21.1;
+    interface ae21.2;
+    interface ae21.3;
+    interface ae21.4;
+    interface ae21.5;
+    interface ae21.6;
+    interface ae21.7;
+    interface ae21.8;
+    interface ae21.9;
+    interface ae21.10;
+    interface ae21.11;
+    interface ae21.12;
+    interface ae21.13;
+    interface ae21.14;
+    interface ae21.15;
+    interface ae21.16;
+    interface ae21.17;
+    interface ae21.18;
+    interface ae21.19;
+    route-distinguisher 65000:1;
+    vrf-target target:65000:1;
+    vrf-table-label;
+}
+VRF_PUBLIC_VOIP {
+    description VRF_PUBLIC_VOIP;
+    instance-type vrf;
+    interface ae22.1;
+    interface ae22.2;
+    interface ae22.3;
+    interface ae22.4;
+    interface ae22.5;
+    interface ae22.6;
+    interface ae23.1;
+    interface ae23.2;
+
+{master}

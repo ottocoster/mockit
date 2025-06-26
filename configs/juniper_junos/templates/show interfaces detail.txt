@@ -1,0 +1,1307 @@
+Physical interface: xe-0/0/25, Enabled, Physical link is Up
+  Interface index: 165, SNMP ifIndex: 524, Generation: 168
+  Type: Unspecified, Link-level type: Unspecified, MTU: 0, Clocking: Unspecified, Speed: 800mbps
+  Device flags   : Present Running
+  Link type      : Unspecified
+  Link flags     : None
+  Physical info  : Unspecified
+  Hold-times     : Up 0 ms, Down 0 ms
+  Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
+  Current address: Unspecified, Hardware address: Unspecified
+  Alternate link address: Unspecified
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Traffic statistics:
+   Input  bytes  :                    0
+   Output bytes  :                    0
+   Input  packets:                    0
+   Output packets:                    0
+   IPv6 transit statistics:
+   Input  bytes  :                    0
+   Output bytes  :                    0
+   Input  packets:                    0
+   Output packets:                    0
+
+  Logical interface xe-0/0/26 (Index 335) (SNMP ifIndex 525) (Generation 295)
+    Flags: Up Encapsulation: ENET2
+    Bandwidth: 0
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol vpls, MTU: Unlimited, Generation: 413, Route table: 1
+      Flags: Is-Primary
+
+Physical interface: xe-0/0/27, Enabled, Physical link is Up
+  Interface index: 168, SNMP ifIndex: 529, Generation: 171
+  Type: Unspecified, Link-level type: Unspecified, MTU: 0, Clocking: Unspecified, Speed: 800mbps
+  Device flags   : Present Running
+  Link type      : Unspecified
+  Link flags     : None
+  Physical info  : Unspecified
+  Hold-times     : Up 0 ms, Down 0 ms
+  Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
+  Current address: Unspecified, Hardware address: Unspecified
+  Alternate link address: Unspecified
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Traffic statistics:
+   Input  bytes  :                    0
+   Output bytes  :                    0
+   Input  packets:                    0
+   Output packets:                    0
+   IPv6 transit statistics:
+   Input  bytes  :                    0
+   Output bytes  :                    0
+   Input  packets:                    0
+   Output packets:                    0
+
+  Logical interface xe-0/0/28 (Index 341) (SNMP ifIndex 531) (Generation 299)
+    Flags: Up SNMP-Traps Encapsulation: ENET2
+    Bandwidth: 0
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+     IPv6 transit statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+     IPv6 transit statistics:
+      Input  bytes  :                   0                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:                   0                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol inet, MTU: Unlimited
+    Max nh cache: 0, New hold nh limit: 0, Curr nh cnt: 0, Curr new hold cnt: 0, NH drop cnt: 0
+    Generation: 417, Route table: 1
+      Flags: None
+    Protocol inet6, MTU: Unlimited
+    Max nh cache: 0, New hold nh limit: 0, Curr nh cnt: 0, Curr new hold cnt: 0, NH drop cnt: 0
+    Generation: 418, Route table: 1
+      Flags: None
+
+Physical interface: xe-0/0/29, Enabled, Physical link is Up
+  Interface index: 167, SNMP ifIndex: 528, Generation: 170
+  Type: Unspecified, Link-level type: Unspecified, MTU: 0, Clocking: Unspecified, Speed: 800mbps
+  Device flags   : Present Running
+  Link type      : Unspecified
+  Link flags     : None
+  Physical info  : Unspecified
+  Hold-times     : Up 0 ms, Down 0 ms
+  Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
+  Current address: Unspecified, Hardware address: Unspecified
+  Alternate link address: Unspecified
+  Last flapped   : Never
+  Statistics last cleared: Never
+  Traffic statistics:
+   Input  bytes  :                    0
+   Output bytes  :                    0
+   Input  packets:                    0
+   Output packets:                    0
+   IPv6 transit statistics:
+   Input  bytes  :                    0
+   Output bytes  :                    0
+   Input  packets:                    0
+   Output packets:                    0
+
+  Logical interface xe-0/0/30 (Index 339) (SNMP ifIndex 532) (Generation 297)
+    Flags: Up SNMP-Traps Encapsulation: ENET2
+    Bandwidth: 0
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol inet, MTU: Unlimited
+    Max nh cache: 0, New hold nh limit: 0, Curr nh cnt: 0, Curr new hold cnt: 0, NH drop cnt: 0
+    Generation: 415, Route table: 1
+      Flags: None
+
+  Logical interface xe-0/0/31 (Index 340) (SNMP ifIndex 533) (Generation 298)
+    Flags: Up SNMP-Traps Encapsulation: ENET2
+    Bandwidth: 0
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol inet, MTU: Unlimited
+    Max nh cache: 0, New hold nh limit: 0, Curr nh cnt: 0, Curr new hold cnt: 0, NH drop cnt: 0
+    Generation: 416, Route table: 2
+      Flags: Is-Primary
+
+Physical interface: xe-0/0/4, Enabled, Physical link is Up
+  Interface index: 170, SNMP ifIndex: 643, Generation: 173
+  Link-level type: Flexible-Ethernet, MTU: 9216, MRU: 9224, Speed: 100Gbps, BPDU Error: None,
+  Loop Detect PDU Error: None, Loopback: Disabled, Source filtering: Disabled, Flow control: Disabled
+  Pad to minimum frame size: Disabled
+  Device flags   : Present Running
+  Interface flags: SNMP-Traps Internal: 0x4000
+  CoS queues     : 8 supported, 8 maximum usable queues
+  Schedulers     : 0
+  Hold-times     : Up 0 ms, Down 0 ms
+  Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
+  Current address: 00:00:5e:00:53:14, Hardware address: 00:00:5e:00:53:15
+  Last flapped   : 2023-07-31 14:29:59 UTC (84w6d 22:43 ago)
+  Statistics last cleared: Never
+  Traffic statistics:
+   Input  bytes  :    10887706788166733             27298672 bps
+   Output bytes  :    26446419761588412            139955888 bps
+   Input  packets:       16005962042335                 9334 pps
+   Output packets:       24458637256100                30817 pps
+   IPv6 transit statistics:
+   Input  bytes  :      491068286661059
+   Output bytes  :       89117350969982
+   Input  packets:         453270492826
+   Output packets:         440435572086
+  Egress queues: 8 supported, 4 in use
+  Queue counters:       Queued packets  Transmitted packets      Dropped packets
+    0                   24283766027098       24283766027098                    0
+    1                         43438748             43438748                    0
+    2                        187145686            187145686                    0
+    3                     174730190869         174730190869                    0
+  Queue number:         Mapped forwarding classes
+    0                   best-effort
+    1                   expedited-forwarding
+    2                   assured-forwarding
+    3                   network-control
+  Active alarms  : None
+  Active defects : None
+  PCS statistics                      Seconds
+    Bit errors                          1504
+    Errored blocks                         2
+  Ethernet FEC Mode  :                   NONE
+  Ethernet FEC statistics              Errors
+    FEC Corrected Errors                    0
+    FEC Uncorrected Errors                  0
+    FEC Corrected Errors Rate               0
+    FEC Uncorrected Errors Rate             0
+  Preclassifier statistics:
+    Traffic Class        Received Packets   Transmitted  Packets      Dropped Packets
+    real-time                           0                      0                    0
+    network-control          210279836259           210279836259                    0
+    best-effort            15795696113717         15795696113717                    0
+  Link Degrade :
+    Link Monitoring                   :  Disable
+  Interface transmit statistics: Disabled
+
+  Logical interface xe-0/0/32 (Index 933) (SNMP ifIndex 703) (Generation 1190)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.5 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        1743474120420
+     Output bytes  :         909882125630
+     Input  packets:           8438962304
+     Output packets:           6250650442
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :              6637956
+     Input  packets:                    0
+     Output packets:               143982
+    Transit statistics:
+     Input  bytes  :        1743474120420                56136 bps
+     Output bytes  :         909875487674                22632 bps
+     Input  packets:           8438962304                   71 pps
+     Output packets:           6250506460                   40 pps
+    Protocol aenet, AE bundle: ae54.5, Generation: 1707, Route table: 0
+
+  Logical interface xe-0/0/33 (Index 934) (SNMP ifIndex 1045) (Generation 1191)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.7 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :          76825061843
+     Output bytes  :          68196289729
+     Input  packets:            657251501
+     Output packets:            761306616
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           6978969822
+     Input  packets:                    0
+     Output packets:            151713794
+    Transit statistics:
+     Input  bytes  :          76825061843                 5312 bps
+     Output bytes  :          61217319907                19944 bps
+     Input  packets:            657251501                   11 pps
+     Output packets:            609592822                    9 pps
+    Protocol aenet, AE bundle: ae54.7, Generation: 1708, Route table: 0
+
+  Logical interface xe-0/0/34 (Index 935) (SNMP ifIndex 1047) (Generation 1192)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.8 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :                59040
+     Output bytes  :               272366
+     Input  packets:                  984
+     Output packets:                 5921
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :               272366
+     Input  packets:                    0
+     Output packets:                 5921
+    Transit statistics:
+     Input  bytes  :                59040                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                  984                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol aenet, AE bundle: ae54.8, Generation: 1709, Route table: 0
+
+  Logical interface xe-0/0/35 (Index 484) (SNMP ifIndex 1275) (Generation 1292)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.23 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :          42297801711
+     Output bytes  :          17390698609
+     Input  packets:            320375315
+     Output packets:            154998960
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :              2798870
+     Input  packets:                    0
+     Output packets:                60845
+    Transit statistics:
+     Input  bytes  :          42297801711                    0 bps
+     Output bytes  :          17387899739                    0 bps
+     Input  packets:            320375315                    0 pps
+     Output packets:            154938115                    0 pps
+    Protocol aenet, AE bundle: ae54.23, Generation: 1818, Route table: 0
+
+  Logical interface xe-0/0/36 (Index 936) (SNMP ifIndex 1051) (Generation 1193)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.100 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        6444873937060
+     Output bytes  :       25505343737877
+     Input  packets:          20346919071
+     Output packets:          30025873253
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :            432439578
+     Input  packets:                    0
+     Output packets:              2311727
+    Transit statistics:
+     Input  bytes  :        6444873937060                30256 bps
+     Output bytes  :       25504911298299                13560 bps
+     Input  packets:          20346919071                   17 pps
+     Output packets:          30023561526                   12 pps
+    Protocol aenet, AE bundle: ae54.100, Generation: 1710, Route table: 0
+
+  Logical interface xe-0/0/37 (Index 938) (SNMP ifIndex 1057) (Generation 1195)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.102 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        6961737345347
+     Output bytes  :       25246576912652
+     Input  packets:          21327826767
+     Output packets:          36449738197
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           3549504504
+     Input  packets:                    0
+     Output packets:             77154100
+    Transit statistics:
+     Input  bytes  :        6961737345347                 8848 bps
+     Output bytes  :       25243027408148                 3080 bps
+     Input  packets:          21327826767                    4 pps
+     Output packets:          36372584097                    6 pps
+    Protocol aenet, AE bundle: ae54.102, Generation: 1712, Route table: 0
+
+  Logical interface xe-0/0/38 (Index 939) (SNMP ifIndex 1060) (Generation 1196)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.103 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :         181274781431
+     Output bytes  :        1350431193981
+     Input  packets:            549609641
+     Output packets:           1238841587
+     IPv6 transit statistics:
+     Input  bytes  :                    0
+     Output bytes  :                  336
+     Input  packets:                    0
+     Output packets:                    4
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :              4213154
+     Input  packets:                    0
+     Output packets:                91587
+    Transit statistics:
+     Input  bytes  :         181274781431                  888 bps
+     Output bytes  :        1350426980827                  472 bps
+     Input  packets:            549609641                    1 pps
+     Output packets:           1238750000                    0 pps
+     IPv6 transit statistics:
+      Input  bytes  :                   0                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:                   0                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.103, Generation: 1713, Route table: 0
+
+  Logical interface xe-0/0/39 (Index 940) (SNMP ifIndex 1102) (Generation 1197)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.104 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :         907640892128
+     Output bytes  :        5072461321260
+     Input  packets:           3402184246
+     Output packets:           5697369697
+     IPv6 transit statistics:
+     Input  bytes  :            190861021
+     Output bytes  :             27006318
+     Input  packets:              1530491
+     Output packets:               300087
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           2902669978
+     Input  packets:                    0
+     Output packets:             62814513
+    Transit statistics:
+     Input  bytes  :         907640892128                29408 bps
+     Output bytes  :        5069558651282                22800 bps
+     Input  packets:           3402184246                   20 pps
+     Output packets:           5634555184                   16 pps
+     IPv6 transit statistics:
+      Input  bytes  :           190861021                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:             1530491                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.104, Generation: 1714, Route table: 0
+
+  Logical interface xe-0/0/40 (Index 507) (SNMP ifIndex 554) (Generation 1296)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.106 ]  Encapsulation: VLAN-VPLS
+    Traffic statistics:
+     Input  bytes  :        1110926911447
+     Output bytes  :        1871006155821
+     Input  packets:           2747298193
+     Output packets:           3049978347
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :        1110926911447               112832 bps
+     Output bytes  :        1871006155821               337688 bps
+     Input  packets:           2747298193                   58 pps
+     Output packets:           3049978347                   71 pps
+    Protocol aenet, AE bundle: ae54.106, Generation: 1822, Route table: 0
+
+  Logical interface xe-0/0/41 (Index 942) (SNMP ifIndex 1105) (Generation 1199)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.107 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        3337084444464
+     Output bytes  :       22935827208379
+     Input  packets:           9950953839
+     Output packets:          19753731303
+     IPv6 transit statistics:
+     Input  bytes  :            336914126
+     Output bytes  :           1171691052
+     Input  packets:              4679000
+     Output packets:             13018790
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           1197041848
+     Input  packets:                    0
+     Output packets:             13568995
+    Transit statistics:
+     Input  bytes  :        3337084444464                 3184 bps
+     Output bytes  :       22934630166531                 7952 bps
+     Input  packets:           9950953839                    3 pps
+     Output packets:          19740162308                    5 pps
+     IPv6 transit statistics:
+      Input  bytes  :           336914126                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:             4679000                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.107, Generation: 1716, Route table: 0
+
+  Logical interface xe-0/0/42 (Index 943) (SNMP ifIndex 1144) (Generation 1200)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.108 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :       27745537192269
+     Output bytes  :      240274508653920
+     Input  packets:          98950585284
+     Output packets:         179211038959
+     IPv6 transit statistics:
+     Input  bytes  :            340688548
+     Output bytes  :           1175810262
+     Input  packets:              4731785
+     Output packets:             13064559
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           5660820594
+     Input  packets:                    0
+     Output packets:            110564391
+    Transit statistics:
+     Input  bytes  :       27745537192269              1146032 bps
+     Output bytes  :      240268847833326             66198704 bps
+     Input  packets:          98950585284                  909 pps
+     Output packets:         179100474568                 5975 pps
+     IPv6 transit statistics:
+      Input  bytes  :           340688548                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:             4731785                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.108, Generation: 1717, Route table: 0
+
+  Logical interface xe-0/0/43 (Index 944) (SNMP ifIndex 1209) (Generation 1201)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.110 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :       18092399145710
+     Output bytes  :       14322625958595
+     Input  packets:          23124535234
+     Output packets:          22322415001
+     IPv6 transit statistics:
+     Input  bytes  :            336174696
+     Output bytes  :           1170739572
+     Input  packets:              4669093
+     Output packets:             13008218
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           8090662502
+     Input  packets:                    0
+     Output packets:            163441321
+    Transit statistics:
+     Input  bytes  :       18092399145710               157376 bps
+     Output bytes  :       14314535296093                74672 bps
+     Input  packets:          23124535234                   63 pps
+     Output packets:          22158973680                   46 pps
+     IPv6 transit statistics:
+      Input  bytes  :           336174696                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:             4669093                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.110, Generation: 1718, Route table: 0
+
+  Logical interface xe-0/0/44 (Index 945) (SNMP ifIndex 1146) (Generation 1202)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.111 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        1527604933211
+     Output bytes  :        5621073075407
+     Input  packets:           3623141058
+     Output packets:           5835144194
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           4579221734
+     Input  packets:                    0
+     Output packets:             99548203
+    Transit statistics:
+     Input  bytes  :        1527604933211                 8040 bps
+     Output bytes  :        5616493853673                 3232 bps
+     Input  packets:           3623141058                   11 pps
+     Output packets:           5735595991                    4 pps
+    Protocol aenet, AE bundle: ae54.111, Generation: 1719, Route table: 0
+
+  Logical interface xe-0/0/45 (Index 946) (SNMP ifIndex 1149) (Generation 1203)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.114 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        5096532358856
+     Output bytes  :       26389428347152
+     Input  packets:          16094696187
+     Output packets:          25216330829
+     IPv6 transit statistics:
+     Input  bytes  :               387360
+     Output bytes  :              1289832
+     Input  packets:                 5380
+     Output packets:                14332
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :             73236972
+     Input  packets:                    0
+     Output packets:              1567174
+    Transit statistics:
+     Input  bytes  :        5096532358856               301112 bps
+     Output bytes  :       26389355110180               127776 bps
+     Input  packets:          16094696187                  130 pps
+     Output packets:          25214763655                   29 pps
+     IPv6 transit statistics:
+      Input  bytes  :              387360                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:                5380                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.114, Generation: 1720, Route table: 0
+
+  Logical interface xe-0/0/46 (Index 947) (SNMP ifIndex 1152) (Generation 1204)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.115 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        1112412775939
+     Output bytes  :        8286425046407
+     Input  packets:           3013812856
+     Output packets:           7374625178
+     IPv6 transit statistics:
+     Input  bytes  :            335852764
+     Output bytes  :           1169036772
+     Input  packets:              4664621
+     Output packets:             12989298
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           5589567648
+     Input  packets:                    0
+     Output packets:            109084772
+    Transit statistics:
+     Input  bytes  :        1112412775939                 1216 bps
+     Output bytes  :        8280835478759                 1424 bps
+     Input  packets:           3013812856                    2 pps
+     Output packets:           7265540406                    1 pps
+     IPv6 transit statistics:
+      Input  bytes  :           335852764                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:             4664621                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.115, Generation: 1721, Route table: 0
+
+  Logical interface xe-0/0/47 (Index 948) (SNMP ifIndex 1155) (Generation 1205)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.116 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :          27474916672
+     Output bytes  :           2035621154
+     Input  packets:             55396689
+     Output packets:             10663573
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :             88824896
+     Input  packets:                    0
+     Output packets:              1930976
+    Transit statistics:
+     Input  bytes  :          27474916672                 4456 bps
+     Output bytes  :           1946796258                    0 bps
+     Input  packets:             55396689                    1 pps
+     Output packets:              8732597                    0 pps
+    Protocol aenet, AE bundle: ae54.116, Generation: 1722, Route table: 0
+
+  Logical interface xe-0/0/48 (Index 949) (SNMP ifIndex 1157) (Generation 1206)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.117 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :       66745557041309
+     Output bytes  :       24922543316305
+     Input  packets:          57479458302
+     Output packets:          45594371261
+     IPv6 transit statistics:
+     Input  bytes  :            340719107
+     Output bytes  :           1174852572
+     Input  packets:              4726858
+     Output packets:             13053918
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           1435776522
+     Input  packets:                    0
+     Output packets:             18726039
+    Transit statistics:
+     Input  bytes  :       66745557041309             10575488 bps
+     Output bytes  :       24921107539783               517232 bps
+     Input  packets:          57479458302                  918 pps
+     Output packets:          45575645222                  735 pps
+     IPv6 transit statistics:
+      Input  bytes  :           340719107                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:             4726858                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.117, Generation: 1723, Route table: 0
+
+  Logical interface xe-0/0/49 (Index 950) (SNMP ifIndex 1174) (Generation 1207)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.119 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :          45260558017
+     Output bytes  :          45527303442
+     Input  packets:            199803883
+     Output packets:            207254366
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :             89706164
+     Input  packets:                    0
+     Output packets:              1950134
+    Transit statistics:
+     Input  bytes  :          45260558017                  240 bps
+     Output bytes  :          45437597278                    0 bps
+     Input  packets:            199803883                    0 pps
+     Output packets:            205304232                    0 pps
+    Protocol aenet, AE bundle: ae54.119, Generation: 1724, Route table: 0
+
+  Logical interface xe-0/0/50 (Index 951) (SNMP ifIndex 1176) (Generation 1208)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.120 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        5003219651447
+     Output bytes  :        2870794171602
+     Input  packets:           7474640937
+     Output packets:           5555683476
+     IPv6 transit statistics:
+     Input  bytes  :             11523408
+     Output bytes  :             26297772
+     Input  packets:               160046
+     Output packets:               292198
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           4447201036
+     Input  packets:                    0
+     Output packets:             96398728
+    Transit statistics:
+     Input  bytes  :        5003219651447               276440 bps
+     Output bytes  :        2866346970566                25592 bps
+     Input  packets:           7474640937                  159 pps
+     Output packets:           5459284748                   10 pps
+     IPv6 transit statistics:
+      Input  bytes  :            11523408                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:              160046                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.120, Generation: 1725, Route table: 0
+
+  Logical interface xe-0/0/51 (Index 952) (SNMP ifIndex 1185) (Generation 1209)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.121 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :           6425169094
+     Output bytes  :           4789831294
+     Input  packets:             28468291
+     Output packets:             25241051
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :             82929858
+     Input  packets:                    0
+     Output packets:              1802823
+    Transit statistics:
+     Input  bytes  :           6425169094                    0 bps
+     Output bytes  :           4706901436                    0 bps
+     Input  packets:             28468291                    0 pps
+     Output packets:             23438228                    0 pps
+    Protocol aenet, AE bundle: ae54.121, Generation: 1726, Route table: 0
+
+  Logical interface xe-0/0/52 (Index 953) (SNMP ifIndex 1188) (Generation 1210)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.122 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :            179995753
+     Output bytes  :              2248480
+     Input  packets:               465033
+     Output packets:                48880
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :              2248480
+     Input  packets:                    0
+     Output packets:                48880
+    Transit statistics:
+     Input  bytes  :            179995753                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:               465033                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol aenet, AE bundle: ae54.122, Generation: 1727, Route table: 0
+
+  Logical interface xe-0/0/53 (Index 784) (SNMP ifIndex 1330) (Generation 1417)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.123 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        9439025322767
+     Output bytes  :       45385588922968
+     Input  packets:          23949799360
+     Output packets:          45864573453
+     IPv6 transit statistics:
+     Input  bytes  :                    0
+     Output bytes  :             39706332
+     Input  packets:                    0
+     Output packets:               441182
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           4360941346
+     Input  packets:                    0
+     Output packets:             94378375
+    Transit statistics:
+     Input  bytes  :        9439025322767                44520 bps
+     Output bytes  :       45381227981622                12752 bps
+     Input  packets:          23949799360                   18 pps
+     Output packets:          45770195078                   12 pps
+     IPv6 transit statistics:
+      Input  bytes  :                   0                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:                   0                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.123, Generation: 1960, Route table: 0
+
+  Logical interface xe-0/0/54 (Index 954) (SNMP ifIndex 1191) (Generation 1211)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.124 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :      221025848283070
+     Output bytes  :      250736079014420
+     Input  packets:         254056727820
+     Output packets:         283984290297
+     IPv6 transit statistics:
+     Input  bytes  :           3121075598
+     Output bytes  :           1239869580
+     Input  packets:             54397954
+     Output packets:             13776330
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           5554892436
+     Input  packets:                    0
+     Output packets:             96429452
+    Transit statistics:
+     Input  bytes  :      221025848283070              3718800 bps
+     Output bytes  :      250730524121984             24395176 bps
+     Input  packets:         254056727820                 1531 pps
+     Output packets:         283887860845                 2942 pps
+     IPv6 transit statistics:
+      Input  bytes  :          3121075598                  224 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:            54397954                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.124, Generation: 1728, Route table: 0
+
+  Logical interface xe-0/0/55 (Index 955) (SNMP ifIndex 1194) (Generation 1212)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.125 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :        2819475311327
+     Output bytes  :       15447512416532
+     Input  packets:           6272552498
+     Output packets:          13897318034
+     IPv6 transit statistics:
+     Input  bytes  :            341810905
+     Output bytes  :           1187711052
+     Input  packets:              4746565
+     Output packets:             13196790
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           6391628208
+     Input  packets:                    0
+     Output packets:            126321096
+    Transit statistics:
+     Input  bytes  :        2819475311327                 1672 bps
+     Output bytes  :       15441120788324                    0 bps
+     Input  packets:           6272552498                    3 pps
+     Output packets:          13770996938                    0 pps
+     IPv6 transit statistics:
+      Input  bytes  :           341810905                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:             4746565                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.125, Generation: 1729, Route table: 0
+
+  Logical interface xe-0/0/56 (Index 956) (SNMP ifIndex 1196) (Generation 1213)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.126 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :           2874700030
+     Output bytes  :           2781080841
+     Input  packets:             44023497
+     Output packets:             42597386
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :              4837176
+     Input  packets:                    0
+     Output packets:               105156
+    Transit statistics:
+     Input  bytes  :           2874700030                    0 bps
+     Output bytes  :           2776243665                    0 bps
+     Input  packets:             44023497                    0 pps
+     Output packets:             42492230                    0 pps
+    Protocol aenet, AE bundle: ae54.126, Generation: 1730, Route table: 0
+
+  Logical interface xe-0/0/57 (Index 957) (SNMP ifIndex 610) (Generation 1214)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.130 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :           4851687396
+     Output bytes  :           5521322651
+     Input  packets:             42773983
+     Output packets:             56353677
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :            463004480
+     Input  packets:                    0
+     Output packets:             10049394
+    Transit statistics:
+     Input  bytes  :           4851687396                  400 bps
+     Output bytes  :           5058318171                  192 bps
+     Input  packets:             42773983                    0 pps
+     Output packets:             46304283                    0 pps
+    Protocol aenet, AE bundle: ae54.130, Generation: 1731, Route table: 0
+
+  Logical interface xe-0/0/58 (Index 1129) (SNMP ifIndex 1705) (Generation 4879)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.133 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :           1464866659
+     Output bytes  :           1161777907
+     Input  packets:             14113382
+     Output packets:             12012838
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :              1542012
+     Input  packets:                    0
+     Output packets:                33522
+    Transit statistics:
+     Input  bytes  :           1464866659                    0 bps
+     Output bytes  :           1160235895                  288 bps
+     Input  packets:             14113382                    0 pps
+     Output packets:             11979316                    0 pps
+    Protocol aenet, AE bundle: ae54.133, Generation: 5497, Route table: 0
+
+  Logical interface xe-0/0/59 (Index 1060) (SNMP ifIndex 1602) (Generation 4535)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.150 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :           1596188363
+     Output bytes  :           1569162998
+     Input  packets:             20983303
+     Output packets:             21524281
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :             42237154
+     Input  packets:                    0
+     Output packets:               918199
+    Transit statistics:
+     Input  bytes  :           1596188363                    0 bps
+     Output bytes  :           1526925844                    0 bps
+     Input  packets:             20983303                    0 pps
+     Output packets:             20606082                    0 pps
+    Protocol aenet, AE bundle: ae54.150, Generation: 5102, Route table: 0
+
+  Logical interface xe-0/0/60 (Index 958) (SNMP ifIndex 581) (Generation 1215)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.200 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :           4229623182
+     Input  packets:                    0
+     Output packets:             55919273
+     IPv6 transit statistics:
+     Input  bytes  :                    0
+     Output bytes  :                 2562
+     Input  packets:                    0
+     Output packets:                   29
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           4229623182
+     Input  packets:                    0
+     Output packets:             55919273
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+     IPv6 transit statistics:
+      Input  bytes  :                   0                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:                   0                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.200, Generation: 1732, Route table: 0
+
+  Logical interface xe-0/0/61 (Index 959) (SNMP ifIndex 1200) (Generation 1216)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.201 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :           3274664427
+     Output bytes  :           3287039353
+     Input  packets:             18706430
+     Output packets:             19313440
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :              4486288
+     Input  packets:                    0
+     Output packets:                97528
+    Transit statistics:
+     Input  bytes  :           3274664427                    0 bps
+     Output bytes  :           3282553065                    0 bps
+     Input  packets:             18706430                    0 pps
+     Output packets:             19215912                    0 pps
+    Protocol aenet, AE bundle: ae54.201, Generation: 1733, Route table: 0
+
+  Logical interface xe-0/0/62 (Index 1256) (SNMP ifIndex 1863) (Generation 5175)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.224 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :             37627512
+     Output bytes  :             60321309
+     Input  packets:               430322
+     Output packets:              1000563
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :             25551804
+     Input  packets:                    0
+     Output packets:               555474
+    Transit statistics:
+     Input  bytes  :             37627512                  296 bps
+     Output bytes  :             34769505                  616 bps
+     Input  packets:               430322                    0 pps
+     Output packets:               445089                    1 pps
+    Protocol aenet, AE bundle: ae54.224, Generation: 5881, Route table: 0
+
+  Logical interface xe-0/0/63 (Index 482) (SNMP ifIndex 1279) (Generation 1300)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.235 ]  Encapsulation: VLAN-VPLS
+    Traffic statistics:
+     Input  bytes  :        1488400492797
+     Output bytes  :        4168938232321
+     Input  packets:          23254722536
+     Output packets:          65149626731
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :        1488400492797               515480 bps
+     Output bytes  :        4168938232321               513736 bps
+     Input  packets:          23254722536                 1005 pps
+     Output packets:          65149626731                 1003 pps
+    Protocol aenet, AE bundle: ae54.235, Generation: 1826, Route table: 0
+
+  Logical interface xe-0/0/64 (Index 960) (SNMP ifIndex 1203) (Generation 1217)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.399 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :            186024882
+     Output bytes  :              4877479
+     Input  packets:               474107
+     Output packets:                58204
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :              2488784
+     Input  packets:                    0
+     Output packets:                54104
+    Transit statistics:
+     Input  bytes  :            186024882                    0 bps
+     Output bytes  :              2388695                    0 bps
+     Input  packets:               474107                    0 pps
+     Output packets:                 4100                    0 pps
+    Protocol aenet, AE bundle: ae54.399, Generation: 1734, Route table: 0
+
+  Logical interface xe-0/0/65 (Index 961) (SNMP ifIndex 1206) (Generation 1218)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.425 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :      245546795517554
+     Output bytes  :      420404064247016
+     Input  packets:         287247522729
+     Output packets:         400054721243
+     IPv6 transit statistics:
+     Input  bytes  :           1947867334
+     Output bytes  :           1217519912
+     Input  packets:             33431349
+     Output packets:             13528000
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :          13457704706
+     Input  packets:                    0
+     Output packets:            256666951
+    Transit statistics:
+     Input  bytes  :      245546795517554              2954728 bps
+     Output bytes  :      420390606542310             11372352 bps
+     Input  packets:         287247522729                  975 pps
+     Output packets:         399798054292                 1551 pps
+     IPv6 transit statistics:
+      Input  bytes  :          1947867334                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:            33431349                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.425, Generation: 1735, Route table: 0
+
+  Logical interface xe-0/0/66 (Index 1243) (SNMP ifIndex 1839) (Generation 5114)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.500 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :           1209687230
+     Output bytes  :           1238985162
+     Input  packets:             22724318
+     Output packets:             22286976
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :            106461458
+     Input  packets:                    0
+     Output packets:               973608
+    Transit statistics:
+     Input  bytes  :           1209687230                  824 bps
+     Output bytes  :           1132523704                  824 bps
+     Input  packets:             22724318                    2 pps
+     Output packets:             21313368                    2 pps
+    Protocol aenet, AE bundle: ae54.500, Generation: 5802, Route table: 0
+
+  Logical interface xe-0/0/67 (Index 962) (SNMP ifIndex 1258) (Generation 1219)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.543 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :       12252579914351
+     Output bytes  :       20714774686396
+     Input  packets:          21726489226
+     Output packets:          26251604807
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :          15826878490
+     Input  packets:                    0
+     Output packets:            344043391
+    Transit statistics:
+     Input  bytes  :       12252579914351               506616 bps
+     Output bytes  :       20698947807906               656872 bps
+     Input  packets:          21726489226                  267 pps
+     Output packets:          25907561416                  275 pps
+    Protocol aenet, AE bundle: ae54.543, Generation: 1736, Route table: 0
+
+  Logical interface xe-0/0/68 (Index 1246) (SNMP ifIndex 1653) (Generation 5117)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.600 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :           6218539868
+     Output bytes  :          17949395520
+     Input  packets:             29020344
+     Output packets:             38496373
+     IPv6 transit statistics:
+     Input  bytes  :                  384
+     Output bytes  :            280298969
+     Input  packets:                    6
+     Output packets:              1486294
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :            433397692
+     Input  packets:                    0
+     Output packets:              2841440
+    Transit statistics:
+     Input  bytes  :           6218539868                  208 bps
+     Output bytes  :          17515997828                    0 bps
+     Input  packets:             29020344                    0 pps
+     Output packets:             35654933                    0 pps
+     IPv6 transit statistics:
+      Input  bytes  :                 384                    0 bps
+      Output bytes  :                5145                    0 bps
+      Input  packets:                   6                    0 pps
+      Output packets:                  22                    0 pps
+    Protocol aenet, AE bundle: ae54.600, Generation: 5808, Route table: 0
+
+  Logical interface xe-0/0/69 (Index 791) (SNMP ifIndex 1659) (Generation 4680)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.640 ]  Encapsulation: VLAN-VPLS
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol aenet, AE bundle: ae54.640, Generation: 5278, Route table: 0
+
+  Logical interface xe-0/0/70 (Index 537) (SNMP ifIndex 1283) (Generation 1304)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.710 ]  Encapsulation: VLAN-VPLS
+    Traffic statistics:
+     Input  bytes  :          34279525533
+     Output bytes  :                    0
+     Input  packets:            493889864
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :          34279525533                 5864 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:            493889864                    9 pps
+     Output packets:                    0                    0 pps
+    Protocol aenet, AE bundle: ae54.710, Generation: 1830, Route table: 0
+
+  Logical interface xe-0/0/71 (Index 414) (SNMP ifIndex 605) (Generation 5250)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.1010 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :             84422358
+     Input  packets:                    0
+     Output packets:              1672419
+     IPv6 transit statistics:
+     Input  bytes  :                    0
+     Output bytes  :             15322722
+     Input  packets:                    0
+     Output packets:               170253
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :             84422358
+     Input  packets:                    0
+     Output packets:              1672419
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+     IPv6 transit statistics:
+      Input  bytes  :                   0                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:                   0                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.1010, Generation: 5968, Route table: 0
+
+  Logical interface xe-0/0/72 (Index 963) (SNMP ifIndex 661) (Generation 1220)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.1020 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol aenet, AE bundle: ae54.1020, Generation: 1737, Route table: 0
+
+  Logical interface xe-0/0/73 (Index 964) (SNMP ifIndex 664) (Generation 1221)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.1021 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol aenet, AE bundle: ae54.1021, Generation: 1738, Route table: 0
+
+  Logical interface xe-0/0/74 (Index 965) (SNMP ifIndex 667) (Generation 1222)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.1022 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol aenet, AE bundle: ae54.1022, Generation: 1739, Route table: 0
+
+  Logical interface xe-0/0/75 (Index 966) (SNMP ifIndex 678) (Generation 1223)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.1025 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol aenet, AE bundle: ae54.1025, Generation: 1740, Route table: 0
+
+  Logical interface xe-0/0/76 (Index 967) (SNMP ifIndex 739) (Generation 1224)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.1037 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                    0
+     Input  packets:                    0
+     Output packets:                    0
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+    Protocol aenet, AE bundle: ae54.1037, Generation: 1741, Route table: 0
+
+  Logical interface xe-0/0/77 (Index 968) (SNMP ifIndex 772) (Generation 1225)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.1041 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :                    0
+     Output bytes  :                  336
+     Input  packets:                    0
+     Output packets:                    4
+     IPv6 transit statistics:
+     Input  bytes  :                    0
+     Output bytes  :                  336
+     Input  packets:                    0
+     Output packets:                    4
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :                  336
+     Input  packets:                    0
+     Output packets:                    4
+    Transit statistics:
+     Input  bytes  :                    0                    0 bps
+     Output bytes  :                    0                    0 bps
+     Input  packets:                    0                    0 pps
+     Output packets:                    0                    0 pps
+     IPv6 transit statistics:
+      Input  bytes  :                   0                    0 bps
+      Output bytes  :                   0                    0 bps
+      Input  packets:                   0                    0 pps
+      Output packets:                   0                    0 pps
+    Protocol aenet, AE bundle: ae54.1041, Generation: 1742, Route table: 0
+
+  Logical interface xe-0/0/78 (Index 969) (SNMP ifIndex 786) (Generation 1226)
+    Flags: Up SNMP-Traps 0x4000 VLAN-Tag [ 0x8100.1043 ]  Encapsulation: ENET2
+    Traffic statistics:
+     Input  bytes  :     3428152258986741
+     Output bytes  :    17208916800358839
+     Input  packets:        7148134083583
+     Output packets:       14006877721744
+     IPv6 transit statistics:
+     Input  bytes  :        2490945398541
+     Output bytes  :        4697481606700
+     Input  packets:           4165994504
+     Output packets:           6126052389
+    Local statistics:
+     Input  bytes  :                    0
+     Output bytes  :           1677036787
+     Input  packets:                    0
+     Output packets:             19053553
+    Transit statistics:
+     Input  bytes  :     3428152258986741                 5064 bps
+     Output bytes  :    17208915123322052              6122616 bps
+     Input  packets:        7148134083583                    8 pps
+     Output packets:       14006858668191                13670 pps
+     IPv6 transit statistics:
+      Input  bytes  :       2490945398541                 4664 bps
+      Output bytes  :       4696939407111                14488 bps
+      Input  packets:          4165994504                    7 pps
+      Output packets:          6120472807                    7 pps
+    Protocol aenet, AE bundle: ae54.1043, Generation: 1743, Route table: 0
+
+  Logical interface xe-0/0/79 (Index 692) (SNMP ifIndex 792) (Generation 1356)
+
+{master}
