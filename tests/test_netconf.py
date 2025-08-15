@@ -9,10 +9,12 @@ expected_result = """
 </rpc-reply>
 """
 
+mocked_device = 'mocked-device'
+
 def test_netconf():
     # WHEN fetching rpc response from server
     with manager.connect(
-        host="localhost",
+        host=mocked_device,
         port=830,
         username="test",
         password="test",

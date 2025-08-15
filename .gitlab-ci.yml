@@ -20,6 +20,7 @@ before_script:
     fi
   - export IMAGE_FILE="slurpit-mockit-${IMAGE_VERSION}.tar.gz"
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  - export TESTER_IMAGE="${CI_REGISTRY_IMAGE}:tester"
 
 # Build stage for multi-architecture images
 build:
@@ -31,62 +32,46 @@ build:
     DOCKER_DRIVER: overlay2
     DOCKER_CLI_EXPERIMENTAL: "enabled"
   script:
-    - docker run --privileged --rm tonistiigi/binfmt --install all  # Enable QEMU for arm64
-    - docker buildx create --use                                # Create and use a buildx builder
-    #- docker buildx inspect --bootstrap                         # Inspect the builder and bootstrap it
-    - docker buildx build . --platform linux/amd64,linux/arm64 --tag "$CI_REGISTRY_IMAGE:${IMAGE_VERSION}" --output "type=tar,compression=gzip,dest=${IMAGE_FILE}" --output "type=registry,ref=$CI_REGISTRY_IMAGE:${IMAGE_VERSION}"
-  after_script:
-    - docker buildx rm
-    - docker system prune -af
-  artifacts:
-    paths:
-      - "slurpit-mockit-*.tar.gz"
-    name: slurpit-mockit
-    expire_in: 6 month
+    - docker build --tag "${CI_REGISTRY_IMAGE}:${IMAGE_VERSION}_rc" --push .
+
+
+build-tester:
+  stage: build
+  script:
+    - cd tests
+    - docker build -t "${TESTER_IMAGE}" .
+    - docker push "${TESTER_IMAGE}"
+  rules:
+    - changes:
+        - tests/**/*
+      when: on_success
+    - when: manual
+      allow_failure: true
+
 
 unit_test:
   image: docker:latest
   services:
     - docker:dind
+  stage: test
   variables:
     DOCKER_TLS_CERTDIR: ""
-  stage: test
+    compose_file: $CI_PROJECT_DIR/tests/docker-compose_ssh_telnet.yml
   script:
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml build --pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml up -d
-    - sleep 240
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml exec test_container pytest --color=yes -v --durations 0 -m test_set1 -rP
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml stop || true
+    - alias dc="docker compose --profile image -f ${compose_file}"
+    - dc pull
+    - dc up -d --build --wait --remove-orphans
+    - docker exec devices-test_container pytest --color=yes -v --durations 0 -rP $pyci test_ssh_telnet.py
+    - dc stop
 
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml build --pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml up -d
-    - sleep 240
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml exec test_container pytest --color=yes -v --durations 0 -m test_set2 -rP
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set2.yml stop || true
-
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml build --pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml up -d
-    - sleep 240
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml exec test_container pytest --color=yes -v --durations 0 -m test_set3 -rP
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set3.yml stop || true
-
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml build --pull
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml up -d
-    - sleep 240
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set1.yml exec test_container pytest --color=yes -v --durations 0 -m test_telnets -rP
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_set_telnets.yml stop || true
   after_script:
-    - docker compose ps
-    - mkdir $CI_PROJECT_DIR/logs 
+    - mkdir $CI_PROJECT_DIR/logs
     - |
       for container_id in $(docker compose ps -qa); do
         container_name=$(docker inspect --format='{{.Name}}' $container_id)
-        echo "logging and removing $container_name"
-        docker logs ${container_name:1} > $CI_PROJECT_DIR/logs/logs_${container_name:1}.txt 2>&1 || true
-        docker rm -fv $container_id || true
+        docker logs $container_id > "${CI_PROJECT_DIR}/logs/${container_name}.txt" 2>&1 || true
       done
-    - docker rm -fv $(docker network inspect mockit_network --format '{{range $id, $container := .Containers}}{{println $id}}{{end}}') || true
-    - docker network rm -f mockit_network || true
+    - dc down -v || true
     - docker system prune -a --volumes -f || true
   artifacts:
     when: always
@@ -95,7 +80,7 @@ unit_test:
     name: test-results
     expire_in: 1 month
   needs:
-    - build
+    - job: build
 
 push:
   image: docker:latest
@@ -109,6 +94,14 @@ push:
     - docker run --privileged --rm tonistiigi/binfmt --install all
     - docker buildx create --use
     - docker login -u ${DOCKER_USERNAME} -p "${DOCKER_TOKEN}"
+    - >-
+      docker buildx build
+      --platform linux/amd64,linux/arm64
+      --tag "${CI_REGISTRY_IMAGE}:${IMAGE_VERSION}"
+      --output "type=tar,compression=gzip,dest=${IMAGE_FILE}"
+      --output "type=registry,ref=${CI_REGISTRY_IMAGE}:${IMAGE_VERSION}"
+      --push
+      .
     - docker buildx build --platform linux/amd64,linux/arm64 -t $CI_REGISTRY_IMAGE:${IMAGE_VERSION} -t $CI_REGISTRY_IMAGE:${IMAGE_TAG} -t $SLURPIT_IMAGE:${IMAGE_VERSION} -t $SLURPIT_IMAGE:${IMAGE_TAG} --push .
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request" || $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -119,3 +112,8 @@ push:
   needs:
     - build
     - unit_test
+  artifacts:
+    paths:
+      - "*.tar.gz"
+    name: slurpit-mockit
+    expire_in: 6 month

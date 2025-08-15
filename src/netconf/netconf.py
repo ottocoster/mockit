@@ -1,14 +1,15 @@
+import asyncio
 import os
+import socket
 from pathlib import Path
 from typing import Optional
 import xml.etree.ElementTree as ET
 
 from pytest_netconf import NetconfServer
+from pytest_netconf.exceptions import RequestError
 from pytest_netconf.sshserver import SSHServer
 
 import paramiko
-import threading
-import time
 
 import logging
 
@@ -16,7 +17,13 @@ logger = logging.getLogger('app')
 
 
 class AsyncNetconfServer(NetconfServer):
-    def start(self) -> None:
+    transport = None
+
+    def __init__(self, status):
+        super().__init__()
+        self.status = status
+
+    async def start(self) -> None:
         """
         Start the mock NETCONF server.
 
@@ -25,28 +32,60 @@ class AsyncNetconfServer(NetconfServer):
         """
         self.running = True
         self._bind_socket()
+        await self.status.service_ready()
         logger.info("Netconf server started..")
-        accept_thread = threading.Thread(target=self._accept_connections)
-        accept_thread.start()
-        time.sleep(1)  # Give the server a moment to start
+        await asyncio.to_thread(self._run)
+        logger.info("Netconf thread finished")
+
+    def _bind_socket(self) -> None:
+        self._server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self._server_socket.setsockopt(
+            socket.SOL_SOCKET, socket.SO_REUSEADDR, 1
+        )
+        self._server_socket.settimeout(1.0)
+        self._server_socket.bind((self.settings.host, self.settings.port))
+        logger.debug('server socket bound')
+        self._server_socket.listen(1)
+        logger.debug('server socket listening')
+
+    def stop(self) -> None:
+        """Stop the NETCONF server."""
+        self.running = False
+        if self._server_socket:
+            self._server_socket.close()
+        if self._client_socket:
+            self._client_socket.close()
+        if self.transport:
+            self.transport.completion_event.set()
+            self.transport.close()
+        logger.info("Netconf server stopped.")
 
     def _accept_connections(self):
         while self.running:
             try:
                 self._client_socket, _ = self._server_socket.accept()
                 logger.info("Connection accepted.")
-                self._thread = threading.Thread(target=self._run)
-                self._thread.start()
+                # Handle connection...
+            except socket.timeout:
+                # Timeout occurred, check if we should continue
+                continue
             except OSError as e:
-                logger.error("Error accepting connection: %s", e)
+                if self.running:  # Only log if we're still supposed to be running
+                    logger.error("Error accepting connection: %s", e)
+                break
+        return self.running
 
     def _run(self) -> None:
         """Run the server to accept connections and process requests."""
+        transport, channel = None, None
         try:
+            if not self._accept_connections():
+                return
+            self._client_socket, _ = self._server_socket.accept()
             transport = paramiko.Transport(self._client_socket)
             transport.add_server_key(paramiko.RSAKey.generate(2048))
             server = SSHServer(self.settings)
-            transport.start_server(server=server)
+            self.transport.start_server(server=server)
             channel = transport.accept(20)
 
             if channel is None:
@@ -66,6 +105,7 @@ class AsyncNetconfServer(NetconfServer):
                 except EOFError:  # pragma: no cover
                     pass
             transport.close()
+
 
     def _handle_requests(self, channel: paramiko.Channel) -> None:
         """
@@ -105,9 +145,7 @@ class AsyncNetconfServer(NetconfServer):
 
     def get_template(self, tag: str) -> str:
         path = Path('configs') / os.environ['DEVICE_TYPE'] / 'netconf' / f"{tag}.xml"
-        if path.exists():
-            with path.open() as f:
-                return f.read()
+        return path.read_text() if path.exists() else ''
 
     def _get_response(self, request: str) -> Optional[str]:
         try:

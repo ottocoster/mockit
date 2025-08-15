@@ -1,12 +1,17 @@
+import asyncio
+
 from netconf.netconf import AsyncNetconfServer
 import logging
 
-async def start_netconf(options):
-    logger = logging.getLogger('app')
+
+logger = logging.getLogger('app')
+
+
+async def start_netconf(status, options):
     logger.debug(f"starting netconf {options}")
 
     # Create and start the NetconfServer instance
-    nc_server = AsyncNetconfServer()
+    nc_server = AsyncNetconfServer(status)
 
     # Set properties on the server
     nc_server.base_version = "1.1"
@@ -33,8 +38,14 @@ async def start_netconf(options):
             </rpc-reply>"""
         )
 
-    nc_server.start()
+    start_netconf.stop_server = nc_server.stop
 
-    # # Stop the server when done
-    # nc_server.stop()
+    async def stop_server():
+        nc_server.stop()
 
+    fs = [asyncio.ensure_future(nc_server.start())]
+    await asyncio.wait(fs, return_when=asyncio.FIRST_COMPLETED)
+
+
+def stop_netconf():
+    start_netconf.stop_server()
