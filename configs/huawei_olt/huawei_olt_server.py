@@ -4,16 +4,19 @@ from src.telnet_server.telnet_handler import Telnet_Handler
 
 from asyncssh.process import SSHServerProcess
 
-class huawei_olt_server(SSH_Server):
-    pass
+huawei_olt_server = SSH_Server
+
 
 class huawei_olt_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'huawei_olt'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = ">", alt_terminator = "#")
+        self.enable = False
+        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
+
 
 class huawei_olt_telnet_handler(Telnet_Handler):
-    def __init__(self, reader, writer, options={}):
-        super().__init__(reader, writer, options=options)
-        self.set_prompt_terminator(pri_terminator = ">", alt_terminator = "#")
+    def __init__(self, reader, writer, options=None):
+        super().__init__(reader, writer, options=options or {})
+        self.enable = False
+        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")

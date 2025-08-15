@@ -5,6 +5,7 @@ from collections import defaultdict
 
 connection_attempts = defaultdict(list)  # Store connection attempts with timestamps
 
+
 class SSH_Server(asyncssh.SSHServer):
     def __init__(self, options, logger):
         """
@@ -30,7 +31,7 @@ class SSH_Server(asyncssh.SSHServer):
 
         # Remove attempts older than 1 minute
         connection_attempts[ip_address] = [
-            t for t in connection_attempts[ip_address] 
+            t for t in connection_attempts[ip_address]
             if current_time - t < timedelta(minutes=1)
         ]
         # Add the current attempt
@@ -45,8 +46,7 @@ class SSH_Server(asyncssh.SSHServer):
             conn.set_extra_info(options=self.options)
             super().connection_made(conn)  # Call the superclass method
 
-    @staticmethod
-    def password_auth_supported():
+    def password_auth_supported(self):
         """
         Indicate that password authentication is supported.
 

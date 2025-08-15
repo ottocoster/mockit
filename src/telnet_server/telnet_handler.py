@@ -1,16 +1,19 @@
-import socket
-import threading
+import asyncio
+import importlib
 import logging
 import os
-import importlib
-from concurrent.futures import ThreadPoolExecutor
-import asyncio
 import sys
-import time
+from contextlib import suppress
+
 from openai import OpenAI
 
+
 # Telnet Handler class
+
 class Telnet_Handler:
+    prompt_username = 'Username: '
+    prompt_password = 'Password: '
+
     def __init__(self, reader, writer, options={}):
         self.reader = reader
         self.writer = writer
@@ -117,7 +120,7 @@ class Telnet_Handler:
             model=model,
         )
         message_content = chat_completion.choices[0].message.content
-        message_content = message_content.replace("```", "").strip()        
+        message_content = message_content.replace("```", "").strip()
 
         self.logger.info(f"ai_output: `{message_content}`")
         return message_content
@@ -131,7 +134,7 @@ class Telnet_Handler:
         :return: Custom command output as a string.
         """
         return ""
-    
+
     def replace_command(self, command):
         command_map = {'sh': 'show', 'disp': 'display'}
         command_parts = command.split(" ")
@@ -156,8 +159,8 @@ class Telnet_Handler:
         matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
         return sorted(matching_commands) if matching_commands else None
 
-    def respond(self, response=""):
-        self.conn.sendall(response.encode() + self.new_line.encode())
+    # def respond(self, response=""):
+    #     self.conn.sendall(response.encode() + self.new_line.encode())
 
     async def handle_command(self, command):
         command = self.replace_command(command)
@@ -193,9 +196,10 @@ class Telnet_Handler:
     def _get_command_output(self, file):
         with open(file, "r") as f:
             return f.read().strip()
-        
+
     async def respond(self, output):
         await self.write(output + self.new_line)
+        self.logger.info(f"response: `{output}`")
 
     async def write(self, output):
         self.writer.write(output.encode())
@@ -205,14 +209,18 @@ class Telnet_Handler:
         data = await self.reader.read(1024)
         return data.decode().strip()
 
+    async def get_credentials(self):
+        await self.write(self.prompt_username)
+        username = await self.read()
+        await self.write(self.prompt_password)
+        password = await self.read()
+        return username, password
+
     async def run(self):
         await asyncio.sleep(self.login_delay)
 
         try:
-            await self.write("Username: ")
-            username = await self.read()
-            await self.write("Password: ")
-            password = await self.read()
+            username, password = await self.get_credentials()
 
             if username == self.username and password == self.password:
                 await self.write("Logged in successfully\n")
@@ -222,12 +230,10 @@ class Telnet_Handler:
 
             while True:
                 await asyncio.sleep(self.delay)
-
                 await self.write(self.prompt_terminator)
                 command = await self.read()
                 self.logger.info(f"command received `{repr(command)}`")
                 await self.respond(command)
-
                 if command:
                     result = await self.handle_command(command)
                     if not result:
@@ -236,5 +242,6 @@ class Telnet_Handler:
             self.logger.error(f"Error {e}")
         finally:
             self.writer.close()
-            await self.writer.wait_closed()
+            with suppress(BrokenPipeError):
+                await self.writer.wait_closed()
             self.logger.info(f"Connection closed")

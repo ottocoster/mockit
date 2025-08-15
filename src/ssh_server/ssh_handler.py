@@ -1,4 +1,6 @@
 import os
+import sys
+
 from asyncssh.process import SSHServerProcess
 from concurrent.futures import ThreadPoolExecutor
 import asyncio
@@ -26,7 +28,7 @@ class SSH_Handler:
         self.config_mode = False
         self.config_pattern = "..#"
         self.delay = options['delay']
-        self.break_commands = ['exit', 'quit', 'logout', '\\q']
+        self.break_commands = ['exit', 'quit', 'logout', r'\q']
         self.handle_script_function = None
         config_dir  = f"configs/{self.device_type}"
         if self.device_version:
@@ -47,7 +49,7 @@ class SSH_Handler:
     def _load_script_function(self, script_path, function_name):
         # Convert the file system path to a module path by replacing slashes with dots
         module_path = script_path.replace('/', '.')
-        
+
         # Import the module
         try:
             package = importlib.import_module(module_path)
@@ -59,14 +61,14 @@ class SSH_Handler:
                 sys.path.append(script_dir)
             # Retry importing after modifying sys.path
             package = importlib.import_module(module_path)
-        
+
         # Access the function from the module
         function = getattr(package, function_name)
-        
+
         # Assign the function to an attribute
         self.handle_script_function = function
         return function
-        
+
     async def open(self):
         """
         Continuously reads from the process while the channel is open.
@@ -114,7 +116,7 @@ class SSH_Handler:
         """
         return ""
 
-        
+
     def get_ai_output(self, command):
         self.logger.info("get_ai_output called")
 
@@ -141,7 +143,7 @@ class SSH_Handler:
             model=model,
         )
         message_content = chat_completion.choices[0].message.content
-        message_content = message_content.replace("```", "").strip()        
+        message_content = message_content.replace("```", "").strip()
         return message_content
 
     def replace_command(self, command: str) -> str:
@@ -150,19 +152,19 @@ class SSH_Handler:
             'sh': 'show',
             'disp': 'display'
         }
-        
+
         # Split the command into parts
         command_parts = command.split(" ")
-        
+
         # Check if the first part is a shorthand and replace it
         if command_parts[0] in command_map:
             command_parts[0] = command_map[command_parts[0]]
-        
+
         # Join the command back together
         replaced_command = ' '.join(command_parts)
-        
+
         return replaced_command
-        
+
     def handle_help_commands(self, command):
         if command  == "?":
             keys = sorted(self.commands.keys())
@@ -174,11 +176,11 @@ class SSH_Handler:
             matching_commands = self.get_matching_commands(scr_command)
             if matching_commands:
                 self.respond("\n".join(matching_commands))
-            
+
             return True
-        
+
         return False
-    
+
     def get_matching_commands(self, command):
         # Find commands that start with the given command string
         matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
@@ -203,12 +205,12 @@ class SSH_Handler:
             self.handle_help_commands(command)
             return True
 
-        
+
         # Handle script functions
         custom_script_output = self.handle_script_function(command)
         if custom_script_output:
             self.logger.info(f"custom_script_output `{custom_script_output}")
-            
+
             if isinstance(custom_script_output, str):
                 self.respond(custom_script_output)
             return True
@@ -243,7 +245,7 @@ class SSH_Handler:
         if command in self.break_commands:
             return False
 
-        # Handle enable and disable command    
+        # Handle enable and disable command
         if command == "enable" or command == "disable":
             self.enable = command == "enable"
             self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
@@ -256,7 +258,7 @@ class SSH_Handler:
         self.logger.error(f"Command not found `{self.device_type}`: `{command}`")
         return True
 
-    
+
     def _load_commands(self, template_dir):
         """
         Loads command templates from the specified directory.
@@ -269,16 +271,16 @@ class SSH_Handler:
             self.logger.warning(f"Unable to find directory: `{template_dir}`")
             self.commands = {}
             return False
-        
+
         for filename in os.listdir(template_dir):
             file_path = os.path.join(template_dir, filename)
-            name, extension = os.path.splitext(filename)   
+            name, extension = os.path.splitext(filename)
             if os.path.isfile(file_path) and extension == '.txt':
                 commands[name] = file_path
-        
+
         self.commands = commands
         return True
-    
+
     async def _get_command_output(self, file):
         """
         Reads the content of a command template file asynchronously.
@@ -297,12 +299,12 @@ class SSH_Handler:
     def extract_patterns(self, pattern):
         # Split the pattern by the alternation operator '|'
         parts = pattern.split('|')
-        
+
         # Remove escape characters
         cleaned_parts = [part.replace('\\', '') for part in parts]
-        
+
         return cleaned_parts
-    
+
     def strip_first_last_blank_lines(text):
         lines = text.splitlines()
 
@@ -316,7 +318,7 @@ class SSH_Handler:
 
         # Join the lines back into a single string
         return "\n".join(lines)
-        
+
     def set_prompt_terminator(self, pri_terminator = "#", alt_terminator = ">"):
         """
         Sets the prompt terminator pattern for the SSH prompt.
@@ -325,16 +327,16 @@ class SSH_Handler:
         """
         self.pri_terminator = pri_terminator
         self.alt_terminator = alt_terminator
-
-        if self.enable:
-            termintator = pri_terminator
-        else:
-            termintator = alt_terminator
+        terminator = self.terminator
 
         if self.config_mode:
-            self.prompt_terminator = self.device_type + self.config_pattern + termintator + " "
+            self.prompt_terminator = self.device_type + self.config_pattern + terminator + " "
         else:
-            self.prompt_terminator = self.device_type + termintator + " "
+            self.prompt_terminator = self.device_type + terminator + " "
+
+    @property
+    def terminator(self):
+        return self.pri_terminator if self.enable else self.alt_terminator
 
     @staticmethod
     def _read_file(filename):
@@ -365,4 +367,5 @@ class SSH_Handler:
 
         :param response: The response string to send.
         """
+        self.logger.info(f"response `{response}`")
         self.process.stdout.write(response + self.new_line)
