@@ -128,6 +128,7 @@ class ServerRegistry:
 
         if shutdown_tasks:
             # Wait for all tasks to complete gracefully
+            await asyncio.sleep(.1)
             await asyncio.gather(*shutdown_tasks, return_exceptions=True)
 
     async def listen_for_udp_reload(self, port: int):
