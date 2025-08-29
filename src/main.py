@@ -57,7 +57,7 @@ async def main() -> bool:
             if not task.done() and task != asyncio.current_task():
                 task.cancel()
                 remaining_tasks.add(task)
-        if remaining:
+        if remaining_tasks:
             await asyncio.gather(*remaining_tasks, return_exceptions=True)
 
 
