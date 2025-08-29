@@ -1,14 +1,19 @@
-import socket
-import threading
+import asyncio
+import importlib
 import logging
 import os
-import importlib
-from concurrent.futures import ThreadPoolExecutor
-import asyncio
 import sys
-import time
+from contextlib import suppress
+
+from openai import OpenAI
+
+
 # Telnet Handler class
+
 class Telnet_Handler:
+    prompt_username = 'Username: '
+    prompt_password = 'Password: '
+
     def __init__(self, reader, writer, options={}):
         self.reader = reader
         self.writer = writer
@@ -35,6 +40,14 @@ class Telnet_Handler:
         # self._load_script_function(f"{config_dir}/scripts", "handle_command")
 
         self.set_prompt_terminator(pri_terminator="#", alt_terminator=">")
+
+
+        self.openai_support = options.get('openai_support', False)
+        self.openai_apikey = options.get('openai_apikey', '')
+        if self.openai_support:
+            self.openai_client = OpenAI(
+                api_key=self.openai_apikey,
+            )
 
     def _load_script_function(self, script_path, function_name):
         module_path = script_path.replace('/', '.')
@@ -81,6 +94,37 @@ class Telnet_Handler:
             self.prompt_terminator = self.device_type + termintator + " "
 
 
+    def get_ai_output(self, command):
+        self.logger.info("get_ai_output called")
+
+        prompt = f"""
+        ### Device type
+        {self.device_type}
+        ###
+
+        ### command
+        `{command}`
+        ###
+
+        Let's assume the device type and input command are above.
+        Please give me the output of this command of the device type without any explanation.
+        You have to reply with only one command output.
+        """
+        model = "gpt-4o"
+
+        chat_completion = self.openai_client.chat.completions.create(
+            messages=[
+                    {"role": "system", "content": "You are a AI vendor assistant that returns output of network devices."},
+                    {"role": "user", "content": prompt}
+            ],
+            model=model,
+        )
+        message_content = chat_completion.choices[0].message.content
+        message_content = message_content.replace("```", "").strip()
+
+        self.logger.info(f"ai_output: `{message_content}`")
+        return message_content
+
     def handle_custom_command(self, command):
         """
         Handle custom commands not found in the template directory.
@@ -90,7 +134,7 @@ class Telnet_Handler:
         :return: Custom command output as a string.
         """
         return ""
-    
+
     def replace_command(self, command):
         command_map = {'sh': 'show', 'disp': 'display'}
         command_parts = command.split(" ")
@@ -115,8 +159,8 @@ class Telnet_Handler:
         matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
         return sorted(matching_commands) if matching_commands else None
 
-    def respond(self, response=""):
-        self.conn.sendall(response.encode() + self.new_line.encode())
+    # def respond(self, response=""):
+    #     self.conn.sendall(response.encode() + self.new_line.encode())
 
     async def handle_command(self, command):
         command = self.replace_command(command)
@@ -152,9 +196,10 @@ class Telnet_Handler:
     def _get_command_output(self, file):
         with open(file, "r") as f:
             return f.read().strip()
-        
+
     async def respond(self, output):
         await self.write(output + self.new_line)
+        self.logger.info(f"response: `{output}`")
 
     async def write(self, output):
         self.writer.write(output.encode())
@@ -164,14 +209,18 @@ class Telnet_Handler:
         data = await self.reader.read(1024)
         return data.decode().strip()
 
+    async def get_credentials(self):
+        await self.write(self.prompt_username)
+        username = await self.read()
+        await self.write(self.prompt_password)
+        password = await self.read()
+        return username, password
+
     async def run(self):
         await asyncio.sleep(self.login_delay)
 
         try:
-            await self.write("Username: ")
-            username = await self.read()
-            await self.write("Password: ")
-            password = await self.read()
+            username, password = await self.get_credentials()
 
             if username == self.username and password == self.password:
                 await self.write("Logged in successfully\n")
@@ -181,12 +230,10 @@ class Telnet_Handler:
 
             while True:
                 await asyncio.sleep(self.delay)
-
                 await self.write(self.prompt_terminator)
                 command = await self.read()
-                self.logger.debug(f"Command received: `{command}`")
+                self.logger.info(f"command received `{repr(command)}`")
                 await self.respond(command)
-
                 if command:
                     result = await self.handle_command(command)
                     if not result:
@@ -195,5 +242,6 @@ class Telnet_Handler:
             self.logger.error(f"Error {e}")
         finally:
             self.writer.close()
-            await self.writer.wait_closed()
+            with suppress(BrokenPipeError):
+                await self.writer.wait_closed()
             self.logger.info(f"Connection closed")

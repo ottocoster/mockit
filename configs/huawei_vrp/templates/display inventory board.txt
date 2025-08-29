@@ -1,0 +1,244 @@
+BdName=<ANG1CXPC 2>
+BdeLabel=<
+[Slot_2]
+/$[Board Integration Version]
+/$BoardIntegrationVersion=3.0
+
+
+[Main_Board_1]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=A8888CD
+BarCode=210231888888000035
+Item=02311CHT
+Description=Function Module,ATN 910B,ANG8888CD,ATN 910B 2 channel DC System,with 24*GE/FE(o),4*10GE(o)
+Manufactured=2015-06-10
+VendorName=Huawei
+IssueNumber=00
+CLEICode=
+BOM=
+
+
+[Port_0]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=RTS88-GB-88     
+BarCode=E12068888856    
+Item=
+Description=1Gb/s-0nm-Copper-100m
+Manufactured=2016-12-17
+VendorName=OEM             
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_1]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=FCLF86666P2BTL   
+BarCode=PQ666681         
+Item=
+Description=1Gb/s-0nm-Copper-100m
+Manufactured=2014-09-23
+VendorName=FINISAR CORP.   
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_2]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=FCPQH88888BTL   
+BarCode=PQH88888         
+Item=
+Description=1Gb/s-0nm-Copper-100m
+Manufactured=2014-09-23
+VendorName=FINISAR CORP.   
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_3]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=FCLF88888856   
+BarCode=PQ123456         
+Item=
+Description=1Gb/s-0nm-Copper-100m
+Manufactured=2014-09-23
+VendorName=FINISAR CORP.   
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_5]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=CS-T10/100/1000 
+BarCode=3128888057     
+Item=
+Description=1Gb/s-0nm--100m
+Manufactured=2021-06-25
+VendorName=Fiberroad       
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_20]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=HL-CW-SFP-8888  
+BarCode=HL288888029   
+Item=
+Description=1Gb/s-1430nm-LC-80km(0.009mm)
+Manufactured=2014-09-02
+VendorName=OEM             
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_23]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=CWDM-SFP-1888   
+BarCode=HL288888067   
+Item=
+Description=1Gb/s-1350nm-LC-80km(0.009mm)
+Manufactured=2018-01-08
+VendorName=OEM             
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_26]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=FP-8888-80D     
+BarCode=G88881014032   
+Item=
+Description=unknown.-1590nm-LC-80km(0.009mm)
+Manufactured=2021-10-14
+VendorName=FIBERROAD       
+IssueNumber=
+CLEICode=
+BOM=
+
+
+[Port_27]
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=3.0
+
+
+[Board Properties]
+BoardType=FP-8888-80D     
+BarCode=GE332888884034   
+Item=
+Description=unknown.-1590nm-LC-80km(0.009mm)
+Manufactured=2021-10-14
+VendorName=FIBERROAD       
+IssueNumber=
+CLEICode=
+BOM=
+
+>
+BdVer=<PCB Version>
+BdVal=<ANG1CXPC REV B>
+BdVer=<FPGA1 Version>
+BdVal=<V100>
+BdVer=<PE Version>
+BdVal=<000>
+BdVer=<BootROM Version>
+BdVal=<V8.62.11>
+BdVer=<BootLoad Version>
+BdVal=<V9.62.11>
+BdVer=<Software Version>
+BdVal=<Version 5.160 RELEASE 0001>
+BdLoc=<shelf=-1,slotpos=-1,slot=2>
+
+BdName=<PWR 5>
+BdeLabel=<
+[PowerFrame_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Main_Board]
+
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+>
+BdLoc=<shelf=-1,slotpos=-1,slot=5>
+
+BdName=<FAN 6>
+BdeLabel=<
+[FanFrame_1]
+/$[ArchivesInfo Version]
+/$ArchivesInfoVersion=3.0
+
+
+[Main_Board]
+
+/$[ArchivesInfo Version] 
+/$ArchivesInfoVersion=
+
+
+[Board Properties]
+BoardType=
+BarCode=
+Item=
+Description=
+Manufactured=
+VendorName=
+IssueNumber=
+CLEICode=
+BOM=
+
+>
+BdLoc=<shelf=-1,slotpos=-1,slot=6>

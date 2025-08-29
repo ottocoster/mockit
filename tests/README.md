@@ -6,11 +6,11 @@ docker compose -f docker-compose_set1.yml up -d --build
 ```
 
 ```sh
-docker exec devices-test_container sh -c "pytest test_ssh_set1.py | tee /output.txt"
+docker exec devices_test_container sh -c "pytest test_ssh_set1.py | tee /output.txt"
 ```
 
 ```sh
-docker cp devices-test_container:/output.txt .
+docker cp devices_test_container:/output.txt .
 ```
 
 ```sh

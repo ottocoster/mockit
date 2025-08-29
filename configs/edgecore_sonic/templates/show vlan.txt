@@ -1,0 +1,27 @@
+VLAN ID             : 100                                                                                               
+Type                : Static                                                                                          
+Name                : VLAN_DEFAULT                                                                                     
+Status              : Active                                                                                          
+Ports/Port Channels : Eth2/10(S)                                                                                                                                                                                                                                                                                                                                  
+VLAN ID             : 200                                                                                              
+Type                : Static                                                                                          
+Name                : VLAN_NETWORK_A                                                                                
+Status              : Active                                                                                          
+Ports/Port Channels : Eth2/ 1(S) Eth2/ 2(S) Eth2/ 3(S) Eth2/ 4(S) Eth2/ 5(S)
+                      Eth2/ 6(S) Eth2/ 7(S) Eth2/ 8(S) Eth2/ 9(S) Eth2/10(S)                                                                
+                      Eth2/11(S) Eth2/12(S) Eth2/13(S) Eth2/14(S) Eth2/15(S)                                                                
+                      Eth2/16(S) Eth2/17(S) Eth2/18(S) Eth2/19(S) Eth2/20(S)                                                                
+                      Eth2/21(S) Eth2/22(S) Eth2/23(S) Eth2/24(S) Eth2/25(S)                                                                
+                      Eth2/26(S) Eth2/27(S)                                                                                                                                                                                                                                                                                                                       
+VLAN ID             : 201                                                                                               
+Type                : Static                                                                                          
+Name                : VLAN_SERVICES                                                                                
+Status              : Active                                                                                          
+Ports/Port Channels : Eth2/23(S) Eth2/24(S)                                                                                                                                                                                                                                                                                                                       
+VLAN ID             : 300                                                                                               
+Type                : Static                                                                                          
+Name                : VLAN_STORAGE                                                                                     
+Status              : Active                                                                                          
+Ports/Port Channels : Eth2/27(S)                                                                                                                                                                                                            
+Remote SPAN VLANs                                                                                                     
+------------------------------------------------                                                                                                                             

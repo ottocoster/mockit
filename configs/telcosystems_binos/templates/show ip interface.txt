@@ -1,0 +1,35 @@
+Interface Lo0
+  index 2 metric 1 mtu 32767
+  directed-broadcast disabled
+  Flags : <UP,LOOPBACK,NOTRAILERS,RUNNING,MULTICAST>
+  inet 127.0.0.1/8 autoconfigured
+  0 packets received; 0 packets sent
+  0 multicast packets received
+  0 multicast packets sent
+  0 input errors; 0 output errors
+  0 collisions; 0 dropped
+  0 down count
+Interface Eth0
+  index 3 metric 1 mtu 1500
+  directed-broadcast disabled
+  Flags : <UP,BROADCAST,NOTRAILERS,RUNNING,SIMPLEX,MULTICAST>
+  inet 192.168.50.25/24 broadcast 192.168.50.255
+  Ethernet address is aa:bb:cc:11:22:33
+  36626269 packets received; 35885363 packets sent
+  6 multicast packets received
+  11104 multicast packets sent
+  0 input errors; 0 output errors
+  0 collisions; 0 dropped
+  0 down count
+Interface mgmtIf0
+  index 1 metric 1 mtu 32767
+  directed-broadcast disabled
+  Flags : <UP,BROADCAST,NOTRAILERS,RUNNING,MULTICAST>
+  inet 10.20.30.40/16 broadcast 10.20.255.255 autoconfigured
+  Ethernet address is aa:bb:cc:11:22:34
+  0 packets received; 1 packets sent
+  0 multicast packets received
+  0 multicast packets sent
+  0 input errors; 0 output errors
+  0 collisions; 0 dropped
+  0 down count

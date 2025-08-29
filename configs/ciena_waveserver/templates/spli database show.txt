@@ -1,0 +1,10 @@
+
++----------------- SPLI REMOTE DATABASE ENTRY 1 -------------------+
+| Shelf Key        | 6500-LAREDO-1 (10.13.16.35)                   |
+| Key Format       | TID-ShelfID                                   |
+| Comms Type       | TCP/SSH                                       |
+| Comms State      | 2-way Connection Established                  |
+| Status           | Reliable                                      |
+| Adj Matches      | 7                                             |
++------------------+-----------------------------------------------+
+

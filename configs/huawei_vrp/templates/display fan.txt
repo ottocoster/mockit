@@ -1,0 +1,8 @@
+SlotID    : 6
+Present   : YES
+Registered: YES
+Status    : AUTO
+FanSpeed  : [No.]Speed
+          : [1]   20%
+          : [2]   20%
+          : [3]   20%

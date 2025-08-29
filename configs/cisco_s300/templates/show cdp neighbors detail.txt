@@ -1,0 +1,30 @@
+---------------------------------------------
+Device-ID: ac4a56f53279
+Advertisement version: 2
+Platform: Cisco SF352-08P (PID:SF352-08P-K9)-VSD
+Capabilities: Router Switch IGMP 
+Interface: gi1, Port ID (outgoing port): gi2
+Holdtime: 144
+Version: 2.5.0.83
+Duplex: full
+Native VLAN: 1
+Application: VoIP using VLAN 2
+Power drawn: 30000 milliwatts
+SysName: test-sw11
+Addresses:
+          IP 192.168.11.181
+          IPv6 fe80::ae4a:56ff:fef5:3279 (link-local)
+---------------------------------------------
+Device-ID: 34b88353dcc7
+Advertisement version: 2
+Platform: Cisco CBS350-8FP-E-2G (PID:CBS350-8FP-E-2G)-VSD
+Capabilities: Router Switch IGMP 
+Interface: gi9, Port ID (outgoing port): gi10
+Holdtime: 134                                         
+Version: 3.2.0.89
+Duplex: full
+Native VLAN: 1
+SysName: test-sw20
+Addresses:
+          IP 192.168.11.54
+          IPv6 fe80::36b8:83ff:fe53:dcc7 (link-local)

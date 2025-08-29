@@ -1,0 +1,2085 @@
+Interface               Admin Link Proto    Local                 Remote
+int001                up    up
+int001.32769          up    up   vpls    
+int002               up    up
+int002.16383         up    up   inet    
+                                   inet6   
+int003               up    up
+int003.16383         up    up   inet    
+int003.16384         up    up   inet    
+int004                up    up
+int004.110            up    up   aenet    --> aeX.250
+int004.32767          up    up   aenet    --> aeX.251
+int005                up    up
+int005.5              up    up   aenet    --> aeX.406
+int005.7              up    up   aenet    --> aeX.426
+int005.9              up    up   aenet    --> aeX.431
+int005.50             up    up   aenet    --> aeX.4060
+int005.51             up    up   aenet    --> aeX.4061
+int005.52             up    up   aenet    --> aeX.4062
+int005.75             up    up   aenet    --> aeX.4265
+int005.80             up    up   aenet    --> aeX.430
+int005.90             up    up   aenet    --> aeX.4310
+int005.91             up    up   aenet    --> aeX.4311
+int005.100            up    up   aenet    --> aeX.323
+int005.101            up    up   aenet    --> aeX.326
+int005.102            up    up   aenet    --> aeX.330
+int005.110            up    up   aenet    --> aeX.331
+int005.112            up    up   aenet    --> aeX.334
+int005.130            up    up   aenet    --> aeX.336
+int005.150            up    up   aenet    --> aeX.367
+int005.158            up    up   aenet    --> aeX.371
+int005.198            up    up   aenet    --> aeX.372
+int005.201            up    up   aenet    --> aeX.378
+int005.202            up    up   aenet    --> aeX.379
+int005.203            up    up   aenet    --> aeX.380
+int005.206            up    up   aenet    --> aeX.381
+int005.207            up    up   aenet    --> aeX.382
+int005.209            up    up   aenet    --> aeX.383
+int005.211            up    up   aenet    --> aeX.384
+int005.227            up    up   aenet    --> aeX.385
+int005.263            up    up   aenet    --> aeX.387
+int005.350            up    up   aenet    --> aeX.399
+int005.404            up    up   aenet    --> aeX.402
+int005.450            up    up   aenet    --> aeX.403
+int005.483            up    up   aenet    --> aeX.404
+int005.493            up    up   aenet    --> aeX.405
+int005.502            up    up   aenet    --> aeX.40602
+int005.503            up    up   aenet    --> aeX.40603
+int005.507            up    up   aenet    --> aeX.40607
+int005.528            up    up   aenet    --> aeX.40628
+int005.535            up    up   aenet    --> aeX.40635
+int005.540            up    up   aenet    --> aeX.40640
+int005.541            up    up   aenet    --> aeX.40641
+int005.559            up    up   aenet    --> aeX.40659
+int005.601            up    up   aenet    --> aeX.418
+int005.603            up    up   aenet    --> aeX.419
+int005.621            up    up   aenet    --> aeX.420
+int005.637            up    up   aenet    --> aeX.421
+int005.655            up    up   aenet    --> aeX.422
+int005.663            up    up   aenet    --> aeX.423
+int005.666            up    up   aenet    --> aeX.424
+int005.684            up    up   aenet    --> aeX.425
+int005.708            up    up   aenet    --> aeX.42608
+int005.709            up    up   aenet    --> aeX.42609
+int005.901            up    up   aenet    --> aeX.43101
+int005.902            up    up   aenet    --> aeX.43102
+int005.903            up    up   aenet    --> aeX.43103
+int005.905            up    up   aenet    --> aeX.43105
+int005.907            up    up   aenet    --> aeX.43107
+int005.912            down  up   aenet    --> aeX.43112
+int005.917            up    up   aenet    --> aeX.43117
+int005.920            up    up   aenet    --> aeX.43120
+int005.922            up    up   aenet    --> aeX.43122
+int005.923            up    up   aenet    --> aeX.43123
+int005.1002           up    up   aenet    --> aeX.3232
+int005.1004           up    up   aenet    --> aeX.3234
+int005.1011           down  up   aenet    --> aeX.3261
+int005.1012           up    up   aenet    --> aeX.3262
+int005.1013           up    up   aenet    --> aeX.3263
+int005.1106           up    up   aenet    --> aeX.3316
+int005.1110           up    up   aenet    --> aeX.333
+int005.1162           up    up   aenet    --> aeX.335
+int005.1326           up    up   aenet    --> aeX.337
+int005.1405           up    up   aenet    --> aeX.338
+int005.1414           up    up   aenet    --> aeX.339
+int005.1420           up    up   aenet    --> aeX.340
+int005.1423           up    up   aenet    --> aeX.341
+int005.1425           up    up   aenet    --> aeX.342
+int005.1426           up    up   aenet    --> aeX.343
+int005.1427           up    up   aenet    --> aeX.344
+int005.1428           up    up   aenet    --> aeX.345
+int005.1430           up    up   aenet    --> aeX.346
+int005.1457           up    up   aenet    --> aeX.347
+int005.1458           up    up   aenet    --> aeX.348
+int005.1459           up    up   aenet    --> aeX.349
+int005.1460           up    up   aenet    --> aeX.350
+int005.1461           up    up   aenet    --> aeX.351
+int005.1462           up    up   aenet    --> aeX.352
+int005.1463           up    up   aenet    --> aeX.353
+int005.1464           up    up   aenet    --> aeX.354
+int005.1466           up    up   aenet    --> aeX.355
+int005.1467           up    up   aenet    --> aeX.356
+int005.1478           up    up   aenet    --> aeX.357
+int005.1479           up    up   aenet    --> aeX.358
+int005.1480           up    up   aenet    --> aeX.359
+int005.1482           up    up   aenet    --> aeX.360
+int005.1483           up    up   aenet    --> aeX.361
+int005.1484           up    up   aenet    --> aeX.362
+int005.1485           up    up   aenet    --> aeX.363
+int005.1493           up    up   aenet    --> aeX.364
+int005.1497           up    up   aenet    --> aeX.365
+int005.1498           up    up   aenet    --> aeX.366
+int005.1500           up    up   aenet    --> aeX.3670
+int005.1501           up    up   aenet    --> aeX.3671
+int005.1505           up    up   aenet    --> aeX.3675
+int005.2000           up    up   aenet    --> aeX.373
+int005.2003           up    up   aenet    --> aeX.374
+int005.2005           up    up   aenet    --> aeX.375
+int005.2007           up    up   aenet    --> aeX.376
+int005.2008           up    up   aenet    --> aeX.377
+int005.2552           up    up   aenet    --> aeX.386
+int005.2730           up    up   aenet    --> aeX.388
+int005.2731           up    up   aenet    --> aeX.389
+int005.2741           up    up   aenet    --> aeX.390
+int005.2742           up    up   aenet    --> aeX.391
+int005.3000           up    up   aenet    --> aeX.392
+int005.3004           up    up   aenet    --> aeX.393
+int005.3005           up    up   aenet    --> aeX.394
+int005.3012           up    up   aenet    --> aeX.395
+int005.3321           down  up   aenet    --> aeX.397
+int005.3323           down  up   aenet    --> aeX.398
+int005.3800           up    up   aenet    --> aeX.400
+int005.3801           up    up   aenet    --> aeX.401
+int005.32767          up    up   aenet    --> aeX.396
+int006               up    up
+int007               up    up
+int008               up    up
+int008.1             up    up   vpls    
+int008.2             up    up   inet    
+int008.3             up    up   bridge  
+int008.4             up    up   inet     10.0.0.184/31 
+int008.5             up    up   inet     10.0.0.185/31 
+int008.6             up    up   bridge  
+int008.602           up    down
+int008.603           up    down inet     10.0.0.206/31
+int008.606           up    up   vpls    
+int008.607           up    up   inet     10.0.0.209/29
+int008.608           up    up   vpls    
+int008.609           up    up   inet     10.0.0.194/31
+int008.612           up    up   vpls    
+int008.613           up    up   inet     10.0.0.204/30
+int008.3547          up    down vpls    
+int008.32767         up    up  
+int009               up    up
+int010               up    up
+int011               up    up
+int012               up    up
+int013               up    up
+int014               up    up
+int015                up    up
+int015.32769          up    up   vpls    
+int016               up    up
+int016.16383         up    up   inet    
+                                   inet6   
+int017                up    up
+int017.2              up    up   aenet    --> aeX.85
+int017.3              up    up   aenet    --> aeX.133
+int017.5              up    up   aenet    --> aeX.194
+int017.6              up    up   aenet    --> aeX.204
+int017.7              up    up   aenet    --> aeX.222
+int017.8              up    up   aenet    --> aeX.230
+int017.9              up    up   aenet    --> aeX.237
+int017.10             up    up   aenet    --> aeX.3
+int017.11             up    up   aenet    --> aeX.13
+int017.13             up    up   aenet    --> aeX.25
+int017.15             up    up   aenet    --> aeX.62
+int017.16             up    up   aenet    --> aeX.66
+int017.17             up    up   aenet    --> aeX.76
+int017.18             up    up   aenet    --> aeX.79
+int017.19             up    up   aenet    --> aeX.82
+int017.20             up    up   aenet    --> aeX.850
+int017.21             up    up   aenet    --> aeX.851
+int017.22             up    up   aenet    --> aeX.852
+int017.23             up    up   aenet    --> aeX.853
+int017.25             up    up   aenet    --> aeX.855
+int017.30             up    up   aenet    --> aeX.1330
+int017.40             up    up   aenet    --> aeX.189
+int017.50             up    up   aenet    --> aeX.1940
+int017.51             up    up   aenet    --> aeX.1941
+int017.61             up    up   aenet    --> aeX.2041
+int017.69             up    up   aenet    --> aeX.2049
+int017.70             up    up   aenet    --> aeX.2220
+int017.71             up    up   aenet    --> aeX.2221
+int017.72             up    up   aenet    --> aeX.2222
+int017.90             up    up   aenet    --> aeX.2370
+int017.91             up    up   aenet    --> aeX.2371
+int017.97             up    up   aenet    --> aeX.2377
+int017.98             up    up   aenet    --> aeX.2378
+int017.99             up    up   aenet    --> aeX.2379
+int017.100            down  up   aenet    --> aeX.30
+int017.101            up    up   aenet    --> aeX.31
+int017.113            up    up   aenet    --> aeX.133
+int017.114            up    up   aenet    --> aeX.134
+int017.115            up    up   aenet    --> aeX.135
+int017.116            up    up   aenet    --> aeX.136
+int017.119            up    up   aenet    --> aeX.139
+int017.120            up    up   aenet    --> aeX.21
+int017.126            up    up   aenet    --> aeX.22
+int017.127            up    up   aenet    --> aeX.23
+int017.129            up    up   aenet    --> aeX.24
+int017.130            up    up   aenet    --> aeX.250
+int017.131            up    up   aenet    --> aeX.251
+int017.132            up    up   aenet    --> aeX.252
+int017.133            up    up   aenet    --> aeX.253
+int017.134            up    up   aenet    --> aeX.254
+int017.150            up    up   aenet    --> aeX.620
+int017.159            up    up   aenet    --> aeX.629
+int017.161            up    up   aenet    --> aeX.661
+int017.165            up    up   aenet    --> aeX.665
+int017.170            up    up   aenet    --> aeX.760
+int017.180            up    up   aenet    --> aeX.790
+int017.190            up    up   aenet    --> aeX.820
+int017.199            up    up   aenet    --> aeX.829
+int017.200            up    up   aenet    --> aeX.8500
+int017.201            up    up   aenet    --> aeX.8501
+int017.202            up    up   aenet    --> aeX.8502
+int017.203            up    up   aenet    --> aeX.8503
+int017.204            down  up   aenet    --> aeX.8504
+int017.205            up    up   aenet    --> aeX.8505
+int017.216            up    up   aenet    --> aeX.8516
+int017.217            up    up   aenet    --> aeX.8517
+int017.220            up    up   aenet    --> aeX.8520
+int017.225            up    up   aenet    --> aeX.8525
+int017.263            up    up   aenet    --> aeX.8563
+int017.300            up    up   aenet    --> aeX.13300
+int017.303            up    up   aenet    --> aeX.13303
+int017.310            up    up   aenet    --> aeX.13310
+int017.312            up    up   aenet    --> aeX.13312
+int017.313            up    up   aenet    --> aeX.13313
+int017.315            up    up   aenet    --> aeX.13315
+int017.316            up    up   aenet    --> aeX.13316
+int017.400            up    up   aenet    --> aeX.1890
+int017.402            up    up   aenet    --> aeX.1892
+int017.429            up    up   aenet    --> aeX.192
+int017.439            up    up   aenet    --> aeX.193
+int017.500            up    up   aenet    --> aeX.19400
+int017.501            up    up   aenet    --> aeX.19401
+int017.520            up    up   aenet    --> aeX.19420
+int017.521            up    up   aenet    --> aeX.19421
+int017.525            up    up   aenet    --> aeX.19425
+int017.529            up    up   aenet    --> aeX.19429
+int017.555            up    up   aenet    --> aeX.19455
+int017.601            up    up   aenet    --> aeX.20401
+int017.617            up    up   aenet    --> aeX.20417
+int017.618            up    up   aenet    --> aeX.20418
+int017.624            up    up   aenet    --> aeX.20424
+int017.638            up    up   aenet    --> aeX.20438
+int017.639            up    up   aenet    --> aeX.20439
+int017.640            up    up   aenet    --> aeX.20440
+int017.646            up    up   aenet    --> aeX.20446
+int017.648            up    up   aenet    --> aeX.20448
+int017.663            up    up   aenet    --> aeX.20463
+int017.664            up    up   aenet    --> aeX.20464
+int017.665            up    up   aenet    --> aeX.20465
+int017.667            up    up   aenet    --> aeX.20467
+int017.681            up    up   aenet    --> aeX.20481
+int017.682            up    up   aenet    --> aeX.20482
+int017.700            up    up   aenet    --> aeX.22200
+int017.701            up    up   aenet    --> aeX.22201
+int017.749            up    up   aenet    --> aeX.22249
+int017.767            up    up   aenet    --> aeX.22267
+int017.811            up    up   aenet    --> aeX.23011
+int017.812            up    up   aenet    --> aeX.23012
+int017.827            up    up   aenet    --> aeX.23027
+int017.888            up    up   aenet    --> aeX.23088
+int017.889            up    up   aenet    --> aeX.23089
+int017.891            up    up   aenet    --> aeX.23091
+int017.910            up    up   aenet    --> aeX.23710
+int017.914            up    up   aenet    --> aeX.23714
+int017.919            up    up   aenet    --> aeX.23719
+int017.922            up    up   aenet    --> aeX.23722
+int017.995            up    up   aenet    --> aeX.23795
+int017.996            up    up   aenet    --> aeX.23796
+int017.999            up    up   aenet    --> aeX.23799
+int017.1001           up    up   aenet    --> aeX.301
+int017.1005           up    up   aenet    --> aeX.305
+int017.1006           up    up   aenet    --> aeX.306
+int017.1010           up    up   aenet    --> aeX.310
+int017.1011           up    up   aenet    --> aeX.311
+int017.1013           up    up   aenet    --> aeX.313
+int017.1100           up    up   aenet    --> aeX.1300
+int017.1305           up    up   aenet    --> aeX.2505
+int017.1316           up    up   aenet    --> aeX.2516
+int017.1317           up    up   aenet    --> aeX.2517
+int017.1326           up    up   aenet    --> aeX.2526
+int017.1330           up    up   aenet    --> aeX.2530
+int017.1332           up    up   aenet    --> aeX.2532
+int017.1333           up    up   aenet    --> aeX.2533
+int017.1400           up    up   aenet    --> aeX.38
+int017.1405           up    up   aenet    --> aeX.39
+int017.1409           up    up   aenet    --> aeX.40
+int017.1410           up    up   aenet    --> aeX.41
+int017.1412           up    up   aenet    --> aeX.42
+int017.1413           up    up   aenet    --> aeX.43
+int017.1420           up    up   aenet    --> aeX.44
+int017.1468           up    up   aenet    --> aeX.45
+int017.1469           up    up   aenet    --> aeX.46
+int017.1470           up    up   aenet    --> aeX.47
+int017.1471           up    up   aenet    --> aeX.48
+int017.1472           up    up   aenet    --> aeX.49
+int017.1473           up    up   aenet    --> aeX.50
+int017.1475           up    up   aenet    --> aeX.51
+int017.1476           up    up   aenet    --> aeX.52
+int017.1486           up    up   aenet    --> aeX.53
+int017.1487           up    up   aenet    --> aeX.54
+int017.1488           up    up   aenet    --> aeX.55
+int017.1489           up    up   aenet    --> aeX.56
+int017.1490           up    up   aenet    --> aeX.57
+int017.1491           up    up   aenet    --> aeX.58
+int017.1492           up    up   aenet    --> aeX.59
+int017.1494           up    up   aenet    --> aeX.60
+int017.1495           up    up   aenet    --> aeX.61
+int017.1500           up    up   aenet    --> aeX.6200
+int017.1601           up    up   aenet    --> aeX.6601
+int017.1602           up    up   aenet    --> aeX.6602
+int017.1603           up    up   aenet    --> aeX.6603
+int017.1605           up    up   aenet    --> aeX.6605
+int017.1606           up    up   aenet    --> aeX.6606
+int017.1608           up    up   aenet    --> aeX.6608
+int017.1609           up    up   aenet    --> aeX.6609
+int017.1761           up    up   aenet    --> aeX.7661
+int017.1888           up    up   aenet    --> aeX.7988
+int017.2000           up    up   aenet    --> aeX.85000
+int017.2001           up    up   aenet    --> aeX.85001
+int017.2003           up    up   aenet    --> aeX.85003
+int017.2004           up    up   aenet    --> aeX.85004
+int017.2005           up    up   aenet    --> aeX.85005
+int017.2007           up    up   aenet    --> aeX.85007
+int017.2013           up    up   aenet    --> aeX.85013
+int017.2014           up    up   aenet    --> aeX.85014
+int017.2016           up    up   aenet    --> aeX.85016
+int017.2017           up    up   aenet    --> aeX.85017
+int017.2020           up    up   aenet    --> aeX.85020
+int017.2021           up    up   aenet    --> aeX.85021
+int017.2022           up    up   aenet    --> aeX.85022
+int017.2023           up    up   aenet    --> aeX.85023
+int017.2024           up    up   aenet    --> aeX.85024
+int017.2101           up    up   aenet    --> aeX.85101
+int017.2132           up    up   aenet    --> aeX.85132
+int017.2200           up    up   aenet    --> aeX.85200
+int017.2202           up    up   aenet    --> aeX.85202
+int017.2210           up    up   aenet    --> aeX.85210
+int017.2316           up    up   aenet    --> aeX.85316
+int017.2318           up    up   aenet    --> aeX.85318
+int017.2409           up    up   aenet    --> aeX.85409
+int017.2500           up    up   aenet    --> aeX.85500
+int017.2553           up    up   aenet    --> aeX.85553
+int017.2666           up    up   aenet    --> aeX.85666
+int017.2910           up    up   aenet    --> aeX.85910
+int017.2946           up    up   aenet    --> aeX.85946
+int017.2965           up    up   aenet    --> aeX.85965
+int017.2992           up    up   aenet    --> aeX.85992
+int017.2999           up    up   aenet    --> aeX.85999
+int017.3001           up    up   aenet    --> aeX.133001
+int017.3002           up    up   aenet    --> aeX.133002
+int017.3003           up    up   aenet    --> aeX.133003
+int017.3006           up    up   aenet    --> aeX.133006
+int017.3007           up    up   aenet    --> aeX.133007
+int017.3008           up    up   aenet    --> aeX.133008
+int017.3009           up    up   aenet    --> aeX.133009
+int017.3011           up    up   aenet    --> aeX.133011
+int017.3012           up    up   aenet    --> aeX.133012
+int017.3013           up    up   aenet    --> aeX.133013
+int017.3014           up    up   aenet    --> aeX.133014
+int017.3016           up    up   aenet    --> aeX.133016
+int017.3017           up    up   aenet    --> aeX.133017
+int017.3018           up    up   aenet    --> aeX.133018
+int017.3019           up    up   aenet    --> aeX.133019
+int017.3020           up    up   aenet    --> aeX.133020
+int017.3021           up    up   aenet    --> aeX.133021
+int017.3022           up    up   aenet    --> aeX.133022
+int017.3023           up    up   aenet    --> aeX.133023
+int017.3024           up    up   aenet    --> aeX.133024
+int017.3025           up    up   aenet    --> aeX.133025
+int017.3027           up    up   aenet    --> aeX.133027
+int017.3028           up    up   aenet    --> aeX.133028
+int017.3029           up    up   aenet    --> aeX.133029
+int017.3030           up    up   aenet    --> aeX.133030
+int017.3040           up    up   aenet    --> aeX.133040
+int017.3100           up    up   aenet    --> aeX.133100
+int017.3101           down  up   aenet    --> aeX.133101
+int017.3110           up    up   aenet    --> aeX.133110
+int017.3111           up    up   aenet    --> aeX.133111
+int017.3201           up    up   aenet    --> aeX.133201
+int017.3218           up    up   aenet    --> aeX.133218
+int017.3219           up    up   aenet    --> aeX.133219
+int017.3334           up    up   aenet    --> aeX.133334
+int017.3787           up    up   aenet    --> aeX.133787
+int017.3846           up    up   aenet    --> aeX.133846
+int017.3901           up    up   aenet    --> aeX.133901
+int017.3902           up    up   aenet    --> aeX.133902
+int017.3910           up    up   aenet    --> aeX.133910
+int017.3911           up    up   aenet    --> aeX.133911
+int017.3912           up    up   aenet    --> aeX.133912
+int017.3913           up    up   aenet    --> aeX.133913
+int017.3914           up    up   aenet    --> aeX.133914
+int017.3915           up    up   aenet    --> aeX.133915
+int017.3930           up    up   aenet    --> aeX.133930
+int017.3931           up    up   aenet    --> aeX.133931
+int017.10827          up    up   aenet    --> aeX.3827
+int017.11827          up    up   aenet    --> aeX.13827
+int017.32767          up    up   aenet    --> aeX.1332767
+int018                up    up
+int018.100            up    up   aenet    --> aeX.319
+int018.2222           up    up   aenet    --> aeX.320
+int018.2517           up    up   aenet    --> aeX.321
+int018.32767          up    up   aenet    --> aeX.322
+int019               up    up
+int020               up    up
+int021               up    up
+int022               up    up
+int023               up    up
+int024               up    up
+int025               up    up
+int026               up    up
+int027               up    up
+int028                up    up
+int028.32769          up    up   vpls    
+int029               up    up
+int029.16383         up    up   inet    
+                                   inet6   
+int030               up    up
+int030.16383         up    up   inet    
+int030.16384         up    up   inet    
+int031                up    up
+int031.0              up    up   aenet    --> aeX.445
+int032                up    up
+int032.2              up    up   aenet    --> aeX.275
+int032.7              up    up   aenet    --> aeX.316
+int032.8              up    up   aenet    --> aeX.317
+int032.10             up    up   aenet    --> aeX.252
+int032.12             up    up   aenet    --> aeX.268
+int032.46             up    up   aenet    --> aeX.305
+int032.50             up    up   aenet    --> aeX.306
+int032.100            up    up   aenet    --> aeX.2520
+int032.101            up    up   aenet    --> aeX.2521
+int032.104            up    up   aenet    --> aeX.2524
+int032.105            up    up   aenet    --> aeX.2525
+int032.108            up    up   aenet    --> aeX.2528
+int032.112            up    up   aenet    --> aeX.266
+int032.115            up    up   aenet    --> aeX.267
+int032.140            up    up   aenet    --> aeX.269
+int032.151            up    up   aenet    --> aeX.271
+int032.152            up    up   aenet    --> aeX.272
+int032.153            up    up   aenet    --> aeX.273
+int032.180            up    up   aenet    --> aeX.274
+int032.200            down  up   aenet    --> aeX.27500
+int032.201            up    up   aenet    --> aeX.27501
+int032.209            up    up   aenet    --> aeX.27509
+int032.225            up    up   aenet    --> aeX.27525
+int032.230            up    up   aenet    --> aeX.27530
+int032.278            up    up   aenet    --> aeX.27578
+int032.299            up    up   aenet    --> aeX.27599
+int032.301            up    up   aenet    --> aeX.293
+int032.506            up    up   aenet    --> aeX.3066
+int032.633            up    up   aenet    --> aeX.308
+int032.634            up    up   aenet    --> aeX.309
+int032.661            up    up   aenet    --> aeX.310
+int032.662            up    up   aenet    --> aeX.311
+int032.663            up    up   aenet    --> aeX.312
+int032.664            up    up   aenet    --> aeX.313
+int032.665            up    up   aenet    --> aeX.314
+int032.667            up    up   aenet    --> aeX.315
+int032.900            up    up   aenet    --> aeX.318
+int032.1001           up    up   aenet    --> aeX.25201
+int032.1014           up    up   aenet    --> aeX.25214
+int032.1106           up    up   aenet    --> aeX.260
+int032.1107           up    up   aenet    --> aeX.261
+int032.1108           up    up   aenet    --> aeX.262
+int032.1109           up    up   aenet    --> aeX.263
+int032.1110           up    up   aenet    --> aeX.264
+int032.1112           up    up   aenet    --> aeX.265
+int032.1400           up    up   aenet    --> aeX.2690
+int032.2008           up    up   aenet    --> aeX.275008
+int032.2139           up    up   aenet    --> aeX.275139
+int032.2209           up    up   aenet    --> aeX.275209
+int032.2400           up    up   aenet    --> aeX.275400
+int032.2401           up    up   aenet    --> aeX.275401
+int032.2403           up    up   aenet    --> aeX.275403
+int032.2404           up    up   aenet    --> aeX.275404
+int032.2500           up    up   aenet    --> aeX.275500
+int032.2972           up    up   aenet    --> aeX.275972
+int032.3001           up    up   aenet    --> aeX.292
+int032.3333           up    up   aenet    --> aeX.295
+int032.3334           up    up   aenet    --> aeX.296
+int032.3800           up    up   aenet    --> aeX.297
+int032.3801           up    up   aenet    --> aeX.298
+int032.3903           up    up   aenet    --> aeX.299
+int032.3904           up    up   aenet    --> aeX.300
+int032.3905           up    up   aenet    --> aeX.301
+int032.3909           up    up   aenet    --> aeX.302
+int032.3910           up    up   aenet    --> aeX.303
+int032.3911           up    up   aenet    --> aeX.304
+int032.32767          up    up   aenet    --> aeX.294
+int033                up    up
+int033.32769          up    up   vpls    
+int034               up    up
+int034.16383         up    up   inet    
+                                   inet6   
+int035                up    up
+int035.2              up    up   aenet    --> aeX.85
+int035.3              up    up   aenet    --> aeX.133
+int035.5              up    up   aenet    --> aeX.194
+int035.6              up    up   aenet    --> aeX.204
+int035.7              up    up   aenet    --> aeX.222
+int035.8              up    up   aenet    --> aeX.230
+int035.9              up    up   aenet    --> aeX.237
+int035.10             up    up   aenet    --> aeX.3
+int035.11             up    up   aenet    --> aeX.13
+int035.13             up    up   aenet    --> aeX.25
+int035.15             up    up   aenet    --> aeX.62
+int035.16             up    up   aenet    --> aeX.66
+int035.17             up    up   aenet    --> aeX.76
+int035.18             up    up   aenet    --> aeX.79
+int035.19             up    up   aenet    --> aeX.82
+int035.20             up    up   aenet    --> aeX.850
+int035.21             up    up   aenet    --> aeX.851
+int035.22             up    up   aenet    --> aeX.852
+int035.23             up    up   aenet    --> aeX.853
+int035.25             up    up   aenet    --> aeX.855
+int035.30             up    up   aenet    --> aeX.1330
+int035.40             up    up   aenet    --> aeX.189
+int035.50             up    up   aenet    --> aeX.1940
+int035.51             up    up   aenet    --> aeX.1941
+int035.61             up    up   aenet    --> aeX.2041
+int035.69             up    up   aenet    --> aeX.2049
+int035.70             up    up   aenet    --> aeX.2220
+int035.71             up    up   aenet    --> aeX.2221
+int035.72             up    up   aenet    --> aeX.2222
+int035.90             up    up   aenet    --> aeX.2370
+int035.91             up    up   aenet    --> aeX.2371
+int035.97             up    up   aenet    --> aeX.2377
+int035.98             up    up   aenet    --> aeX.2378
+int035.99             up    up   aenet    --> aeX.2379
+int035.100            down  up   aenet    --> aeX.30
+int035.101            up    up   aenet    --> aeX.31
+int035.113            up    up   aenet    --> aeX.133
+int035.114            up    up   aenet    --> aeX.134
+int035.115            up    up   aenet    --> aeX.135
+int035.116            up    up   aenet    --> aeX.136
+int035.119            up    up   aenet    --> aeX.139
+int035.120            up    up   aenet    --> aeX.21
+int035.126            up    up   aenet    --> aeX.22
+int035.127            up    up   aenet    --> aeX.23
+int035.129            up    up   aenet    --> aeX.24
+int035.130            up    up   aenet    --> aeX.250
+int035.131            up    up   aenet    --> aeX.251
+int035.132            up    up   aenet    --> aeX.252
+int035.133            up    up   aenet    --> aeX.253
+int035.134            up    up   aenet    --> aeX.254
+int035.150            up    up   aenet    --> aeX.620
+int035.159            up    up   aenet    --> aeX.629
+int035.161            up    up   aenet    --> aeX.661
+int035.165            up    up   aenet    --> aeX.665
+int035.170            up    up   aenet    --> aeX.760
+int035.180            up    up   aenet    --> aeX.790
+int035.190            up    up   aenet    --> aeX.820
+int035.199            up    up   aenet    --> aeX.829
+int035.200            up    up   aenet    --> aeX.8500
+int035.201            up    up   aenet    --> aeX.8501
+int035.202            up    up   aenet    --> aeX.8502
+int035.203            up    up   aenet    --> aeX.8503
+int035.204            down  up   aenet    --> aeX.8504
+int035.205            up    up   aenet    --> aeX.8505
+int035.216            up    up   aenet    --> aeX.8516
+int035.217            up    up   aenet    --> aeX.8517
+int035.220            up    up   aenet    --> aeX.8520
+int035.225            up    up   aenet    --> aeX.8525
+int035.263            up    up   aenet    --> aeX.8563
+int035.300            up    up   aenet    --> aeX.13300
+int035.303            up    up   aenet    --> aeX.13303
+int035.310            up    up   aenet    --> aeX.13310
+int035.312            up    up   aenet    --> aeX.13312
+int035.313            up    up   aenet    --> aeX.13313
+int035.315            up    up   aenet    --> aeX.13315
+int035.316            up    up   aenet    --> aeX.13316
+int035.400            up    up   aenet    --> aeX.1890
+int035.402            up    up   aenet    --> aeX.1892
+int035.429            up    up   aenet    --> aeX.192
+int035.439            up    up   aenet    --> aeX.193
+int035.500            up    up   aenet    --> aeX.19400
+int035.501            up    up   aenet    --> aeX.19401
+int035.520            up    up   aenet    --> aeX.19420
+int035.521            up    up   aenet    --> aeX.19421
+int035.525            up    up   aenet    --> aeX.19425
+int035.529            up    up   aenet    --> aeX.19429
+int035.555            up    up   aenet    --> aeX.19455
+int035.601            up    up   aenet    --> aeX.20401
+int035.617            up    up   aenet    --> aeX.20417
+int035.618            up    up   aenet    --> aeX.20418
+int035.624            up    up   aenet    --> aeX.20424
+int035.638            up    up   aenet    --> aeX.20438
+int035.639            up    up   aenet    --> aeX.20439
+int035.640            up    up   aenet    --> aeX.20440
+int035.646            up    up   aenet    --> aeX.20446
+int035.648            up    up   aenet    --> aeX.20448
+int035.663            up    up   aenet    --> aeX.20463
+int035.664            up    up   aenet    --> aeX.20464
+int035.665            up    up   aenet    --> aeX.20465
+int035.667            up    up   aenet    --> aeX.20467
+int035.681            up    up   aenet    --> aeX.20481
+int035.682            up    up   aenet    --> aeX.20482
+int035.700            up    up   aenet    --> aeX.22200
+int035.701            up    up   aenet    --> aeX.22201
+int035.749            up    up   aenet    --> aeX.22249
+int035.767            up    up   aenet    --> aeX.22267
+int035.811            up    up   aenet    --> aeX.23011
+int035.812            up    up   aenet    --> aeX.23012
+int035.827            up    up   aenet    --> aeX.23027
+int035.888            up    up   aenet    --> aeX.23088
+int035.889            up    up   aenet    --> aeX.23089
+int035.891            up    up   aenet    --> aeX.23091
+int035.910            up    up   aenet    --> aeX.23710
+int035.914            up    up   aenet    --> aeX.23714
+int035.919            up    up   aenet    --> aeX.23719
+int035.922            up    up   aenet    --> aeX.23722
+int035.995            up    up   aenet    --> aeX.23795
+int035.996            up    up   aenet    --> aeX.23796
+int035.999            up    up   aenet    --> aeX.23799
+int035.1001           up    up   aenet    --> aeX.301
+int035.1005           up    up   aenet    --> aeX.305
+int035.1006           up    up   aenet    --> aeX.306
+int035.1010           up    up   aenet    --> aeX.310
+int035.1011           up    up   aenet    --> aeX.311
+int035.1013           up    up   aenet    --> aeX.313
+int035.1100           up    up   aenet    --> aeX.1300
+int035.1305           up    up   aenet    --> aeX.2505
+int035.1316           up    up   aenet    --> aeX.2516
+int035.1317           up    up   aenet    --> aeX.2517
+int035.1326           up    up   aenet    --> aeX.2526
+int035.1330           up    up   aenet    --> aeX.2530
+int035.1332           up    up   aenet    --> aeX.2532
+int035.1333           up    up   aenet    --> aeX.2533
+int035.1400           up    up   aenet    --> aeX.38
+int035.1405           up    up   aenet    --> aeX.39
+int035.1409           up    up   aenet    --> aeX.40
+int035.1410           up    up   aenet    --> aeX.41
+int035.1412           up    up   aenet    --> aeX.42
+int035.1413           up    up   aenet    --> aeX.43
+int035.1420           up    up   aenet    --> aeX.44
+int035.1468           up    up   aenet    --> aeX.45
+int035.1469           up    up   aenet    --> aeX.46
+int035.1470           up    up   aenet    --> aeX.47
+int035.1471           up    up   aenet    --> aeX.48
+int035.1472           up    up   aenet    --> aeX.49
+int035.1473           up    up   aenet    --> aeX.50
+int035.1475           up    up   aenet    --> aeX.51
+int035.1476           up    up   aenet    --> aeX.52
+int035.1486           up    up   aenet    --> aeX.53
+int035.1487           up    up   aenet    --> aeX.54
+int035.1488           up    up   aenet    --> aeX.55
+int035.1489           up    up   aenet    --> aeX.56
+int035.1490           up    up   aenet    --> aeX.57
+int035.1491           up    up   aenet    --> aeX.58
+int035.1492           up    up   aenet    --> aeX.59
+int035.1494           up    up   aenet    --> aeX.60
+int035.1495           up    up   aenet    --> aeX.61
+int035.1500           up    up   aenet    --> aeX.6200
+int035.1601           up    up   aenet    --> aeX.6601
+int035.1602           up    up   aenet    --> aeX.6602
+int035.1603           up    up   aenet    --> aeX.6603
+int035.1605           up    up   aenet    --> aeX.6605
+int035.1606           up    up   aenet    --> aeX.6606
+int035.1608           up    up   aenet    --> aeX.6608
+int035.1609           up    up   aenet    --> aeX.6609
+int035.1761           up    up   aenet    --> aeX.7661
+int035.1888           up    up   aenet    --> aeX.7988
+int035.2000           up    up   aenet    --> aeX.85000
+int035.2001           up    up   aenet    --> aeX.85001
+int035.2003           up    up   aenet    --> aeX.85003
+int035.2004           up    up   aenet    --> aeX.85004
+int035.2005           up    up   aenet    --> aeX.85005
+int035.2007           up    up   aenet    --> aeX.85007
+int035.2013           up    up   aenet    --> aeX.85013
+int035.2014           up    up   aenet    --> aeX.85014
+int035.2016           up    up   aenet    --> aeX.85016
+int035.2017           up    up   aenet    --> aeX.85017
+int035.2020           up    up   aenet    --> aeX.85020
+int035.2021           up    up   aenet    --> aeX.85021
+int035.2022           up    up   aenet    --> aeX.85022
+int035.2023           up    up   aenet    --> aeX.85023
+int035.2024           up    up   aenet    --> aeX.85024
+int035.2101           up    up   aenet    --> aeX.85101
+int035.2132           up    up   aenet    --> aeX.85132
+int035.2200           up    up   aenet    --> aeX.85200
+int035.2202           up    up   aenet    --> aeX.85202
+int035.2210           up    up   aenet    --> aeX.85210
+int035.2316           up    up   aenet    --> aeX.85316
+int035.2318           up    up   aenet    --> aeX.85318
+int035.2409           up    up   aenet    --> aeX.85409
+int035.2500           up    up   aenet    --> aeX.85500
+int035.2553           up    up   aenet    --> aeX.85553
+int035.2666           up    up   aenet    --> aeX.85666
+int035.2910           up    up   aenet    --> aeX.85910
+int035.2946           up    up   aenet    --> aeX.85946
+int035.2965           up    up   aenet    --> aeX.85965
+int035.2992           up    up   aenet    --> aeX.85992
+int035.2999           up    up   aenet    --> aeX.85999
+int035.3001           up    up   aenet    --> aeX.133001
+int035.3002           up    up   aenet    --> aeX.133002
+int035.3003           up    up   aenet    --> aeX.133003
+int035.3006           up    up   aenet    --> aeX.133006
+int035.3007           up    up   aenet    --> aeX.133007
+int035.3008           up    up   aenet    --> aeX.133008
+int035.3009           up    up   aenet    --> aeX.133009
+int035.3011           up    up   aenet    --> aeX.133011
+int035.3012           up    up   aenet    --> aeX.133012
+int035.3013           up    up   aenet    --> aeX.133013
+int035.3014           up    up   aenet    --> aeX.133014
+int035.3016           up    up   aenet    --> aeX.133016
+int035.3017           up    up   aenet    --> aeX.133017
+int035.3018           up    up   aenet    --> aeX.133018
+int035.3019           up    up   aenet    --> aeX.133019
+int035.3020           up    up   aenet    --> aeX.133020
+int035.3021           up    up   aenet    --> aeX.133021
+int035.3022           up    up   aenet    --> aeX.133022
+int035.3023           up    up   aenet    --> aeX.133023
+int035.3024           up    up   aenet    --> aeX.133024
+int035.3025           up    up   aenet    --> aeX.133025
+int035.3027           up    up   aenet    --> aeX.133027
+int035.3028           up    up   aenet    --> aeX.133028
+int035.3029           up    up   aenet    --> aeX.133029
+int035.3030           up    up   aenet    --> aeX.133030
+int035.3040           up    up   aenet    --> aeX.133040
+int035.3100           up    up   aenet    --> aeX.133100
+int035.3101           down  up   aenet    --> aeX.133101
+int035.3110           up    up   aenet    --> aeX.133110
+int035.3111           up    up   aenet    --> aeX.133111
+int035.3201           up    up   aenet    --> aeX.133201
+int035.3218           up    up   aenet    --> aeX.133218
+int035.3219           up    up   aenet    --> aeX.133219
+int035.3334           up    up   aenet    --> aeX.133334
+int035.3787           up    up   aenet    --> aeX.133787
+int035.3846           up    up   aenet    --> aeX.133846
+int035.3901           up    up   aenet    --> aeX.133901
+int035.3902           up    up   aenet    --> aeX.133902
+int035.3910           up    up   aenet    --> aeX.133910
+int035.3911           up    up   aenet    --> aeX.133911
+int035.3912           up    up   aenet    --> aeX.133912
+int035.3913           up    up   aenet    --> aeX.133913
+int035.3914           up    up   aenet    --> aeX.133914
+int035.3915           up    up   aenet    --> aeX.133915
+int035.3930           up    up   aenet    --> aeX.133930
+int035.3931           up    up   aenet    --> aeX.133931
+int035.10827          up    up   aenet    --> aeX.3827
+int035.11827          up    up   aenet    --> aeX.13827
+int035.32767          up    up   aenet    --> aeX.1332767
+int036                up    up
+int036.2              up    up   aenet    --> aeX.275
+int036.7              up    up   aenet    --> aeX.316
+int036.8              up    up   aenet    --> aeX.317
+int036.10             up    up   aenet    --> aeX.252
+int036.12             up    up   aenet    --> aeX.268
+int036.46             up    up   aenet    --> aeX.305
+int036.50             up    up   aenet    --> aeX.306
+int036.100            up    up   aenet    --> aeX.2520
+int036.101            up    up   aenet    --> aeX.2521
+int036.104            up    up   aenet    --> aeX.2524
+int036.105            up    up   aenet    --> aeX.2525
+int036.108            up    up   aenet    --> aeX.2528
+int036.112            up    up   aenet    --> aeX.266
+int036.115            up    up   aenet    --> aeX.267
+int036.140            up    up   aenet    --> aeX.269
+int036.151            up    up   aenet    --> aeX.271
+int036.152            up    up   aenet    --> aeX.272
+int036.153            up    up   aenet    --> aeX.273
+int036.180            up    up   aenet    --> aeX.274
+int036.200            down  up   aenet    --> aeX.27500
+int036.201            up    up   aenet    --> aeX.27501
+int036.209            up    up   aenet    --> aeX.27509
+int036.225            up    up   aenet    --> aeX.27525
+int036.230            up    up   aenet    --> aeX.27530
+int036.278            up    up   aenet    --> aeX.27578
+int036.299            up    up   aenet    --> aeX.27599
+int036.301            up    up   aenet    --> aeX.293
+int036.506            up    up   aenet    --> aeX.3066
+int036.633            up    up   aenet    --> aeX.308
+int036.634            up    up   aenet    --> aeX.309
+int036.661            up    up   aenet    --> aeX.310
+int036.662            up    up   aenet    --> aeX.311
+int036.663            up    up   aenet    --> aeX.312
+int036.664            up    up   aenet    --> aeX.313
+int036.665            up    up   aenet    --> aeX.314
+int036.667            up    up   aenet    --> aeX.315
+int036.900            up    up   aenet    --> aeX.318
+int036.1001           up    up   aenet    --> aeX.25201
+int036.1014           up    up   aenet    --> aeX.25214
+int036.1106           up    up   aenet    --> aeX.260
+int036.1107           up    up   aenet    --> aeX.261
+int036.1108           up    up   aenet    --> aeX.262
+int036.1109           up    up   aenet    --> aeX.263
+int036.1110           up    up   aenet    --> aeX.264
+int036.1112           up    up   aenet    --> aeX.265
+int036.1400           up    up   aenet    --> aeX.2690
+int036.2008           up    up   aenet    --> aeX.275008
+int036.2139           up    up   aenet    --> aeX.275139
+int036.2209           up    up   aenet    --> aeX.275209
+int036.2400           up    up   aenet    --> aeX.275400
+int036.2401           up    up   aenet    --> aeX.275401
+int036.2403           up    up   aenet    --> aeX.275403
+int036.2404           up    up   aenet    --> aeX.275404
+int036.2500           up    up   aenet    --> aeX.275500
+int036.2972           up    up   aenet    --> aeX.275972
+int036.3001           up    up   aenet    --> aeX.292
+int036.3333           up    up   aenet    --> aeX.295
+int036.3334           up    up   aenet    --> aeX.296
+int036.3800           up    up   aenet    --> aeX.297
+int036.3801           up    up   aenet    --> aeX.298
+int036.3903           up    up   aenet    --> aeX.299
+int036.3904           up    up   aenet    --> aeX.300
+int036.3905           up    up   aenet    --> aeX.301
+int036.3909           up    up   aenet    --> aeX.302
+int036.3910           up    up   aenet    --> aeX.303
+int036.3911           up    up   aenet    --> aeX.304
+int036.32767          up    up   aenet    --> aeX.294
+int037                up    up
+int037.32769          up    up   vpls    
+int038               up    up
+int038.16383         up    up   inet    
+                                   inet6   
+int039               up    up
+int039.16383         up    up   inet    
+int039.16384         up    up   inet    
+int040                up    up
+int040.350            up    up   aenet    --> aeX.448
+int040.32767          up    up   aenet    --> aeX.447
+int041                up    up
+int041.0              up    up   aenet    --> aeX.446
+int042                up    up
+int042.32769          up    up   vpls    
+int043               up    up
+int043.16383         up    up   inet    
+                                   inet6   
+int044                up    up
+int044.100            up    up   aenet    --> aeX.319
+int044.2222           up    up   aenet    --> aeX.320
+int044.2517           up    up   aenet    --> aeX.321
+int044.32767          up    up   aenet    --> aeX.322
+int045                up    up
+int045.5              up    up   aenet    --> aeX.406
+int045.7              up    up   aenet    --> aeX.426
+int045.9              up    up   aenet    --> aeX.431
+int045.50             up    up   aenet    --> aeX.4060
+int045.51             up    up   aenet    --> aeX.4061
+int045.52             up    up   aenet    --> aeX.4062
+int045.75             up    up   aenet    --> aeX.4265
+int045.80             up    up   aenet    --> aeX.430
+int045.90             up    up   aenet    --> aeX.4310
+int045.91             up    up   aenet    --> aeX.4311
+int045.100            up    up   aenet    --> aeX.323
+int045.101            up    up   aenet    --> aeX.326
+int045.102            up    up   aenet    --> aeX.330
+int045.110            up    up   aenet    --> aeX.331
+int045.112            up    up   aenet    --> aeX.334
+int045.130            up    up   aenet    --> aeX.336
+int045.150            up    up   aenet    --> aeX.367
+int045.158            up    up   aenet    --> aeX.371
+int045.198            up    up   aenet    --> aeX.372
+int045.201            up    up   aenet    --> aeX.378
+int045.202            up    up   aenet    --> aeX.379
+int045.203            up    up   aenet    --> aeX.380
+int045.206            up    up   aenet    --> aeX.381
+int045.207            up    up   aenet    --> aeX.382
+int045.209            up    up   aenet    --> aeX.383
+int045.211            up    up   aenet    --> aeX.384
+int045.227            up    up   aenet    --> aeX.385
+int045.263            up    up   aenet    --> aeX.387
+int045.350            up    up   aenet    --> aeX.399
+int045.404            up    up   aenet    --> aeX.402
+int045.450            up    up   aenet    --> aeX.403
+int045.483            up    up   aenet    --> aeX.404
+int045.493            up    up   aenet    --> aeX.405
+int045.502            up    up   aenet    --> aeX.40602
+int045.503            up    up   aenet    --> aeX.40603
+int045.507            up    up   aenet    --> aeX.40607
+int045.528            up    up   aenet    --> aeX.40628
+int045.535            up    up   aenet    --> aeX.40635
+int045.540            up    up   aenet    --> aeX.40640
+int045.541            up    up   aenet    --> aeX.40641
+int045.559            up    up   aenet    --> aeX.40659
+int045.601            up    up   aenet    --> aeX.418
+int045.603            up    up   aenet    --> aeX.419
+int045.621            up    up   aenet    --> aeX.420
+int045.637            up    up   aenet    --> aeX.421
+int045.655            up    up   aenet    --> aeX.422
+int045.663            up    up   aenet    --> aeX.423
+int045.666            up    up   aenet    --> aeX.424
+int045.684            up    up   aenet    --> aeX.425
+int045.708            up    up   aenet    --> aeX.42608
+int045.709            up    up   aenet    --> aeX.42609
+int045.901            up    up   aenet    --> aeX.43101
+int045.902            up    up   aenet    --> aeX.43102
+int045.903            up    up   aenet    --> aeX.43103
+int045.905            up    up   aenet    --> aeX.43105
+int045.907            up    up   aenet    --> aeX.43107
+int045.912            down  up   aenet    --> aeX.43112
+int045.917            up    up   aenet    --> aeX.43117
+int045.920            up    up   aenet    --> aeX.43120
+int045.922            up    up   aenet    --> aeX.43122
+int045.923            up    up   aenet    --> aeX.43123
+int045.1002           up    up   aenet    --> aeX.3232
+int045.1004           up    up   aenet    --> aeX.3234
+int045.1011           down  up   aenet    --> aeX.3261
+int045.1012           up    up   aenet    --> aeX.3262
+int045.1013           up    up   aenet    --> aeX.3263
+int045.1106           up    up   aenet    --> aeX.3316
+int045.1110           up    up   aenet    --> aeX.333
+int045.1162           up    up   aenet    --> aeX.335
+int045.1326           up    up   aenet    --> aeX.337
+int045.1405           up    up   aenet    --> aeX.338
+int045.1414           up    up   aenet    --> aeX.339
+int045.1420           up    up   aenet    --> aeX.340
+int045.1423           up    up   aenet    --> aeX.341
+int045.1425           up    up   aenet    --> aeX.342
+int045.1426           up    up   aenet    --> aeX.343
+int045.1427           up    up   aenet    --> aeX.344
+int045.1428           up    up   aenet    --> aeX.345
+int045.1430           up    up   aenet    --> aeX.346
+int045.1457           up    up   aenet    --> aeX.347
+int045.1458           up    up   aenet    --> aeX.348
+int045.1459           up    up   aenet    --> aeX.349
+int045.1460           up    up   aenet    --> aeX.350
+int045.1461           up    up   aenet    --> aeX.351
+int045.1462           up    up   aenet    --> aeX.352
+int045.1463           up    up   aenet    --> aeX.353
+int045.1464           up    up   aenet    --> aeX.354
+int045.1466           up    up   aenet    --> aeX.355
+int045.1467           up    up   aenet    --> aeX.356
+int045.1478           up    up   aenet    --> aeX.357
+int045.1479           up    up   aenet    --> aeX.358
+int045.1480           up    up   aenet    --> aeX.359
+int045.1482           up    up   aenet    --> aeX.360
+int045.1483           up    up   aenet    --> aeX.361
+int045.1484           up    up   aenet    --> aeX.362
+int045.1485           up    up   aenet    --> aeX.363
+int045.1493           up    up   aenet    --> aeX.364
+int045.1497           up    up   aenet    --> aeX.365
+int045.1498           up    up   aenet    --> aeX.366
+int045.1500           up    up   aenet    --> aeX.3670
+int045.1501           up    up   aenet    --> aeX.3671
+int045.1505           up    up   aenet    --> aeX.3675
+int045.2000           up    up   aenet    --> aeX.373
+int045.2003           up    up   aenet    --> aeX.374
+int045.2005           up    up   aenet    --> aeX.375
+int045.2007           up    up   aenet    --> aeX.376
+int045.2008           up    up   aenet    --> aeX.377
+int045.2552           up    up   aenet    --> aeX.386
+int045.2730           up    up   aenet    --> aeX.388
+int045.2731           up    up   aenet    --> aeX.389
+int045.2741           up    up   aenet    --> aeX.390
+int045.2742           up    up   aenet    --> aeX.391
+int045.3000           up    up   aenet    --> aeX.392
+int045.3004           up    up   aenet    --> aeX.393
+int045.3005           up    up   aenet    --> aeX.394
+int045.3012           up    up   aenet    --> aeX.395
+int045.3321           down  up   aenet    --> aeX.397
+int045.3323           down  up   aenet    --> aeX.398
+int045.3800           up    up   aenet    --> aeX.400
+int045.3801           up    up   aenet    --> aeX.401
+int045.32767          up    up   aenet    --> aeX.396
+int046                     up    down
+aeX.1                 up    down inet     10.0.0.228/31
+                                   iso     
+                                   mpls    
+                                   multiservice
+aeX.2               up    down multiservice
+int047                     up    up
+aeX.275                   up    up   inet     10.0.0.71/24   
+                                   multiservice
+aeX.316                   up    up   inet     10.0.0.104/30    
+                                            10.0.0.126/30   
+                                            10.0.0.84/30   
+                                   multiservice
+aeX.317                   up    up   inet     10.0.0.127/30   
+                                            10.0.0.52/30 
+                                            10.0.0.86/24   
+                                   multiservice
+aeX.252                  up    up   inet     10.0.0.116/30  
+                                   multiservice
+aeX.268                  up    up   inet     10.0.0.101/30  
+                                   multiservice
+aeX.305                  up    up   inet     10.0.0.81/30   
+                                            10.0.0.85/29   
+                                            10.0.0.208/30 
+                                   multiservice
+aeX.306                  up    up   inet     10.0.0.212/30
+                                            10.0.0.213/29
+                                   multiservice
+aeX.2520                 up    up   inet     10.0.0.183/31 
+                                   inet6    2604:d600:ff03:1d::a/64
+                                            fe80::b68a:5f00:6493:8705/64
+                                   multiservice
+aeX.2521                 up    up   vpls    
+aeX.2524                 up    up   vpls    
+aeX.2525                 up    up   vpls    
+aeX.2528                 up    up   vpls    
+aeX.266                 up    up   inet     10.0.0.4/30 
+                                   multiservice
+aeX.267                 up    up   inet     10.0.0.3/30 
+                                   multiservice
+aeX.269                 up    up   inet     10.0.0.226/31
+                                   iso     
+                                   inet6    2604:d600:ff00:54::12/64
+                                            fe80::b68a:5f00:8c93:8705/64
+                                   mpls    
+                                   multiservice
+aeX.271                 up    up   inet     10.0.0.23/30 
+                                   multiservice
+aeX.272                 up    up   inet     10.0.0.224/31
+                                   iso     
+                                   inet6    2604:d600:ff00:98::1/64
+                                            fe80::b68a:5f00:9893:8705/64
+                                   mpls    
+                                   multiservice
+aeX.273                 up    up   inet     10.0.0.196/31
+                                   multiservice
+aeX.274                 up    up   vpls    
+aeX.27500                 down  up   inet     10.0.0.225/31
+                                   iso     
+                                   inet6    2604:d600:ff00:91::1/64
+                                            fe80::b68a:5f00:c893:8705/64
+                                   mpls    
+                                   multiservice
+aeX.27501                 up    up  
+aeX.27509                 up    up   vpls    
+aeX.27525                 up    up   vpls    
+aeX.27530                 up    up   inet     10.0.0.200/30
+                                   multiservice
+aeX.27578                 up    up   vpls    
+aeX.27599                 up    up   vpls    
+aeX.293                 up    up   vpls    
+aeX.3066                 up    up   vpls    
+aeX.308                 up    up   vpls    
+aeX.309                 up    up   vpls    
+aeX.310                 up    up   inet     10.0.0.193/31
+                                   multiservice
+aeX.311                 up    up   inet     10.0.0.92/31  
+                                   multiservice
+aeX.312                 up    up   vpls    
+aeX.313                 up    up   inet     10.0.0.156/30
+                                   multiservice
+aeX.314                 up    up   inet     10.0.0.157/30
+                                   multiservice
+aeX.315                 up    up   vpls    
+aeX.318                 up    up   vpls    
+aeX.25201                up    up   inet     10.0.0.241/30
+                                   multiservice
+aeX.25214                up    up   inet     10.0.0.232/30
+                                   multiservice
+aeX.260                up    up   vpls    
+aeX.261                up    up   vpls    
+aeX.262                up    up   vpls    
+aeX.263                up    up   bridge  
+aeX.264                up    up   vpls    
+aeX.265                up    up   vpls    
+aeX.2690                up    up   vpls    
+aeX.275008                up    up   vpls    
+aeX.275139                up    up   bridge  
+aeX.275209                up    up   bridge  
+aeX.275400                up    up   bridge  
+aeX.275401                up    up   vpls    
+aeX.275403                up    up   bridge  
+aeX.275404                up    up   bridge  
+aeX.275500                up    up   bridge  
+aeX.275972                up    up   bridge  
+aeX.292                up    up   vpls    
+aeX.295                up    up   vpls    
+aeX.296                up    up   inet     10.0.0.160/30
+                                   multiservice
+aeX.297                up    up   inet     10.0.0.145/30  
+                                   multiservice
+aeX.298                up    up   inet     10.0.0.161/30
+                                   multiservice
+aeX.299                up    up   vpls    
+aeX.300                up    up   vpls    
+aeX.301                up    up   vpls    
+aeX.302                up    up   vpls    
+aeX.303                up    up   vpls    
+aeX.304                up    up   vpls    
+aeX.294               up    up   multiservice
+int048                     up    up
+aeX.406                   up    up   inet     10.0.0.28/30  
+                                   multiservice
+aeX.426                   up    up   inet     10.0.0.125/30    
+                                            10.0.0.115/30   
+                                            10.0.0.123/30   
+                                            10.0.0.124/30   
+                                            10.0.0.128/30   
+                                            10.0.0.106/30  
+                                            10.0.0.107/30  
+                                            10.0.0.108/30  
+                                            10.0.0.113/30  
+                                            10.0.0.122/30  
+                                            10.0.0.29/30 
+                                            10.0.0.45/30 
+                                            10.0.0.68/30 
+                                            10.0.0.70/29 
+                                            10.0.0.73/30  
+                                            10.0.0.78/30  
+                                            10.0.0.79/30 
+                                            10.0.0.54/30
+                                            10.0.0.61/26
+                                            10.0.0.64/26  
+                                   multiservice
+aeX.431                   up    up   inet     10.0.0.83/30  
+                                   multiservice
+aeX.4060                  up    up   inet     10.0.0.201/30
+                                   multiservice
+aeX.4061                  up    up   inet     10.0.0.105/30  
+                                   multiservice
+aeX.4062                  up    up   inet     10.0.0.203/30
+                                   inet6    2604:d600:302:9::1/64
+                                            fe80::b68a:5f00:3493:8706/64
+                                   multiservice
+aeX.4265                  up    up   inet     10.0.0.236/30
+                                   multiservice
+aeX.430                  up    up   inet     10.0.0.221/31
+                                   iso     
+                                   mpls    
+                                   multiservice
+aeX.4310                  up    up   inet     10.0.0.180/31 
+                                   inet6    2604:d600:ff03:15::1/64
+                                            fe80::b68a:5f00:5a93:8706/64
+                                   mpls    
+                                   multiservice
+aeX.4311                  up    up   inet     10.0.0.100/30  
+                                   multiservice
+aeX.323                 up    up   inet     10.0.0.166/30
+                                   multiservice
+aeX.326                 up    up   vpls    
+aeX.330                 up    up   inet     10.0.0.168/30
+                                   multiservice
+aeX.331                 up    up   inet     10.0.0.181/31 
+                                   inet6    2604:d600:ff03:1a::1/64
+                                            fe80::b68a:5f00:6e93:8706/64
+                                   multiservice
+aeX.334                 up    up   vpls    
+aeX.336                 up    up   inet     10.0.0.18/27  
+                                   multiservice
+aeX.367                 up    up   inet     10.0.0.227/31
+                                   iso     
+                                   inet6    2604:d600:ff04:2::2/64
+                                            fe80::b68a:5f00:9693:8706/64
+                                   mpls    
+                                   multiservice
+aeX.371                 up    up   inet     10.0.0.202/31
+                                   multiservice
+aeX.372                 up    up   bridge  
+aeX.378                 up    up   inet     10.0.0.110/31  
+                                   multiservice
+aeX.379                 up    up   inet     10.0.0.109/31  
+                                   multiservice
+aeX.380                 up    up   vpls    
+aeX.381                 up    up   inet     10.0.0.9/31 
+                                   mpls    
+                                   multiservice
+aeX.382                 up    up   inet     10.0.0.10/31 
+                                   inet6    2604:d600:ff00:e4::1/64
+                                            fe80::b68a:5f00:cf93:8706/64
+                                   mpls    
+                                   multiservice
+aeX.383                 up    up   vpls    
+aeX.384                 up    up   inet     10.0.0.163/30
+                                   multiservice
+aeX.385                 up    up   vpls    
+aeX.387                 up    up   bridge  
+aeX.399                 up    up   vpls    
+aeX.402                 up    up   vpls    
+aeX.403                 up    up   vpls    
+aeX.404                 up    up   vpls    
+aeX.405                 up    up   vpls    
+aeX.40602                 up    up   vpls    
+aeX.40603                 up    up   vpls    
+aeX.40607                 up    up   vpls    
+aeX.40628                 up    up   vpls    
+aeX.40635                 up    up   vpls    
+aeX.40640                 up    up   vpls    
+aeX.40641                 up    up   vpls    
+aeX.40659                 up    up   inet     10.0.0.32/30   
+                                   multiservice
+aeX.418                 up    up   vpls    
+aeX.419                 up    up   vpls    
+aeX.420                 up    up   vpls    
+aeX.421                 up    up   vpls    
+aeX.422                 up    up   vpls    
+aeX.423                 up    up   inet     10.0.0.197/30 
+                                   multiservice
+aeX.424                 up    up   inet     10.0.0.205/31
+                                   multiservice
+aeX.425                 up    up   vpls    
+aeX.42608                 up    up   vpls    
+aeX.42609                 up    up   vpls    
+aeX.43101                 up    up   vpls    
+aeX.43102                 up    up   vpls    
+aeX.43103                 up    up   vpls    
+aeX.43105                 up    up   vpls    
+aeX.43107                 up    up   inet     10.0.0.148/30  
+                                   multiservice
+aeX.43112                 down  down vpls    
+aeX.43117                 up    up   vpls    
+aeX.43120                 up    up   vpls    
+aeX.43122                 up    up   vpls    
+aeX.43123                 up    up   inet     10.0.0.139/30  
+                                   multiservice
+aeX.3232                up    up   inet     10.0.0.220/31
+                                   iso     
+                                   mpls    
+                                   multiservice
+aeX.3234                up    up   inet     10.0.0.239/30
+                                   inet6    2604:d600:22ff::a/64
+                                            fe80::b68a:5f03:ec93:8706/64
+                                   multiservice
+aeX.3261                down  up   inet    
+                                   multiservice
+aeX.3262                up    up   inet     10.0.0.94/30   
+                                   multiservice
+aeX.3263                up    up   inet     10.0.0.240/28
+                                   inet6    2604:d600:22ff:2::a/64
+                                            fe80::b68a:5f03:f593:8706/64
+                                   multiservice
+aeX.3316                up    up   vpls    
+aeX.333                up    up   vpls    
+aeX.335                up    up   bridge  
+aeX.337                up    up   vpls    
+aeX.338                up    up   bridge  
+aeX.339                up    up   inet     10.0.0.150/30  
+                                   multiservice
+aeX.340                up    up   vpls    
+aeX.341                up    up   inet     10.0.0.132/30  
+                                   multiservice
+aeX.342                up    up   inet     10.0.0.133/30  
+                                   multiservice
+aeX.343                up    up   inet     10.0.0.134/30  
+                                   multiservice
+aeX.344                up    up   inet     10.0.0.129/30 
+                                   multiservice
+aeX.345                up    up   inet     10.0.0.135/30   
+                                   multiservice
+aeX.346                up    up   inet     10.0.0.130/30 
+                                   multiservice
+aeX.347                up    up   bridge  
+aeX.348                up    up   bridge  
+aeX.349                up    up   bridge  
+aeX.350                up    up   bridge  
+aeX.351                up    up   bridge  
+aeX.352                up    up   bridge  
+aeX.353                up    up   bridge  
+aeX.354                up    up   bridge  
+aeX.355                up    up   bridge  
+aeX.356                up    up   bridge  
+aeX.357                up    up   bridge  
+aeX.358                up    up   bridge  
+aeX.359                up    up   bridge  
+aeX.360                up    up   bridge  
+aeX.361                up    up   bridge  
+aeX.362                up    up   bridge  
+aeX.363                up    up   bridge  
+aeX.364                up    up   bridge  
+aeX.365                up    up   bridge  
+aeX.366                up    up   bridge  
+aeX.3670                up    up   bridge  
+aeX.3671                up    up   bridge  
+aeX.3675                up    up   bridge  
+aeX.373                up    up   vpls    
+aeX.374                up    up   vpls    
+aeX.375                up    up   vpls    
+aeX.376                up    up   vpls    
+aeX.377                up    up   vpls    
+aeX.386                up    up   inet     10.0.0.131/30 
+                                   multiservice
+aeX.388                up    up   inet     10.0.0.99/26    
+                                   multiservice
+aeX.389                up    up   inet     10.0.0.102/30    
+                                   multiservice
+aeX.390                up    up   inet     10.0.0.5/30  
+                                   multiservice
+aeX.391                up    up   inet     10.0.0.95/30 
+                                   multiservice
+aeX.392                up    up   inet     10.0.0.163/30
+                                   multiservice
+aeX.393                up    up   inet     10.0.0.165/30
+                                   multiservice
+aeX.394                up    up   inet     10.0.0.33/30
+                                   multiservice
+aeX.395                up    up   inet     10.0.0.146/30 
+                                   multiservice
+aeX.397                down  down inet     10.0.0.164/30
+                                   multiservice
+aeX.398                down  down inet     10.0.0.207/30
+                                   multiservice
+aeX.400                up    up   inet     10.0.0.149/30  
+                                   multiservice
+aeX.401                up    up   inet     10.0.0.167/30
+                                   multiservice
+aeX.396               up    up   multiservice
+int049                     up    up
+aeX.445                   up    up   inet     10.0.0.219/31
+                                   iso     
+                                   inet6    2604:d600:ff0c:8a::2/64
+                                            fe80::b68a:5fff:fe93:8708/64
+                                   mpls    
+                                   multiservice
+int050                     up    up
+aeX.446                   up    up   inet     10.0.0.214/31
+                                   iso     
+                                   inet6    2604:d600:ff00:110::1/64
+                                            fe80::b68a:5fff:fe93:870e/64
+                                   mpls    
+                                   multiservice
+int051                     up    up
+aeX.448                 up    up   inet     10.0.0.216/31
+                                   iso     
+                                   inet6    2604:d600:ff00:ae::10/64
+                                            fe80::b68a:5f01:5e93:870d/64
+                                   mpls    
+                                   multiservice
+aeX.447               up    up   multiservice
+int052                    up    up
+aeX.85                  up    up   inet     10.0.0.76/24   
+                                            10.0.0.87/24   
+                                            10.0.0.178/29 
+                                            10.0.0.229/29
+                                   multiservice
+aeX.133                  up    up   inet     10.0.0.75/24   
+                                            10.0.0.238/30 
+                                   multiservice
+aeX.194                  up    up   inet     10.0.0.77/24   
+                                            10.0.0.230/30 
+                                   inet6    2604:d600:302:7::1/64
+                                            fe80::b68a:5f00:593:8709/64
+                                   multiservice
+aeX.204                  up    up   inet     10.0.0.72/24   
+                                   multiservice
+aeX.222                  up    up   inet     10.0.0.65/27
+                                   multiservice
+aeX.230                  up    up   inet     10.0.0.111/30  
+                                            10.0.0.112/30  
+                                            10.0.0.50/24  
+                                   multiservice
+aeX.237                  up    up   inet     10.0.0.59/25
+                                   multiservice
+aeX.3                 up    up   inet     10.0.0.60/30 
+                                   multiservice
+aeX.13                 up    up   inet     10.0.0.36/30 
+                                   multiservice
+aeX.25                 up    up   inet     10.0.0.53/30 
+                                   multiservice
+aeX.62                 up    up   inet     10.0.0.97/30    
+                                   multiservice
+aeX.66                 up    up   inet     10.0.0.98/30    
+                                   multiservice
+aeX.76                 up    up   inet     10.0.0.235/30
+                                   multiservice
+aeX.79                 up    up   inet     10.0.0.30/30    
+                                   multiservice
+aeX.82                 up    up   inet     10.0.0.96/29   
+                                   multiservice
+aeX.850                 up    up   inet     10.0.0.198/30
+                                   multiservice
+aeX.851                 up    up   inet     10.0.0.69/30 
+                                            10.0.0.74/30  
+                                            10.0.0.80/30 
+                                            10.0.0.51/27 
+                                   multiservice
+aeX.852                 up    up   inet    
+                                   multiservice
+aeX.853                 up    up   inet    
+                                   multiservice
+aeX.855                 up    up   inet     10.0.0.82/30 
+                                            10.0.0.58/25  
+                                            10.0.0.66/30 
+                                   multiservice
+aeX.1330                 up    up   inet     10.0.0.244/30  
+                                   multiservice
+aeX.189                 up    up   bridge  
+aeX.1940                 up    up   inet     10.0.0.117/30  
+                                   multiservice
+aeX.1941                 up    up   inet     10.0.0.120/30  
+                                   multiservice
+aeX.2041                 up    up   inet     10.0.0.233/30
+                                   multiservice
+aeX.2049                 up    up   inet     10.0.0.16/30
+                                   multiservice
+aeX.2220                 up    up   inet     10.0.0.44/24   
+                                   multiservice
+aeX.2221                 up    up   inet     10.0.0.27/30  
+                                   multiservice
+aeX.2222                 up    up   inet     10.0.0.26/30  
+                                   multiservice
+aeX.2370                 up    up   inet     10.0.0.210/28
+                                   multiservice
+aeX.2371                 up    up   inet     10.0.0.211/30
+                                   multiservice
+aeX.2377                 up    up   inet     10.0.0.88/30   
+                                   multiservice
+aeX.2378                 up    up   inet     10.0.0.118/30  
+                                   multiservice
+aeX.2379                 up    up   inet     10.0.0.119/30  
+                                   multiservice
+aeX.30                down  down inet     10.0.0.231/24
+                                   multiservice
+aeX.31                up    up   inet     10.0.0.6/30 
+                                   multiservice
+aeX.133                up    up   vpls    
+aeX.134                up    up   vpls    
+aeX.135                up    up   inet     10.0.0.2/30 
+                                   multiservice
+aeX.136                up    up   vpls    
+aeX.139                up    up   vpls    
+aeX.21                up    up   inet     10.0.0.25/29 
+                                   multiservice
+aeX.22                up    up   vpls    
+aeX.23                up    up   inet     10.0.0.17/29
+                                   multiservice
+aeX.24                up    up   inet     10.0.0.21/27
+                                   multiservice
+aeX.250                up    up   inet     10.0.0.22/27 
+                                   multiservice
+aeX.251                up    up   inet     10.0.0.24/27 
+                                   multiservice
+aeX.252                up    up   inet    
+                                   multiservice
+aeX.253                up    up   inet     10.0.0.20/27
+                                   multiservice
+aeX.254                up    up   inet     10.0.0.103/30    
+                                   multiservice
+aeX.620                up    up   vpls    
+aeX.629                up    up   inet     10.0.0.186/31 
+                                   multiservice
+aeX.661                up    up   inet     10.0.0.19/27
+                                   multiservice
+aeX.665                up    up   inet     10.0.0.67/30 
+                                   multiservice
+aeX.760                up    up   inet     10.0.0.11/31  
+                                   mpls    
+                                   multiservice
+aeX.790                up    up   inet     10.0.0.234/30
+                                   inet6    2806:20d:12ff::a/64
+                                            fe80::b68a:5f00:b493:8709/64
+                                   multiservice
+aeX.820                up    up   inet     10.0.0.12/31  
+                                   inet6    2604:d600:ff00:d6::1/64
+                                            fe80::b68a:5f00:be93:8709/64
+                                   mpls    
+                                   multiservice
+aeX.829                up    up   inet     10.0.0.218/31
+                                   iso     
+                                   inet6    2604:d600:ff0c:8b::1/64
+                                            fe80::b68a:5f00:c793:8709/64
+                                   mpls    
+                                   multiservice
+aeX.8500                up    up   vpls    
+aeX.8501                up    up   inet     10.0.0.223/31
+                                   iso     
+                                   inet6    2604:d600:ff00:97::1/64
+                                            fe80::b68a:5f00:c993:8709/64
+                                   mpls    
+                                   multiservice
+aeX.8502                up    up   inet     10.0.0.222/31
+                                   iso     
+                                   inet6    2604:d600:1000:aa::10/64
+                                            fe80::b68a:5f00:ca93:8709/64
+                                   mpls    
+                                   multiservice
+aeX.8503                up    up   vpls    
+aeX.8504                down  up   inet     10.0.0.41/30   
+                                   multiservice
+aeX.8505                up    up   inet     10.0.0.242/30
+                                   multiservice
+aeX.8516                up    up   inet     10.0.0.38/30 
+                                   multiservice
+aeX.8517                up    up   inet     10.0.0.37/30 
+                                   multiservice
+aeX.8520                up    up   vpls    
+aeX.8525                up    up   vpls    
+aeX.8563                up    up   bridge  
+aeX.13300                up    up   inet     10.0.0.7/31 
+                                   mpls    
+                                   multiservice
+aeX.13303                up    up   inet     10.0.0.199/30
+                                   multiservice
+aeX.13310                up    up   inet     10.0.0.8/31 
+                                   inet6    2604:d600:ff00:dd::1/64
+                                            fe80::b68a:5f01:3693:8709/64
+                                   mpls    
+                                   multiservice
+aeX.13312                up    up   inet     10.0.0.47/30   
+                                   multiservice
+aeX.13313                up    up   vpls    
+aeX.13315                up    up   vpls    
+aeX.13316                up    up   inet     10.0.0.55/30
+                                   multiservice
+aeX.1890                up    up   vpls    
+aeX.1892                up    up   vpls    
+aeX.192                up    up   bridge  
+aeX.193                up    up   bridge  
+aeX.19400                up    up   inet     10.0.0.13/31  
+                                   mpls    
+                                   multiservice
+aeX.19401                up    up   inet     10.0.0.14/31  
+                                   inet6    2604:d600:ff00:120::1/64
+                                            fe80::b68a:5f01:f593:8709/64
+                                   mpls    
+                                   multiservice
+aeX.19420                up    up   vpls    
+aeX.19421                up    up   inet     10.0.0.48/29   
+                                   multiservice
+aeX.19425                up    up   vpls    
+aeX.19429                up    up   inet     10.0.0.136/30 
+                                   multiservice
+aeX.19455                up    up   vpls    
+aeX.20401                up    up   bridge  
+aeX.20417                up    up   vpls    
+aeX.20418                up    up   vpls    
+aeX.20424                up    up   bridge  
+aeX.20438                up    up   bridge  
+aeX.20439                up    up   bridge  
+aeX.20440                up    up   bridge  
+aeX.20446                up    up   bridge  
+aeX.20448                up    up   bridge  
+aeX.20463                up    up   vpls    
+aeX.20464                up    up   inet     10.0.0.159/30
+                                   multiservice
+aeX.20465                up    up   inet     10.0.0.158/30
+                                   multiservice
+aeX.20467                up    up   inet     10.0.0.114/30  
+                                   multiservice
+aeX.20481                up    up   vpls    
+aeX.20482                up    up   vpls    
+aeX.22200                up    up   vpls    
+aeX.22201                up    up   bridge  
+aeX.22249                up    up   bridge  
+aeX.22267                up    up   bridge  
+aeX.23011                up    up   inet     10.0.0.34/30
+                                   multiservice
+aeX.23012                up    up   inet     10.0.0.35/30
+                                   multiservice
+aeX.23027                up    up   vpls    
+aeX.23088                up    up   vpls    
+aeX.23089                up    up   vpls    
+aeX.23091                up    up   inet     10.0.0.15/30
+                                   multiservice
+aeX.23710                up    up   vpls    
+aeX.23714                up    up   vpls    
+aeX.23719                up    up   vpls    
+aeX.23722                up    up   vpls    
+aeX.23795                up    up   bridge  
+aeX.23796                up    up   inet     10.0.0.89/30    
+                                            10.0.0.91/28   
+                                   multiservice
+aeX.23799                up    up   bridge  
+aeX.301               up    up   inet     10.0.0.237/30
+                                   multiservice
+aeX.305               up    up   vpls    
+aeX.306               up    up   inet     10.0.0.192/30
+                                   inet6    2806:20d:12ff:2::1/64
+                                            fe80::b68a:5f02:4a93:8709/64
+                                   multiservice
+aeX.310               up    up   inet     10.0.0.90/30     
+                                   multiservice
+aeX.311               up    up   vpls    
+aeX.313               up    up   inet     10.0.0.243/29
+                                   inet6    2604:d600:300:4::1/64
+                                            fe80::b68a:5f03:f593:8709/64
+                                   multiservice
+aeX.1300               up    up   inet     10.0.0.43/24    
+                                   multiservice
+aeX.2505               up    up   vpls    
+aeX.2516               up    up   vpls    
+aeX.2517               up    up   vpls    
+aeX.2526               up    up   vpls    
+aeX.2530               up    up   vpls    
+aeX.2532               up    up   vpls    
+aeX.2533               up    up   vpls    
+aeX.38               up    up   vpls    
+aeX.39               up    up   vpls    
+aeX.40               up    up   vpls    
+aeX.41               up    up   vpls    
+aeX.42               up    up   vpls    
+aeX.43               up    up   vpls    
+aeX.44               up    up   vpls    
+aeX.45               up    up   bridge  
+aeX.46               up    up   bridge  
+aeX.47               up    up   bridge  
+aeX.48               up    up   bridge  
+aeX.49               up    up   bridge  
+aeX.50               up    up   bridge  
+aeX.51               up    up   bridge  
+aeX.52               up    up   bridge  
+aeX.53               up    up   bridge  
+aeX.54               up    up   vpls    
+aeX.55               up    up   bridge  
+aeX.56               up    up   bridge  
+aeX.57               up    up   bridge  
+aeX.58               up    up   bridge  
+aeX.59               up    up   bridge  
+aeX.60               up    up   bridge  
+aeX.61               up    up   bridge  
+aeX.6200               up    up   bridge  
+aeX.6601               up    up   vpls    
+aeX.6602               up    up   vpls    
+aeX.6603               up    up   vpls    
+aeX.6605               up    up   vpls    
+aeX.6606               up    up   vpls    
+aeX.6608               up    up   vpls    
+aeX.6609               up    up   vpls    
+aeX.7661               up    up   bridge  
+aeX.7988               up    up   vpls    
+aeX.85000               up    up   vpls    
+aeX.85001               up    up   vpls    
+aeX.85003               up    up   vpls    
+aeX.85004               up    up   vpls    
+aeX.85005               up    up   vpls    
+aeX.85007               up    up   vpls    
+aeX.85013               up    up   vpls    
+aeX.85014               up    up   bridge  
+aeX.85016               up    up   bridge  
+aeX.85017               up    up   bridge  
+aeX.85020               up    up   inet     10.0.0.49/24  
+                                   multiservice
+aeX.85021               up    up   vpls    
+aeX.85022               up    up   inet     10.0.0.46/30  
+                                   multiservice
+aeX.85023               up    up   bridge  
+aeX.85024               up    up   bridge  
+aeX.85101               up    up   bridge  
+aeX.85132               up    up   inet     10.0.0.171/29
+                                   multiservice
+aeX.85200               up    up   inet     10.0.0.140/31 
+                                   multiservice
+aeX.85202               up    up   vpls    
+aeX.85210               up    up   bridge  
+aeX.85316               up    up   bridge  
+aeX.85318               up    up   bridge  
+aeX.85409               up    up   bridge  
+aeX.85500               up    up   inet     10.0.0.191/30 
+                                   multiservice
+aeX.85553               up    up   inet     10.0.0.172/30  
+                                   multiservice
+aeX.85666               up    up   bridge  
+aeX.85910               up    up   bridge  
+aeX.85946               up    up   bridge  
+aeX.85965               up    up   bridge  
+aeX.85992               up    up   vpls    
+aeX.85999               up    up   bridge  
+aeX.133001               up    up   multiservice
+aeX.133002               up    up   inet     10.0.0.137/30  
+                                   multiservice
+aeX.133003               up    up   multiservice
+aeX.133006               up    up   inet     10.0.0.147/30  
+                                   multiservice
+aeX.133007               up    up   inet     10.0.0.177/29 
+                                   multiservice
+aeX.133008               up    up   inet    
+                                   multiservice
+aeX.133009               up    up   inet     10.0.0.151/29
+                                   multiservice
+aeX.133011               up    up   vpls    
+aeX.133012               up    up   inet     10.0.0.141/30  
+                                   multiservice
+aeX.133013               up    up   vpls    
+aeX.133014               up    up   vpls    
+aeX.133016               up    up   inet     10.0.0.189/30 
+                                   multiservice
+aeX.133017               up    up   inet     10.0.0.142/30 
+                                   multiservice
+aeX.133018               up    up   multiservice
+aeX.133019               up    up   inet     10.0.0.155/30
+                                   multiservice
+aeX.133020               up    up   inet     10.0.0.138/30 
+                                   multiservice
+aeX.133021               up    up   multiservice
+aeX.133022               up    up   inet     10.0.0.174/29
+                                   multiservice
+aeX.133023               up    up   multiservice
+aeX.133024               up    up   inet     10.0.0.195/31
+                                   multiservice
+aeX.133025               up    up   inet     10.0.0.152/29
+                                   multiservice
+aeX.133027               up    up   inet     10.0.0.175/29
+                                   multiservice
+aeX.133028               up    up   inet     10.0.0.176/29
+                                   multiservice
+aeX.133029               up    up   inet     10.0.0.153/30
+                                   multiservice
+aeX.133030               up    up   inet     10.0.0.154/30
+                                   multiservice
+aeX.133040               up    up   inet     10.0.0.170/29
+                                   multiservice
+aeX.133100               up    up   inet     10.0.0.162/30
+                                   multiservice
+aeX.133101               down  up   inet    
+                                   multiservice
+aeX.133110               up    up   inet     10.0.0.190/30
+                                   multiservice
+aeX.133111               up    up   inet     10.0.0.31/30   
+                                   multiservice
+aeX.133201               up    up   bridge  
+aeX.133218               up    up   inet     10.0.0.40/30 
+                                   multiservice
+aeX.133219               up    up   inet     10.0.0.39/30 
+                                   multiservice
+aeX.133334               up    up   inet    
+                                   multiservice
+aeX.133787               up    up   inet     10.0.0.169/29
+                                   multiservice
+aeX.133846               up    up   bridge  
+aeX.133901               up    up   vpls    
+aeX.133902               up    up   vpls    
+aeX.133910               up    up   inet     10.0.0.42/30    
+                                   multiservice
+aeX.133911               up    up   inet     10.0.0.56/30
+                                   multiservice
+aeX.133912               up    up   inet     10.0.0.57/30
+                                   multiservice
+aeX.133913               up    up   inet     10.0.0.217/30
+                                   multiservice
+aeX.133914               up    up   inet     10.0.0.121/28  
+                                   multiservice
+aeX.133915               up    up   inet     10.0.0.173/29
+                                   multiservice
+aeX.133930               up    up  
+aeX.133931               up    up   vpls    
+aeX.3827              up    up  
+aeX.13827              up    up   inet     10.0.0.93/30    
+                                   multiservice
+aeX.1332767              up    up   multiservice
+int053                    up    up
+aeX.319                up    up   inet     10.0.0.215/31
+                                   iso     
+                                   inet6    2604:d600:ff00:114::1/64
+                                            fe80::b68a:5f00:6493:870f/64
+                                   mpls    
+                                   multiservice
+aeX.320               up    up   inet     10.0.0.188/29
+                                   multiservice
+aeX.321               up    up   inet     10.0.0.179/30 
+                                   multiservice
+aeX.322              up    up   multiservice
+int054                    up    down
+aeX.444              up    down multiservice
+int055                   up    up
+aeX.250               up    up   inet     10.0.0.182/31 
+                                   inet6    2604:d600:ff03:1b::1/64
+                                            fe80::b68a:5f00:6e93:870b/64
+                                   multiservice
+aeX.251             up    up   multiservice
+int056                    up    up
+int057                  up    up
+dsc                     up    up
+int058                     up    up
+int058.32768               up    up   inet     10.0.0.187/24  
+esi                     up    up
+int059                    up    up
+int060                    up    up
+int061                    up    up
+int062                    up    up
+int063                    up    up
+int064                    up    up
+int065                    up    up
+int066                    up    up
+int067                    up    up
+int067.0                  up    up   inet     10.0.0.62/26
+                                            10.0.0.63/26
+gre                     up    up
+int068                    up    up
+int068.0                  up    up   inet     10.0.0.1/8      
+                                            10.0.0.143/2     
+                                            10.0.0.144/2     
+                                   inet6    fe80::200:1ff:fe00:4/64
+                                            fec0::a:0:0:4/64
+                                   tnp      0x4             
+ipip                    up    up
+irb                     up    up
+int069                   up    up
+int069.0                 up    up   inet     10.0.0.1/8      
+                                            10.0.0.143/2     
+                                            10.0.0.144/2     
+                                   inet6    fe80::200:ff:fe00:4/64
+                                            fec0::a:0:0:4/64
+                                   tnp      0x4             
+int070                     up    up
+int070.0                   up    up   inet     172.16.18.8         --> 0/0
+                                   iso      49.1720.1618.0008
+                                   inet6    2604:d600:ff00::1807:8
+                                            fe80::b68a:5f0f:fc95:8926
+int070.10                  up    up   inet     10.109.27.2         --> 0/0
+int070.100                 up    up   inet     172.16.188.108      --> 0/0
+int070.6666                up    up   inet     172.16.18.8         --> 0/0
+int070.16384               up    up   inet     127.0.0.1           --> 0/0
+int070.16385               up    up   inet    
+lsi                     up    up
+lsi.0                   up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.1                   up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.2                   up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.6                   up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.8                   up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.9                   up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.10                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.11                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.12                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.13                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.15                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.16                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.19                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.20                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.25                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.30                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.33                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.34                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.35                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.37                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.38                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.39                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.40                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.41                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.42                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.43                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.44                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.45                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.46                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.47                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.49                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.51                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.52                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.53                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.56                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.57                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.58                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.59                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.60                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.61                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.62                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.63                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.64                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.66                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.69                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.70                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.71                  up    up   inet    
+                                   iso     
+                                   inet6   
+lsi.1054944             up    up   vpls    
+lsi.1054945             up    up   vpls    
+lsi.1054946             up    up   vpls    
+lsi.1054948             up    up   vpls    
+lsi.1054996             up    up   vpls    
+lsi.1055003             up    up   vpls    
+lsi.1055128             up    up   vpls    
+lsi.1055129             up    up   vpls    
+lsi.1055130             up    up   vpls    
+lsi.1055136             up    up   vpls    
+lsi.1055678             up    up   vpls    
+lsi.1055679             up    up   vpls    
+lsi.1055681             up    up   vpls    
+lsi.1055683             up    up   vpls    
+lsi.1055685             up    up   vpls    
+lsi.1055690             up    up   vpls    
+lsi.1055694             up    up   vpls    
+lsi.1055699             up    up   vpls    
+lsi.1055708             up    up   vpls    
+lsi.1058068             up    up   vpls    
+lsi.1058084             up    up   vpls    
+lsi.1058085             up    up   vpls    
+lsi.1058086             up    up   vpls    
+lsi.1058087             up    up   vpls    
+lsi.1058088             up    up   vpls    
+lsi.1058089             up    up   vpls    
+lsi.1058090             up    up   vpls    
+lsi.1058101             up    up   vpls    
+lsi.1058133             up    up   vpls    
+lsi.1058142             up    up   vpls    
+lsi.1058146             up    up   vpls    
+lsi.1058147             up    up   vpls    
+lsi.1058148             up    up   vpls    
+lsi.1058149             up    up   vpls    
+lsi.1058167             up    up   vpls    
+lsi.1058239             up    up   vpls    
+lsi.1058240             up    up   vpls    
+lsi.1058243             up    up   vpls    
+lsi.1058244             up    up   vpls    
+lsi.1058245             up    up   vpls    
+lsi.1058246             up    up   vpls    
+lsi.1058247             up    up   vpls    
+lsi.1058248             up    up   vpls    
+lsi.1058319             up    up   vpls    
+lsi.1058328             up    up   vpls    
+lsi.1058332             up    up   vpls    
+lsi.1058338             up    up   vpls    
+lsi.1058339             up    up   vpls    
+lsi.1058342             up    up   vpls    
+lsi.1058345             up    up   vpls    
+lsi.1058346             up    up   vpls    
+lsi.1058347             up    up   vpls    
+lsi.1058348             up    up   vpls    
+lsi.1058349             up    up   vpls    
+lsi.1058353             up    up   vpls    
+lsi.1058357             up    up   vpls    
+lsi.1058359             up    up   vpls    
+lsi.1058363             up    up   vpls    
+lsi.1058372             up    up   vpls    
+lsi.1058374             up    up   vpls    
+lsi.1058484             up    up   vpls    
+lsi.1058486             up    up   vpls    
+lsi.1058487             up    up   vpls    
+lsi.1058488             up    up   vpls    
+lsi.1058530             up    up   vpls    
+lsi.1058531             up    up   vpls    
+lsi.1058564             up    up   vpls    
+lsi.1058571             up    up   vpls    
+lsi.1058573             up    up   vpls    
+lsi.1058577             up    up   vpls    
+lsi.1058578             up    up   vpls    
+lsi.1058589             up    up   vpls    
+lsi.1058590             up    up   vpls    
+lsi.1058591             up    up   vpls    
+lsi.1058643             up    up   vpls    
+lsi.1058648             up    up   vpls    
+lsi.1058650             up    up   vpls    
+lsi.1058658             up    up   vpls    
+lsi.1058659             up    up   vpls    
+lsi.1058660             up    up   vpls    
+lsi.1058661             up    up   vpls    
+lsi.1058662             up    up   vpls    
+lsi.1058663             up    up   vpls    
+lsi.1058666             up    up   vpls    
+lsi.1058671             up    up   vpls    
+lsi.1058676             up    up   vpls    
+lsi.1058677             up    up   vpls    
+lsi.1058678             up    up   vpls    
+lsi.1058679             up    up   vpls    
+lsi.1058680             up    up   vpls    
+lsi.1058681             up    up   vpls    
+lsi.1058682             up    up   vpls    
+lsi.1058683             up    up   vpls    
+lsi.1058684             up    up   vpls    
+lsi.1058686             up    up   vpls    
+lsi.1058687             up    up   vpls    
+lsi.1058688             up    up   vpls    
+lsi.1058689             up    up   vpls    
+lsi.1058690             up    up   vpls    
+lsi.1058718             up    up   vpls    
+lsi.1058758             up    up   vpls    
+lsi.1058774             up    up   vpls    
+lsi.1058775             up    up   vpls    
+lsi.1058776             up    up   vpls    
+lsi.1058778             up    up   vpls    
+lsi.1058779             up    up   vpls    
+lsi.1058780             up    up   vpls    
+lsi.1058782             up    up   vpls    
+lsi.1058783             up    up   vpls    
+lsi.1058784             up    up   vpls    
+lsi.1058785             up    up   vpls    
+lsi.1058786             up    up   vpls    
+lsi.1058787             up    up   vpls    
+lsi.1058788             up    up   vpls    
+lsi.1058789             up    up   vpls    
+lsi.1058790             up    up   vpls    
+lsi.1058791             up    up   vpls    
+lsi.1058792             up    up   vpls    
+lsi.1058793             up    up   vpls    
+lsi.1058794             up    up   vpls    
+lsi.1058795             up    up   vpls    
+lsi.1058796             up    up   vpls    
+lsi.1058797             up    up   vpls    
+lsi.1058825             up    up   vpls    
+lsi.1058826             up    up   vpls    
+lsi.1058827             up    up   vpls    
+lsi.1058828             up    up   vpls    
+lsi.1058838             up    up   vpls    
+lsi.1058839             up    up   vpls    
+lsi.1058842             up    up   vpls    
+lsi.1058854             up    up   vpls    
+lsi.1058891             up    up   vpls    
+lsi.1058904             up    up   vpls    
+mif                     up    up
+mtun                    up    up
+pimd                    up    up
+pime                    up    up
+int071                    up    up
+int072                     up    up
+rbeb                    up    up
+tap                     up    up
+vtep                    up    up

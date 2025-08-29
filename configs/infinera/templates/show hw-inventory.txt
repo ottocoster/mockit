@@ -1,0 +1,65 @@
+This is node 369 of type 8615 and subrack address 0.
+Stacking (slots 2/1: CLEICODEXXX-STATE(0), 13/14: Standalone)
+        State       : No stack
+        Cable State : no cable
+Control unit 14 is active.
+    unit in slot 13 is part of inventory and UP AND CLEICODEXXX
+        expected and active SW is: lbz2765_7.0.499
+        unit 13 of width 1 has serial number CLEICODEXXX, CLEI code CLEICODEXXX
+        top level serial number CLEICODEXXX
+        manufacturing date DATE-REDACTED, +0:00
+        HW type sbb2306-8615-LU(2306) v1.0.0 SW type 0 v7.0.499
+        infomodel FP7.0 (7.0.0); internal SW v.7.0.499
+        module IF0 (LEFT) of type 2*10GBASE-R(9103)
+            SFP connector 0 has type LC
+            SFP connector 1 has type LC
+        module IF1 (RIGHT) of type 16+8*10/100/1000BASE(9104)
+            SFP connector 0 is not present
+            SFP connector 1 has type LC CLEI code CLEICODEXXX
+                part # 81.86Z001GSLX10-R5 rev B
+            SFP connector 2 has type LC
+            SFP connector 3 is not present
+            SFP connector 4 is not present
+            SFP connector 5 is not present
+            SFP connector 6 is not present
+            SFP connector 7 is not present
+            SFP connector 8 is not present
+            SFP connector 9 is not present
+            SFP connector 10 has type LC
+            SFP connector 11 is not present
+            SFP connector 12 is not present
+            SFP connector 13 is not present
+            SFP connector 14 is not present
+            SFP connector 15 is not present
+        interface module 0 has
+            expected type 2*10GBASE-R
+            active   type 2*10GBASE-R
+            existing type 2*10GBASE-R
+        interface module 1 has
+            expected type 16+8*10/100/1000BASE
+            active   type 16+8*10/100/1000BASE
+            existing type 16+8*10/100/1000BASE
+    unit in slot 14 is part of inventory and UP AND CLEICODEXXX
+        expected and active SW is: cbz2764_7.0.499
+        unit 14 of width 1 has serial number CLEICODEXXX, CLEI code CLEICODEXXX
+        top level serial number CLEICODEXXX
+        manufacturing date DATE-REDACTED, +0:00
+        HW type vid9109-8615-CU(9109) v1.0.0 SW type 0 v7.0.499
+        infomodel FP7.0 (7.0.0); internal SW v.7.0.499
+        module CLEICODEXXX FAN 1 of type fmb2309-coolingFan(2309)
+        module PIM CLEICODEXXX of type pim2307dc48V(2307) v1.0.0
+            serial number CLEICODEXXX, CLEI code CLEICODEXXX
+            top level serial number CLEICODEXXX
+            manufacturing date DATE-REDACTED, +0:00
+        module PIM CLEICODEXXX of type pim2307dc48V(2307) v1.0.0
+            serial number CLEICODEXXX, CLEI code CLEICODEXXX
+            top level serial number CLEICODEXXX
+            manufacturing date DATE-REDACTED, +0:00
+        power input module primary has
+            expected type pim2307dc48V
+            active   type pim2307dc48V
+            existing type pim2307dc48V
+        power input module backup has
+            expected type pim2307dc48V
+            active   type pim2307dc48V
+            existing type pim2307dc48V

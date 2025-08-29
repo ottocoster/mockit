@@ -1,0 +1,13 @@
+NetworkOS Software, X5000, Version 8.1.2.r1
+Copyright (C) Network Inc.  All Rights Reserved.
+The current running image is flash:/boot/NetworkOS-X5000-v8.1.2.r1.r.bin
+
+ABC-X5000-32X4C.DC-SW00001 uptime is 192 days, 18 hours, 30 minutes
+Hardware Type is 32X4C
+Hardware Version is 3.0
+SDRAM size 2048M
+Flash size 8192M
+EPLD Version is 1.5
+BootRom Version is B.2.10
+System serial number is SN1234567890ABCDE
+Current Web Version is 8.1.2

@@ -1,0 +1,214 @@
+This is node 369 of type 8615 and subrack address 0.
+Stacking (slots 2/1: VENDOR-SN-XXX-STATE(0), 13/14: Standalone)
+        State       : No stack
+        Cable State : no cable
+Control unit 14 is active.
+    unit in slot 13 is part of inventory and UP AND VENDOR-SN-XXX
+        expected and active SW is: lbz2765_7.0.499
+        unit 13 of width 1 has serial number VENDOR-SN-XXX, CLEI code VENDOR-SN-XXX
+        top level serial number VENDOR-SN-XXX
+        manufacturing date DATE-VENDOR-SN-XXX, +0:00
+        HW type sbb2306-8615-LU(2306) v1.0.0 SW type 0 v7.0.499
+            Pmax=160W, Ptyp=110W
+        infomodel FP7.0 (7.0.0); internal SW v.7.0.499
+            Supported infomodels:
+                FP7.0 (7.0.0)
+        module IF0 (LEFT) of type 2*VENDOR-SN-XXX-R(9103)
+            SFP connector 0 data:
+                [0] type of serial transceiver: 3 (SFP transceiver)
+                [1] extended identifier of type of serial transceiver: 4
+                [2] connector type: 7(LC)
+                [3] infiniband compliance code: 128
+                [4] sonet compliance code4: 0
+                [5] sonet compliance code5: 0
+                [6] gigabit ethernet compliance code: 0
+                [11] serial encoding type: 6 unknown
+                [14] link length for 9/125mm fiber (km): 40
+                [15] link length for 9/125mm fiber (100m): 255
+                [16] link length for 50/125mm fiber (10m): 0
+                [17] link length for 62.5/125mm fiber (10m): 0
+                [18] link length for copper (m): 0
+                [20] vendor name: VENDOR-SN-XXX CORP.
+                [37] vendor organizationally unique: 36965
+                [40] vendor part number: VENDOR-SN-XXX-CR
+                [56] vendor revision number: A
+                [60] Laser wavelength: 1550 nm
+                [62] reserved field: 0
+                [68] vendor serial number: VENDOR-SN-XXX
+                [84] vendor's date (yy-mm-dd): 10-06-25
+                [90] vendor's date (vendor specific part):
+                [224-255] vendor specific ID field : 0x00000000
+                    0x00000000 0x00000000 0x00000000 0x00000000
+                    0x00000000 0x00000000 0x00000000
+                [d102] Tx power: 1.8 dBm (1.5 mW)
+                [d104] Rx power: -3.0 dBm (0.50 mW)
+            SFP connector 1 data:
+                [0] type of serial transceiver: 3 (SFP transceiver)
+                [1] extended identifier of type of serial transceiver: 4
+                [2] connector type: 7(LC)
+                [3] infiniband compliance code: 128
+                [4] sonet compliance code4: 0
+                [5] sonet compliance code5: 0
+                [6] gigabit ethernet compliance code: 0
+                [11] serial encoding type: 6 unknown
+                [14] link length for 9/125mm fiber (km): 40
+                [15] link length for 9/125mm fiber (100m): 255
+                [16] link length for 50/125mm fiber (10m): 0
+                [17] link length for 62.5/125mm fiber (10m): 0
+                [18] link length for copper (m): 0
+                [20] vendor name: VENDOR-SN-XXX CORP.
+                [37] vendor organizationally unique: 36965
+                [40] vendor part number: VENDOR-SN-XXX-CR
+                [56] vendor revision number: A
+                [60] Laser wavelength: 1550 nm
+                [62] reserved field: 0
+                [68] vendor serial number: VENDOR-SN-XXX
+                [84] vendor's date (yy-mm-dd): 10-06-25
+                [90] vendor's date (vendor specific part):
+                [224-255] vendor specific ID field : 0x00000000
+                    0x00000000 0x00000000 0x00000000 0x00000000
+                    0x00000000 0x00000000 0x00000000
+                [d102] Tx power: 2.4 dBm (1.7 mW)
+                [d104] Rx power: -15 dBm (34 uW)
+        module IF1 (RIGHT) of type 16+8*10/100/VENDOR-SN-XXX(9104)
+            SFP connector 0 is not present
+            SFP connector 1 data:
+                [0] type of serial transceiver: 3 (SFP transceiver)
+                [1] extended identifier of type of serial transceiver: 4
+                [2] connector type: 7(LC)
+                [3] infiniband compliance code: 0
+                [4] sonet compliance code4: 0
+                [5] sonet compliance code5: 0
+                [6] gigabit ethernet compliance code: 2, VENDOR-SN-XXX-LX
+                [11] serial encoding type: 1 8B10B
+                [14] link length for 9/125mm fiber (km): 10
+                [15] link length for 9/125mm fiber (100m): 100
+                [16] link length for 50/125mm fiber (10m): 0
+                [17] link length for 62.5/125mm fiber (10m): 0
+                [18] link length for copper (m): 0
+                [20] vendor name: VENDOR-SN-XXX
+                [37] vendor organizationally unique: 7970
+                [40] vendor part number: VENDOR-SN-XXX
+                [56] vendor revision number: 10
+                [60] Laser wavelength: 1310 nm
+                [62] reserved field: 0
+                [68] vendor serial number: VENDOR-SN-XXX
+                [84] vendor's date (yy-mm-dd): 15-06-18
+                [90] vendor's date (vendor specific part):
+                [224-241] OEM part number: 81.VENDOR-SN-XXX-R5
+                [242-243] OEM revision:  B
+                [244-253] OEM CLEI code:  VENDOR-SN-XXX
+                [255] OEM checksum: 0x6F
+                [d102] Tx power: -5.2 dBm (0.30 mW)
+                [d104] Rx power: -6.1 dBm (0.25 mW)
+            SFP connector 2 data:
+                [0] type of serial transceiver: 3 (SFP transceiver)
+                [1] extended identifier of type of serial transceiver: 4
+                [2] connector type: 7(LC)
+                [3] infiniband compliance code: 0
+                [4] sonet compliance code4: 0
+                [5] sonet compliance code5: 0
+                [6] gigabit ethernet compliance code: 1, VENDOR-SN-XXX-SX
+                [11] serial encoding type: 1 8B10B
+                [14] link length for 9/125mm fiber (km): 0
+                [15] link length for 9/125mm fiber (100m): 0
+                [16] link length for 50/125mm fiber (10m): 55
+                [17] link length for 62.5/125mm fiber (10m): 27
+                [18] link length for copper (m): 0
+                [20] vendor name: Raisecom
+                [37] vendor organizationally unique: 0
+                [40] vendor part number: USFP-Gb/M-D-03R
+                [56] vendor revision number: V1.0
+                [60] Laser wavelength: 850 nm
+                [62] reserved field: 0
+                [68] vendor serial number: VENDOR-SN-XXX
+                [84] vendor's date (yy-mm-dd): 10-10-09
+                [90] vendor's date (vendor specific part):
+                [224-255] vendor specific ID field : 0x00000000
+                    0x00000000 0x00000000 0x00000000 0x00000000
+                    0x00000000 0x00000000 0x0000AA00
+                [d102] Tx power: -5.5 dBm (0.28 mW)
+                [d104] Rx power: -31 dBm (0.80 uW)
+            SFP connector 3 is not present
+            SFP connector 4 is not present
+            SFP connector 5 is not present
+            SFP connector 6 is not present
+            SFP connector 7 is not present
+            SFP connector 8 is not present
+            SFP connector 9 is not present
+            SFP connector 10 data:
+                [0] type of serial transceiver: 3 (SFP transceiver)
+                [1] extended identifier of type of serial transceiver: 4
+                [2] connector type: 7(LC)
+                [3] infiniband compliance code: 0
+                [4] sonet compliance code4: 0
+                [5] sonet compliance code5: 0
+                [6] gigabit ethernet compliance code: 1, VENDOR-SN-XXX-SX
+                [11] serial encoding type: 1 8B10B
+                [14] link length for 9/125mm fiber (km): 0
+                [15] link length for 9/125mm fiber (100m): 0
+                [16] link length for 50/125mm fiber (10m): 30
+                [17] link length for 62.5/125mm fiber (10m): 15
+                [18] link length for copper (m): 0
+                [20] vendor name: VENDOR-SN-XXX CORP.
+                [37] vendor organizationally unique: 36965
+                [40] vendor part number: VENDOR-SN-XXX
+                [56] vendor revision number: A
+                [60] Laser wavelength: 850 nm
+                [62] reserved field: 0
+                [68] vendor serial number: VENDOR-SN-XXX
+                [84] vendor's date (yy-mm-dd): 14-03-29
+                [90] vendor's date (vendor specific part):
+                [224-255] vendor specific ID field : 0x00000000
+                    0x00000000 0x00000000 0x00000000 0x00000000
+                    0x00000000 0x00000000 0x00000000
+                [d102] Tx power: -5.5 dBm (0.28 mW)
+                [d104] Rx power: -33 dBm (0.50 uW)
+            SFP connector 11 is not present
+            SFP connector 12 is not present
+            SFP connector 13 is not present
+            SFP connector 14 is not present
+            SFP connector 15 is not present
+        interface module 0 has
+            expected type 2*VENDOR-SN-XXX-R
+            active   type 2*VENDOR-SN-XXX-R
+            existing type 2*VENDOR-SN-XXX-R
+            mode is not relevant
+        interface module 1 has
+            expected type 16+8*10/100/VENDOR-SN-XXX
+            active   type 16+8*10/100/VENDOR-SN-XXX
+            existing type 16+8*10/100/VENDOR-SN-XXX
+            mode is not relevant
+    unit in slot 14 is part of inventory and UP AND VENDOR-SN-XXX
+        expected and active SW is: cbz2764_7.0.499
+        unit 14 of width 1 has serial number VENDOR-SN-XXX, CLEI code VENDOR-SN-XXX
+        top level serial number VENDOR-SN-XXX
+        manufacturing date DATE-VENDOR-SN-XXX, +0:00
+        HW type vid9109-8615-CU(9109) v1.0.0 SW type 0 v7.0.499
+            Pmax=160W, Ptyp=110W
+        infomodel FP7.0 (7.0.0); internal SW v.7.0.499
+            Supported infomodels:
+                FP7.0 (7.0.0)
+        module VENDOR-SN-XXX FAN 1 of type fmb2309-coolingFan(2309)
+        module PIM VENDOR-SN-XXX of type pim2307dc48V(2307) v1.0.0
+            serial number VENDOR-SN-XXX, CLEI code VENDOR-SN-XXX
+            top level serial number VENDOR-SN-XXX
+            manufacturing date DATE-VENDOR-SN-XXX, +0:00
+            Pmax=0.00W, Ptyp=0.00W
+        module PIM VENDOR-SN-XXX of type pim2307dc48V(2307) v1.0.0
+            serial number VENDOR-SN-XXX, CLEI code VENDOR-SN-XXX
+            top level serial number VENDOR-SN-XXX
+            manufacturing date DATE-VENDOR-SN-XXX, +0:00
+            Pmax=0.00W, Ptyp=0.00W
+        power input module primary has
+            expected type pim2307dc48V
+            active   type pim2307dc48V
+            existing type pim2307dc48V
+            mode is not relevant
+            Pmax=0.00W, Ptyp=0.00W
+        power input module backup has
+            expected type pim2307dc48V
+            active   type pim2307dc48V
+            existing type pim2307dc48V
+            mode is not relevant
+            Pmax=0.00W, Ptyp=0.00W

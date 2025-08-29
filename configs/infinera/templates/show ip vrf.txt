@@ -1,0 +1,5 @@
+VRF _testt-rpf_, FIB ID 1111
+Router ID is not set
+Constraints:
+Interfaces:
+!

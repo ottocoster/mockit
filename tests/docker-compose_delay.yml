@@ -2,7 +2,7 @@ name: devices
 services:
   a10:
     build: ../
-    container_name: devices-a10
+    container_name: devices_a10
     environment:
       - DEVICE_TYPE=a10
       - SSH_USERNAME=test
@@ -10,11 +10,12 @@ services:
       - LOGIN_DELAY=3
       - DEVICE_DELAY=2
     networks:
-      - devices-network
+      - mockit_network
     ports:
       - "22:22"
       - "161:161/udp"
 
 networks:
-  devices-network:
+  mockit_network:
     driver: bridge
+    name: mockit_network

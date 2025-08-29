@@ -1,0 +1,42 @@
+*down: administratively down
+^down: standby
+(l): loopback
+(s): spoofing
+(d): Dampening Suppressed
+(E): E-Trunk down
+The number of interface that is UP in Physical is 7
+The number of interface that is DOWN in Physical is 23
+The number of interface that is UP in Protocol is 7
+The number of interface that is DOWN in Protocol is 23
+
+Interface                         IP Address/Mask      Physical   Protocol  
+Ethernet0/0/0                     192.168.0.1/24       up         up        
+GigabitEthernet0/2/1              201.174.56.169/30    down       down      
+GigabitEthernet0/2/3              169.254.255.9/30     up         up        
+GigabitEthernet0/2/4              unassigned           down       down      
+GigabitEthernet0/2/5              201.174.132.1/29     up         up        
+GigabitEthernet0/2/6              unassigned           down       down      
+GigabitEthernet0/2/7              unassigned           down       down      
+GigabitEthernet0/2/8              unassigned           down       down      
+GigabitEthernet0/2/9              unassigned           down       down      
+GigabitEthernet0/2/10             unassigned           down       down      
+GigabitEthernet0/2/11             unassigned           down       down      
+GigabitEthernet0/2/12             unassigned           down       down      
+GigabitEthernet0/2/13             unassigned           down       down      
+GigabitEthernet0/2/14             unassigned           down       down      
+GigabitEthernet0/2/15             unassigned           down       down      
+GigabitEthernet0/2/16             unassigned           down       down      
+GigabitEthernet0/2/17             unassigned           down       down      
+GigabitEthernet0/2/18             unassigned           down       down      
+GigabitEthernet0/2/19             unassigned           down       down      
+GigabitEthernet0/2/20             unassigned           *down      down      
+GigabitEthernet0/2/21             unassigned           down       down      
+GigabitEthernet0/2/22             unassigned           down       down      
+GigabitEthernet0/2/23             unassigned           *down      down      
+GigabitEthernet0/2/23.7           unassigned           down       down      
+GigabitEthernet0/2/24(10G)        unassigned           down       down      
+GigabitEthernet0/2/25(10G)        unassigned           down       down      
+GigabitEthernet0/2/26(10G)        201.174.255.95/31    up         up        
+GigabitEthernet0/2/27(10G)        201.174.244.255/31   up         up        
+LoopBack0                         172.20.21.5/32       up         up(s)     
+NULL0                             unassigned           up         up(s)     

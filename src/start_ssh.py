@@ -4,8 +4,9 @@ from asyncssh.process import SSHServerProcess
 from netmiko import ConnectHandler
 import importlib
 
-server_class = None
-handler_class = None
+
+logger = logging.getLogger(__name__)
+
 
 def load_device_classes(device_type, device_version):
     """
@@ -17,12 +18,13 @@ def load_device_classes(device_type, device_version):
     Returns:
         tuple: Server and handler classes for the specified device type.
     """
+    if device_version:
+        mod = f"configs.{device_type}.{device_version}.{device_type}_{device_version}_server"
+    else:
+        mod = f"configs.{device_type}.{device_type}_server"
     try:
         # Dynamically import the module based on the device type
-        if device_version:
-            module = importlib.import_module(f'configs.{device_type}.{device_version}.{device_type}_{device_version}_server')
-        else:
-            module = importlib.import_module(f'configs.{device_type}.{device_type}_server')
+        module = importlib.import_module(mod)
 
         # Get the server and handler classes from the module
         server_class = getattr(module, f'{device_type}_server')
@@ -32,15 +34,14 @@ def load_device_classes(device_type, device_version):
 
     return server_class, handler_class
 
-async def start_ssh(options):
+
+async def start_ssh(status, options):
     """
     Start the SSH server with the provided options.
 
     Args:
         options (dict): Configuration options for the server.
     """
-    global server_class, handler_class
-    logger = logging.getLogger('app')
     logger.debug(f"starting ssh {options}")
 
     # Load device-specific server and handler classes
@@ -64,24 +65,27 @@ async def start_ssh(options):
         options["new_line"] = net_connect.RETURN
 
     logger.debug(f"Using SSH options: {options}")
+    logger.debug(f"authkey_enabled: {options["authkey_enabled"]}")
+
+    key_opt = {}
+    if options["authkey_enabled"]:
+        key_opt = dict(authorized_client_keys=options["authkey_path"])
+
+    async def handle_connection(process: SSHServerProcess):
+        session = handler_class(process, process.get_extra_info("options"))
+        await session.open()
 
     # Create and start the async SSH server
-    await asyncssh.create_server(
+    server = await asyncssh.create_server(
         server_factory=lambda: server_class(options, logger),
         host=["::", "0.0.0.0"],
         port=22,
         server_host_keys=options["ssh_key"],
-        process_factory=create_session,
+        process_factory=handle_connection,
         line_echo=False,
-        line_editor=True
+        line_editor=True,
+        reuse_address=True,
+        **key_opt
     )
-
-async def create_session(process: SSHServerProcess):
-    """
-    Create a new SSH session.
-
-    Args:
-        process (SSHServerProcess): SSH server process instance.
-    """
-    session = handler_class(process, process.get_extra_info("options"))
-    await session.open()
+    await status.service_ready()
+    await server.wait_closed()

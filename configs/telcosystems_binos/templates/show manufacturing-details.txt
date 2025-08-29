@@ -1,0 +1,8 @@
+  Switch model       : T5C-XG 256M
+  Serial number      : 1234567890a
+  Assembly No        : AS1234567
+  Part number        : Not Available
+  CLEI               : Not Available
+  HW revision        : B
+  HW subrevision     : 01
+  Manufacturing Date : Not Available

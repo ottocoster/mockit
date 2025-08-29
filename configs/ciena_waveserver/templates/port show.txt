@@ -1,0 +1,12 @@
+
++-------------------------------- PORT TABLE ----------------------------------------+
+|        |             Admin Configuration                 |    Operational Status   |
++        +----------+-------------+--------+--------+------+--------+----------------+
+|  Name  |  State   |   Type      |  Rate  | IfType | Lpbk | State  |  Duration      |
++--------+----------+-------------+--------+--------+------+--------+----------------+
+| 1/1    | Enabled  | OTUCn       | OTUC4  | I-NNI  | Dis  | Up     |   72d 5h 2m20s |
+| 1/2    | Disabled | OTUCn       | OTUC4  | I-NNI  | Dis  | LLD    | 1237d 4h53m15s |
+| 1/3    | Enabled  | Ethernet    | 100GE  | UNI    | Dis  | Up     |   72d 5h 2m20s |
+| 1/4    | Enabled  | Ethernet    | 100GE  | UNI    | Dis  | Up     |   72d 5h 2m20s |
+| 1/5    | Enabled  | Ethernet    | 100GE  | UNI    | Dis  | Up     |   72d 5h 2m20s |
++--------+----------+-------------+--------+--------+------+--------+----------------+

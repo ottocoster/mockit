@@ -1,8 +1,8 @@
-import socket
-import threading
 import logging
 import importlib
 import asyncio
+
+from src.options import get_normalized_device_type
 from src.telnet_server.telnet_handler import Telnet_Handler  # Default handler
 
 logger = logging.getLogger("app")
@@ -19,20 +19,21 @@ def load_telnet_handler(device_type, device_version):
     Returns:
         class: Handler class for the specified device type.
     """
-    try:
+    normalized = get_normalized_device_type(device_type)
 
+    try:
         # Dynamically import the module based on the device type
         if device_version:
             module = importlib.import_module(
-                f"configs.{device_type}.{device_version}.{device_type}_{device_version}_server"
+                f"configs.{normalized}.{device_version}.{normalized}_{device_version}_server"
             )
         else:
             module = importlib.import_module(
-                f"configs.{device_type}.{device_type}_server"
+                f"configs.{normalized}.{normalized}_server"
             )
 
         # Get the server and handler classes from the module
-        handler_class = getattr(module, f"{device_type}_telnet_handler")
+        handler_class = getattr(module, f"{normalized}_telnet_handler")
         logger.debug(
             f"Loaded Telnet handler for {device_type} (version: {device_version})"
         )
@@ -44,23 +45,23 @@ def load_telnet_handler(device_type, device_version):
         return Telnet_Handler
 
 
-def handle_client(conn, addr, options, handler_class):
-    """
-    Handle an incoming client connection.
+# def handle_client(conn, addr, options, handler_class):
+#     """
+#     Handle an incoming client connection.
+#
+#     Args:
+#         conn (socket.socket): Client connection.
+#         addr (tuple): Client address.
+#         options (dict): Server configuration options.
+#     """
+#     logger.info(f"Connection established with {addr}")
+#
+#     # Create an instance of the handler
+#     handler = handler_class(conn, options)
+#     handler.run()
+#
 
-    Args:
-        conn (socket.socket): Client connection.
-        addr (tuple): Client address.
-        options (dict): Server configuration options.
-    """
-    logger.info(f"Connection established with {addr}")
-
-    # Create an instance of the handler
-    handler = handler_class(conn, options)
-    handler.run()
-
-
-async def start_telnet(options):
+async def start_telnet(status, options):
     """
     Start the Telnet server asynchronously.
     """
@@ -78,6 +79,7 @@ async def start_telnet(options):
         await handler.run()
 
     server = await asyncio.start_server(accept_client, host=None, port=23)
+    await status.service_ready()
     addr = server.sockets[0].getsockname()
     logger.info(f"Telnet server running on {addr}")
 

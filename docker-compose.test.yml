@@ -12,13 +12,15 @@ services:
 #      LOGIN_RETRY: 2
     ports: 
        - "22:22"
+       - "23:23"
+       - "830:830"
        - "161:161/udp"
     networks:
-      devices-network:
+      devices_network:
         ipv4_address: 172.16.240.45 # change to what you prefer
 
 networks:
-  devices-network:
+  devices_network:
     driver: bridge
     ipam:
       config:

@@ -1,0 +1,134 @@
+Instance             Type
+         Primary RIB                                     Active/holddown/hidden
+master               forwarding
+         inet.0                                          999134/0/2
+         inet.3                                          818/0/0
+         iso.0                                           1/0/0
+         mpls.0                                          564/0/0
+         bgp.l3vpn.0                                     9673/0/0
+         inet6.0                                         220565/0/0
+         l2circuit.0                                     28/0/9
+         bgp.evpn.0                                      80/0/0
+
+CUST_Site_A_10000000 vpls
+
+CUST_Site_B_10000001 evpn
+         CUST_Site_B_10000001.evpn.0                     10/0/0
+
+CUST_Site_C_10000002 vpls
+
+CUST_Site_D_10000003 vpls
+
+CUST_Site_E_10000004 vpls
+
+MESH-SITE-PRIMARY    evpn
+
+MESH-SITE-SECONDARY  evpn
+
+CUST_Site_F_10000005 vpls
+
+CUST_Site_G_10000006 vpls
+
+VRF_MANAGEMENT       vrf
+         VRF_MANAGEMENT.inet.0                           8635/0/222
+         VRF_MANAGEMENT.inet6.0                          1/0/0
+
+VRF_VOIP             vrf
+         VRF_VOIP.inet.0                                 912/0/0
+         VRF_VOIP.inet6.0                                1/0/0
+
+CUST_Site_H_10000007 vpls
+
+__default_evpn__     non-forwarding evpn
+
+__private_net1__     forwarding
+         __private_net1__.inet.0                         5/0/0
+         __private_net1__.inet6.0                        4/0/0
+
+__private_net2__     forwarding
+         __private_net2__.inet.0                         0/0/1
+
+__private_net4__     forwarding
+
+__private_net5__     forwarding
+         __private_net5__.inet.0                         2/0/0
+
+__master.anon__      forwarding
+
+evpn-CUST_A_10000010 evpn
+         evpn-CUST_A_10000010.evpn.0                     7/0/0
+
+evpn-CUST_B_10000011 evpn
+         evpn-CUST_B_10000011.evpn.0                     4/0/0
+
+evpn-CUST_C_10000012 evpn
+         evpn-CUST_C_10000012.evpn.0                     2/0/0
+
+evpn-CUST_D_10000013 evpn
+         evpn-CUST_D_10000013.evpn.0                     7/0/0
+
+evpn-CUST_E_10000014 evpn
+         evpn-CUST_E_10000014.evpn.0                     3/0/0
+
+evpn-CUST_F_10000015 evpn
+         evpn-CUST_F_10000015.evpn.0                     5/0/0
+
+evpn-CUST_G_10000016 evpn
+         evpn-CUST_G_10000016.evpn.0                     5/0/0
+
+evpn-CUST_H_10000017 evpn
+         evpn-CUST_H_10000017.evpn.0                     3/0/0
+
+evpn-CUST_I_10000018 evpn
+         evpn-CUST_I_10000018.evpn.0                     5/0/0
+
+evpn-CUST_J_10000019 evpn
+         evpn-CUST_J_10000019.evpn.0                     6/0/0
+
+evpn-CUST_K_10000020 evpn
+         evpn-CUST_K_10000020.evpn.0                     4/0/0
+
+evpn-CUST_L_10000021 evpn
+         evpn-CUST_L_10000021.evpn.0                     6/0/0
+
+evpn-CUST_L_10000022 evpn
+         evpn-CUST_L_10000022.evpn.0                     6/0/0
+
+evpn-CUST_L_10000023 evpn
+         evpn-CUST_L_10000023.evpn.0                     7/0/0
+
+mgmt_core            forwarding
+
+vpls-CUST_G_10000016 vpls
+
+vpls-CUST_B_10000011 vpls
+
+vpls-CUST_X_10000024 vpls
+
+vpls-SITE-MESH-X     vpls
+
+vpls-L2VPN-TDMoIP    vpls
+
+vpls-PTP_L3_LINK     vpls
+
+vpls-PTP_L3_LINK_BK  vpls
+
+vpls-SITE-MESH-Y     vpls
+
+vrf-CUST_MGMT_10000025 vrf
+         vrf-CUST_MGMT_10000025.inet.0                   25/0/0
+         vrf-CUST_MGMT_10000025.inet6.0                  1/0/0
+
+vrf-CUST_N_10000026 vrf
+         vrf-CUST_N_10000026.inet.0                      105/0/0
+         vrf-CUST_N_10000026.inet6.0                     1/0/0
+
+vrf-CUST_O_10000027 vrf
+         vrf-CUST_O_10000027.inet.0                      253/0/0
+         vrf-CUST_O_10000027.inet6.0                     1/0/0
+
+vrf-CUST_P_10000028 vrf
+         vrf-CUST_P_10000028.inet.0                      253/0/0
+         vrf-CUST_P_10000028.inet6.0                     1/0/0
+
+{master}

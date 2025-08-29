@@ -1,0 +1,17 @@
+VLAN ID: 1
+Name: Management
+State: active
+Status: static
+Member-Ports: nni 1
+Untag-Ports:
+Priority: --
+Create-Time:    0:00:00:21
+
+VLAN ID: 123
+Name: test
+State: active
+Status: static
+Member-Ports: nni 1 uni 1-4
+Untag-Ports: uni 1-4
+Priority: --
+Create-Time:    0:00:00:22

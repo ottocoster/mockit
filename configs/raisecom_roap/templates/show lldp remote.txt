@@ -1,0 +1,3 @@
+Port      ChassisId          PortId                    SysName                          MgtAddress      ExpiredTime
+------------------------------------------------------------------------------------------------------------------------
+nni1      AC61.755F.1111     GigabitEthernet0/0/1     MXL-Huawei.S5320.56C.EI.48S.DC-S 192.168.3.1    97

@@ -1,0 +1,3 @@
+IF    Address         NetMask         Source      Catagory
+----------------------------------------------------------
+0     10.61.38.1    255.255.255.224 assigned    primary

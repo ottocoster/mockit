@@ -1,0 +1,58 @@
+Port        Status     Duplex  Speed    Mode    Type                    Description
+------------------------------------------------------------------------------------------
+eth-0-1     down       auto    auto     ACCESS  Unknown                 DESC-001
+eth-0-2     up         a-full  a-1000   TRUNK   1000BASE_ZX             DESC-002
+eth-0-3     up         a-full  a-1000   TRUNK   1000BASE_ZX             DESC-003
+eth-0-4     up         a-full  a-1000   TRUNK   1000BASE_ZX             DESC-004
+eth-0-5     down       auto    auto     ACCESS  Unknown                 DESC-005
+eth-0-6     up         a-full  a-1000   TRUNK   1000BASE_ZX             DESC-006
+eth-0-7     up         a-full  a-1000   TRUNK   1000BASE_ZX             DESC-007
+eth-0-8     down       auto    auto     ACCESS  Unknown                 DESC-008
+eth-0-9     down       auto    auto     ACCESS  Unknown                 DESC-009
+eth-0-10    down       auto    auto     routed  Unknown                 DESC-010
+eth-0-11    up         a-full  a-1000   TRUNK   1000BASE_ZX             DESC-011
+eth-0-12    down       auto    auto     ACCESS  Unknown
+eth-0-13    up         a-full  a-10G    TRUNK   10GBASE_LR              DESC-013
+eth-0-14    up         a-full  a-1000   ACCESS  1000BASE_T_SFP          DESC-014
+eth-0-15    up         a-full  a-10G    TRUNK   10GBASE_LR              DESC-015
+eth-0-16    down       auto    a-1000   ACCESS  1000BASE_T_SFP
+eth-0-17    down       auto    auto     ACCESS  Unknown
+eth-0-18    down       auto    auto     ACCESS  Unknown
+eth-0-19    down       auto    auto     ACCESS  Unknown
+eth-0-20    down       auto    auto     ACCESS  Unknown
+eth-0-22    down       auto    auto     ACCESS  Unknown
+eth-0-23    down       auto    auto     ACCESS  Unknown
+eth-0-24    down       auto    auto     ACCESS  Unknown
+eth-0-25    down       auto    auto     ACCESS  Unknown
+eth-0-26    down       auto    auto     ACCESS  Unknown
+eth-0-27    down       auto    auto     ACCESS  Unknown
+eth-0-28    down       auto    auto     ACCESS  Unknown
+eth-0-29    down       auto    auto     ACCESS  Unknown
+eth-0-30    up         a-full  a-1000   ACCESS  1000BASE_T_SFP          DESC-030
+eth-0-31    down       auto    auto     ACCESS  Unknown
+eth-0-32    down       auto    auto     ACCESS  Unknown
+eth-0-33    down       auto    auto     ACCESS  Unknown
+eth-0-34    down       auto    auto     ACCESS  Unknown
+eth-0-35    down       auto    auto     ACCESS  Unknown
+eth-0-36    down       auto    auto     ACCESS  Unknown
+eth-0-37    down       auto    auto     ACCESS  Unknown
+eth-0-38    down       auto    auto     ACCESS  Unknown
+eth-0-39    down       auto    auto     ACCESS  Unknown
+eth-0-40    up         a-full  a-10G    TRUNK   10GBASE_LR              DESC-040
+eth-0-41    up         a-full  a-10G    TRUNK   10GBASE_LR              DESC-041
+eth-0-42    up         a-full  a-10G    TRUNK   10GBASE_LR              DESC-042
+eth-0-43    up         a-full  a-10G    TRUNK   10GBASE_LR              DESC-043
+eth-0-45    down       auto    auto     ACCESS  Unknown
+eth-0-46    down       auto    auto     ACCESS  Unknown
+eth-0-47    up         a-full  a-10G    TRUNK   10GBASE_LR              DESC-047
+eth-0-48    up         a-full  a-10G    TRUNK   10GBASE_LR              DESC-048
+eth-0-49    down       full    auto     ACCESS  Unknown
+eth-0-50    down       full    auto     ACCESS  Unknown
+eth-0-51    down       full    auto     ACCESS  Unknown
+eth-0-52    down       full    auto     ACCESS  Unknown
+eth-0-53    down       full    auto     ACCESS  Unknown
+eth-0-54    down       full    auto     ACCESS  Unknown
+eth-0-55    down       full    auto     ACCESS  Unknown                 DESC-055
+eth-0-56    down       full    auto     ACCESS  Unknown                 DESC-056
+agg1        up         a-full  20.00G   TRUNK   Aggregation             DESC-AGG1
+agg2        up         a-full  20.00G   TRUNK   Aggregation             DESC-AGG2

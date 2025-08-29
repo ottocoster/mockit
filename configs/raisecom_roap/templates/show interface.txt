@@ -1,0 +1,8 @@
+Port        Admin     Operate                Speed   Duplex  Active MAU type   State       Forced Port-Type        MTU
+----------------------------------------------------------------------------------------------------------------------------
+nni1        enable    up(1000M/full)         auto    auto    1000BASE-X        Forward     ---                    2000
+nni2        ---       ---                    ---     ---     ---               ---         ---                    2000
+uni1        enable    up(1000M/full)         auto    auto    1000BASE-T        Forward     ---                    2000
+uni2        enable    down(---/---)          auto    auto    1000BASE-T        Forward     ---                    2000
+uni3        enable    down(---/---)          auto    auto    1000BASE-T        Forward     ---                    2000
+uni4        enable    down(---/---)          auto    auto    1000BASE-T        Forward     ---                    2000

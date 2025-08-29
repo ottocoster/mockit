@@ -1,0 +1,30 @@
+===============================================================================
+|Port |Interface Name  |Type    |State  |Link|DuplSpeed |Flow   |Backpres|Vlan
++-----+----------------+--------+-------+----+----------+-------+--------+-----
+1/1/1  <<+ MOCKNAME-01~ 1000LX-G disable down unknown    disable disable  1001
+1/1/2  <<+ MOCKNAME-02~ 10-1000T enable  down unknown    disable disable  1002
+1/1/3  "MOCKNAME-03   ~ 10-1000T enable  up   full-100   disable disable  1003
+1/1/4                   1000LX-G disable down unknown    disable disable  1004
+1/1/5                   no media disable down unknown    disable disable  1005
+1/1/6  <<+ MOCKNAME-06~ 1000LX-G enable  up   full-1000  disable disable  1006
+1/1/7  <<+ MOCKNAME-07~ 10-1000T enable  up   full-1000  disable disable  1007
+1/1/8  <<+ MOCKNAME-08~ 10-1000T enable  up   full-1000  disable disable  1008
+1/1/9  <<+ MOCKNAME-09~ 1000LX-G enable  up   full-1000  disable disable  1009
+1/1/10                  no media disable down unknown    disable disable  1010
+1/1/11 <<+ MOCKNAME-11~ GBIC,on  disable down unknown    disable disable  1011
+1/1/12                  no media disable down unknown    disable disable  1012
+1/1/13                  no media disable down unknown    disable disable  1013
+1/1/14                  no media disable down unknown    disable disable  1014
+1/1/15                  no media disable down unknown    disable disable  1015
+1/1/16 MOCK-ID-1234567~ 10-1000T enable  up   full-100   disable disable  1016
+1/1/17                  no media disable down unknown    disable disable  1017
+1/1/18                  no media disable down unknown    disable disable  1018
+1/1/19                  no media disable down unknown    disable disable  1019
+1/1/20                  no media disable down unknown    disable disable  1020
+1/1/21 <<+ MOCKNAME-21~ 1000LX-G enable  down unknown    disable disable  1021
+1/1/22 <<+ RESERVED-A1~ no media disable down unknown    disable disable  1022
+1/1/23 <<+ RESERVED-A2~ no media disable down unknown    disable disable  1023
+1/1/24 <<+ RESERVED-A3~ no media disable down unknown    disable disable  1024
+
+1/2/1  <<+ UPLINK-X1   ~ 10G-LR/W enable  up   full-10000 disable disable  2001
+1/2/2  <<+ UPLINK-X2   ~ 10G-LR/W enable  up   full-10000 disable disable  2002

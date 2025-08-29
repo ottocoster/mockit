@@ -1,0 +1,87 @@
+Interface eth-1-100
+  Interface current state: DOWN
+  Hardware is Ethernet, address is a1b2.c3d4.e5f1 (bia a1b2.c3d4.e5f1)
+  Description: DESC-001
+  Bandwidth 1000000 kbits
+  Index 1 , Metric 1 , Encapsulation ARPA
+  Speed - Auto , Duplex - Auto  , Media type is Unknown
+  Last up time: -
+  Last down time: -
+  Current system time(UTC): 2025-03-12 13:54:43
+  Link type is autonegotiation
+  FEC config: DEFAULT
+  FEC status: Unknown
+  Admin input flow-control is off, output flow-control is off
+  Oper input flow-control is off, output flow-control is off
+  The Maximum Frame Size is 9600 bytes
+  VRF binding: not bound
+  ARP timeout 01:00:00,  ARP retry interval 1s
+  ARP Proxy is disabled, Local ARP Proxy is disabled
+    5 minute input rate 0 bits/sec, 0 packets/sec
+    5 minute output rate 0 bits/sec, 0 packets/sec
+    0 packets input, 0 bytes
+    Received 0 unicast, 0 broadcast, 0 multicast
+    0 runts, 0 giants, 0 input errors, 0 CRC
+    0 frame, 0 overrun, 0 pause input
+    0 packets output, 0 bytes
+    Transmitted 0 unicast, 0 broadcast, 0 multicast
+    0 underruns, 0 output errors, 0 pause output
+    0 output discard
+Interface eth-1-101
+  Interface current state: UP
+  Hardware is Ethernet, address is a1b2.c3d4.e5f2 (bia a1b2.c3d4.e5f2)
+  Description: DESC-002
+  Bandwidth 1000000 kbits
+  Index 2 , Metric 1 , Encapsulation ARPA
+  Speed - 1000Mb/s , Duplex - Full  , Media type is 1000BASE_ZX
+  Last up time(UTC): 2025-02-16 05:12:06
+  Last down time(UTC): 2025-02-15 23:21:58
+  Current system time(UTC): 2025-03-12 13:54:43
+  Link type is autonegotiation
+  FEC config: DEFAULT
+  FEC status: OFF
+  Admin input flow-control is off, output flow-control is off
+  Oper input flow-control is off, output flow-control is off
+  The Maximum Frame Size is 9600 bytes
+  VRF binding: not bound
+  ARP timeout 01:00:00,  ARP retry interval 1s
+  ARP Proxy is disabled, Local ARP Proxy is disabled
+    5 minute input rate 4222 bits/sec, 3 packets/sec
+    5 minute output rate 5748 bits/sec, 4 packets/sec
+    4197323728 packets input, 3536482824035 bytes
+    Received 4196761060 unicast, 6080 broadcast, 556588 multicast
+    0 runts, 481973344 giants, 0 input errors, 0 CRC
+    0 frame, 0 overrun, 0 pause input
+    5421222741 packets output, 4147782081266 bytes
+    Transmitted 5395255330 unicast, 25413785 broadcast, 553626 multicast
+    0 underruns, 0 output errors, 0 pause output
+    0 output discard
+Interface eth-1-102
+  Interface current state: UP
+  Hardware is Ethernet, address is a1b2.c3d4.e5f3 (bia a1b2.c3d4.e5f3)
+  Description: DESC-003
+  Bandwidth 1000000 kbits
+  Index 3 , Metric 1 , Encapsulation ARPA
+  Speed - 1000Mb/s , Duplex - Full  , Media type is 1000BASE_ZX
+  Last up time(UTC): 2024-12-08 20:41:34
+  Last down time(UTC): 2024-12-08 20:41:34
+  Current system time(UTC): 2025-03-12 13:54:43
+  Link type is autonegotiation
+  FEC config: DEFAULT
+  FEC status: OFF
+  Admin input flow-control is off, output flow-control is off
+  Oper input flow-control is off, output flow-control is off
+  The Maximum Frame Size is 9600 bytes
+  VRF binding: not bound
+  ARP timeout 01:00:00,  ARP retry interval 1s
+  ARP Proxy is disabled, Local ARP Proxy is disabled
+    5 minute input rate 8202406 bits/sec, 783 packets/sec
+    5 minute output rate 1126470 bits/sec, 224 packets/sec
+    2485426050 packets input, 1134063707002 bytes
+    Received 2473811949 unicast, 8606544 broadcast, 3007557 multicast
+    0 runts, 475092611 giants, 0 input errors, 0 CRC
+    0 frame, 0 overrun, 0 pause input
+    2883880299 packets output, 2199560545714 bytes
+    Transmitted 2869062291 unicast, 8580010 broadcast, 6237998 multicast
+    0 underruns, 0 output errors, 0 pause output
+    0 output discard

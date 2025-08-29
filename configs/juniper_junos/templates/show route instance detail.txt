@@ -1,0 +1,204 @@
+master:
+  Router ID: 192.0.2.1
+  Type: forwarding        State: Active
+  Tables:
+    inet.0                 : 1998561 routes (999124 active, 0 holddown, 2 hidden)
+    inet.3                 : 1131 routes (818 active, 0 holddown, 0 hidden)
+    iso.0                  : 1 routes (1 active, 0 holddown, 0 hidden)
+    mpls.0                 : 563 routes (563 active, 0 holddown, 0 hidden)
+    bgp.l3vpn.0            : 19318 routes (9673 active, 0 holddown, 0 hidden)
+    inet6.0                : 441015 routes (220551 active, 0 holddown, 0 hidden)
+    l2circuit.0            : 37 routes (28 active, 0 holddown, 9 hidden)
+    bgp.evpn.0             : 126 routes (80 active, 0 holddown, 0 hidden)
+
+CUST_Site_A_10000000:
+  Router ID: 0.0.0.0
+  Type: vpls              State: Active
+  Interfaces:
+    ae54.640
+  Route-distinguisher: 0:0
+  Fast-reroute-priority: low
+
+CUST_Site_B_10000001:
+  Description: CUST ORG B - PTP 300Mbps - 10000001
+  Router ID: 0.0.0.0
+  Type: evpn              State: Active
+  Interfaces:
+    ae55.2115
+  Route-distinguisher: 65000:10000001
+  Vrf-import: [ CUST_Site_B_10000001_evpn_IN ]
+  Vrf-export: [ CUST_Site_B_10000001_evpn_OUT ]
+  Fast-reroute-priority: low
+  Tables:
+    CUST_Site_B_10000001.evpn.0: 13 routes (10 active, 0 holddown, 0 hidden)
+
+CUST_Site_C_10000002:
+  Router ID: 0.0.0.0
+  Type: vpls              State: Active
+  Interfaces:
+    lsi.1010101
+    lsi.1010102
+    lsi.1010103
+    lsi.1010104
+    ae55.1063
+  Route-distinguisher: 0:0
+  Fast-reroute-priority: low
+
+CUST_Site_D_10000003:
+  Router ID: 0.0.0.0
+  Type: vpls              State: Active
+  Interfaces:
+    lsi.1010201
+    ae54.106
+  Route-distinguisher: 0:0
+  Fast-reroute-priority: low
+
+CUST_Site_E_10000004:
+  Router ID: 0.0.0.0
+  Type: vpls              State: Active
+  Interfaces:
+    lsi.1010301
+    ae55.910
+  Route-distinguisher: 0:0
+  Fast-reroute-priority: low
+
+MESH-SITE-PRIMARY:
+  Description: MESH_SITE_PRIMARY_evpn
+  Router ID: 0.0.0.0
+  Type: evpn              State: Active
+  Route-distinguisher: 65000:10000010
+  Vrf-import: [ MESH_SITE_PRIMARY_IN ]
+  Vrf-export: [ MESH_SITE_PRIMARY_OUT ]
+  Fast-reroute-priority: low
+
+MESH-SITE-SECONDARY:
+  Description: MESH_SITE_SECONDARY_evpn
+  Router ID: 0.0.0.0
+  Type: evpn              State: Active
+  Route-distinguisher: 65000:10000011
+  Vrf-import: [ MESH_SITE_SECONDARY_IN ]
+  Vrf-export: [ MESH_SITE_SECONDARY_OUT ]
+  Fast-reroute-priority: low
+
+CUST_Site_F_10000005:
+  Router ID: 0.0.0.0
+  Type: vpls              State: Active
+  Interfaces:
+    ae53.1407
+  Route-distinguisher: 0:0
+  Fast-reroute-priority: low
+
+CUST_Site_G_10000006:
+  Router ID: 0.0.0.0
+  Type: vpls              State: Active
+  Interfaces:
+    ae53.650
+  Route-distinguisher: 0:0
+  Fast-reroute-priority: low
+
+VRF_MANAGEMENT:
+  Description: VRF_MANAGEMENT
+  Router ID: 192.0.2.10
+  Type: vrf               State: Active
+  Interfaces:
+    ae55.160
+    ae54.224
+    ae55.161
+    ae54.1555
+    ae55.681
+    ae53.680
+    ae55.1123
+    ae55.1118
+    ae53.1272
+    ae53.1161
+    ae53.610
+    ae55.605
+    ae54.130
+    ae54.133
+    ae55.152
+    ae55.150
+    ae55.105
+    ae55.604
+    ae55.603
+    ae55.135
+    ae55.601
+    ae55.1113
+    ae53.50
+    ae54.150
+    ae55.134
+    ae55.7
+    ae55.1104
+    ae55.133
+    ae53.1410
+    ae54.23
+    ae54.5
+    ae53.9
+    ae53.7
+    ae53.105
+    ae55.8
+    ae55.130
+    ae55.132
+    ae55.131
+    ae55.140
+    ae55.100
+    lsi.0
+  Route-distinguisher: 64512:1001
+  Vrf-import: [ __vrf-import-VRF_MANAGEMENT__ ]
+  Vrf-export: [ __vrf-export-VRF_MANAGEMENT__ ]
+  Vrf-import-target: [ target:64512:1001 ]
+  Vrf-export-target: [ target:64512:1001 ]
+  Fast-reroute-priority: low
+  Tables:
+    VRF_MANAGEMENT.inet.0   : 17380 routes (8635 active, 0 holddown, 222 hidden)
+    VRF_MANAGEMENT.inet6.0  : 1 routes (1 active, 0 holddown, 0 hidden)
+
+VRF_VOIP:
+  Description: VRF_VOIP
+  Router ID: 192.0.2.20
+  Type: vrf               State: Active
+  Interfaces:
+    ae55.1082
+    ae55.1115
+    ae55.1079
+    ae54.119
+    ae55.1067
+    ae53.1260
+    ae54.399
+    ae54.126
+    ae54.122
+    ae54.121
+    ae54.116
+    ae53.1030
+    ae53.224
+    ae53.209
+    ae53.117
+    ae53.104
+    ae55.1062
+    lsi.1
+  Route-distinguisher: 64512:1002
+  Vrf-import: [ __vrf-import-VRF_VOIP__ ]
+  Vrf-export: [ __vrf-export-VRF_VOIP__ ]
+  Vrf-import-target: [ target:64512:1002 ]
+  Vrf-export-target: [ target:64512:1002 ]
+  Fast-reroute-priority: low
+  Tables:
+    VRF_VOIP.inet.0   : 1790 routes (912 active, 0 holddown, 0 hidden)
+    VRF_VOIP.inet6.0  : 1 routes (1 active, 0 holddown, 0 hidden)
+
+CUST_Site_H_10000007:
+  Router ID: 0.0.0.0
+  Type: vpls              State: Active
+  Interfaces:
+    lsi.1010401
+    ae53.679
+  Route-distinguisher: 0:0
+  Fast-reroute-priority: low
+
+__default_evpn__:
+  Router ID: 0.0.0.0
+  Type: non-forwarding evpn State: Active
+  Route-distinguisher: 192.0.2.1:0
+  Vrf-import: [ __vrf-import-__default_evpn__ ]
+  Fast-reroute-priority: low
+
+{master}

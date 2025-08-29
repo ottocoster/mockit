@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 RUN apt-get update && apt-get install -y iputils-ping  # Install ping
 
 RUN pip3 install pysnmp-lextudio

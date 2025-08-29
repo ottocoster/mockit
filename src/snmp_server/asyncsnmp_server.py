@@ -3,20 +3,25 @@ Command example:
 
 $ snmpwalk -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 localhost .1.3.6
 """
+import asyncio
+import socket
 
 from pysnmp.entity import engine, config
 from pysnmp.entity.rfc3413 import cmdrsp, context
 from pysnmp.carrier.asyncio.dgram import udp
-from pysnmp.debug import set_logger, Debug
 from openai import OpenAI
 
 import logging
 import os
 import json
 
-logger = logging.getLogger("app")
+from src.options import get_normalized_device_type
 
-async def start_server(options):
+logger = logging.getLogger("app")
+_shutdown_event = None
+
+
+async def start_server(status, options):
     """
     Start the SNMP server with the provided options.
 
@@ -26,6 +31,9 @@ async def start_server(options):
     if not options["snmpv2_enabled"] and not options["snmpv3_enabled"]:
         raise Exception("SNMPv2 and SNMPv3 can't both be disabled")
 
+    global _shutdown_event
+    _shutdown_event = asyncio.Event()
+
     # if options["debug"]:
     #     set_logger(Debug('all'))
 
@@ -33,11 +41,19 @@ async def start_server(options):
     logger.debug(f"Using SNMP options: {options}")
     snmpEngine = engine.SnmpEngine()
 
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+    sock.bind(('0.0.0.0', 161))
+    sock.setblocking(False)
+
     # Add transport endpoint
     config.addTransport(
         snmpEngine,
         udp.domainName,
-        udp.UdpTransport().openServerMode(('0.0.0.0', 161))
+        udp.UdpTransport().open_server_mode(
+            #('0.0.0.0', 161),
+            sock=sock)
     )
 
     # SNMPv2 configuration
@@ -67,9 +83,10 @@ async def start_server(options):
     mibBuilder = snmpContext.getMibInstrum().getMibBuilder()
 
    # Load SNMP MIBs from JSON file or use default values
-    file = os.path.join(f"/configs/{options['device_type']}", "snmp.json")
+    norm = get_normalized_device_type(options['device_type'])
+    file = os.path.join(f"/configs/{norm}", "snmp.json")
     if options['device_version']:
-        file = os.path.join(f"/configs/{options['device_type']}/{options['device_version']}", "snmp.json")
+        file = os.path.join(f"/configs/{norm}/{options['device_version']}", "snmp.json")
     try:
         if os.path.isfile(file):
             with open(file, "r") as f:
@@ -78,7 +95,7 @@ async def start_server(options):
         else:
             logger.warning(f"Unable to find {file}, using default MIB values")
             if options['openai_support']:
-                snmp_dict = get_ai_snmp_json(options['device_type'], options['device_version'], options['openai_apikey'])
+                snmp_dict = get_ai_snmp_json(norm, options['device_version'], options['openai_apikey'])
                 for key, value in snmp_dict.items():
                     set_mibs(mibBuilder, key, value)
     except Exception as e:
@@ -91,8 +108,16 @@ async def start_server(options):
     cmdrsp.SetCommandResponder(snmpEngine, snmpContext)
     cmdrsp.NextCommandResponder(snmpEngine, snmpContext)
     cmdrsp.BulkCommandResponder(snmpEngine, snmpContext)
-
+    await status.service_ready()
     logger.info("Started SNMP server successfully")
+    await _shutdown_event.wait()
+
+
+def stop_server():
+    """Signal the SNMP server to stop"""
+    if (loop := _shutdown_event._get_loop()) and not loop.is_closed():
+        loop.call_soon_threadsafe(_shutdown_event.set)
+
 
 def get_ai_snmp_json(device_type, device_version, openai_apikey):
     logger.info("get_ai_snmp_json called")

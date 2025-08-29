@@ -1,0 +1,4 @@
+Fan tray:
+Fan 1          : OK
+Fan 2          : OK
+Fan 3          : OK

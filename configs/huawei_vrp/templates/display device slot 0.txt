@@ -1,0 +1,70 @@
+*down: administratively down
+
+S5320-56C-EI-48S-DC's Device status:
+Slot Sub  Type                Online    Power      Register     Status   Role
+-------------------------------------------------------------------------------
+0    -    S5320-56C-EI-48S    Present   PowerOn    Registered   Normal   Master
+     PWR1 POWER               Present   PowerOn    Registered   Normal   NA    
+     PWR2 POWER               Present   PowerOn    Registered   Normal   NA    
+     FAN1 FAN                 Present   PowerOn    Registered   Normal   NA    
+-------------------------------------------------------------------------------
+  Board Type        : S5320-56C-EI-48S
+  Board Description : 48 Gig SFP, 4 10 Gig SFP+, with 1 interface slot, with 150W DC power supply
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Port      Port     Optic     MDI     Speed   Duplex  Flow-    Port   PoE    
+          Type     Status            (Mbps)          Ctrl     State  State  
+------------------------------------------------------------------------------
+0/0/1     GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/2     GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/3     GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/4     GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/5     GE(C)    Present   Auto    100     Full    Disable  Up     -      
+0/0/6     GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/7     GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/8     GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/9     GE(F)    Present   -       1000    Full    Disable  Down   -      
+0/0/10    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/11    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/12    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/13    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/14    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/15    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/16    GE(F)    Present   -       1000    Full    Disable  Down   -      
+0/0/17    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/18    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/19    GE(C)    Present   Auto    100     Full    Disable  Up     -      
+0/0/20    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/21    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/22    GE(C)    Present   Auto    100     Full    Disable  Up     -      
+0/0/23    GE(F)    Present   -       1000    Full    Disable  Down   -      
+0/0/24    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/25    GE(F)    Present   -       1000    Full    Disable  Down   -      
+0/0/26    GE(C)    Present   Auto    100     Full    Disable  Up     -      
+0/0/27    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/28    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/29    GE(C)    Present   Auto    1000    Full    Disable  Up     -      
+0/0/30    GE(C)    Present   Auto    1000    Full    Disable  Down   -      
+0/0/31    GE(F)    Absent    -       1000    Full    Disable  Down   -      
+0/0/32    GE(F)    Present   -       1000    Full    Disable  Down   -      
+0/0/33    GE(F)    Present   -       1000    Full    Disable  *down  -      
+0/0/34    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/35    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/36    GE(F)    Present   -       1000    Full    Disable  Down   -      
+0/0/37    GE(F)    Present   -       1000    Full    Disable  Down   -      
+0/0/38    GE(F)    Absent    -       1000    Full    Disable  *down  -      
+0/0/39    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/40    GE(F)    Present   -       1000    Full    Disable  *down  -      
+0/0/41    GE(F)    Present   -       1000    Full    Disable  Down   -      
+0/0/42    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/43    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/44    GE(F)    Present   -       1000    Full    Disable  Up     -      
+0/0/45    GE(F)    Absent    -       1000    Full    Disable  *down  -      
+0/0/46    GE(F)    Present   -       1000    Full    Disable  Down   -      
+0/0/47    GE(C)    Present   Auto    1000    Full    Disable  Up     -      
+0/0/48    GE(F)    Absent    -       1000    Full    Disable  Down   -      
+0/0/1     XGE(F)   Present   -       10000   Full    Disable  Up     -      
+0/0/2     XGE(F)   Present   -       10000   Full    Disable  Up     -      
+0/0/3     XGE(F)   Absent    -       10000   Full    Disable  *down  -      
+0/0/4     XGE(F)   Present   -       10000   Full    Disable  Down   -      
+-------------------------------------------------------------------------------

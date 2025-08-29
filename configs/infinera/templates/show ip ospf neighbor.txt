@@ -1,0 +1,4 @@
+OSPF process 1:
+Neighbor ID Pri State Dead Time Address Interface
+172.26.237.27 1 Full/Backup 00:00:34 172.26.131.113 xe13/0/0
+172.26.237.46 1 Full/Backup 00:00:34 172.26.131.214 xe13/0/1

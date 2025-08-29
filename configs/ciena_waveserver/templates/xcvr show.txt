@@ -1,0 +1,12 @@
+  
++-------------------------------------- TRANSCEIVER-STATUS ---------------------------------------------------------+
+|      |Admin| Oper  |                                         |     Ether Medium &        |      |            |    |
+| Port |State| State |       Vendor Name & Part Number         |     Connector Type        | Type |    Mode    |Diag|
++------+-----+-------+-----------------------------------------+---------------------------+------+------------+----+
+| 1/1  | Ena |Up     | Ciena WLAi Transceiver                  |WLAi-400G-OTN:LC           |WLAi  |56-400      |Yes |
+| 1/2  | Dis |Down   | Ciena WLAi Transceiver                  |WLAi-400G-OTN:LC           |WLAi  |56-400      |Yes |
+| 1/3  | Ena |Up     | Ciena -  160-9401-900     Rev006        |100GBASE-LR4:LC            |QSFP28|100GE       |Yes |
+| 1/4  | Ena |Up     | Ciena -  160-9401-900     Rev006        |100GBASE-LR4:LC            |QSFP28|100GE       |Yes |
+| 1/5  | Ena |Up     | Ciena -  160-9401-900     Rev006        |100GBASE-LR4:LC            |QSFP28|100GE       |Yes |
++-------------------------------------------------------------------------------------------------------------------+
+
