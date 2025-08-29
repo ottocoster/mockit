@@ -79,6 +79,8 @@ class ServerRegistry:
                 )
                 self.running_tasks[name] = task
                 tasks.append(task)
+                # Add a small delay between server starts to avoid race conditions
+                await asyncio.sleep(0.1)
         signal_task = None
         if enable_reload:
             self.restart_event = Event()
