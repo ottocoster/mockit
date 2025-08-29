@@ -52,9 +52,13 @@ async def main() -> bool:
         # Graceful shutdown
         await server_registry.shutdown_all()
         # Cancel any remaining tasks
+        remaining_tasks = set()
         for task in asyncio.all_tasks():
             if not task.done() and task != asyncio.current_task():
                 task.cancel()
+                remaining_tasks.add(task)
+        if remaining:
+            await asyncio.gather(*remaining_tasks, return_exceptions=True)
 
 
 if __name__ == "__main__":
