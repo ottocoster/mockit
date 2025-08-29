@@ -104,7 +104,8 @@ class AsyncNetconfServer(NetconfServer):
                     channel.close()
                 except EOFError:  # pragma: no cover
                     pass
-            transport.close()
+            if transport:
+                transport.close()
 
 
     def _handle_requests(self, channel: paramiko.Channel) -> None:
