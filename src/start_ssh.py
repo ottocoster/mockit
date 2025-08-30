@@ -79,7 +79,7 @@ async def start_ssh(status, options):
     server = await asyncssh.create_server(
         server_factory=lambda: server_class(options, logger),
         host=["::", "0.0.0.0"],
-        port=22,
+        port=options['port'],
         server_host_keys=options["ssh_key"],
         process_factory=handle_connection,
         line_echo=False,

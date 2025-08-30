@@ -77,6 +77,7 @@ def get_options():
             "device_version": device_version,
             "authkey_enabled": get_opt("AUTHKEY_ENABLED", "false", as_bool=True),
             "authkey_path": os.environ.get("AUTHKEY_PATH", ""),
+            "port": int(get_opt("SSH_PORT", '22')),
         },
         'snmp': {
             "debug": debug_enabled,
