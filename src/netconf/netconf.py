@@ -82,7 +82,7 @@ class AsyncNetconfServer(NetconfServer):
             if not self._accept_connections():
                 return
             self._client_socket, _ = self._server_socket.accept()
-            transport = paramiko.Transport(self._client_socket)
+            self.transport = transport = paramiko.Transport(self._client_socket)
             transport.add_server_key(paramiko.RSAKey.generate(2048))
             server = SSHServer(self.settings)
             self.transport.start_server(server=server)
@@ -104,7 +104,8 @@ class AsyncNetconfServer(NetconfServer):
                     channel.close()
                 except EOFError:  # pragma: no cover
                     pass
-            transport.close()
+            if transport:
+                transport.close()
 
 
     def _handle_requests(self, channel: paramiko.Channel) -> None:

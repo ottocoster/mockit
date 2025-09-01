@@ -2,6 +2,7 @@ import os
 import socket
 import sys
 import time
+from contextlib import suppress
 from functools import cache
 
 from netmiko import ConnectHandler
@@ -9,6 +10,7 @@ from netmiko.alaxala import alaxala_ax36s
 from netmiko.ssh_dispatcher import CLASS_MAPPER_BASE
 
 import pytest
+
 
 CHANNELS = ['telnet', 'ssh']
 
@@ -204,6 +206,25 @@ DEVICE_VERSIONS = {
     "mikrotik_routeros": ["v6", "v7"]
 }
 
+# modify here the set of platforms for reduced set when testing
+# SSH_PLATFORMS_SUPPORTED = []
+# TELNET_PLATFORMS_SUPPORTED = []
+
+
+def coerce_int(value):
+    if value is not None:
+        with suppress(ValueError):
+            value = int(value)
+    return value
+
+
+# set up variables for dev:
+#   if not specified, should match the once in docker-compose_ssh_telnet.yml
+mocked_device = os.environ.get('MOCKIT_HOST', 'mocked-device')
+ssh_port = coerce_int(os.environ.get('MOCKIT_SSH_PORT'))
+telnet_port = coerce_int(os.environ.get('MOCKIT_TELNET_PORT'))
+mocked_udp_restart_port = coerce_int(os.environ.get('MOCKIT_UDP_RESTART_PORT', 9999))
+
 
 @cache
 def get_parameters():
@@ -239,8 +260,6 @@ def get_ids_from_params(params):
     return ids
 
 
-mocked_device = 'mocked-device'
-mocked_udp_restart_port = int(os.environ.get('MOCKIT_UDP_RESTART_PORT', 9999))
 
 
 def reconfigure_device(device_type: str, version: str | None, enable_telnet: bool):
@@ -262,6 +281,7 @@ def run_command(device_type, telnet: bool):
     parameters = {
         "device_type": platform,
         "host": mocked_device,
+        "port": telnet_port if telnet else ssh_port,
         "username": "root",
         "password": "test",
         "verbose": True,

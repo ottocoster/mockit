@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import os
+import socket
 from asyncio import Event
 from pathlib import Path
 from typing import Any, Callable
@@ -10,7 +11,7 @@ from src.options import extract_options
 
 
 logger = logging.getLogger(__name__)
-
+my_ip = socket.gethostbyname(socket.gethostname())
 
 @dataclass
 class ServerConfig:
@@ -39,6 +40,7 @@ class ServerRegistry:
     restart_event: Event | None = None
     restart_sender: tuple[str, int] | None = None
     status: ServiceStatus | None = None
+    udp_restart_port: int | None = None
 
     def __init__(self):
         self.servers: dict[str, ServerConfig] = {}
@@ -69,6 +71,7 @@ class ServerRegistry:
         logger.info("Starting services...")
         tasks: list[asyncio.Task] = []
         self.status = status = ServiceStatus(len(self.get_enabled_parties()))
+        self.udp_restart_port = udp_reload_port
 
         for name, config in self.servers.items():
             if config.enabled:
@@ -79,6 +82,8 @@ class ServerRegistry:
                 )
                 self.running_tasks[name] = task
                 tasks.append(task)
+                # Add a small delay between server starts to avoid race conditions
+                await asyncio.sleep(0.1)
         signal_task = None
         if enable_reload:
             self.restart_event = Event()
@@ -126,6 +131,7 @@ class ServerRegistry:
 
         if shutdown_tasks:
             # Wait for all tasks to complete gracefully
+            await asyncio.sleep(.1)
             await asyncio.gather(*shutdown_tasks, return_exceptions=True)
 
     async def listen_for_udp_reload(self, port: int):
@@ -160,9 +166,12 @@ class ServerRegistry:
         await self.status.ready_event.wait()
         try:
             loop = asyncio.get_event_loop()
+            if dest := os.environ.get('UDP_RELOAD_DST'):
+                restart_sender = (dest, self.udp_restart_port)
             transport, _ = await loop.create_datagram_endpoint(
                 asyncio.DatagramProtocol,
-                remote_addr=restart_sender
+                remote_addr=restart_sender,
+                reuse_port=True,
             )
             try:
                 message = b"Services restarted successfully"
@@ -196,7 +205,6 @@ class RestartTriggerProtocol(asyncio.DatagramProtocol):
             logger.info(f"Health check from {addr}")
             self.transport.sendto(data, addr)
             return
-
         content = data.decode('utf-8', errors='ignore')
         new_options = extract_options(content)
         if device_type := new_options.get("DEVICE_TYPE"):

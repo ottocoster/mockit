@@ -1,0 +1,28 @@
+name: devices
+
+services:
+  mocked-device:
+    build: ../
+    container_name: mocked-device
+    environment:
+      DEVICE_TYPE: dell_dnos6_telnet
+      SSH_PASSWORD: test
+      TELNET_USERNAME: root
+      TELNET_PASSWORD: test
+      SSH_PORT: 8022
+      UDP_RELOAD_PORT: 9999
+      ENABLE_RELOAD: true
+      DEBUG_ENABLED: true
+    network_mode: host
+    extra_hosts:
+      - "host.docker.internal:192.168.16.1"  # needed on Linux only
+    healthcheck:
+      test: [ "CMD", "python", "/src/healthcheck.py", "9999"]
+      interval: 10s
+      timeout: 1s
+      retries: 3
+      start_period: 10s
+
+networks:
+  devices-network:
+    driver: bridge
