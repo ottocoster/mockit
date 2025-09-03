@@ -1,6 +1,7 @@
 import os
 import sys
 
+from asyncssh import BreakReceived
 from asyncssh.process import SSHServerProcess
 from concurrent.futures import ThreadPoolExecutor
 import asyncio
@@ -78,14 +79,13 @@ class SSH_Handler:
             self.respond(await self._get_command_output(self.commands["banner"]))
         while self.process.channel._send_state == "open":
             self.process.stdout.write(self.prompt_terminator)
-            command = await self.process.stdin.readline()
-            self.logger.info(f"command received `{repr(command)}`")
-
-            # Check for Ctrl+C (SIGINT)
-            if command == b'\x03':  # Ctrl+C is sent as b'\x03'
-                await self.handle_ctrl_c()
+            try:
+                command = await self.process.stdin.readline()
+            except BreakReceived:
+                self.logger.info("BreakReceived")
+                self.respond('\x03')
                 continue
-
+            self.logger.info(f"command received `{repr(command)}`")
             command = command.strip()
             self.process.stdout.write(self.get_formatted_command(command))
 
@@ -95,13 +95,6 @@ class SSH_Handler:
                     break
 
         self.process.exit(0)
-
-    async def handle_ctrl_c(self):
-        """
-        Handle the Ctrl+C (SIGINT) event by resetting the prompt.
-        """
-        self.logger.debug("Ctrl+C received, resetting prompt")
-        self.respond(b'\x03')  # Move to a new line
 
     def get_formatted_command(self, command):
         return command + '\n'
