@@ -11,6 +11,7 @@ class huawei_smartax_handler(SSH_Handler):
         options['device_type'] = 'huawei_smartax'
         super().__init__(process, options=options)
         self.enable = False
+        self.config_pattern = "(config)"
         self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
     async def open(self):
