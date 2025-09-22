@@ -10,6 +10,8 @@ services:
       - NETCONF_PASSWORD=test
       - AUTHKEY_ENABLED=true
       - DEBUG_ENABLED=true
+      - ENABLE_MODE=false
+      - ENABLE_SECURITY=true
       # - OPENAI_SUPPORT=true
       # - DEVICE_VERSION=v6
       # - DEVICE_DELAY=1

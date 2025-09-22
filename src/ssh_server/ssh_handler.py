@@ -24,12 +24,21 @@ class SSH_Handler:
         self.new_line = options['new_line']
         self.pri_terminator = "#"
         self.alt_terminator = ">"
-        self.enable = True
         self.config_mode = False
         self.config_pattern = "..#"
         self.delay = options['delay']
         self.break_commands = ['exit', 'quit', 'logout', r'\q']
         self.handle_script_function = None
+        
+        # Password protection for enable command
+        self.enable_mode = options.get('enable_mode', False)
+        self.enable_security = options.get('enable_security', False)
+        self.enable = False
+
+        self.enable_password = options.get('password', '')
+        self.password_required = False
+        self.password_attempts = 0
+        self.max_password_attempts = 3
         config_dir  = f"configs/{self.device_type}"
         if self.device_version:
             config_dir +=f"/{self.device_version}"
@@ -247,8 +256,22 @@ class SSH_Handler:
 
         # Handle enable and disable command
         if command == "enable" or command == "disable":
-            self.enable = command == "enable"
-            self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+            if not self.enable_mode:
+                return True
+
+            if command == "enable":
+                # Require password for enable command
+                if await self.prompt_password():
+                    self.enable = True
+                    self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                else:
+                    # Password failed, stay in user mode
+                    self.enable = False
+                    self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+            else:  # disable command
+                self.enable = False
+                self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+            return True
 
         if self.openai_support:
             self.respond(self.get_ai_output(command))
@@ -336,7 +359,7 @@ class SSH_Handler:
 
     @property
     def terminator(self):
-        return self.pri_terminator if self.enable else self.alt_terminator
+        return self.pri_terminator if self.enable or not self.enable_mode else self.alt_terminator
 
     @staticmethod
     def _read_file(filename):
@@ -360,6 +383,35 @@ class SSH_Handler:
 
             # Join the lines back into a single string
             return "\n".join(lines)
+
+    async def prompt_password(self):
+        """
+        Prompts the user for enable password and validates it.
+        Returns True if password is correct, False otherwise.
+        """
+        if not self.enable_security:
+            return True
+
+        self.password_required = True
+        self.respond("Password: ")
+        
+        # Read password input (it won't be echoed)
+        password = await self.process.stdin.readline()
+        password = password.strip()
+        
+        self.password_required = False
+        
+        if password == self.enable_password:
+            self.password_attempts = 0
+            return True
+        else:
+            self.password_attempts += 1
+            if self.password_attempts >= self.max_password_attempts:
+                self.respond("Access denied. Too many incorrect attempts.")
+                return False
+            else:
+                self.respond("Access denied.")
+                return False
 
     def respond(self, response = ""):
         """
