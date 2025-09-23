@@ -1,0 +1,36 @@
+LACP System-identifier: 8000,aa-bb-cc-dd-ee-01
+State: A = Active, P = Passive; S=ShortTimeout, L=LongTimeout;
+       G = Aggregable, I = Individual; s+=InSync, s-=OutOfSync;
+       C = Collecting, X = state machine expired,
+       D = Distributing, d = default neighbor state
+                           |  Partner                                            Actor
+   Port           Status   |  Sys-id                         Port#       State         OperKey    PortPriority 
+------------ --------------|----------------------------- ----------- ------------- ------------- ------------
+Port Channel Port-Channel4:
+   Et29/1         Bundled  |  007F,aa-bb-cc-dd-ee-02           117       ALGs+CD        0x0004           32768
+   Et30/1         Bundled  |  007F,aa-bb-cc-dd-ee-02           121       ALGs+CD        0x0004           32768
+Port Channel Port-Channel10:
+   Et28/1         Bundled  |  8000,aa-bb-cc-dd-ee-03           114       ALGs+CD        0x000a           32768
+Port Channel Port-Channel14:
+   Et21/1         Bundled  |  8000,aa-bb-cc-dd-ee-04            85       ALGs+CD        0x000e           32768
+Port Channel Port-Channel100:
+   Et13/1         Bundled  |  007F,aa-bb-cc-dd-ee-05            53       ALGs+CD        0x0064           32768
+   Et14/1         Bundled  |  007F,aa-bb-cc-dd-ee-05            57       ALGs+CD        0x0064           32768
+Port Channel Port-Channel110:
+   Et25/1         Bundled  |  8000,aa-bb-cc-dd-ee-06           101       ALGs+CD        0x006e           32768
+   Et26/1         Bundled  |  8000,aa-bb-cc-dd-ee-06           133       ALGs+CD        0x006e           32768
+   Et27/1         Bundled  |  8000,aa-bb-cc-dd-ee-06           127       ALGs+CD        0x006e           32768
+Port Channel Port-Channel119:
+             No ports in aggregate
+Port Channel Port-Channel125:
+   Et4/1          Bundled  |  007F,aa-bb-cc-dd-ee-07            17       ALGs+CD        0x007d           32768
+   Et5/1          Bundled  |  007F,aa-bb-cc-dd-ee-07            21       ALGs+CD        0x007d           32768
+Port Channel Port-Channel130:
+   Et6/1          Bundled  |  8000,aa-bb-cc-dd-ee-08            25       ALGs+CD        0x0082           32768
+   Et7/1          Bundled  |  8000,aa-bb-cc-dd-ee-08            29       ALGs+CD        0x0082           32768
+Port Channel Port-Channel140:
+   Et19/1         Bundled  |  007F,aa-bb-cc-dd-ee-09            77       ALGs+CD        0x008c           32768
+Port Channel Port-Channel310:
+             No ports in aggregate
+Port Channel Port-Channel400:
+   Et23/1         Bundled  |  8000,aa-bb-cc-dd-ee-0a            93       ALGs+CD        0x0190           32768
