@@ -32,10 +32,9 @@ class SSH_Handler:
         
         # Password protection for enable command
         self.enable_mode = options.get('enable_mode', False)
-        self.enable_security = options.get('enable_security', False)
+        self.enable_secret = options.get('enable_secret', '')
         self.enable = False
 
-        self.enable_password = options.get('password', '')
         self.password_required = False
         self.password_attempts = 0
         self.max_password_attempts = 3
@@ -252,14 +251,16 @@ class SSH_Handler:
             return True
 
         if command in self.break_commands:
-            return False
+            if self.enable:
+                self.enable = False
+                self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                return True
+            else:
+                return False
 
         # Handle enable and disable command
-        if command == "enable" or command == "disable":
-            if not self.enable_mode:
-                return True
-
-            if command == "enable":
+        if self.enable_mode:
+            if command == "enable" or command == "system-view" or command == "sudo":
                 # Require password for enable command
                 if await self.prompt_password():
                     self.enable = True
@@ -268,10 +269,10 @@ class SSH_Handler:
                     # Password failed, stay in user mode
                     self.enable = False
                     self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
-            else:  # disable command
+            elif command == "disable":  # disable command
                 self.enable = False
                 self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
-            return True
+                return True
 
         if self.openai_support:
             self.respond(self.get_ai_output(command))
@@ -389,7 +390,7 @@ class SSH_Handler:
         Prompts the user for enable password and validates it.
         Returns True if password is correct, False otherwise.
         """
-        if not self.enable_security:
+        if not self.enable_secret:
             return True
 
         self.password_required = True
@@ -401,7 +402,7 @@ class SSH_Handler:
         
         self.password_required = False
         
-        if password == self.enable_password:
+        if password == self.enable_secret:
             self.password_attempts = 0
             return True
         else:

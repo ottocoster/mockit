@@ -78,7 +78,7 @@ def get_options():
             "authkey_enabled": get_opt("AUTHKEY_ENABLED", "false", as_bool=True),
             "authkey_path": os.environ.get("AUTHKEY_PATH", ""),
             "enable_mode": get_opt("ENABLE_MODE", "false", as_bool=True),
-            "enable_security": get_opt("ENABLE_SECURITY", "false", as_bool=True),
+            "enable_secret": get_opt("ENABLE_SECRET", ""),
             "port": int(get_opt("SSH_PORT", '22')),
         },
         'snmp': {
