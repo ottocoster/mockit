@@ -10,7 +10,6 @@ class nec_ix_handler(SSH_Handler):
         options['device_type'] = 'nec_ix'
         super().__init__(process, options=options)
         self.config_pattern = "(config)"
-        self.enable = True
         self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
     def handle_custom_command(self, command):

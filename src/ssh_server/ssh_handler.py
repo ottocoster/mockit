@@ -383,7 +383,7 @@ class SSH_Handler:
         Prompts the user for enable password and validates it.
         Returns True if password is correct, False otherwise.
         """
-        if not self.enable_secret:
+        if self.enable_secret == "":
             return True
 
         self.password_required = True
