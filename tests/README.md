@@ -1,18 +1,11 @@
+# Navigate to the tests directory
+cd /home/osboxes/Documents/Slurpit/mockit/tests
 
-# Test all devices
+# Start the test environment
+docker compose -f compose-dev_ssh_telnet.yml up -d --build
 
-```sh
-docker compose -f docker-compose_set1.yml up -d --build
-```
+# Run the tests
+docker exec devices-test_container sh -c "pytest test_ssh_telnet.py -v"
 
-```sh
-docker exec devices_test_container sh -c "pytest test_ssh_set1.py | tee /output.txt"
-```
-
-```sh
-docker cp devices_test_container:/output.txt .
-```
-
-```sh
-docker compose -f docker-compose_set1.yml down
-```
+# Clean up when done
+docker compose -f compose-dev_ssh_telnet.yml down

@@ -11,12 +11,23 @@ class huawei_olt_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'huawei_olt'
         super().__init__(process, options=options)
-        self.enable = False
         self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
+    
+    def handle_custom_command(self, command):
+        if command == "huawei_olt":
+            return "huawei_olt"
 
 
 class huawei_olt_telnet_handler(Telnet_Handler):
     def __init__(self, reader, writer, options=None):
         super().__init__(reader, writer, options=options or {})
-        self.enable = False
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
+        self.set_prompt_terminator(pri_terminator = ">", alt_terminator = "$")
+
+    def handle_custom_command(self, command):
+        if command == "huawei_olt":
+            return "huawei_olt"
+
+    async def open(self):
+        self.respond("YES/NO" + self.terminator)
+        await self.process.stdin.readline()
+        return await super().open()
