@@ -1,11 +1,12 @@
 from netmiko import ConnectHandler
 
-def run_command(host, device_type, command, username="test", password="test"):
+def run_command(host, device_type, command, username="test", password="test", secret="secret"):
     parameters = {
         "device_type": device_type,
         "host": host,
         # "username": username,
         # "password": password,
+        # "secret": secret,
         "use_keys": True,
         "key_file": "./auth_keys/auth",
     }
