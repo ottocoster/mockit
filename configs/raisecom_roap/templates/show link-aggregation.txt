@@ -1,0 +1,27 @@
+Link aggregation status: Enable
+Load sharing mode: SXORDMAC
+Load sharing ticket generation algorithm: N/A
+Link aggregation destination-address: 0000.1111.2222
+
+Group information:
+
+GroupID        : 1                     Mode            : Manual
+MinLinks       : 1                     MaxLinks        : 4
+UpLinks        : 0                     Master Port     :
+Restore Mode   : non-revertive         Restore delay(s): 1800
+Member Port    :
+Efficient Port :
+
+GroupID        : 2                     Mode            : Manual
+MinLinks       : 1                     MaxLinks        : 4
+UpLinks        : 0                     Master Port     :
+Restore Mode   : non-revertive         Restore delay(s): 1800
+Member Port    :
+Efficient Port :
+
+GroupID        : 3                     Mode            : Manual
+MinLinks       : 1                     MaxLinks        : 4
+UpLinks        : 0                     Master Port     :
+Restore Mode   : non-revertive         Restore delay(s): 1800
+Member Port    :
+Efficient Port :

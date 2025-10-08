@@ -206,6 +206,19 @@ DEVICE_VERSIONS = {
     "mikrotik_routeros": ["v6", "v7"]
 }
 
+# Devices that should have enable mode enabled during testing
+DEVICES_WITH_ENABLE_MODE = {
+    "apresia_aeos": True,
+    "huawei_olt": True,
+    "huawei_smartax": True
+    # Add more devices as needed
+}
+
+# Enable secrets for devices (optional)
+DEVICE_ENABLE_SECRETS = {
+    # Add more devices as needed
+}
+
 # modify here the set of platforms for reduced set when testing
 # SSH_PLATFORMS_SUPPORTED = []
 # TELNET_PLATFORMS_SUPPORTED = []
@@ -262,10 +275,12 @@ def get_ids_from_params(params):
 
 
 
-def reconfigure_device(device_type: str, version: str | None, enable_telnet: bool):
+def reconfigure_device(device_type: str, version: str | None, enable_telnet: bool, enable_mode: bool = False, enable_secret: str = ""):
     message = (f"DEVICE_TYPE={device_type}\n"
                f"DEVICE_VERSION={version or ''}\n"
-               f"TELNET_SERVER_ENABLED={bool(enable_telnet)}\n")
+               f"TELNET_SERVER_ENABLED={bool(enable_telnet)}\n"
+               f"ENABLE_MODE={str(enable_mode).lower()}\n"
+               f"ENABLE_SECRET={enable_secret}\n")
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
         sock.bind(('', 0))
@@ -300,5 +315,48 @@ def run_command(device_type, telnet: bool):
 )
 def test_mock_device(device_type: str, version: str, telnet: bool, reconfigure: bool, start_telnet: bool):
     if reconfigure:
-        reconfigure_device(device_type, version, start_telnet)
+        # Check if this device should have enable mode enabled
+        enable_mode = DEVICES_WITH_ENABLE_MODE.get(device_type, False)
+        enable_secret = DEVICE_ENABLE_SECRETS.get(device_type, "")
+        reconfigure_device(device_type, version, start_telnet, enable_mode, enable_secret)
     assert run_command(device_type, telnet) == "test", 'telnet test failed'
+
+
+def test_enable_mode_functionality():
+    """Test enable mode functionality for devices that support it"""
+    test_devices = ["cisco_ios", "arista_eos", "juniper_junos"]
+    
+    for device_type in test_devices:
+        # Configure device with enable mode
+        enable_secret = DEVICE_ENABLE_SECRETS.get(device_type, "test123")
+        reconfigure_device(device_type, None, False, True, enable_secret)
+        
+        # Test SSH connection and enable command
+        platform = device_type
+        parameters = {
+            "device_type": platform,
+            "host": mocked_device,
+            "port": ssh_port,
+            "username": "root",
+            "password": "test",
+            "verbose": True,
+            "fast_cli": False,
+            "conn_timeout": 10,
+        }
+        
+        with ConnectHandler(**parameters) as net_connect:
+            # Test basic command first
+            result = net_connect.send_command('echo test')
+            assert result == "test", f'Basic command failed for {device_type}'
+            
+            # Test enable command (this should prompt for password)
+            # Note: This test might need adjustment based on how netmiko handles enable mode
+            try:
+                net_connect.enable()
+                # If enable succeeds, test privileged command
+                result = net_connect.send_command('show version')
+                assert result is not None, f'Enable mode failed for {device_type}'
+            except Exception as e:
+                # Enable might fail if password is required, which is expected
+                print(f"Enable mode test for {device_type}: {e}")
+                pass

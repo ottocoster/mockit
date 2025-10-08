@@ -1,0 +1,55 @@
+ Eth-Trunk5's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                       LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+ DUMMY-GE1/0/1                   1892         1888             0              0
+
+ Eth-Trunk10's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                       LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+ DUMMY-GE1/0/2                   1887         1885             0              0
+
+ Eth-Trunk13's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                       LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+ DUMMY-GE1/0/3                      0            0             0              0
+ DUMMY-GE1/0/4                      0            0             0              0
+ DUMMY-GE1/0/5                      0            0             0              0
+
+ Eth-Trunk14's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                      LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+
+ Eth-Trunk15's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                       LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+ DUMMY-GE1/0/6                      0            0             0              0
+
+ Eth-Trunk20's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                       LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+ DUMMY-GE1/0/7                   1878         1883             0              0
+ DUMMY-GE1/0/8                   1878         1883             0              0
+
+ Eth-Trunk30's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                       LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+ DUMMY-GE1/0/9                   1787         1796             0              0
+
+ Eth-Trunk40's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                      LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+
+ Eth-Trunk50's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                       LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+ DUMMY-GE1/0/10                  1878        56176             0              0
+
+ Eth-Trunk60's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                       LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+ DUMMY-GE1/0/11                     0            0             0              0
+
+ Eth-Trunk90's PDU statistics is:
+ -------------------------------------------------------------------------------
+ Port                       LacpRevPdu  LacpSentPdu  MarkerRevPdu  MarkerSentPdu
+ DUMMY-GE1/0/12                  1879        56184             0              0
