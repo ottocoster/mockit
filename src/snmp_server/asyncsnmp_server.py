@@ -5,15 +5,17 @@ $ snmpwalk -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 localhost .1.3
 """
 import asyncio
 import socket
+import logging
+import os
+import json
 
+from pysnmp.proto.rfc1902 import OctetString, ObjectName, Integer32
+from pysnmp.smi import builder, rfc1902, view
 from pysnmp.entity import engine, config
 from pysnmp.entity.rfc3413 import cmdrsp, context
 from pysnmp.carrier.asyncio.dgram import udp
 from openai import OpenAI
-
-import logging
-import os
-import json
+from pathlib import Path
 
 from src.options import get_normalized_device_type
 
@@ -48,9 +50,9 @@ async def start_server(status, options):
     sock.setblocking(False)
 
     # Add transport endpoint
-    config.addTransport(
+    config.add_transport(
         snmpEngine,
-        udp.domainName,
+        udp.DOMAIN_NAME,
         udp.UdpTransport().open_server_mode(
             #('0.0.0.0', 161),
             sock=sock)
@@ -58,8 +60,8 @@ async def start_server(status, options):
 
     # SNMPv2 configuration
     if options["snmpv2_enabled"]:
-        config.addV1System(snmpEngine, "my-area", options["snmpv2_name"])
-        config.addVacmUser(snmpEngine, 2, "my-area", 'noAuthNoPriv', (1, 3, 6, 1, 2, 1), (1, 3, 6, 1, 2, 1))
+        config.add_v1_system(snmpEngine, "my-area", options["snmpv2_name"])
+        config.add_vacm_user(snmpEngine, 2, "my-area", 'noAuthNoPriv', (1, 3, 6, 1), (1, 3, 6, 1))
 
     # SNMPv3 configuration
     if options["snmpv3_enabled"]:
@@ -72,15 +74,24 @@ async def start_server(status, options):
         if authKey and privKey:
             level = 'authPriv'
 
-        config.addV3User(
+        config.add_v3_user(
             snmpEngine, options["snmpv3_username"],
             authProtocol, authKey,
             privProtocol, privKey
         )
-        config.addVacmUser(snmpEngine, 3, options["snmpv3_username"], level, (1, 3, 6, 1, 2, 1), (1, 3, 6, 1, 2, 1))
+        config.add_vacm_user(snmpEngine, 3, options["snmpv3_username"], level, (1, 3, 6, 1), (1, 3, 6, 1))
 
     snmpContext = context.SnmpContext(snmpEngine)
-    mibBuilder = snmpContext.getMibInstrum().getMibBuilder()
+    mibBuilder = snmpContext.get_mib_instrum().get_mib_builder()
+    mibBuilder.add_mib_sources(builder.DirMibSource('/mibs'))
+
+    mib_folders = set()
+    mibs_root = Path('/mibs')
+    for p in mibs_root.rglob("*.py"):
+        mib_folders.add(str(p.parent))
+    for f in sorted(mib_folders):
+        mibBuilder.add_mib_sources(builder.DirMibSource(f))
+
 
    # Load SNMP MIBs from JSON file or use default values
     norm = get_normalized_device_type(options['device_type'])
@@ -108,6 +119,7 @@ async def start_server(status, options):
     cmdrsp.SetCommandResponder(snmpEngine, snmpContext)
     cmdrsp.NextCommandResponder(snmpEngine, snmpContext)
     cmdrsp.BulkCommandResponder(snmpEngine, snmpContext)
+
     await status.service_ready()
     logger.info("Started SNMP server successfully")
     await _shutdown_event.wait()
@@ -139,7 +151,7 @@ def get_ai_snmp_json(device_type, device_version, openai_apikey):
             {
                 "name": "sysObjectID",
                 "type": "id",
-                "oid": "1.3.6.1.4.1.30065.1.2759"
+                "value": "1.3.6.1.4.1.30065.1.2759"
             }
         ]
     }
@@ -187,17 +199,23 @@ def set_mibs(mibBuilder, key, values):
         key (str): MIB key.
         values (list): List of MIB values.
     """
-    if key == "SNMPv2-MIB":
-        MibTable, MibScalarInstance = mibBuilder.importSymbols('SNMPv2-SMI', 'MibTable', 'MibScalarInstance')
-        for x in values:
-            mib_tuple = mibBuilder.importSymbols('SNMPv2-MIB', x["name"])
-            mib = mib_tuple[0]
-            if x["type"] == "string":
-                mib_instance = MibScalarInstance(mib.name, (0,), mib.syntax.clone(x["value"]))
-                mibBuilder.exportSymbols("__MY_MIB", **{x["name"]: mib_instance})
-            if x["type"] == "id":
-                mib_instance = MibScalarInstance(mib.name, (0,), mib.syntax.clone(x["oid"]))
-                mibBuilder.exportSymbols("__MY_MIB", **{x["name"]: mib_instance})
+    MibTable, MibScalarInstance = mibBuilder.importSymbols('SNMPv2-SMI', 'MibTable', 'MibScalarInstance')
+    mibBuilder.load_modules(key)
+    for x in values:
+        type = x['type']
+        value = x["value"]
+        name = x["name"]
+        
+        mib_tuple = mibBuilder.import_symbols(key, name)
+        mib = mib_tuple[0]
+        suffix = tuple(int(s) for s in x.get("suffix", "0").split('.'))
+        if type == "hex":
+            mib_value = mib.syntax.clone(bytes(int(b, 16) for b in value.split()))
+        else:
+            mib_value = mib.syntax.clone(value)
+        mib_instance = MibScalarInstance(mib.name, suffix, mib_value)
+        mibBuilder.export_symbols("__MY_MIB", mib_instance)
+
 
 def get_auth(key, protocol):
     """

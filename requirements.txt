@@ -1,5 +1,6 @@
 asyncssh
 pyasn1
+pysmi
 pysnmp
 netmiko
 openai
