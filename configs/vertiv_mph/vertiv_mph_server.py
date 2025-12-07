@@ -11,4 +11,6 @@ class vertiv_mph_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'vertiv_mph'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "cli->", alt_terminator = "cli->")
+
+    def set_prompt_terminator(self, pri_terminator = "cli->", alt_terminator = "cli->") -> None:
+        super().set_prompt_terminator(pri_terminator=pri_terminator, alt_terminator=alt_terminator)

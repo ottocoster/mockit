@@ -9,7 +9,6 @@ class cisco_tp_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'cisco_tp'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
     async def open(self):
         """
@@ -39,4 +38,4 @@ class cisco_tp_handler(SSH_Handler):
     def handle_custom_command(self, command):
         if command == "exit":
             return "OK"
-        return ""
+        return super().handle_custom_command(command)

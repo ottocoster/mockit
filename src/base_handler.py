@@ -234,7 +234,7 @@ class BaseHandler(ABC):
         :param command: The command string.
         :return: Custom command output as a string, empty string if not handled.
         """
-        return ""
+        return None
 
     def set_prompt_terminator(self, pri_terminator: str = "#", alt_terminator: str = ">") -> None:
         """
@@ -246,15 +246,16 @@ class BaseHandler(ABC):
         self.pri_terminator = pri_terminator
         self.alt_terminator = alt_terminator
 
-        if self.enable:
-            terminator = pri_terminator
-        else:
-            terminator = alt_terminator
+        self.prompt_terminator = self.device_type + self.get_prompt_mode() + self.terminator + " "
 
+    @property
+    def terminator(self):
+        return self.pri_terminator if self.enable else self.alt_terminator
+
+    def get_prompt_mode(self):
         if self.config_mode:
-            self.prompt_terminator = self.device_type + self.config_pattern + terminator + " "
-        else:
-            self.prompt_terminator = self.device_type + terminator + " "
+            return self.config_pattern
+        return ""
 
     @staticmethod
     def _read_file(filename: str) -> str:

@@ -98,6 +98,7 @@ class ServerRegistry:
                 asyncio.create_task(self.acknowledge_restart())
         logger.info("Services started successfully.")
         done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+        await asyncio.sleep(1)
         should_restart = signal_task and signal_task in done
         return should_restart
 

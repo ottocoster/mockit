@@ -1,7 +1,7 @@
 import os
 import socket
-import sys
-import time
+import io
+import re
 from contextlib import suppress
 from functools import cache
 
@@ -290,24 +290,6 @@ def reconfigure_device(device_type: str, version: str | None, enable_telnet: boo
     finally:
         sock.close()
 
-
-def run_command(device_type, telnet: bool):
-    platform = f"{device_type}_telnet" if telnet else device_type
-    parameters = {
-        "device_type": platform,
-        "host": mocked_device,
-        "port": telnet_port if telnet else ssh_port,
-        "username": "root",
-        "password": "test",
-        "verbose": True,
-        "fast_cli": False,
-        "conn_timeout": 10,
-    }
-    print('parameters: ', parameters)
-    with ConnectHandler(**parameters) as net_connect:
-        return net_connect.send_command('echo test')
-
-
 @pytest.mark.parametrize(
     "device_type, version, telnet, reconfigure, start_telnet",
     get_parameters(),
@@ -319,7 +301,29 @@ def test_mock_device(device_type: str, version: str, telnet: bool, reconfigure: 
         enable_mode = DEVICES_WITH_ENABLE_MODE.get(device_type, False)
         enable_secret = DEVICE_ENABLE_SECRETS.get(device_type, "")
         reconfigure_device(device_type, version, start_telnet, enable_mode, enable_secret)
-    assert run_command(device_type, telnet) == "test", 'telnet test failed'
+
+    
+    platform = f"{device_type}_telnet" if telnet else device_type
+    session_buffer = io.BytesIO()
+    parameters = {
+        "device_type": platform,
+        "host": mocked_device,
+        "port": telnet_port if telnet else ssh_port,
+        "username": "root",
+        "password": "test",
+        "verbose": True,
+        "fast_cli": False,
+        "conn_timeout": 10,
+        "session_log": session_buffer
+    }
+    try:
+        with ConnectHandler(**parameters) as net_connect:
+            assert net_connect.send_command('echo test') == "test", f'Test failed on {parameters} - \n' + get_session_log(session_buffer)
+    except:
+        print(get_session_log(session_buffer))
+        raise
+    finally:
+        session_buffer.close()
 
 
 def test_enable_mode_functionality():
@@ -331,32 +335,40 @@ def test_enable_mode_functionality():
         enable_secret = DEVICE_ENABLE_SECRETS.get(device_type, "test123")
         reconfigure_device(device_type, None, False, True, enable_secret)
         
+        session_buffer = io.BytesIO()
         # Test SSH connection and enable command
-        platform = device_type
         parameters = {
-            "device_type": platform,
+            "device_type": device_type,
             "host": mocked_device,
             "port": ssh_port,
             "username": "root",
             "password": "test",
+            "secret": enable_secret,
             "verbose": True,
             "fast_cli": False,
             "conn_timeout": 10,
+            "session_log": session_buffer
         }
-        
-        with ConnectHandler(**parameters) as net_connect:
-            # Test basic command first
-            result = net_connect.send_command('echo test')
-            assert result == "test", f'Basic command failed for {device_type}'
-            
-            # Test enable command (this should prompt for password)
-            # Note: This test might need adjustment based on how netmiko handles enable mode
-            try:
-                net_connect.enable()
-                # If enable succeeds, test privileged command
-                result = net_connect.send_command('show version')
-                assert result is not None, f'Enable mode failed for {device_type}'
-            except Exception as e:
-                # Enable might fail if password is required, which is expected
-                print(f"Enable mode test for {device_type}: {e}")
-                pass
+        try:
+            with ConnectHandler(**parameters) as net_connect:
+                # Test basic command first
+                result = net_connect.send_command('echo test')
+                assert result == "test", f'Basic command failed for {parameters} - \n' + get_session_log(session_buffer)
+                
+                # Test enable command (this should prompt for password)
+                # Note: This test might need adjustment based on how netmiko handles enable mode
+                try:
+                    net_connect.enable()
+                    # If enable succeeds, test privileged command
+                    result = net_connect.send_command('show version')
+                    assert result is not None, f'Enable mode failed for {parameters} - \n' + get_session_log(session_buffer)
+                except:
+                    print(get_session_log(session_buffer))
+                    raise
+        finally:
+            session_buffer.close()
+
+def get_session_log(buffer):
+    buffer.seek(0)
+    log_text = buffer.read().decode("utf-8", errors="ignore")
+    return re.sub(r"\n\s*\n", "\n", log_text)

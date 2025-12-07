@@ -48,15 +48,15 @@ class Telnet_Handler(BaseHandler):
         self._load_commands(f"{self.config_dir}/templates")
         # Uncomment to enable script functions:
         # self._load_script_function(f"{self.config_dir}/scripts", "handle_command")
-
-        self.set_prompt_terminator(pri_terminator="#", alt_terminator=">")
+            
+        self.set_prompt_terminator()
 
     async def handle_command(self, command):
         command = self.replace_command(command)
 
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
-        if custom_command_output:
+        if custom_command_output is not None:
             await self.respond(custom_command_output)
             return True
 
@@ -104,6 +104,10 @@ class Telnet_Handler(BaseHandler):
         await self.write(self.prompt_password)
         password = await self.read()
         return username, password
+    
+    
+    async def open(self):
+        pass
 
     async def run(self):
         await asyncio.sleep(self.login_delay)

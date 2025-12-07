@@ -46,8 +46,9 @@ class SSH_Handler(BaseHandler):
         # Load commands and scripts
         self._load_commands(f"{self.config_dir}/templates")
         self._load_script_function(f"{self.config_dir}/scripts", "handle_command")
+            
+        self.set_prompt_terminator()
 
-        self.set_prompt_terminator(pri_terminator="#", alt_terminator=">")
 
     async def open(self):
         """
@@ -106,7 +107,7 @@ class SSH_Handler(BaseHandler):
 
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
-        if custom_command_output:
+        if custom_command_output is not None:
             self.respond(custom_command_output)
             return True
 
@@ -131,7 +132,7 @@ class SSH_Handler(BaseHandler):
         if command in self.break_commands:
             if self.enable:
                 self.enable = False
-                self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                self.set_prompt_terminator()
                 return True
             else:
                 return False
@@ -140,16 +141,16 @@ class SSH_Handler(BaseHandler):
         if self.enable_mode:
             if command == "enable" or command == "system-view" or command == "sudo":
                 # Require password for enable command
-                if await self.prompt_password():
+                if await self.show_prompt_password():
                     self.enable = True
-                    self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                    self.set_prompt_terminator()
                 else:
                     # Password failed, stay in user mode
                     self.enable = False
-                    self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                    self.set_prompt_terminator()
             elif command == "disable":  # disable command
                 self.enable = False
-                self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                self.set_prompt_terminator()
                 return True
 
         if self.openai_support:
@@ -184,28 +185,11 @@ class SSH_Handler(BaseHandler):
 
         return cleaned_parts
 
-    def set_prompt_terminator(self, pri_terminator="#", alt_terminator=">"):
-        """
-        Sets the prompt terminator pattern for the SSH prompt.
-        Overrides base class to account for enable_mode.
-
-        :param pri_terminator: Primary terminator (typically for privileged mode).
-        :param alt_terminator: Alternate terminator (typically for user mode).
-        """
-        self.pri_terminator = pri_terminator
-        self.alt_terminator = alt_terminator
-        terminator = self.terminator
-
-        if self.config_mode:
-            self.prompt_terminator = self.device_type + self.config_pattern + terminator + " "
-        else:
-            self.prompt_terminator = self.device_type + terminator + " "
-
     @property
     def terminator(self):
         return self.pri_terminator if self.enable or not self.enable_mode else self.alt_terminator
 
-    async def prompt_password(self):
+    async def show_prompt_password(self):
         """
         Prompts the user for enable password and validates it.
         Returns True if password is correct, False otherwise.

@@ -13,7 +13,6 @@ class rad_etx_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'rad_etx'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
 
 class rad_etx_telnet_handler(Telnet_Handler):
@@ -21,7 +20,6 @@ class rad_etx_telnet_handler(Telnet_Handler):
 
     def __init__(self, reader, writer, options=None):
         super().__init__(reader, writer, options=options or {})
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
 
     # async def xrun(self):

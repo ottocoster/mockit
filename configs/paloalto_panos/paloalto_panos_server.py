@@ -12,12 +12,11 @@ class paloalto_panos_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'paloalto_panos'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
     def handle_custom_command(self, command):
         if command == "show admins":
             return "Client\n\n"
-        return ""
+        return super().handle_custom_command(command)
     
     def get_formatted_command(self, command):
         return self.prompt_terminator + command + self.new_line
@@ -26,7 +25,6 @@ class paloalto_panos_handler(SSH_Handler):
 class paloalto_panos_telnet_handler(Telnet_Handler):
     def __init__(self, reader, writer, options={}):
         super().__init__(reader, writer, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
         self.new_line = '\r\n'
 
     def handle_custom_command(self, command):
@@ -42,7 +40,7 @@ class paloalto_panos_telnet_handler(Telnet_Handler):
         if command == "set cli pager off":
             return "set cli pager off"
 
-        return ""
+        return super().handle_custom_command(command)
     
 
     async def run(self):
