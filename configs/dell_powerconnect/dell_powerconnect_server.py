@@ -18,7 +18,6 @@ class dell_powerconnect_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'dell_powerconnect'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
         self.logged_in = False
         self.username = options['username']
         self.password = options['password']

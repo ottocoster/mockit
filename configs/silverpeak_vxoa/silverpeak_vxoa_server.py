@@ -9,6 +9,5 @@ class silverpeak_vxoa_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'silverpeak_vxoa'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
     

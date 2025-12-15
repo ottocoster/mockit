@@ -11,15 +11,17 @@ class hp_comware_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'hp_comware'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "]", alt_terminator = ">")
+        
+    def set_prompt_terminator(self, pri_terminator = ">", alt_terminator = "]") -> None:
+        super().set_prompt_terminator(pri_terminator=pri_terminator, alt_terminator=alt_terminator)
 
 class hp_comware_telnet_handler(Telnet_Handler):
     def __init__(self, reader, writer, options={}):
         super().__init__(reader, writer, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
-
-
-
+        
+    def set_prompt_terminator(self, pri_terminator = ">", alt_terminator = "]") -> None:
+        super().set_prompt_terminator(pri_terminator=pri_terminator, alt_terminator=alt_terminator)
+        
     async def run(self):
         time.sleep(self.login_delay)
 
@@ -45,8 +47,8 @@ class hp_comware_telnet_handler(Telnet_Handler):
                 time.sleep(self.delay)
                 await self.write(self.prompt_terminator)
 
-                if not terminator_configured:
-                    self.set_prompt_terminator(pri_terminator = "]", alt_terminator = ">")
+                if not terminator_configured:                    
+                    self.set_prompt_terminator()
                     
                 command = await self.read()
                 self.logger.debug(f"Command received: `{command}`")

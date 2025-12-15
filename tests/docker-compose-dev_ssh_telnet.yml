@@ -24,9 +24,9 @@ services:
       UDP_RELOAD_PORT: 9999
       ENABLE_RELOAD: true
       DEBUG_ENABLED: true
-    ports:
-      - "8022:22"
-      - "9999:9999/udp"
+    # ports:
+    #   - "8022:22"
+    #   - "9999:9999/udp"
     networks:
       - devices-network
     healthcheck:

@@ -9,6 +9,5 @@ class allied_telesis_awplus_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'allied_telesis_awplus'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
     

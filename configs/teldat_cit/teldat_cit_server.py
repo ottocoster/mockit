@@ -10,9 +10,10 @@ class teldat_cit_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'teldat_cit'
         super().__init__(process, options=options)
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
 
 class teldat_cit_telnet_handler(Telnet_Handler):
     def __init__(self, reader, writer, options={}):
         super().__init__(reader, writer, options=options)
-        self.set_prompt_terminator(pri_terminator = "*", alt_terminator = "*")
+
+    def set_prompt_terminator(self, pri_terminator = "*", alt_terminator = "*") -> None:
+        super().set_prompt_terminator(pri_terminator=pri_terminator, alt_terminator=alt_terminator)

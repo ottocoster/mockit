@@ -1,82 +1,54 @@
-import os
+import asyncio
 import sys
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 from asyncssh import BreakReceived
 from asyncssh.process import SSHServerProcess
-from concurrent.futures import ThreadPoolExecutor
-import asyncio
-import importlib
-from openai import OpenAI
-import logging
 
-class SSH_Handler:
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from base_handler import BaseHandler, HandlerConfig
+
+
+class SSH_Handler(BaseHandler):
+    """SSH Handler that inherits from BaseHandler for shared functionality."""
 
     def __init__(self, process: SSHServerProcess, options):
         """
         Initialize the SSH_Handler instance.
 
         :param process: The SSHServerProcess instance representing the SSH connection.
-        :param options: Dictionary containing configuration options, such as device_type and new_line characters.
+        :param options: Dictionary containing configuration options.
         """
+        # Create config from options
+        config = HandlerConfig(
+            device_type=options['device_type'],
+            device_version=options.get('device_version'),
+            new_line=options['new_line'],
+            delay=options['delay'],
+            openai_support=options['openai_support'],
+            openai_apikey=options['openai_apikey'],
+        )
+        super().__init__(config)
+
         self.process = process
-        self.logger = logging.getLogger('app')
-        self.device_type = options['device_type']
-        self.device_version = options["device_version"]
-        self.new_line = options['new_line']
-        self.pri_terminator = "#"
-        self.alt_terminator = ">"
-        self.config_mode = False
-        self.config_pattern = "..#"
-        self.delay = options['delay']
         self.break_commands = ['exit', 'quit', 'logout', r'\q']
-        self.handle_script_function = None
-        
+
         # Password protection for enable command
         self.enable_mode = options.get('enable_mode', False)
         self.enable_secret = options.get('enable_secret', '')
-        self.enable = False
 
         self.password_required = False
         self.password_attempts = 0
         self.max_password_attempts = 3
-        config_dir  = f"configs/{self.device_type}"
-        if self.device_version:
-            config_dir +=f"/{self.device_version}"
 
-        self._load_commands(f"{config_dir}/templates")
-        self._load_script_function(f"{config_dir}/scripts", "handle_command")
+        # Load commands and scripts
+        self._load_commands(f"{self.config_dir}/templates")
+        self._load_script_function(f"{self.config_dir}/scripts", "handle_command")
+            
+        self.set_prompt_terminator()
 
-        self.set_prompt_terminator(pri_terminator="#", alt_terminator=">")
-
-        self.openai_support = options['openai_support']
-        self.openai_apikey = options['openai_apikey']
-        if self.openai_support:
-            self.openai_client = OpenAI(
-                api_key=self.openai_apikey,
-            )
-
-    def _load_script_function(self, script_path, function_name):
-        # Convert the file system path to a module path by replacing slashes with dots
-        module_path = script_path.replace('/', '.')
-
-        # Import the module
-        try:
-            package = importlib.import_module(module_path)
-        except ModuleNotFoundError as e:
-            # If the module is not found, the directory might not be in sys.path
-            # Get the directory part of the script_path and add it to sys.path
-            script_dir = os.path.dirname(os.path.abspath(script_path))
-            if script_dir not in sys.path:
-                sys.path.append(script_dir)
-            # Retry importing after modifying sys.path
-            package = importlib.import_module(module_path)
-
-        # Access the function from the module
-        function = getattr(package, function_name)
-
-        # Assign the function to an attribute
-        self.handle_script_function = function
-        return function
 
     async def open(self):
         """
@@ -101,97 +73,12 @@ class SSH_Handler:
                 result = await self._handle_command(command)
                 if not result:
                     break
+                await self.process.stdout.drain()
 
         self.process.exit(0)
 
     def get_formatted_command(self, command):
         return command + '\n'
-
-    def handle_custom_command(self, command):
-        """
-        Handle custom commands not found in the template directory.
-        Can be overridden in subclasses to provide specific command handling.
-
-        :param command: The command string.
-        :return: Custom command output as a string.
-        """
-        return ""
-
-
-    def get_ai_output(self, command):
-        self.logger.info("get_ai_output called")
-
-        prompt = f"""
-        ### Device type
-        {self.device_type}
-        ###
-
-        ### command
-        `{command}`
-        ###
-
-        Let's assume the device type and input command are above.
-        Please give me the output of this command of the device type without any explanation.
-        You have to reply with only one command output.
-        """
-        model = "gpt-4o"
-
-        chat_completion = self.openai_client.chat.completions.create(
-            messages=[
-                    {"role": "system", "content": "You are a AI vendor assistant that returns output of network devices."},
-                    {"role": "user", "content": prompt}
-            ],
-            model=model,
-        )
-        message_content = chat_completion.choices[0].message.content
-        message_content = message_content.replace("```", "").strip()
-        return message_content
-
-    def replace_command(self, command: str) -> str:
-        # Define a dictionary to map shorthand to full commands
-        command_map = {
-            'sh': 'show',
-            'disp': 'display'
-        }
-
-        # Split the command into parts
-        command_parts = command.split(" ")
-
-        # Check if the first part is a shorthand and replace it
-        if command_parts[0] in command_map:
-            command_parts[0] = command_map[command_parts[0]]
-
-        # Join the command back together
-        replaced_command = ' '.join(command_parts)
-
-        return replaced_command
-
-    def handle_help_commands(self, command):
-        if command  == "?":
-            keys = sorted(self.commands.keys())
-            self.respond("\n".join(keys))
-            return True
-
-        if command[-1] == '?':
-            scr_command = command[:-1]
-            matching_commands = self.get_matching_commands(scr_command)
-            if matching_commands:
-                self.respond("\n".join(matching_commands))
-
-            return True
-
-        return False
-
-    def get_matching_commands(self, command):
-        # Find commands that start with the given command string
-        matching_commands = [cmd for cmd in self.commands if cmd.startswith(command)]
-        self.logger.info(f"matching_commands `{matching_commands}`")
-
-        if matching_commands:
-            # Sort the matching commands alphabetically
-            sorted_matching_commands = sorted(matching_commands)
-            return sorted_matching_commands
-        return None
 
     async def _handle_command(self, command):
         """
@@ -221,8 +108,10 @@ class SSH_Handler:
 
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
-        if custom_command_output:
-            self.respond(custom_command_output)
+        if custom_command_output is not None:
+            if custom_command_output:
+                self.respond(custom_command_output)
+                
             return True
 
         # Respond with template command output if available
@@ -246,7 +135,7 @@ class SSH_Handler:
         if command in self.break_commands:
             if self.enable:
                 self.enable = False
-                self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                self.set_prompt_terminator()
                 return True
             else:
                 return False
@@ -255,16 +144,16 @@ class SSH_Handler:
         if self.enable_mode:
             if command == "enable" or command == "system-view" or command == "sudo":
                 # Require password for enable command
-                if await self.prompt_password():
+                if await self.show_prompt_password():
                     self.enable = True
-                    self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                    self.set_prompt_terminator()
                 else:
                     # Password failed, stay in user mode
                     self.enable = False
-                    self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                    self.set_prompt_terminator()
             elif command == "disable":  # disable command
                 self.enable = False
-                self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+                self.set_prompt_terminator()
                 return True
 
         if self.openai_support:
@@ -273,29 +162,6 @@ class SSH_Handler:
 
         self.respond()
         self.logger.error(f"Command not found `{self.device_type}`: `{command}`")
-        return True
-
-
-    def _load_commands(self, template_dir):
-        """
-        Loads command templates from the specified directory.
-
-        :param template_dir: Directory containing command templates.
-        :return: True if commands are loaded successfully, False otherwise.
-        """
-        commands = {}
-        if not os.path.exists(template_dir):
-            self.logger.warning(f"Unable to find directory: `{template_dir}`")
-            self.commands = {}
-            return False
-
-        for filename in os.listdir(template_dir):
-            file_path = os.path.join(template_dir, filename)
-            name, extension = os.path.splitext(filename)
-            if os.path.isfile(file_path) and extension == '.txt':
-                commands[name] = file_path
-
-        self.commands = commands
         return True
 
     async def _get_command_output(self, file):
@@ -322,63 +188,11 @@ class SSH_Handler:
 
         return cleaned_parts
 
-    def strip_first_last_blank_lines(text):
-        lines = text.splitlines()
-
-        # Strip the first blank line if it exists
-        if lines and lines[0].strip() == "":
-            lines = lines[1:]
-
-        # Strip the last blank line if it exists
-        if lines and lines[-1].strip() == "":
-            lines = lines[:-1]
-
-        # Join the lines back into a single string
-        return "\n".join(lines)
-
-    def set_prompt_terminator(self, pri_terminator = "#", alt_terminator = ">"):
-        """
-        Sets the prompt terminator pattern for the SSH prompt.
-
-        :param pattern: The pattern string to append to the device type.
-        """
-        self.pri_terminator = pri_terminator
-        self.alt_terminator = alt_terminator
-        terminator = self.terminator
-
-        if self.config_mode:
-            self.prompt_terminator = self.device_type + self.config_pattern + terminator + " "
-        else:
-            self.prompt_terminator = self.device_type + terminator + " "
-
     @property
     def terminator(self):
         return self.pri_terminator if self.enable or not self.enable_mode else self.alt_terminator
 
-    @staticmethod
-    def _read_file(filename):
-        """
-        Reads the content of a file.
-
-        :param filename: Path to the file.
-        :return: Content of the file as a string.
-        """
-        with open(filename, "r") as fhand:
-            text = fhand.read()
-            lines = text.splitlines()
-
-            # Strip the first blank line if it exists
-            if lines and lines[0].strip() == "":
-                lines = lines[1:]
-
-            # Strip the last blank line if it exists
-            if lines and lines[-1].strip() == "":
-                lines = lines[:-1]
-
-            # Join the lines back into a single string
-            return "\n".join(lines)
-
-    async def prompt_password(self):
+    async def show_prompt_password(self):
         """
         Prompts the user for enable password and validates it.
         Returns True if password is correct, False otherwise.
@@ -387,14 +201,14 @@ class SSH_Handler:
             return True
 
         self.password_required = True
-        self.respond("Password: ")
-        
+        self.respond(self.prompt_password)
+
         # Read password input (it won't be echoed)
         password = await self.process.stdin.readline()
         password = password.strip()
-        
+
         self.password_required = False
-        
+
         if password == self.enable_secret:
             self.password_attempts = 0
             return True
@@ -407,7 +221,7 @@ class SSH_Handler:
                 self.respond("Access denied.")
                 return False
 
-    def respond(self, response = ""):
+    def respond(self, response=""):
         """
         Sends a response back to the SSH client.
 
@@ -415,3 +229,9 @@ class SSH_Handler:
         """
         self.logger.info(f"response `{response}`")
         self.process.stdout.write(response + self.new_line)
+
+    async def run(self):
+        """
+        Main entry point to run the SSH handler.
+        """
+        await self.open()

@@ -11,7 +11,9 @@ class huawei_smartaxmmi_handler(SSH_Handler):
         options['device_type'] = 'huawei_smartaxmmi'
         super().__init__(process, options=options)
         self.config_pattern = "(config)"
-        self.set_prompt_terminator(pri_terminator = "#", alt_terminator = ">")
+
+    def set_prompt_terminator(self, pri_terminator = ">", alt_terminator = "#") -> None:
+        super().set_prompt_terminator(pri_terminator=pri_terminator, alt_terminator=alt_terminator)
 
     async def open(self):
         self.respond("YES/NO" + self.terminator)
@@ -22,11 +24,11 @@ class huawei_smartaxmmi_handler(SSH_Handler):
     def handle_custom_command(self, command):
         if "config" in command:
             self.config_mode = True
-            self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+            self.set_prompt_terminator()
             return "Configuration successed"
         if command == "return" and self.config_mode:
             self.config_mode = False
-            self.set_prompt_terminator(pri_terminator = self.pri_terminator, alt_terminator = self.alt_terminator)
+            self.set_prompt_terminator()
             return "Configuration exited"
-        return ""
+        return super().handle_custom_command(command)
     
