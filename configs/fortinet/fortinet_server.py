@@ -41,7 +41,7 @@ class fortinet_handler(SSH_Handler):
     def get_prompt_mode(self):
         if self.mode:
             return self.mode
-        return super().get_prompt_mode()
+        return super().get_prompt_mode() + " "
     
 
     

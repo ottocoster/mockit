@@ -5,7 +5,6 @@ from collections import defaultdict
 
 connection_attempts = defaultdict(list)  # Store connection attempts with timestamps
 
-
 class SSH_Server(asyncssh.SSHServer):
     def __init__(self, options, logger):
         """

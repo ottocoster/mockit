@@ -73,6 +73,7 @@ class SSH_Handler(BaseHandler):
                 result = await self._handle_command(command)
                 if not result:
                     break
+                await self.process.stdout.drain()
 
         self.process.exit(0)
 
@@ -108,7 +109,9 @@ class SSH_Handler(BaseHandler):
         # Handle custom command if applicable
         custom_command_output = self.handle_custom_command(command)
         if custom_command_output is not None:
-            self.respond(custom_command_output)
+            if custom_command_output:
+                self.respond(custom_command_output)
+                
             return True
 
         # Respond with template command output if available
