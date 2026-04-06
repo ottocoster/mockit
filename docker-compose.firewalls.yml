@@ -1,0 +1,38 @@
+name: devices
+services:
+  paloalto_panos-1:
+    build: .
+    environment:
+      - DEVICE_TYPE=paloalto_panos
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
+      - SNMP_V2_ENABLED=true
+    networks:
+      devices_network:
+        ipv4_address: 172.16.240.45
+    ports:
+      - "22:22"
+      - "161:161/udp"
+
+  paloalto_panos-2:
+    build: .
+    environment:
+      - DEVICE_TYPE=paloalto_panos
+      - SSH_USERNAME=test
+      - SSH_PASSWORD=test
+      - SNMP_V2_ENABLED=true
+    networks:
+      devices_network:
+        ipv4_address: 172.16.240.46
+    ports:
+      - "24:22"
+      - "162:161/udp"
+
+networks:
+  devices_network:
+    enable_ipv6: true
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.240.0/24
+        - subnet: fc00::/64

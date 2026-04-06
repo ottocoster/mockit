@@ -69,6 +69,7 @@ def get_options():
             "ssh_key": get_opt("SSH_KEY", "/ssh_key/rsa.key"),
             "username": get_opt("SSH_USERNAME", "root"),
             "password": get_opt("SSH_PASSWORD", ""),
+            "kex_algorithms": get_opt("SSH_KEX_ALGORITHMS", "diffie-hellman-group1-sha1,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1,diffie-hellman-group-exchange-sha256,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521"),
             "delay": int(get_opt("DEVICE_DELAY", 0)),
             "login_delay": int(get_opt("LOGIN_DELAY", 0)),
             "login_retry": int(get_opt("LOGIN_RETRY", 0)),

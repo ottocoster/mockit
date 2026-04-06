@@ -3,17 +3,79 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "ubiquiti_edgerouter.some.net"
+            "value": "edgerouter1.example.com"
         },
         {
             "name": "sysDescr",
             "type": "string",
-            "value": "EdgeOS v2.0.9-hotfix.7.5622762.230615.1131"
+            "value": "Ubiquiti Networks EdgeRouter 4, EdgeOS v2.0.9-hotfix.7"
         },
         {
             "name": "sysObjectID",
             "type": "id",
             "value": "1.3.6.1.4.1.41112.1.5"
+        },
+        {
+            "name": "sysContact",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "sysLocation",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "sysServices",
+            "type": "integer",
+            "value": "78"
+        },
+        {
+            "name": "sysUpTime",
+            "type": "timeticks",
+            "value": "6087320"
+        }
+    ],
+    "ENTITY-MIB": [
+        {
+            "name": "entPhysicalAlias",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "entPhysicalDescr",
+            "type": "string",
+            "value": "Ubiquiti EdgeRouter Chassis"
+        },
+        {
+            "name": "entPhysicalFirmwareRev",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "entPhysicalHardwareRev",
+            "type": "string",
+            "value": "1.0"
+        },
+        {
+            "name": "entPhysicalModelName",
+            "type": "string",
+            "value": "EdgeRouter 4"
+        },
+        {
+            "name": "entPhysicalName",
+            "type": "string",
+            "value": "Chassis"
+        },
+        {
+            "name": "entPhysicalSerialNum",
+            "type": "string",
+            "value": "UBNTEDG400123"
+        },
+        {
+            "name": "entPhysicalSoftwareRev",
+            "type": "string",
+            "value": "2.0.9-hotfix.7"
         }
     ]
 }

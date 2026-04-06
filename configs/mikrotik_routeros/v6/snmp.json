@@ -8,12 +8,74 @@
         {
             "name": "sysDescr",
             "type": "string",
-            "value": "RouterOS RB4011iGS+"
+            "value": "MikroTik RouterOS RB4011iGS+, RouterOS v6.49.10 (long-term), Copyright (c) 1999-2026 MikroTik"
         },
         {
             "name": "sysObjectID",
             "type": "id",
             "value": "1.3.6.1.4.1.14988.1"
+        },
+        {
+            "name": "sysContact",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "sysLocation",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "sysServices",
+            "type": "integer",
+            "value": "78"
+        },
+        {
+            "name": "sysUpTime",
+            "type": "timeticks",
+            "value": "6890341"
+        }
+    ],
+    "ENTITY-MIB": [
+        {
+            "name": "entPhysicalAlias",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "entPhysicalDescr",
+            "type": "string",
+            "value": "MikroTik RouterBOARD Chassis"
+        },
+        {
+            "name": "entPhysicalFirmwareRev",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "entPhysicalHardwareRev",
+            "type": "string",
+            "value": "r2"
+        },
+        {
+            "name": "entPhysicalModelName",
+            "type": "string",
+            "value": "RB4011iGS+"
+        },
+        {
+            "name": "entPhysicalName",
+            "type": "string",
+            "value": "System Board"
+        },
+        {
+            "name": "entPhysicalSerialNum",
+            "type": "string",
+            "value": "RB40-XY98-ZT76"
+        },
+        {
+            "name": "entPhysicalSoftwareRev",
+            "type": "string",
+            "value": "6.49.10"
         }
     ]
 }

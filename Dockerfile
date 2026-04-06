@@ -10,6 +10,7 @@ ENV TINI_SUBREAPER=1 \
     SSH_KEY="/ssh_key/rsa.key" \
     SSH_USERNAME="root" \
     SSH_PASSWORD="Welcome01!" \
+    SSH_KEX_ALGORITHMS="" \
     AUTHKEY_ENABLED=false \
     AUTHKEY_PATH="/auth_keys/auth.pub" \
 

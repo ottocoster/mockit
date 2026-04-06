@@ -56,26 +56,34 @@ class SSH_Handler(BaseHandler):
         Exits when the SSH channel is closed.
         """
         if "banner" in self.commands:
-            self.respond(await self._get_command_output(self.commands["banner"]))
+            if not self.respond(await self._get_command_output(self.commands["banner"])):
+                return
         while self.process.channel._send_state == "open":
-            self.process.stdout.write(self.prompt_terminator)
+            if not self._safe_write(self.prompt_terminator):
+                break
             try:
                 command = await self.process.stdin.readline()
             except BreakReceived:
                 self.logger.info("BreakReceived")
-                self.respond('\x03')
+                if not self.respond('\x03'):
+                    break
                 continue
+            except (ConnectionResetError, BrokenPipeError):
+                self.logger.info("SSH peer disconnected while reading input")
+                break
             self.logger.info(f"command received `{repr(command)}`")
             command = command.strip()
-            self.process.stdout.write(self.get_formatted_command(command))
+            if not self._safe_write(self.get_formatted_command(command)):
+                break
 
             if command:
                 result = await self._handle_command(command)
                 if not result:
                     break
-                await self.process.stdout.drain()
+                if not await self._safe_drain():
+                    break
 
-        self.process.exit(0)
+        self._safe_exit(0)
 
     def get_formatted_command(self, command):
         return command + '\n'
@@ -92,6 +100,13 @@ class SSH_Handler(BaseHandler):
         if command[-1] == '?':
             self.handle_help_commands(command)
             return True
+
+        if command in self.break_commands:
+            if self.enable:
+                self.enable = False
+                self.set_prompt_terminator()
+                return True
+            return False
 
 
         # Handle script functions
@@ -131,14 +146,6 @@ class SSH_Handler(BaseHandler):
         if command.startswith('echo '):
             self.respond(command[5:])
             return True
-
-        if command in self.break_commands:
-            if self.enable:
-                self.enable = False
-                self.set_prompt_terminator()
-                return True
-            else:
-                return False
 
         # Handle enable and disable command
         if self.enable_mode:
@@ -228,7 +235,32 @@ class SSH_Handler(BaseHandler):
         :param response: The response string to send.
         """
         self.logger.info(f"response `{response}`")
-        self.process.stdout.write(response + self.new_line)
+        return self._safe_write(response + self.new_line)
+
+    def _safe_write(self, data: str) -> bool:
+        """Write to SSH output and gracefully handle peer disconnects."""
+        try:
+            self.process.stdout.write(data)
+            return True
+        except (ConnectionResetError, BrokenPipeError):
+            self.logger.info("SSH peer disconnected while writing output")
+            return False
+
+    async def _safe_drain(self) -> bool:
+        """Drain SSH output and gracefully handle peer disconnects."""
+        try:
+            await self.process.stdout.drain()
+            return True
+        except (ConnectionResetError, BrokenPipeError):
+            self.logger.info("SSH peer disconnected while draining output")
+            return False
+
+    def _safe_exit(self, status: int) -> None:
+        """Exit SSH process and ignore close-race errors."""
+        try:
+            self.process.exit(status)
+        except (ConnectionResetError, BrokenPipeError):
+            self.logger.info("SSH peer disconnected before exit completed")
 
     async def run(self):
         """

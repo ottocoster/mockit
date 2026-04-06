@@ -200,6 +200,7 @@ networks:
 - **SSH_SERVER_ENABLED**: Enable SSH server (default is true).
 - **SSH_USERNAME**: SSH username for authentication.
 - **SSH_PASSWORD**: SSH password for authentication.
+- **SSH_KEX_ALGORITHMS**: Optional comma-separated list of SSH key exchange algorithms to allow (for example `diffie-hellman-group14-sha1`).
 - **DEVICE_DELAY**: Introduces a delay before a device responds to a command.
 - **LOGIN_DELAY**: Delays the SSH login process.
 - **LOGIN_RETRY**: Defines the number of retries for failed login attempts.

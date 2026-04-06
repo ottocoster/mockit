@@ -71,6 +71,11 @@ async def start_ssh(status, options):
     if options["authkey_enabled"]:
         key_opt = dict(authorized_client_keys=options["authkey_path"])
 
+    # Support restricting key exchange algorithms for compatibility testing.
+    kex_algorithms = [alg.strip() for alg in options.get("kex_algorithms", "").split(",") if alg.strip()]
+    if kex_algorithms:
+        key_opt["kex_algs"] = kex_algorithms
+
     async def handle_connection(process: SSHServerProcess):
         session = handler_class(process, process.get_extra_info("options"))
         await session.open()

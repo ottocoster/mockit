@@ -1,0 +1,81 @@
+{
+    "SNMPv2-MIB": [
+        {
+            "name": "sysName",
+            "type": "string",
+            "value": "mrv_lx.example.com"
+        },
+        {
+            "name": "sysDescr",
+            "type": "string",
+            "value": "Mrv Lx network device simulated SNMP profile"
+        },
+        {
+            "name": "sysObjectID",
+            "type": "id",
+            "value": "1.3.6.1.4.1.8072.3.2.10"
+        },
+        {
+            "name": "sysContact",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "sysLocation",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "sysServices",
+            "type": "integer",
+            "value": "78"
+        },
+        {
+            "name": "sysUpTime",
+            "type": "timeticks",
+            "value": "5000000"
+        }
+    ],
+    "ENTITY-MIB": [
+        {
+            "name": "entPhysicalAlias",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "entPhysicalDescr",
+            "type": "string",
+            "value": "Mrv Lx Chassis"
+        },
+        {
+            "name": "entPhysicalFirmwareRev",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "entPhysicalHardwareRev",
+            "type": "string",
+            "value": "1.0"
+        },
+        {
+            "name": "entPhysicalModelName",
+            "type": "string",
+            "value": "MRV_LX"
+        },
+        {
+            "name": "entPhysicalName",
+            "type": "string",
+            "value": "Chassis"
+        },
+        {
+            "name": "entPhysicalSerialNum",
+            "type": "string",
+            "value": "MRV_LX-SN123456"
+        },
+        {
+            "name": "entPhysicalSoftwareRev",
+            "type": "string",
+            "value": "1.0.0"
+        }
+    ]
+}

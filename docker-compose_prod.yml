@@ -1,10 +1,10 @@
 name: devices
 services:
-  cisco_ios:
+  cisco_xr:
     image: registry.gitlab.com/slurpit.io/mockit:latest
-    container_name: cisco_ios
+    container_name: cisco_xr
     environment:
-      DEVICE_TYPE: cisco_ios
+      DEVICE_TYPE: cisco_xr
       SSH_USERNAME: test
       SSH_PASSWORD: test
     ports: 

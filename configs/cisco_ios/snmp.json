@@ -3,17 +3,79 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "cisco_ios.some.net"
+            "value": "csr2.example.com"
         },
         {
             "name": "sysDescr",
             "type": "string",
-            "value": "Cisco IOS Software, IOSv Software (VIOS-ADVENTERPRISEK9-M), Version 15.6(2)T, RELEASE SOFTWARE (fc2) \nTechnical Support: http://www.cisco.com/techsupport \nCopyright (c) 1986-2016 by Cisco Systems, Inc. \nCompiled Tue 22-Mar-16 16:19 by prod_rel_team"
+            "value": "Cisco IOS Software [Amsterdam], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.3.5, RELEASE SOFTWARE (fc2)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2022 by Cisco Systems, Inc.\r\nCompiled Wed 09-Feb-22 10:3"
         },
         {
             "name": "sysObjectID",
             "type": "id",
-            "value": "1.3.6.1.4.1.9.1.1041"
+            "value": "1.3.6.1.4.1.9.1.1537"
+        },
+        {
+            "name": "sysContact",
+            "type": "string",
+            "value": "Pieter van Os"
+        },
+        {
+            "name": "sysLocation",
+            "type": "string",
+            "value": "Flock9 B.V. Amsterdam, The Netherlands"
+        },
+        {
+            "name": "sysServices",
+            "type": "integer",
+            "value": "78"
+        },
+        {
+            "name": "sysUpTime",
+            "type": "timeticks",
+            "value": "8602865"
+        }
+    ],
+    "ENTITY-MIB": [
+        {
+            "name": "entPhysicalAlias",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "entPhysicalDescr",
+            "type": "string",
+            "value": "Cisco CSR1000V Chassis"
+        },
+        {
+            "name": "entPhysicalFirmwareRev",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "name": "entPhysicalHardwareRev",
+            "type": "string",
+            "value": "V00"
+        },
+        {
+            "name": "entPhysicalModelName",
+            "type": "string",
+            "value": "CSR1000V"
+        },
+        {
+            "name": "entPhysicalName",
+            "type": "string",
+            "value": "Chassis"
+        },
+        {
+            "name": "entPhysicalSerialNum",
+            "type": "string",
+            "value": "90MZTH4EFTM"
+        },
+        {
+            "name": "entPhysicalSoftwareRev",
+            "type": "string",
+            "value": "17.3.5"
         }
     ]
 }
