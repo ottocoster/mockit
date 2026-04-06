@@ -1,5 +1,6 @@
 {
     "SNMPv2-MIB": [
+<<<<<<< HEAD
         {
             "name": "sysName",
             "type": "string",
@@ -77,7 +78,190 @@
             "type": "string",
             "value": "17.9.7"
         }
+=======
+    {
+      "name": "sysContact",
+      "type": "string",
+      "value": "GIS-Network@nttsecurity.com"
+    },
+    {
+      "name": "sysDescr",
+      "type": "string",
+      "value": "Cisco Controller"
+    },
+    {
+      "name": "sysLocation",
+      "type": "string",
+      "value": "TAL1"
+    },
+    {
+      "name": "sysName",
+      "type": "string",
+      "value": "TAL1.CORP-BO.WLC1"
+    },
+    {
+      "name": "sysObjectID",
+      "type": "id",
+      "value": "1.3.6.1.4.1.9.1.2170"
+    },
+    {
+      "name": "sysServices",
+      "type": "integer",
+      "value": "2"
+    },
+    {
+      "name": "sysUpTime",
+      "type": "integer",
+      "value": "2909097004"
+    }
+>>>>>>> e7c80b93ce99def6ffe3694231024696247ce290
     ],
+    "ENTITY-MIB": [
+    {
+      "name": "entPhysicalContainedIn",
+      "type": "integer",
+      "value": "0",
+      "suffix": "1"
+    },
+    {
+      "name": "entPhysicalContainedIn",
+      "type": "integer",
+      "value": "0",
+      "suffix": "192"
+    },
+    {
+      "name": "entPhysicalContainedIn",
+      "type": "integer",
+      "value": "0",
+      "suffix": "976"
+    },
+    {
+      "name": "entPhysicalDescr",
+      "type": "string",
+      "value": "Cisco 5520 Wireless Controller",
+      "suffix": "1"
+    },
+    {
+      "name": "entPhysicalDescr",
+      "type": "string",
+      "value": "Cisco Aironet 2800 Series (IEEE 802.11ac) Access Point",
+      "suffix": "192"
+    },
+    {
+      "name": "entPhysicalDescr",
+      "type": "string",
+      "value": "Cisco Aironet 2800 Series (IEEE 802.11ac) Access Point",
+      "suffix": "976"
+    },
+    {
+      "name": "entPhysicalHardwareRev",
+      "type": "string",
+      "value": "V01",
+      "suffix": "1"
+    },
+    {
+      "name": "entPhysicalHardwareRev",
+      "type": "string",
+      "value": "V03",
+      "suffix": "192"
+    },
+    {
+      "name": "entPhysicalHardwareRev",
+      "type": "string",
+      "value": "V03",
+      "suffix": "976"
+    },
+    {
+      "name": "entPhysicalModelName",
+      "type": "string",
+      "value": "AIR-CT5520-K9",
+      "suffix": "1"
+    },
+    {
+      "name": "entPhysicalModelName",
+      "type": "string",
+      "value": "AIR-AP2802I-E-K9",
+      "suffix": "192"
+    },
+    {
+      "name": "entPhysicalModelName",
+      "type": "string",
+      "value": "AIR-AP2802I-E-K9",
+      "suffix": "976"
+    },
+    {
+      "name": "entPhysicalName",
+      "type": "string",
+      "value": "Chassis",
+      "suffix": "1"
+    },
+    {
+      "name": "entPhysicalName",
+      "type": "string",
+      "value": "AP2800",
+      "suffix": "192"
+    },
+    {
+      "name": "entPhysicalName",
+      "type": "string",
+      "value": "AP2800",
+      "suffix": "976"
+    },
+    {
+      "name": "entPhysicalParentRelPos",
+      "type": "integer",
+      "value": "-1",
+      "suffix": "1"
+    },
+    {
+      "name": "entPhysicalParentRelPos",
+      "type": "integer",
+      "value": "-1",
+      "suffix": "192"
+    },
+    {
+      "name": "entPhysicalParentRelPos",
+      "type": "integer",
+      "value": "-1",
+      "suffix": "976"
+    },
+    {
+      "name": "entPhysicalSerialNum",
+      "type": "string",
+      "value": "FCH2218V0G5",
+      "suffix": "1"
+    },
+    {
+      "name": "entPhysicalSerialNum",
+      "type": "string",
+      "value": "FGL2309A2S4",
+      "suffix": "192"
+    },
+    {
+      "name": "entPhysicalSerialNum",
+      "type": "string",
+      "value": "FGL2309A2SG",
+      "suffix": "976"
+    },
+    {
+      "name": "entPhysicalSoftwareRev",
+      "type": "string",
+      "value": "8.10.183.0",
+      "suffix": "1"
+    },
+    {
+      "name": "entPhysicalSoftwareRev",
+      "type": "string",
+      "value": "8.10.183.0",
+      "suffix": "192"
+    },
+    {
+      "name": "entPhysicalSoftwareRev",
+      "type": "string",
+      "value": "8.10.183.0",
+      "suffix": "976"
+    }
+  ],
     "AIRESPACE-WIRELESS-MIB": [
         {
             "name": "bsnAPName",
