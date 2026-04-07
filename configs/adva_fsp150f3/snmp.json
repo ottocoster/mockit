@@ -40,42 +40,50 @@
         {
             "name": "entPhysicalAlias",
             "type": "string",
-            "value": ""
+            "value": "",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalDescr",
             "type": "string",
-            "value": "Adva Fsp150F3 Chassis"
+            "value": "Adva Fsp150F3 Chassis",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalFirmwareRev",
             "type": "string",
-            "value": ""
+            "value": "",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalHardwareRev",
             "type": "string",
-            "value": "1.0"
+            "value": "1.0",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalModelName",
             "type": "string",
-            "value": "ADVA_FSP150F3"
+            "value": "ADVA_FSP150F3",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalName",
             "type": "string",
-            "value": "Chassis"
+            "value": "Chassis",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalSerialNum",
             "type": "string",
-            "value": "ADVA_F-SN123456"
+            "value": "ADVA_F-SN123456",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalSoftwareRev",
             "type": "string",
-            "value": "1.0.0"
+            "value": "1.0.0",
+            "suffix": "1"
         }
     ]
 }

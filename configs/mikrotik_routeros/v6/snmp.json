@@ -40,42 +40,50 @@
         {
             "name": "entPhysicalAlias",
             "type": "string",
-            "value": ""
+            "value": "",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalDescr",
             "type": "string",
-            "value": "MikroTik RouterBOARD Chassis"
+            "value": "MikroTik RouterBOARD Chassis",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalFirmwareRev",
             "type": "string",
-            "value": ""
+            "value": "",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalHardwareRev",
             "type": "string",
-            "value": "r2"
+            "value": "r2",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalModelName",
             "type": "string",
-            "value": "RB4011iGS+"
+            "value": "RB4011iGS+",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalName",
             "type": "string",
-            "value": "System Board"
+            "value": "System Board",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalSerialNum",
             "type": "string",
-            "value": "RB40-XY98-ZT76"
+            "value": "RB40-XY98-ZT76",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalSoftwareRev",
             "type": "string",
-            "value": "6.49.10"
+            "value": "6.49.10",
+            "suffix": "1"
         }
     ]
 }

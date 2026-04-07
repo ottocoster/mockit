@@ -40,42 +40,50 @@
         {
             "name": "entPhysicalAlias",
             "type": "string",
-            "value": ""
+            "value": "",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalDescr",
             "type": "string",
-            "value": "Ubiquiti EdgeRouter Chassis"
+            "value": "Ubiquiti EdgeRouter Chassis",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalFirmwareRev",
             "type": "string",
-            "value": ""
+            "value": "",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalHardwareRev",
             "type": "string",
-            "value": "1.0"
+            "value": "1.0",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalModelName",
             "type": "string",
-            "value": "EdgeRouter 4"
+            "value": "EdgeRouter 4",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalName",
             "type": "string",
-            "value": "Chassis"
+            "value": "Chassis",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalSerialNum",
             "type": "string",
-            "value": "UBNTEDG400123"
+            "value": "UBNTEDG400123",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalSoftwareRev",
             "type": "string",
-            "value": "2.0.9-hotfix.7"
+            "value": "2.0.9-hotfix.7",
+            "suffix": "1"
         }
     ]
 }

@@ -40,42 +40,50 @@
         {
             "name": "entPhysicalAlias",
             "type": "string",
-            "value": ""
+            "value": "",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalDescr",
             "type": "string",
-            "value": "HPE VSR1000 Chassis"
+            "value": "HPE VSR1000 Chassis",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalFirmwareRev",
             "type": "string",
-            "value": ""
+            "value": "",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalHardwareRev",
             "type": "string",
-            "value": "1.0"
+            "value": "1.0",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalModelName",
             "type": "string",
-            "value": "VSR1000"
+            "value": "VSR1000",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalName",
             "type": "string",
-            "value": "Chassis"
+            "value": "Chassis",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalSerialNum",
             "type": "string",
-            "value": "HPVSR1234XYZ"
+            "value": "HPVSR1234XYZ",
+            "suffix": "1"
         },
         {
             "name": "entPhysicalSoftwareRev",
             "type": "string",
-            "value": "7.1.070"
+            "value": "7.1.070",
+            "suffix": "1"
         }
     ]
 }
