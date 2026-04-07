@@ -12,7 +12,7 @@ class huawei_smartax_handler(SSH_Handler):
         super().__init__(process, options=options)
         self.config_pattern = "(config)"
 
-    def set_prompt_terminator(self, pri_terminator = "#", alt_terminator = ">") -> None:
+    def set_prompt_terminator(self, pri_terminator = ">", alt_terminator = "#") -> None:
         super().set_prompt_terminator(pri_terminator=pri_terminator, alt_terminator=alt_terminator)
 
     async def open(self):

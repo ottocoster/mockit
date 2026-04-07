@@ -18,8 +18,7 @@ class huawei_smartaxmmi_handler(SSH_Handler):
     async def open(self):
         self.respond("YES/NO" + self.terminator)
         await self.process.stdin.readline()
-        return await super().open()
-    
+        return await super().open()  
 
     def handle_custom_command(self, command):
         if "config" in command:
