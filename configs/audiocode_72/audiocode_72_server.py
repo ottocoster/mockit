@@ -23,7 +23,7 @@ class audiocode_72_handler(SSH_Handler):
         if command == "exit" and self.config_mode:
             self.config_mode = False
             self.set_prompt_terminator()
-            return "Configuration exited"
+            return "Configuration exited", self.terminator
         return super().handle_custom_command(command)
     
 class audiocode_72_telnet_handler(Telnet_Handler):
@@ -40,5 +40,5 @@ class audiocode_72_telnet_handler(Telnet_Handler):
         if command == "exit" and self.config_mode:
             self.config_mode = False
             self.set_prompt_terminator()
-            return "Configuration exited"
+            return "Configuration exited", self.terminator
         return super().handle_custom_command(command)

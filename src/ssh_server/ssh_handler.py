@@ -125,7 +125,10 @@ class SSH_Handler(BaseHandler):
         custom_command_output = self.handle_custom_command(command)
         if custom_command_output is not None:
             if custom_command_output:
-                self.respond(custom_command_output)
+                if not isinstance(custom_command_output, (list, tuple)):
+                    custom_command_output = [custom_command_output]
+                for m in custom_command_output:
+                    self.respond(m)
                 
             return True
 
