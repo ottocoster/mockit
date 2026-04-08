@@ -55,9 +55,10 @@ class Telnet_Handler(BaseHandler):
         command = self.replace_command(command)
 
         # Handle custom command if applicable
-        custom_command_output = self.handle_custom_command(command)
+        custom_command_output = self.handle_custom_command(command)            
         if custom_command_output is not None:
-            await self.respond(custom_command_output)
+            if custom_command_output:
+                await self.respond(custom_command_output)    
             return True
 
         if command in self.commands:
@@ -86,9 +87,12 @@ class Telnet_Handler(BaseHandler):
         """Use base class _read_file method for consistency."""
         return self._read_file(file)
 
-    async def respond(self, output=""):
-        await self.write(output + self.new_line)
-        self.logger.info(f"response: `{output}`")
+    async def respond(self, response=""):
+        if not isinstance(response, (list, tuple)):
+            response = [response]
+        for row in response:
+            await self.write(row + self.new_line)
+            self.logger.info(f"response: `{row}`")
 
     async def write(self, output):
         self.writer.write(output.encode())

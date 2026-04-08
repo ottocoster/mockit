@@ -125,11 +125,7 @@ class SSH_Handler(BaseHandler):
         custom_command_output = self.handle_custom_command(command)
         if custom_command_output is not None:
             if custom_command_output:
-                if not isinstance(custom_command_output, (list, tuple)):
-                    custom_command_output = [custom_command_output]
-                for m in custom_command_output:
-                    self.respond(m)
-                
+                self.respond(custom_command_output)                
             return True
 
         # Respond with template command output if available
@@ -237,8 +233,13 @@ class SSH_Handler(BaseHandler):
 
         :param response: The response string to send.
         """
-        self.logger.info(f"response `{response}`")
-        return self._safe_write(response + self.new_line)
+        if not isinstance(response, (list, tuple)):
+            response = [response]
+        for row in response:
+            self.logger.info(f"response `{row}`")
+            if not self._safe_write(row + self.new_line):
+                return False
+        return True
 
     def _safe_write(self, data: str) -> bool:
         """Write to SSH output and gracefully handle peer disconnects."""

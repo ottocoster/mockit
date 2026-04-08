@@ -226,7 +226,7 @@ class BaseHandler(ABC):
             return sorted(matching_commands)
         return None
 
-    def handle_custom_command(self, command: str) -> str:
+    def handle_custom_command(self, command: str):
         """
         Handle custom commands not found in the template directory.
         Can be overridden in subclasses to provide specific command handling.
