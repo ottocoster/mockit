@@ -12,6 +12,8 @@ services:
     depends_on:
       mocked-device:
         condition: service_healthy
+    volumes:  
+      - ./:/tests
 
   mocked-device:
     build: ../
@@ -35,6 +37,9 @@ services:
       timeout: 1s
       retries: 3
       start_period: 10s
+    volumes:  
+      - ../configs:/configs
+      - ../src:/src
 
 networks:
   devices-network:
