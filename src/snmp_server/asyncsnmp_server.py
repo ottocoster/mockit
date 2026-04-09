@@ -200,21 +200,25 @@ def set_mibs(mibBuilder, key, values):
         values (list): List of MIB values.
     """
     MibTable, MibScalarInstance = mibBuilder.importSymbols('SNMPv2-SMI', 'MibTable', 'MibScalarInstance')
-    mibBuilder.load_modules(key)
-    for x in values:
-        type = x['type']
-        value = x["value"]
-        name = x["name"]
-        
-        mib_tuple = mibBuilder.import_symbols(key, name)
-        mib = mib_tuple[0]
-        suffix = tuple(int(s) for s in x.get("suffix", "0").split('.'))
-        if type == "hex":
-            mib_value = mib.syntax.clone(bytes(int(b, 16) for b in value.split()))
-        else:
-            mib_value = mib.syntax.clone(value)
-        mib_instance = MibScalarInstance(mib.name, suffix, mib_value)
-        mibBuilder.export_symbols("__MY_MIB", mib_instance)
+    try:
+        mibBuilder.load_modules(key)
+        for x in values:
+            type = x['type']
+            value = x["value"]
+            name = x["name"]
+            
+            mib_tuple = mibBuilder.import_symbols(key, name)
+            mib = mib_tuple[0]
+            suffix = tuple(int(s) for s in x.get("suffix", "0").split('.'))
+            if type == "hex":
+                mib_value = mib.syntax.clone(bytes(int(b, 16) for b in value.split()))
+            else:
+                mib_value = mib.syntax.clone(value)
+            mib_instance = MibScalarInstance(mib.name, suffix, mib_value)
+            mibBuilder.export_symbols("__MY_MIB", mib_instance)
+    except Exception as e:
+        logger.error(f"Failed to load {key} with values {values}")
+        logger.exception(e)
 
 
 def get_auth(key, protocol):
