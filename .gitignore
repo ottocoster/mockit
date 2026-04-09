@@ -17,6 +17,3 @@ syncer/ntc-templates
 netmiko-develop
 
 tools/output
-
-/mibs/*
-!/mibs/README.md
