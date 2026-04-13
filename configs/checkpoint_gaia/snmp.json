@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "checkpoint_gaia.example.com"
+            "value": "checkpoint_gaia.slurpit.io"
         },
         {
             "name": "sysDescr",

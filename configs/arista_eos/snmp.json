@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "arista-leaf1.example.com"
+            "value": "arista_eos.slurpit.io"
         },
         {
             "name": "sysDescr",

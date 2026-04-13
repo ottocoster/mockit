@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "aruba_osswitch.example.com"
+            "value": "aruba_osswitch.slurpit.io"
         },
         {
             "name": "sysDescr",

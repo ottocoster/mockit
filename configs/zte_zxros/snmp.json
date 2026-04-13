@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "zte_zxros.example.com"
+            "value": "zte_zxros.slurpit.io"
         },
         {
             "name": "sysDescr",

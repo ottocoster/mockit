@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "juniper_screenos.example.com"
+            "value": "juniper_screenos.slurpit.io"
         },
         {
             "name": "sysDescr",

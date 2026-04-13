@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "nxos-spine1.example.com"
+            "value": "cisco_nxos.slurpit.io"
         },
         {
             "name": "sysDescr",

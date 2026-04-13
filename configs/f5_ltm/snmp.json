@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "f5_ltm.example.com"
+            "value": "f5_ltm.slurpit.io"
         },
         {
             "name": "sysDescr",

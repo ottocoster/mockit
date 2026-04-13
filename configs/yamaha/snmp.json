@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "yamaha.example.com"
+            "value": "yamaha.slurpit.io"
         },
         {
             "name": "sysDescr",

@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "ruckus_fastiron.example.com"
+            "value": "ruckus_fastiron.slurpit.io"
         },
         {
             "name": "sysDescr",

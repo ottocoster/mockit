@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "maipu.example.com"
+            "value": "maipu.slurpit.io"
         },
         {
             "name": "sysDescr",

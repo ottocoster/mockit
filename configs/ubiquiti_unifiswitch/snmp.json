@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "ubiquiti_unifiswitch.example.com"
+            "value": "ubiquiti_unifiswitch.slurpit.io"
         },
         {
             "name": "sysDescr",

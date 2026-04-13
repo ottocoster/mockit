@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "infinera_packet.example.com"
+            "value": "infinera_packet.slurpit.io"
         },
         {
             "name": "sysDescr",

@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "arris_cer.example.com"
+            "value": "arris_cer.slurpit.io"
         },
         {
             "name": "sysDescr",

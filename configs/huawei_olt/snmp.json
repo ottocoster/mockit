@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "huawei_olt.example.com"
+            "value": "huawei_olt.slurpit.io"
         },
         {
             "name": "sysDescr",

@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "cisco_ftd.example.com"
+            "value": "cisco_ftd.slurpit.io"
         },
         {
             "name": "sysDescr",

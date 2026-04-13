@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "ciena_saos10.example.com"
+            "value": "ciena_saos10.slurpit.io"
         },
         {
             "name": "sysDescr",

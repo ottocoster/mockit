@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "edgecore_sonic.example.com"
+            "value": "edgecore_sonic.slurpit.io"
         },
         {
             "name": "sysDescr",

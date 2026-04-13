@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "juniper.example.com"
+            "value": "juniper.slurpit.io"
         },
         {
             "name": "sysDescr",

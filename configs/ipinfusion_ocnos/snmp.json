@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "ipinfusion_ocnos.example.com"
+            "value": "ipinfusion_ocnos.slurpit.io"
         },
         {
             "name": "sysDescr",

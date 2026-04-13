@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "hp_procurve.example.com"
+            "value": "hp_procurve.slurpit.io"
         },
         {
             "name": "sysDescr",

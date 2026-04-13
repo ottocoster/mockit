@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "flexvnf.example.com"
+            "value": "flexvnf.slurpit.io"
         },
         {
             "name": "sysDescr",

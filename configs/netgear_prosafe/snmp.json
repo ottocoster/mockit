@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "netgear_prosafe.example.com"
+            "value": "netgear_prosafe.slurpit.io"
         },
         {
             "name": "sysDescr",

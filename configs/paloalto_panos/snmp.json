@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "paloalto_panos.example.com"
+            "value": "paloalto_panos.slurpit.io"
         },
         {
             "name": "sysDescr",

@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "fiberstore_networkos.example.com"
+            "value": "fiberstore_networkos.slurpit.io"
         },
         {
             "name": "sysDescr",

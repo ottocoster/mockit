@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "nokia_sros.example.com"
+            "value": "nokia_sros.slurpit.io"
         },
         {
             "name": "sysDescr",

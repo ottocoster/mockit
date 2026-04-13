@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "brocade_fos.example.com"
+            "value": "brocade_fos.slurpit.io"
         },
         {
             "name": "sysDescr",

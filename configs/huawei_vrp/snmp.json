@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "huawei_vrp.example.com"
+            "value": "huawei_vrp.slurpit.io"
         },
         {
             "name": "sysDescr",

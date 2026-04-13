@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "cisco_nvfis.example.com"
+            "value": "cisco_nvfis.slurpit.io"
         },
         {
             "name": "sysDescr",

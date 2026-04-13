@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "fortinet.example.com"
+            "value": "fortinet.slurpit.io"
         },
         {
             "name": "sysDescr",

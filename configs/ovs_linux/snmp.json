@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "ovs_linux.example.com"
+            "value": "ovs_linux.slurpit.io"
         },
         {
             "name": "sysDescr",

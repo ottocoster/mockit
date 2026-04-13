@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "cdot_cros.example.com"
+            "value": "cdot_cros.slurpit.io"
         },
         {
             "name": "sysDescr",

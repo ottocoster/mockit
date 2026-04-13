@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "rad_etx.example.com"
+            "value": "rad_etx.slurpit.io"
         },
         {
             "name": "sysDescr",

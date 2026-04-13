@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "cloudgenix_ion.example.com"
+            "value": "cloudgenix_ion.slurpit.io"
         },
         {
             "name": "sysDescr",

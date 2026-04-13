@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "centec_os.example.com"
+            "value": "centec_os.slurpit.io"
         },
         {
             "name": "sysDescr",

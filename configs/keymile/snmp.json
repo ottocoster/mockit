@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "keymile.example.com"
+            "value": "keymile.slurpit.io"
         },
         {
             "name": "sysDescr",

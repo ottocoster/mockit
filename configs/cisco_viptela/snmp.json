@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "cisco_viptela.example.com"
+            "value": "cisco_viptela.slurpit.io"
         },
         {
             "name": "sysDescr",

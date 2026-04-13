@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "mellanox.example.com"
+            "value": "mellanox.slurpit.io"
         },
         {
             "name": "sysDescr",

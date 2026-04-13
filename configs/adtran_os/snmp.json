@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "adtran_os.example.com"
+            "value": "adtran_os.slurpit.io"
         },
         {
             "name": "sysDescr",

@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "lancom_lcossx4.example.com"
+            "value": "lancom_lcossx4.slurpit.io"
         },
         {
             "name": "sysDescr",

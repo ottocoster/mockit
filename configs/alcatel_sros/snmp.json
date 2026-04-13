@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "alcatel_sros.example.com"
+            "value": "alcatel_sros.slurpit.io"
         },
         {
             "name": "sysDescr",

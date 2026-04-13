@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "netapp_cdot.example.com"
+            "value": "netapp_cdot.slurpit.io"
         },
         {
             "name": "sysDescr",

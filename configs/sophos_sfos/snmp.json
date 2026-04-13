@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "sophos_sfos.example.com"
+            "value": "sophos_sfos.slurpit.io"
         },
         {
             "name": "sysDescr",

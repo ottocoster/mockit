@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "oneaccess_oneos.example.com"
+            "value": "oneaccess_oneos.slurpit.io"
         },
         {
             "name": "sysDescr",

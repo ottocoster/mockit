@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "eltex.example.com"
+            "value": "eltex.slurpit.io"
         },
         {
             "name": "sysDescr",

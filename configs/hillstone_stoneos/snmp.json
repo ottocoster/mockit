@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "hillstone_stoneos.example.com"
+            "value": "hillstone_stoneos.slurpit.io"
         },
         {
             "name": "sysDescr",

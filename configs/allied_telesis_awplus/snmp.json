@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "allied_telesis_awplus.example.com"
+            "value": "allied_telesis_awplus.slurpit.io"
         },
         {
             "name": "sysDescr",

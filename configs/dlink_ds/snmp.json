@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "dlink_ds.example.com"
+            "value": "dlink_ds.slurpit.io"
         },
         {
             "name": "sysDescr",

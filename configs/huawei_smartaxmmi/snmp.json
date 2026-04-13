@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "huawei_smartaxmmi.example.com"
+            "value": "huawei_smartaxmmi.slurpit.io"
         },
         {
             "name": "sysDescr",

@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "dell_powerconnect.example.com"
+            "value": "dell_powerconnect.slurpit.io"
         },
         {
             "name": "sysDescr",

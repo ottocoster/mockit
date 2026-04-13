@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "raisecom_roap.example.com"
+            "value": "raisecom_roap.slurpit.io"
         },
         {
             "name": "sysDescr",

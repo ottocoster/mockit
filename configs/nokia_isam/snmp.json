@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "nokia_isam.example.com"
+            "value": "nokia_isam.slurpit.io"
         },
         {
             "name": "sysDescr",
