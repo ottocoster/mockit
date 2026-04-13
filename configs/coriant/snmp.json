@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "coriant.example.com"
+            "value": "coriant.slurpit.io"
         },
         {
             "name": "sysDescr",

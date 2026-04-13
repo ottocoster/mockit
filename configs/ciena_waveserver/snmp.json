@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "ciena_waveserver.example.com"
+            "value": "ciena_waveserver.slurpit.io"
         },
         {
             "name": "sysDescr",

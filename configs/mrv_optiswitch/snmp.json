@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "mrv_optiswitch.example.com"
+            "value": "mrv_optiswitch.slurpit.io"
         },
         {
             "name": "sysDescr",

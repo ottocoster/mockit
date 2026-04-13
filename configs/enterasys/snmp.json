@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "enterasys.example.com"
+            "value": "enterasys.slurpit.io"
         },
         {
             "name": "sysDescr",

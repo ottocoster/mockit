@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "vmware_nsxv.example.com"
+            "value": "vmware_nsxv.slurpit.io"
         },
         {
             "name": "sysDescr",

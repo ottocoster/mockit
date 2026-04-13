@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "digi_transport.example.com"
+            "value": "digi_transport.slurpit.io"
         },
         {
             "name": "sysDescr",

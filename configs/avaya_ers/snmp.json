@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "avaya_ers.example.com"
+            "value": "avaya_ers.slurpit.io"
         },
         {
             "name": "sysDescr",

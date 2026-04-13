@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "quanta_mesh.example.com"
+            "value": "quanta_mesh.slurpit.io"
         },
         {
             "name": "sysDescr",

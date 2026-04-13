@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "edgerouter1.example.com"
+            "value": "ubiquiti_edgerouter.slurpit.io"
         },
         {
             "name": "sysDescr",

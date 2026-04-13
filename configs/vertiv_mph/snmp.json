@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "vertiv_mph.example.com"
+            "value": "vertiv_mph.slurpit.io"
         },
         {
             "name": "sysDescr",

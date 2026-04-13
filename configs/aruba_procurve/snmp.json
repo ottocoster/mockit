@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "aruba_procurve.example.com"
+            "value": "aruba_procurve.slurpit.io"
         },
         {
             "name": "sysDescr",

@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "bintec_boss.example.com"
+            "value": "bintec_boss.slurpit.io"
         },
         {
             "name": "sysDescr",

@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "ubiquiti_edge.example.com"
+            "value": "ubiquiti_edge.slurpit.io"
         },
         {
             "name": "sysDescr",

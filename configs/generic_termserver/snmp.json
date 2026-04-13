@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "generic_termserver.example.com"
+            "value": "generic_termserver.slurpit.io"
         },
         {
             "name": "sysDescr",

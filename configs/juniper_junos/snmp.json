@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "junos-vmx1.example.com"
+            "value": "juniper_junos.slurpit.io"
         },
         {
             "name": "sysDescr",

@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "f5_tmsh.example.com"
+            "value": "f5_tmsh.slurpit.io"
         },
         {
             "name": "sysDescr",

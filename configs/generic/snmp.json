@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "generic.example.com"
+            "value": "generic.slurpit.io"
         },
         {
             "name": "sysDescr",

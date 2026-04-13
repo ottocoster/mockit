@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "ruijie_os.example.com"
+            "value": "ruijie_os.slurpit.io"
         },
         {
             "name": "sysDescr",

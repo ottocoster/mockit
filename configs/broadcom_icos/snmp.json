@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "broadcom_icos.example.com"
+            "value": "broadcom_icos.slurpit.io"
         },
         {
             "name": "sysDescr",

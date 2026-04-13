@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "comware1.example.com"
+            "value": "hp_comware.slurpit.io"
         },
         {
             "name": "sysDescr",

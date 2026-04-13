@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "mikrotik_switchos.example.com"
+            "value": "mikrotik_switchos.slurpit.io"
         },
         {
             "name": "sysDescr",

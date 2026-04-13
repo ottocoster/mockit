@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "brocade_netiron.example.com"
+            "value": "brocade_netiron.slurpit.io"
         },
         {
             "name": "sysDescr",

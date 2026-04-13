@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "netscaler.example.com"
+            "value": "netscaler.slurpit.io"
         },
         {
             "name": "sysDescr",

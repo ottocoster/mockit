@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "mikrotik_routeros_v6.some.net"
+            "value": "mikrotik_routeros.slurpit.io"
         },
         {
             "name": "sysDescr",

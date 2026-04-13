@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "zyxel_os.example.com"
+            "value": "zyxel_os.slurpit.io"
         },
         {
             "name": "sysDescr",

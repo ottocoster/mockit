@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "watchguard_fireware.example.com"
+            "value": "watchguard_fireware.slurpit.io"
         },
         {
             "name": "sysDescr",

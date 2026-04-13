@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "tplink_jetstream.example.com"
+            "value": "tplink_jetstream.slurpit.io"
         },
         {
             "name": "sysDescr",

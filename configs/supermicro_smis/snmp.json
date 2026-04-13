@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "supermicro_smis.example.com"
+            "value": "supermicro_smis.slurpit.io"
         },
         {
             "name": "sysDescr",

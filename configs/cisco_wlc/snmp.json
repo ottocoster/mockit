@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "cisco_wlc.some.net"
+            "value": "cisco_wlc.slurpit.io"
         },
         {
             "name": "sysDescr",

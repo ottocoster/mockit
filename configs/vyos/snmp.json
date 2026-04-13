@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "vyos.example.com"
+            "value": "vyos.slurpit.io"
         },
         {
             "name": "sysDescr",

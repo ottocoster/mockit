@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "audiocode_shell.example.com"
+            "value": "audiocode_shell.slurpit.io"
         },
         {
             "name": "sysDescr",

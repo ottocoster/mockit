@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "dell_os10.example.com"
+            "value": "dell_os10.slurpit.io"
         },
         {
             "name": "sysDescr",
