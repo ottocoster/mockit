@@ -85,5 +85,102 @@
             "value": "1.0.0",
             "suffix": "1"
         }
+    ],
+    "AI-AP-MIB": [
+        {
+            "name": "aiVirtualControllerVersion",
+            "type": "string",
+            "value": "10.7.1.1-10.7.1.1_92045 SSR"
+        },
+        {
+            "name": "aiAPName",
+            "suffix": "232.16.152.201.165.231",
+            "type": "string",
+            "value": "aruba_ap1"
+        },
+        {
+            "name": "aiAPName",
+            "suffix": "0.41.194.225.64.0",
+            "type": "string",
+            "value": "aruba_ap2"
+        },
+        {
+            "name": "aiAPName",
+            "suffix": "0.47.92.104.207.160",
+            "type": "string",
+            "value": "aruba_ap3"
+        },
+        {
+            "name": "aiAPModelName",
+            "suffix": "232.16.152.201.165.231",
+            "type": "string",
+            "value": "618"
+        },
+        {
+            "name": "aiAPModelName",
+            "suffix": "0.41.194.225.64.0",
+            "type": "string",
+            "value": "619"
+        },
+        {
+            "name": "aiAPModelName",
+            "suffix": "0.47.92.104.207.160",
+            "type": "string",
+            "value": "620"
+        },
+        {
+            "name": "aiAPSerialNum",
+            "suffix": "232.16.152.201.165.231",
+            "type": "string",
+            "value": "CNS123456Z3"
+        },
+        {
+            "name": "aiAPSerialNum",
+            "suffix": "0.41.194.225.64.0",
+            "type": "string",
+            "value": "CNS123456LQ"
+        },
+        {
+            "name": "aiAPSerialNum",
+            "suffix": "0.47.92.104.207.160",
+            "type": "string",
+            "value": "CNS123456UL"
+        },
+        {
+            "name": "aiAPIPAddress",
+            "suffix": "232.16.152.201.165.231",
+            "type": "ip",
+            "value": "10.25.1.106"
+        },
+        {
+            "name": "aiAPIPAddress",
+            "suffix": "0.41.194.225.64.0",
+            "type": "ip",
+            "value": "10.25.1.107"
+        },
+        {
+            "name": "aiAPIPAddress",
+            "suffix": "0.47.92.104.207.160",
+            "type": "ip",
+            "value": "10.25.1.108"
+        },
+        {
+            "name": "aiAPMACAddress",
+            "suffix": "232.16.152.201.165.231",
+            "type": "hex",
+            "value": "A3 5F 1C 8D 4B 90"
+        },
+        {
+            "name": "aiAPMACAddress",
+            "suffix": "0.41.194.225.64.0",
+            "type": "hex",
+            "value": "2E 7B 9A D1 6F 04"
+        },
+        {
+            "name": "aiAPMACAddress",
+            "suffix": "0.47.92.104.207.160",
+            "type": "hex",
+            "value": "F0 11 3C 8A B5 2D"
+        }
     ]
 }

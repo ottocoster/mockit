@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import signal
+import socket
 from asyncio import Event, Runner
 
 from snmp_server import asyncsnmp_server
@@ -24,6 +25,9 @@ def restart_handler(signum, frame):
 
 async def main() -> bool:
     get_overridden_options.cache_clear()
+    hostname = socket.gethostname()
+    logger.debug(f'Device hostname: {hostname}')
+    logger.info(f'Device ip: {socket.gethostbyname(hostname)}')
     options = get_options()
     logger.debug(f"Options: {options}")
     udp_reload_port = options['UDP_RELOAD_PORT']
