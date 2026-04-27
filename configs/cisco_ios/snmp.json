@@ -8,7 +8,7 @@
         {
             "name": "sysDescr",
             "type": "string",
-            "value": "Cisco IOS Software [Amsterdam], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.3.5, RELEASE SOFTWARE (fc2)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2022 by Cisco Systems, Inc.\r\nCompiled Wed 09-Feb-22 10:3"
+            "value": "Cisco IOS Software [Amsterdam], Virtual Software , Version 17.3.5, RELEASE SOFTWARE (fc2)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2022 by Cisco Systems, Inc.\r\nCompiled Wed 09-Feb-22 10:3"
         },
         {
             "name": "sysObjectID",

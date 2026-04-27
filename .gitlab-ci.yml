@@ -72,7 +72,6 @@ unit_test:
         docker logs $container_id > "${CI_PROJECT_DIR}/logs/${container_name}.txt" 2>&1 || true
       done
     - dc down -v || true
-    - docker system prune -a --volumes -f || true
   artifacts:
     when: always
     paths:
