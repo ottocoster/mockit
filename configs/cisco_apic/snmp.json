@@ -13,7 +13,7 @@
         {
             "name": "sysObjectID",
             "type": "id",
-            "value": "1.3.6.1.4.1.9.1.1"
+            "value": "1.3.6.1.4.1.9.1.2492"
         },
         {
             "name": "sysContact",
@@ -46,7 +46,7 @@
         {
             "name": "entPhysicalDescr",
             "type": "string",
-            "value": "Cisco Apic Chassis",
+            "value": "Cisco Integrated Management Controller(Cisco IMC) APIC-SERVER-M3, Firmware Version 4.3(2.250045), Copyright (c) 2008-2023, Cisco Systems, Inc.",
             "suffix": "1"
         },
         {

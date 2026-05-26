@@ -1,3 +1,5 @@
 Name                             Default RD            Protocols   Interfaces
-  SUBNET100                        100:100               ipv4        Gi0/0.100
-  SUBNET120                        120:120               ipv4        Gi0/0.120
+  SUBNET100                        100:100               ipv4        Ethernet0/1
+  SUBNET120                        120:120               ipv4        Ethernet0/2
+  SUBNET130                        120:130               ipv4        Ethernet0/3
+  SUBNET140                        120:140               ipv4        Ethernet0/0

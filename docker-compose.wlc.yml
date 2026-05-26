@@ -7,10 +7,10 @@ services:
       - SSH_USERNAME=test
       - SSH_PASSWORD=test
       - SNMP_V2_ENABLED=true
-    networks:
-      devices_network:
-        ipv4_address: 172.16.240.47 # change to what ipv4 you prefer
-        ipv6_address: fc00::abcd # change to what ipv6 you prefer
+#    networks:
+#      devices_network:
+#        ipv4_address: 172.16.240.47 # change to what ipv4 you prefer
+#        ipv6_address: fc00::abcd # change to what ipv6 you prefer
     ports:
       - "22:22"
       - "161:161/udp"
@@ -19,7 +19,7 @@ networks:
   devices_network:
     enable_ipv6: true
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.16.240.0/24
-        - subnet: fc00::/64
+#    ipam:
+#      config:
+#        - subnet: 172.16.240.0/24
+#        - subnet: fc00::/64
