@@ -2,7 +2,7 @@
 Network Device Data Generator
 
 Generates mock data for network devices including routing tables,
-ARP entries, MAC address tables, and interface information.
+ARP entries, MAC address tables, interface information, and VRFs.
 """
 import random
 import os
@@ -94,6 +94,235 @@ def generate_interface_name(allow_higher_numbers=False, unique_id=None):
         return f"{interface_type}{chassis}/{slot}/{module}/{port}"
     else:
         return f"{interface_type}{random.randint(1, 9)}"
+
+
+def generate_vrf_names(vrf_name_format, count, fallback_format="03d"):
+    """
+    Generate a list of VRF names of exactly `count` total entries.
+
+    vrf_name_format is a comma-separated string where each token is one of:
+      - An exact name (no trailing underscore): used as-is, e.g. MGMT
+      - A prefix (trailing underscore) with optional format= and weight= modifiers:
+            CUST_ format=02d weight=3
+        format= controls zero-padding of the numeric suffix (default: no padding, e.g. 1, 2, 3)
+        weight= controls how many of the remaining slots this prefix gets relative to
+                other prefixes (default: 1); remaining slots are divided proportionally
+
+    After placing all fixed names and distributing remaining slots across prefixes by
+    weight, any still-unfilled slots are padded with fallback names using fallback_format
+    (e.g. "03d" -> 001, 002, 003 ...).
+
+    Example:
+      vrf_name_format = MGMT, PROD, CUST_ format=02d weight=3, TENANT_ format=04d weight=1
+      count = 20, fallback_format = 03d
+      -> MGMT, PROD (2 fixed), 18 remaining: CUST_ gets 14 (3/4), TENANT_ gets 4 (1/4)
+      -> CUST_01..CUST_14, TENANT_0001..TENANT_0004
+    """
+    fixed = []
+    prefixes = []  # list of (prefix, fmt, weight)
+
+    tokens = [t.strip() for t in vrf_name_format.split(',') if t.strip()]
+    for token in tokens:
+        parts = token.split()
+        name = parts[0]
+        fmt = None
+        weight = 1
+        for part in parts[1:]:
+            if part.startswith('format='):
+                fmt = part.split('=', 1)[1]
+            elif part.startswith('weight='):
+                try:
+                    weight = int(part.split('=', 1)[1])
+                except ValueError:
+                    weight = 1
+        if name.endswith('_'):
+            prefixes.append((name, fmt, weight))
+        else:
+            fixed.append(name)
+
+    names = list(fixed)
+    remaining = count - len(names)
+
+    if remaining > 0 and prefixes:
+        total_weight = sum(w for _, _, w in prefixes)
+        # Distribute remaining slots proportionally by weight
+        allotments = []
+        distributed = 0
+        for i, (prefix, fmt, weight) in enumerate(prefixes):
+            if i == len(prefixes) - 1:
+                # Last prefix gets whatever is left to avoid rounding shortfall
+                allotments.append(remaining - distributed)
+            else:
+                n = (weight * remaining) // total_weight
+                allotments.append(n)
+                distributed += n
+
+        for (prefix, fmt, weight), n in zip(prefixes, allotments):
+            for i in range(1, n + 1):
+                if fmt:
+                    names.append(f"{prefix}{i:{fmt}}")
+                else:
+                    names.append(f"{prefix}{i}")
+
+    # Pad with fallback names if still short
+    fallback_i = 1
+    while len(names) < count:
+        candidate = f"{fallback_i:{fallback_format}}"
+        if candidate not in names:
+            names.append(candidate)
+        fallback_i += 1
+
+    return names[:count]
+
+
+def generate_vrf_rd(index):
+    """Generate a route distinguisher for a VRF."""
+    asn = random.choice([65000, 65001, 65100, 100, 200])
+    return f"{asn}:{100 + index}"
+
+
+def generate_show_vrf(vrf_names):
+    """Generate 'show vrf' output (brief table). Matches cisco_ios/templates/show vrf.txt style."""
+    lines = ["Name                             Default RD            Protocols   Interfaces"]
+    iface_types = ["Gi0/0", "Gi0/1", "Gi1", "Gi2", "Te0/0", "Lo"]
+    for i, name in enumerate(vrf_names):
+        rd = generate_vrf_rd(i)
+        iface = f"{random.choice(iface_types)}.{100 + i}"
+        lines.append(f"  {name:<33}{rd:<22}ipv4        {iface}")
+    return "\n".join(lines)
+
+
+def generate_show_vrf_detail(vrf_names):
+    """Generate 'show vrf detail' output. Matches cisco_xe/templates/show vrf detail.txt style."""
+    lines = []
+    for i, name in enumerate(vrf_names):
+        rd = generate_vrf_rd(i)
+        vrf_id = i + 1
+        rt_export = f"RT:{rd}"
+        rt_import = f"RT:{generate_vrf_rd(i + 1)}"
+        iface = f"Gi{random.randint(0, 3)}"
+        lines += [
+            f"VRF {name} (VRF Id = {vrf_id}); default RD {rd}; default VPNID <not set>",
+            "  Old CLI format, supports IPv4 only",
+            "  Flags: 0xC",
+            "  Interfaces:",
+            f"    {iface}                     ",
+            "Address family ipv4 unicast (Table ID = 0x{:X}):".format(vrf_id),
+            "  Flags: 0x0",
+            "  Export VPN route-target communities",
+            f"    {rt_export}             ",
+            "  Import VPN route-target communities",
+            f"    {rt_import}",
+            "  No import route-map",
+            "  No global export route-map",
+            "  No export route-map",
+            "  VRF label distribution protocol: not configured",
+            "  VRF label allocation mode: per-prefix",
+            "Address family ipv6 unicast not active",
+            "Address family ipv4 multicast not active",
+            "Address family ipv6 multicast not active",
+            "",
+        ]
+    return "\n".join(lines)
+
+
+def generate_show_ip_vrf_interfaces(vrf_names):
+    """Generate 'show ip vrf interfaces'. Matches cisco_ios/templates/show ip vrf interfaces.txt style."""
+    lines = ["Interface              IP-Address      VRF                              Protocol"]
+    iface_prefixes = ["GigabitEthernet", "TenGigabitEthernet", "FastEthernet", "Loopback"]
+    for i, name in enumerate(vrf_names):
+        iface = f"{random.choice(iface_prefixes)}{random.randint(0, 4)}/{random.randint(0, 1)}"
+        ip = generate_ip(private_only=True)
+        proto = "up" if random.random() > 0.1 else "down"
+        lines.append(f"{iface:<23}{ip:<16}{name:<33}{proto}")
+    return "\n".join(lines)
+
+
+def generate_vrf_routes(vrf_name, num_routes):
+    """Generate 'show ip route vrf <name>' output."""
+    protocols = {
+        'O': '[110/2] via',
+        'B': '[200/0] via',
+        'D': '[90/2] via',
+        'S': '[1/0] via',
+        'R': '[120/1] via',
+        'E1': '[110/3] via',
+        'E2': '[110/1] via',
+    }
+    interfaces = [
+        'GigabitEthernet1', 'GigabitEthernet2', 'GigabitEthernet3',
+        'TenGigabitEthernet1', 'FastEthernet0/0', 'FastEthernet0/1'
+    ]
+    header_lines = [
+        f"Routing Table: {vrf_name}",
+        "Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP",
+        "       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area",
+        "       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2",
+        "       E1 - OSPF external type 1, E2 - OSPF external type 2",
+        "",
+        "Gateway of last resort is not set",
+        "",
+    ]
+    routes = []
+    used_networks = set()
+    for _ in range(num_routes):
+        while True:
+            first_octet = random.randint(1, 223)
+            if first_octet not in [10, 172, 192]:
+                network = f"{first_octet}.{random.randint(0, 255)}.{random.randint(0, 255)}.0"
+                mask = random.randint(24, 30)
+                network_with_mask = f"{network}/{mask}"
+                if network_with_mask not in used_networks:
+                    used_networks.add(network_with_mask)
+                    break
+        next_hop = f"10.10.{random.randint(1, 254)}.{random.randint(1, 254)}"
+        protocol = random.choice(list(protocols.keys()))
+        metric_info = protocols[protocol]
+        interface = random.choice(interfaces)
+        routes.append(f"{protocol}     {network_with_mask} {metric_info} {next_hop}, {interface}")
+    return "\n".join(header_lines + routes)
+
+
+def process_vrfs(base_dir, vrf_name_format, count, fallback_format="03d", min_routes_per_vrf=50, max_routes_per_vrf=1000):
+    """
+    Generate all VRF-related template files.
+
+    Always writes:
+      - show vrf.txt
+      - show vrf detail.txt
+      - show ip vrf interfaces.txt
+
+    Writes per-VRF route files only when max_routes_per_vrf > 0:
+      - show ip route vrf <name>.txt
+    """
+    vrf_names = generate_vrf_names(vrf_name_format, count, fallback_format)
+
+    write_file(
+        os.path.join(base_dir, "show vrf.txt"),
+        generate_show_vrf(vrf_names)
+    )
+    write_file(
+        os.path.join(base_dir, "show vrf detail.txt"),
+        generate_show_vrf_detail(vrf_names)
+    )
+    write_file(
+        os.path.join(base_dir, "show ip vrf interfaces.txt"),
+        generate_show_ip_vrf_interfaces(vrf_names)
+    )
+
+    if max_routes_per_vrf > 0:
+        for name in vrf_names:
+            num_routes = random.randint(min_routes_per_vrf, max_routes_per_vrf)
+            content = generate_vrf_routes(name, num_routes)
+            write_file(
+                os.path.join(base_dir, f"show ip route vrf {name}.txt"),
+                content
+            )
+        print(f"Successfully generated VRF data for {len(vrf_names)} VRFs (with per-VRF routes)")
+    else:
+        print(f"Successfully generated VRF data for {len(vrf_names)} VRFs (no per-VRF routes)")
+
+    return "vrfs"
 
 
 def generate_routes(num_routes=200000):
@@ -341,6 +570,13 @@ def load_settings():
             "arp": 1000,
             "mac": 1000,
             "interfaces": 1000
+        },
+        "vrfs": {
+            "count": 10,
+            "vrf_name_format": "MGMT, PROD, CUST_ format=02d weight=3, TENANT_ format=04d weight=1",
+            "fallback_format": "03d",
+            "min_routes_per_vrf": 50,
+            "max_routes_per_vrf": 1000
         }
     }
     
@@ -551,6 +787,11 @@ def main():
     arp_count = settings.get("counts", {}).get("arp", 1000)
     mac_count = settings.get("counts", {}).get("mac", 1000)
     interfaces_count = settings.get("counts", {}).get("interfaces", 1000)
+    vrf_count = settings.get("vrfs", {}).get("count", 10)
+    vrf_name_format = settings.get("vrfs", {}).get("vrf_name_format", "MGMT, PROD, CUST_ format=02d weight=3, TENANT_ format=04d weight=1")
+    vrf_fallback_format = settings.get("vrfs", {}).get("fallback_format", "03d")
+    min_routes_per_vrf = settings.get("vrfs", {}).get("min_routes_per_vrf", 50)
+    max_routes_per_vrf = settings.get("vrfs", {}).get("max_routes_per_vrf", 1000)
     device_count = len(device_list)
     
     print(f"Device count: {device_count}")
@@ -575,14 +816,16 @@ def main():
                     "routes": lambda: process_routes(base_dir, routes_count - (routes_count // device_count) * (device_count - 1)),
                     "arp": lambda: process_arp(base_dir, arp_count - (arp_count // device_count) * (device_count - 1)),
                     "mac": lambda: process_mac(base_dir, mac_count - (mac_count // device_count) * (device_count - 1)),
-                    "interfaces": lambda: process_interfaces(base_dir, interfaces_count - (interfaces_count // device_count) * (device_count - 1))
+                    "interfaces": lambda: process_interfaces(base_dir, interfaces_count - (interfaces_count // device_count) * (device_count - 1)),
+                    "vrfs": lambda: process_vrfs(base_dir, vrf_name_format, vrf_count, vrf_fallback_format, min_routes_per_vrf, max_routes_per_vrf)
                 }
             else:
                 device_processors = {
                     "routes": lambda: process_routes(base_dir, routes_count // device_count),
                     "arp": lambda: process_arp(base_dir, arp_count // device_count),
                     "mac": lambda: process_mac(base_dir, mac_count // device_count),
-                    "interfaces": lambda: process_interfaces(base_dir, interfaces_count // device_count)
+                    "interfaces": lambda: process_interfaces(base_dir, interfaces_count // device_count),
+                    "vrfs": lambda: process_vrfs(base_dir, vrf_name_format, vrf_count, vrf_fallback_format, min_routes_per_vrf, max_routes_per_vrf)
                 }
             
             # Process each requested data type
@@ -612,7 +855,8 @@ def main():
                 "routes": lambda: process_routes(base_dir, routes_count),
                 "arp": lambda: process_arp(base_dir, arp_count),
                 "mac": lambda: process_mac(base_dir, mac_count),
-                "interfaces": lambda: process_interfaces(base_dir, interfaces_count)
+                "interfaces": lambda: process_interfaces(base_dir, interfaces_count),
+                "vrfs": lambda: process_vrfs(base_dir, vrf_name_format, vrf_count, vrf_fallback_format, min_routes_per_vrf, max_routes_per_vrf)
             }
             
             # Process each requested data type
