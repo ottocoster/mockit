@@ -14,9 +14,9 @@ before_script:
   - export IMAGE_TAG="latest"
   - export LATEST=""
   - if [[ "$CI_COMMIT_REF_NAME" != "main" ]]; then
-      export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_NAME}";
-      export IMAGE_TAG="latest-${CI_COMMIT_REF_NAME}";
-      export LATEST="-${CI_COMMIT_REF_NAME}";
+      export IMAGE_VERSION="${MAJOR}.${MINOR}.${COMMIT}-${CI_COMMIT_REF_SLUG}";
+      export IMAGE_TAG="latest-${CI_COMMIT_REF_SLUG}";
+      export LATEST="-${CI_COMMIT_REF_SLUG}";
     fi
   - export IMAGE_FILE="slurpit-mockit-${IMAGE_VERSION}.tar.gz"
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
