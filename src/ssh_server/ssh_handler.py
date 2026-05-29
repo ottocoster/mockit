@@ -58,7 +58,7 @@ class SSH_Handler(BaseHandler):
         if "banner" in self.commands:
             if not self.respond(await self._get_command_output(self.commands["banner"])):
                 return
-        while self.process.channel._send_state == "open":
+        while self._is_open():
             if not self._safe_write(self.prompt_terminator):
                 break
             try:
@@ -87,6 +87,9 @@ class SSH_Handler(BaseHandler):
 
     def get_formatted_command(self, command):
         return command + '\n'
+    
+    def _is_open(self):
+        return self.process.channel._send_state == "open"
 
     async def _handle_command(self, command):
         """
@@ -243,6 +246,8 @@ class SSH_Handler(BaseHandler):
 
     def _safe_write(self, data: str) -> bool:
         """Write to SSH output and gracefully handle peer disconnects."""
+        if not self._is_open():
+            return False
         try:
             self.process.stdout.write(data)
             return True
