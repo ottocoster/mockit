@@ -8,9 +8,6 @@
 # Notes
 # -----
 # ASN.1 source file://mibs\cisco\AIRESPACE-WIRELESS-MIB
-# Produced by pysmi-1.6.2 at Mon Nov 10 12:11:04 2025
-# On host LenovoKarel platform Windows version 11 by user cfw_o
-# Using Python version 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]
 
 if 'mibBuilder' not in globals():
     import sys
@@ -117,7 +114,11 @@ bsnWireless = ModuleIdentity(
 )
 if mibBuilder.loadTexts:
     bsnWireless.setRevisions(
-        ("2014-06-26 00:00",
+        ("2024-01-12 00:00",
+         "2022-09-16 00:00",
+         "2020-12-02 00:00",
+         "2015-09-14 00:00",
+         "2014-06-26 00:00",
          "2011-09-27 00:00",
          "2010-02-09 00:00",
          "2006-04-10 00:00",
@@ -1757,6 +1758,24 @@ bsnDot11Ess7920PhoneSupport = _BsnDot11Ess7920PhoneSupport_Object(
 bsnDot11Ess7920PhoneSupport.setMaxAccess("read-create")
 if mibBuilder.loadTexts:
     bsnDot11Ess7920PhoneSupport.setStatus("current")
+_BsnDot11EssNumApsUp_Type = Unsigned32
+_BsnDot11EssNumApsUp_Object = MibTableColumn
+bsnDot11EssNumApsUp = _BsnDot11EssNumApsUp_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 1, 1, 1, 66),
+    _BsnDot11EssNumApsUp_Type()
+)
+bsnDot11EssNumApsUp.setMaxAccess("read-only")
+if mibBuilder.loadTexts:
+    bsnDot11EssNumApsUp.setStatus("current")
+_BsnDot11EssNumApsDown_Type = Unsigned32
+_BsnDot11EssNumApsDown_Object = MibTableColumn
+bsnDot11EssNumApsDown = _BsnDot11EssNumApsDown_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 1, 1, 1, 67),
+    _BsnDot11EssNumApsDown_Type()
+)
+bsnDot11EssNumApsDown.setMaxAccess("read-only")
+if mibBuilder.loadTexts:
+    bsnDot11EssNumApsDown.setStatus("current")
 
 
 class _BsnDot11EssRadiusAuthPrimaryServer_Type(DisplayString):
@@ -2046,7 +2065,332 @@ class _BsnMobileStationReasonCode_Type(Integer32):
               200,
               201,
               202,
-              203)
+              203,
+              1000,
+              1001,
+              1002,
+              1003,
+              1004,
+              1005,
+              1006,
+              1007,
+              1008,
+              1009,
+              1010,
+              1011,
+              1012,
+              1013,
+              1014,
+              1015,
+              1016,
+              1017,
+              1018,
+              1019,
+              1020,
+              1021,
+              1022,
+              1023,
+              1024,
+              1025,
+              1026,
+              1027,
+              1028,
+              1029,
+              1030,
+              1031,
+              1032,
+              1033,
+              1034,
+              1035,
+              1036,
+              1037,
+              1038,
+              1039,
+              1040,
+              1041,
+              1042,
+              1043,
+              1044,
+              1045,
+              1046,
+              1047,
+              1048,
+              1049,
+              1050,
+              1051,
+              1052,
+              1053,
+              1054,
+              1055,
+              1056,
+              1057,
+              1058,
+              1059,
+              1060,
+              1061,
+              1062,
+              1063,
+              1064,
+              1065,
+              1066,
+              1067,
+              1068,
+              1069,
+              1070,
+              1071,
+              1072,
+              1073,
+              1074,
+              1075,
+              1076,
+              1077,
+              1078,
+              1079,
+              1080,
+              1081,
+              1082,
+              1083,
+              1084,
+              1085,
+              1086,
+              1087,
+              1088,
+              1089,
+              1090,
+              1091,
+              1092,
+              1093,
+              1094,
+              1095,
+              1096,
+              1097,
+              1098,
+              1099,
+              1100,
+              1101,
+              1102,
+              1103,
+              1104,
+              1105,
+              1106,
+              1107,
+              1108,
+              1109,
+              1110,
+              1111,
+              1112,
+              1113,
+              1114,
+              1115,
+              1116,
+              1117,
+              1118,
+              1119,
+              1120,
+              1121,
+              1122,
+              1123,
+              1124,
+              1125,
+              1126,
+              1127,
+              1128,
+              1129,
+              1130,
+              1131,
+              1132,
+              1133,
+              1134,
+              1135,
+              1136,
+              1137,
+              1138,
+              1139,
+              1140,
+              1141,
+              1142,
+              1143,
+              1144,
+              1145,
+              1146,
+              1147,
+              1148,
+              1149,
+              1150,
+              1151,
+              1152,
+              1153,
+              1154,
+              1155,
+              1156,
+              1157,
+              1158,
+              1159,
+              1160,
+              1161,
+              1162,
+              1163,
+              1164,
+              1165,
+              1166,
+              1167,
+              1168,
+              1169,
+              1170,
+              1171,
+              1172,
+              1173,
+              1174,
+              1175,
+              1176,
+              1177,
+              1178,
+              1179,
+              1180,
+              1181,
+              1182,
+              1183,
+              1184,
+              1185,
+              1186,
+              1187,
+              1188,
+              1189,
+              1190,
+              1191,
+              1192,
+              1193,
+              1194,
+              1195,
+              1196,
+              1197,
+              1198,
+              1199,
+              1200,
+              1201,
+              1202,
+              1203,
+              1204,
+              1205,
+              1206,
+              1207,
+              1208,
+              1209,
+              1210,
+              1211,
+              1212,
+              1213,
+              1214,
+              1215,
+              1216,
+              1217,
+              1218,
+              1219,
+              1220,
+              1221,
+              1222,
+              1223,
+              1224,
+              1225,
+              1226,
+              1227,
+              1228,
+              1229,
+              1230,
+              1231,
+              1232,
+              1233,
+              1234,
+              1235,
+              1236,
+              1237,
+              1238,
+              1239,
+              1240,
+              1241,
+              1242,
+              1243,
+              1244,
+              1245,
+              1246,
+              1247,
+              1248,
+              1249,
+              1250,
+              1251,
+              1252,
+              1253,
+              1254,
+              1255,
+              1256,
+              1257,
+              1258,
+              1259,
+              1260,
+              1261,
+              1262,
+              1263,
+              1264,
+              1265,
+              1266,
+              1267,
+              1268,
+              1269,
+              1270,
+              1271,
+              1272,
+              1273,
+              1274,
+              1275,
+              1276,
+              1277,
+              1278,
+              1279,
+              1280,
+              1281,
+              1282,
+              1283,
+              1284,
+              1285,
+              1286,
+              1287,
+              1288,
+              1289,
+              1290,
+              1291,
+              1292,
+              1293,
+              1294,
+              1295,
+              1296,
+              1297,
+              1298,
+              1299,
+              1300,
+              1301,
+              1302,
+              1303,
+              1304,
+              1305,
+              1306,
+              1307,
+              1308,
+              1309,
+              1310,
+              1311,
+              1312,
+              1313,
+              1314,
+              1315,
+              1316,
+              1317,
+              1318,
+              1319,
+              1320,
+              1321,
+              1322,
+              1323,
+              1324)
         )
     )
     namedValues = NamedValues(
@@ -2071,7 +2415,332 @@ class _BsnMobileStationReasonCode_Type(Integer32):
           ("unSpecifieQosFailure", 200),
           ("qosPolicyMismatch", 201),
           ("inSufficientBandwidth", 202),
-          ("inValidQosParams", 203))
+          ("inValidQosParams", 203),
+          ("noOperation", 1000),
+          ("none", 1001),
+          ("deauthOrDisassocReq", 1002),
+          ("sessionAwareModuleInitiated", 1003),
+          ("l3authFail", 1004),
+          ("apInitiatedDelete", 1005),
+          ("bssidDown", 1006),
+          ("capwapDown", 1007),
+          ("connectTimeout", 1008),
+          ("mabFailed", 1009),
+          ("datapathFailure", 1010),
+          ("wlanChange", 1011),
+          ("vlanChange", 1012),
+          ("adminReset", 1013),
+          ("qosFailure", 1014),
+          ("keyExchangeTimeout", 1015),
+          ("groupKeyUpdateTimeout", 1016),
+          ("maxSaqueries", 1017),
+          ("restartPurge", 1018),
+          ("clientBlacklist", 1019),
+          ("interWncdRoamSuccess", 1020),
+          ("interWncdRoamFailure", 1021),
+          ("interCtrlRoamSuccess", 1022),
+          ("mobilityFailure", 1023),
+          ("sessionTimeout", 1024),
+          ("idleTimeout", 1025),
+          ("userRequest", 1026),
+          ("nasError", 1027),
+          ("serviceUnavailable", 1028),
+          ("mbssidDown", 1029),
+          ("mmTunnelDown", 1030),
+          ("dot11vSmartRoamFailed", 1031),
+          ("dot11vTimerTimeout", 1032),
+          ("dot11vAssocFailed", 1033),
+          ("ftAuthResponse", 1034),
+          ("saeAuthFailure", 1035),
+          ("dot11UnspecifiedFailure", 1036),
+          ("dot11FailureIgnoreReq", 1037),
+          ("dot11CcxQosAddtsNoBandwidth", 1038),
+          ("dot11CapsUnsupported", 1039),
+          ("dot11AssocDeniedUnspec", 1040),
+          ("dot11MaxSta", 1041),
+          ("dot11DeniedRates", 1042),
+          ("dot11PoorChannelConditions", 1043),
+          ("dot11InvalidQosParameter", 1044),
+          ("dot11InvalidIe", 1045),
+          ("dot11GroupCipherInvalid", 1046),
+          ("dot11UnicastCipherInvalid", 1047),
+          ("dot11AkmpInvalid", 1048),
+          ("dot11UnsupportedRsnVersion", 1049),
+          ("dot11InvalidRsnIeCapabilities", 1050),
+          ("dot11CipherSuiteRejected", 1051),
+          ("dot11DeniedHtCapabiliies", 1052),
+          ("dot11InvalidFtActionFrameCount", 1053),
+          ("dot11InvalidPmkid", 1054),
+          ("dot11InvalidMdie", 1055),
+          ("dot11InvalidFtie", 1056),
+          ("dot11CcxQosPolicy", 1057),
+          ("dot11CcxInsufficientBandwidth", 1058),
+          ("dot11CcxInvalidQosParameter", 1059),
+          ("dot11CcxNonOptimalAssociationChoice", 1060),
+          ("wiredIappDisassoc", 1061),
+          ("wiredWgbChange", 1062),
+          ("wiredVlanChange", 1063),
+          ("wiredWgbDelete", 1064),
+          ("avcReanchoring", 1065),
+          ("wgbClientDirectAssoc", 1066),
+          ("apUpgrade", 1067),
+          ("clientDhcpFailure", 1068),
+          ("clientEapTimeoutFailure", 1069),
+          ("client8021xFailure", 1070),
+          ("clientDeviceIdle", 1071),
+          ("clientCaptivePortalSecurityFailure", 1072),
+          ("clientDecryptionFailure", 1073),
+          ("clientInterfaceDisabled", 1074),
+          ("clientUserTriggeredDisassoc", 1075),
+          ("clientMiscReason", 1076),
+          ("clientUnknownReason", 1077),
+          ("clientPeerTriggered", 1078),
+          ("clientBeaconLoss", 1079),
+          ("clientEapIdTimeout", 1080),
+          ("clientDot1xTimeout", 1081),
+          ("keyMgmtInvalidFrame", 1082),
+          ("keyMgmtInstallBit", 1083),
+          ("keyMgmtErrorBit", 1084),
+          ("keyMgmtAckBit", 1085),
+          ("keyMgmtInvalidKey", 1086),
+          ("keyMgmtSecureBit", 1087),
+          ("keyMgmtKeyDescVer", 1088),
+          ("keyMgmtWrongReplayCounter", 1089),
+          ("keyMgmtNoMicBit", 1090),
+          ("keyMgmtMicValidation", 1091),
+          ("keyMgmtPtkComputation", 1092),
+          ("clientCredentialFailure", 1093),
+          ("lostCarrier", 1094),
+          ("reauthFailure", 1095),
+          ("portAdminDisabled", 1096),
+          ("supplicantRestart", 1097),
+          ("ipDownNoIp", 1098),
+          ("anchorThrottled", 1099),
+          ("anchorNoMemory", 1100),
+          ("anchorInvalidMbssid", 1101),
+          ("anchorCreateReqFail", 1102),
+          ("dbPopulateFail", 1103),
+          ("danglingCleanupTimer", 1104),
+          ("excludeConfig", 1105),
+          ("excludeAssocFail", 1106),
+          ("excludeDot11AuthFail", 1107),
+          ("excludeDot1xTimeout", 1108),
+          ("excludeDot1xAuthFail", 1109),
+          ("excludeWebAuthFail", 1110),
+          ("excludePolicyBindFail", 1111),
+          ("excludeIpTheft", 1112),
+          ("excludeMacTheft", 1113),
+          ("excludeMacAndIpTheft", 1114),
+          ("excludeQosPolicyFail", 1115),
+          ("excludeQosPolicyApSendFail", 1116),
+          ("excludeQosPolicyApBindFail", 1117),
+          ("excludeQosPolicyApUnbindFail", 1118),
+          ("excludeStaticIpAnchorFail", 1119),
+          ("excludeVlanFail", 1120),
+          ("excludeAclFail", 1121),
+          ("excludePuntAclFail", 1122),
+          ("excludeAccountingFail", 1123),
+          ("excludeCtsFail", 1124),
+          ("excludeFqdnNoDefFail", 1125),
+          ("excludeFqdnPostauthMismatchFail", 1126),
+          ("excludeFqdnPreauthMismatchFail", 1127),
+          ("excludeFqdnZeroGidFail", 1128),
+          ("excludeMiscFail", 1129),
+          ("excludeReauthFailure", 1130),
+          ("excludeWrongPsk", 1131),
+          ("excludePolicyFailure", 1132),
+          ("mnIdleTimeout", 1133),
+          ("mnClientAclMismatch", 1134),
+          ("mnApAuthStop", 1135),
+          ("mnAssocExpiredAtAp", 1136),
+          ("mn4wayHandshakeFailed", 1137),
+          ("mnDhcpTimeout", 1138),
+          ("mnReassocTimeout", 1139),
+          ("mnSaQueryTimeout", 1140),
+          ("mnIntraApRoam", 1141),
+          ("mnChannelSwitchAtAp", 1142),
+          ("mnDelBadAid", 1143),
+          ("mnDelRequest", 1144),
+          ("mnDelIntfReset", 1145),
+          ("mnDelAllOnSlot", 1146),
+          ("mnDelReaperRadio", 1147),
+          ("mnDelSlotDisable", 1148),
+          ("mnDelMicFail", 1149),
+          ("mnDelVlanDel", 1150),
+          ("mnDelChannelChange", 1151),
+          ("mnDelStopReassoc", 1152),
+          ("mnDelPakMaxRetry", 1153),
+          ("mnDelTxDeauth", 1154),
+          ("mnDelSensorStaTimeout", 1155),
+          ("mnDelAgeTimeout", 1156),
+          ("mnDelTxFailThold", 1157),
+          ("mnDelUplinkRcvTimeout", 1158),
+          ("mnDelSnsrScanNxtRadio", 1159),
+          ("mnDelSnsrScanOtherBssid", 1160),
+          ("aaaServerUnavailable", 1161),
+          ("aaaNotReady", 1162),
+          ("noDot1xAuthConfig", 1163),
+          ("abortReceived", 1164),
+          ("assocConnectTimeout", 1165),
+          ("macauthConnectTimeout", 1166),
+          ("l2authConnectTimeout", 1167),
+          ("l3authConnectTimeout", 1168),
+          ("mobilityConnectTimeout", 1169),
+          ("sIpAnchorConnectTimeout", 1170),
+          ("smSessionConnectTimeout", 1171),
+          ("iplearnConnectTimeout", 1172),
+          ("nackIfidExists", 1173),
+          ("radioDown", 1174),
+          ("fabricReject", 1175),
+          ("guestLanInvalidMbssid", 1176),
+          ("guestLanNoMemory", 1177),
+          ("guestLanCreateReqFail", 1178),
+          ("tunnelEogreReset", 1179),
+          ("tunnelEogreJoinFail", 1180),
+          ("tunnelEogreReconciliation", 1181),
+          ("wiredIdleTimeout", 1182),
+          ("ipUpdateTimeout", 1183),
+          ("remoteMobilityDelete", 1184),
+          ("saeAuthInAssociatedState", 1185),
+          ("nackIfidMismatch", 1186),
+          ("tunnelEogreInvalidVlan", 1187),
+          ("tunnelEogreEmptyDomain", 1188),
+          ("tunnelEogreInvalidDomain", 1189),
+          ("tunnelEogreDomainShut", 1190),
+          ("tunnelEogreInvalidGw", 1191),
+          ("tunnelEogreGwDown", 1192),
+          ("tunnelEogreFlexNoActiveGw", 1193),
+          ("tunnelEogreRuleMatch", 1194),
+          ("tunnelEogreAaaOverride", 1195),
+          ("tunnelEogreMspayload", 1196),
+          ("tunnelEogreHandoffError", 1197),
+          ("invalidPmkLen", 1198),
+          ("l3VlanOverrideConnectTimeout", 1199),
+          ("userTriggeredUnspecified", 1200),
+          ("userTriggeredPwroffWifioff", 1201),
+          ("userTriggeredConnectToAnotherSsid", 1202),
+          ("userTriggeredRemoveSsid", 1203),
+          ("userTriggeredAirplaneMode", 1204),
+          ("l2connectionUnspecified", 1205),
+          ("l2connectionAssociation", 1206),
+          ("fourWayHandshakeUnspecified", 1207),
+          ("keyM1Failure", 1208),
+          ("keyM3Failure", 1209),
+          ("m3M4KeyXchngTimeout", 1210),
+          ("dhcpFailUnspecified", 1211),
+          ("dhcpFailTimeout", 1212),
+          ("dhcpFailTimeoutAfterRoaming", 1213),
+          ("dhcpFailLeaseExpired", 1214),
+          ("dhcpFailNakInRenew", 1215),
+          ("dhcpFailRenewLeaseWrongIp", 1216),
+          ("dhcpFailInternalError", 1217),
+          ("eapFailUnspecified", 1218),
+          ("eapFailCodeFail", 1219),
+          ("eapFailInfoNotEntered", 1220),
+          ("eapFailMschapError", 1221),
+          ("eapFailSimAuthFail", 1222),
+          ("eapFailTimeout", 1223),
+          ("eapFailTlsCertError", 1224),
+          ("noInternetUnspecified", 1225),
+          ("noInternetDns", 1226),
+          ("noInternetArp", 1227),
+          ("exclusionPolicyTemplateFail", 1228),
+          ("mnDelAuthExpired", 1229),
+          ("mnDelDisassoc", 1230),
+          ("mnDelTxDisassoc", 1231),
+          ("fastroamMobilityFailure", 1232),
+          ("roamAcrossPolicyProfileDeny", 1233),
+          ("dot11AidAllocConflictReq", 1234),
+          ("zoneChange", 1235),
+          ("wlanIdAttrMismatch", 1236),
+          ("easypskAAAUnknown", 1237),
+          ("easypskUnspecified", 1238),
+          ("easypskPskMismatch", 1239),
+          ("easypskRadiusBusy", 1240),
+          ("easypskLimitReached", 1241),
+          ("easypskBadFrame", 1242),
+          ("easypskMissingParameter", 1243),
+          ("supplicantNameFail", 1244),
+          ("userNameFail", 1245),
+          ("serviceSetIdFail", 1246),
+          ("anchorVlanIdFail", 1247),
+          ("pskFail", 1248),
+          ("pskModeFail", 1249),
+          ("interimIntervalFail", 1250),
+          ("randomMac", 1251),
+          ("mnapiplearntimeout", 1252),
+          ("mnapbyflexgroupchange", 1253),
+          ("mnapeapollogoff", 1254),
+          ("mnapeapreqtimeout", 1255),
+          ("mnap4wayhandshakefailed", 1256),
+          ("mnapmicvalidation", 1257),
+          ("mnapwrongreplaycounter", 1258),
+          ("mnaptunneldown", 1259),
+          ("mnapinteraproam", 1260),
+          ("mnapunknownclient", 1261),
+          ("mnapreauthtimeout", 1262),
+          ("mnapcontidletimeout", 1263),
+          ("mnaprldpcleanup", 1264),
+          ("mnapintraswitchroam", 1265),
+          ("mnappemcleanup", 1266),
+          ("mnaprlancentralswitch", 1267),
+          ("mnaprlandpaddfail", 1268),
+          ("mnaprlandelete", 1269),
+          ("mnaprlaninactivetimeout", 1270),
+          ("mnaprlanmabfailure", 1271),
+          ("mnapclsmnomemory", 1272),
+          ("mnapclsmbssidmismatch", 1273),
+          ("mnapclsmdeletenoacl", 1274),
+          ("mnapclsmdeletenoparentwgb", 1275),
+          ("mnapclsmkeyplumbfail", 1276),
+          ("mnapclsmmeshkeyplumbfail", 1277),
+          ("mnapclsmdpaddfail", 1278),
+          ("mnapclsmauthrespreject", 1279),
+          ("mnapclsmauthrespsendfail", 1280),
+          ("mnapclsmassocrespsendfail", 1281),
+          ("mnapclsmassocrespwithfailurestatus", 1282),
+          ("mnapclsmwebauthtimerexpired", 1283),
+          ("mnapclsmdot1xtimerexpired", 1284),
+          ("mnapclsmdeauthdisassocsendfail", 1285),
+          ("mnapdrivereventclass3recv", 1286),
+          ("mnapdrivereventpspwhenunauth", 1287),
+          ("mnapdrivereventioctlerror", 1288),
+          ("mnapflexftfailure", 1289),
+          ("mnapclsmdriveraddfail", 1290),
+          ("mnapdriverclientnotfound", 1291),
+          ("mnapdrivermgmtpktallocfail", 1292),
+          ("mnapdriverinvalidcipher", 1293),
+          ("mnapdriverinvalidaid", 1294),
+          ("mnapdriverinvalidkey", 1295),
+          ("mnapdriverfwkeysetfailed", 1296),
+          ("mnapdriverinvalidhtvhtrates", 1297),
+          ("mnapdriverinvalidlegacyrates", 1298),
+          ("mnapdrivernooverlaplegacyrates", 1299),
+          ("mnapdrivermaxvhtstreams", 1300),
+          ("mnapdriveraidinuse", 1301),
+          ("mnapdriverassoctoomany", 1302),
+          ("mnapdrivercipherattachfail", 1303),
+          ("mnapdriveralgorithmmismatch", 1304),
+          ("mnapdriverinvalidkeylength", 1305),
+          ("mnapdriverinvalidkeyindex", 1306),
+          ("mnapdriverassocscbnotauthenticated", 1307),
+          ("mnapdriverstadbinitfailed", 1308),
+          ("mnapdriveraddingentryfailed", 1309),
+          ("mnapdriveraddingentryinfirmwarefailed", 1310),
+          ("mnapreasonapmax", 1311),
+          ("linklocalbridgevlanfail", 1312),
+          ("maxstaonap", 1313),
+          ("maxstaonvap", 1314),
+          ("maxstaonbssid", 1315),
+          ("maxstaonradio", 1316),
+          ("mnapmaxstaonap", 1317),
+          ("mnapmaxstaonbssid", 1318),
+          ("mnapmaxstaonradio", 1319),
+          ("pmkTimeoutOnSTA", 1320),
+          ("excessarprate", 1321),
+          ("excessndprate", 1322),
+          ("vrfvlanMismatch", 1323),
+          ("dpathencodefailed", 1324))
     )
 
 
@@ -2412,7 +3081,10 @@ class _BsnMobileStationProtocol_Type(Integer32):
               7,
               8,
               9,
-              10)
+              10,
+              11,
+              12,
+              13)
         )
     )
     namedValues = NamedValues(
@@ -2425,7 +3097,10 @@ class _BsnMobileStationProtocol_Type(Integer32):
           ("dot11n5", 7),
           ("ethernet", 8),
           ("dot3", 9),
-          ("dot11ac", 10))
+          ("dot11ac", 10),
+          ("dot11ax5", 11),
+          ("dot11ax24", 12),
+          ("dot11ax6", 13))
     )
 
 
@@ -2544,7 +3219,10 @@ class _BsnMobileStationPolicyType_Type(Integer32):
               2,
               3,
               4,
-              5)
+              5,
+              6,
+              7,
+              8)
         )
     )
     namedValues = NamedValues(
@@ -2553,7 +3231,10 @@ class _BsnMobileStationPolicyType_Type(Integer32):
           ("wpa2", 2),
           ("wpa2vff", 3),
           ("notavailable", 4),
-          ("unknown", 5))
+          ("unknown", 5),
+          ("wpa2or3", 6),
+          ("wpaOsen", 7),
+          ("wpaOsenWithinRsn", 8))
     )
 
 
@@ -2580,7 +3261,12 @@ class _BsnMobileStationEncryptionCypher_Type(Integer32):
               4,
               5,
               6,
-              7)
+              7,
+              8,
+              9,
+              10,
+              11,
+              12)
         )
     )
     namedValues = NamedValues(
@@ -2590,8 +3276,13 @@ class _BsnMobileStationEncryptionCypher_Type(Integer32):
           ("wep104", 3),
           ("wep128", 4),
           ("none", 5),
-          ("notavailable", 6),
-          ("unknown", 7))
+          ("tkipWep40", 6),
+          ("tkipWep104", 7),
+          ("gcmp128", 8),
+          ("gcmp256", 9),
+          ("ccmp256", 10),
+          ("notavailable", 11),
+          ("unknown", 12))
     )
 
 
@@ -2729,6 +3420,15 @@ bsnMobileStationStatusCode = _BsnMobileStationStatusCode_Object(
 bsnMobileStationStatusCode.setMaxAccess("read-only")
 if mibBuilder.loadTexts:
     bsnMobileStationStatusCode.setStatus("current")
+_BsnMobileStationAAAOverridePassphrase_Type = TruthValue
+_BsnMobileStationAAAOverridePassphrase_Object = MibTableColumn
+bsnMobileStationAAAOverridePassphrase = _BsnMobileStationAAAOverridePassphrase_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 1, 4, 1, 43),
+    _BsnMobileStationAAAOverridePassphrase_Type()
+)
+bsnMobileStationAAAOverridePassphrase.setMaxAccess("read-only")
+if mibBuilder.loadTexts:
+    bsnMobileStationAAAOverridePassphrase.setStatus("current")
 _BsnMobileStationPerRadioPerVapTable_Object = MibTable
 bsnMobileStationPerRadioPerVapTable = _BsnMobileStationPerRadioPerVapTable_Object(
     (1, 3, 6, 1, 4, 1, 14179, 2, 1, 5)
@@ -3033,7 +3733,12 @@ class _BsnRogueAPDetectingAPRadioType_Type(Bits):
           ("dot11a", 1),
           ("dot11g", 2),
           ("dot11n24", 3),
-          ("dot11n5", 4))
+          ("dot11n5", 4),
+          ("dot11abgn", 5),
+          ("dot11ac", 6),
+          ("dot11ax24", 7),
+          ("dot11ax5", 8),
+          ("dot11ax6", 9))
     )
 
 _BsnRogueAPDetectingAPRadioType_Type.__name__ = "Bits"
@@ -3063,19 +3768,29 @@ class _BsnRogueAPMaxRssiRadioType_Type(Integer32):
         SingleValueConstraint(
             *(1,
               2,
+              3,
               4,
               5,
               6,
-              7)
+              7,
+              8,
+              9,
+              10,
+              11)
         )
     )
     namedValues = NamedValues(
         *(("dot11b", 1),
           ("dot11a", 2),
+          ("dot11abgn", 3),
           ("uwb", 4),
           ("dot11g", 5),
           ("dot11n24", 6),
-          ("dot11n5", 7))
+          ("dot11n5", 7),
+          ("dot11ac", 8),
+          ("dot11ax24", 9),
+          ("dot11ax5", 10),
+          ("dot11ax6", 11))
     )
 
 
@@ -3248,7 +3963,11 @@ class _BsnRogueAPRadioType_Type(Integer32):
               4,
               5,
               6,
-              7)
+              7,
+              9,
+              10,
+              11,
+              12)
         )
     )
     namedValues = NamedValues(
@@ -3258,7 +3977,11 @@ class _BsnRogueAPRadioType_Type(Integer32):
           ("uwb", 4),
           ("dot11g", 5),
           ("dot11n24", 6),
-          ("dot11n5", 7))
+          ("dot11n5", 7),
+          ("dot11ac", 9),
+          ("dot11ax24", 10),
+          ("dot11ax5", 11),
+          ("dot11ax6", 12))
     )
 
 
@@ -3487,6 +4210,15 @@ bsnRogueAPChannelWidth = _BsnRogueAPChannelWidth_Object(
 bsnRogueAPChannelWidth.setMaxAccess("read-only")
 if mibBuilder.loadTexts:
     bsnRogueAPChannelWidth.setStatus("current")
+_BsnRogueAPPhysicalAPSlot_Type = Integer32
+_BsnRogueAPPhysicalAPSlot_Object = MibTableColumn
+bsnRogueAPPhysicalAPSlot = _BsnRogueAPPhysicalAPSlot_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 1, 8, 1, 29),
+    _BsnRogueAPPhysicalAPSlot_Type()
+)
+bsnRogueAPPhysicalAPSlot.setMaxAccess("read-only")
+if mibBuilder.loadTexts:
+    bsnRogueAPPhysicalAPSlot.setStatus("current")
 _BsnThirdPartyAPTable_Object = MibTable
 bsnThirdPartyAPTable = _BsnThirdPartyAPTable_Object(
     (1, 3, 6, 1, 4, 1, 14179, 2, 1, 9)
@@ -4045,13 +4777,15 @@ class _BsnRogueClientRadioType_Type(Integer32):
         SingleValueConstraint(
             *(1,
               2,
-              3)
+              3,
+              4)
         )
     )
     namedValues = NamedValues(
         *(("dot11b", 1),
           ("dot11a", 2),
-          ("unknown", 3))
+          ("unknown", 3),
+          ("dot11ax6", 4))
     )
 
 
@@ -4109,6 +4843,15 @@ bsnRogueClientAirespaceAPSNR = _BsnRogueClientAirespaceAPSNR_Object(
 bsnRogueClientAirespaceAPSNR.setMaxAccess("read-only")
 if mibBuilder.loadTexts:
     bsnRogueClientAirespaceAPSNR.setStatus("current")
+_BsnRogueClientPhysicalAPSlot_Type = Integer32
+_BsnRogueClientPhysicalAPSlot_Object = MibTableColumn
+bsnRogueClientPhysicalAPSlot = _BsnRogueClientPhysicalAPSlot_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 1, 15, 1, 28),
+    _BsnRogueClientPhysicalAPSlot_Type()
+)
+bsnRogueClientPhysicalAPSlot.setMaxAccess("read-only")
+if mibBuilder.loadTexts:
+    bsnRogueClientPhysicalAPSlot.setStatus("current")
 _BsnRogueClientPerRogueAPTable_Object = MibTable
 bsnRogueClientPerRogueAPTable = _BsnRogueClientPerRogueAPTable_Object(
     (1, 3, 6, 1, 4, 1, 14179, 2, 1, 16)
@@ -5097,7 +5840,70 @@ class _BsnAPType_Type(Integer32):
               51,
               52,
               53,
-              54)
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              110,
+              115,
+              116,
+              129,
+              130,
+              131,
+              132,
+              133,
+              134,
+              135,
+              136,
+              137,
+              138,
+              139,
+              140,
+              141)
         )
     )
     namedValues = NamedValues(
@@ -5154,7 +5960,70 @@ class _BsnAPType_Type(Integer32):
           ("ap1700i", 51),
           ("ap1700e", 52),
           ("ap1570e", 53),
-          ("ap1570i", 54))
+          ("ap1570i", 54),
+          ("ap1852e", 55),
+          ("ap1852i", 56),
+          ("ap1832i", 57),
+          ("ap752t", 58),
+          ("apmr24", 59),
+          ("ap3702", 60),
+          ("ap1802i", 61),
+          ("ap1810w", 62),
+          ("apoeap1810", 63),
+          ("ap3802e", 64),
+          ("ap3802i", 65),
+          ("ap3802p", 66),
+          ("ap3802q", 67),
+          ("ap2802e", 68),
+          ("ap2802i", 69),
+          ("ap2802q", 70),
+          ("ap1815w", 71),
+          ("apoeap1815", 72),
+          ("ap1815I", 73),
+          ("ap1562e", 74),
+          ("ap1562i", 75),
+          ("ap1562d", 76),
+          ("ap1562ps", 77),
+          ("ap1800I", 78),
+          ("ap1800S", 79),
+          ("ap1815M", 80),
+          ("ap1542D", 81),
+          ("ap1542I", 82),
+          ("ap1100ac", 83),
+          ("ap1101ac", 84),
+          ("ap1582e", 85),
+          ("ap1582i", 86),
+          ("ap1542E2", 87),
+          ("ap1542E4", 88),
+          ("ap9117I", 89),
+          ("ap9115AXI", 90),
+          ("ap9115AXE", 91),
+          ("ap1840I", 92),
+          ("ap9120AXI", 93),
+          ("ap9120AXE", 94),
+          ("ap9120AXP", 95),
+          ("iw6300HD", 97),
+          ("iw6300HA", 98),
+          ("iw6300HW", 99),
+          ("esw6300", 100),
+          ("ap9130AXI", 101),
+          ("ap9130AXE", 102),
+          ("pwifiac2", 110),
+          ("ap9136I", 115),
+          ("wpwifi6", 116),
+          ("isr1101ax", 129),
+          ("cw9162I", 130),
+          ("cw9164I", 131),
+          ("cw9166I", 132),
+          ("iw9167eh", 133),
+          ("cw9166D1", 134),
+          ("iw9165DH", 135),
+          ("iw9167ih", 136),
+          ("cw9163E", 137),
+          ("cw9178I", 138),
+          ("iw9165E", 139),
+          ("cw9176I", 140),
+          ("cw9176D", 141))
     )
 
 
@@ -5423,13 +6292,17 @@ class _BsnAPIfType_Type(Integer32):
         SingleValueConstraint(
             *(1,
               2,
-              4)
+              4,
+              6,
+              7)
         )
     )
     namedValues = NamedValues(
         *(("dot11b", 1),
           ("dot11a", 2),
-          ("uwb", 4))
+          ("uwb", 4),
+          ("dot116ghz", 6),
+          ("dot11xor56ghz", 7))
     )
 
 
@@ -6083,6 +6956,15 @@ bsnAPIfRegulatoryDomainSupport = _BsnAPIfRegulatoryDomainSupport_Object(
 bsnAPIfRegulatoryDomainSupport.setMaxAccess("read-only")
 if mibBuilder.loadTexts:
     bsnAPIfRegulatoryDomainSupport.setStatus("current")
+_BsnAPIfPhyS80EightyChannelNumber_Type = Integer32
+_BsnAPIfPhyS80EightyChannelNumber_Object = MibTableColumn
+bsnAPIfPhyS80EightyChannelNumber = _BsnAPIfPhyS80EightyChannelNumber_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 2, 2, 1, 28),
+    _BsnAPIfPhyS80EightyChannelNumber_Type()
+)
+bsnAPIfPhyS80EightyChannelNumber.setMaxAccess("read-write")
+if mibBuilder.loadTexts:
+    bsnAPIfPhyS80EightyChannelNumber.setStatus("deprecated")
 
 
 class _BsnAPIfAdminStatus_Type(Integer32):
@@ -9473,6 +10355,32 @@ bsnIPTheftORReuse = _BsnIPTheftORReuse_Object(
 bsnIPTheftORReuse.setMaxAccess("read-write")
 if mibBuilder.loadTexts:
     bsnIPTheftORReuse.setStatus("current")
+
+
+class _BsnExcessive8021xTimeout_Type(Integer32):
+    """Custom type bsnExcessive8021xTimeout based on Integer32"""
+    subtypeSpec = Integer32.subtypeSpec
+    subtypeSpec += ConstraintsUnion(
+        SingleValueConstraint(
+            *(0,
+              1)
+        )
+    )
+    namedValues = NamedValues(
+        *(("disable", 0),
+          ("enable", 1))
+    )
+
+
+_BsnExcessive8021xTimeout_Type.__name__ = "Integer32"
+_BsnExcessive8021xTimeout_Object = MibScalar
+bsnExcessive8021xTimeout = _BsnExcessive8021xTimeout_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 3, 1, 41, 7),
+    _BsnExcessive8021xTimeout_Type()
+)
+bsnExcessive8021xTimeout.setMaxAccess("read-write")
+if mibBuilder.loadTexts:
+    bsnExcessive8021xTimeout.setStatus("current")
 _BsnSignatureConfig_ObjectIdentity = ObjectIdentity
 bsnSignatureConfig = _BsnSignatureConfig_ObjectIdentity(
     (1, 3, 6, 1, 4, 1, 14179, 2, 3, 1, 42)
@@ -11434,6 +12342,40 @@ bsnGlobalDot11bDTPCSupport = _BsnGlobalDot11bDTPCSupport_Object(
 bsnGlobalDot11bDTPCSupport.setMaxAccess("read-write")
 if mibBuilder.loadTexts:
     bsnGlobalDot11bDTPCSupport.setStatus("current")
+
+
+class _BsnGlobalDot11bRxSopThreshold_Type(Integer32):
+    """Custom type bsnGlobalDot11bRxSopThreshold based on Integer32"""
+    defaultValue = 0
+
+    subtypeSpec = Integer32.subtypeSpec
+    subtypeSpec += ConstraintsUnion(
+        SingleValueConstraint(
+            *(0,
+              1,
+              2,
+              3,
+              4)
+        )
+    )
+    namedValues = NamedValues(
+        *(("auto", 0),
+          ("low", 1),
+          ("medium", 2),
+          ("high", 3),
+          ("custom", 4))
+    )
+
+
+_BsnGlobalDot11bRxSopThreshold_Type.__name__ = "Integer32"
+_BsnGlobalDot11bRxSopThreshold_Object = MibScalar
+bsnGlobalDot11bRxSopThreshold = _BsnGlobalDot11bRxSopThreshold_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 3, 2, 1, 35),
+    _BsnGlobalDot11bRxSopThreshold_Type()
+)
+bsnGlobalDot11bRxSopThreshold.setMaxAccess("read-write")
+if mibBuilder.loadTexts:
+    bsnGlobalDot11bRxSopThreshold.setStatus("current")
 _BsnGlobalDot11bPhy_ObjectIdentity = ObjectIdentity
 bsnGlobalDot11bPhy = _BsnGlobalDot11bPhy_ObjectIdentity(
     (1, 3, 6, 1, 4, 1, 14179, 2, 3, 2, 2)
@@ -12542,6 +13484,40 @@ bsnGlobalDot11aDTPCSupport = _BsnGlobalDot11aDTPCSupport_Object(
 bsnGlobalDot11aDTPCSupport.setMaxAccess("read-write")
 if mibBuilder.loadTexts:
     bsnGlobalDot11aDTPCSupport.setStatus("current")
+
+
+class _BsnGlobalDot11aRxSopThreshold_Type(Integer32):
+    """Custom type bsnGlobalDot11aRxSopThreshold based on Integer32"""
+    defaultValue = 0
+
+    subtypeSpec = Integer32.subtypeSpec
+    subtypeSpec += ConstraintsUnion(
+        SingleValueConstraint(
+            *(0,
+              1,
+              2,
+              3,
+              4)
+        )
+    )
+    namedValues = NamedValues(
+        *(("auto", 0),
+          ("low", 1),
+          ("medium", 2),
+          ("high", 3),
+          ("custom", 4))
+    )
+
+
+_BsnGlobalDot11aRxSopThreshold_Type.__name__ = "Integer32"
+_BsnGlobalDot11aRxSopThreshold_Object = MibScalar
+bsnGlobalDot11aRxSopThreshold = _BsnGlobalDot11aRxSopThreshold_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 3, 3, 1, 33),
+    _BsnGlobalDot11aRxSopThreshold_Type()
+)
+bsnGlobalDot11aRxSopThreshold.setMaxAccess("read-write")
+if mibBuilder.loadTexts:
+    bsnGlobalDot11aRxSopThreshold.setStatus("current")
 _BsnGlobalDot11aPhy_ObjectIdentity = ObjectIdentity
 bsnGlobalDot11aPhy = _BsnGlobalDot11aPhy_ObjectIdentity(
     (1, 3, 6, 1, 4, 1, 14179, 2, 3, 3, 2)
@@ -12931,6 +13907,23 @@ bsnGlobalDot11hChannelSwitchMode = _BsnGlobalDot11hChannelSwitchMode_Object(
 bsnGlobalDot11hChannelSwitchMode.setMaxAccess("read-write")
 if mibBuilder.loadTexts:
     bsnGlobalDot11hChannelSwitchMode.setStatus("current")
+_BsnGlobalDot11System_ObjectIdentity = ObjectIdentity
+bsnGlobalDot11System = _BsnGlobalDot11System_ObjectIdentity(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 3, 5)
+)
+_BsnGlobalDot11SystemInfo_ObjectIdentity = ObjectIdentity
+bsnGlobalDot11SystemInfo = _BsnGlobalDot11SystemInfo_ObjectIdentity(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 3, 5, 1)
+)
+_BsnGlobalDot11SystemMobileStations_Type = Integer32
+_BsnGlobalDot11SystemMobileStations_Object = MibScalar
+bsnGlobalDot11SystemMobileStations = _BsnGlobalDot11SystemMobileStations_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 3, 5, 1, 1),
+    _BsnGlobalDot11SystemMobileStations_Type()
+)
+bsnGlobalDot11SystemMobileStations.setMaxAccess("read-only")
+if mibBuilder.loadTexts:
+    bsnGlobalDot11SystemMobileStations.setStatus("current")
 _BsnRrm_ObjectIdentity = ObjectIdentity
 bsnRrm = _BsnRrm_ObjectIdentity(
     (1, 3, 6, 1, 4, 1, 14179, 2, 4)
@@ -13150,7 +14143,7 @@ class _BsnRrmDot11aMobilesThreshold_Type(Integer32):
     """Custom type bsnRrmDot11aMobilesThreshold based on Integer32"""
     subtypeSpec = Integer32.subtypeSpec
     subtypeSpec += ConstraintsUnion(
-        ValueRangeConstraint(1, 75),
+        ValueRangeConstraint(1, 200),
     )
 
 
@@ -13332,6 +14325,27 @@ bsnRrmDot11aChannelMonitorList = _BsnRrmDot11aChannelMonitorList_Object(
 bsnRrmDot11aChannelMonitorList.setMaxAccess("read-write")
 if mibBuilder.loadTexts:
     bsnRrmDot11aChannelMonitorList.setStatus("current")
+
+
+class _BsnRrmDot11aSignalTimeoutFactor_Type(Unsigned32):
+    """Custom type bsnRrmDot11aSignalTimeoutFactor based on Unsigned32"""
+    defaultValue = 20
+
+    subtypeSpec = Unsigned32.subtypeSpec
+    subtypeSpec += ConstraintsUnion(
+        ValueRangeConstraint(5, 60),
+    )
+
+
+_BsnRrmDot11aSignalTimeoutFactor_Type.__name__ = "Unsigned32"
+_BsnRrmDot11aSignalTimeoutFactor_Object = MibScalar
+bsnRrmDot11aSignalTimeoutFactor = _BsnRrmDot11aSignalTimeoutFactor_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 4, 1, 6, 14),
+    _BsnRrmDot11aSignalTimeoutFactor_Type()
+)
+bsnRrmDot11aSignalTimeoutFactor.setMaxAccess("read-write")
+if mibBuilder.loadTexts:
+    bsnRrmDot11aSignalTimeoutFactor.setStatus("current")
 
 
 class _BsnRrmDot11aSetFactoryDefault_Type(Integer32):
@@ -13573,7 +14587,7 @@ class _BsnRrmDot11bMobilesThreshold_Type(Integer32):
     """Custom type bsnRrmDot11bMobilesThreshold based on Integer32"""
     subtypeSpec = Integer32.subtypeSpec
     subtypeSpec += ConstraintsUnion(
-        ValueRangeConstraint(1, 75),
+        ValueRangeConstraint(1, 200),
     )
 
 
@@ -13755,6 +14769,27 @@ bsnRrmDot11bChannelMonitorList = _BsnRrmDot11bChannelMonitorList_Object(
 bsnRrmDot11bChannelMonitorList.setMaxAccess("read-write")
 if mibBuilder.loadTexts:
     bsnRrmDot11bChannelMonitorList.setStatus("current")
+
+
+class _BsnRrmDot11bSignalTimeoutFactor_Type(Unsigned32):
+    """Custom type bsnRrmDot11bSignalTimeoutFactor based on Unsigned32"""
+    defaultValue = 20
+
+    subtypeSpec = Unsigned32.subtypeSpec
+    subtypeSpec += ConstraintsUnion(
+        ValueRangeConstraint(5, 60),
+    )
+
+
+_BsnRrmDot11bSignalTimeoutFactor_Type.__name__ = "Unsigned32"
+_BsnRrmDot11bSignalTimeoutFactor_Object = MibScalar
+bsnRrmDot11bSignalTimeoutFactor = _BsnRrmDot11bSignalTimeoutFactor_Object(
+    (1, 3, 6, 1, 4, 1, 14179, 2, 4, 2, 6, 14),
+    _BsnRrmDot11bSignalTimeoutFactor_Type()
+)
+bsnRrmDot11bSignalTimeoutFactor.setMaxAccess("read-write")
+if mibBuilder.loadTexts:
+    bsnRrmDot11bSignalTimeoutFactor.setStatus("current")
 
 
 class _BsnRrmDot11bSetFactoryDefault_Type(Integer32):
@@ -15860,13 +16895,33 @@ class _BsnAAARadiusCallStationIdType_Type(Integer32):
         SingleValueConstraint(
             *(0,
               1,
-              2)
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12)
         )
     )
     namedValues = NamedValues(
         *(("ipAddr", 0),
           ("macAddr", 1),
-          ("apMacAddress", 2))
+          ("apMacAddress", 2),
+          ("apMacAddressSsid", 3),
+          ("apNameSsid", 4),
+          ("apName", 5),
+          ("apGroupName", 6),
+          ("apLocation", 7),
+          ("apVlanId", 8),
+          ("apMacEthAddress", 9),
+          ("apMacEthAddressSsid", 10),
+          ("apLabelAddress", 11),
+          ("apLabelAddressSsid", 12))
     )
 
 
@@ -16818,7 +17873,332 @@ class _BsnStationReasonCode_Type(Integer32):
               200,
               201,
               202,
-              203)
+              203,
+              1000,
+              1001,
+              1002,
+              1003,
+              1004,
+              1005,
+              1006,
+              1007,
+              1008,
+              1009,
+              1010,
+              1011,
+              1012,
+              1013,
+              1014,
+              1015,
+              1016,
+              1017,
+              1018,
+              1019,
+              1020,
+              1021,
+              1022,
+              1023,
+              1024,
+              1025,
+              1026,
+              1027,
+              1028,
+              1029,
+              1030,
+              1031,
+              1032,
+              1033,
+              1034,
+              1035,
+              1036,
+              1037,
+              1038,
+              1039,
+              1040,
+              1041,
+              1042,
+              1043,
+              1044,
+              1045,
+              1046,
+              1047,
+              1048,
+              1049,
+              1050,
+              1051,
+              1052,
+              1053,
+              1054,
+              1055,
+              1056,
+              1057,
+              1058,
+              1059,
+              1060,
+              1061,
+              1062,
+              1063,
+              1064,
+              1065,
+              1066,
+              1067,
+              1068,
+              1069,
+              1070,
+              1071,
+              1072,
+              1073,
+              1074,
+              1075,
+              1076,
+              1077,
+              1078,
+              1079,
+              1080,
+              1081,
+              1082,
+              1083,
+              1084,
+              1085,
+              1086,
+              1087,
+              1088,
+              1089,
+              1090,
+              1091,
+              1092,
+              1093,
+              1094,
+              1095,
+              1096,
+              1097,
+              1098,
+              1099,
+              1100,
+              1101,
+              1102,
+              1103,
+              1104,
+              1105,
+              1106,
+              1107,
+              1108,
+              1109,
+              1110,
+              1111,
+              1112,
+              1113,
+              1114,
+              1115,
+              1116,
+              1117,
+              1118,
+              1119,
+              1120,
+              1121,
+              1122,
+              1123,
+              1124,
+              1125,
+              1126,
+              1127,
+              1128,
+              1129,
+              1130,
+              1131,
+              1132,
+              1133,
+              1134,
+              1135,
+              1136,
+              1137,
+              1138,
+              1139,
+              1140,
+              1141,
+              1142,
+              1143,
+              1144,
+              1145,
+              1146,
+              1147,
+              1148,
+              1149,
+              1150,
+              1151,
+              1152,
+              1153,
+              1154,
+              1155,
+              1156,
+              1157,
+              1158,
+              1159,
+              1160,
+              1161,
+              1162,
+              1163,
+              1164,
+              1165,
+              1166,
+              1167,
+              1168,
+              1169,
+              1170,
+              1171,
+              1172,
+              1173,
+              1174,
+              1175,
+              1176,
+              1177,
+              1178,
+              1179,
+              1180,
+              1181,
+              1182,
+              1183,
+              1184,
+              1185,
+              1186,
+              1187,
+              1188,
+              1189,
+              1190,
+              1191,
+              1192,
+              1193,
+              1194,
+              1195,
+              1196,
+              1197,
+              1198,
+              1199,
+              1200,
+              1201,
+              1202,
+              1203,
+              1204,
+              1205,
+              1206,
+              1207,
+              1208,
+              1209,
+              1210,
+              1211,
+              1212,
+              1213,
+              1214,
+              1215,
+              1216,
+              1217,
+              1218,
+              1219,
+              1220,
+              1221,
+              1222,
+              1223,
+              1224,
+              1225,
+              1226,
+              1227,
+              1228,
+              1229,
+              1230,
+              1231,
+              1232,
+              1233,
+              1234,
+              1235,
+              1236,
+              1237,
+              1238,
+              1239,
+              1240,
+              1241,
+              1242,
+              1243,
+              1244,
+              1245,
+              1246,
+              1247,
+              1248,
+              1249,
+              1250,
+              1251,
+              1252,
+              1253,
+              1254,
+              1255,
+              1256,
+              1257,
+              1258,
+              1259,
+              1260,
+              1261,
+              1262,
+              1263,
+              1264,
+              1265,
+              1266,
+              1267,
+              1268,
+              1269,
+              1270,
+              1271,
+              1272,
+              1273,
+              1274,
+              1275,
+              1276,
+              1277,
+              1278,
+              1279,
+              1280,
+              1281,
+              1282,
+              1283,
+              1284,
+              1285,
+              1286,
+              1287,
+              1288,
+              1289,
+              1290,
+              1291,
+              1292,
+              1293,
+              1294,
+              1295,
+              1296,
+              1297,
+              1298,
+              1299,
+              1300,
+              1301,
+              1302,
+              1303,
+              1304,
+              1305,
+              1306,
+              1307,
+              1308,
+              1309,
+              1310,
+              1311,
+              1312,
+              1313,
+              1314,
+              1315,
+              1316,
+              1317,
+              1318,
+              1319,
+              1320,
+              1321,
+              1322,
+              1323,
+              1324)
         )
     )
     namedValues = NamedValues(
@@ -16843,7 +18223,332 @@ class _BsnStationReasonCode_Type(Integer32):
           ("unSpecifiedQosFailure", 200),
           ("qosPolicyMismatch", 201),
           ("inSufficientBandwidth", 202),
-          ("inValidQosParams", 203))
+          ("inValidQosParams", 203),
+          ("noOperation", 1000),
+          ("none", 1001),
+          ("deauthOrDisassocReq", 1002),
+          ("sessionAwareModuleInitiated", 1003),
+          ("l3authFail", 1004),
+          ("apInitiatedDelete", 1005),
+          ("bssidDown", 1006),
+          ("capwapDown", 1007),
+          ("connectTimeout", 1008),
+          ("mabFailed", 1009),
+          ("datapathFailure", 1010),
+          ("wlanChange", 1011),
+          ("vlanChange", 1012),
+          ("adminReset", 1013),
+          ("qosFailure", 1014),
+          ("keyExchangeTimeout", 1015),
+          ("groupKeyUpdateTimeout", 1016),
+          ("maxSaqueries", 1017),
+          ("restartPurge", 1018),
+          ("clientBlacklist", 1019),
+          ("interWncdRoamSuccess", 1020),
+          ("interWncdRoamFailure", 1021),
+          ("interCtrlRoamSuccess", 1022),
+          ("mobilityFailure", 1023),
+          ("sessionTimeout", 1024),
+          ("idleTimeout", 1025),
+          ("userRequest", 1026),
+          ("nasError", 1027),
+          ("serviceUnavailable", 1028),
+          ("mbssidDown", 1029),
+          ("mmTunnelDown", 1030),
+          ("dot11vSmartRoamFailed", 1031),
+          ("dot11vTimerTimeout", 1032),
+          ("dot11vAssocFailed", 1033),
+          ("ftAuthResponse", 1034),
+          ("saeAuthFailure", 1035),
+          ("dot11UnspecifiedFailure", 1036),
+          ("dot11FailureIgnoreReq", 1037),
+          ("dot11CcxQosAddtsNoBandwidth", 1038),
+          ("dot11CapsUnsupported", 1039),
+          ("dot11AssocDeniedUnspec", 1040),
+          ("dot11MaxSta", 1041),
+          ("dot11DeniedRates", 1042),
+          ("dot11PoorChannelConditions", 1043),
+          ("dot11InvalidQosParameter", 1044),
+          ("dot11InvalidIe", 1045),
+          ("dot11GroupCipherInvalid", 1046),
+          ("dot11UnicastCipherInvalid", 1047),
+          ("dot11AkmpInvalid", 1048),
+          ("dot11UnsupportedRsnVersion", 1049),
+          ("dot11InvalidRsnIeCapabilities", 1050),
+          ("dot11CipherSuiteRejected", 1051),
+          ("dot11DeniedHtCapabiliies", 1052),
+          ("dot11InvalidFtActionFrameCount", 1053),
+          ("dot11InvalidPmkid", 1054),
+          ("dot11InvalidMdie", 1055),
+          ("dot11InvalidFtie", 1056),
+          ("dot11CcxQosPolicy", 1057),
+          ("dot11CcxInsufficientBandwidth", 1058),
+          ("dot11CcxInvalidQosParameter", 1059),
+          ("dot11CcxNonOptimalAssociationChoice", 1060),
+          ("wiredIappDisassoc", 1061),
+          ("wiredWgbChange", 1062),
+          ("wiredVlanChange", 1063),
+          ("wiredWgbDelete", 1064),
+          ("avcReanchoring", 1065),
+          ("wgbClientDirectAssoc", 1066),
+          ("apUpgrade", 1067),
+          ("clientDhcpFailure", 1068),
+          ("clientEapTimeoutFailure", 1069),
+          ("client8021xFailure", 1070),
+          ("clientDeviceIdle", 1071),
+          ("clientCaptivePortalSecurityFailure", 1072),
+          ("clientDecryptionFailure", 1073),
+          ("clientInterfaceDisabled", 1074),
+          ("clientUserTriggeredDisassoc", 1075),
+          ("clientMiscReason", 1076),
+          ("clientUnknownReason", 1077),
+          ("clientPeerTriggered", 1078),
+          ("clientBeaconLoss", 1079),
+          ("clientEapIdTimeout", 1080),
+          ("clientDot1xTimeout", 1081),
+          ("keyMgmtInvalidFrame", 1082),
+          ("keyMgmtInstallBit", 1083),
+          ("keyMgmtErrorBit", 1084),
+          ("keyMgmtAckBit", 1085),
+          ("keyMgmtInvalidKey", 1086),
+          ("keyMgmtSecureBit", 1087),
+          ("keyMgmtKeyDescVer", 1088),
+          ("keyMgmtWrongReplayCounter", 1089),
+          ("keyMgmtNoMicBit", 1090),
+          ("keyMgmtMicValidation", 1091),
+          ("keyMgmtPtkComputation", 1092),
+          ("clientCredentialFailure", 1093),
+          ("lostCarrier", 1094),
+          ("reauthFailure", 1095),
+          ("portAdminDisabled", 1096),
+          ("supplicantRestart", 1097),
+          ("ipDownNoIp", 1098),
+          ("anchorThrottled", 1099),
+          ("anchorNoMemory", 1100),
+          ("anchorInvalidMbssid", 1101),
+          ("anchorCreateReqFail", 1102),
+          ("dbPopulateFail", 1103),
+          ("danglingCleanupTimer", 1104),
+          ("excludeConfig", 1105),
+          ("excludeAssocFail", 1106),
+          ("excludeDot11AuthFail", 1107),
+          ("excludeDot1xTimeout", 1108),
+          ("excludeDot1xAuthFail", 1109),
+          ("excludeWebAuthFail", 1110),
+          ("excludePolicyBindFail", 1111),
+          ("excludeIpTheft", 1112),
+          ("excludeMacTheft", 1113),
+          ("excludeMacAndIpTheft", 1114),
+          ("excludeQosPolicyFail", 1115),
+          ("excludeQosPolicyApSendFail", 1116),
+          ("excludeQosPolicyApBindFail", 1117),
+          ("excludeQosPolicyApUnbindFail", 1118),
+          ("excludeStaticIpAnchorFail", 1119),
+          ("excludeVlanFail", 1120),
+          ("excludeAclFail", 1121),
+          ("excludePuntAclFail", 1122),
+          ("excludeAccountingFail", 1123),
+          ("excludeCtsFail", 1124),
+          ("excludeFqdnNoDefFail", 1125),
+          ("excludeFqdnPostauthMismatchFail", 1126),
+          ("excludeFqdnPreauthMismatchFail", 1127),
+          ("excludeFqdnZeroGidFail", 1128),
+          ("excludeMiscFail", 1129),
+          ("excludeReauthFailure", 1130),
+          ("excludeWrongPsk", 1131),
+          ("excludePolicyFailure", 1132),
+          ("mnIdleTimeout", 1133),
+          ("mnClientAclMismatch", 1134),
+          ("mnApAuthStop", 1135),
+          ("mnAssocExpiredAtAp", 1136),
+          ("mn4wayHandshakeFailed", 1137),
+          ("mnDhcpTimeout", 1138),
+          ("mnReassocTimeout", 1139),
+          ("mnSaQueryTimeout", 1140),
+          ("mnIntraApRoam", 1141),
+          ("mnChannelSwitchAtAp", 1142),
+          ("mnDelBadAid", 1143),
+          ("mnDelRequest", 1144),
+          ("mnDelIntfReset", 1145),
+          ("mnDelAllOnSlot", 1146),
+          ("mnDelReaperRadio", 1147),
+          ("mnDelSlotDisable", 1148),
+          ("mnDelMicFail", 1149),
+          ("mnDelVlanDel", 1150),
+          ("mnDelChannelChange", 1151),
+          ("mnDelStopReassoc", 1152),
+          ("mnDelPakMaxRetry", 1153),
+          ("mnDelTxDeauth", 1154),
+          ("mnDelSensorStaTimeout", 1155),
+          ("mnDelAgeTimeout", 1156),
+          ("mnDelTxFailThold", 1157),
+          ("mnDelUplinkRcvTimeout", 1158),
+          ("mnDelSnsrScanNxtRadio", 1159),
+          ("mnDelSnsrScanOtherBssid", 1160),
+          ("aaaServerUnavailable", 1161),
+          ("aaaNotReady", 1162),
+          ("noDot1xAuthConfig", 1163),
+          ("abortReceived", 1164),
+          ("assocConnectTimeout", 1165),
+          ("macauthConnectTimeout", 1166),
+          ("l2authConnectTimeout", 1167),
+          ("l3authConnectTimeout", 1168),
+          ("mobilityConnectTimeout", 1169),
+          ("sIpAnchorConnectTimeout", 1170),
+          ("smSessionConnectTimeout", 1171),
+          ("iplearnConnectTimeout", 1172),
+          ("nackIfidExists", 1173),
+          ("radioDown", 1174),
+          ("fabricReject", 1175),
+          ("guestLanInvalidMbssid", 1176),
+          ("guestLanNoMemory", 1177),
+          ("guestLanCreateReqFail", 1178),
+          ("tunnelEogreReset", 1179),
+          ("tunnelEogreJoinFail", 1180),
+          ("tunnelEogreReconciliation", 1181),
+          ("wiredIdleTimeout", 1182),
+          ("ipUpdateTimeout", 1183),
+          ("remoteMobilityDelete", 1184),
+          ("saeAuthInAssociatedState", 1185),
+          ("nackIfidMismatch", 1186),
+          ("tunnelEogreInvalidVlan", 1187),
+          ("tunnelEogreEmptyDomain", 1188),
+          ("tunnelEogreInvalidDomain", 1189),
+          ("tunnelEogreDomainShut", 1190),
+          ("tunnelEogreInvalidGw", 1191),
+          ("tunnelEogreGwDown", 1192),
+          ("tunnelEogreFlexNoActiveGw", 1193),
+          ("tunnelEogreRuleMatch", 1194),
+          ("tunnelEogreAaaOverride", 1195),
+          ("tunnelEogreMspayload", 1196),
+          ("tunnelEogreHandoffError", 1197),
+          ("invalidPmkLen", 1198),
+          ("l3VlanOverrideConnectTimeout", 1199),
+          ("userTriggeredUnspecified", 1200),
+          ("userTriggeredPwroffWifioff", 1201),
+          ("userTriggeredConnectToAnotherSsid", 1202),
+          ("userTriggeredRemoveSsid", 1203),
+          ("userTriggeredAirplaneMode", 1204),
+          ("l2connectionUnspecified", 1205),
+          ("l2connectionAssociation", 1206),
+          ("fourWayHandshakeUnspecified", 1207),
+          ("keyM1Failure", 1208),
+          ("keyM3Failure", 1209),
+          ("m3M4KeyXchngTimeout", 1210),
+          ("dhcpFailUnspecified", 1211),
+          ("dhcpFailTimeout", 1212),
+          ("dhcpFailTimeoutAfterRoaming", 1213),
+          ("dhcpFailLeaseExpired", 1214),
+          ("dhcpFailNakInRenew", 1215),
+          ("dhcpFailRenewLeaseWrongIp", 1216),
+          ("dhcpFailInternalError", 1217),
+          ("eapFailUnspecified", 1218),
+          ("eapFailCodeFail", 1219),
+          ("eapFailInfoNotEntered", 1220),
+          ("eapFailMschapError", 1221),
+          ("eapFailSimAuthFail", 1222),
+          ("eapFailTimeout", 1223),
+          ("eapFailTlsCertError", 1224),
+          ("noInternetUnspecified", 1225),
+          ("noInternetDns", 1226),
+          ("noInternetArp", 1227),
+          ("exclusionPolicyTemplateFail", 1228),
+          ("mnDelAuthExpired", 1229),
+          ("mnDelDisassoc", 1230),
+          ("mnDelTxDisassoc", 1231),
+          ("fastroamMobilityFailure", 1232),
+          ("roamAcrossPolicyProfileDeny", 1233),
+          ("dot11AidAllocConflictReq", 1234),
+          ("zoneChange", 1235),
+          ("wlanIdAttrMismatch", 1236),
+          ("easypskAAAUnknown", 1237),
+          ("easypskUnspecified", 1238),
+          ("easypskPskMismatch", 1239),
+          ("easypskRadiusBusy", 1240),
+          ("easypskLimitReached", 1241),
+          ("easypskBadFrame", 1242),
+          ("easypskMissingParameter", 1243),
+          ("supplicantNameFail", 1244),
+          ("userNameFail", 1245),
+          ("serviceSetIdFail", 1246),
+          ("anchorVlanIdFail", 1247),
+          ("pskFail", 1248),
+          ("pskModeFail", 1249),
+          ("interimIntervalFail", 1250),
+          ("randomMac", 1251),
+          ("mnapiplearntimeout", 1252),
+          ("mnapbyflexgroupchange", 1253),
+          ("mnapeapollogoff", 1254),
+          ("mnapeapreqtimeout", 1255),
+          ("mnap4wayhandshakefailed", 1256),
+          ("mnapmicvalidation", 1257),
+          ("mnapwrongreplaycounter", 1258),
+          ("mnaptunneldown", 1259),
+          ("mnapinteraproam", 1260),
+          ("mnapunknownclient", 1261),
+          ("mnapreauthtimeout", 1262),
+          ("mnapcontidletimeout", 1263),
+          ("mnaprldpcleanup", 1264),
+          ("mnapintraswitchroam", 1265),
+          ("mnappemcleanup", 1266),
+          ("mnaprlancentralswitch", 1267),
+          ("mnaprlandpaddfail", 1268),
+          ("mnaprlandelete", 1269),
+          ("mnaprlaninactivetimeout", 1270),
+          ("mnaprlanmabfailure", 1271),
+          ("mnapclsmnomemory", 1272),
+          ("mnapclsmbssidmismatch", 1273),
+          ("mnapclsmdeletenoacl", 1274),
+          ("mnapclsmdeletenoparentwgb", 1275),
+          ("mnapclsmkeyplumbfail", 1276),
+          ("mnapclsmmeshkeyplumbfail", 1277),
+          ("mnapclsmdpaddfail", 1278),
+          ("mnapclsmauthrespreject", 1279),
+          ("mnapclsmauthrespsendfail", 1280),
+          ("mnapclsmassocrespsendfail", 1281),
+          ("mnapclsmassocrespwithfailurestatus", 1282),
+          ("mnapclsmwebauthtimerexpired", 1283),
+          ("mnapclsmdot1xtimerexpired", 1284),
+          ("mnapclsmdeauthdisassocsendfail", 1285),
+          ("mnapdrivereventclass3recv", 1286),
+          ("mnapdrivereventpspwhenunauth", 1287),
+          ("mnapdrivereventioctlerror", 1288),
+          ("mnapflexftfailure", 1289),
+          ("mnapclsmdriveraddfail", 1290),
+          ("mnapdriverclientnotfound", 1291),
+          ("mnapdrivermgmtpktallocfail", 1292),
+          ("mnapdriverinvalidcipher", 1293),
+          ("mnapdriverinvalidaid", 1294),
+          ("mnapdriverinvalidkey", 1295),
+          ("mnapdriverfwkeysetfailed", 1296),
+          ("mnapdriverinvalidhtvhtrates", 1297),
+          ("mnapdriverinvalidlegacyrates", 1298),
+          ("mnapdrivernooverlaplegacyrates", 1299),
+          ("mnapdrivermaxvhtstreams", 1300),
+          ("mnapdriveraidinuse", 1301),
+          ("mnapdriverassoctoomany", 1302),
+          ("mnapdrivercipherattachfail", 1303),
+          ("mnapdriveralgorithmmismatch", 1304),
+          ("mnapdriverinvalidkeylength", 1305),
+          ("mnapdriverinvalidkeyindex", 1306),
+          ("mnapdriverassocscbnotauthenticated", 1307),
+          ("mnapdriverstadbinitfailed", 1308),
+          ("mnapdriveraddingentryfailed", 1309),
+          ("mnapdriveraddingentryinfirmwarefailed", 1310),
+          ("mnapreasonapmax", 1311),
+          ("linklocalbridgevlanfail", 1312),
+          ("maxstaonap", 1313),
+          ("maxstaonvap", 1314),
+          ("maxstaonbssid", 1315),
+          ("maxstaonradio", 1316),
+          ("mnapmaxstaonap", 1317),
+          ("mnapmaxstaonbssid", 1318),
+          ("mnapmaxstaonradio", 1319),
+          ("pmkTimeoutOnSTA", 1320),
+          ("excessarprate", 1321),
+          ("excessndprate", 1322),
+          ("vrfvlanMismatch", 1323),
+          ("dpathencodefailed", 1324))
     )
 
 
@@ -19137,6 +20842,8 @@ bsnEssGroup.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11Ess80211ePolicySetting"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssWebPassthroughEmail"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11Ess7920PhoneSupport"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssNumApsUp"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssNumApsDown"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssRadiusAuthPrimaryServer"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssRadiusAuthSecondaryServer"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssRadiusAuthTertiaryServer"),
@@ -19178,6 +20885,7 @@ bsnEssGroup.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationCcxVersion"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationE2eVersion"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationStatusCode"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationAAAOverridePassphrase"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationPerRadioPerVapIndex"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationMacAddr"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationRSSI"),
@@ -19496,6 +21204,7 @@ bsnGlobalDot11Group.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnExcessive80211AssocFailures"),
         ("AIRESPACE-WIRELESS-MIB", "bsnExcessive80211AuthFailures"),
         ("AIRESPACE-WIRELESS-MIB", "bsnExcessive8021xAuthFailures"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnExcessive8021xTimeout"),
         ("AIRESPACE-WIRELESS-MIB", "bsnExternalPolicyServerFailures"),
         ("AIRESPACE-WIRELESS-MIB", "bsnExcessiveWebAuthFailures"),
         ("AIRESPACE-WIRELESS-MIB", "bsnIPTheftORReuse"),
@@ -19583,6 +21292,7 @@ bsnGlobalDot11Group.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bFastRoamingVoipPercentage"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11b80211eMaxBandwidth"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bDTPCSupport"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bRxSopThreshold"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bMediumOccupancyLimit"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bCFPPeriod"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bCFPMaxDuration"),
@@ -19633,6 +21343,7 @@ bsnGlobalDot11Group.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aFastRoamingVoipPercentage"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11a80211eMaxBandwidth"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aDTPCSupport"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aRxSopThreshold"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aMediumOccupancyLimit"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aCFPPeriod"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aCFPMaxDuration"),
@@ -19653,6 +21364,7 @@ bsnGlobalDot11Group.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11hPowerConstraint"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11hChannelSwitchEnable"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11hChannelSwitchMode"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11SystemMobileStations"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRrmDot11aGlobalAutomaticGrouping"))
 )
 if mibBuilder.loadTexts:
@@ -20127,6 +21839,8 @@ bsnEssGroupRev1.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11Ess80211ePolicySetting"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssWebPassthroughEmail"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11Ess7920PhoneSupport"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssNumApsUp"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssNumApsDown"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssRadiusAuthPrimaryServer"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssRadiusAuthSecondaryServer"),
         ("AIRESPACE-WIRELESS-MIB", "bsnDot11EssRadiusAuthTertiaryServer"),
@@ -20168,6 +21882,7 @@ bsnEssGroupRev1.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationCcxVersion"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationE2eVersion"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationStatusCode"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationAAAOverridePassphrase"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationPerRadioPerVapIndex"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationMacAddr"),
         ("AIRESPACE-WIRELESS-MIB", "bsnMobileStationRSSI"),
@@ -20196,6 +21911,7 @@ bsnEssGroupRev1.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueAPChannel"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueAPDetectingAPName"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueAPChannelWidth"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnRogueAPPhysicalAPSlot"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueAPAirespaceAPMacAddress"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueAPAirespaceAPSlotId"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueAPRadioType"),
@@ -20230,6 +21946,7 @@ bsnEssGroupRev1.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueClientAirespaceAPRSSI"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueClientAirespaceAPLastHeard"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueClientAirespaceAPSNR"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnRogueClientPhysicalAPSlot"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueClientTotalDetectingAPs"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueClientFirstReported"),
         ("AIRESPACE-WIRELESS-MIB", "bsnRogueClientLastReported"),
@@ -20312,6 +22029,7 @@ bsnGlobalDot11GroupRev1.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnExcessive80211AssocFailures"),
         ("AIRESPACE-WIRELESS-MIB", "bsnExcessive80211AuthFailures"),
         ("AIRESPACE-WIRELESS-MIB", "bsnExcessive8021xAuthFailures"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnExcessive8021xTimeout"),
         ("AIRESPACE-WIRELESS-MIB", "bsnExternalPolicyServerFailures"),
         ("AIRESPACE-WIRELESS-MIB", "bsnExcessiveWebAuthFailures"),
         ("AIRESPACE-WIRELESS-MIB", "bsnIPTheftORReuse"),
@@ -20399,6 +22117,7 @@ bsnGlobalDot11GroupRev1.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bFastRoamingVoipPercentage"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11b80211eMaxBandwidth"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bDTPCSupport"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bRxSopThreshold"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bMediumOccupancyLimit"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bCFPPeriod"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11bCFPMaxDuration"),
@@ -20446,6 +22165,7 @@ bsnGlobalDot11GroupRev1.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aFastRoamingVoipPercentage"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11a80211eMaxBandwidth"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aDTPCSupport"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aRxSopThreshold"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aMediumOccupancyLimit"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aCFPPeriod"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aCFPMaxDuration"),
@@ -20462,7 +22182,8 @@ bsnGlobalDot11GroupRev1.setObjects(
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11aChannelAgilityEnabled"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11hPowerConstraint"),
         ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11hChannelSwitchEnable"),
-        ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11hChannelSwitchMode"))
+        ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11hChannelSwitchMode"),
+        ("AIRESPACE-WIRELESS-MIB", "bsnGlobalDot11SystemMobileStations"))
 )
 if mibBuilder.loadTexts:
     bsnGlobalDot11GroupRev1.setStatus("current")
@@ -22318,6 +24039,8 @@ mibBuilder.exportSymbols(
        "bsnDot11Ess80211ePolicySetting": bsnDot11Ess80211ePolicySetting,
        "bsnDot11EssWebPassthroughEmail": bsnDot11EssWebPassthroughEmail,
        "bsnDot11Ess7920PhoneSupport": bsnDot11Ess7920PhoneSupport,
+       "bsnDot11EssNumApsUp": bsnDot11EssNumApsUp,
+       "bsnDot11EssNumApsDown": bsnDot11EssNumApsDown,
        "bsnDot11EssRadiusAuthPrimaryServer": bsnDot11EssRadiusAuthPrimaryServer,
        "bsnDot11EssRadiusAuthSecondaryServer": bsnDot11EssRadiusAuthSecondaryServer,
        "bsnDot11EssRadiusAuthTertiaryServer": bsnDot11EssRadiusAuthTertiaryServer,
@@ -22361,6 +24084,7 @@ mibBuilder.exportSymbols(
        "bsnMobileStationCcxVersion": bsnMobileStationCcxVersion,
        "bsnMobileStationE2eVersion": bsnMobileStationE2eVersion,
        "bsnMobileStationStatusCode": bsnMobileStationStatusCode,
+       "bsnMobileStationAAAOverridePassphrase": bsnMobileStationAAAOverridePassphrase,
        "bsnMobileStationPerRadioPerVapTable": bsnMobileStationPerRadioPerVapTable,
        "bsnMobileStationPerRadioPerVapEntry": bsnMobileStationPerRadioPerVapEntry,
        "bsnMobileStationPerRadioPerVapIndex": bsnMobileStationPerRadioPerVapIndex,
@@ -22412,6 +24136,7 @@ mibBuilder.exportSymbols(
        "bsnRogueAPAirespaceAPWpaMode": bsnRogueAPAirespaceAPWpaMode,
        "bsnRogueAPAirespaceAPSNR": bsnRogueAPAirespaceAPSNR,
        "bsnRogueAPChannelWidth": bsnRogueAPChannelWidth,
+       "bsnRogueAPPhysicalAPSlot": bsnRogueAPPhysicalAPSlot,
        "bsnThirdPartyAPTable": bsnThirdPartyAPTable,
        "bsnThirdPartyAPEntry": bsnThirdPartyAPEntry,
        "bsnThirdPartyAPMacAddress": bsnThirdPartyAPMacAddress,
@@ -22462,6 +24187,7 @@ mibBuilder.exportSymbols(
        "bsnRogueClientAirespaceAPRSSI": bsnRogueClientAirespaceAPRSSI,
        "bsnRogueClientAirespaceAPLastHeard": bsnRogueClientAirespaceAPLastHeard,
        "bsnRogueClientAirespaceAPSNR": bsnRogueClientAirespaceAPSNR,
+       "bsnRogueClientPhysicalAPSlot": bsnRogueClientPhysicalAPSlot,
        "bsnRogueClientPerRogueAPTable": bsnRogueClientPerRogueAPTable,
        "bsnRogueClientPerRogueAPEntry": bsnRogueClientPerRogueAPEntry,
        "bsnRogueAPDot11MacAddr": bsnRogueAPDot11MacAddr,
@@ -22564,6 +24290,7 @@ mibBuilder.exportSymbols(
        "bsnAPIfChannelList": bsnAPIfChannelList,
        "bsnAPIfAbsolutePowerList": bsnAPIfAbsolutePowerList,
        "bsnAPIfRegulatoryDomainSupport": bsnAPIfRegulatoryDomainSupport,
+       "bsnAPIfPhyS80EightyChannelNumber": bsnAPIfPhyS80EightyChannelNumber,
        "bsnAPIfAdminStatus": bsnAPIfAdminStatus,
        "bsnAPIfSmtParamTable": bsnAPIfSmtParamTable,
        "bsnAPIfSmtParamEntry": bsnAPIfSmtParamEntry,
@@ -22781,6 +24508,7 @@ mibBuilder.exportSymbols(
        "bsnExternalPolicyServerFailures": bsnExternalPolicyServerFailures,
        "bsnExcessiveWebAuthFailures": bsnExcessiveWebAuthFailures,
        "bsnIPTheftORReuse": bsnIPTheftORReuse,
+       "bsnExcessive8021xTimeout": bsnExcessive8021xTimeout,
        "bsnSignatureConfig": bsnSignatureConfig,
        "bsnStandardSignatureTable": bsnStandardSignatureTable,
        "bsnStandardSignatureEntry": bsnStandardSignatureEntry,
@@ -22883,6 +24611,7 @@ mibBuilder.exportSymbols(
        "bsnGlobalDot11bFastRoamingVoipPercentage": bsnGlobalDot11bFastRoamingVoipPercentage,
        "bsnGlobalDot11b80211eMaxBandwidth": bsnGlobalDot11b80211eMaxBandwidth,
        "bsnGlobalDot11bDTPCSupport": bsnGlobalDot11bDTPCSupport,
+       "bsnGlobalDot11bRxSopThreshold": bsnGlobalDot11bRxSopThreshold,
        "bsnGlobalDot11bPhy": bsnGlobalDot11bPhy,
        "bsnGlobalDot11bMediumOccupancyLimit": bsnGlobalDot11bMediumOccupancyLimit,
        "bsnGlobalDot11bCFPPeriod": bsnGlobalDot11bCFPPeriod,
@@ -22936,6 +24665,7 @@ mibBuilder.exportSymbols(
        "bsnGlobalDot11aFastRoamingVoipPercentage": bsnGlobalDot11aFastRoamingVoipPercentage,
        "bsnGlobalDot11a80211eMaxBandwidth": bsnGlobalDot11a80211eMaxBandwidth,
        "bsnGlobalDot11aDTPCSupport": bsnGlobalDot11aDTPCSupport,
+       "bsnGlobalDot11aRxSopThreshold": bsnGlobalDot11aRxSopThreshold,
        "bsnGlobalDot11aPhy": bsnGlobalDot11aPhy,
        "bsnGlobalDot11aMediumOccupancyLimit": bsnGlobalDot11aMediumOccupancyLimit,
        "bsnGlobalDot11aCFPPeriod": bsnGlobalDot11aCFPPeriod,
@@ -22959,6 +24689,9 @@ mibBuilder.exportSymbols(
        "bsnGlobalDot11hPowerConstraint": bsnGlobalDot11hPowerConstraint,
        "bsnGlobalDot11hChannelSwitchEnable": bsnGlobalDot11hChannelSwitchEnable,
        "bsnGlobalDot11hChannelSwitchMode": bsnGlobalDot11hChannelSwitchMode,
+       "bsnGlobalDot11System": bsnGlobalDot11System,
+       "bsnGlobalDot11SystemInfo": bsnGlobalDot11SystemInfo,
+       "bsnGlobalDot11SystemMobileStations": bsnGlobalDot11SystemMobileStations,
        "bsnRrm": bsnRrm,
        "bsnRrmDot11a": bsnRrmDot11a,
        "bsnRrmDot11aGroup": bsnRrmDot11aGroup,
@@ -22985,6 +24718,7 @@ mibBuilder.exportSymbols(
        "bsnRrmDot11aLoadMeasurementInterval": bsnRrmDot11aLoadMeasurementInterval,
        "bsnRrmDot11aCoverageMeasurementInterval": bsnRrmDot11aCoverageMeasurementInterval,
        "bsnRrmDot11aChannelMonitorList": bsnRrmDot11aChannelMonitorList,
+       "bsnRrmDot11aSignalTimeoutFactor": bsnRrmDot11aSignalTimeoutFactor,
        "bsnRrmDot11aSetFactoryDefault": bsnRrmDot11aSetFactoryDefault,
        "bsnRrmDot11b": bsnRrmDot11b,
        "bsnRrmDot11bGroup": bsnRrmDot11bGroup,
@@ -23011,6 +24745,7 @@ mibBuilder.exportSymbols(
        "bsnRrmDot11bLoadMeasurementInterval": bsnRrmDot11bLoadMeasurementInterval,
        "bsnRrmDot11bCoverageMeasurementInterval": bsnRrmDot11bCoverageMeasurementInterval,
        "bsnRrmDot11bChannelMonitorList": bsnRrmDot11bChannelMonitorList,
+       "bsnRrmDot11bSignalTimeoutFactor": bsnRrmDot11bSignalTimeoutFactor,
        "bsnRrmDot11bSetFactoryDefault": bsnRrmDot11bSetFactoryDefault,
        "bsnAAA": bsnAAA,
        "bsnRadiusAuthServerTable": bsnRadiusAuthServerTable,
