@@ -1,6 +1,6 @@
 # Network Device Data Generator
 
-A Python script that generates mock network device data for testing and development purposes. The script can generate various types of network data including routing tables, ARP entries, MAC address tables, and interface information.
+A Python script that generates mock network device data for testing and development purposes. The script can generate various types of network data including routing tables, ARP entries, MAC address tables, interface information, and VRFs.
 
 ## Features
 
@@ -10,6 +10,7 @@ A Python script that generates mock network device data for testing and developm
   - ARP Entries
   - MAC Address Tables
   - Interface Status
+  - VRFs (with optional per-VRF route tables)
 - Configurable through settings.conf
 - Supports multiple device types/platforms
 - Distributes data across multiple devices
@@ -26,8 +27,8 @@ The script is configured through `settings.conf`. Here's a sample configuration:
 platform = cisco_ios
 
 # Data types to generate
-# Available types: routes, arp, mac, interfaces
-data_types = routes, arp, mac, interfaces
+# Available types: routes, arp, mac, interfaces, vrfs
+data_types = routes, arp, mac, interfaces, vrfs
 
 # Device separation settings
 seperate_config_over_devices = true
@@ -39,6 +40,14 @@ routes = 100000
 arp = 100000
 mac = 100000
 interfaces = 100000
+
+# VRF settings
+[vrfs]
+count = 10
+vrf_name_format = MGMT, PROD, CUST_ format=02d weight=3, TENANT_ format=04d weight=1
+fallback_format = 03d
+min_routes_per_vrf = 50
+max_routes_per_vrf = 1000
 ```
 
 ### Configuration Options
@@ -48,22 +57,40 @@ interfaces = 100000
 - `seperate_config_over_devices`: Boolean to enable/disable data distribution across devices
 - `seperate_devices`: List of device types to generate data for
 - `counts`: Section defining the number of entries to generate for each data type
+- `vrfs`: Section defining VRF generation behaviour (see below)
+
+### VRF Configuration (`[vrfs]`)
+
+- `count`: Total number of VRFs to generate
+- `vrf_name_format`: Comma-separated list of VRF name specifications:
+  - Plain names (e.g. `MGMT`, `VRF_A`) are used exactly as written and count toward the total
+  - Prefix names (trailing `_`, e.g. `CUST_`, `TENANT_`) fill the remaining slots after fixed names, distributed proportionally by `weight=`
+  - `format=` controls zero-padding of the numeric suffix (e.g. `format=02d` → `CUST_01`, `format=04d` → `TENANT_0001`); omit for no padding
+  - `weight=` controls how many of the remaining slots a prefix gets relative to other prefixes (default: `1`, i.e. equal share)
+  - Any slots still unfilled after all prefixes are exhausted are padded with plain numbers using `fallback_format`
+- `fallback_format`: Python format spec for fallback VRF names when prefix slots don't reach `count` (default: `03d` → `001, 002, 003 ...`)
+- `min_routes_per_vrf`: Minimum routes to generate in each per-VRF route file (default: 50; set to 0 to potentially have some VRFs with no routes)
+- `max_routes_per_vrf`: Maximum routes to generate in each per-VRF route file (default: 1000; set to 0 to skip per-VRF route creation entirely)
 
 ## Directory Structure
 
 The script generates files in the following structure:
 ```
-configs/
+output/
 ├── device1/
-│   └── template/
-│       ├── show ip route.txt
-│       ├── show arp.txt
-│       ├── show mac address-table.txt
-│       └── show ip interface brief.txt
+│   └── configs/
+│       └── cisco_ios/
+│           ├── show ip route.txt
+│           ├── show arp.txt
+│           ├── show mac address-table.txt
+│           ├── show ip interface brief.txt
+│           ├── show vrf.txt
+│           ├── show vrf detail.txt
+│           ├── show ip vrf interfaces.txt
+│           └── show ip route vrf <name>.txt  (one per VRF, if routes enabled)
 ├── device2/
-│   └── template/
-│       └── ...
-└── ...
+│   └── ...
+└── docker-compose.yml
 ```
 
 ## Usage
@@ -96,6 +123,11 @@ python mock_data_generator.py
 - Includes IP addresses, status, and protocols
 - Supports various interface types (Gigabit, FastEthernet, etc.)
 
+### VRFs
+- Generates `show vrf`, `show vrf detail`, and `show ip vrf interfaces` output
+- Optionally generates `show ip route vrf <name>` files for each VRF
+- VRF names are fully configurable via `vrf_name_format`
+
 ## Notes
 
 - The script automatically creates the settings file if it doesn't exist
@@ -113,6 +145,3 @@ python mock_data_generator.py
 - Generated data is mock data and should only be used for testing
 - Very large numbers of entries may require additional memory
 - Some interface combinations may be repeated with very large numbers
-```
-
-This README provides a comprehensive overview of the script's functionality, configuration options, and usage. Let me know if you'd like me to expand on any section or add additional information!
