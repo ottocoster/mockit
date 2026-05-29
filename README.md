@@ -200,12 +200,20 @@ networks:
 - **SSH_SERVER_ENABLED**: Enable SSH server (default is true).
 - **SSH_USERNAME**: SSH username for authentication.
 - **SSH_PASSWORD**: SSH password for authentication.
-- **SSH_KEX_ALGORITHMS**: Optional comma-separated list of SSH key exchange algorithms to allow (for example `diffie-hellman-group14-sha1`).
+- **SSH_KEX_ALGORITHMS**: Optional comma-separated list of SSH key exchange algorithms to advertise and accept. If unset, all asyncssh defaults are used. Example: `diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha256`
+- **SSH_CIPHERS**: Optional comma-separated list of encryption ciphers to advertise and accept. If unset, all asyncssh defaults are used. Example: `aes128-ctr,aes256-ctr,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com`
 - **DEVICE_DELAY**: Introduces a delay before a device responds to a command.
 - **LOGIN_DELAY**: Delays the SSH login process.
 - **LOGIN_RETRY**: Defines the number of retries for failed login attempts.
 - **AUTHKEY_ENABLED**: Enable auth key file authentication of ssh server.
 - **AUTHKEY_PATH**: Public keypath of the ssh key
+
+### Testing SSH KEX Algorithms and Ciphers
+
+The `tools/test_ssh_algorithms.sh` script tests each specified KEX algorithm and cipher individually against a running mockit container. 
+
+Full documentation for the SSH KEX and Cipher testing [in tools/README.md](tools/README.md)
+
 
 ### SNMP Configuration
 - **SNMP_V2_ENABLED**: Enable SNMP v2 (default is true).
