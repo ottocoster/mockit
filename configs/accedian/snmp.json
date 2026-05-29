@@ -85,5 +85,32 @@
             "value": "1.0.0",
             "suffix": "1"
         }
+    ],
+    "ACD-DESC-MIB": [
+        {
+            "name": "acdDescCommercialName",
+            "type": "string",
+            "value": "AEN-1000-GE"
+        },
+        {
+            "name": "acdDescIdentifier",
+            "type": "string",
+            "value": "accedian"
+        },
+        {
+            "name": "acdDescFirmwareVersion",
+            "type": "string",
+            "value": "AEN_4.7.7_18002"
+        },
+        {
+            "name": "acdDescHardwareVersion",
+            "type": "string",
+            "value": "500-005-13:8:2"
+        },
+        {
+            "name": "acdDescSerialNumber",
+            "type": "string",
+            "value": "G171-2230"
+        }
     ]
 }
