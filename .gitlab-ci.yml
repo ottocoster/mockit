@@ -58,16 +58,16 @@ unit_test:
     DOCKER_TLS_CERTDIR: ""
     PYTHONASYNCIODEBUG: 1
     compose_file: $CI_PROJECT_DIR/tests/docker-compose_ssh_telnet.yml
-  before_script:
+  script:
     - alias dc="docker compose --profile image -f ${compose_file}"
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - dc down -v || true
-  script:
     - dc pull
     - dc up -d --build --wait --remove-orphans
     - docker exec devices-test_container pytest --color=yes -v --durations 0 -rP $pyci test_ssh_telnet.py
     - dc stop
   after_script:
+    - alias dc="docker compose --profile image -f ${compose_file}"
     - mkdir $CI_PROJECT_DIR/logs
     - |
       for container_id in $(docker compose ps -qa); do
