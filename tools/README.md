@@ -1,5 +1,14 @@
 # mockit tools
 
+The following tools are available:
+```
+mock_data_generator.py
+mockit-list.sh
+test_ssh_algorithms.sh
+```
+
+---
+
 ## Network Device Data Generator
 
 A Python script that generates mock network device data for testing and development purposes. The script can generate various types of network data including routing tables, ARP entries, MAC address tables, interface information, and VRFs.
@@ -147,6 +156,49 @@ python mock_data_generator.py
 - Generated data is mock data and should only be used for testing
 - Very large numbers of entries may require additional memory
 - Some interface combinations may be repeated with very large numbers
+
+---
+
+## mockit list
+
+A tool to list mockit containers,  their IP addresses, and the container status.
+
+Available options:
+```
+./mockit-list.sh -h
+Usage: mockit-list.sh [OPTIONS]
+
+  (no flag)   Formatted table of running Mock'it devices
+  --all       Include stopped/exited containers
+  --json      One JSON object per line (pipe to jq for filtering)
+  --ssh       Print SSH commands for running devices
+
+Examples:
+  mockit-list.sh
+  mockit-list.sh --all
+  mockit-list.sh --json | jq 'select(.device_type == "cisco_ios")'
+  mockit-list.sh --ssh | grep nautobot
+```
+
+
+Example output:
+```
+./mockist-list.sh
+
+Mock'it Devices  (6 container(s), including stopped)
+
+CONTAINER NAME                           DEVICE TYPE                  IP ADDRESS       STATUS
+──────────────────────────────────────────────────────────────────────────────────────────────────
+arista_eos.netbox.slurpit.io             arista_eos                   172.20.240.43    running
+cisco_ios.netbox.slurpit.io              cisco_ios                    172.20.240.40    running
+cisco_wlc.netbox.slurpit.io              cisco_wlc                    172.20.240.45    running
+mikrotik_routeros_v6.netbox.slurpit.io   mikrotik_routeros (v6)       172.20.240.41    running
+mikrotik_routeros_v7.netbox.slurpit.io   mikrotik_routeros (v7)       172.20.240.42    running
+nokia_srl.netbox.slurpit.io              nokia_srl                    172.20.240.44    running
+
+Default credentials: SSH admin/admin port 22 · SNMP v2 community: public (where enabled)
+```
+
 
 ---
 
