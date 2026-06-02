@@ -130,6 +130,9 @@ class Telnet_Handler(BaseHandler):
                 await self.write(self.prompt_terminator)
                 command = await self.read()
                 self.logger.info(f"command received `{repr(command)}`")
+                if not command and self.reader.at_eof():
+                    # peer closed the connection; stop instead of looping on EOF
+                    break
                 await self.respond(command)
                 if command:
                     result = await self.handle_command(command)

@@ -72,6 +72,13 @@ class SSH_Handler(BaseHandler):
                 self.logger.info("SSH peer disconnected while reading input")
                 break
             self.logger.info(f"command received `{repr(command)}`")
+            if command == "":
+                # readline() returns an empty string (no newline) only at EOF,
+                # i.e. the peer closed the connection. Without this guard the
+                # loop spins on empty reads, pegging the CPU and starving every
+                # other server in the shared event loop. A bare Enter returns a
+                # newline, so it is unaffected.
+                break
             command = command.strip()
             if not self._safe_write(self.get_formatted_command(command)):
                 break
