@@ -13,7 +13,7 @@ ENV TINI_SUBREAPER=1 \
     SSH_CIPHERS="" \
     AUTHKEY_ENABLED=false \
     AUTHKEY_PATH="/auth_keys/auth.pub" \
-    SNMP_SERVER_ENABLED=true \
+    SNMP_SERVER_ENABLED="" \
     SNMP_V2_ENABLED=true \
     SNMP_V2_COMMUNITY="public" \
     SNMP_V3_ENABLED=false \
@@ -25,7 +25,7 @@ ENV TINI_SUBREAPER=1 \
 #none, des, 3des, aes128, aes192, aes256, aesblumenthal192, aesblumenthal256
     SNMP_V3_PRIV_TYPE="none" \
     SNMP_V3_PRIV_KEY="" \
-    NETCONF_SERVER_ENABLED=true \
+    NETCONF_SERVER_ENABLED="" \
     NETCONF_USERNAME="test" \
     NETCONF_PASSWORD="test" \
     TELNET_SERVER_ENABLED="" \
@@ -33,7 +33,15 @@ ENV TINI_SUBREAPER=1 \
     TELNET_PASSWORD="test" \
     OPENAI_SUPPORT=false \
     OPENAI_APIKEY="" \
-    PYTHONPATH="/" 
+    API_SERVER_ENABLED="" \
+    API_PORT="443" \
+    API_AUTH_TYPE="none" \
+    API_TOKEN="" \
+    API_KEY="" \
+    API_KEY_HEADER="X-API-KEY" \
+    API_OAUTH_CLIENT_ID="" \
+    API_OAUTH_CLIENT_SECRET="" \
+    PYTHONPATH="/"
 
 # Copy app directories
 COPY configs/ /configs/
@@ -46,10 +54,14 @@ COPY mibs/ /mibs/
 COPY requirements.txt /
 
 RUN apt update -y && apt upgrade -y \
-    && apt-get install procps snmp tini -y \
+    && apt-get install procps snmp tini openssl -y \
+    && mkdir -p /api_cert \
+    && openssl req -x509 -newkey rsa:2048 -nodes \
+        -keyout /api_cert/key.pem -out /api_cert/cert.pem \
+        -days 3650 -subj "/CN=mockit" \
     && uv pip install --system --no-cache -r requirements.txt
 
-EXPOSE 22 23 161
+EXPOSE 22 23 161 443
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["python", "/src/main.py"]

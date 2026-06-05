@@ -1,0 +1,18 @@
+[
+    {
+        "id": "549236",
+        "name": "Mock'it Organization",
+        "url": "https://dashboard.meraki.com/o/abcdef/manage/organization/overview",
+        "api": {
+            "enabled": true
+        },
+        "licensing": {
+            "model": "co-term"
+        },
+        "cloud": {
+            "region": {
+                "name": "Europe"
+            }
+        }
+    }
+]

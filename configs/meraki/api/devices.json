@@ -1,0 +1,32 @@
+[
+    {
+        "name": "mock-switch-01",
+        "serial": "Q2XX-AAAA-BBBB",
+        "mac": "00:11:22:33:44:55",
+        "model": "MS220-8P",
+        "networkId": "N_24329156",
+        "productType": "switch",
+        "lanIp": "192.168.2.10",
+        "firmware": "switch-16-6"
+    },
+    {
+        "name": "mock-ap-01",
+        "serial": "Q2YY-CCCC-DDDD",
+        "mac": "00:11:22:33:44:66",
+        "model": "MR46",
+        "networkId": "N_24329156",
+        "productType": "wireless",
+        "lanIp": "192.168.2.11",
+        "firmware": "wireless-29-5-1"
+    },
+    {
+        "name": "mock-appliance-01",
+        "serial": "Q2ZZ-EEEE-FFFF",
+        "mac": "00:11:22:33:44:77",
+        "model": "MX67",
+        "networkId": "N_24329156",
+        "productType": "appliance",
+        "lanIp": "192.168.2.1",
+        "firmware": "wired-18-1-1"
+    }
+]

@@ -1,0 +1,14 @@
+{
+    "routes": [
+        {
+            "method": "GET",
+            "path": "/proxy/network/integration/v1/sites",
+            "file": "sites.json"
+        },
+        {
+            "method": "GET",
+            "path": "/proxy/network/integration/v1/sites/{siteId}/devices",
+            "file": "devices.json"
+        }
+    ]
+}

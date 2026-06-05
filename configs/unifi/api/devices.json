@@ -1,0 +1,17 @@
+{
+    "offset": 0,
+    "limit": 25,
+    "count": 1,
+    "totalCount": 1,
+    "data": [
+        {
+            "id": "a0b1c2d3e4f5",
+            "name": "USW-Mock-24",
+            "model": "USW-24-PoE",
+            "macAddress": "00:27:22:aa:bb:cc",
+            "ipAddress": "192.168.2.2",
+            "state": "ONLINE",
+            "firmwareVersion": "6.6.55"
+        }
+    ]
+}
