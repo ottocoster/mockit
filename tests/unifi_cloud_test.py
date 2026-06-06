@@ -1,24 +1,18 @@
+import os
 import requests
 import json
+
+# Default to the real cloud API; override for mockit:
+#   UNIFI_CLOUD_BASE=https://localhost UNIFI_CLOUD_KEY=mock-api-key python unifi_cloud_test.py
+BASE = os.environ.get('UNIFI_CLOUD_BASE', 'https://api.ui.com')
+API_KEY = os.environ.get('UNIFI_CLOUD_KEY', '')
 
 headers = {
     'accept': 'application/json',
     'Content-Type': 'application/json',
-    'X-API-KEY': ''
+    'X-API-KEY': API_KEY
 }
 
-response = requests.get('https://api.ui.com/v1/hosts', headers=headers)
+response = requests.get(f'{BASE}/v1/hosts', headers=headers, verify=False)
 data = response.json()
 print(json.dumps(data, indent=4))
-
-# print("----------------")
-# hostId = data['data'][1]['hostId']
-
-# params={
-#     "pageSize": 1
-# }
-# response = requests.get(f'https://api.ui.com/v1/devices?hostIds[]={hostId}&pageSize=1', headers=headers)
-# data = response.json()
-# print(json.dumps(data, indent=4))
-
-
