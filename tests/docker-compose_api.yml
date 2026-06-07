@@ -9,12 +9,10 @@ x-api-healthcheck: &api-health
 
 services:
   test_container:
-    build: .
+    image: "${CI_REGISTRY_IMAGE}:tester"
     container_name: devices-api-test
     networks: [api-net]
     entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
-    volumes:
-      - ./:/tests
     depends_on:
       meraki: { condition: service_healthy }
       unifi: { condition: service_healthy }
@@ -23,31 +21,31 @@ services:
       aruba: { condition: service_healthy }
 
   meraki:
-    build: ../
+    image: "${CI_REGISTRY_IMAGE}:${IMAGE_VERSION}_rc"
     environment: { DEVICE_TYPE: meraki, API_AUTH_TYPE: bearer, API_TOKEN: "12345" }
     networks: [api-net]
     healthcheck: *api-health
 
   unifi:
-    build: ../
+    image: "${CI_REGISTRY_IMAGE}:${IMAGE_VERSION}_rc"
     environment: { DEVICE_TYPE: unifi, API_AUTH_TYPE: apikey, API_KEY: mock-api-key }
     networks: [api-net]
     healthcheck: *api-health
 
   unifi_cloud:
-    build: ../
+    image: "${CI_REGISTRY_IMAGE}:${IMAGE_VERSION}_rc"
     environment: { DEVICE_TYPE: unifi_cloud, API_AUTH_TYPE: apikey, API_KEY: mock-api-key }
     networks: [api-net]
     healthcheck: *api-health
 
   hpe_greenlake:
-    build: ../
+    image: "${CI_REGISTRY_IMAGE}:${IMAGE_VERSION}_rc"
     environment: { DEVICE_TYPE: hpe_greenlake, API_AUTH_TYPE: oauth2, API_OAUTH_CLIENT_ID: "1234", API_OAUTH_CLIENT_SECRET: "45678" }
     networks: [api-net]
     healthcheck: *api-health
 
   aruba:
-    build: ../
+    image: "${CI_REGISTRY_IMAGE}:${IMAGE_VERSION}_rc"
     environment: { DEVICE_TYPE: aruba, API_AUTH_TYPE: oauth2 }
     networks: [api-net]
     healthcheck: *api-health
