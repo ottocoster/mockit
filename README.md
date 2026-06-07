@@ -317,7 +317,7 @@ If you want to share your command templates with the rest of us, it would be app
 Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
 
 # Roadmap
-- RestAPI support to imitate controller based devices.
+- RestAPI support to imitate controller based devices — **implemented** (see the "API Server" section).
 ## API Server
 
 Mock'it can imitate cloud/controller REST APIs (Meraki, UniFi, HPE GreenLake, ...).

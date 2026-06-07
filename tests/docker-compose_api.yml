@@ -1,0 +1,57 @@
+name: devices
+
+x-api-healthcheck: &api-health
+  test: ["CMD", "python", "-c", "import socket; socket.create_connection(('localhost', 443), 3)"]
+  interval: 5s
+  timeout: 3s
+  retries: 12
+  start_period: 5s
+
+services:
+  test_container:
+    build: .
+    container_name: devices-api-test
+    networks: [api-net]
+    entrypoint: /bin/sh -c "python --version && tail -f /dev/null"
+    volumes:
+      - ./:/tests
+    depends_on:
+      meraki: { condition: service_healthy }
+      unifi: { condition: service_healthy }
+      unifi_cloud: { condition: service_healthy }
+      hpe_greenlake: { condition: service_healthy }
+      aruba: { condition: service_healthy }
+
+  meraki:
+    build: ../
+    environment: { DEVICE_TYPE: meraki, API_AUTH_TYPE: bearer, API_TOKEN: "12345" }
+    networks: [api-net]
+    healthcheck: *api-health
+
+  unifi:
+    build: ../
+    environment: { DEVICE_TYPE: unifi, API_AUTH_TYPE: apikey, API_KEY: mock-api-key }
+    networks: [api-net]
+    healthcheck: *api-health
+
+  unifi_cloud:
+    build: ../
+    environment: { DEVICE_TYPE: unifi_cloud, API_AUTH_TYPE: apikey, API_KEY: mock-api-key }
+    networks: [api-net]
+    healthcheck: *api-health
+
+  hpe_greenlake:
+    build: ../
+    environment: { DEVICE_TYPE: hpe_greenlake, API_AUTH_TYPE: oauth2, API_OAUTH_CLIENT_ID: "1234", API_OAUTH_CLIENT_SECRET: "45678" }
+    networks: [api-net]
+    healthcheck: *api-health
+
+  aruba:
+    build: ../
+    environment: { DEVICE_TYPE: aruba, API_AUTH_TYPE: oauth2 }
+    networks: [api-net]
+    healthcheck: *api-health
+
+networks:
+  api-net:
+    driver: bridge

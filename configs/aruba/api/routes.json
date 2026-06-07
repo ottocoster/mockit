@@ -1,0 +1,8 @@
+{
+    "routes": [
+        { "method": "POST", "path": "/oauth2/authorize/central/api/login", "public": true, "file": "login.json" },
+        { "method": "POST", "path": "/oauth2/authorize/central/api", "oauth_authorize": true },
+        { "method": "POST", "path": "/oauth2/token", "oauth_token": true },
+        { "method": "GET", "path": "/monitoring/v2/aps", "file": "aps.json" }
+    ]
+}

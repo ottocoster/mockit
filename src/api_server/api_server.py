@@ -6,8 +6,17 @@ mapping ``METHOD /path`` to a response file (json/txt/xml). Authentication is
 configured per driver via environment variables (see src/options.py -> 'api'):
 ``none`` | ``bearer`` | ``apikey`` | ``oauth2``.
 
-Built on aiohttp so it plugs into the same asyncio event loop / ServerRegistry
-as the SSH, Telnet, SNMP and NETCONF drivers.
+OAuth2 supports both the simple client-credentials flow and a multi-step
+authorization-code flow (login -> authorize -> token), enough to mock platforms
+like HPE GreenLake and Aruba Central. Route flags:
+
+* ``"oauth_token": true``     - issues an access token (client_credentials,
+                                authorization_code or refresh_token grants)
+* ``"oauth_authorize": true`` - returns an ``auth_code`` for the code flow
+* ``"public": true``          - serve this file route without authentication
+
+Built on aiohttp so it shares the asyncio event loop / ServerRegistry with the
+SSH, Telnet, SNMP and NETCONF drivers.
 """
 
 import asyncio
@@ -31,7 +40,6 @@ class APIServer:
     # ---- lifecycle -------------------------------------------------------
 
     async def run(self, status, options):
-        """Start the server and run until the task is cancelled."""
         app = self.build_app(options)
         self.runner = web.AppRunner(app, access_log=None)
         await self.runner.setup()
@@ -58,8 +66,6 @@ class APIServer:
             self.runner = None
 
     def stop(self):
-        """Shutdown hook (cleanup also happens on task cancellation)."""
-        # The serving task is cancelled by ServerRegistry; cleanup runs in run().
         return None
 
     # ---- TLS -------------------------------------------------------------
@@ -103,18 +109,24 @@ class APIServer:
     def build_app(self, options) -> web.Application:
         app = web.Application(middlewares=[self._auth_middleware(options)])
         api_dir = self._api_dir(options)
-        token_paths: set[str] = set()
+        public_paths: set[str] = set()
 
         for route in self._load_routes(options):
             method = route.get("method", "GET").upper()
             path = route["path"]
             if route.get("oauth_token"):
-                token_paths.add(path)
-                app.router.add_route(method, path, self._token_handler(options))
+                public_paths.add(path)
+                handler = self._token_handler(options)
+            elif route.get("oauth_authorize"):
+                public_paths.add(path)
+                handler = self._authorize_handler(options)
             else:
-                app.router.add_route(method, path, self._file_handler(api_dir, route))
+                if route.get("public"):
+                    public_paths.add(path)
+                handler = self._file_handler(api_dir, route)
+            app.router.add_route(method, path, handler)
 
-        app["token_paths"] = token_paths
+        app["public_paths"] = public_paths
         return app
 
     def _file_handler(self, api_dir: Path, route: dict):
@@ -139,38 +151,52 @@ class APIServer:
 
         return handler
 
-    # ---- oauth2 token endpoint ------------------------------------------
+    # ---- oauth2 ----------------------------------------------------------
+
+    def _authorize_handler(self, options):
+        async def handler(request):
+            return web.json_response(
+                {"auth_code": options.get("oauth_auth_code", "mockit-auth-code")}
+            )
+        return handler
 
     def _token_handler(self, options):
         async def handler(request):
-            cid, secret = await self._read_client_creds(request)
+            body = await self._read_body(request)
+            grant = body.get("grant_type", "")
+            cid, secret = body.get("client_id"), body.get("client_secret")
             exp_id = options.get("oauth_client_id", "")
             exp_secret = options.get("oauth_client_secret", "")
-            if (exp_id and cid != exp_id) or (exp_secret and secret != exp_secret):
-                return web.json_response({"error": "invalid_client"}, status=401)
+
+            # Validate client credentials when they are configured.
+            if grant in ("client_credentials", "authorization_code"):
+                if (exp_id and cid != exp_id) or (exp_secret and secret != exp_secret):
+                    return web.json_response({"error": "invalid_client"}, status=401)
+
+            # Authorization-code grant must present the issued code.
+            if grant == "authorization_code":
+                expected = options.get("oauth_auth_code", "mockit-auth-code")
+                if expected and body.get("code") != expected:
+                    return web.json_response({"error": "invalid_grant"}, status=401)
+
             return web.json_response(
                 {
                     "access_token": options.get("oauth_access_token", "mockit-access-token"),
+                    "refresh_token": options.get("oauth_refresh_token", "mockit-refresh-token"),
                     "token_type": "Bearer",
                     "expires_in": 3600,
                 }
             )
-
         return handler
 
-    async def _read_client_creds(self, request):
-        """Pull client_id/client_secret from a JSON or form-encoded body."""
-        cid = secret = None
+    async def _read_body(self, request) -> dict:
+        """Read a request body as a dict from JSON or form-encoded content."""
         try:
             if "application/json" in request.headers.get("Content-Type", ""):
-                body = await request.json()
-            else:
-                body = dict(await request.post())
-            cid = body.get("client_id")
-            secret = body.get("client_secret")
+                return await request.json()
+            return dict(await request.post())
         except Exception:  # noqa: BLE001 - tolerate malformed bodies
-            pass
-        return cid, secret
+            return {}
 
     # ---- authentication --------------------------------------------------
 
@@ -179,8 +205,7 @@ class APIServer:
 
         @web.middleware
         async def middleware(request, handler):
-            # The OAuth token endpoint issues tokens; it must never require one.
-            if request.path in request.app.get("token_paths", set()):
+            if request.path in request.app.get("public_paths", set()):
                 return await handler(request)
             if self._authorized(request, options, auth_type):
                 return await handler(request)

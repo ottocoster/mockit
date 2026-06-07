@@ -143,6 +143,8 @@ def get_options():
             "oauth_client_id": get_opt("API_OAUTH_CLIENT_ID", ""),
             "oauth_client_secret": get_opt("API_OAUTH_CLIENT_SECRET", ""),
             "oauth_access_token": get_opt("API_OAUTH_ACCESS_TOKEN", "mockit-access-token"),
+            "oauth_auth_code": get_opt("API_OAUTH_AUTH_CODE", "mockit-auth-code"),
+            "oauth_refresh_token": get_opt("API_OAUTH_REFRESH_TOKEN", "mockit-refresh-token"),
         },
     }
     return options
