@@ -119,7 +119,7 @@ SSH_PLATFORMS_SUPPORTED = [
     "paloalto_panos",
     "quanta_mesh",
     "rad_etx",
-    "raisecom_roap",
+    # "raisecom_roap",
     "ruckus_fastiron",
     "ruijie_os",
     "sixwind_os",
