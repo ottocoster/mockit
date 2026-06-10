@@ -1,0 +1,5 @@
+{
+    "routes": [
+        { "method": "GET", "path": "/v1/hosts", "file": "hosts.json" }
+    ]
+}

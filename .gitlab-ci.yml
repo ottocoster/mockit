@@ -119,3 +119,60 @@ push:
       - "*.tar.gz"
     name: slurpit-mockit
     expire_in: 6 month
+
+api_test:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: test
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+    compose_file: $CI_PROJECT_DIR/tests/docker-compose_api.yml
+  script:
+    - alias dc="docker compose -f ${compose_file}"
+    - dc down -v || true
+    - dc up -d --build --wait --remove-orphans
+    - docker exec devices-api-test pytest --color=yes -v --durations 0 -rP test_api.py
+    - dc stop
+  after_script:
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_api.yml logs > $CI_PROJECT_DIR/api_logs.txt 2>&1 || true
+    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_api.yml down -v || true
+  artifacts:
+    when: always
+    paths:
+      - api_logs.txt
+    expire_in: 1 month
+
+api_test:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: test
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+    compose_file: $CI_PROJECT_DIR/tests/docker-compose_api.yml
+  script:
+    - alias dc="docker compose -f ${compose_file}"
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - dc down -v || true
+    - dc pull
+    - dc up -d --wait --remove-orphans
+    - docker exec devices-api-test pytest --color=yes -v --durations 0 -rP test_api.py
+    - dc stop
+  after_script:
+    - alias dc="docker compose -f ${compose_file}"
+    - mkdir -p $CI_PROJECT_DIR/logs
+    - |
+      for cid in $(dc ps -qa); do
+        cname=$(docker inspect --format='{{.Name}}' $cid)
+        docker logs $cid > "${CI_PROJECT_DIR}/logs/${cname}.txt" 2>&1 || true
+      done
+    - dc down -v || true
+  artifacts:
+    when: always
+    paths:
+      - $CI_PROJECT_DIR/logs/*
+    name: api-test-results
+    expire_in: 1 month
+  needs:
+    - job: build

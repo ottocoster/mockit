@@ -8,6 +8,7 @@ from snmp_server import asyncsnmp_server
 from src import logconf  # noqa
 from src.options import get_options, get_overridden_options
 from src.services import ServerRegistry, is_valid_platform
+from src.start_api import start_api, stop_api
 from src.start_netconf import start_netconf, stop_netconf
 from src.start_ssh import start_ssh
 from src.start_telnet import start_telnet
@@ -43,6 +44,7 @@ async def main() -> bool:
         server_registry.register("snmp", asyncsnmp_server.start_server, options, asyncsnmp_server.stop_server)
         server_registry.register("netconf", start_netconf, options, stop_netconf)
         server_registry.register("ssh", start_ssh, options)
+        server_registry.register("api", start_api, options, stop_api)
     else:
         logger.error(f"Device type `{device_type}` is not valid!")
         if not enable_reload:

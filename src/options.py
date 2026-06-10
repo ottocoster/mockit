@@ -53,6 +53,22 @@ def get_options():
     enable_ssh = bool2str[bool(CLASS_MAPPER.get(f"{normalized}_ssh"))]
     enable_telnet = bool2str[bool(CLASS_MAPPER.get(f"{normalized}_telnet"))]
 
+    # API driver detection: a driver is "API-only" when it ships api/routes.json
+    # but is not a known Netmiko platform. For those, the CLI/SNMP/NETCONF servers
+    # default off and only the API server runs.
+    api_dir = Path(f"configs/{normalized}")
+    if device_version:
+        api_dir = api_dir / device_version
+    api_available = (api_dir / "api" / "routes.json").exists()
+    is_netmiko = bool(
+        CLASS_MAPPER.get(normalized)
+        or CLASS_MAPPER.get(f"{normalized}_ssh")
+        or CLASS_MAPPER.get(f"{normalized}_telnet")
+    )
+    api_only = api_available and not is_netmiko
+    enable_api = bool2str[api_available]
+    legacy_default = bool2str[not api_only]
+
     options = {
         'ENABLE_RELOAD': enable_reload,
         'UDP_RELOAD_PORT': int(get_opt("UDP_RELOAD_PORT", 0)),
@@ -60,9 +76,10 @@ def get_options():
         'DEVICE_VERSION': device_version,
         'DEBUG_ENABLED': debug_enabled,
         'SSH_SERVER_ENABLED': get_opt("SSH_SERVER_ENABLED", enable_ssh, as_bool=True),
-        'SNMP_SERVER_ENABLED': get_opt("SNMP_SERVER_ENABLED", "true", as_bool=True),
-        'NETCONF_SERVER_ENABLED': get_opt("NETCONF_SERVER_ENABLED", "true", as_bool=True),
+        'SNMP_SERVER_ENABLED': get_opt("SNMP_SERVER_ENABLED", legacy_default, as_bool=True),
+        'NETCONF_SERVER_ENABLED': get_opt("NETCONF_SERVER_ENABLED", legacy_default, as_bool=True),
         'TELNET_SERVER_ENABLED': get_opt("TELNET_SERVER_ENABLED", enable_telnet, as_bool=True),
+        'API_SERVER_ENABLED': get_opt("API_SERVER_ENABLED", enable_api, as_bool=True),
         'ssh': {
             "debug": debug_enabled,
             "device_type": device_type,
@@ -110,6 +127,24 @@ def get_options():
             "password": get_opt("TELNET_PASSWORD", ""),
             "delay": float(get_opt("DEVICE_DELAY", '0.025')),
             "device_version": device_version
+        },
+        'api': {
+            "debug": debug_enabled,
+            "device_type": device_type,
+            "device_version": device_version,
+            "port": int(get_opt("API_PORT", '443')),
+            "tls": get_opt("API_TLS", "true", as_bool=True),
+            "cert": get_opt("API_CERT", "/api_cert/cert.pem"),
+            "key": get_opt("API_TLS_KEY", "/api_cert/key.pem"),
+            "auth_type": get_opt("API_AUTH_TYPE", "none"),
+            "token": get_opt("API_TOKEN", ""),
+            "api_key": get_opt("API_KEY", ""),
+            "api_key_header": get_opt("API_KEY_HEADER", "X-API-KEY"),
+            "oauth_client_id": get_opt("API_OAUTH_CLIENT_ID", ""),
+            "oauth_client_secret": get_opt("API_OAUTH_CLIENT_SECRET", ""),
+            "oauth_access_token": get_opt("API_OAUTH_ACCESS_TOKEN", "mockit-access-token"),
+            "oauth_auth_code": get_opt("API_OAUTH_AUTH_CODE", "mockit-auth-code"),
+            "oauth_refresh_token": get_opt("API_OAUTH_REFRESH_TOKEN", "mockit-refresh-token"),
         },
     }
     return options

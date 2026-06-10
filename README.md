@@ -317,4 +317,57 @@ If you want to share your command templates with the rest of us, it would be app
 Simply make a merge request. Make sure the executed command is not in the template, that it's pure output.
 
 # Roadmap
-- RestAPI support to imitate controller based devices.
+- RestAPI support to imitate controller based devices — **implemented** (see the "API Server" section).
+## API Server
+
+Mock'it can imitate cloud/controller REST APIs (Meraki, UniFi, HPE GreenLake, ...).
+An "API driver" is a folder under `configs/<driver>/api/` containing a route
+manifest and response files. When `configs/<driver>/api/routes.json` exists, the
+API server is enabled automatically and (for non-Netmiko drivers) the SSH / Telnet
+/ SNMP / NETCONF servers stay off.
+
+### Define routes
+
+`configs/<driver>/api/routes.json` maps a request to a response file:
+
+```json
+{
+    "routes": [
+        { "method": "GET", "path": "/api/v1/organizations", "file": "organizations.json" },
+        { "method": "GET", "path": "/api/v1/organizations/{organizationId}/devices", "file": "devices.json" }
+    ]
+}
+```
+
+Path parameters (`{id}`) and query strings (`?perPage=5000`) are accepted. Response
+files live next to `routes.json`; `content_type` defaults to `application/json`.
+
+### Authentication (set in the compose file)
+
+| `API_AUTH_TYPE` | Variables | Behaviour |
+|-----------------|-----------|-----------|
+| `none`   | -                                          | open |
+| `bearer` | `API_TOKEN`                                | requires `Authorization: Bearer <token>` |
+| `apikey` | `API_KEY`, `API_KEY_HEADER` (def `X-API-KEY`) | requires the API-key header |
+| `oauth2` | `API_OAUTH_CLIENT_ID`, `API_OAUTH_CLIENT_SECRET` | a route with `"oauth_token": true` issues a token for valid creds; other routes require that Bearer token |
+
+### Example
+
+```yaml
+services:
+  meraki:
+    image: registry.gitlab.com/slurpit.io/mockit:latest
+    environment:
+      - DEVICE_TYPE=meraki
+      - API_AUTH_TYPE=bearer
+      - API_TOKEN=12345
+    ports:
+      - "443:443"
+```
+
+```bash
+curl -sk -H "Authorization: Bearer 12345" https://localhost/api/v1/organizations
+```
+
+The API server uses a self-signed certificate (generated in the image), so clients
+should skip verification (`curl -k`, `requests ... verify=False`).

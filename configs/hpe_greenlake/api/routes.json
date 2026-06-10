@@ -1,0 +1,14 @@
+{
+    "routes": [
+        {
+            "method": "POST",
+            "path": "/authorization/v2/oauth2/56789567456/token",
+            "oauth_token": true
+        },
+        {
+            "method": "GET",
+            "path": "/locations/v1/locations",
+            "file": "locations.json"
+        }
+    ]
+}

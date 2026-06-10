@@ -1,0 +1,18 @@
+{
+    "data": [
+        {
+            "id": "900a6c8f1b2c3d4e5f60718293a4b5c6",
+            "hardwareId": "0000aaaa-1111-2222-3333-444455556666",
+            "type": "console",
+            "ipAddress": "203.0.113.10",
+            "reportedState": {
+                "hostname": "mock-udm-pro",
+                "name": "Mock UDM Pro",
+                "state": "connected",
+                "version": "4.0.6"
+            }
+        }
+    ],
+    "httpStatusCode": 200,
+    "traceId": "mocktrace0123456789"
+}

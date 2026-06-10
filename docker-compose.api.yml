@@ -1,0 +1,37 @@
+name: devices
+services:
+  meraki:
+    build: .
+    container_name: meraki
+    environment:
+      - DEVICE_TYPE=meraki
+      - API_SERVER_ENABLED=true
+      - API_AUTH_TYPE=bearer
+      - API_TOKEN=12345
+      - DEBUG_ENABLED=true
+    ports:
+      - "443:443"   # HTTPS API
+
+  # Example UniFi driver (API key auth) -- uncomment to run instead:
+  # unifi:
+  #   build: .
+  #   container_name: unifi
+  #   environment:
+  #     - DEVICE_TYPE=unifi
+  #     - API_AUTH_TYPE=apikey
+  #     - API_KEY=mock-api-key
+  #     - API_KEY_HEADER=X-API-KEY
+  #   ports:
+  #     - "443:443"
+
+  # Example HPE GreenLake driver (OAuth2 client_credentials):
+  # hpe_greenlake:
+  #   build: .
+  #   container_name: hpe_greenlake
+  #   environment:
+  #     - DEVICE_TYPE=hpe_greenlake
+  #     - API_AUTH_TYPE=oauth2
+  #     - API_OAUTH_CLIENT_ID=1234
+  #     - API_OAUTH_CLIENT_SECRET=45678
+  #   ports:
+  #     - "443:443"

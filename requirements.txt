@@ -6,3 +6,4 @@ paramiko~=3.5.1
 netmiko
 openai
 pytest-netconf
+aiohttp
