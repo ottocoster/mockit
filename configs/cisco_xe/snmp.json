@@ -38,6 +38,12 @@
     ],
     "ENTITY-MIB": [
         {
+            "name": "entPhysicalClass",
+            "type": "string",
+            "value": "stack",
+            "suffix": "1"
+        },
+        {
             "name": "entPhysicalAlias",
             "type": "string",
             "value": "",
@@ -84,6 +90,164 @@
             "type": "string",
             "value": "17.9.4a",
             "suffix": "1"
+        },
+        {
+            "name": "entPhysicalClass",
+            "type": "string",
+            "value": "chassis",
+            "suffix": "1000"
+        },
+        {
+            "name": "entPhysicalAlias",
+            "type": "string",
+            "value": "",
+            "suffix": "1000"
+        },
+        {
+            "name": "entPhysicalDescr",
+            "type": "string",
+            "value": "WS-C2960X-48FPD-L",
+            "suffix": "1000"
+        },
+        {
+            "name": "entPhysicalFirmwareRev",
+            "type": "string",
+            "value": "15.2(7)E9",
+            "suffix": "1000"
+        },
+        {
+            "name": "entPhysicalHardwareRev",
+            "type": "string",
+            "value": "V07",
+            "suffix": "1000"
+        },
+        {
+            "name": "entPhysicalModelName",
+            "type": "string",
+            "value": "WS-C2960X-48FPD-L",
+            "suffix": "1000"
+        },
+        {
+            "name": "entPhysicalName",
+            "type": "string",
+            "value": "1",
+            "suffix": "1000"
+        },
+        {
+            "name": "entPhysicalSerialNum",
+            "type": "string",
+            "value": "FCW1234B4R3",
+            "suffix": "1000"
+        },
+        {
+            "name": "entPhysicalSoftwareRev",
+            "type": "string",
+            "value": "15.2(7)E9",
+            "suffix": "1000"
+        },
+        {
+            "name": "entPhysicalClass",
+            "type": "string",
+            "value": "chassis",
+            "suffix": "2000"
+        },
+        {
+            "name": "entPhysicalAlias",
+            "type": "string",
+            "value": "",
+            "suffix": "2000"
+        },
+        {
+            "name": "entPhysicalDescr",
+            "type": "string",
+            "value": "WS-C2960X-48FPD-L",
+            "suffix": "2000"
+        },
+        {
+            "name": "entPhysicalFirmwareRev",
+            "type": "string",
+            "value": "15.2(7)E9",
+            "suffix": "2000"
+        },
+        {
+            "name": "entPhysicalHardwareRev",
+            "type": "string",
+            "value": "V07",
+            "suffix": "2000"
+        },
+        {
+            "name": "entPhysicalModelName",
+            "type": "string",
+            "value": "WS-C2960X-48FPD-L",
+            "suffix": "2000"
+        },
+        {
+            "name": "entPhysicalName",
+            "type": "string",
+            "value": "1",
+            "suffix": "2000"
+        },
+        {
+            "name": "entPhysicalSerialNum",
+            "type": "string",
+            "value": "FCW4567B4R3",
+            "suffix": "2000"
+        },
+        {
+            "name": "entPhysicalSoftwareRev",
+            "type": "string",
+            "value": "15.2(7)E9",
+            "suffix": "2000"
+        }
+    ],
+    "CISCO-STACKWISE-MIB": [
+        {
+            "name": "cswSwitchNumCurrent",
+            "type": "integer",
+            "value": "1",
+            "suffix": "1000"
+        },
+        {
+            "name": "cswSwitchNumNextReload",
+            "type": "integer",
+            "value": "1",
+            "suffix": "1000"
+        },
+        {
+            "name": "cswSwitchMacAddress",
+            "type": "string",
+            "value": "d5:13:45:da:00:5d",
+            "suffix": "1000"
+        },
+        {
+            "name": "cswSwitchSoftwareImage",
+            "type": "string",
+            "value": "CAT9K_IOSXE",
+            "suffix": "1000"
+        },
+        {
+            "name": "cswSwitchNumCurrent",
+            "type": "integer",
+            "value": "2",
+            "suffix": "2000"
+        },
+        {
+            "name": "cswSwitchNumNextReload",
+            "type": "integer",
+            "value": "1",
+            "suffix": "2000"
+        },
+        {
+            "name": "cswSwitchMacAddress",
+            "type": "string",
+            "value": "d5:13:45:da:22:5d",
+            "suffix": "2000"
+        },
+        {
+            "name": "cswSwitchSoftwareImage",
+            "type": "string",
+            "value": "CAT9K_IOSXE",
+            "suffix": "2000"
         }
     ]
 }
