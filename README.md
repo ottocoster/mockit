@@ -342,6 +342,29 @@ API server is enabled automatically and (for non-Netmiko drivers) the SSH / Teln
 Path parameters (`{id}`) and query strings (`?perPage=5000`) are accepted. Response
 files live next to `routes.json`; `content_type` defaults to `application/json`.
 
+### Params (required + typed)
+
+A route can declare the parameters it accepts via `"params"`, keyed by name:
+
+```json
+{
+    "method": "GET",
+    "path": "/api/v1/organizations/{organizationId}/devices",
+    "file": "devices.json",
+    "params": {
+        "organizationId": {"in": "path", "type": "string", "required": true},
+        "perPage": {"in": "query", "type": "int", "required": false}
+    }
+}
+```
+
+* `"in"` — `query` (default) or `path`.
+* `"type"` — `string` (default) | `int` | `float` | `bool` | `date` (`YYYY-MM-DD`).
+* `"required"` — `true`/`false` (default `false`).
+
+A missing required param, or one that fails its type check, gets a `400` with
+`{"error": "..."}` before the route's handler runs.
+
 ### Authentication (set in the compose file)
 
 | `API_AUTH_TYPE` | Variables | Behaviour |

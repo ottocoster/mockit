@@ -15,6 +15,12 @@ like HPE GreenLake and Aruba Central. Route flags:
 * ``"oauth_authorize": true`` - returns an ``auth_code`` for the code flow
 * ``"public": true``          - serve this file route without authentication
 
+A route can declare the parameters it accepts via ``"params"``, keyed by
+name, each with ``"in"`` (``query`` or ``path``, default ``query``),
+``"type"`` (``string`` | ``int`` | ``float`` | ``bool`` | ``date``, default
+``string``) and ``"required"`` (bool, default false). Requests missing a
+required param or failing the type check get a 400.
+
 Built on aiohttp so it shares the asyncio event loop / ServerRegistry with the
 SSH, Telnet, SNMP and NETCONF drivers.
 """
@@ -23,12 +29,50 @@ import asyncio
 import json
 import logging
 import ssl
+from datetime import date
 from pathlib import Path
 
 from aiohttp import web
 
 
 logger = logging.getLogger("app")
+
+
+def _is_int(v: str) -> bool:
+    try:
+        int(v)
+        return True
+    except ValueError:
+        return False
+
+
+def _is_float(v: str) -> bool:
+    try:
+        float(v)
+        return True
+    except ValueError:
+        return False
+
+
+def _is_bool(v: str) -> bool:
+    return v.lower() in ("true", "false", "1", "0")
+
+
+def _is_date(v: str) -> bool:
+    try:
+        date.fromisoformat(v)
+        return True
+    except ValueError:
+        return False
+
+
+PARAM_TYPE_CHECKS = {
+    "string": lambda v: True,
+    "int": _is_int,
+    "float": _is_float,
+    "bool": _is_bool,
+    "date": _is_date,
+}
 
 
 class APIServer:
@@ -124,6 +168,7 @@ class APIServer:
                 if route.get("public"):
                     public_paths.add(path)
                 handler = self._file_handler(api_dir, route)
+            handler = self._with_param_validation(route, handler)
             app.router.add_route(method, path, handler)
 
         app["public_paths"] = public_paths
@@ -150,6 +195,39 @@ class APIServer:
             return web.Response(text=text, status=status_code, content_type=ctype)
 
         return handler
+
+    # ---- params ------------------------------------------------------------
+
+    def _with_param_validation(self, route: dict, handler):
+        params = route.get("params")
+        if not params:
+            return handler
+
+        async def wrapped(request):
+            error = self._validate_params(request, params)
+            if error is not None:
+                return error
+            return await handler(request)
+
+        return wrapped
+
+    def _validate_params(self, request, params: dict):
+        for name, spec in params.items():
+            location = spec.get("in", "query")
+            value = request.match_info.get(name) if location == "path" else request.query.get(name)
+            if value is None or value == "":
+                if spec.get("required"):
+                    return web.json_response(
+                        {"error": f"missing required parameter `{name}`"}, status=400
+                    )
+                continue
+            ptype = spec.get("type", "string")
+            check = PARAM_TYPE_CHECKS.get(ptype, PARAM_TYPE_CHECKS["string"])
+            if not check(value):
+                return web.json_response(
+                    {"error": f"parameter `{name}` must be of type `{ptype}`"}, status=400
+                )
+        return None
 
     # ---- oauth2 ----------------------------------------------------------
 

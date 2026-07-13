@@ -94,3 +94,34 @@ def test_aruba_oauth2_authorization_code():
     bad = s.post(f"{base}/oauth2/token", json={"client_id": "cid", "client_secret": "secret", "grant_type": "authorization_code", "code": "WRONG"}, timeout=10)
     assert bad.status_code == 401, bad.text
     assert s.get(f"{base}/monitoring/v2/aps", timeout=10).status_code == 401
+
+
+# ---- param validation -------------------------------------------------------
+
+def test_missing_required_query_param_rejected():
+    _wait("meraki")
+    r = requests.get(
+        "https://meraki:443/api/v1/organizations/549236/devices",
+        headers={"Authorization": "Bearer 12345"}, verify=False, timeout=10,
+    )
+    # perPage is optional; organizationId (path) is required and present -> 200
+    assert r.status_code == 200, r.text
+
+
+def test_wrong_type_query_param_rejected():
+    _wait("meraki")
+    r = requests.get(
+        "https://meraki:443/api/v1/organizations/549236/devices?perPage=not-a-number",
+        headers={"Authorization": "Bearer 12345"}, verify=False, timeout=10,
+    )
+    assert r.status_code == 400, r.text
+    assert "perPage" in r.json()["error"]
+
+
+def test_missing_required_query_param_on_unifi_cloud_pagesize_type():
+    _wait("unifi_cloud")
+    r = requests.get(
+        "https://unifi_cloud:443/v1/hosts?pageSize=abc",
+        headers={"X-API-KEY": "mock-api-key"}, verify=False, timeout=10,
+    )
+    assert r.status_code == 400, r.text

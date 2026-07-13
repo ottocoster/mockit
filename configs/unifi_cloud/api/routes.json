@@ -1,5 +1,13 @@
 {
     "routes": [
-        { "method": "GET", "path": "/v1/hosts", "file": "hosts.json" }
+        {
+            "method": "GET",
+            "path": "/v1/hosts",
+            "file": "hosts.json",
+            "params": {
+                "pageSize": {"in": "query", "type": "int", "required": false},
+                "nextToken": {"in": "query", "type": "string", "required": false}
+            }
+        }
     ]
 }
