@@ -7,10 +7,9 @@
         },
         {
             "method": "GET",
-            "path": "/proxy/network/integration/v1/sites/{siteId}/devices",
+            "path": "/proxy/network/integration/v1/sites/661900ae1c0a4f23b8e1f0a1/devices",
             "file": "devices.json",
             "params": {
-                "siteId": {"in": "path", "type": "string", "required": true},
                 "offset": {"in": "query", "type": "int", "required": false},
                 "limit": {"in": "query", "type": "int", "required": false}
             }
