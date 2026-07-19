@@ -320,7 +320,8 @@ Simply make a merge request. Make sure the executed command is not in the templa
 - RestAPI support to imitate controller based devices — **implemented** (see the "API Server" section).
 ## API Server
 
-Mock'it can imitate cloud/controller REST APIs (Meraki, UniFi, HPE GreenLake, ...).
+Mock'it can imitate cloud/controller REST APIs (Meraki, UniFi, UniFi Cloud,
+HPE GreenLake, Aruba Central, ...).
 An "API driver" is a folder under `configs/<driver>/api/` containing a route
 manifest and response files. When `configs/<driver>/api/routes.json` exists, the
 API server is enabled automatically and (for non-Netmiko drivers) the SSH / Telnet
@@ -364,6 +365,55 @@ A route can declare the parameters it accepts via `"params"`, keyed by name:
 
 A missing required param, or one that fails its type check, gets a `400` with
 `{"error": "..."}` before the route's handler runs.
+
+### Pagination
+
+A route can also declare `"pagination"` to serve its `file` (a bare JSON
+array of items) a page at a time instead of all at once, so pagination-aware
+clients can be tested against realistic multi-page responses. The `"type"`
+picks the vendor-shaped envelope; the rest of the block is config so each
+driver can match its real API's field/query-param names:
+
+| `type` | Shape | Example |
+|--------|-------|---------|
+| `link_header` | body = page array; RFC5988 `Link` response header (`first`/`prev`/`next`/`last`) | Meraki |
+| `offset_total` | body = `{offset, limit, count, <total_key>, <items_key>}` | UniFi |
+| `next_token` | body = `{<items_key>, [<token_param>]}` (token only while more pages remain) | UniFi Cloud |
+| `offset_items_total` | body = `{<total_key>, count, <items_key>}` | HPE GreenLake, Aruba Central |
+| `page_header_total` | body = page array; total count in `X-Page-Total` response header | Juniper Mist |
+
+```json
+{
+    "method": "GET",
+    "path": "/api/v1/organizations/{organizationId}/devices",
+    "file": "devices.json",
+    "pagination": {
+        "type": "link_header",
+        "page_size": 2,
+        "size_param": "perPage",
+        "cursor_key": "serial"
+    }
+}
+```
+
+`link_header` follows Meraki's RFC5988 (Web Linking) scheme: pages are sized
+by the `perPage` query param (falling back to `page_size` when the client
+omits it, so a small mock dataset still exercises multiple pages -- but a
+`perPage` large enough to cover everything correctly comes back as a single
+page with no `next`, matching the real API). Pages are bounded by
+`startingAfter`/`endingBefore` query params, whose value is another item's
+`cursor_key` field (e.g. a device's `serial`) -- not a page number. The
+response `Link` header is a comma-separated list of up to 4 `rel` links
+(`first`, `prev`, `next`, `last`); a client following `next` walks forward,
+`prev` walks back, and `first`/`last` jump to either end.
+
+Common knobs (all optional, per type): `page_size` (default page size when
+the client doesn't specify one), `offset_param`/`limit_param`/
+`starting_after_param`/`ending_before_param`/`token_param`/`size_param`/
+`page_param` (query-param names), `cursor_key` (the item field used as the
+`link_header` boundary token), `items_key`/`total_key` (envelope field
+names), `start_page`, and `extra` (static fields merged into the envelope,
+e.g. `traceId`).
 
 ### Authentication (set in the compose file)
 

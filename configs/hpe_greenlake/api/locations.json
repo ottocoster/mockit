@@ -1,18 +1,32 @@
-{
-    "items": [
-        {
-            "id": "11111111-2222-3333-4444-555555555555",
-            "type": "location",
-            "name": "Amsterdam Datacenter",
-            "address": {
-                "streetAddress": "Science Park 1",
-                "city": "Amsterdam",
-                "countryCode": "NL"
-            }
+[
+    {
+        "id": "11111111-2222-3333-4444-555555555555",
+        "type": "location",
+        "name": "Amsterdam Datacenter",
+        "address": {
+            "streetAddress": "Science Park 1",
+            "city": "Amsterdam",
+            "countryCode": "NL"
         }
-    ],
-    "count": 1,
-    "offset": 0,
-    "limit": 10,
-    "total": 1
-}
+    },
+    {
+        "id": "22222222-3333-4444-5555-666666666666",
+        "type": "location",
+        "name": "Rotterdam Datacenter",
+        "address": {
+            "streetAddress": "Weena 100",
+            "city": "Rotterdam",
+            "countryCode": "NL"
+        }
+    },
+    {
+        "id": "33333333-4444-5555-6666-777777777777",
+        "type": "location",
+        "name": "Eindhoven Datacenter",
+        "address": {
+            "streetAddress": "High Tech Campus 1",
+            "city": "Eindhoven",
+            "countryCode": "NL"
+        }
+    }
+]

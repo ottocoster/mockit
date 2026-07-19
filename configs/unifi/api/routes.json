@@ -12,6 +12,14 @@
             "params": {
                 "offset": {"in": "query", "type": "int", "required": false},
                 "limit": {"in": "query", "type": "int", "required": false}
+            },
+            "pagination": {
+                "type": "offset_total",
+                "page_size": 2,
+                "offset_param": "offset",
+                "limit_param": "limit",
+                "items_key": "data",
+                "total_key": "totalCount"
             }
         }
     ]
