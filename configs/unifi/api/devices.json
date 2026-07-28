@@ -1,17 +1,38 @@
-{
-    "offset": 0,
-    "limit": 25,
-    "count": 1,
-    "totalCount": 1,
-    "data": [
-        {
-            "id": "a0b1c2d3e4f5",
-            "name": "USW-Mock-24",
-            "model": "USW-24-PoE",
-            "macAddress": "00:27:22:aa:bb:cc",
-            "ipAddress": "192.168.2.2",
-            "state": "ONLINE",
-            "firmwareVersion": "6.6.55"
-        }
-    ]
-}
+[
+    {
+        "id": "a0b1c2d3e4f5",
+        "name": "USW-Mock-24",
+        "model": "USW-24-PoE",
+        "macAddress": "00:27:22:aa:bb:cc",
+        "ipAddress": "192.168.2.2",
+        "state": "ONLINE",
+        "firmwareVersion": "6.6.55"
+    },
+    {
+        "id": "b1c2d3e4f5a6",
+        "name": "UAP-Mock-01",
+        "model": "U6-Pro",
+        "macAddress": "00:27:22:aa:bb:cd",
+        "ipAddress": "192.168.2.3",
+        "state": "ONLINE",
+        "firmwareVersion": "6.6.55"
+    },
+    {
+        "id": "c2d3e4f5a6b7",
+        "name": "USG-Mock-01",
+        "model": "UDM-Pro",
+        "macAddress": "00:27:22:aa:bb:ce",
+        "ipAddress": "192.168.2.1",
+        "state": "ONLINE",
+        "firmwareVersion": "3.2.9"
+    },
+    {
+        "id": "d3e4f5a6b7c8",
+        "name": "USW-Mock-08",
+        "model": "USW-8-60W",
+        "macAddress": "00:27:22:aa:bb:cf",
+        "ipAddress": "192.168.2.4",
+        "state": "OFFLINE",
+        "firmwareVersion": "6.6.55"
+    }
+]

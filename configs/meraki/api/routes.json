@@ -8,7 +8,19 @@
         {
             "method": "GET",
             "path": "/api/v1/organizations/{organizationId}/devices",
-            "file": "devices.json"
+            "file": "devices.json",
+            "params": {
+                "organizationId": {"in": "path", "type": "string", "required": true},
+                "perPage": {"in": "query", "type": "int", "required": false},
+                "startingAfter": {"in": "query", "type": "string", "required": false},
+                "endingBefore": {"in": "query", "type": "string", "required": false}
+            },
+            "pagination": {
+                "type": "link_header",
+                "page_size": 2,
+                "size_param": "perPage",
+                "cursor_key": "serial"
+            }
         }
     ]
 }

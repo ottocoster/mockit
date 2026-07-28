@@ -1,18 +1,38 @@
-{
-    "data": [
-        {
-            "id": "900a6c8f1b2c3d4e5f60718293a4b5c6",
-            "hardwareId": "0000aaaa-1111-2222-3333-444455556666",
-            "type": "console",
-            "ipAddress": "203.0.113.10",
-            "reportedState": {
-                "hostname": "mock-udm-pro",
-                "name": "Mock UDM Pro",
-                "state": "connected",
-                "version": "4.0.6"
-            }
+[
+    {
+        "id": "900a6c8f1b2c3d4e5f60718293a4b5c6",
+        "hardwareId": "0000aaaa-1111-2222-3333-444455556666",
+        "type": "console",
+        "ipAddress": "203.0.113.10",
+        "reportedState": {
+            "hostname": "mock-udm-pro",
+            "name": "Mock UDM Pro",
+            "state": "connected",
+            "version": "4.0.6"
         }
-    ],
-    "httpStatusCode": 200,
-    "traceId": "mocktrace0123456789"
-}
+    },
+    {
+        "id": "a11b7d9f2c3d4e5f60718293a4b5c6d7",
+        "hardwareId": "1111bbbb-2222-3333-4444-555566667777",
+        "type": "console",
+        "ipAddress": "203.0.113.11",
+        "reportedState": {
+            "hostname": "mock-udm-se",
+            "name": "Mock UDM SE",
+            "state": "connected",
+            "version": "4.0.6"
+        }
+    },
+    {
+        "id": "b22c8e0a3d4e5f60718293a4b5c6d7e8",
+        "hardwareId": "2222cccc-3333-4444-5555-666677778888",
+        "type": "console",
+        "ipAddress": "203.0.113.12",
+        "reportedState": {
+            "hostname": "mock-udm-pro-2",
+            "name": "Mock UDM Pro 2",
+            "state": "disconnected",
+            "version": "3.2.9"
+        }
+    }
+]

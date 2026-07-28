@@ -1,5 +1,20 @@
 {
     "routes": [
-        { "method": "GET", "path": "/v1/hosts", "file": "hosts.json" }
+        {
+            "method": "GET",
+            "path": "/v1/hosts",
+            "file": "hosts.json",
+            "params": {
+                "pageSize": {"in": "query", "type": "int", "required": false},
+                "nextToken": {"in": "query", "type": "string", "required": false}
+            },
+            "pagination": {
+                "type": "next_token",
+                "page_size": 2,
+                "token_param": "nextToken",
+                "items_key": "data",
+                "extra": {"httpStatusCode": 200, "traceId": "mocktrace0123456789"}
+            }
+        }
     ]
 }

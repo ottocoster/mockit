@@ -15,6 +15,17 @@ like HPE GreenLake and Aruba Central. Route flags:
 * ``"oauth_authorize": true`` - returns an ``auth_code`` for the code flow
 * ``"public": true``          - serve this file route without authentication
 
+A route can declare the parameters it accepts via ``"params"``, keyed by
+name, each with ``"in"`` (``query`` or ``path``, default ``query``),
+``"type"`` (``string`` | ``int`` | ``float`` | ``bool`` | ``date``, default
+``string``) and ``"required"`` (bool, default false). Requests missing a
+required param or failing the type check get a 400.
+
+A route can also declare ``"pagination"`` to serve its ``file`` (a bare JSON
+array) a page at a time instead of all at once, mimicking how real
+controller/cloud APIs paginate list endpoints. See ``PAGINATORS`` below for
+the supported ``"type"`` values and their config knobs.
+
 Built on aiohttp so it shares the asyncio event loop / ServerRegistry with the
 SSH, Telnet, SNMP and NETCONF drivers.
 """
@@ -23,12 +34,184 @@ import asyncio
 import json
 import logging
 import ssl
+from datetime import date
 from pathlib import Path
 
 from aiohttp import web
 
 
 logger = logging.getLogger("app")
+
+
+def _is_int(v: str) -> bool:
+    try:
+        int(v)
+        return True
+    except ValueError:
+        return False
+
+
+def _is_float(v: str) -> bool:
+    try:
+        float(v)
+        return True
+    except ValueError:
+        return False
+
+
+def _is_bool(v: str) -> bool:
+    return v.lower() in ("true", "false", "1", "0")
+
+
+def _is_date(v: str) -> bool:
+    try:
+        date.fromisoformat(v)
+        return True
+    except ValueError:
+        return False
+
+
+PARAM_TYPE_CHECKS = {
+    "string": lambda v: True,
+    "int": _is_int,
+    "float": _is_float,
+    "bool": _is_bool,
+    "date": _is_date,
+}
+
+
+# ---- pagination strategies -------------------------------------------------
+#
+# Each paginator takes (request, items, page_size, conf) and returns a
+# web.Response, slicing `items` (the bare JSON array loaded from the route's
+# `file`) down to at most `page_size` entries per call. `conf` is the route's
+# `"pagination"` block, which lets each driver match its real vendor's field
+# and query-param names without changing this code.
+
+def _paginate_link_header(request, items, page_size, conf):
+    """Meraki style: RFC5988 cursor pagination. `perPage` sets the page size
+    (defaults to `page_size` when omitted so the mock demonstrates paging
+    even with a small dataset, but a client-supplied `perPage` big enough to
+    cover everything correctly comes back as a single page, matching the
+    real API). Pages are bounded by `startingAfter`/`endingBefore`, each the
+    value of one item's `cursor_key` field (e.g. a device's serial) -- not a
+    page number, per Meraki's docs. The response `Link` header carries up to
+    4 comma-separated `rel` links: first, prev, next, last."""
+    size_param = conf.get("size_param", "perPage")
+    starting_after_param = conf.get("starting_after_param", "startingAfter")
+    ending_before_param = conf.get("ending_before_param", "endingBefore")
+    cursor_key = conf.get("cursor_key", "id")
+    per_page = int(request.query.get(size_param, page_size))
+
+    def index_of(token):
+        for i, item in enumerate(items):
+            if str(item.get(cursor_key)) == token:
+                return i
+        return None
+
+    starting_after = request.query.get(starting_after_param)
+    ending_before = request.query.get(ending_before_param)
+    if starting_after is not None:
+        idx = index_of(starting_after)
+        start = idx + 1 if idx is not None else 0
+        end = start + per_page
+    elif ending_before is not None:
+        idx = index_of(ending_before)
+        end = idx if idx is not None else len(items)
+        start = max(0, end - per_page)
+    else:
+        start, end = 0, per_page
+
+    window = items[start:end]
+    resp = web.json_response(window)
+
+    def link(**params):
+        # with_query (not update_query) so a cursor param used to reach the
+        # *current* page (e.g. startingAfter) doesn't leak into a link built
+        # off a different cursor param (e.g. an endingBefore-based `prev`).
+        query = {size_param: str(per_page), **params}
+        return str(request.url.with_query(query))
+
+    links = [f'<{link()}>; rel="first"']
+    if start > 0 and window:
+        links.append(f'<{link(**{ending_before_param: str(window[0].get(cursor_key))})}>; rel="prev"')
+    if end < len(items) and window:
+        links.append(f'<{link(**{starting_after_param: str(window[-1].get(cursor_key))})}>; rel="next"')
+    links.append(f'<{link(**{ending_before_param: "0"})}>; rel="last"')
+    resp.headers["Link"] = ", ".join(links)
+    return resp
+
+
+def _paginate_offset_total(request, items, page_size, conf):
+    """UniFi style: body carries offset/limit/count/<total_key>/<items_key>."""
+    offset_param = conf.get("offset_param", "offset")
+    limit_param = conf.get("limit_param", "limit")
+    items_key = conf.get("items_key", "data")
+    total_key = conf.get("total_key", "totalCount")
+    offset = int(request.query.get(offset_param, 0))
+    chunk = items[offset:offset + page_size]
+    body = {
+        offset_param: offset,
+        limit_param: page_size,
+        "count": len(chunk),
+        total_key: len(items),
+        items_key: chunk,
+    }
+    body.update(conf.get("extra", {}))
+    return web.json_response(body)
+
+
+def _paginate_offset_items_total(request, items, page_size, conf):
+    """HPE GreenLake / Aruba Central style: body carries <total_key>/<items_key>;
+    the offset query-param name differs per vendor (`offset` vs `next`)."""
+    offset_param = conf.get("offset_param", "offset")
+    items_key = conf.get("items_key", "items")
+    total_key = conf.get("total_key", "total")
+    offset = int(request.query.get(offset_param, 0))
+    chunk = items[offset:offset + page_size]
+    body = {total_key: len(items), "count": len(chunk), items_key: chunk}
+    body.update(conf.get("extra", {}))
+    return web.json_response(body)
+
+
+def _paginate_next_token(request, items, page_size, conf):
+    """UniFi Cloud style: body carries <items_key>; an opaque <token_param>
+    is only present in the body while more pages remain."""
+    token_param = conf.get("token_param", "nextToken")
+    items_key = conf.get("items_key", "data")
+    token = request.query.get(token_param)
+    offset = int(token) if token and _is_int(token) else 0
+    chunk = items[offset:offset + page_size]
+    body = {items_key: chunk}
+    body.update(conf.get("extra", {}))
+    next_offset = offset + page_size
+    if next_offset < len(items):
+        body[token_param] = str(next_offset)
+    return web.json_response(body)
+
+
+def _paginate_page_header_total(request, items, page_size, conf):
+    """Juniper Mist style: body is a bare array; total count comes back in
+    the `X-Page-Total` response header, paging via page/limit query params."""
+    page_param = conf.get("page_param", "page")
+    limit_param = conf.get("limit_param", "limit")
+    start_page = int(conf.get("start_page", 1))
+    page = int(request.query.get(page_param, start_page))
+    offset = (page - start_page) * page_size
+    chunk = items[offset:offset + page_size]
+    resp = web.json_response(chunk)
+    resp.headers["X-Page-Total"] = str(len(items))
+    resp.headers[limit_param] = str(page_size)
+    return resp
+
+
+PAGINATORS = {
+    "link_header": _paginate_link_header,
+    "offset_total": _paginate_offset_total,
+    "offset_items_total": _paginate_offset_items_total,
+    "next_token": _paginate_next_token,
+    "page_header_total": _paginate_page_header_total,
+}
 
 
 class APIServer:
@@ -123,7 +306,11 @@ class APIServer:
             else:
                 if route.get("public"):
                     public_paths.add(path)
-                handler = self._file_handler(api_dir, route)
+                if route.get("pagination"):
+                    handler = self._paginated_handler(api_dir, route)
+                else:
+                    handler = self._file_handler(api_dir, route)
+            handler = self._with_param_validation(route, handler)
             app.router.add_route(method, path, handler)
 
         app["public_paths"] = public_paths
@@ -148,6 +335,60 @@ class APIServer:
             else:
                 text = ""
             return web.Response(text=text, status=status_code, content_type=ctype)
+
+        return handler
+
+    # ---- params ------------------------------------------------------------
+
+    def _with_param_validation(self, route: dict, handler):
+        params = route.get("params")
+        if not params:
+            return handler
+
+        async def wrapped(request):
+            error = self._validate_params(request, params)
+            if error is not None:
+                return error
+            return await handler(request)
+
+        return wrapped
+
+    def _validate_params(self, request, params: dict):
+        for name, spec in params.items():
+            location = spec.get("in", "query")
+            value = request.match_info.get(name) if location == "path" else request.query.get(name)
+            if value is None or value == "":
+                if spec.get("required"):
+                    return web.json_response(
+                        {"error": f"missing required parameter `{name}`"}, status=400
+                    )
+                continue
+            ptype = spec.get("type", "string")
+            check = PARAM_TYPE_CHECKS.get(ptype, PARAM_TYPE_CHECKS["string"])
+            if not check(value):
+                return web.json_response(
+                    {"error": f"parameter `{name}` must be of type `{ptype}`"}, status=400
+                )
+        return None
+
+    # ---- pagination ----------------------------------------------------------
+
+    def _paginated_handler(self, api_dir: Path, route: dict):
+        file = route.get("file")
+        conf = route["pagination"]
+        ptype = conf.get("type")
+        paginator = PAGINATORS.get(ptype)
+        if paginator is None:
+            logger.warning(f"Unknown pagination type `{ptype}` on route `{route.get('path')}`")
+            paginator = PAGINATORS["offset_total"]
+        page_size = int(conf.get("page_size", 25))
+
+        async def handler(request):
+            fp = api_dir / file
+            if not fp.exists():
+                return web.json_response({"error": f"response file `{file}` not found"}, status=404)
+            items = json.loads(fp.read_text())
+            return paginator(request, items, page_size, conf)
 
         return handler
 

@@ -7,8 +7,20 @@
         },
         {
             "method": "GET",
-            "path": "/proxy/network/integration/v1/sites/{siteId}/devices",
-            "file": "devices.json"
+            "path": "/proxy/network/integration/v1/sites/661900ae1c0a4f23b8e1f0a1/devices",
+            "file": "devices.json",
+            "params": {
+                "offset": {"in": "query", "type": "int", "required": false},
+                "limit": {"in": "query", "type": "int", "required": false}
+            },
+            "pagination": {
+                "type": "offset_total",
+                "page_size": 2,
+                "offset_param": "offset",
+                "limit_param": "limit",
+                "items_key": "data",
+                "total_key": "totalCount"
+            }
         }
     ]
 }

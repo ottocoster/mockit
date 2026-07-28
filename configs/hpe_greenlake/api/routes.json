@@ -8,7 +8,19 @@
         {
             "method": "GET",
             "path": "/locations/v1/locations",
-            "file": "locations.json"
+            "file": "locations.json",
+            "params": {
+                "offset": {"in": "query", "type": "int", "required": false},
+                "limit": {"in": "query", "type": "int", "required": false}
+            },
+            "pagination": {
+                "type": "offset_items_total",
+                "page_size": 2,
+                "offset_param": "offset",
+                "limit_param": "limit",
+                "items_key": "items",
+                "total_key": "total"
+            }
         }
     ]
 }
