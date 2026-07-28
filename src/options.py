@@ -133,7 +133,7 @@ def get_options():
             "device_type": device_type,
             "device_version": device_version,
             "port": int(get_opt("API_PORT", '443')),
-            "tls": get_opt("API_TLS", "true", as_bool=True),
+            "tls": get_opt("API_TLS", "false", as_bool=True),
             "cert": get_opt("API_CERT", "/api_cert/cert.pem"),
             "key": get_opt("API_TLS_KEY", "/api_cert/key.pem"),
             "auth_type": get_opt("API_AUTH_TYPE", "none"),

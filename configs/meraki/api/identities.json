@@ -1,0 +1,19 @@
+{
+    "name": "mockit",
+    "email": "email@email.com",
+    "lastUsedDashboardAt": "2026-04-28T13:13:57.000000Z",
+    "authentication": {
+        "mode": "email",
+        "api": {
+            "key": {
+                "created": true
+            }
+        },
+        "twoFactor": {
+            "enabled": false
+        },
+        "saml": {
+            "enabled": false
+        }
+    }
+}

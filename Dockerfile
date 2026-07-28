@@ -34,13 +34,16 @@ ENV TINI_SUBREAPER=1 \
     OPENAI_SUPPORT=false \
     OPENAI_APIKEY="" \
     API_SERVER_ENABLED="" \
-    API_PORT="443" \
+    API_PORT="80" \
     API_AUTH_TYPE="none" \
     API_TOKEN="" \
     API_KEY="" \
     API_KEY_HEADER="X-API-KEY" \
     API_OAUTH_CLIENT_ID="" \
     API_OAUTH_CLIENT_SECRET="" \
+    API_TLS="false" \
+    API_TLS_KEY="/api_cert/key.pem" \
+    API_CERT="/api_cert/cert.pem" \
     PYTHONPATH="/"
 
 # Copy app directories

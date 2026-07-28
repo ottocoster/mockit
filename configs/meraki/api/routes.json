@@ -7,6 +7,11 @@
         },
         {
             "method": "GET",
+            "path": "/api/v1/administered/identities/me",
+            "file": "identities.json"
+        },
+        {
+            "method": "GET",
             "path": "/api/v1/organizations/{organizationId}/devices",
             "file": "devices.json",
             "params": {
