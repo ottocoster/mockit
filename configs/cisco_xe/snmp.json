@@ -3,17 +3,17 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "cisco_xe.slurpit.io"
+            "value": "BEBRU01-AS01.eur.ko.com"
         },
         {
             "name": "sysDescr",
             "type": "string",
-            "value": "Cisco IOS Software, IOS-XE Software, Catalyst 4500 L3 Switch  Software (cat4500e-UNIVERSALK9-M), Version 03.11.06.E RELEASE SOFTWARE (fc2)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2022 by Cisco Systems, Inc.\r\nCompiled Tue 2"
+            "value": "Cisco IOS Software [Cupertino], Catalyst L3 Switch Software (CAT9K_IOSXE), Version 17.9.5, RELEASE SOFTWARE (fc1)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2024 by Cisco Systems, Inc.\r\nCompiled Tue 30-Jan-24 15:48 by mcpre"
         },
         {
             "name": "sysObjectID",
             "type": "id",
-            "value": "1.3.6.1.4.1.9.1.1606"
+            "value": "1.3.6.1.4.1.9.1.2494"
         },
         {
             "name": "sysContact",
@@ -28,12 +28,12 @@
         {
             "name": "sysServices",
             "type": "integer",
-            "value": "78"
+            "value": "6"
         },
         {
             "name": "sysUpTime",
             "type": "timeticks",
-            "value": "7735102"
+            "value": "4108676530"
         }
     ],
     "ENTITY-MIB": [
@@ -52,7 +52,7 @@
         {
             "name": "entPhysicalDescr",
             "type": "string",
-            "value": "Cisco CSR1000V Chassis",
+            "value": "c93xx Stack",
             "suffix": "1"
         },
         {
@@ -64,19 +64,19 @@
         {
             "name": "entPhysicalHardwareRev",
             "type": "string",
-            "value": "V00",
+            "value": "V05",
             "suffix": "1"
         },
         {
             "name": "entPhysicalModelName",
             "type": "string",
-            "value": "CSR1000V",
+            "value": "C9300-48P",
             "suffix": "1"
         },
         {
             "name": "entPhysicalName",
             "type": "string",
-            "value": "Chassis",
+            "value": "c93xx Stack",
             "suffix": "1"
         },
         {
@@ -88,7 +88,7 @@
         {
             "name": "entPhysicalSoftwareRev",
             "type": "string",
-            "value": "17.9.4a",
+            "value": "",
             "suffix": "1"
         },
         {
@@ -106,31 +106,31 @@
         {
             "name": "entPhysicalDescr",
             "type": "string",
-            "value": "WS-C2960X-48FPD-L",
+            "value": "C9300-48P",
             "suffix": "1000"
         },
         {
             "name": "entPhysicalFirmwareRev",
             "type": "string",
-            "value": "15.2(7)E9",
+            "value": "0.1",
             "suffix": "1000"
         },
         {
             "name": "entPhysicalHardwareRev",
             "type": "string",
-            "value": "V07",
+            "value": "V05",
             "suffix": "1000"
         },
         {
             "name": "entPhysicalModelName",
             "type": "string",
-            "value": "WS-C2960X-48FPD-L",
+            "value": "C9300-48P",
             "suffix": "1000"
         },
         {
             "name": "entPhysicalName",
             "type": "string",
-            "value": "1",
+            "value": "Switch 1",
             "suffix": "1000"
         },
         {
@@ -142,7 +142,7 @@
         {
             "name": "entPhysicalSoftwareRev",
             "type": "string",
-            "value": "15.2(7)E9",
+            "value": "Cupertino 17.09.05",
             "suffix": "1000"
         },
         {

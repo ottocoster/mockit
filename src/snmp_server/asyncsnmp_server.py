@@ -209,7 +209,7 @@ def set_mibs(mibBuilder, key, values):
             
             mib_tuple = mibBuilder.import_symbols(key, name)
             mib = mib_tuple[0]
-            suffix = tuple(int(s) for s in x.get("suffix", "0").split('.'))
+            suffix = parse_suffix(x.get("suffix"))
             if type == "hex":
                 mib_value = mib.syntax.clone(bytes(int(b, 16) for b in value.split()))
             else:
@@ -220,6 +220,19 @@ def set_mibs(mibBuilder, key, values):
         logger.error(f"Failed to load {key} with values {values}")
         logger.exception(e)
 
+def parse_suffix(suffix):
+    if not suffix:
+        return (0,)
+
+    # numeric OID suffix
+    if "." in suffix or suffix.isdigit():
+        return tuple(int(x) for x in suffix.split("."))
+
+    # MAC address
+    if ":" in suffix:
+        return tuple(int(x, 16) for x in suffix.split(":"))
+
+    raise ValueError(f"Unsupported suffix format: {suffix}")
 
 def get_auth(key, protocol):
     """
