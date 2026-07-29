@@ -3,7 +3,7 @@
         {
             "name": "sysName",
             "type": "string",
-            "value": "BEBRU01-AS01.eur.ko.com"
+            "value": "cisco_xe.slurpit.io"
         },
         {
             "name": "sysDescr",

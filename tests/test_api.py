@@ -1,6 +1,6 @@
 """
 API-driver tests. Each driver runs as its own service on the test network
-reachable at https://<service>.
+reachable at http://<service>.
 """
 import time
 
@@ -38,7 +38,7 @@ def _wait(host, timeout=90):
     last = None
     while time.time() < deadline:
         try:
-            requests.get(f"https://{host}/", verify=False, timeout=3)
+            requests.get(f"http://{host}/", verify=False, timeout=3)
             return
         except Exception as e:  # noqa: BLE001
             last = e
@@ -50,7 +50,7 @@ def _wait(host, timeout=90):
 def test_authorized(host):
     cfg = SIMPLE_DRIVERS[host]
     _wait(host)
-    r = requests.get(f"https://{host}{cfg['path']}", headers=cfg["headers"], verify=False, timeout=10)
+    r = requests.get(f"http://{host}{cfg['path']}", headers=cfg["headers"], verify=False, timeout=10)
     assert r.status_code == 200, r.text
     assert cfg["check"](r.json()), r.text
 
@@ -59,12 +59,12 @@ def test_authorized(host):
 def test_unauthorized(host):
     cfg = SIMPLE_DRIVERS[host]
     _wait(host)
-    r = requests.get(f"https://{host}{cfg['path']}", verify=False, timeout=10)
+    r = requests.get(f"http://{host}{cfg['path']}", verify=False, timeout=10)
     assert r.status_code == 401, r.text
 
 
 def test_greenlake_oauth2_client_credentials():
-    base = "https://hpe_greenlake"
+    base = "http://hpe_greenlake"
     _wait("hpe_greenlake")
     tok = f"{base}/authorization/v2/oauth2/56789567456/token"
     bad = requests.post(tok, data={"grant_type": "client_credentials", "client_id": "1234", "client_secret": "WRONG"}, verify=False, timeout=10)
@@ -79,7 +79,7 @@ def test_greenlake_oauth2_client_credentials():
 
 
 def test_aruba_oauth2_authorization_code():
-    base = "https://aruba"
+    base = "http://aruba"
     _wait("aruba")
     s = requests.Session()
     s.verify = False
@@ -103,7 +103,7 @@ def test_aruba_oauth2_authorization_code():
 def test_missing_required_query_param_rejected():
     _wait("meraki")
     r = requests.get(
-        "https://meraki/api/v1/organizations/549236/devices",
+        "http://meraki/api/v1/organizations/549236/devices",
         headers={"Authorization": "Bearer 12345"}, verify=False, timeout=10,
     )
     # perPage is optional; organizationId (path) is required and present -> 200
@@ -113,7 +113,7 @@ def test_missing_required_query_param_rejected():
 def test_wrong_type_query_param_rejected():
     _wait("meraki")
     r = requests.get(
-        "https://meraki/api/v1/organizations/549236/devices?perPage=not-a-number",
+        "http://meraki/api/v1/organizations/549236/devices?perPage=not-a-number",
         headers={"Authorization": "Bearer 12345"}, verify=False, timeout=10,
     )
     assert r.status_code == 400, r.text
@@ -123,7 +123,7 @@ def test_wrong_type_query_param_rejected():
 def test_missing_required_query_param_on_unifi_cloud_pagesize_type():
     _wait("unifi_cloud")
     r = requests.get(
-        "https://unifi_cloud/v1/hosts?pageSize=abc",
+        "http://unifi_cloud/v1/hosts?pageSize=abc",
         headers={"X-API-KEY": "mock-api-key"}, verify=False, timeout=10,
     )
     assert r.status_code == 400, r.text
@@ -136,7 +136,7 @@ def test_meraki_link_header_pagination():
     tokens (a device's serial here), not page numbers; Link carries up to 4
     rel links (first/prev/next/last)."""
     _wait("meraki")
-    base = "https://meraki"
+    base = "http://meraki"
     headers = {"Authorization": "Bearer 12345"}
     all_serials = {"Q2XX-AAAA-BBBB", "Q2YY-CCCC-DDDD", "Q2ZZ-EEEE-FFFF"}
 
@@ -178,7 +178,7 @@ def test_meraki_link_header_pagination():
 
 def test_unifi_offset_total_pagination():
     _wait("unifi")
-    base = f"https://unifi/proxy/network/integration/v1/sites/{UNIFI_SITE_ID}/devices"
+    base = f"http://unifi/proxy/network/integration/v1/sites/{UNIFI_SITE_ID}/devices"
     headers = {"X-API-KEY": "mock-api-key"}
     r1 = requests.get(base, headers=headers, verify=False, timeout=10)
     assert r1.status_code == 200, r1.text
@@ -195,7 +195,7 @@ def test_unifi_offset_total_pagination():
 
 def test_unifi_cloud_next_token_pagination():
     _wait("unifi_cloud")
-    base = "https://unifi_cloud/v1/hosts"
+    base = "http://unifi_cloud/v1/hosts"
     headers = {"X-API-KEY": "mock-api-key"}
     r1 = requests.get(base, headers=headers, verify=False, timeout=10)
     body1 = r1.json()
@@ -208,7 +208,7 @@ def test_unifi_cloud_next_token_pagination():
 
 
 def test_hpe_greenlake_offset_items_total_pagination():
-    base = "https://hpe_greenlake"
+    base = "http://hpe_greenlake"
     _wait("hpe_greenlake")
     tok = requests.post(
         f"{base}/authorization/v2/oauth2/56789567456/token",
@@ -226,7 +226,7 @@ def test_hpe_greenlake_offset_items_total_pagination():
 
 
 def test_aruba_offset_items_total_pagination_next_param():
-    base = "https://aruba"
+    base = "http://aruba"
     _wait("aruba")
     s = requests.Session()
     s.verify = False
