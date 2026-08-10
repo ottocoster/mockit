@@ -1,6 +1,6 @@
 [
     {
-        "name": "mock-ap-01",
+        "name": "mock-aruba-ap-01",
         "macaddr": "00:11:22:aa:bb:cc",
         "serial": "AABBCCDDEE",
         "model": "AP-515",
@@ -10,7 +10,7 @@
         "site": "Amsterdam"
     },
     {
-        "name": "mock-ap-02",
+        "name": "mock-aruba-ap-02",
         "macaddr": "00:11:22:aa:bb:cd",
         "serial": "AABBCCDDEF",
         "model": "AP-535",
@@ -20,7 +20,7 @@
         "site": "Amsterdam"
     },
     {
-        "name": "mock-ap-03",
+        "name": "mock-aruba-ap-03",
         "macaddr": "00:11:22:aa:bb:ce",
         "serial": "AABBCCDDF0",
         "model": "AP-515",

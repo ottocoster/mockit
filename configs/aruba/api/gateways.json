@@ -1,0 +1,22 @@
+[
+    {
+        "name": "mock-aruba-gateway-01",
+        "macaddr": "00:11:33:aa:bb:cc",
+        "serial": "AABBCCDDEEGW",
+        "model": "GW-515",
+        "status": "Up",
+        "ip_address": "192.168.2.40",
+        "firmware_version": "10.4.0.0",
+        "site": "Amsterdam"
+    },
+    {
+        "name": "mock-aruba-gateway-02",
+        "macaddr": "00:11:44:aa:bb:cd",
+        "serial": "AABBCCDDEFGW",
+        "model": "GW-535",
+        "status": "Up",
+        "ip_address": "192.168.2.41",
+        "firmware_version": "10.4.0.0",
+        "site": "Amsterdam"
+    }
+]

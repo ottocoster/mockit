@@ -1,0 +1,35 @@
+[
+    {
+        "name": "mock-aruba-switch-01",
+        "macaddr": "00:22:22:aa:bb:cc",
+        "serial": "AABBCCDDEESW",
+        "model": "SW-515",
+        "status": "Up",
+        "ip_address": "192.168.2.30",
+        "firmware_version": "10.4.0.0",
+        "site": "Amsterdam",
+        "switch_type": "AOS-CX"
+    },
+    {
+        "name": "mock-aruba-switch-02",
+        "macaddr": "00:33:22:aa:bb:cd",
+        "serial": "AABBCCDDEFSW",
+        "model": "SW-535",
+        "status": "Up",
+        "ip_address": "192.168.2.31",
+        "firmware_version": "10.4.0.0",
+        "site": "Amsterdam",
+        "switch_type": "AOS-S"
+    },
+    {
+        "name": "mock-aruba-switch-03",
+        "macaddr": "00:44:22:aa:bb:ce",
+        "serial": "AABBCCDDF0SW",
+        "model": "SW-515",
+        "status": "Down",
+        "ip_address": "192.168.2.32",
+        "firmware_version": "10.4.0.0",
+        "site": "Rotterdam",
+        "switch_type": "AOS-CX"
+    }
+]

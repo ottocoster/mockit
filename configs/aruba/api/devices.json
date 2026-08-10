@@ -1,0 +1,20 @@
+[
+    {
+        "mac": "00:11:22:aa:bb:cc",
+        "serial": "AABBCCDDEE",
+        "model": "AP-515",
+        "ap_part_type": "Some type"
+    },
+    {
+        "mac": "00:11:22:aa:bb:cd",
+        "serial": "AABBCCDDEF",
+        "model": "AP-535",
+        "ap_part_type": "Some type 2"
+    },
+    {
+        "mac": "00:11:22:aa:bb:ce",
+        "serial": "AABBCCDDF0",
+        "model": "AP-515",
+        "ap_part_type": "Some type 3"
+    }
+]
