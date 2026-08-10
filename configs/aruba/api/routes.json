@@ -5,6 +5,11 @@
         { "method": "POST", "path": "/oauth2/token", "oauth_token": true },
         {
             "method": "GET",
+            "path": "/monitoring/v2/networks",
+            "file": "networks.json"
+        },
+        {
+            "method": "GET",
             "path": "/monitoring/v2/aps",
             "file": "aps.json",
             "params": {

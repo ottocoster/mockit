@@ -1,0 +1,11 @@
+{
+  "count": 2,
+  "networks": [
+    {
+        "essid": "some_id",
+        "security": "Open",
+        "type": "Guest",
+        "client_count": 10
+    }
+  ]
+}
