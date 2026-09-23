@@ -33,9 +33,10 @@ class fortinet_handler(SSH_Handler):
             self.mode = ""
             self.set_prompt_terminator()
             return ""
-        if command == "edit root":
-            self.mode = " (root) "
-            return "current vf=root:0"
+        if command.startswith("edit "):
+            vdom = command[5:]
+            self.mode = f" ({vdom}) "
+            return f"current vf={vdom}:0"
         return super().handle_custom_command(command)
     
     def get_prompt_mode(self):
