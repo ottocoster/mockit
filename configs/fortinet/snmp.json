@@ -85,5 +85,49 @@
             "value": "1.0.0",
             "suffix": "1"
         }
+    ],
+    "FORTINET-FORTIGATE-MIB": [
+        {
+            "name": "fgWcWtpSessionWtpIpAddress",
+            "type": "string",
+            "value": "192.168.1.5",
+            "suffix": "123.41.194.47.35.96"
+        },
+        {
+            "name": "fgWcWtpConfigWtpName",
+            "type": "string",
+            "value": "fortinet_ap_1",
+            "suffix": "123.41.194.47.35.96"
+        },
+        {
+            "name": "fgWcWtpConfigWtpId",
+            "type": "string",
+            "value": "FORTIN-SN123456",
+            "suffix": "123.41.194.47.35.96"
+        },
+        {
+            "name": "fgWcWtpSessionWtpModelNumber",
+            "type": "string",
+            "value": "some model 1",
+            "suffix": "123.41.194.47.35.96"
+        },
+        {
+            "name": "fgWcWtpSessionWtpHwVersion",
+            "type": "string",
+            "value": "1.1.2",
+            "suffix": "123.41.194.47.35.96"
+        },
+        {
+            "name": "fgWcWtpSessionWtpSwVersion",
+            "type": "string",
+            "value": "10.1.2",
+            "suffix": "123.41.194.47.35.96"
+        },
+        {
+            "name": "fgWcWtpSessionWtpBaseMacAddress",
+            "type": "string",
+            "value": "3b:77:77:e3:07:4e",
+            "suffix": "123.41.194.47.35.96"
+        }
     ]
 }
