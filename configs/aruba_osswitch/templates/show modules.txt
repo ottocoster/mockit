@@ -1,0 +1,4 @@
+
+ Status and Counters - Module Information
+
+  Chassis: 2930F-48G-PoE+-4SFP+ JL256A         Serial Number:   SG2AJQN0F4

@@ -1,0 +1,18 @@
+
+ Internet (IP) Service
+
+  IP Routing : Disabled
+
+  Default Gateway : 10.10.10.1
+  Default TTL     : 64
+  Arp Age         : 20
+  Domain Suffix   : corp.example.com
+  DNS server      : 10.10.0.53
+
+  VLAN                 | IP Config  IP Address      Subnet Mask
+  -------------------- + ---------- --------------- ---------------
+  DEFAULT_VLAN         | Disabled
+  MGMT                 | Manual     10.10.10.21     255.255.255.0
+  DATA                 | Disabled
+  VOICE                | Disabled
+  WIFI-CORP            | Disabled

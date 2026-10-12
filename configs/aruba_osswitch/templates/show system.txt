@@ -1,0 +1,22 @@
+
+ Status and Counters - General System Information
+
+  System Name        : aruba_osswitch
+  System Contact     : netops@corp.example.com
+  System Location    : HQ-IDF2-Rack3
+
+  MAC Age Time (sec) : 300
+
+  Time Zone          : -300
+  Daylight Time Rule : Continental-US-and-Canada
+
+  Software revision  : WC.16.11.0019        Base MAC Addr      : b8d4e7-1a2b00
+  ROM Version        : WC.17.02.0006        Serial Number      : SG2AJQN0F4
+
+  Up Time            : 127 days             Memory   - Total   : 339,000,320
+  CPU Util (%)       : 3                               Free    : 196,154,200
+
+  IP Mgmt  - Pkts Rx : 18,442,190           Packet   - Total   : 6600
+             Pkts Tx : 9,104,553            Buffers    Free    : 4929
+                                                       Lowest  : 4827
+                                                       Missed  : 0

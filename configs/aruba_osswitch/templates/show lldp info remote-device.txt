@@ -1,0 +1,11 @@
+
+ LLDP Remote Devices Information
+
+  LocalPort | ChassisId          PortId             PortDescr SysName
+  --------- + ------------------ ------------------ --------- ------------------
+  1         | 204c03-6e1f20      eth0               eth0      AP-IDF2-01
+  2         | 204c03-6e2a48      eth0               eth0      AP-IDF2-02
+  5         | 10.30.0.45         00 04 f2 a1 b2 c3  1         VVX450-2F-205
+  12        | 10.30.0.52         00 04 f2 a1 b9 e7  1         VVX450-2F-212
+  49        | 9020c2-4f8a00      1/1/49             1/1/49    core-sw01
+  50        | 9020c2-4f8a00      1/1/50             1/1/50    core-sw01
