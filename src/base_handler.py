@@ -27,6 +27,8 @@ class HandlerConfig:
     alt_terminator: str = ">"
     openai_support: bool = False
     openai_apikey: str = ""
+    openai_store_responses: bool = False
+    """Store AI-generated outputs as `<command>.txt` template files."""
 
 
 class BaseHandler(ABC):
@@ -58,6 +60,7 @@ class BaseHandler(ABC):
         self.alt_terminator = config.alt_terminator
         self.openai_support = config.openai_support
         self.openai_apikey = config.openai_apikey
+        self.openai_store_responses = config.openai_store_responses
 
         self.enable = False
         self.config_mode = False
@@ -172,8 +175,50 @@ class BaseHandler(ABC):
         message_content = chat_completion.choices[0].message.content
         message_content = message_content.replace("```", "").strip()
 
+        # Store the AI output as a template file if enabled
+        if self.openai_store_responses:
+            self._store_ai_output(command, message_content)
+
         self.logger.info(f"ai_output: `{message_content}`")
         return message_content
+
+    def _store_ai_output(self, command: str, output: str) -> bool:
+        """
+        Saves an AI-generated command output as a `<command>.txt` template file
+        in the device's template directory, the same location commands are
+        loaded from. Future invocations of the command (even in new sessions)
+        are served from the template instead of the AI.
+
+        :param command: The command name, used as the template filename.
+        :param output: The AI-generated response to store.
+        :return: True if the output was stored successfully, False otherwise.
+        """
+        command = command.strip()
+        if not command:
+            self.logger.warning("Not storing AI output, command is empty")
+            return False
+
+        # Reject commands containing path separators to prevent writing outside
+        # the template directory
+        if "/" in command or "\\" in command:
+            self.logger.warning(f"Not storing AI output, invalid command name: `{command}`")
+            return False
+
+        template_dir = f"{self.config_dir}/templates"
+        file_path = os.path.join(template_dir, f"{command}.txt")
+
+        try:
+            os.makedirs(template_dir, exist_ok=True)
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(output)
+        except OSError as e:
+            self.logger.warning(f"Unable to store AI output in `{file_path}`: `{e}`")
+            return False
+
+        # Make the new template available for the remainder of this session
+        self.commands[command] = file_path
+        self.logger.info(f"ai_output stored in `{file_path}`")
+        return True
 
     def replace_command(self, command: str) -> str:
         """

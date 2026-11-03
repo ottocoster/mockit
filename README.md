@@ -238,6 +238,7 @@ Full documentation for the SSH KEX and Cipher testing [in tools/README.md](tools
 ### OpenAI Integration (Optional)
 - **OPENAI_SUPPORT**: Enable OpenAI support for handling unknown commands (default is true).
 - **OPENAI_APIKEY**: Set your OpenAI API key [here](https://platform.openai.com/).
+- **OPENAI_STORE_RESPONSES**: Save AI-generated outputs as `<command>.txt` files in the device's template directory (`configs/<device_type>[/<version>]/templates`). Subsequent invocations of the command — even in new sessions or new containers (when the file is persisted via a volume) — are served from the template file instead of calling the AI (default false).
 
 ### Logging Configuration
 - **DEBUG_ENABLED**: Enable print debug logs (default is false)

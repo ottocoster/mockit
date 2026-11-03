@@ -33,6 +33,7 @@ ENV TINI_SUBREAPER=1 \
     TELNET_PASSWORD="test" \
     OPENAI_SUPPORT=false \
     OPENAI_APIKEY="" \
+    OPENAI_STORE_RESPONSES=false \
     API_SERVER_ENABLED="" \
     API_PORT="80" \
     API_AUTH_TYPE="none" \

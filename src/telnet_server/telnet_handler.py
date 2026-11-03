@@ -34,6 +34,7 @@ class Telnet_Handler(BaseHandler):
             delay=options.get('delay', 0.025),
             openai_support=options.get('openai_support', False),
             openai_apikey=options.get('openai_apikey', ''),
+            openai_store_responses=options.get('openai_store_responses', False),
         )
         super().__init__(config)
 

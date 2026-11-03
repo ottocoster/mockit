@@ -29,6 +29,7 @@ class SSH_Handler(BaseHandler):
             delay=options['delay'],
             openai_support=options['openai_support'],
             openai_apikey=options['openai_apikey'],
+            openai_store_responses=options.get('openai_store_responses', False),
         )
         super().__init__(config)
 

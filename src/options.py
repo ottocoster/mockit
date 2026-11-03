@@ -93,6 +93,7 @@ def get_options():
             "login_retry": int(get_opt("LOGIN_RETRY", 0)),
             "openai_support": get_opt("OPENAI_SUPPORT", as_bool=True),
             "openai_apikey": get_opt("OPENAI_APIKEY", ""),
+            "openai_store_responses": get_opt("OPENAI_STORE_RESPONSES", as_bool=True),
             "device_version": device_version,
             "authkey_enabled": get_opt("AUTHKEY_ENABLED", "false", as_bool=True),
             "authkey_path": os.environ.get("AUTHKEY_PATH", ""),
@@ -114,6 +115,7 @@ def get_options():
             "snmpv3_privkey": get_opt("SNMP_V3_PRIV_KEY", ""),
             "openai_support": get_opt("OPENAI_SUPPORT", as_bool=True),
             "openai_apikey": get_opt("OPENAI_APIKEY", ""),
+            "openai_store_responses": get_opt("OPENAI_STORE_RESPONSES", as_bool=True),
         },
         'netconf': {
             "device_type": device_type,
