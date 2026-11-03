@@ -1,0 +1,87 @@
+
+ Multiple Spanning Tree (MST) Information
+
+  STP Enabled   : Yes
+  Force Version : MSTP-operation
+  IST Mapped VLANs : 1-4094
+  Switch MAC Address : b8d4e7-1a2b00
+  Switch Priority    : 32768
+  Max Age  : 20
+  Max Hops : 20
+  Forward Delay : 15
+
+  Topology Change Count  : 42
+  Time Since Last Change : 3 days
+
+  CST Root MAC Address : 9020c2-4f8a00
+  CST Root Priority    : 4096
+  CST Root Path Cost   : 2000
+  CST Root Port        : Trk1
+
+  IST Regional Root MAC Address : b8d4e7-1a2b00
+  IST Regional Root Priority    : 32768
+  IST Regional Root Path Cost   : 0
+  IST Remaining Hops            : 20
+
+  Root Guard Ports     :
+  Loop Guard Ports     :
+  TCN Guard Ports      :
+  BPDU Protected Ports : 3-46
+  BPDU Filtered Ports  :
+  PVST Protected Ports :
+  PVST Filtered Ports  :
+
+                  |           Prio                 Designated    Hello
+  Port  Type      | Cost      rity State           Bridge        Time PtP Edge
+  ----- --------- + --------- ---- ---------- ------------- ---- --- ----
+  1     100/1000T | 20000     128  Forwarding b8d4e7-1a2b00 2    Yes No
+  2     100/1000T | 20000     128  Forwarding b8d4e7-1a2b00 2    Yes No
+  3     100/1000T | Auto      128  Disabled
+  4     100/1000T | Auto      128  Disabled
+  5     100/1000T | 20000     128  Forwarding b8d4e7-1a2b00 2    Yes Yes
+  6     100/1000T | Auto      128  Disabled
+  7     100/1000T | 20000     128  Forwarding b8d4e7-1a2b00 2    Yes Yes
+  8     100/1000T | 20000     128  Forwarding b8d4e7-1a2b00 2    Yes Yes
+  9     100/1000T | Auto      128  Disabled
+  10    100/1000T | Auto      128  Disabled
+  11    100/1000T | Auto      128  Disabled
+  12    100/1000T | 20000     128  Forwarding b8d4e7-1a2b00 2    Yes Yes
+  13    100/1000T | Auto      128  Disabled
+  14    100/1000T | Auto      128  Disabled
+  15    100/1000T | 20000     128  Forwarding b8d4e7-1a2b00 2    Yes Yes
+  16    100/1000T | Auto      128  Disabled
+  17    100/1000T | Auto      128  Disabled
+  18    100/1000T | Auto      128  Disabled
+  19    100/1000T | Auto      128  Disabled
+  20    100/1000T | Auto      128  Disabled
+  21    100/1000T | Auto      128  Disabled
+  22    100/1000T | 20000     128  Forwarding b8d4e7-1a2b00 2    Yes Yes
+  23    100/1000T | Auto      128  Disabled
+  24    100/1000T | Auto      128  Disabled
+  25    100/1000T | Auto      128  Disabled
+  26    100/1000T | Auto      128  Disabled
+  27    100/1000T | Auto      128  Disabled
+  28    100/1000T | Auto      128  Disabled
+  29    100/1000T | Auto      128  Disabled
+  30    100/1000T | 200000    128  Forwarding b8d4e7-1a2b00 2    Yes Yes
+  31    100/1000T | Auto      128  Disabled
+  32    100/1000T | Auto      128  Disabled
+  33    100/1000T | Auto      128  Disabled
+  34    100/1000T | Auto      128  Disabled
+  35    100/1000T | Auto      128  Disabled
+  36    100/1000T | Auto      128  Disabled
+  37    100/1000T | Auto      128  Disabled
+  38    100/1000T | Auto      128  Disabled
+  39    100/1000T | Auto      128  Disabled
+  40    100/1000T | Auto      128  Disabled
+  41    100/1000T | Auto      128  Disabled
+  42    100/1000T | Auto      128  Disabled
+  43    100/1000T | Auto      128  Disabled
+  44    100/1000T | Auto      128  Disabled
+  45    100/1000T | 200000    128  Forwarding b8d4e7-1a2b00 2    Yes Yes
+  46    100/1000T | Auto      128  Disabled
+  47    100/1000T | Auto      128  Disabled
+  48    100/1000T | Auto      128  Disabled
+  51              | Auto      128  Disabled
+  52              | Auto      128  Disabled
+  Trk1            | 1000      64   Forwarding 9020c2-4f8a00 2    Yes No

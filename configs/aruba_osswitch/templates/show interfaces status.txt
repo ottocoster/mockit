@@ -1,0 +1,55 @@
+
+  Port     Name       Status  Config-mode   Speed    Type       Tagged Untagged
+  -------- ---------- ------- ------------- -------- ---------- ------ --------
+  1        AP-IDF2-01 Up      Auto          1000FDx  100/1000T  40     10
+  2        AP-IDF2-02 Up      Auto          1000FDx  100/1000T  40     10
+  3                   Down    Auto          1000FDx  100/1000T  30     20
+  4                   Down    Auto          1000FDx  100/1000T  30     20
+  5                   Up      Auto          1000FDx  100/1000T  30     20
+  6                   Down    Auto          1000FDx  100/1000T  30     20
+  7                   Up      Auto          1000FDx  100/1000T  30     20
+  8                   Up      Auto          1000FDx  100/1000T  30     20
+  9                   Down    Auto          1000FDx  100/1000T  30     20
+  10                  Down    Auto          1000FDx  100/1000T  30     20
+  11                  Down    Auto          1000FDx  100/1000T  30     20
+  12                  Up      Auto          1000FDx  100/1000T  30     20
+  13                  Down    Auto          1000FDx  100/1000T  30     20
+  14                  Down    Auto          1000FDx  100/1000T  30     20
+  15                  Up      Auto          1000FDx  100/1000T  30     20
+  16                  Down    Auto          1000FDx  100/1000T  30     20
+  17                  Down    Auto          1000FDx  100/1000T  30     20
+  18                  Down    Auto          1000FDx  100/1000T  30     20
+  19                  Down    Auto          1000FDx  100/1000T  30     20
+  20                  Down    Auto          1000FDx  100/1000T  30     20
+  21                  Down    Auto          1000FDx  100/1000T  30     20
+  22                  Up      Auto          1000FDx  100/1000T  30     20
+  23                  Down    Auto          1000FDx  100/1000T  30     20
+  24                  Down    Auto          1000FDx  100/1000T  30     20
+  25                  Down    Auto          1000FDx  100/1000T  30     20
+  26                  Down    Auto          1000FDx  100/1000T  30     20
+  27                  Down    Auto          1000FDx  100/1000T  30     20
+  28                  Down    Auto          1000FDx  100/1000T  30     20
+  29                  Down    Auto          1000FDx  100/1000T  30     20
+  30                  Up      Auto          100FDx   100/1000T  30     20
+  31                  Down    Auto          1000FDx  100/1000T  30     20
+  32                  Down    Auto          1000FDx  100/1000T  30     20
+  33                  Down    Auto          1000FDx  100/1000T  30     20
+  34                  Down    Auto          1000FDx  100/1000T  30     20
+  35                  Down    Auto          1000FDx  100/1000T  30     20
+  36                  Down    Auto          1000FDx  100/1000T  30     20
+  37                  Down    Auto          1000FDx  100/1000T  30     20
+  38                  Down    Auto          1000FDx  100/1000T  30     20
+  39                  Down    Auto          1000FDx  100/1000T  30     20
+  40                  Down    Auto          1000FDx  100/1000T  30     20
+  41                  Down    Auto          1000FDx  100/1000T  30     20
+  42                  Down    Auto          1000FDx  100/1000T  30     20
+  43                  Down    Auto          1000FDx  100/1000T  30     20
+  44                  Down    Auto          1000FDx  100/1000T  30     20
+  45       Printer-2F Up      Auto          100FDx   100/1000T  No     20
+  46                  Down    Auto          1000FDx  100/1000T  30     20
+  47       UNUSED     Down    Auto          1000FDx  100/1000T  No     1
+  48       UNUSED     Down    Auto          1000FDx  100/1000T  No     1
+  49-Trk1  Uplink cor Up      Auto          10GigFD  SFP+SR     multi  1
+  50-Trk1  Uplink cor Up      Auto          10GigFD  SFP+SR     multi  1
+  51                  Down    Auto                              No     1
+  52                  Down    Auto                              No     1

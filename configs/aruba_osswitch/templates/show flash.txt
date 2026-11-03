@@ -1,0 +1,13 @@
+
+Image           Size (bytes) Date     Version
+--------------- ------------ -------- ---------------
+Primary Image   :   29857412 03/14/24 WC.16.11.0019
+Secondary Image :   29510248 08/02/23 WC.16.11.0013
+
+Boot ROM Version
+----------------
+Primary Boot ROM Version   : WC.17.02.0006
+Secondary Boot ROM Version : WC.17.02.0006
+
+Default Boot Image   : Primary
+Default Boot ROM     : Primary

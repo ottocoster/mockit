@@ -1,0 +1,8 @@
+
+Transceiver Technical Information:
+
+                    Product      Serial             Part
+ Port    Type       Number       Number             Number
+ ------- ---------- ------------ ------------------ ----------
+ 49      SFP+SR     J9150D       CN5BKD10HG         1990-4634
+ 50      SFP+SR     J9150D       CN5BKD10J2         1990-4634

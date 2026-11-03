@@ -1,0 +1,141 @@
+
+ LLDP Remote Device Information Detail
+
+  Local Port   : 1
+  ChassisType  : mac-address
+  ChassisId    : 204c03-6e1f20
+  PortType     : local
+  PortId       : eth0
+  SysName      : AP-IDF2-01
+  System Descr : ArubaOS (MODEL: 515), Version 10.4.1.0 SSR (build 88123)
+  PortDescr    : eth0
+  Pvid         : 10
+
+  System Capabilities Supported  : bridge, wlan-access-point, router
+  System Capabilities Enabled    : bridge, wlan-access-point
+
+  Remote Management Address
+     Type    : ipv4
+     Address : 10.10.10.101
+
+  Poe Plus Information Detail
+
+    Poe Device Type            : Type2 PD
+    Power Source               : Primary
+    Power Priority             : Low
+    PD Requested Power Value   : 17.0 Watts
+    PSE Allocated Power Value  : 17.0 Watts
+
+------------------------------------------------------------------------------
+  Local Port   : 2
+  ChassisType  : mac-address
+  ChassisId    : 204c03-6e2a48
+  PortType     : local
+  PortId       : eth0
+  SysName      : AP-IDF2-02
+  System Descr : ArubaOS (MODEL: 515), Version 10.4.1.0 SSR (build 88123)
+  PortDescr    : eth0
+  Pvid         : 10
+
+  System Capabilities Supported  : bridge, wlan-access-point, router
+  System Capabilities Enabled    : bridge, wlan-access-point
+
+  Remote Management Address
+     Type    : ipv4
+     Address : 10.10.10.102
+
+  Poe Plus Information Detail
+
+    Poe Device Type            : Type2 PD
+    Power Source               : Primary
+    Power Priority             : Low
+    PD Requested Power Value   : 17.0 Watts
+    PSE Allocated Power Value  : 17.0 Watts
+
+------------------------------------------------------------------------------
+  Local Port   : 5
+  ChassisType  : network-address
+  ChassisId    : 10.30.0.45
+  PortType     : mac-address
+  PortId       : 00 04 f2 a1 b2 c3
+  SysName      : VVX450-2F-205
+  System Descr : Polycom;VVX-VVX_450;3111-48450-001,10;SIP/6.4.6.2366
+  PortDescr    : 1
+  Pvid         : 20
+
+  System Capabilities Supported  : bridge, telephone
+  System Capabilities Enabled    : telephone
+
+  Remote Management Address
+     Type    : ipv4
+     Address : 10.30.0.45
+
+  Poe Plus Information Detail
+
+    Poe Device Type            : Type1 PD
+    Power Source               : Primary
+    Power Priority             : Low
+    PD Requested Power Value   : 6.5 Watts
+    PSE Allocated Power Value  : 6.5 Watts
+
+------------------------------------------------------------------------------
+  Local Port   : 12
+  ChassisType  : network-address
+  ChassisId    : 10.30.0.52
+  PortType     : mac-address
+  PortId       : 00 04 f2 a1 b9 e7
+  SysName      : VVX450-2F-212
+  System Descr : Polycom;VVX-VVX_450;3111-48450-001,10;SIP/6.4.6.2366
+  PortDescr    : 1
+  Pvid         : 20
+
+  System Capabilities Supported  : bridge, telephone
+  System Capabilities Enabled    : telephone
+
+  Remote Management Address
+     Type    : ipv4
+     Address : 10.30.0.52
+
+  Poe Plus Information Detail
+
+    Poe Device Type            : Type1 PD
+    Power Source               : Primary
+    Power Priority             : Low
+    PD Requested Power Value   : 6.5 Watts
+    PSE Allocated Power Value  : 6.5 Watts
+
+------------------------------------------------------------------------------
+  Local Port   : 49
+  ChassisType  : mac-address
+  ChassisId    : 9020c2-4f8a00
+  PortType     : interface-name
+  PortId       : 1/1/49
+  SysName      : core-sw01
+  System Descr : Aruba JL659A 6300M 48SR5 CL6 PoE 4SFP56 Swch FL.10.13.1000
+  PortDescr    : 1/1/49
+  Pvid         : 1
+
+  System Capabilities Supported  : bridge, router
+  System Capabilities Enabled    : bridge, router
+
+  Remote Management Address
+     Type    : ipv4
+     Address : 10.10.10.1
+
+------------------------------------------------------------------------------
+  Local Port   : 50
+  ChassisType  : mac-address
+  ChassisId    : 9020c2-4f8a00
+  PortType     : interface-name
+  PortId       : 1/1/50
+  SysName      : core-sw01
+  System Descr : Aruba JL659A 6300M 48SR5 CL6 PoE 4SFP56 Swch FL.10.13.1000
+  PortDescr    : 1/1/50
+  Pvid         : 1
+
+  System Capabilities Supported  : bridge, router
+  System Capabilities Enabled    : bridge, router
+
+  Remote Management Address
+     Type    : ipv4
+     Address : 10.10.10.1

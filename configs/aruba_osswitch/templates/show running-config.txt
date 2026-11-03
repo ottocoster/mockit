@@ -1,0 +1,100 @@
+
+Running configuration:
+
+; JL256A Configuration Editor; Created on release #WC.16.11.0019
+; Ver #14:41.44.00.04.19.02.13.98.82.34.61.18.28.f3.84.9c.63.ff.37.27:05
+hostname "aruba_osswitch"
+module 1 type jl256a
+trunk 49-50 trk1 lacp
+banner motd "Authorized access only. All activity is monitored and logged."
+time daylight-time-rule continental-us-and-canada
+time timezone -300
+timesync ntp
+ntp unicast
+ntp server 10.10.0.10 iburst
+ntp server 10.10.0.11 iburst
+ntp enable
+console idle-timeout 600
+console idle-timeout serial-usb 600
+ip authorized-managers 10.10.0.0 255.255.0.0 access manager
+ip default-gateway 10.10.10.1
+ip dns domain-name "corp.example.com"
+ip dns server-address priority 1 10.10.0.53
+ip dns server-address priority 2 10.10.0.54
+interface 1
+   name "AP-IDF2-01"
+   exit
+interface 2
+   name "AP-IDF2-02"
+   exit
+interface 45
+   name "Printer-2F-01"
+   exit
+interface 47
+   name "UNUSED"
+   disable
+   exit
+interface 48
+   name "UNUSED"
+   disable
+   exit
+interface 49
+   name "Uplink core-sw01 1/1/49"
+   exit
+interface 50
+   name "Uplink core-sw01 1/1/50"
+   exit
+interface Trk1
+   exit
+logging 10.10.0.20
+logging facility local5
+snmp-server community "public" operator
+snmp-server host 10.10.0.30 community "public"
+snmp-server contact "netops@corp.example.com" location "HQ-IDF2-Rack3"
+snmp-server enable traps link-change 1-52
+aaa authentication ssh login local none
+aaa authentication ssh enable local none
+ip ssh
+ip ssh filetransfer
+no telnet-server
+no tftp server
+loop-protect 3-46
+loop-protect trap loop-detected
+vlan 1
+   name "DEFAULT_VLAN"
+   untagged 47-48,51-52,Trk1
+   no untagged 1-46
+   no ip address
+   exit
+vlan 10
+   name "MGMT"
+   untagged 1-2
+   tagged Trk1
+   ip address 10.10.10.21 255.255.255.0
+   exit
+vlan 20
+   name "DATA"
+   untagged 3-46
+   tagged Trk1
+   no ip address
+   exit
+vlan 30
+   name "VOICE"
+   tagged 3-44,46,Trk1
+   no ip address
+   voice
+   exit
+vlan 40
+   name "WIFI-CORP"
+   tagged 1-2,Trk1
+   no ip address
+   exit
+spanning-tree
+spanning-tree 3-46 admin-edge-port
+spanning-tree 3-46 bpdu-protection
+spanning-tree bpdu-protection-timeout 300
+no autorun
+no dhcp config-file-update
+no dhcp image-file-update
+no dhcp tr69-acs-url
+password manager

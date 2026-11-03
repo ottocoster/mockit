@@ -1,0 +1,8 @@
+
+                           LACP
+
+         LACP      Trunk     Port                LACP      Admin   Oper
+  Port   Enabled   Group     Status    Partner   Status    Key     Key
+  ----   -------   -------   -------   -------   -------   ------  ------
+  49     Active    Trk1      Up        Yes       Success   0       565
+  50     Active    Trk1      Up        Yes       Success   0       565

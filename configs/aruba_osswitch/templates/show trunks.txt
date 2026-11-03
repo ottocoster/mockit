@@ -1,0 +1,7 @@
+
+ Load Balancing Method:  L3-based (default)
+
+  Port   | Name                             Type       | Group Type
+  ------ + -------------------------------- ---------- + ----- --------
+  49     | Uplink core-sw01 1/1/49          SFP+SR     | Trk1  LACP
+  50     | Uplink core-sw01 1/1/50          SFP+SR     | Trk1  LACP

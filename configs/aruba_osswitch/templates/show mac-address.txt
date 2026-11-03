@@ -1,0 +1,22 @@
+
+ Status and Counters - Port Address Table
+
+  MAC Address       Port    VLAN
+  ----------------- ------- ----
+  000c29-3f8e11     Trk1    20
+  0004f2-a1b2c3     5       30
+  0004f2-a1b9e7     12      30
+  005056-a1c3d4     Trk1    10
+  00c0ee-44a7b1     45      20
+  204c03-6e1f20     1       10
+  204c03-6e2a48     2       10
+  3417eb-9c02a1     5       20
+  3417eb-9c11f0     12      20
+  482ae3-0b77c2     7       20
+  482ae3-0b8d14     8       20
+  8c8caa-21e6f9     15      20
+  8c8caa-2201a3     22      20
+  9020c2-4f8a40     Trk1    10
+  9020c2-4f8a41     Trk1    10
+  9020c2-4f8a42     Trk1    20
+  a4bb6d-5c3e08     30      20

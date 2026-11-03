@@ -1,0 +1,56 @@
+
+ Status and Configuration Information
+
+  Available: 370 W  Used: 36 W  Remaining: 334 W
+
+  PoE   Power  Power    Alloc  Alloc  PSE Pwr  PD Pwr   PoE Port      PLC   PLC
+  Port  Enable Priority By     Value  Rsrvd    Draw     Status        Cls   Type
+  ----- ------ -------- ------ ------ -------- -------- ------------- ----- -----
+  1     Yes    low      usage  17 W   13.4 W   13.1 W   Delivering    4     2
+  2     Yes    low      usage  17 W   13.4 W   12.8 W   Delivering    4     2
+  3     Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  4     Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  5     Yes    low      usage  7 W    5.6 W    5.2 W    Delivering    2     2
+  6     Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  7     Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  8     Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  9     Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  10    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  11    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  12    Yes    low      usage  7 W    5.6 W    5.0 W    Delivering    2     2
+  13    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  14    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  15    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  16    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  17    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  18    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  19    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  20    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  21    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  22    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  23    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  24    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  25    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  26    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  27    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  28    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  29    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  30    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  31    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  32    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  33    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  34    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  35    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  36    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  37    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  38    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  39    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  40    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  41    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  42    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  43    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  44    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  45    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  46    Yes    low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  47    No     low      usage  17 W   0.0 W    0.0 W    Searching     -     -
+  48    No     low      usage  17 W   0.0 W    0.0 W    Searching     -     -
