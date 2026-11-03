@@ -155,13 +155,20 @@ class BaseHandler(ABC):
         """
         model = "gpt-4o"
 
-        chat_completion = self.openai_client.chat.completions.create(
-            messages=[
-                {"role": "system", "content": "You are a AI vendor assistant that returns output of network devices."},
-                {"role": "user", "content": prompt}
-            ],
-            model=model,
-        )
+        try:
+            chat_completion = self.openai_client.chat.completions.create(
+                messages=[
+                    {"role": "system", "content": "You are a AI vendor assistant that returns output of network devices."},
+                    {"role": "user", "content": prompt}
+                ],
+                model=model,
+            )
+        except Exception as e:
+            # AI output generation must never break the SSH/Telnet session
+            # (e.g. invalid API key, network errors, rate limits, ...).
+            self.logger.warning(f"get_ai_output failed: `{type(e).__name__}: {e}`")
+            return ""
+
         message_content = chat_completion.choices[0].message.content
         message_content = message_content.replace("```", "").strip()
 
