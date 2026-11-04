@@ -94,6 +94,8 @@ def get_options():
             "openai_support": get_opt("OPENAI_SUPPORT", as_bool=True),
             "openai_apikey": get_opt("OPENAI_APIKEY", ""),
             "openai_store_responses": get_opt("OPENAI_STORE_RESPONSES", as_bool=True),
+            "openai_terminal_output": get_opt("OPENAI_TERMINAL_OUTPUT", None),
+            "openai_terminal_prompt": get_opt("OPENAI_TERMINAL_PROMPT", None),
             "device_version": device_version,
             "authkey_enabled": get_opt("AUTHKEY_ENABLED", "false", as_bool=True),
             "authkey_path": os.environ.get("AUTHKEY_PATH", ""),
@@ -116,6 +118,8 @@ def get_options():
             "openai_support": get_opt("OPENAI_SUPPORT", as_bool=True),
             "openai_apikey": get_opt("OPENAI_APIKEY", ""),
             "openai_store_responses": get_opt("OPENAI_STORE_RESPONSES", as_bool=True),
+            "openai_snmp_output": get_opt("OPENAI_SNMP_OUTPUT", None),
+            "openai_snmp_prompt": get_opt("OPENAI_SNMP_PROMPT", None),
         },
         'netconf': {
             "device_type": device_type,

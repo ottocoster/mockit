@@ -35,6 +35,8 @@ class Telnet_Handler(BaseHandler):
             openai_support=options.get('openai_support', False),
             openai_apikey=options.get('openai_apikey', ''),
             openai_store_responses=options.get('openai_store_responses', False),
+            openai_terminal_output=options.get('openai_terminal_output'),
+            openai_terminal_prompt=options.get('openai_terminal_prompt'),
         )
         super().__init__(config)
 

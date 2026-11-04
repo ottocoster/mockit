@@ -29,6 +29,37 @@ class HandlerConfig:
     openai_apikey: str = ""
     openai_store_responses: bool = False
     """Store AI-generated outputs as `<command>.txt` template files."""
+    openai_terminal_output: str | None = None
+    """Custom user prompt template for command outputs (OPENAI_TERMINAL_OUTPUT).
+    Supports {device_type}, {device_version} and {command} placeholders.
+    Falls back to DEFAULT_AI_PROMPT when None."""
+    openai_terminal_prompt: str | None = None
+    """Custom system message for the AI (OPENAI_TERMINAL_PROMPT).
+    Falls back to DEFAULT_AI_SYSTEM_PROMPT."""
+
+
+DEFAULT_AI_SYSTEM_PROMPT = "You are a AI vendor assistant that returns output of network devices."
+
+DEFAULT_AI_PROMPT = """
+        ### Device type
+        {device_type}
+        ###
+
+        ### command
+        `{command}`
+        ###
+
+        Let's assume the device type and input command are above.
+        Please give me the output of this command of the device type without any explanation.
+        You have to reply with only one command output.
+        """
+
+
+class _PromptPlaceholders(dict):
+    """dict for str.format_map that leaves unknown placeholders untouched."""
+
+    def __missing__(self, key):
+        return "{" + key + "}"
 
 
 class BaseHandler(ABC):
@@ -61,6 +92,8 @@ class BaseHandler(ABC):
         self.openai_support = config.openai_support
         self.openai_apikey = config.openai_apikey
         self.openai_store_responses = config.openai_store_responses
+        self.openai_terminal_output = config.openai_terminal_output
+        self.openai_terminal_prompt = config.openai_terminal_prompt
 
         self.enable = False
         self.config_mode = False
@@ -143,25 +176,19 @@ class BaseHandler(ABC):
         """
         self.logger.info("get_ai_output called")
 
-        prompt = f"""
-        ### Device type
-        {self.device_type}
-        ###
-
-        ### command
-        `{command}`
-        ###
-
-        Let's assume the device type and input command are above.
-        Please give me the output of this command of the device type without any explanation.
-        You have to reply with only one command output.
-        """
+        prompt_template = self.openai_terminal_output if self.openai_terminal_output else DEFAULT_AI_PROMPT
+        prompt = prompt_template.format_map(_PromptPlaceholders(
+            device_type=self.device_type,
+            device_version=self.device_version or "",
+            command=command,
+        ))
+        system_message = self.openai_terminal_prompt or DEFAULT_AI_SYSTEM_PROMPT
         model = "gpt-4o"
 
         try:
             chat_completion = self.openai_client.chat.completions.create(
                 messages=[
-                    {"role": "system", "content": "You are a AI vendor assistant that returns output of network devices."},
+                    {"role": "system", "content": system_message},
                     {"role": "user", "content": prompt}
                 ],
                 model=model,

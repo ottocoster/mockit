@@ -22,6 +22,46 @@ from src.options import get_normalized_device_type
 logger = logging.getLogger("app")
 _shutdown_event = None
 
+# OPENAI_SNMP_OUTPUT — custom user prompt template for the snmp.json generation.
+# Supports {device_type} and {device_version} placeholders.
+DEFAULT_SNMP_OUTPUT = """
+    ### Example snmp json file
+    {
+        "SNMPv2-MIB": [
+            {
+                "name": "sysName",
+                "type": "string",
+                "value": "arista_eos.some.net"
+            },
+            {
+                "name": "sysDescr",
+                "type": "string",
+                "value": "Arista Networks EOS version 4.21.1.1F running on an Arista Networks vEOS"
+            },
+            {
+                "name": "sysObjectID",
+                "type": "id",
+                "value": "1.3.6.1.4.1.30065.1.2759"
+            }
+        ]
+    }
+    ###
+
+    ### Device type
+    {device_type}
+    ###
+
+
+    ### Device version
+    {device_version}
+    ###
+
+    Please generate a snmp json content based on above information without any explanation and markdown format.
+    """
+
+# OPENAI_SNMP_PROMPT — custom system message for the snmp.json generation.
+DEFAULT_SNMP_PROMPT = "You are a AI SNMP assitant that generate a snmp.json content"
+
 
 async def start_server(status, options):
     """
@@ -106,7 +146,13 @@ async def start_server(status, options):
         else:
             logger.warning(f"Unable to find {file}, using default MIB values")
             if options['openai_support']:
-                snmp_dict = get_ai_snmp_json(norm, options['device_version'], options['openai_apikey'])
+                snmp_dict = get_ai_snmp_json(
+                    norm,
+                    options['device_version'],
+                    options['openai_apikey'],
+                    output=options.get('openai_snmp_output'),
+                    prompt=options.get('openai_snmp_prompt'),
+                )
                 for key, value in snmp_dict.items():
                     set_mibs(mibBuilder, key, value)
     except Exception as e:
@@ -131,43 +177,30 @@ def stop_server():
         loop.call_soon_threadsafe(_shutdown_event.set)
 
 
-def get_ai_snmp_json(device_type, device_version, openai_apikey):
+def get_ai_snmp_json(device_type, device_version, openai_apikey,
+                     output: str | None = None,
+                     prompt: str | None = None):
+    """
+    Generate the snmp.json MIB content using OpenAI.
+
+    :param device_type: The (normalized) device type.
+    :param device_version: Optional device version, empty string when unset.
+    :param openai_apikey: OpenAI API key.
+    :param output: Optional custom user prompt template (OPENAI_SNMP_OUTPUT).
+        Supports the {device_type} and {device_version} placeholders.
+        Falls back to DEFAULT_SNMP_OUTPUT when None.
+    :param prompt: Optional custom system message (OPENAI_SNMP_PROMPT).
+        Falls back to DEFAULT_SNMP_PROMPT when None.
+    """
     logger.info("get_ai_snmp_json called")
 
-    prompt = """
-    ### Example snmp json file
-    {
-        "SNMPv2-MIB": [
-            {
-                "name": "sysName",
-                "type": "string",
-                "value": "arista_eos.some.net"
-            },
-            {
-                "name": "sysDescr",
-                "type": "string",
-                "value": "Arista Networks EOS version 4.21.1.1F running on an Arista Networks vEOS"
-            },
-            {
-                "name": "sysObjectID",
-                "type": "id",
-                "value": "1.3.6.1.4.1.30065.1.2759"
-            }
-        ]
-    }
-    ###
-    """ + f"""
-    ### Device type
-    {device_type}
-    ###
+    output_template = output if output else DEFAULT_SNMP_OUTPUT
+    # Placeholder substitution via str.replace (instead of str.format) so that
+    # literal braces in the prompt (e.g. the example JSON) stay untouched.
+    prompt_template_text = (output_template
+                            .replace("{device_type}", str(device_type))
+                            .replace("{device_version}", str(device_version or "")))
 
-
-    ### Device version
-    {device_version}
-    ###
-
-    Please generate a snmp json content based on above information without any explanation and markdown format.
-    """
     model = "gpt-4o"
 
     openai_api_key = openai_apikey
@@ -178,8 +211,8 @@ def get_ai_snmp_json(device_type, device_version, openai_apikey):
 
     chat_completion = openai_client.chat.completions.create(
         messages=[
-                {"role": "system", "content": "You are a AI SNMP assitant that generate a snmp.json content"},
-                {"role": "user", "content": prompt}
+                {"role": "system", "content": prompt if prompt else DEFAULT_SNMP_PROMPT},
+                {"role": "user", "content": prompt_template_text}
         ],
         model=model,
     )

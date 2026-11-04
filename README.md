@@ -239,9 +239,14 @@ Full documentation for the SSH KEX and Cipher testing [in tools/README.md](tools
 - **OPENAI_SUPPORT**: Enable OpenAI support for handling unknown commands (default is true).
 - **OPENAI_APIKEY**: Set your OpenAI API key [here](https://platform.openai.com/).
 - **OPENAI_STORE_RESPONSES**: Save AI-generated outputs as `<command>.txt` files in the device's template directory (`configs/<device_type>[/<version>]/templates`). Subsequent invocations of the command — even in new sessions or new containers (when the file is persisted via a volume) — are served from the template file instead of calling the AI (default false).
+- **OPENAI_TERMINAL_OUTPUT**: Custom user prompt template for AI command outputs. Supports the placeholders `{device_type}`, `{device_version}` and `{command}`, which are replaced before the prompt is sent. Defaults to a vendor-agnostic prompt asking for the command output.
+- **OPENAI_TERMINAL_PROMPT**: Custom system message describing the AI's role. Defaults to "You are a AI vendor assistant that returns output of network devices."
+- **OPENAI_SNMP_OUTPUT**: Custom user prompt used when generating the `snmp.json` MIB content for the SNMP server (only used when no `configs/<device_type>/snmp.json` exists). Supports the `{device_type}` and `{device_version}` placeholders. Defaults to a prompt including an example SNMP JSON structure.
+- **OPENAI_SNMP_PROMPT**: Custom system message for the SNMP AI call. Defaults to "You are a AI SNMP assitant that generate a snmp.json content".
 
 ### Logging Configuration
 - **DEBUG_ENABLED**: Enable print debug logs (default is false)
+- **LOG_FULL_PATH**: Log the full file path in log output (e.g. `/src/base_handler.py.141`). When false, log only the module name (e.g. `base_handler.141`) for more compact logs (default is true)
 
 ## Device Configuration
 

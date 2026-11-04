@@ -1,7 +1,8 @@
-FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+﻿FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
 ENV TINI_SUBREAPER=1 \
     DEBUG_ENABLED=false \
+    LOG_FULL_PATH="true" \
     DEVICE_TYPE="cisco_ios" \
 #Only relevant for some devices, it will try to find the version number folder inside the device config folder
     DEVICE_VERSION="" \
