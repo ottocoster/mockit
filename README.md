@@ -235,14 +235,17 @@ Full documentation for the SSH KEX and Cipher testing [in tools/README.md](tools
 - **TELNET_USERNAME**: Telnet username.
 - **TELNET_PASSWORD**: Telnet password.
 
-### OpenAI Integration (Optional)
-- **OPENAI_SUPPORT**: Enable OpenAI support for handling unknown commands (default is true).
-- **OPENAI_APIKEY**: Set your OpenAI API key [here](https://platform.openai.com/).
-- **OPENAI_STORE_RESPONSES**: Save AI-generated outputs as `<command>.txt` files in the device's template directory (`configs/<device_type>[/<version>]/templates`). Subsequent invocations of the command — even in new sessions or new containers (when the file is persisted via a volume) — are served from the template file instead of calling the AI (default false).
-- **OPENAI_TERMINAL_OUTPUT**: Custom user prompt template for AI command outputs. Supports the placeholders `{device_type}`, `{device_version}` and `{command}`, which are replaced before the prompt is sent. Defaults to a vendor-agnostic prompt asking for the command output.
-- **OPENAI_TERMINAL_PROMPT**: Custom system message describing the AI's role. Defaults to "You are a AI vendor assistant that returns output of network devices."
-- **OPENAI_SNMP_OUTPUT**: Custom user prompt used when generating the `snmp.json` MIB content for the SNMP server (only used when no `configs/<device_type>/snmp.json` exists). Supports the `{device_type}` and `{device_version}` placeholders. Defaults to a prompt including an example SNMP JSON structure.
-- **OPENAI_SNMP_PROMPT**: Custom system message for the SNMP AI call. Defaults to "You are a AI SNMP assitant that generate a snmp.json content".
+### AI Integration (Optional)
+Works with any OpenAI-compatible provider (OpenAI, LM Studio, Ollama, ...).
+- **AI_SUPPORT**: Enable AI support for handling unknown commands (default is false).
+- **AI_APIKEY**: Set your API key. For OpenAI get one [here](https://platform.openai.com/); local servers like LM Studio/Ollama don't need one. When empty, a placeholder key ("lm-studio") is used automatically.
+- **AI_URL**: Base URL of the OpenAI-compatible API. Leave empty for the default OpenAI endpoint, or e.g. `http://localhost:1234/v1` for LM Studio or `http://localhost:11434/v1` for Ollama (default is empty).
+- **AI_MODEL**: Model name requested from the provider, e.g. `gpt-5.5` for OpenAI or a locally available model name for LM Studio/Ollama (default is "gpt-5.5").
+- **AI_TERMINAL_OUTPUT**: Custom user prompt template for AI command outputs. Supports the placeholders `{device_type}`, `{device_version}` and `{command}`, which are replaced before the prompt is sent. Defaults to a vendor-agnostic prompt asking for the command output.
+- **AI_TERMINAL_PROMPT**: Custom system message describing the AI's role. Defaults to "You are a AI vendor assistant that returns output of network devices."
+- **AI_SNMP_OUTPUT**: Custom user prompt used when generating the `snmp.json` MIB content for the SNMP server (only used when no `configs/<device_type>/snmp.json` exists). Supports the `{device_type}` and `{device_version}` placeholders. Defaults to a prompt including an example SNMP JSON structure.
+- **AI_SNMP_PROMPT**: Custom system message for the SNMP AI call. Defaults to "You are a AI SNMP assitant that generate a snmp.json content".
+- **AI_STORE_RESPONSES**: Save AI-generated outputs as `<command>.txt` files in the device's template directory (`configs/<device_type>[/<version>]/templates`). Subsequent invocations of the command — even in new sessions or new containers (when the file is persisted via a volume) — are served from the template file instead of calling the AI (default false).
 
 ### Logging Configuration
 - **DEBUG_ENABLED**: Enable print debug logs (default is false)

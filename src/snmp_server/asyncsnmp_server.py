@@ -22,7 +22,7 @@ from src.options import get_normalized_device_type
 logger = logging.getLogger("app")
 _shutdown_event = None
 
-# OPENAI_SNMP_OUTPUT — custom user prompt template for the snmp.json generation.
+# AI_SNMP_OUTPUT — custom user prompt template for the snmp.json generation.
 # Supports {device_type} and {device_version} placeholders.
 DEFAULT_SNMP_OUTPUT = """
     ### Example snmp json file
@@ -59,7 +59,7 @@ DEFAULT_SNMP_OUTPUT = """
     Please generate a snmp json content based on above information without any explanation and markdown format.
     """
 
-# OPENAI_SNMP_PROMPT — custom system message for the snmp.json generation.
+# AI_SNMP_PROMPT — custom system message for the snmp.json generation.
 DEFAULT_SNMP_PROMPT = "You are a AI SNMP assitant that generate a snmp.json content"
 
 
@@ -145,13 +145,15 @@ async def start_server(status, options):
                     set_mibs(mibBuilder, key, value)
         else:
             logger.warning(f"Unable to find {file}, using default MIB values")
-            if options['openai_support']:
+            if options['ai_support']:
                 snmp_dict = get_ai_snmp_json(
                     norm,
                     options['device_version'],
-                    options['openai_apikey'],
-                    output=options.get('openai_snmp_output'),
-                    prompt=options.get('openai_snmp_prompt'),
+                    options['ai_apikey'],
+                    ai_url=options.get('ai_url', ''),
+                    ai_model=options.get('ai_model') or 'gpt-5.5',
+                    output=options.get('ai_snmp_output'),
+                    prompt=options.get('ai_snmp_prompt'),
                 )
                 for key, value in snmp_dict.items():
                     set_mibs(mibBuilder, key, value)
@@ -177,19 +179,25 @@ def stop_server():
         loop.call_soon_threadsafe(_shutdown_event.set)
 
 
-def get_ai_snmp_json(device_type, device_version, openai_apikey,
+def get_ai_snmp_json(device_type, device_version, ai_apikey,
+                     ai_url: str = "",
+                     ai_model: str = "gpt-5.5",
                      output: str | None = None,
                      prompt: str | None = None):
     """
-    Generate the snmp.json MIB content using OpenAI.
+    Generate the snmp.json MIB content using an OpenAI-compatible API.
 
     :param device_type: The (normalized) device type.
     :param device_version: Optional device version, empty string when unset.
-    :param openai_apikey: OpenAI API key.
-    :param output: Optional custom user prompt template (OPENAI_SNMP_OUTPUT).
+    :param ai_apikey: API key for the AI provider.
+    :param ai_url: Optional base URL of an OpenAI-compatible API
+        (e.g. LM Studio `http://localhost:1234/v1`). Empty uses the default
+        OpenAI endpoint.
+    :param ai_model: Model name to request from the AI provider.
+    :param output: Optional custom user prompt template (AI_SNMP_OUTPUT).
         Supports the {device_type} and {device_version} placeholders.
         Falls back to DEFAULT_SNMP_OUTPUT when None.
-    :param prompt: Optional custom system message (OPENAI_SNMP_PROMPT).
+    :param prompt: Optional custom system message (AI_SNMP_PROMPT).
         Falls back to DEFAULT_SNMP_PROMPT when None.
     """
     logger.info("get_ai_snmp_json called")
@@ -201,15 +209,14 @@ def get_ai_snmp_json(device_type, device_version, openai_apikey,
                             .replace("{device_type}", str(device_type))
                             .replace("{device_version}", str(device_version or "")))
 
-    model = "gpt-4o"
+    model = ai_model
 
-    openai_api_key = openai_apikey
+    client_kwargs = {"api_key": ai_apikey or "lm-studio"}
+    if ai_url:
+        client_kwargs["base_url"] = ai_url
+    ai_client = OpenAI(**client_kwargs)
 
-    openai_client = OpenAI(
-        api_key=openai_api_key,
-    )
-
-    chat_completion = openai_client.chat.completions.create(
+    chat_completion = ai_client.chat.completions.create(
         messages=[
                 {"role": "system", "content": prompt if prompt else DEFAULT_SNMP_PROMPT},
                 {"role": "user", "content": prompt_template_text}

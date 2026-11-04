@@ -25,16 +25,20 @@ class HandlerConfig:
     delay: float = 0.0
     pri_terminator: str = "#"
     alt_terminator: str = ">"
-    openai_support: bool = False
-    openai_apikey: str = ""
-    openai_store_responses: bool = False
+    ai_support: bool = False
+    ai_apikey: str = ""
+    ai_url: str = ""
+    """Base URL of an OpenAI-compatible API (e.g. LM Studio `http://localhost:1234/v1`).
+    Empty uses the default OpenAI endpoint."""
+    ai_model: str = "gpt-5.5"
+    ai_store_responses: bool = False
     """Store AI-generated outputs as `<command>.txt` template files."""
-    openai_terminal_output: str | None = None
-    """Custom user prompt template for command outputs (OPENAI_TERMINAL_OUTPUT).
+    ai_terminal_output: str | None = None
+    """Custom user prompt template for command outputs (AI_TERMINAL_OUTPUT).
     Supports {device_type}, {device_version} and {command} placeholders.
     Falls back to DEFAULT_AI_PROMPT when None."""
-    openai_terminal_prompt: str | None = None
-    """Custom system message for the AI (OPENAI_TERMINAL_PROMPT).
+    ai_terminal_prompt: str | None = None
+    """Custom system message for the AI (AI_TERMINAL_PROMPT).
     Falls back to DEFAULT_AI_SYSTEM_PROMPT."""
 
 
@@ -89,11 +93,13 @@ class BaseHandler(ABC):
         self.delay = config.delay
         self.pri_terminator = config.pri_terminator
         self.alt_terminator = config.alt_terminator
-        self.openai_support = config.openai_support
-        self.openai_apikey = config.openai_apikey
-        self.openai_store_responses = config.openai_store_responses
-        self.openai_terminal_output = config.openai_terminal_output
-        self.openai_terminal_prompt = config.openai_terminal_prompt
+        self.ai_support = config.ai_support
+        self.ai_apikey = config.ai_apikey
+        self.ai_url = config.ai_url
+        self.ai_model = config.ai_model
+        self.ai_store_responses = config.ai_store_responses
+        self.ai_terminal_output = config.ai_terminal_output
+        self.ai_terminal_prompt = config.ai_terminal_prompt
 
         self.enable = False
         self.config_mode = False
@@ -108,10 +114,13 @@ class BaseHandler(ABC):
         if self.device_version:
             self.config_dir += f"/{self.device_version}"
 
-        # Initialize OpenAI client if enabled
-        self.openai_client = None
-        if self.openai_support:
-            self.openai_client = OpenAI(api_key=self.openai_apikey)
+        # Initialize AI (OpenAI-compatible) client if enabled
+        self.ai_client = None
+        if self.ai_support:
+            client_kwargs = {"api_key": self.ai_apikey or "lm-studio"}
+            if self.ai_url:
+                client_kwargs["base_url"] = self.ai_url
+            self.ai_client = OpenAI(**client_kwargs)
 
     def _load_commands(self, template_dir: str) -> bool:
         """
@@ -174,19 +183,22 @@ class BaseHandler(ABC):
         :param command: The command string.
         :return: AI-generated output string.
         """
-        self.logger.info("get_ai_output called")
+        self.logger.info(f"get_ai_output called (model=`{self.ai_model}`, provider=`{self.ai_url or 'openai.com'}`)")
 
-        prompt_template = self.openai_terminal_output if self.openai_terminal_output else DEFAULT_AI_PROMPT
+        prompt_template = self.ai_terminal_output if self.ai_terminal_output else DEFAULT_AI_PROMPT
         prompt = prompt_template.format_map(_PromptPlaceholders(
             device_type=self.device_type,
             device_version=self.device_version or "",
             command=command,
         ))
-        system_message = self.openai_terminal_prompt or DEFAULT_AI_SYSTEM_PROMPT
-        model = "gpt-4o"
+        system_message = self.ai_terminal_prompt or DEFAULT_AI_SYSTEM_PROMPT
+        model = self.ai_model
+
+        self.logger.debug(f"get_ai_output system prompt: `{system_message}`")
+        self.logger.debug(f"get_ai_output user prompt: `{prompt}`")
 
         try:
-            chat_completion = self.openai_client.chat.completions.create(
+            chat_completion = self.ai_client.chat.completions.create(
                 messages=[
                     {"role": "system", "content": system_message},
                     {"role": "user", "content": prompt}
@@ -196,17 +208,22 @@ class BaseHandler(ABC):
         except Exception as e:
             # AI output generation must never break the SSH/Telnet session
             # (e.g. invalid API key, network errors, rate limits, ...).
-            self.logger.warning(f"get_ai_output failed: `{type(e).__name__}: {e}`")
+            self.logger.warning(
+                f"get_ai_output failed (model=`{model}`, provider=`{self.ai_url or 'openai.com'}`): "
+                f"`{type(e).__name__}: {e}`"
+            )
             return ""
 
         message_content = chat_completion.choices[0].message.content
+
+        self.logger.debug(f"get_ai_output raw response: `{message_content}`")
+
         message_content = message_content.replace("```", "").strip()
 
         # Store the AI output as a template file if enabled
-        if self.openai_store_responses:
+        if self.ai_store_responses:
             self._store_ai_output(command, message_content)
 
-        self.logger.info(f"ai_output: `{message_content}`")
         return message_content
 
     def _store_ai_output(self, command: str, output: str) -> bool:

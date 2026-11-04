@@ -32,11 +32,13 @@ class Telnet_Handler(BaseHandler):
             device_version=options.get('device_version'),
             new_line=options.get('new_line', '\n'),
             delay=options.get('delay', 0.025),
-            openai_support=options.get('openai_support', False),
-            openai_apikey=options.get('openai_apikey', ''),
-            openai_store_responses=options.get('openai_store_responses', False),
-            openai_terminal_output=options.get('openai_terminal_output'),
-            openai_terminal_prompt=options.get('openai_terminal_prompt'),
+            ai_support=options.get('ai_support', False),
+            ai_apikey=options.get('ai_apikey', ''),
+            ai_url=options.get('ai_url', ''),
+            ai_model=options.get('ai_model') or 'gpt-5.5',
+            ai_store_responses=options.get('ai_store_responses', False),
+            ai_terminal_output=options.get('ai_terminal_output'),
+            ai_terminal_prompt=options.get('ai_terminal_prompt'),
         )
         super().__init__(config)
 

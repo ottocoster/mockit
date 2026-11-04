@@ -27,11 +27,13 @@ class SSH_Handler(BaseHandler):
             device_version=options.get('device_version'),
             new_line=options['new_line'],
             delay=options['delay'],
-            openai_support=options['openai_support'],
-            openai_apikey=options['openai_apikey'],
-            openai_store_responses=options.get('openai_store_responses', False),
-            openai_terminal_output=options.get('openai_terminal_output'),
-            openai_terminal_prompt=options.get('openai_terminal_prompt'),
+            ai_support=options['ai_support'],
+            ai_apikey=options['ai_apikey'],
+            ai_url=options.get('ai_url', ''),
+            ai_model=options.get('ai_model') or 'gpt-5.5',
+            ai_store_responses=options.get('ai_store_responses', False),
+            ai_terminal_output=options.get('ai_terminal_output'),
+            ai_terminal_prompt=options.get('ai_terminal_prompt'),
         )
         super().__init__(config)
 
@@ -175,7 +177,7 @@ class SSH_Handler(BaseHandler):
                 self.set_prompt_terminator()
                 return True
 
-        if self.openai_support:
+        if self.ai_support:
             self.respond(self.get_ai_output(command))
             return True
 
