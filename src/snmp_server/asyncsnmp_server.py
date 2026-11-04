@@ -8,6 +8,7 @@ import socket
 import logging
 import os
 import json
+import re
 
 from pysnmp.proto.rfc1902 import OctetString, ObjectName, Integer32
 from pysnmp.smi import builder, rfc1902, view
@@ -252,6 +253,10 @@ def set_mibs(mibBuilder, key, values):
             suffix = parse_suffix(x.get("suffix"))
             if type == "hex":
                 mib_value = mib.syntax.clone(bytes(int(b, 16) for b in value.split()))
+            elif type == "oid":
+                mib_value = mib.syntax.clone(parse_oid_value(mibBuilder, value))
+            elif type == "timeticks":
+                mib_value = mib.syntax.clone(parse_timeticks(value))
             else:
                 mib_value = mib.syntax.clone(value)
             mib_instance = MibScalarInstance(mib.name, suffix, mib_value)
@@ -259,6 +264,37 @@ def set_mibs(mibBuilder, key, values):
     except Exception as e:
         logger.error(f"Failed to load {key} with values {values}")
         logger.exception(e)
+
+def parse_oid_value(mibBuilder, value):
+    value = value.strip()
+
+    # Numeric OID, e.g. "1.3.6.1.4.1.9"
+    numeric = value.lstrip(".")
+    if numeric and all(part.isdigit() for part in numeric.split(".")):
+        return tuple(int(part) for part in numeric.split("."))
+
+    # Symbolic OID, e.g. "CISCO-SMI::ciscoModules.3.1.9.74.106"
+    if "::" in value:
+        module, symbol_path = value.split("::", 1)
+        parts = symbol_path.split(".")
+        symbol = parts[0]
+        suffix = parts[1:]
+
+        mib_symbol = mibBuilder.import_symbols(module, symbol)[0]
+        return tuple(mib_symbol.name) + tuple(int(part) for part in suffix)
+
+    raise ValueError(f"Unsupported OID value: {value}")
+
+
+def parse_timeticks(value):
+    if isinstance(value, int):
+        return value
+
+    match = re.match(r"^\s*\(?(\d+)\)?", str(value))
+    if match:
+        return int(match.group(1))
+
+    raise ValueError(f"Invalid TimeTicks value: {value!r}")
 
 def parse_suffix(suffix):
     if not suffix:

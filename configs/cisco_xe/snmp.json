@@ -8,7 +8,7 @@
         {
             "name": "sysDescr",
             "type": "string",
-            "value": "Cisco IOS Software [Cupertino], Catalyst L3 Switch Software (CAT9K_IOSXE), Version 17.9.5, RELEASE SOFTWARE (fc1)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2024 by Cisco Systems, Inc.\r\nCompiled Tue 30-Jan-24 15:48 by mcpre"
+            "value": "Cisco IE3200 IOS Software [Cupertino], Catalyst L3 Switch Software (CAT9K_IOSXE), Version 17.9.5, RELEASE SOFTWARE (fc1)\r\nTechnical Support: http://www.cisco.com/techsupport\r\nCopyright (c) 1986-2024 by Cisco Systems, Inc."
         },
         {
             "name": "sysObjectID",
@@ -58,8 +58,8 @@
         {
             "name": "entPhysicalFirmwareRev",
             "type": "string",
-            "value": "",
-            "suffix": "1"
+            "value": "123",
+            "suffix": "1000"
         },
         {
             "name": "entPhysicalHardwareRev",

@@ -9,3 +9,7 @@ class checkpoint_gaia_handler(SSH_Handler):
     def __init__(self, process: SSHServerProcess, options):
         options['device_type'] = 'checkpoint_gaia'
         super().__init__(process, options=options)
+
+
+    def get_prompt_mode(self):
+        return super().get_prompt_mode() + ":0"
