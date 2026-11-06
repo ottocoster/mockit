@@ -23,6 +23,9 @@ from src.options import get_normalized_device_type
 logger = logging.getLogger("app")
 _shutdown_event = None
 
+# AI_SNMP_PROMPT — custom system message for the snmp.json generation.
+DEFAULT_SNMP_PROMPT = "You are a AI SNMP assitant that generate a snmp.json content"
+
 # AI_SNMP_OUTPUT — custom user prompt template for the snmp.json generation.
 # Supports {device_type} and {device_version} placeholders.
 DEFAULT_SNMP_OUTPUT = """
@@ -59,10 +62,6 @@ DEFAULT_SNMP_OUTPUT = """
 
     Please generate a snmp json content based on above information without any explanation and markdown format.
     """
-
-# AI_SNMP_PROMPT — custom system message for the snmp.json generation.
-DEFAULT_SNMP_PROMPT = "You are a AI SNMP assitant that generate a snmp.json content"
-
 
 def _load_mibs(mibBuilder, options):
     """
