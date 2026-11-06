@@ -6,6 +6,11 @@ from pathlib import Path
 from asyncssh import BreakReceived
 from asyncssh.process import SSHServerProcess
 
+try:
+    from src import honeypot
+except ImportError:
+    import honeypot
+
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from base_handler import BaseHandler, HandlerConfig
@@ -39,6 +44,9 @@ class SSH_Handler(BaseHandler):
 
         self.process = process
         self.break_commands = ['exit', 'quit', 'logout', r'\q']
+
+        # Honeypot mode: log all input and credentials to the honey pot file
+        self.honeypot_mode = options.get('honeypot_mode', False)
 
         # Password protection for enable command
         self.enable_mode = options.get('enable_mode', False)
@@ -85,6 +93,8 @@ class SSH_Handler(BaseHandler):
                 # newline, so it is unaffected.
                 break
             command = command.strip()
+            if self.honeypot_mode:
+                honeypot.log(honeypot.peer_ip(self.process), f"SSH input: {repr(command)}")
             if not self._safe_write(self.get_formatted_command(command)):
                 break
 
@@ -231,7 +241,15 @@ class SSH_Handler(BaseHandler):
         password = await self.process.stdin.readline()
         password = password.strip()
 
+        if self.honeypot_mode:
+            honeypot.log(honeypot.peer_ip(self.process), f"SSH enable password: {repr(password)}")
+
         self.password_required = False
+
+        if self.honeypot_mode:
+            # Accept any enable password, everything is recorded anyway.
+            self.password_attempts = 0
+            return True
 
         if password == self.enable_secret:
             self.password_attempts = 0

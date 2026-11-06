@@ -45,6 +45,18 @@ async def start_ssh(status, options):
     """
     logger.debug(f"starting ssh {options}")
 
+    # Loud notice when honeypot mode is active, so it can't be missed
+    # in container startup logs.
+    if options.get("honeypot_mode"):
+        try:
+            from src import honeypot
+        except ImportError:
+            import honeypot
+        logger.warning(
+            "HONEYPOT MODE is enabled for SSH: all credentials are accepted "
+            f"and every session input is logged to `{honeypot.HONEYPOT_LOG_DIR}`"
+        )
+
     # Load device-specific server and handler classes
     server_class, handler_class = load_device_classes(options["device_type"], options["device_version"])
 

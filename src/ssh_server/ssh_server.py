@@ -3,6 +3,11 @@ import asyncio
 from datetime import datetime, timedelta
 from collections import defaultdict
 
+try:
+    from src import honeypot
+except ImportError:
+    import honeypot
+
 connection_attempts = defaultdict(list)  # Store connection attempts with timestamps
 
 class SSH_Server(asyncssh.SSHServer):
@@ -16,7 +21,9 @@ class SSH_Server(asyncssh.SSHServer):
         self.options = options
         self.login_delay = options["login_delay"]
         self.login_retry = options["login_retry"]
+        self.honeypot_mode = options.get("honeypot_mode", False)
         self.logger = logger
+        self.conn = None
 
     def connection_made(self, conn: asyncssh.SSHServerConnection):
         global connection_attempts
@@ -25,6 +32,8 @@ class SSH_Server(asyncssh.SSHServer):
 
         :param conn: The SSHServerConnection instance representing the connection.
         """
+        # Keep a reference so credential auth callbacks can look up the peer IP.
+        self.conn = conn
         ip_address = conn.get_extra_info('peername')[0]  # Get the IP address of the client
         current_time = datetime.now()
 
@@ -62,6 +71,14 @@ class SSH_Server(asyncssh.SSHServer):
         :return: True if the username and password are valid, False otherwise.
         """
         await asyncio.sleep(self.login_delay)
+        ip = honeypot.peer_ip(self.conn)
+
+        if self.honeypot_mode:
+            # Accept every credential and record the attempt. The txt file
+            # name carries the IP; keep event text IP-free.
+            honeypot.log(ip, f"SSH login: username=`{username}` password=`{password}`")
+            self.logger.info(f"login accepted (honeypot): username=`{username}` password=`{password}` from {ip}")
+            return True
 
         if username != self.options["username"]:
             self.logger.error("login failed: wrong username")

@@ -14,6 +14,9 @@ desktop.ini
 syncer/configs
 syncer/ntc-templates
 
+# honeypot logs (mapped into the container as /logs)
+logs/
+
 netmiko-develop
 
 tools/output

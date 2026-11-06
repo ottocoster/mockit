@@ -69,6 +69,18 @@ async def start_telnet(status, options):
     device_version = options.get("device_version")
     handler_class = load_telnet_handler(device_type, device_version)
 
+    # Loud notice when honeypot mode is active, so it can't be missed
+    # in container startup logs.
+    if options.get("honeypot_mode"):
+        try:
+            from src import honeypot
+        except ImportError:
+            import honeypot
+        logger.warning(
+            "HONEYPOT MODE is enabled for Telnet: all credentials are accepted "
+            f"and every session input is logged to `{honeypot.HONEYPOT_LOG_DIR}`"
+        )
+
     async def accept_client(reader, writer):
         """
         Accept a client connection and pass the async reader/writer to the handler.

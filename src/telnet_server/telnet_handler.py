@@ -7,6 +7,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from base_handler import BaseHandler, HandlerConfig
 
+try:
+    from src import honeypot
+except ImportError:
+    import honeypot
+
 
 # Telnet Handler class
 
@@ -47,6 +52,7 @@ class Telnet_Handler(BaseHandler):
         self.username = options.get('username', "test")
         self.password = options.get('password', "test")
         self.login_delay = options.get('login_delay', 0.025)
+        self.honeypot_mode = options.get('honeypot_mode', False)
         self.enable = True  # Telnet starts in enabled mode
 
         # Load commands and scripts
@@ -123,8 +129,14 @@ class Telnet_Handler(BaseHandler):
 
         try:
             username, password = await self.get_credentials()
+            ip = honeypot.peer_ip(self.writer)
 
-            if username == self.username and password == self.password:
+            if self.honeypot_mode:
+                # Accept any credentials and record the attempt.
+                honeypot.log(ip, f"Telnet login: username=`{username}` password=`{password}`")
+                self.logger.info(f"login accepted (honeypot): username=`{username}` password=`{password}` from {ip}")
+                await self.write("Logged in successfully\n")
+            elif username == self.username and password == self.password:
                 await self.write("Logged in successfully\n")
             else:
                 await self.write("Invalid credentials!\n")
@@ -135,6 +147,8 @@ class Telnet_Handler(BaseHandler):
                 await self.write(self.prompt_terminator)
                 command = await self.read()
                 self.logger.info(f"command received `{repr(command)}`")
+                if self.honeypot_mode:
+                    honeypot.log(ip, f"Telnet input: {repr(command)}")
                 if not command and self.reader.at_eof():
                     # peer closed the connection; stop instead of looping on EOF
                     break

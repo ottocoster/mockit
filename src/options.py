@@ -75,6 +75,7 @@ def get_options():
         'DEVICE_TYPE': device_type,
         'DEVICE_VERSION': device_version,
         'DEBUG_ENABLED': debug_enabled,
+        'HONEYPOT_MODE': get_opt("HONEYPOT_MODE", "false", as_bool=True),
         'SSH_SERVER_ENABLED': get_opt("SSH_SERVER_ENABLED", enable_ssh, as_bool=True),
         'SNMP_SERVER_ENABLED': get_opt("SNMP_SERVER_ENABLED", legacy_default, as_bool=True),
         'NETCONF_SERVER_ENABLED': get_opt("NETCONF_SERVER_ENABLED", legacy_default, as_bool=True),
@@ -104,6 +105,7 @@ def get_options():
             "enable_mode": get_opt("ENABLE_MODE", "false", as_bool=True),
             "enable_secret": get_opt("ENABLE_SECRET", ""),
             "port": int(get_opt("SSH_PORT", '22')),
+            "honeypot_mode": get_opt("HONEYPOT_MODE", "false", as_bool=True),
         },
         'snmp': {
             "debug": debug_enabled,
@@ -136,7 +138,8 @@ def get_options():
             "username": get_opt("TELNET_USERNAME", "root"),
             "password": get_opt("TELNET_PASSWORD", ""),
             "delay": float(get_opt("DEVICE_DELAY", '0.025')),
-            "device_version": device_version
+            "device_version": device_version,
+            "honeypot_mode": get_opt("HONEYPOT_MODE", "false", as_bool=True),
         },
         'api': {
             "debug": debug_enabled,

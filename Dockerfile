@@ -2,7 +2,9 @@
 
 ENV TINI_SUBREAPER=1 \
     DEBUG_ENABLED=false \
-    LOG_FULL_PATH="true" \
+    LOG_FULL_PATH="false" \
+    HONEYPOT_MODE=false \
+    HONEYPOT_LOG_DIR="/logs" \
     DEVICE_TYPE="cisco_ios" \
 #Only relevant for some devices, it will try to find the version number folder inside the device config folder
     DEVICE_VERSION="" \

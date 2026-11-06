@@ -180,6 +180,7 @@ services:
         ipv6_address: fc00::abcd
     volumes:
       - ./configs/cisco_ios:/configs/cisco_ios
+      - ./logs:/logs
 networks:
   mockit_network:
     enable_ipv6: true
@@ -249,7 +250,30 @@ Works with any OpenAI-compatible provider (OpenAI, LM Studio, Ollama, ...).
 
 ### Logging Configuration
 - **DEBUG_ENABLED**: Enable print debug logs (default is false)
-- **LOG_FULL_PATH**: Log the full file path in log output (e.g. `/src/base_handler.py.141`). When false, log only the module name (e.g. `base_handler.141`) for more compact logs (default is true)
+- **LOG_FULL_PATH**: Log the full file path in log output (e.g. `/src/base_handler.py.141`). When false, log only the module name (e.g. `base_handler.141`) for more compact logs (default is false)
+
+### Honeypot Mode
+- **HONEYPOT_MODE**: When true, all SSH/Telnet credentials are accepted and every login attempt (username + password) plus all session input is recorded (default is false)
+- **HONEYPOT_LOG_DIR**: Folder the honeypot logs are written to (default is `/logs` inside the container, mapped to `./logs` on the host via docker-compose)
+
+Logs are organized as `<dir>/<yyyy-mm-dd>/<ip>.txt`: one folder per day, one file per attacking IP containing its login attempts and all typed input, e.g.:
+
+```
+logs/
+├── 2026-11-06/
+│   ├── 10.0.0.5.txt
+└── 2026-11-07/
+    ├── 10.0.0.5.txt
+    └── 192.168.1.100.txt
+```
+
+Log line format:
+
+```
+[2026-11-06 11:23:38] SSH login: username=`admin` password=`P@ss!`
+[2026-11-06 11:24:10] SSH input: 'show version'
+[2026-11-06 11:24:45] Telnet login: username=`root` password=`toor`
+```
 
 ## Device Configuration
 
