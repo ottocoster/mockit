@@ -59,22 +59,23 @@ unit_test:
     PYTHONASYNCIODEBUG: 1
     compose_file: $CI_PROJECT_DIR/tests/docker-compose_ssh_telnet.yml
   script:
-    - alias dc="docker compose --profile image -f ${compose_file}"
+    # NOTE: alias does not expand in a non-interactive shell, use a variable
+    - DC="docker compose --profile image -f ${compose_file}"
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - dc down -v || true
-    - dc pull
-    - dc up -d --build --wait --remove-orphans
+    - $DC down -v || true
+    - $DC pull
+    - $DC up -d --wait --remove-orphans
     - docker exec devices-test_container pytest --color=yes -v --durations 0 -rP $pyci test_ssh_telnet.py
-    - dc stop
+    - $DC stop
   after_script:
-    - alias dc="docker compose --profile image -f ${compose_file}"
-    - mkdir $CI_PROJECT_DIR/logs
+    - DC="docker compose --profile image -f ${compose_file}"
+    - mkdir -p $CI_PROJECT_DIR/logs
     - |
-      for container_id in $(docker compose ps -qa); do
+      for container_id in $($DC ps -qa); do
         container_name=$(docker inspect --format='{{.Name}}' $container_id)
         docker logs $container_id > "${CI_PROJECT_DIR}/logs/${container_name}.txt" 2>&1 || true
       done
-    - dc down -v || true
+    - $DC down -v || true
   artifacts:
     when: always
     paths:
@@ -129,41 +130,16 @@ api_test:
     DOCKER_TLS_CERTDIR: ""
     compose_file: $CI_PROJECT_DIR/tests/docker-compose_api.yml
   script:
-    - alias dc="docker compose -f ${compose_file}"
-    - dc down -v || true
-    - dc up -d --build --wait --remove-orphans
-    - docker exec devices-api-test pytest --color=yes -v --durations 0 -rP test_api.py
-    - dc stop
-  after_script:
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_api.yml logs > $CI_PROJECT_DIR/api_logs.txt 2>&1 || true
-    - docker compose -f $CI_PROJECT_DIR/tests/docker-compose_api.yml down -v || true
-  artifacts:
-    when: always
-    paths:
-      - api_logs.txt
-    expire_in: 1 month
-
-api_test:
-  image: docker:latest
-  services:
-    - docker:dind
-  stage: test
-  variables:
-    DOCKER_TLS_CERTDIR: ""
-    compose_file: $CI_PROJECT_DIR/tests/docker-compose_api.yml
-  script:
-    - alias dc="docker compose -f ${compose_file}"
+    # NOTE: alias does not expand in a non-interactive shell, use a variable
+    - DC="docker compose -f ${compose_file}"
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - dc down -v || true
-    - dc pull
-    - dc up -d --wait --remove-orphans
+    - $DC down -v || true
+    - $DC up -d --wait --remove-orphans
     - docker exec devices-api-test pytest --color=yes -v --durations 0 -rP test_api.py
-    - dc stop
-  after_script:
-    - alias dc="docker compose -f ${compose_file}"
+    - $DC stop
     - mkdir -p $CI_PROJECT_DIR/logs
     - |
-      for cid in $(dc ps -qa); do
+      for cid in $($DC ps -qa); do
         cname=$(docker inspect --format='{{.Name}}' $cid)
         docker logs $cid > "${CI_PROJECT_DIR}/logs/${cname}.txt" 2>&1 || true
       done

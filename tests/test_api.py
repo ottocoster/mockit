@@ -92,7 +92,7 @@ def test_aruba_oauth2_authorization_code():
     token = tok.json()["access_token"]
     aps = s.get(f"{base}/monitoring/v2/aps", headers={"Authorization": f"Bearer {token}"}, timeout=10)
     assert aps.status_code == 200, aps.text
-    assert aps.json()["aps"][0]["name"] == "mock-ap-01"
+    assert aps.json()["aps"][0]["name"] == "mock-aruba-ap-01"
     bad = s.post(f"{base}/oauth2/token", json={"client_id": "cid", "client_secret": "secret", "grant_type": "authorization_code", "code": "WRONG"}, timeout=10)
     assert bad.status_code == 401, bad.text
     assert s.get(f"{base}/monitoring/v2/aps", timeout=10).status_code == 401
@@ -238,6 +238,6 @@ def test_aruba_offset_items_total_pagination_next_param():
     body1 = r1.json()
     assert body1["total"] == 3
     assert len(body1["aps"]) == 2
-    r2 = s.get(f"{base}/monitoring/v2/aps?next=2", headers=headers, timeout=10)
+    r2 = s.get(f"{base}/monitoring/v2/aps?offset=2", headers=headers, timeout=10)
     body2 = r2.json()
     assert len(body2["aps"]) == 1

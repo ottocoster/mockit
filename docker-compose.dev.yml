@@ -22,11 +22,16 @@ services:
       - SNMP_V3_AUTH_KEY="somekey1123"
       - SNMP_V3_PRIV_TYPE="des"
       - SNMP_V3_PRIV_KEY="somekey1123"
-      # - OPENAI_SUPPORT=true
+      # - AI_SUPPORT=true
       # - DEVICE_VERSION=v6
       # - DEVICE_DELAY=1
       # - LOGIN_DELAY=3
       # - LOGIN_RETRY=2
+      # - AI_SUPPORT=true
+      # - AI_APIKEY=""
+      # - AI_MODEL=""
+      # - AI_URL=""
+      # - AI_STORE_RESPONSES=false
     # env_file:
     #   - .env
     volumes:

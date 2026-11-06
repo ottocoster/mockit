@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import asyncssh
 from asyncssh.process import SSHServerProcess
@@ -81,7 +82,12 @@ async def start_ssh(status, options):
         key_opt["encryption_algs"] = ciphers
 
     async def handle_connection(process: SSHServerProcess):
-        session = handler_class(process, process.get_extra_info("options"))
+        # The handler constructor does blocking work (scanning template
+        # directories, importing device scripts). Run it in a worker thread
+        # so it doesn't freeze the event loop and stall other sessions
+        # (asyncio "took X seconds" slow-callback warnings).
+        options = process.get_extra_info("options")
+        session = await asyncio.to_thread(handler_class, process, options)
         await session.open()
 
     # Create and start the async SSH server

@@ -1,7 +1,7 @@
 name: devices
 
 x-api-healthcheck: &api-health
-  test: ["CMD", "python", "-c", "import socket; socket.create_connection(('localhost', 443), 3)"]
+  test: ["CMD", "python", "-c", "import socket; socket.create_connection(('localhost', 80), 3)"]
   interval: 5s
   timeout: 3s
   retries: 12

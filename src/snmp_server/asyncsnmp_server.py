@@ -64,6 +64,54 @@ DEFAULT_SNMP_OUTPUT = """
 DEFAULT_SNMP_PROMPT = "You are a AI SNMP assitant that generate a snmp.json content"
 
 
+def _load_mibs(mibBuilder, options):
+    """
+    Blocking MIB loading: scans /mibs, then loads MIB values from snmp.json
+    or generates missing content through the AI (OpenAI-compatible) request.
+
+    Pure CPU/IO work with no event-loop interaction, so it's safe to run in a
+    worker thread (asyncio.to_thread).
+
+    :param mibBuilder: pysnmp MIB builder to populate.
+    :param options: Options dict for the SNMP server.
+    """
+    mib_folders = set()
+    mibs_root = Path('/mibs')
+    for p in mibs_root.rglob("*.py"):
+        mib_folders.add(str(p.parent))
+    for f in sorted(mib_folders):
+        mibBuilder.add_mib_sources(builder.DirMibSource(f))
+
+    # Load SNMP MIBs from JSON file or use default values
+    norm = get_normalized_device_type(options['device_type'])
+    file = os.path.join(f"/configs/{norm}", "snmp.json")
+    if options['device_version']:
+        file = os.path.join(f"/configs/{norm}/{options['device_version']}", "snmp.json")
+    try:
+        if os.path.isfile(file):
+            with open(file, "r") as f:
+                for key, value in json.loads(f.read()).items():
+                    set_mibs(mibBuilder, key, value)
+        else:
+            logger.warning(f"Unable to find {file}, using default MIB values")
+            if options['ai_support']:
+                # Blocking is fine here: we're running in a worker thread.
+                snmp_dict = get_ai_snmp_json(
+                    norm,
+                    options['device_version'],
+                    options['ai_apikey'],
+                    ai_url=options.get('ai_url', ''),
+                    ai_model=options.get('ai_model') or 'gpt-5.5',
+                    output=options.get('ai_snmp_output'),
+                    prompt=options.get('ai_snmp_prompt'),
+                )
+                for key, value in snmp_dict.items():
+                    set_mibs(mibBuilder, key, value)
+    except Exception as e:
+        logger.error("Something went wrong loading SNMP info")
+        logger.exception(e)
+
+
 async def start_server(status, options):
     """
     Start the SNMP server with the provided options.
@@ -90,7 +138,8 @@ async def start_server(status, options):
     sock.bind(('0.0.0.0', 161))
     sock.setblocking(False)
 
-    # Add transport endpoint
+    # Add transport endpoint (must run on the event-loop thread: pysnmp's
+    # asyncio carrier interacts with the running loop here).
     config.add_transport(
         snmpEngine,
         udp.DOMAIN_NAME,
@@ -126,42 +175,10 @@ async def start_server(status, options):
     mibBuilder = snmpContext.get_mib_instrum().get_mib_builder()
     mibBuilder.add_mib_sources(builder.DirMibSource('/mibs'))
 
-    mib_folders = set()
-    mibs_root = Path('/mibs')
-    for p in mibs_root.rglob("*.py"):
-        mib_folders.add(str(p.parent))
-    for f in sorted(mib_folders):
-        mibBuilder.add_mib_sources(builder.DirMibSource(f))
-
-
-   # Load SNMP MIBs from JSON file or use default values
-    norm = get_normalized_device_type(options['device_type'])
-    file = os.path.join(f"/configs/{norm}", "snmp.json")
-    if options['device_version']:
-        file = os.path.join(f"/configs/{norm}/{options['device_version']}", "snmp.json")
-    try:
-        if os.path.isfile(file):
-            with open(file, "r") as f:
-                for key, value in json.loads(f.read()).items():
-                    set_mibs(mibBuilder, key, value)
-        else:
-            logger.warning(f"Unable to find {file}, using default MIB values")
-            if options['ai_support']:
-                snmp_dict = get_ai_snmp_json(
-                    norm,
-                    options['device_version'],
-                    options['ai_apikey'],
-                    ai_url=options.get('ai_url', ''),
-                    ai_model=options.get('ai_model') or 'gpt-5.5',
-                    output=options.get('ai_snmp_output'),
-                    prompt=options.get('ai_snmp_prompt'),
-                )
-                for key, value in snmp_dict.items():
-                    set_mibs(mibBuilder, key, value)
-    except Exception as e:
-        logger.error("Something went wrong loading SNMP info")
-        logger.exception(e)
-
+    # Scanning /mibs and compiling the MIBs is slow, blocking work; run it
+    # in a worker thread so the event loop stays responsive and other
+    # services can start in parallel (avoids asyncio slow-callback warnings).
+    await asyncio.to_thread(_load_mibs, mibBuilder, options)
 
     # Register SNMP command responders
     cmdrsp.GetCommandResponder(snmpEngine, snmpContext)

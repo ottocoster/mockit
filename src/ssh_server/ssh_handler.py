@@ -178,7 +178,10 @@ class SSH_Handler(BaseHandler):
                 return True
 
         if self.ai_support:
-            self.respond(self.get_ai_output(command))
+            # Run the blocking AI request in a worker thread so it doesn't
+            # freeze the event loop (which stalls all other sessions and
+            # triggers asyncio "took X seconds" slow-callback warnings).
+            self.respond(await asyncio.to_thread(self.get_ai_output, command))
             return True
 
         self.respond()

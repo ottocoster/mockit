@@ -75,7 +75,10 @@ async def start_telnet(status, options):
         """
         addr = writer.get_extra_info("peername")
         logger.info(f"Connection established with {addr}")
-        handler = handler_class(reader, writer, options)
+        # The handler constructor does blocking work (scanning template
+        # directories, importing device scripts). Run it in a worker thread
+        # so it doesn't freeze the event loop.
+        handler = await asyncio.to_thread(handler_class, reader, writer, options)
         await handler.run()
 
     server = await asyncio.start_server(accept_client, host=None, port=23)
