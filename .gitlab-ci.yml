@@ -54,34 +54,17 @@ unit_test:
   services:
     - docker:dind
   stage: test
+  resource_group: shared-lock
   variables:
     DOCKER_TLS_CERTDIR: ""
     PYTHONASYNCIODEBUG: 1
-    PYTHONFAULTHANDLER: 1
     compose_file: $CI_PROJECT_DIR/tests/docker-compose_ssh_telnet.yml
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - docker compose -f ${compose_file} down -v || true
     - docker compose -f ${compose_file} pull
     - docker compose -f ${compose_file} up -d --build --wait --remove-orphans
-
-    - |
-      echo "Starting pytest: $(date)"
-      docker stats --no-stream devices-test_container
-
-      docker exec devices-test_container python -X faulthandler -m pytest \
-        --color=yes -vv -s --durations=0 -rP $pyci test_ssh_telnet.py
-
-      RET=$?
-
-      echo "Pytest exit code: $RET"
-      echo "Container status:"
-      docker inspect devices-test_container --format='OOMKilled={{.State.OOMKilled}} ExitCode={{.State.ExitCode}} Status={{.State.Status}}'
-
-      docker stats --no-stream devices-test_container || true
-
-      exit $RET
-
+    - docker exec devices-test_container pytest --color=yes -v --durations 0 -rP $pyci test_ssh_telnet.py
     - docker compose -f ${compose_file} stop
   after_script:
     - mkdir -p $CI_PROJECT_DIR/logs
@@ -96,6 +79,40 @@ unit_test:
     paths:
       - $CI_PROJECT_DIR/logs/*
     name: test-results
+    expire_in: 1 month
+  needs:
+    - job: build
+
+api_test:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: test
+  resource_group: shared-lock
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+    PYTHONASYNCIODEBUG: 1
+    compose_file: $CI_PROJECT_DIR/tests/docker-compose_api.yml
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker compose -f ${compose_file} down -v || true
+    - docker compose -f ${compose_file} pull
+    - docker compose -f ${compose_file} up -d --build --wait --remove-orphans
+    - docker exec devices-test_container pytest --color=yes -v --durations 0 -rP $pyci test_api.py
+    - docker compose -f ${compose_file} stop
+  after_script:
+    - mkdir -p $CI_PROJECT_DIR/logs
+    - |
+      for container_id in $(docker compose -f ${compose_file} ps -qa); do
+        container_name=$(docker inspect --format='{{.Name}}' $container_id)
+        docker logs $container_id > "${CI_PROJECT_DIR}/logs/${container_name}.txt" 2>&1 || true
+      done
+    - docker compose -f ${compose_file} down -v || true
+  artifacts:
+    when: always
+    paths:
+      - $CI_PROJECT_DIR/logs/*
+    name: api-test-results
     expire_in: 1 month
   needs:
     - job: build
@@ -135,35 +152,3 @@ push:
       - "*.tar.gz"
     name: slurpit-mockit
     expire_in: 6 month
-
-api_test:
-  image: docker:latest
-  services:
-    - docker:dind
-  stage: test
-  variables:
-    DOCKER_TLS_CERTDIR: ""
-    compose_file: $CI_PROJECT_DIR/tests/docker-compose_api.yml
-  script:
-    # NOTE: alias does not expand in a non-interactive shell, use a variable
-    - DC="docker compose -f ${compose_file}"
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - $DC down -v || true
-    - $DC up -d --wait --remove-orphans
-    - docker exec devices-api-test pytest --color=yes -v --durations 0 -rP test_api.py
-    - $DC stop
-    - mkdir -p $CI_PROJECT_DIR/logs
-    - |
-      for cid in $($DC ps -qa); do
-        cname=$(docker inspect --format='{{.Name}}' $cid)
-        docker logs $cid > "${CI_PROJECT_DIR}/logs/${cname}.txt" 2>&1 || true
-      done
-    - dc down -v || true
-  artifacts:
-    when: always
-    paths:
-      - $CI_PROJECT_DIR/logs/*
-    name: api-test-results
-    expire_in: 1 month
-  needs:
-    - job: build
