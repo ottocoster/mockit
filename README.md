@@ -9,6 +9,13 @@
 3. Run: docker compose up -d --build
 4. Log in via SSH through the terminal, or run your network automation script against it.
 
+## Try it in the browser
+
+The `web/` folder builds a static page that runs the device handlers in the
+browser through WebAssembly (Pyodide), with no Docker needed. It is handy for demos
+and for trying out templates. It does not expose SSH/SNMP ports. See
+[web/README.md](web/README.md).
+
 ## YouTube playlist with sample videos
 
 https://www.youtube.com/playlist?list=PLxv8A8sCq4EBPfeJGk_Ufb5l9NT50qil2

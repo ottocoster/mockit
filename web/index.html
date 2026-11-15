@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mock'it in the browser</title>
+  <link rel="stylesheet" href="vendor/xterm.css">
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex; flex-direction: column;
+      background: #0d1117; color: #c9d1d9;
+      font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    header {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+      padding: 10px 16px; border-bottom: 1px solid #30363d; background: #161b22;
+    }
+    header h1 { font-size: 16px; margin: 0 8px 0 0; font-weight: 600; }
+    label { display: flex; align-items: center; gap: 6px; color: #8b949e; }
+    select, input, button {
+      font: inherit; color: inherit; background: #0d1117;
+      border: 1px solid #30363d; border-radius: 6px; padding: 4px 8px;
+    }
+    select { min-width: 240px; }
+    button { cursor: pointer; background: #21262d; }
+    button:hover:not(:disabled) { background: #30363d; }
+    button:disabled, select:disabled { opacity: .5; cursor: default; }
+    #status { margin-left: auto; color: #8b949e; font-size: 13px; }
+    #terminal { flex: 1; min-height: 0; padding: 8px 0 0 8px; }
+    footer { padding: 6px 16px; font-size: 12px; color: #6e7681; border-top: 1px solid #30363d; }
+    footer code { color: #8b949e; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mock'it</h1>
+    <label>Device
+      <select id="device" disabled><option>Loading…</option></select>
+    </label>
+    <label>Enable secret
+      <input id="secret" type="password" placeholder="none" size="10">
+    </label>
+    <button id="connect" disabled>Reconnect</button>
+    <span id="status">Starting Python (WebAssembly)…</span>
+  </header>
+  <div id="terminal"></div>
+  <footer>
+    Runs the real Mock'it device handlers in Pyodide. Tab completes, <code>?</code> lists commands,
+    <code>exit</code> closes the session. SSH, Telnet, SNMP and NETCONF listeners are not available in a browser.
+  </footer>
+  <script src="vendor/xterm.js"></script>
+  <script src="vendor/addon-fit.js"></script>
+  <script src="pyodide/pyodide.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
