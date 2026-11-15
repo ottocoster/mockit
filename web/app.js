@@ -6,6 +6,8 @@ const statusEl = $("status");
 const deviceEl = $("device");
 const secretEl = $("secret");
 const connectEl = $("connect");
+const honeypotEl = $("honeypot");
+const honeypotLogEl = $("honeypot-log");
 
 const term = new Terminal({
   cursorBlink: true,
@@ -46,12 +48,16 @@ function connect() {
   const url = new URL(location);
   url.searchParams.set("device", type);
   if (version) url.searchParams.set("version", version); else url.searchParams.delete("version");
+  if (honeypotEl.checked) url.searchParams.set("honeypot", "1"); else url.searchParams.delete("honeypot");
+  document.body.classList.toggle("honeypot", honeypotEl.checked);
+  fit.fit();
   history.replaceState(null, "", url);
 
   term.reset();
   line = "";
   term.write(`\x1b[90mConnected to mock ${deviceLabel({ type, version })} (Pyodide ${py.pyodideVersion}).\x1b[0m\r\n` +
-    `\x1b[90mIf the device asks you to log in, use ${py.mod.LOGIN_USERNAME} / ${py.mod.LOGIN_PASSWORD}.\x1b[0m\r\n`);
+    `\x1b[90mIf the device asks you to log in, use ${py.mod.LOGIN_USERNAME} / ${py.mod.LOGIN_PASSWORD}.\x1b[0m\r\n` +
+    (honeypotEl.checked ? `\x1b[33mHoneypot mode: any enable password is accepted and all input is recorded.\x1b[0m\r\n` : ""));
   try {
     let current = null;
     current = py.mod.new_session(
@@ -65,6 +71,7 @@ function connect() {
         setTimeout(() => current.destroy(), 0);
       },
       secretEl.value,
+      honeypotEl.checked,
     );
     session = current;
     setStatus(`Device: ${deviceLabel({ type, version })}`);
@@ -168,6 +175,22 @@ async function main() {
   deviceEl.addEventListener("change", connect);
   connectEl.addEventListener("click", connect);
   secretEl.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); connect(); } });
+  honeypotEl.checked = params.get("honeypot") === "1";
+  honeypotEl.addEventListener("change", connect);
+  mod.set_honeypot_listener((logLine) => {
+    const atBottom = honeypotLogEl.scrollHeight - honeypotLogEl.scrollTop - honeypotLogEl.clientHeight < 4;
+    honeypotLogEl.append(logLine + "\n");
+    if (atBottom) honeypotLogEl.scrollTop = honeypotLogEl.scrollHeight;
+  });
+  $("honeypot-clear").addEventListener("click", () => { honeypotLogEl.textContent = ""; term.focus(); });
+  $("honeypot-download").addEventListener("click", () => {
+    const blob = new Blob([honeypotLogEl.textContent], { type: "text/plain" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `mockit-honeypot-${new Date().toISOString().slice(0, 10)}.txt`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
   window.mockit = { pyodide, connect, get session() { return session; } };
   connect();
 }

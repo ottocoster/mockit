@@ -111,6 +111,37 @@ SSH_Handler._get_command_output = _read_template
 
 
 # ---------------------------------------------------------------------------
+# Honeypot mode
+# ---------------------------------------------------------------------------
+# The handlers call src.honeypot.log() for every input line and enable
+# password. Keep writing the regular log files (inside Pyodide's in-memory
+# filesystem) and also forward each line to the page so it can show them.
+
+from datetime import datetime  # noqa: E402
+
+from src import honeypot  # noqa: E402
+
+honeypot.HONEYPOT_LOG_DIR = "/honeypot"
+_honeypot_log = honeypot.log
+_honeypot_listener = None
+
+
+def _log_and_forward(ip: str, event: str) -> None:
+    _honeypot_log(ip, event)
+    if _honeypot_listener is not None:
+        _honeypot_listener(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] {event}")
+
+
+honeypot.log = _log_and_forward
+
+
+def set_honeypot_listener(listener) -> None:
+    """Register a callable that receives every honeypot log line."""
+    global _honeypot_listener
+    _honeypot_listener = listener
+
+
+# ---------------------------------------------------------------------------
 # Fake SSH process
 # ---------------------------------------------------------------------------
 
@@ -198,7 +229,7 @@ LOGIN_PASSWORD = "Welcome01!"
 
 
 class Session:
-    def __init__(self, device_type, device_version, write, on_exit, enable_secret=""):
+    def __init__(self, device_type, device_version, write, on_exit, enable_secret="", honeypot_mode=False):
         self.process = BrowserProcess(write, on_exit)
         handler_class = load_handler_class(device_type, device_version)
         options = {
@@ -208,9 +239,11 @@ class Session:
             "delay": 0,
             "ai_support": False,
             "ai_apikey": "",
-            "honeypot_mode": False,
-            "enable_mode": bool(enable_secret),
-            "enable_secret": enable_secret,
+            "honeypot_mode": honeypot_mode,
+            # In honeypot mode always prompt for the enable password so it gets
+            # recorded; the handler accepts any value in that mode.
+            "enable_mode": bool(enable_secret) or honeypot_mode,
+            "enable_secret": enable_secret or ("honeypot" if honeypot_mode else ""),
             # Only used by the few handlers that run their own login prompt
             # inside the session (e.g. cisco_s200); same defaults as the image.
             "username": LOGIN_USERNAME,
@@ -219,6 +252,9 @@ class Session:
             "login_retry": 0,
         }
         self.handler = handler_class(self.process, options)
+        if honeypot_mode:
+            label = f"{device_type} {device_version}".strip()
+            honeypot.log("browser", f"Browser session opened: device=`{label}`")
         self.task = asyncio.ensure_future(self._run())
 
     async def _run(self):
@@ -245,5 +281,5 @@ class Session:
         self.task.cancel()
 
 
-def new_session(device_type, device_version, write, on_exit, enable_secret=""):
-    return Session(device_type, device_version, write, on_exit, enable_secret)
+def new_session(device_type, device_version, write, on_exit, enable_secret="", honeypot_mode=False):
+    return Session(device_type, device_version, write, on_exit, enable_secret, honeypot_mode)

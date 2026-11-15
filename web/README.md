@@ -39,6 +39,17 @@ with an enable secret and per-vendor overrides all behave as they do in the
 container. URL parameters `device` and `version` choose the device, for
 example `?device=mikrotik_routeros&version=v6`.
 
+## Honeypot mode
+
+Tick **Honeypot mode** (or add `honeypot=1` to the URL) to run the session
+the way `HONEYPOT_MODE=true` does. The enable prompt accepts any password,
+and every input line and enable password is recorded through
+`src/honeypot.py`. The lines appear live in a panel next to the terminal,
+in the same format as the container's
+`<HONEYPOT_LOG_DIR>/<date>/<ip>.txt` files, and **Download** saves them as
+a text file. Nothing leaves the browser: the log lives only in the page
+and disappears on reload.
+
 ## Limitations
 
 * **No network listeners.** A browser tab cannot accept TCP or UDP

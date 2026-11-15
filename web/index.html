@@ -29,7 +29,26 @@
     button:hover:not(:disabled) { background: #30363d; }
     button:disabled, select:disabled { opacity: .5; cursor: default; }
     #status { margin-left: auto; color: #8b949e; font-size: 13px; }
-    #terminal { flex: 1; min-height: 0; padding: 8px 0 0 8px; }
+    main { flex: 1; min-height: 0; display: flex; }
+    #terminal { flex: 1; min-width: 0; padding: 8px 0 0 8px; }
+    #honeypot-panel {
+      display: none; flex-direction: column; width: min(40%, 480px);
+      border-left: 1px solid #30363d; background: #161b22;
+    }
+    body.honeypot #honeypot-panel { display: flex; }
+    #honeypot-panel .bar {
+      display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+      border-bottom: 1px solid #30363d; font-weight: 600; color: #f0883e;
+    }
+    #honeypot-panel .bar span { margin-right: auto; }
+    #honeypot-panel button { font-size: 12px; padding: 2px 8px; }
+    #honeypot-log {
+      flex: 1; margin: 0; padding: 8px 12px; overflow: auto;
+      font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap; word-break: break-all; color: #c9d1d9;
+    }
+    #honeypot-log:empty::before { content: "Commands typed in honeypot mode are recorded here."; color: #6e7681; }
+    input[type=checkbox] { accent-color: #f0883e; }
     footer { padding: 6px 16px; font-size: 12px; color: #6e7681; border-top: 1px solid #30363d; }
     footer code { color: #8b949e; }
   </style>
@@ -43,10 +62,22 @@
     <label>Enable secret
       <input id="secret" type="password" placeholder="none" size="10">
     </label>
+    <label title="Accept any enable password and record every input, like HONEYPOT_MODE=true">
+      <input id="honeypot" type="checkbox"> Honeypot mode
+    </label>
     <button id="connect" disabled>Reconnect</button>
     <span id="status">Starting Python (WebAssembly)…</span>
   </header>
-  <div id="terminal"></div>
+  <main>
+    <div id="terminal"></div>
+    <aside id="honeypot-panel">
+      <div class="bar"><span>Honeypot log</span>
+        <button id="honeypot-download">Download</button>
+        <button id="honeypot-clear">Clear</button>
+      </div>
+      <pre id="honeypot-log"></pre>
+    </aside>
+  </main>
   <footer>
     Runs the real Mock'it device handlers in Pyodide. Tab completes, <code>?</code> lists commands,
     <code>exit</code> closes the session. SSH, Telnet, SNMP and NETCONF listeners are not available in a browser.
