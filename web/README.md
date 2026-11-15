@@ -13,6 +13,10 @@ python3 -m http.server -d dist 8080
 # open http://localhost:8080/?device=cisco_ios
 ```
 
+Live demo: <https://ottocoster.github.io/mockit/>. The workflow in
+`.github/workflows/pages.yml` redeploys it on every push to `main` that
+touches `web/`, `src/` or `configs/`, and it can also be started by hand.
+
 `dist/` is a plain static site. You can host it on GitHub Pages, S3 or any
 web server. It must be served over HTTP(S), not opened as a `file://` URL.
 
