@@ -10,6 +10,7 @@ mockit.zip, which holds src/ and the SSH parts of configs/ (handler modules,
 scripts and command templates). SNMP walks, MIBs and NETCONF files are left
 out because those servers can't run in a browser.
 """
+import json
 import shutil
 import zipfile
 from pathlib import Path
@@ -72,6 +73,12 @@ def main():
         shutil.copy2(WEB / name, DIST / name)
 
     files = build_zip(DIST / "mockit.zip")
+    # Uncompressed sizes of the files fetched at startup, so the loading
+    # screen can show real download progress.
+    tracked = ["pyodide/pyodide.asm.wasm", "pyodide/python_stdlib.zip",
+               "pyodide/pyodide-lock.json", "mockit.zip"]
+    sizes = {name.rsplit("/", 1)[-1]: (DIST / name).stat().st_size for name in tracked}
+    (DIST / "sizes.json").write_text(json.dumps(sizes))
     size = (DIST / "mockit.zip").stat().st_size / 1024 / 1024
     print(f"Built {DIST} ({files} files in mockit.zip, {size:.1f} MiB)")
 

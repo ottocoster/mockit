@@ -147,12 +147,99 @@ term.onData((data) => {
   }
 });
 
+// ---------- loading screen ----------
+const loader = {
+  el: $("loader"),
+  stepEl: $("loader-step"),
+  detailEl: $("loader-detail"),
+  barEl: $("loader-bar"),
+  sizes: {},       // file name -> uncompressed size (from sizes.json)
+  received: {},    // file name -> bytes received so far
+  step(name, text) {
+    let reached = false;
+    for (const li of document.querySelectorAll("#loader-steps li")) {
+      const current = li.dataset.step === name;
+      li.classList.toggle("active", current);
+      li.classList.toggle("complete", !current && !reached);
+      if (current) reached = true;
+    }
+    this.stepEl.textContent = text;
+    setStatus(text);
+  },
+  detail(text) { this.detailEl.textContent = text; },
+  progress() {
+    // Once the big runtime files are in, Pyodide compiles and boots.
+    if (this.stepEl.textContent.startsWith("Downloading the Python") &&
+        ["pyodide.asm.wasm", "python_stdlib.zip"].every((f) => this.sizes[f] && this.received[f] >= this.sizes[f])) {
+      this.stepEl.textContent = "Starting the Python interpreter…";
+    }
+    const mb = (n) => (n / 1048576).toFixed(1);
+    const got = Object.values(this.received).reduce((a, b) => a + b, 0);
+    const total = Object.values(this.sizes).reduce((a, b) => a + b, 0);
+    if (total) {
+      this.barEl.style.width = `${Math.min(100, (got / total) * 100).toFixed(1)}%`;
+      this.detail(`${mb(Math.min(got, total))} / ${mb(total)} MB`);
+    } else {
+      this.detail(`${mb(got)} MB downloaded`);
+    }
+  },
+  done() {
+    this.barEl.style.width = "100%";
+    for (const li of document.querySelectorAll("#loader-steps li")) {
+      li.classList.remove("active");
+      li.classList.add("complete");
+    }
+    this.el.classList.add("done");
+    setTimeout(() => { fit.fit(); term.focus(); }, 50);
+  },
+  fail(err) {
+    this.el.classList.add("error");
+    this.stepEl.textContent = "Mock'it could not start";
+    this.detail(err.message);
+  },
+};
+
+// Count bytes of the large startup downloads (Pyodide fetches its files
+// with the global fetch) so the loading screen can show real progress.
+async function trackedFetch(input, init) {
+  const response = await trackedFetch.original(input, init);
+  const name = String(input instanceof Request ? input.url : input).split(/[?#]/)[0].split("/").pop();
+  if (!(name in loader.sizes) || !response.ok || !response.body) return response;
+  loader.received[name] = 0;
+  const counter = new TransformStream({
+    transform(chunk, controller) {
+      loader.received[name] += chunk.byteLength;
+      loader.progress();
+      controller.enqueue(chunk);
+    },
+  });
+  return new Response(response.body.pipeThrough(counter), {
+    status: response.status, statusText: response.statusText, headers: response.headers,
+  });
+}
+trackedFetch.original = window.fetch.bind(window);
+
 async function main() {
-  const pyodide = await loadPyodide({ indexURL: new URL("pyodide/", location).href });
-  setStatus("Loading device library…");
-  const resp = await fetch("mockit.zip");
-  if (!resp.ok) throw new Error(`mockit.zip: HTTP ${resp.status}`);
-  pyodide.unpackArchive(await resp.arrayBuffer(), "zip", { extractDir: "/mockit" });
+  loader.step("runtime", "Downloading the Python runtime…");
+  try {
+    loader.sizes = await (await fetch("sizes.json")).json();
+  } catch (_) { /* progress without a total */ }
+  window.fetch = trackedFetch;
+  let pyodide;
+  try {
+    pyodide = await loadPyodide({ indexURL: new URL("pyodide/", location).href });
+
+    loader.step("library", "Downloading the device library…");
+    const resp = await fetch("mockit.zip");
+    if (!resp.ok) throw new Error(`mockit.zip: HTTP ${resp.status}`);
+    pyodide.unpackArchive(await resp.arrayBuffer(), "zip", { extractDir: "/mockit" });
+  } finally {
+    window.fetch = trackedFetch.original;
+  }
+
+  loader.step("modules", "Importing Mock'it…");
+  loader.detail(`Pyodide ${pyodide.version}`);
+  await new Promise((r) => setTimeout(r, 0)); // let the screen repaint
   const src = await (await fetch("mockit_browser.py")).text();
   pyodide.FS.writeFile("/mockit/mockit_browser.py", src);
   pyodide.runPython("import sys; sys.path.insert(0, '/mockit')");
@@ -192,11 +279,15 @@ async function main() {
     URL.revokeObjectURL(a.href);
   });
   window.mockit = { pyodide, connect, get session() { return session; } };
+  loader.step("session", `Connecting to ${deviceLabel({ type: deviceEl.value.split("|")[0], version: deviceEl.value.split("|")[1] })}…`);
+  await new Promise((r) => setTimeout(r, 0));
   connect();
+  loader.done();
 }
 
 main().catch((err) => {
   console.error(err);
   setStatus("Failed to start");
+  loader.fail(err);
   term.write(`\x1b[31mFailed to start Mock'it: ${err.message}\x1b[0m\r\n`);
 });
