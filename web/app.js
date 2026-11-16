@@ -56,8 +56,8 @@ function connect() {
   term.reset();
   line = "";
   term.write(`\x1b[90mConnected to mock ${deviceLabel({ type, version })} (Pyodide ${py.pyodideVersion}).\x1b[0m\r\n` +
-    `\x1b[90mIf the device asks you to log in, use ${py.mod.LOGIN_USERNAME} / ${py.mod.LOGIN_PASSWORD}.\x1b[0m\r\n` +
-    (honeypotEl.checked ? `\x1b[33mHoneypot mode: any enable password is accepted and all input is recorded.\x1b[0m\r\n` : ""));
+    (honeypotEl.checked ? "" : `\x1b[90mIf the device asks you to log in, use ${py.mod.LOGIN_USERNAME} / ${py.mod.LOGIN_PASSWORD}.\x1b[0m\r\n`) +
+    (honeypotEl.checked ? `\x1b[33mHoneypot mode: any login and enable password is accepted, and everything is recorded.\x1b[0m\r\n` : ""));
   try {
     let current = null;
     current = py.mod.new_session(

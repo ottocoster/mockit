@@ -42,8 +42,11 @@ example `?device=mikrotik_routeros&version=v6`.
 ## Honeypot mode
 
 Tick **Honeypot mode** (or add `honeypot=1` to the URL) to run the session
-the way `HONEYPOT_MODE=true` does. The enable prompt accepts any password,
-and every input line and enable password is recorded through
+the way `HONEYPOT_MODE=true` does. The session starts with an SSH-style
+`login as:` / password prompt, which is checked by the device's own SSH server
+class (`validate_password`), so any username and password is accepted and
+logged. The enable prompt also accepts any password, and every login, input
+line and enable password is recorded through
 `src/honeypot.py`. The lines appear live in a panel next to the terminal,
 in the same format as the container's
 `<HONEYPOT_LOG_DIR>/<date>/<ip>.txt` files, and **Download** saves them as

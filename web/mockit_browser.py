@@ -99,6 +99,7 @@ os.chdir("/mockit")
 logging.basicConfig(level=logging.WARNING)
 
 from src.ssh_server.ssh_handler import SSH_Handler  # noqa: E402
+from src.ssh_server.ssh_server import SSH_Server  # noqa: E402
 
 
 async def _read_template(self, file):
@@ -216,13 +217,23 @@ def list_devices() -> list[dict]:
     return devices
 
 
-def load_handler_class(device_type: str, device_version: str = ""):
+def load_device_classes(device_type: str, device_version: str = ""):
+    """Return (server_class, handler_class), like src/start_ssh.py."""
     if device_version:
         mod = f"configs.{device_type}.{device_version}.{device_type}_{device_version}_server"
     else:
         mod = f"configs.{device_type}.{device_type}_server"
     module = importlib.import_module(mod)
-    return getattr(module, f"{device_type}_handler")
+    handler_class = getattr(module, f"{device_type}_handler")
+    server_class = getattr(module, f"{device_type}_server", SSH_Server)
+    return server_class, handler_class
+
+
+class _BrowserConnection:
+    """Stands in for asyncssh.SSHServerConnection during authentication."""
+
+    def get_extra_info(self, name, default=None):
+        return ("browser", 0) if name == "peername" else default
 
 
 # ---------------------------------------------------------------------------
@@ -236,7 +247,7 @@ LOGIN_PASSWORD = "Welcome01!"
 class Session:
     def __init__(self, device_type, device_version, write, on_exit, enable_secret="", honeypot_mode=False):
         self.process = BrowserProcess(write, on_exit)
-        handler_class = load_handler_class(device_type, device_version)
+        server_class, handler_class = load_device_classes(device_type, device_version)
         options = {
             "device_type": device_type,
             "device_version": device_version or None,
@@ -257,13 +268,44 @@ class Session:
             "login_retry": 0,
         }
         self.handler = handler_class(self.process, options)
+        # The device's SSH server object, used for password authentication.
+        self.server = server_class(dict(options), logging.getLogger("app"))
+        self.server.conn = _BrowserConnection()
+        self.hostname = device_type
+        # Honeypot mode asks for credentials like an SSH login would, so they
+        # get recorded; normal mode keeps dropping straight into the device.
+        self.require_login = honeypot_mode
+        self.login_password_prompt = False
         if honeypot_mode:
             label = f"{device_type} {device_version}".strip()
             honeypot.log("browser", f"Browser session opened: device=`{label}`")
         self.task = asyncio.ensure_future(self._run())
 
+    async def _login(self) -> bool:
+        """OpenSSH-style login, validated by the device's SSH server class."""
+        out, stdin = self.process.stdout, self.process.stdin
+        for _ in range(3):
+            out.write("login as: ")
+            username = (await stdin.readline()).strip()
+            out.write(username + "\n")
+            self.login_password_prompt = True
+            out.write(f"{username}@{self.hostname}'s password: ")
+            try:
+                password = (await stdin.readline()).rstrip("\n")
+            finally:
+                self.login_password_prompt = False
+            out.write("\n")
+            if await self.server.validate_password(username, password):
+                return True
+            out.write("Access denied\n")
+        out.write("Too many authentication failures\n")
+        return False
+
     async def _run(self):
         try:
+            if self.require_login and not await self._login():
+                self.process.exit(1)
+                return
             await self.handler.run()
         except Exception as e:  # surface crashes in the terminal
             self.process.stdout.write(f"\n[mockit] handler error: {type(e).__name__}: {e}\n")
@@ -276,7 +318,7 @@ class Session:
         self.process.stdin.queue.put_nowait("\x03\n")
 
     def password_mode(self) -> bool:
-        return bool(getattr(self.handler, "password_required", False))
+        return self.login_password_prompt or bool(getattr(self.handler, "password_required", False))
 
     def complete(self, prefix: str) -> list[str]:
         return self.handler.get_matching_commands(prefix) or []
