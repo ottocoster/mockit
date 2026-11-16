@@ -31,8 +31,13 @@
     #status { margin-left: auto; color: #8b949e; font-size: 13px; }
     main { flex: 1; min-height: 0; display: flex; }
     #terminal { flex: 1; min-width: 0; padding: 8px 0 0 8px; }
+    @font-face {
+      font-family: "Twemoji Country Flags";
+      src: url("vendor/TwemojiCountryFlags.woff2") format("woff2");
+      unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062-E0063, U+E0065, U+E0067, U+E006C, U+E006E, U+E0073-E0074, U+E0077, U+E007F;
+    }
     #honeypot-panel {
-      display: none; flex-direction: column; width: min(40%, 480px);
+      display: none; flex-direction: column; width: min(42%, 540px);
       border-left: 1px solid #30363d; background: #161b22;
     }
     body.honeypot #honeypot-panel { display: flex; }
@@ -42,12 +47,40 @@
     }
     #honeypot-panel .bar span { margin-right: auto; }
     #honeypot-panel button { font-size: 12px; padding: 2px 8px; }
-    #honeypot-log {
-      flex: 1; margin: 0; padding: 8px 12px; overflow: auto;
-      font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      white-space: pre-wrap; word-break: break-all; color: #c9d1d9;
+    #demo-badge {
+      display: none; font-size: 11px; font-weight: 600; letter-spacing: .4px; text-transform: uppercase;
+      color: #0d1117; background: #f0883e; border-radius: 10px; padding: 1px 8px;
     }
-    #honeypot-log:empty::before { content: "Commands typed in honeypot mode are recorded here."; color: #6e7681; }
+    body.demo #demo-badge { display: inline-block; }
+    #honeypot-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid #30363d; }
+    #honeypot-stats div { padding: 8px 12px; font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: .4px; }
+    #honeypot-stats div + div { border-left: 1px solid #21262d; }
+    #honeypot-stats b { display: block; font-size: 18px; color: #e6edf3; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+    #honeypot-log { flex: 1; overflow: auto; padding: 6px 0; }
+    #honeypot-log:empty::before { content: "Commands typed in honeypot mode are recorded here."; display: block; padding: 6px 12px; color: #6e7681; font-size: 12px; }
+    .ev {
+      padding: 5px 12px 5px 10px; border-left: 2px solid transparent;
+      font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      animation: flash 1.6s ease-out;
+    }
+    .ev .meta { display: flex; align-items: center; gap: 8px; color: #8b949e; }
+    .ev .flag { font: 15px/1 "Twemoji Country Flags", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; width: 20px; text-align: center; }
+    .ev .ip { color: #c9d1d9; }
+    .ev .country { color: #6e7681; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ev time { margin-left: auto; color: #6e7681; }
+    .ev .tag { font-size: 10px; font-weight: 700; letter-spacing: .4px; padding: 0 6px; border-radius: 4px; background: #21262d; color: #8b949e; white-space: nowrap; }
+    .ev .msg { padding-left: 28px; color: #c9d1d9; white-space: pre-wrap; word-break: break-all; }
+    .ev .msg .cred { color: #f0883e; }
+    .ev-login { border-left-color: #d29922; }
+    .ev-login .tag { background: #3b2e0a; color: #e3b341; }
+    .ev-enable { border-left-color: #f85149; }
+    .ev-enable .tag { background: #3d1214; color: #ff7b72; }
+    .ev-session .tag { background: #0c2d6b; color: #79c0ff; }
+    .ev.suspicious { border-left-color: #f85149; background: rgba(248, 81, 73, .08); }
+    .ev.suspicious .msg { color: #ffa198; }
+    .ev.suspicious .msg::before { content: "⚠ "; color: #f85149; }
+    @keyframes flash { from { background: rgba(56, 139, 253, .22); } }
+    @media (prefers-reduced-motion: reduce) { .ev { animation: none; } }
     input[type=checkbox] { accent-color: #f0883e; }
     /* ---------- loading screen ---------- */
     #loader {
@@ -174,11 +207,17 @@
   <main>
     <div id="terminal"></div>
     <aside id="honeypot-panel">
-      <div class="bar"><span>Honeypot log</span>
+      <div class="bar"><span>Honeypot log <em id="demo-badge" title="Demo mode: attacks are simulated in your browser, no traffic is sent or received">Simulated</em></span>
         <button id="honeypot-download">Download</button>
         <button id="honeypot-clear">Clear</button>
       </div>
-      <pre id="honeypot-log"></pre>
+      <div id="honeypot-stats">
+        <div><b id="stat-logins">0</b>Logins</div>
+        <div><b id="stat-commands">0</b>Commands</div>
+        <div><b id="stat-sources">0</b>Sources</div>
+        <div><b id="stat-countries">0</b>Countries</div>
+      </div>
+      <div id="honeypot-log" aria-live="polite"></div>
     </aside>
   </main>
   <footer>
@@ -188,6 +227,7 @@
   <script src="vendor/xterm.js"></script>
   <script src="vendor/addon-fit.js"></script>
   <script src="pyodide/pyodide.js"></script>
+  <script src="demo.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

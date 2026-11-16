@@ -50,6 +50,24 @@ in the same format as the container's
 a text file. Nothing leaves the browser: the log lives only in the page
 and disappears on reload.
 
+### Demo mode
+
+`?demo=1` turns on honeypot mode and plays **simulated** attackers into the
+log: SSH brute force, a Mirai-style Telnet bot, router reconnaissance,
+config exfiltration, backdoor accounts, a miner dropper and more. Each event
+goes through the same `src/honeypot.py` logger and uses the same formats as
+the container. The panel shows the source's flag, counts logins, commands,
+sources and countries, and highlights suspicious commands. There is no UI
+toggle for it, only the URL parameter.
+
+No network traffic is involved: `demo.js` generates the attacks in the page.
+The source IPs all come from the documentation ranges reserved by RFC 5737
+(192.0.2.0/24, 198.51.100.0/24 and 203.0.113.0/24), so no real host is ever
+shown as an attacker, and their countries are made up. Flags use the bundled
+[Twemoji](https://github.com/twitter/twemoji) country-flag font
+(CC-BY 4.0, via `country-flag-emoji-polyfill`), so they also render on
+Windows.
+
 ## Limitations
 
 * **No network listeners.** A browser tab cannot accept TCP or UDP

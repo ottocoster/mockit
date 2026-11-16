@@ -26,6 +26,8 @@ XTERM_FILES = {
     "@xterm/xterm/lib/xterm.js": "xterm.js",
     "@xterm/xterm/css/xterm.css": "xterm.css",
     "@xterm/addon-fit/lib/addon-fit.js": "addon-fit.js",
+    # Twemoji flag font (CC-BY 4.0), so country flags render on Windows too
+    "country-flag-emoji-polyfill/dist/TwemojiCountryFlags.woff2": "TwemojiCountryFlags.woff2",
 }
 SKIP_DIRS = {"__pycache__", "netconf", "api"}
 
@@ -69,7 +71,7 @@ def main():
         shutil.copy2(NODE / "pyodide" / name, DIST / "pyodide" / name)
     for src, dst in XTERM_FILES.items():
         shutil.copy2(NODE / src, DIST / "vendor" / dst)
-    for name in ["index.html", "app.js", "mockit_browser.py"]:
+    for name in ["index.html", "app.js", "demo.js", "mockit_browser.py"]:
         shutil.copy2(WEB / name, DIST / name)
 
     files = build_zip(DIST / "mockit.zip")

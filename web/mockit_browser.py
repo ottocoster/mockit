@@ -129,16 +129,21 @@ _honeypot_listener = None
 def _log_and_forward(ip: str, event: str) -> None:
     _honeypot_log(ip, event)
     if _honeypot_listener is not None:
-        _honeypot_listener(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] {event}")
+        _honeypot_listener(ip, f"[{datetime.now():%Y-%m-%d %H:%M:%S}] {event}")
 
 
 honeypot.log = _log_and_forward
 
 
 def set_honeypot_listener(listener) -> None:
-    """Register a callable that receives every honeypot log line."""
+    """Register a callable that receives (ip, log line) for every event."""
     global _honeypot_listener
     _honeypot_listener = listener
+
+
+def record_honeypot_event(ip: str, event: str) -> None:
+    """Record an event through the regular honeypot logger (demo mode)."""
+    honeypot.log(ip, event)
 
 
 # ---------------------------------------------------------------------------
